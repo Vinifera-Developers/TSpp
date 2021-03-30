@@ -32,6 +32,7 @@
 #include "rawfile.h"
 #include "mixfile.h"
 #include "wwkeyboard.h"
+#include "options.h"
 
 
 /**
@@ -94,8 +95,23 @@ DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Put(unsigned short), 0x004FB0C0);
 DEFINE_IMPLEMENTATION(void WWKeyboardClass::Clear(), 0x004FB4F0);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Down(unsigned short), 0x004FB390);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(OptionsClass::OptionsClass(), 0x00589960);
+DEFINE_IMPLEMENTATION(void OptionsClass::One_Time(), 0x00589A20);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Socket(), 0x0058A3D0);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Shuffle(bool), 0x00589A30);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Repeat(bool), 0x00589A60);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Score_Volume(double, bool), 0x00589A90);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Sound_Volume(double, bool), 0x00589B10);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set_Voice_Volume(double, bool), 0x00589B70);
+DEFINE_IMPLEMENTATION(int OptionsClass::Normalize_Delay(int) const, 0x0058A600);
+DEFINE_IMPLEMENTATION(int OptionsClass::Normalize_Volume(int) const, 0x0058A630);
+DEFINE_IMPLEMENTATION(void OptionsClass::Load_Settings(), 0x00589C10);
+DEFINE_IMPLEMENTATION(void OptionsClass::Save_Settings(), 0x0058A140);
+DEFINE_IMPLEMENTATION(void OptionsClass::Set(), 0x0058A4E0);
+
 
 /**
  *  Global definitions
  */
 WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
+OptionsClass &Options = Make_Global<OptionsClass>(0x007E4720);

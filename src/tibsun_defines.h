@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TIBSUN_GLOBALS.H
+ *  @file          TIBSUN_DEFINES.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Main header file which contains all the games globals.
+ *  @brief         Main header file which contains all the games types.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -31,21 +31,16 @@
 
 
 /**
- *  This head contains all the game globals.
- * 
- *  #NOTE: Do not include any module here directly!
+ *  This head contains all the game enums, structs and primitive types.
  */
 
 
-/**
- *  Forward declarations.
- */
-class WWKeyboardClass;
-class OptionsClass;
+typedef enum DiffType : int
+{
+	DIFF_EASY,
+	DIFF_NORMAL,
+	DIFF_HARD,
 
-
-/**
- *  Global externs (should be defined in tspp_defintions.cpp).
- */
-extern WWKeyboardClass *&WWKeyboard;
-extern OptionsClass &Options;
+	DIFF_COUNT,
+	DIFF_FIRST = 0
+};
