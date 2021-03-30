@@ -34,6 +34,7 @@
 #include "wwkeyboard.h"
 #include "options.h"
 #include "buff.h"
+#include "special.h"
 
 
 /**
@@ -119,9 +120,14 @@ DEFINE_IMPLEMENTATION(Buffer::~Buffer(), 0x00425D80);
 DEFINE_IMPLEMENTATION(Buffer& Buffer::operator=(const Buffer &), 0x00425D40);
 DEFINE_IMPLEMENTATION(void Buffer::Reset(), 0x00425DB0);
 
+DEFINE_IMPLEMENTATION(void SpecialClass::Init(), 0x005FCAA0);
+DEFINE_IMPLEMENTATION(void SpecialClass::Read_INI(CCINIClass &), 0x005FCC60);
+DEFINE_IMPLEMENTATION(void SpecialClass::Write_INI(CCINIClass &) const, 0x005FCAF0);
+
 
 /**
  *  Global definitions
  */
 WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
 OptionsClass &Options = Make_Global<OptionsClass>(0x007E4720);
+SpecialClass &Special = Make_Global<SpecialClass>(0x007E4540);

@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TIBSUN_GLOBALS.H
+ *  @file          SPECIAL.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Main header file which contains all the games globals.
+ *  @brief         Special game options.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -30,24 +30,36 @@
 #include "always.h"
 
 
-/**
- *  This head contains all the game globals.
- * 
- *  #NOTE: Do not include any module here directly!
- */
+class CCINIClass;
 
 
-/**
- *  Forward declarations.
- */
-class WWKeyboardClass;
-class OptionsClass;
-class SpecialClass;
+class SpecialClass
+{
+    public:
+        void Init();
 
+        void Read_INI(CCINIClass &ini);
+        void Write_INI(CCINIClass &ini) const;
 
-/**
- *  Global externs (should be defined in tspp_defintions.cpp).
- */
-extern WWKeyboardClass *&WWKeyboard;
-extern OptionsClass &Options;
-extern SpecialClass &Special;
+    public:
+        unsigned IsShadowGrow:1;            // 1
+        unsigned IsSpeedBuild:1;            // 2
+        unsigned IsFromInstall:1;           // 4
+        unsigned IsCaptureTheFlag:1;        // 8
+        unsigned IsInert:1;                 // 16
+        unsigned IsTGrowth:1;               // 32
+        unsigned IsTSpread:1;               // 64
+        unsigned IsMCVDeploy:1;             // 128
+
+        unsigned InitialVeteran:1;          // 1
+        unsigned FixedAlliance:1;           // 2
+        unsigned HarvesterImmune:1;         // 4
+        unsigned FogOfWar:1;                // 8
+        unsigned Bit2_16:1;                 // 16   // could be ShroudRegrows?
+        unsigned TiberiumExplosive:1;       // 32
+        unsigned DestroyableBridges:1;      // 64
+        unsigned Meteorites:1;              // 128
+
+        unsigned IonStorms:1;               // 1
+        unsigned IsVisceroids:1;            // 2
+};
