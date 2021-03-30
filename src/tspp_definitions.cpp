@@ -31,6 +31,7 @@
 #include "straw.h"
 #include "rawfile.h"
 #include "mixfile.h"
+#include "wwkeyboard.h"
 
 
 /**
@@ -84,3 +85,17 @@ DEFINE_IMPLEMENTATION(bool MixFileClass::Cache(const char *, Buffer const *), 0x
 DEFINE_IMPLEMENTATION(bool MixFileClass::Offset(const char *, void **, MixFileClass **, long *, long *), 0x0055A1C0);
 DEFINE_IMPLEMENTATION(const void* MixFileClass::Retrieve(const char *), 0x00559DE0);
 DEFINE_IMPLEMENTATION(MixFileClass* MixFileClass::Finder(const char *), 0x00559E00);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWKeyboardClass::WWKeyboardClass(), 0x004FADC0);
+DEFINE_IMPLEMENTATION(WWKeyboardClass::~WWKeyboardClass(), 0x004FADB0);
+DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Check() const, 0x004FAF30);
+DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Get(), 0x004FAF80);
+DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Put(unsigned short), 0x004FB0C0);
+DEFINE_IMPLEMENTATION(void WWKeyboardClass::Clear(), 0x004FB4F0);
+DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Down(unsigned short), 0x004FB390);
+
+
+/**
+ *  Global definitions
+ */
+WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
