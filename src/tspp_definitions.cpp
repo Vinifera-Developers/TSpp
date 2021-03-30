@@ -29,6 +29,7 @@
 
 #include "pipe.h"
 #include "straw.h"
+#include "rawfile.h"
 
 
 /**
@@ -51,3 +52,24 @@ DEFINE_IMPLEMENTATION(Pipe::~Pipe(), 0x005A9430);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(Straw::Straw(), 0x);
 Straw::Straw() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC5C; }
 DEFINE_IMPLEMENTATION(Straw::~Straw(), 0x0060AFC0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(const char *), 0x005BE310);
+DEFINE_IMPLEMENTATION(RawFileClass::~RawFileClass(), 0x005BE290);
+DEFINE_IMPLEMENTATION(const char* RawFileClass::File_Name() const, 0x005BDE00);
+DEFINE_IMPLEMENTATION(const char* RawFileClass::Set_Name(const char *), 0x005BDE10);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Create(), 0x005BDB90);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Delete(), 0x005BDBB0);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Is_Available(bool), 0x005BDBD0);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Is_Open() const, 0x005BDBE0);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Open(const char *, FileAccessType), 0x005BDBF0);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Open(FileAccessType), 0x005BDC00);
+DEFINE_IMPLEMENTATION(long RawFileClass::Read(void *, int), 0x005BDC50);
+DEFINE_IMPLEMENTATION(off_t RawFileClass::Seek(off_t, FileSeekType), 0x005BDCD0);
+DEFINE_IMPLEMENTATION(off_t RawFileClass::Size(), 0x005BDD50);
+DEFINE_IMPLEMENTATION(long RawFileClass::Write(const void *, int), 0x005BDD60);
+DEFINE_IMPLEMENTATION(void RawFileClass::Close(), 0x005BDDF0);
+DEFINE_IMPLEMENTATION(LONG RawFileClass::Get_Date_Time() const, 0x005BDE20);
+DEFINE_IMPLEMENTATION(bool RawFileClass::Set_Date_Time(LONG), 0x005BDE30);
+DEFINE_IMPLEMENTATION(void RawFileClass::Error(FileErrorType, bool, const char *), 0x005BDE40);
+DEFINE_IMPLEMENTATION(void RawFileClass::Bias(off_t, int), 0x005BEB20);
+DEFINE_IMPLEMENTATION(off_t RawFileClass::Raw_Seek(off_t, FileSeekType), 0x005BEB90);
