@@ -35,6 +35,7 @@
 #include "options.h"
 #include "buff.h"
 #include "special.h"
+#include "ramfile.h"
 
 
 /**
@@ -123,6 +124,25 @@ DEFINE_IMPLEMENTATION(void Buffer::Reset(), 0x00425DB0);
 DEFINE_IMPLEMENTATION(void SpecialClass::Init(), 0x005FCAA0);
 DEFINE_IMPLEMENTATION(void SpecialClass::Read_INI(CCINIClass &), 0x005FCC60);
 DEFINE_IMPLEMENTATION(void SpecialClass::Write_INI(CCINIClass &) const, 0x005FCAF0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RAMFileClass::RAMFileClass(void *, int), 0x005BDB00);
+DEFINE_IMPLEMENTATION(RAMFileClass::~RAMFileClass(), 0x005BDB50);
+DEFINE_IMPLEMENTATION(const char *RAMFileClass::File_Name() const, 0x005BDE00);
+DEFINE_IMPLEMENTATION(const char *RAMFileClass::Set_Name(const char *), 0x005BDE10);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Create(), 0x005BDB90);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Delete(), 0x005BDBB0);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Is_Available(bool), 0x005BDBD0);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Is_Open() const, 0x005BDBE0);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Open(const char *, FileAccessType), 0x005BDBF0);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Open(FileAccessType), 0x005BDC00);
+DEFINE_IMPLEMENTATION(long RAMFileClass::Read(void *, int), 0x005BDC50);
+DEFINE_IMPLEMENTATION(off_t RAMFileClass::Seek(off_t, FileSeekType), 0x005BDCD0);
+DEFINE_IMPLEMENTATION(off_t RAMFileClass::Size(), 0x005BDD50);
+DEFINE_IMPLEMENTATION(long RAMFileClass::Write(const void *, int), 0x005BDD60);
+DEFINE_IMPLEMENTATION(void RAMFileClass::Close(), 0x005BDDF0);
+DEFINE_IMPLEMENTATION(LONG RAMFileClass::Get_Date_Time() const, 0x005BDE20);
+DEFINE_IMPLEMENTATION(bool RAMFileClass::Set_Date_Time(LONG), 0x005BDE30);
+DEFINE_IMPLEMENTATION(void RAMFileClass::Error(FileErrorType, bool, const char *), 0x005BDE40);
 
 
 /**
