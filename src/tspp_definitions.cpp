@@ -33,6 +33,7 @@
 #include "mixfile.h"
 #include "wwkeyboard.h"
 #include "options.h"
+#include "buff.h"
 
 
 /**
@@ -108,6 +109,15 @@ DEFINE_IMPLEMENTATION(int OptionsClass::Normalize_Volume(int) const, 0x0058A630)
 DEFINE_IMPLEMENTATION(void OptionsClass::Load_Settings(), 0x00589C10);
 DEFINE_IMPLEMENTATION(void OptionsClass::Save_Settings(), 0x0058A140);
 DEFINE_IMPLEMENTATION(void OptionsClass::Set(), 0x0058A4E0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(char *, long), 0x00425C70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(void *, long), 0x00425C30);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(const void *, long), 0x00425CB0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(long), 0x00425CF0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(const Buffer &), 0x00425D20);
+DEFINE_IMPLEMENTATION(Buffer::~Buffer(), 0x00425D80);
+DEFINE_IMPLEMENTATION(Buffer& Buffer::operator=(const Buffer &), 0x00425D40);
+DEFINE_IMPLEMENTATION(void Buffer::Reset(), 0x00425DB0);
 
 
 /**
