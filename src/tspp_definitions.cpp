@@ -37,6 +37,7 @@
 #include "special.h"
 #include "ramfile.h"
 #include "bfiofile.h"
+#include "cdfile.h"
 
 
 /**
@@ -163,6 +164,20 @@ DEFINE_IMPLEMENTATION(void BufferIOFileClass::Close(), 0x004217E0);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Cache(long, void *), 0x00420DD0);
 DEFINE_IMPLEMENTATION(void BufferIOFileClass::Free(), 0x00420FA0);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Commit(), 0x00420FE0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDFileClass::CDFileClass(), 0x00450610);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDFileClass::CDFileClass(const char *), 0x004505E0);
+DEFINE_IMPLEMENTATION(const char *CDFileClass::Set_Name(const char *), 0x004509D0);
+DEFINE_IMPLEMENTATION(bool CDFileClass::Open(const char *, FileAccessType), 0x00450AD0);
+DEFINE_IMPLEMENTATION(bool CDFileClass::Open(FileAccessType), 0x00450690);
+DEFINE_IMPLEMENTATION(int CDFileClass::Set_Search_Drives(char *), 0x004506F0);
+DEFINE_IMPLEMENTATION(void CDFileClass::Add_Search_Drive(char *), 0x00450910);
+DEFINE_IMPLEMENTATION(void CDFileClass::Clear_Search_Drives(), 0x00450980);
+DEFINE_IMPLEMENTATION(void CDFileClass::Refresh_Search_Drives(), 0x004506A0);
+DEFINE_IMPLEMENTATION(void CDFileClass::Set_CD_Drive(int), 0x00450960);
+DEFINE_IMPLEMENTATION(bool CDFileClass::Find_First_File(char *), 0x00450B30);
+DEFINE_IMPLEMENTATION(bool CDFileClass::Find_Next_File(char *), 0x00450C80);
+DEFINE_IMPLEMENTATION(void CDFileClass::Find_Close(), 0x00450CF0);
 
 
 /**
