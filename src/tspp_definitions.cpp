@@ -44,6 +44,7 @@
 #include "wwmouse.h"
 #include "wwcrc.h"
 #include "xsurface.h"
+#include "bsurface.h"
 
 
 /**
@@ -308,6 +309,13 @@ DEFINE_IMPLEMENTATION(bool XSurface::entry_80() const, 0x00406DF0);
 DEFINE_IMPLEMENTATION(bool XSurface::entry_84(Point2D &, unsigned, Rect &), 0x006A7550);
 DEFINE_IMPLEMENTATION(unsigned XSurface::entry_88(Point2D &, Rect &), 0x006A74D0);
 DEFINE_IMPLEMENTATION(void XSurface::Fill_Circle(const Point2D, unsigned, Rect, unsigned), 0x006A7EE0);
+
+BSurface::BSurface() : XSurface(), BufferPtr() { *((unsigned long *)this) = (unsigned long)0x006CAB74; }
+BSurface::BSurface(int width, int height, int bpp, void *buffer) : XSurface(width, height, bpp), BufferPtr((void *)buffer, int((height * width) * bpp)) { *((unsigned long *)this) = (unsigned long)0x006CAB74; }
+BSurface::~BSurface() {}
+DEFINE_IMPLEMENTATION(void *BSurface::Lock(int, int), 0x00406E50);
+DEFINE_IMPLEMENTATION(int BSurface::Get_Bytes_Per_Pixel() const, 0x00406E90);
+DEFINE_IMPLEMENTATION(int BSurface::Get_Pitch() const, 0x00406EA0);
 
 
 /**
