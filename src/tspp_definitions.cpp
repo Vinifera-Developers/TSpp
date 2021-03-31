@@ -36,6 +36,7 @@
 #include "buff.h"
 #include "special.h"
 #include "ramfile.h"
+#include "bfiofile.h"
 
 
 /**
@@ -59,6 +60,8 @@ DEFINE_IMPLEMENTATION(Pipe::~Pipe(), 0x005A9430);
 Straw::Straw() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC5C; }
 DEFINE_IMPLEMENTATION(Straw::~Straw(), 0x0060AFC0);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(), 0x);
+RawFileClass::RawFileClass() : Rights(FILE_ACCESS_READ), BiasStart(0), BiasLength(-1), Handle(INVALID_HANDLE_VALUE), Filename(nullptr), Date(0), Time(0), Allocated(false) { *((unsigned long *)this) = (unsigned long)0x006D5E34; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(const char *), 0x005BE310);
 DEFINE_IMPLEMENTATION(RawFileClass::~RawFileClass(), 0x005BE290);
 DEFINE_IMPLEMENTATION(const char* RawFileClass::File_Name() const, 0x005BDE00);
@@ -143,6 +146,23 @@ DEFINE_IMPLEMENTATION(void RAMFileClass::Close(), 0x005BDDF0);
 DEFINE_IMPLEMENTATION(LONG RAMFileClass::Get_Date_Time() const, 0x005BDE20);
 DEFINE_IMPLEMENTATION(bool RAMFileClass::Set_Date_Time(LONG), 0x005BDE30);
 DEFINE_IMPLEMENTATION(void RAMFileClass::Error(FileErrorType, bool, const char *), 0x005BDE40);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BufferIOFileClass::BufferIOFileClass(), 0x00420D30);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BufferIOFileClass::BufferIOFileClass(const char *), 0x00420C40);
+DEFINE_IMPLEMENTATION(BufferIOFileClass::~BufferIOFileClass(), 0x00420D90);
+DEFINE_IMPLEMENTATION(const char *BufferIOFileClass::Set_Name(const char *), 0x00421090);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Is_Available(bool), 0x00421120);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Is_Open() const, 0x00421140);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Open(const char *, FileAccessType), 0x00421160);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Open(FileAccessType), 0x00421180);
+DEFINE_IMPLEMENTATION(long BufferIOFileClass::Read(void *, int), 0x004214C0);
+DEFINE_IMPLEMENTATION(off_t BufferIOFileClass::Seek(off_t, FileSeekType), 0x004216D0);
+DEFINE_IMPLEMENTATION(off_t BufferIOFileClass::Size(), 0x004217C0);
+DEFINE_IMPLEMENTATION(long BufferIOFileClass::Write(const void *, int), 0x00421270);
+DEFINE_IMPLEMENTATION(void BufferIOFileClass::Close(), 0x004217E0);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Cache(long, void *), 0x00420DD0);
+DEFINE_IMPLEMENTATION(void BufferIOFileClass::Free(), 0x00420FA0);
+DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Commit(), 0x00420FE0);
 
 
 /**

@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          RAWFILE.H
+ *  @file          BFIOFILE.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Basic file io interface.
+ *  @brief         Buffered file interface with caching support.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,23 +27,17 @@
  ******************************************************************************/
 #pragma once
 
-#include "always.h"
-#include "wwfile.h"
-#include <Windows.h>
+#include "rawfile.h"
 
 
-class RawFileClass : public FileClass
+class BufferIOFileClass : public RawFileClass
 {
     public:
-        RawFileClass();
-        //RawFileClass(const RawFileClass &f);
-        RawFileClass(const char *filename);
-        virtual ~RawFileClass();
+        BufferIOFileClass();
+        BufferIOFileClass(const char *filename);
+        virtual ~BufferIOFileClass();
 
-        virtual const char *File_Name() const override;
         virtual const char *Set_Name(const char *filename) override;
-        virtual bool Create() override;
-        virtual bool Delete() override;
         virtual bool Is_Available(bool forced = false) override;
         virtual bool Is_Open() const override;
         virtual bool Open(const char *filename, FileAccessType rights = FILE_ACCESS_READ) override;
@@ -53,32 +47,30 @@ class RawFileClass : public FileClass
         virtual off_t Size() override;
         virtual long Write(const void *buffer, int length) override;
         virtual void Close() override;
-        virtual LONG Get_Date_Time() const override;
-        virtual bool Set_Date_Time(LONG date_time) override;
-        virtual void Error(FileErrorType error, bool can_retry = false, const char *filename = nullptr) override;
 
-        void Bias(off_t start, int length = -1);
+        bool Cache(long size = 0, void *ptr = nullptr);
+        void Free();
+        bool Commit();
 
-        off_t Tell() { return RawFileClass::Seek(0, FILE_SEEK_CURRENT); }
+        enum {
+            MINIMUM_BUFFER_SIZE = 1024
+        };
 
-        HANDLE Get_File_Handle() { return Handle; }
-
-    protected:
-        int Transfer_Block_Size() { return (int)((unsigned)UINT_MAX)-16L; }
-
-        off_t Raw_Seek(off_t offset, FileSeekType whence = FILE_SEEK_CURRENT);
-
-    protected:
-        FileAccessType Rights;
-
-    public:
-        int BiasStart;
-        int BiasLength;
-
-    protected:
-        HANDLE Handle;
-        char * Filename;
-        WORD Date;
-        WORD Time;
-        bool Allocated;
+    private:
+        bool IsAllocated;
+        bool IsOpen;
+        bool IsDiskOpen;
+        bool IsCached;
+        bool IsChanged;
+        bool UseBuffer;
+        int BufferRights;
+        void *BufferPtr;
+        long BufferSize;
+        long BufferPos;
+        long BufferFilePos;
+        long BufferChangeBeg;
+        long BufferChangeEnd;
+        long FileSize;
+        long FilePos;
+        long TrueFileStart;
 };
