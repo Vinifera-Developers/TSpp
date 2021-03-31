@@ -148,3 +148,36 @@ struct ShapeFileStruct
         ShapeFileFrameStruct FrameData;
 };
 #pragma pack()
+
+
+struct CellStruct
+{
+    CellStruct(int16_t x = 0, int16_t y = 0) : X(x), Y(y) {}
+    CellStruct(const CellStruct &that) : X(that.X), Y(that.Y) {}
+
+    operator bool () const { return X != 0 || Y != 0 /*&& As_Cell_Number() < MAP_CELL_TOTAL*/; }
+
+    bool operator==(const CellStruct &that) const { return X == that.X && Y == that.Y; }
+    bool operator!=(const CellStruct &that) const { return X != that.X && Y != that.Y; }
+
+    int32_t As_Cell_Number() const { return X + (Y << 9); }
+
+    int16_t X; // X component of location.
+    int16_t Y; // Y component of location.
+};
+
+
+struct CoordStruct
+{
+    CoordStruct(int32_t x = 0, int32_t y = 0, int32_t z = 0) : X(x), Y(y), Z(z) {}
+    CoordStruct(const CoordStruct &that) : X(that.X), Y(that.Y), Z(that.Z) {}
+
+    operator bool () const { return X != 0 || Y != 0 || Z != 0; }
+
+    bool operator==(const CoordStruct &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
+    bool operator!=(const CoordStruct &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+
+    int32_t X; // X coordinate of the location.
+    int32_t Y; // Y coordinate of the location.
+    int32_t Z; // Z coordinate of the location.
+};
