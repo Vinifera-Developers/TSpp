@@ -44,3 +44,31 @@ typedef enum DiffType : int
 	DIFF_COUNT,
 	DIFF_FIRST = 0
 };
+
+
+typedef enum FacingType
+{
+    FACING_N,
+    FACING_NE,
+    FACING_E,
+    FACING_SE,
+    FACING_S,
+    FACING_SW,
+    FACING_W,
+    FACING_NW,
+
+    FACING_COUNT,
+
+    FACING_NONE = -1,
+    FACING_FIRST = 0
+} FacingType;
+DEFINE_ENUMERATION_OPERATORS(FacingType);
+
+
+typedef enum DirType {} DirType;
+typedef enum MPHType {} MPHType;
+typedef enum CrateType {} CrateType;
+typedef enum VocType {} VocType;
+
+
+typedef unsigned long LEPTON;
