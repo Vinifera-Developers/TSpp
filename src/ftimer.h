@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TIBSUN_GLOBALS.H
+ *  @file          FTIMER.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Main header file which contains all the games globals.
+ *  @brief         Timer interface which uses the game frame.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,46 +27,15 @@
  ******************************************************************************/
 #pragma once
 
-#include "always.h"
-#include "vector.h"
+#include "ttimer.h"
 
 
-/**
- *  This head contains all the game globals.
- * 
- *  #NOTE: Do not include any module here directly!
- */
-
-
-/**
- *  Forward declarations.
- */
-class WWKeyboardClass;
-class OptionsClass;
-class SpecialClass;
-class RulesClass;
-class WWMouseClass;
-class DSurface;
-class Random2Class;
-class AbstractTypeClass;
-
-
-/**
- *  Global externs (should be defined in tspp_defintions.cpp).
- */
-extern WWKeyboardClass *&WWKeyboard;
-extern OptionsClass &Options;
-extern SpecialClass &Special;
-extern RulesClass *&Rule;
-extern WWMouseClass *&WWMouse;
-extern DSurface *&TileSurface;
-extern DSurface *&SidebarSurface;
-extern DSurface *&PrimarySurface;
-extern DSurface *&HiddenSurface;
-extern DSurface *&AlternateSurface;
-extern DSurface *&TempSurface;
-extern DSurface *&CompositeSurface;
-extern Random2Class &NonCriticalRandomNumber;
 extern long &Frame;
 
-extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
+
+class FrameTimerClass
+{
+    public:
+        long operator () (void) const { return Frame; }
+        operator long (void) const { return Frame; }
+};

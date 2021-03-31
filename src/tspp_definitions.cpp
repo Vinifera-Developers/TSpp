@@ -407,6 +407,7 @@ DSurface *&AlternateSurface = Make_Global<DSurface *>(0x0074C5E0);
 DSurface *&TempSurface = Make_Global<DSurface *>(0x0074C5E4);
 DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
 Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
+long &Frame = Make_Global<long>(0x0074BE40);
 
 
 /**
