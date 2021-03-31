@@ -46,6 +46,7 @@
 #include "xsurface.h"
 #include "bsurface.h"
 #include "dsurface.h"
+#include "abstract.h"
 
 
 /**
@@ -341,6 +342,34 @@ DEFINE_IMPLEMENTATION(int DSurface::Get_Pitch() const, 0x0048B360);
 DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_90(Rect &, Point2D &, Point2D &, RGBClass &, RGBClass &, float &, float &), 0x0048E4B0);
 DEFINE_IMPLEMENTATION(bool DSurface::Can_Blit() const, 0x0048B4B0);
 DEFINE_IMPLEMENTATION(DSurface *DSurface::Create_Primary(DSurface **), 0x0048AD60);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID *), 0x00405BF0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::Release(), 0x00405CA0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::IsDirty(), 0x00405E00);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::GetSizeMax(ULARGE_INTEGER *), 0x00405D80);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AbstractClass::Abstract_Load(IStream *), 0x00405D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AbstractClass::Abstract_Save(IStream *, BOOL), 0x00405CB0);
+DEFINE_IMPLEMENTATION(int AbstractClass::What_Am_I(), 0x00405BA0);
+DEFINE_IMPLEMENTATION(int AbstractClass::Fetch_ID(), 0x00405BB0);
+DEFINE_IMPLEMENTATION(VOID AbstractClass::Create_ID(), 0x00405BC0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractClass::AbstractClass(), 0x00405B50);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractClass::AbstractClass(const NoInitClass &), 0x00405B70);
+DEFINE_IMPLEMENTATION(AbstractClass::~AbstractClass(), 0x00405B90);
+DEFINE_IMPLEMENTATION(void AbstractClass::Init(), 0x00405E20);
+DEFINE_IMPLEMENTATION(void AbstractClass::Detach(TARGET, bool), 0x00405E30);
+DEFINE_IMPLEMENTATION(int AbstractClass::entry_34() const, 0x00405E40);
+DEFINE_IMPLEMENTATION(void AbstractClass::Compute_CRC(WWCRCEngine &) const, 0x00405DB0);
+DEFINE_IMPLEMENTATION(int AbstractClass::Owner() const, 0x00405E50);
+DEFINE_IMPLEMENTATION(HouseClass *AbstractClass::Owning_House() const, 0x00405E60);
+DEFINE_IMPLEMENTATION(int AbstractClass::Get_Heap_ID() const, 0x00405E70);
+DEFINE_IMPLEMENTATION(bool AbstractClass::Is_Inactive() const, 0x00405DE0);
+DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::Center_Coord() const, 0x00405E80);
+DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::Target_Coord() const, 0x00405EB0);
+DEFINE_IMPLEMENTATION(bool AbstractClass::On_Ground() const, 0x00405EE0);
+DEFINE_IMPLEMENTATION(bool AbstractClass::In_Air() const, 0x00405EF0);
+DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::entry_5C() const, 0x00405F00);
+DEFINE_IMPLEMENTATION(void AbstractClass::AI(), 0x00405F30);
 
 
 /**
