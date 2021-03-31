@@ -48,6 +48,7 @@
 #include "dsurface.h"
 #include "abstract.h"
 #include "abstracttype.h"
+#include "random.h"
 
 
 /**
@@ -380,6 +381,16 @@ DEFINE_IMPLEMENTATION(void AbstractTypeClass::entry_64(), 0x00406490);
 DEFINE_IMPLEMENTATION(bool AbstractTypeClass::Read_INI(CCINIClass &), 0x004063A0);
 DEFINE_IMPLEMENTATION(bool AbstractTypeClass::Write_INI(CCINIClass &) const, 0x00406430);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RandomClass::RandomClass(unsigned), 0x005BDEE0);
+DEFINE_IMPLEMENTATION(int RandomClass::operator()(), 0x005BDEF0);
+DEFINE_IMPLEMENTATION(int RandomClass::operator()(int, int), 0x005BDF10);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Random2Class::Random2Class(unsigned), 0x005BDF80);
+DEFINE_IMPLEMENTATION(int Random2Class::operator()(), 0x005BE030);
+DEFINE_IMPLEMENTATION(int Random2Class::operator()(int, int), 0x005BE080);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Random3Class::Random3Class(unsigned, unsigned), 0x005BE120);
+DEFINE_IMPLEMENTATION(int Random3Class::operator()(), 0x005BE140);
+DEFINE_IMPLEMENTATION(int Random3Class::operator()(int, int), 0x005BE1A0);
+
 
 /**
  *  Global definitions
@@ -395,6 +406,7 @@ DSurface *&HiddenSurface = Make_Global<DSurface *>(0x0074C5DC);
 DSurface *&AlternateSurface = Make_Global<DSurface *>(0x0074C5E0);
 DSurface *&TempSurface = Make_Global<DSurface *>(0x0074C5E4);
 DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
+Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 
 
 /**
