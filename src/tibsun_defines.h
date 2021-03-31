@@ -28,6 +28,7 @@
 #pragma once
 
 #include "always.h"
+#include "rect.h"
 
 
 /**
@@ -72,3 +73,78 @@ typedef enum VocType {} VocType;
 
 
 typedef unsigned long LEPTON;
+
+
+#pragma pack(1)
+struct _rgb_struct
+{
+    unsigned char R;
+    unsigned char G;
+    unsigned char B;
+};
+#pragma pack()
+
+
+/**
+ *  Shape file format header.
+ */
+#pragma pack(4)
+struct ShapeFileHeaderStruct
+{
+    int16_t Type; // -1, 0
+    int16_t Width; // Width of the shape in bytes.
+    int16_t Height; // Height of the shape in scan lines.
+    int16_t FrameCount; // Number of shapes in the file.
+};
+#pragma pack()
+
+
+/**
+ *  Shape file format frame struct.
+ */
+#pragma pack(4)
+struct ShapeFileFrameStruct
+{
+    Rect Get_Frame_Dimensions() const { return Rect(FrameXPos, FrameYPos, FrameWidth, FrameHeight); }
+
+    int16_t FrameXPos;
+    int16_t FrameYPos;
+    int16_t FrameWidth;
+    int16_t FrameHeight;
+    int32_t Flags; 
+    _rgb_struct Color;
+    uint8_t field_F[5];
+    int32_t FrameOffset;
+};
+#pragma pack()
+
+
+/**
+ *  Shape file format struct. Define pointers to loaded shapes with this
+ *  struct instead of casting raw pointers to access header information.
+ */
+#pragma pack(4)
+struct ShapeFileStruct
+{
+    public:
+        operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
+
+        ShapeFileFrameStruct *Get_Frame_Data(int index)
+        {
+            return &(&FrameData)[index * sizeof(ShapeFileFrameStruct)];
+        }
+
+        int Get_Width() const { return Header.Width; }
+        int Get_Height() const { return Header.Height; }
+        int Get_Frame_Count() const { return Header.FrameCount; }
+
+    private:
+        ShapeFileHeaderStruct Header;
+
+        /**
+         *  This is an instance of the first frame in the shape file, use Get_Frame_Data
+         *  to get the frame information, do not access this directly!
+         */
+        ShapeFileFrameStruct FrameData;
+};
+#pragma pack()
