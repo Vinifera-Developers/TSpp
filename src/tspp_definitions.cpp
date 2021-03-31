@@ -45,6 +45,7 @@
 #include "wwcrc.h"
 #include "xsurface.h"
 #include "bsurface.h"
+#include "dsurface.h"
 
 
 /**
@@ -317,6 +318,30 @@ DEFINE_IMPLEMENTATION(void *BSurface::Lock(int, int), 0x00406E50);
 DEFINE_IMPLEMENTATION(int BSurface::Get_Bytes_Per_Pixel() const, 0x00406E90);
 DEFINE_IMPLEMENTATION(int BSurface::Get_Pitch() const, 0x00406EA0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(), 0x0048AD10);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(int, int, bool), 0x0048ABB0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(LPDIRECTDRAWSURFACE), 0x0048B250);
+DEFINE_IMPLEMENTATION(DSurface::~DSurface(), 0x0048ACA0);
+DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect &, Rect &, Surface &, Rect &, Rect &, bool, bool), 0x0048B5E0);
+DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect &, Surface &, Rect &, bool, bool), 0x0048B590);
+DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Surface &, bool, bool), 0x004901A0);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect &, unsigned), 0x0048BB00);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect &, Rect &, unsigned), 0x0048BB30);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect_Trans(Rect &, const RGBClass &, unsigned), 0x0048BCE0);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_34(Rect &, Point2D &, Point2D &, unsigned, int, int, bool), 0x0048EA90);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_38(Rect &, Point2D &, Point2D &, int, int, int, bool), 0x0048C150);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_3C(Rect &, Point2D &, Point2D &, RGBClass &, int, int, bool, bool, bool, bool, float), 0x0048CC00);
+DEFINE_IMPLEMENTATION(int DSurface::entry_48(Point2D &, Point2D &, unsigned, bool[], int, bool), 0x0048F4B0);
+DEFINE_IMPLEMENTATION(bool DSurface::entry_4C(Point2D &, Point2D &, unsigned, bool), 0x0048FB90);
+DEFINE_IMPLEMENTATION(void *DSurface::Lock(int, int), 0x0048B370);
+DEFINE_IMPLEMENTATION(bool DSurface::Unlock(), 0x0048B4D0);
+DEFINE_IMPLEMENTATION(bool DSurface::Can_Lock(int, int) const, 0x0048B450);
+DEFINE_IMPLEMENTATION(int DSurface::Get_Bytes_Per_Pixel() const, 0x0048B350);
+DEFINE_IMPLEMENTATION(int DSurface::Get_Pitch() const, 0x0048B360);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_90(Rect &, Point2D &, Point2D &, RGBClass &, RGBClass &, float &, float &), 0x0048E4B0);
+DEFINE_IMPLEMENTATION(bool DSurface::Can_Blit() const, 0x0048B4B0);
+DEFINE_IMPLEMENTATION(DSurface *DSurface::Create_Primary(DSurface **), 0x0048AD60);
+
 
 /**
  *  Global definitions
@@ -325,3 +350,27 @@ WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
 OptionsClass &Options = Make_Global<OptionsClass>(0x007E4720);
 SpecialClass &Special = Make_Global<SpecialClass>(0x007E4540);
 WWMouseClass *&WWMouse = Make_Global<WWMouseClass *>(0x0074C8F0);
+DSurface *&TileSurface = Make_Global<DSurface *>(0x0074C5CC);
+DSurface *&SidebarSurface = Make_Global<DSurface *>(0x0074C5D0);
+DSurface *&PrimarySurface = Make_Global<DSurface *>(0x0074C5D8);
+DSurface *&HiddenSurface = Make_Global<DSurface *>(0x0074C5DC);
+DSurface *&AlternateSurface = Make_Global<DSurface *>(0x0074C5E0);
+DSurface *&TempSurface = Make_Global<DSurface *>(0x0074C5E4);
+DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
+
+
+/**
+ *  Class/namespaced static definitions.
+ */
+unsigned &DSurface::RedLeft = Make_Global<unsigned>(0x007A2C88);
+unsigned &DSurface::RedRight = Make_Global<unsigned>(0x007A2C8C);
+unsigned &DSurface::GreenLeft = Make_Global<unsigned>(0x007A2C98);
+unsigned &DSurface::GreenRight = Make_Global<unsigned>(0x007A2C9C);
+unsigned &DSurface::BlueLeft = Make_Global<unsigned>(0x007A2C90);
+unsigned &DSurface::BlueRight = Make_Global<unsigned>(0x007A2C94);
+unsigned short &DSurface::ColorGrey = Make_Global<unsigned short>(0x007A2CA0);
+unsigned short &DSurface::ColorMidGrey = Make_Global<unsigned short>(0x007A2CA2);
+unsigned short &DSurface::ColorDarkGrey = Make_Global<unsigned short>(0x007A2CA4);
+int &DSurface::RGBPixelFormat = Make_Global<int>(0x006F9808);
+bool &DSurface::AllowStretchBlits = Make_Global<bool>(0x007A2CA6);
+bool &DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);

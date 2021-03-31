@@ -45,6 +45,7 @@ class OptionsClass;
 class SpecialClass;
 class RulesClass;
 class WWMouseClass;
+class DSurface;
 
 
 /**
@@ -55,3 +56,10 @@ extern OptionsClass &Options;
 extern SpecialClass &Special;
 extern RulesClass *&Rule;
 extern WWMouseClass *&WWMouse;
+extern DSurface *&TileSurface;
+extern DSurface *&SidebarSurface;
+extern DSurface *&PrimarySurface;
+extern DSurface *&HiddenSurface;
+extern DSurface *&AlternateSurface;
+extern DSurface *&TempSurface;
+extern DSurface *&CompositeSurface;
