@@ -39,6 +39,7 @@
 #include "bfiofile.h"
 #include "cdfile.h"
 #include "rules.h"
+#include "surface.h"
 
 
 /**
@@ -221,6 +222,14 @@ DEFINE_IMPLEMENTATION(bool RulesClass::Difficulty(CCINIClass &), 0x005CE190);
 DEFINE_IMPLEMENTATION(bool RulesClass::Movies(CCINIClass &), 0x005CE310);
 DEFINE_IMPLEMENTATION(bool RulesClass::Objects(CCINIClass &), 0x005D1800);
 DEFINE_IMPLEMENTATION(void Difficulty_Get(CCINIClass &, DifficultyClass &, char const *), 0x005CE1E0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Surface::Surface(int, int), 0x0047C1C0);
+DEFINE_IMPLEMENTATION(bool Surface::Can_Lock(int, int) const, 0x00406D50);
+DEFINE_IMPLEMENTATION(bool Surface::entry_64(int, int) const, 0x00406D60);
+DEFINE_IMPLEMENTATION(Rect Surface::Get_Rect() const, 0x00406D70);
+DEFINE_IMPLEMENTATION(int Surface::Get_Width() const, 0x00406DA0);
+DEFINE_IMPLEMENTATION(int Surface::Get_Height() const, 0x00406DB0);
+DEFINE_IMPLEMENTATION(bool Surface::entry_80() const, 0x00406E20);
 
 
 /**
