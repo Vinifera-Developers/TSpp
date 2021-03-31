@@ -44,6 +44,7 @@ class WWKeyboardClass;
 class OptionsClass;
 class SpecialClass;
 class RulesClass;
+class WWMouseClass;
 
 
 /**
@@ -53,3 +54,4 @@ extern WWKeyboardClass *&WWKeyboard;
 extern OptionsClass &Options;
 extern SpecialClass &Special;
 extern RulesClass *&Rule;
+extern WWMouseClass *&WWMouse;
