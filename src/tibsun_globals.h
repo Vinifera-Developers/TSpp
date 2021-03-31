@@ -28,6 +28,7 @@
 #pragma once
 
 #include "always.h"
+#include "vector.h"
 
 
 /**
@@ -46,6 +47,7 @@ class SpecialClass;
 class RulesClass;
 class WWMouseClass;
 class DSurface;
+class AbstractTypeClass;
 
 
 /**
@@ -63,3 +65,5 @@ extern DSurface *&HiddenSurface;
 extern DSurface *&AlternateSurface;
 extern DSurface *&TempSurface;
 extern DSurface *&CompositeSurface;
+
+extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;

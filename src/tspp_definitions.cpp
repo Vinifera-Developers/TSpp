@@ -47,6 +47,7 @@
 #include "bsurface.h"
 #include "dsurface.h"
 #include "abstract.h"
+#include "abstracttype.h"
 
 
 /**
@@ -371,6 +372,14 @@ DEFINE_IMPLEMENTATION(bool AbstractClass::In_Air() const, 0x00405EF0);
 DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::entry_5C() const, 0x00405F00);
 DEFINE_IMPLEMENTATION(void AbstractClass::AI(), 0x00405F30);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractTypeClass::AbstractTypeClass(const char *), 0x004061D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractTypeClass::AbstractTypeClass(const NoInitClass &), 0x00406310);
+DEFINE_IMPLEMENTATION(AbstractTypeClass::~AbstractTypeClass(), 0x00406330);
+DEFINE_IMPLEMENTATION(void AbstractTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00406460);
+DEFINE_IMPLEMENTATION(void AbstractTypeClass::entry_64(), 0x00406490);
+DEFINE_IMPLEMENTATION(bool AbstractTypeClass::Read_INI(CCINIClass &), 0x004063A0);
+DEFINE_IMPLEMENTATION(bool AbstractTypeClass::Write_INI(CCINIClass &) const, 0x00406430);
+
 
 /**
  *  Global definitions
@@ -403,3 +412,9 @@ unsigned short &DSurface::ColorDarkGrey = Make_Global<unsigned short>(0x007A2CA4
 int &DSurface::RGBPixelFormat = Make_Global<int>(0x006F9808);
 bool &DSurface::AllowStretchBlits = Make_Global<bool>(0x007A2CA6);
 bool &DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);
+
+
+/**
+ *  Global vectors and heaps.
+ */
+DynamicVectorClass<AbstractTypeClass *> &AbstractTypes = Make_Global<DynamicVectorClass<AbstractTypeClass *>>(0x007E4550);
