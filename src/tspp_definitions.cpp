@@ -40,6 +40,7 @@
 #include "cdfile.h"
 #include "rules.h"
 #include "surface.h"
+#include "ccfile.h"
 
 
 /**
@@ -230,6 +231,22 @@ DEFINE_IMPLEMENTATION(Rect Surface::Get_Rect() const, 0x00406D70);
 DEFINE_IMPLEMENTATION(int Surface::Get_Width() const, 0x00406DA0);
 DEFINE_IMPLEMENTATION(int Surface::Get_Height() const, 0x00406DB0);
 DEFINE_IMPLEMENTATION(bool Surface::entry_80() const, 0x00406E20);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(), 0x004497F0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(const char *), 0x004497B0);
+DEFINE_IMPLEMENTATION(CCFileClass::~CCFileClass(), 0x004E8970);
+DEFINE_IMPLEMENTATION(bool CCFileClass::Is_Available(bool), 0x004499C0);
+DEFINE_IMPLEMENTATION(bool CCFileClass::Is_Open() const, 0x00449A00);
+DEFINE_IMPLEMENTATION(bool CCFileClass::Open(const char *, FileAccessType), 0x00407270);
+DEFINE_IMPLEMENTATION(bool CCFileClass::Open(FileAccessType), 0x00449A40);
+DEFINE_IMPLEMENTATION(long CCFileClass::Read(void *, int), 0x00449880);
+DEFINE_IMPLEMENTATION(off_t CCFileClass::Seek(off_t, FileSeekType), 0x00449910);
+DEFINE_IMPLEMENTATION(off_t CCFileClass::Size(), 0x00449970);
+DEFINE_IMPLEMENTATION(long CCFileClass::Write(const void *, int), 0x00449850);
+DEFINE_IMPLEMENTATION(void CCFileClass::Close(), 0x00449A10);
+DEFINE_IMPLEMENTATION(LONG CCFileClass::Get_Date_Time() const, 0x00449B70);
+DEFINE_IMPLEMENTATION(bool CCFileClass::Set_Date_Time(LONG), 0x00449C20);
+DEFINE_IMPLEMENTATION(void CCFileClass::Error(FileErrorType error, bool, const char *), 0x00449820);
 
 
 /**
