@@ -57,6 +57,7 @@ class AbstractTypeClass;
 class ObjectTypeClass;
 class TechnoTypeClass;
 class BuildingTypeClass;
+class IsometricTileTypeClass;
 
 
 /**
@@ -94,4 +95,4 @@ extern DynamicVectorClass<TechnoTypeClass *> &TechnoTypes;
 extern DynamicVectorClass<BuildingTypeClass *> &BuildingTypes;
 extern DynamicVectorClass<ConvertClass *> &Converts;
 extern DynamicVectorClass<LightConvertClass *> &TileDrawers;
-
+extern DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes;

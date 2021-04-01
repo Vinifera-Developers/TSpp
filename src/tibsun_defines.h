@@ -96,6 +96,15 @@ typedef enum TheaterType {} TheaterType;
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;
 typedef enum CategoryType {} CategoryType;
+typedef enum IsometricTileType
+{
+    ISOTILE_CLEAR = 0,
+
+    ISOTILE_NONE = -1,
+
+    ISOTILE_FIRST = 0
+} IsometricTileType;
+DEFINE_ENUMERATION_OPERATORS(IsometricTileType);
 
 typedef enum BAnimType
 {
@@ -382,6 +391,66 @@ struct ShapeFileStruct
          *  to get the frame information, do not access this directly!
          */
         ShapeFileFrameStruct FrameData;
+};
+#pragma pack()
+
+
+#pragma pack(4)
+struct IsoTileHeaderStruct
+{
+    int32_t Width;
+    int32_t Height;
+    int32_t ImageWidth;
+    int32_t ImageHeight;
+};
+#pragma pack()
+
+
+#pragma pack(4)
+struct IsoTileImageStruct
+{
+    int32_t XPos;
+    int32_t YPos;
+    int32_t ExtraOffset;
+    int32_t ZDataOffset;
+    int32_t ExtraZOffset;
+    int32_t ExtraXPos;
+    int32_t ExtraYPos;
+    int32_t ExtraWidth;
+    int32_t ExtraHeight;
+    int32_t Flags; 
+    uint8_t Height; 
+    uint8_t TileType; 
+    uint8_t RampType; 
+    RGBStruct LowColor;
+    RGBStruct HighColor;
+    uint8_t field_31[3];
+};
+#pragma pack()
+
+
+#pragma pack(4)
+struct IsoTileFileStruct
+{
+    public:
+        operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
+
+        IsoTileImageStruct *Get_Tiles_Data(int index)
+        {
+            return &(&Tiles)[index * sizeof(IsoTileImageStruct)];
+        }
+
+        int Get_Width() const { return Header.Width; }
+        int Get_Height() const { return Header.Height; }
+
+    private:
+        IsoTileHeaderStruct Header;
+
+        /**
+         *  This is an instance of the first frame in the iso tile file, use Get_Frame_Data
+         *  to get the image information, do not access this directly!
+         */
+        IsoTileImageStruct Tiles;
 };
 #pragma pack()
 

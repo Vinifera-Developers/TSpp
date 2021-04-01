@@ -64,6 +64,7 @@
 #include "palette.h"
 #include "convert.h"
 #include "lightconvert.h"
+#include "isotiletype.h"
 
 
 /**
@@ -676,6 +677,22 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightConvertClass::LightConvertClass(PaletteCl
 LightConvertClass::~LightConvertClass() {}
 DEFINE_IMPLEMENTATION(void LightConvertClass::Adjust(int, int, int, bool), 0x00502B90);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE IsometricTileTypeClass::GetClassID(CLSID *), 0x004F86B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileTypeClass::Load(IStream *), 0x004F85B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileTypeClass::Save(IStream *, BOOL), 0x004F8690);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileTypeClass::IsometricTileTypeClass(IsometricTileType, char, char, const char *, bool), 0x004F30A0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileTypeClass::IsometricTileTypeClass(const NoInitClass &), 0x004F32D0);
+DEFINE_IMPLEMENTATION(IsometricTileTypeClass::~IsometricTileTypeClass(), 0x004F3330);
+DEFINE_IMPLEMENTATION(RTTIType IsometricTileTypeClass::Kind_Of() const, 0x004F8A90);
+DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Size_Of(bool) const, 0x004F8AA0);
+DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004F84A0);
+DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Get_Heap_ID() const, 0x004F8AB0);
+DEFINE_IMPLEMENTATION(CoordStruct IsometricTileTypeClass::Coord_Fixup(CoordStruct *) const, 0x004F8480);
+DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004F83D0);
+DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(HouseClass *) const, 0x004F8410);
+DEFINE_IMPLEMENTATION(CellStruct *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
+DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
+
 
 /**
  *  Global definitions
@@ -732,3 +749,4 @@ DynamicVectorClass<TechnoTypeClass *> &TechnoTypes = Make_Global<DynamicVectorCl
 DynamicVectorClass<BuildingTypeClass *> &BuildingTypes = Make_Global<DynamicVectorClass<BuildingTypeClass *>>(0x007E21A0);
 DynamicVectorClass<ConvertClass *> &Converts = Make_Global<DynamicVectorClass<ConvertClass *>>(0x00761120);
 DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVectorClass<LightConvertClass *>>(0x00761120);
+DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes = Make_Global<DynamicVectorClass<IsometricTileTypeClass *>>(0x007E48C8);
