@@ -52,6 +52,7 @@ class ScenarioClass;
 class SessionClass;
 class SwizzleManagerClass;
 class ConvertClass;
+class LightConvertClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
 class TechnoTypeClass;
@@ -92,3 +93,5 @@ extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
 extern DynamicVectorClass<TechnoTypeClass *> &TechnoTypes;
 extern DynamicVectorClass<BuildingTypeClass *> &BuildingTypes;
 extern DynamicVectorClass<ConvertClass *> &Converts;
+extern DynamicVectorClass<LightConvertClass *> &TileDrawers;
+

@@ -40,6 +40,7 @@ class RLEBlitter;
 class ConvertClass
 {
     public:
+        ConvertClass();
         ConvertClass(PaletteClass *a1, PaletteClass *a2, XSurface *surface, int a4, bool a5 = false);
         virtual ~ConvertClass();
 

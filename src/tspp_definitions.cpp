@@ -63,6 +63,7 @@
 #include "hsv.h"
 #include "palette.h"
 #include "convert.h"
+#include "lightconvert.h"
 
 
 /**
@@ -662,6 +663,7 @@ DEFINE_IMPLEMENTATION(void PaletteClass::Partial_Adjust(int, char *), 0x005A2960
 DEFINE_IMPLEMENTATION(void PaletteClass::Partial_Adjust(int, const PaletteClass &, char *), 0x005A29A0);
 DEFINE_IMPLEMENTATION(int PaletteClass::Closest_Color(RGBClass &) const, 0x005A29F0);
 
+ConvertClass::ConvertClass() {}
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConvertClass::ConvertClass(PaletteClass *, PaletteClass *, XSurface *, int, bool), 0x00463C40);
 DEFINE_IMPLEMENTATION(ConvertClass::~ConvertClass(), 0x00465970);
 DEFINE_IMPLEMENTATION(void ConvertClass::Alloc_Blitters(), 0x00464100);
@@ -669,6 +671,10 @@ DEFINE_IMPLEMENTATION(void ConvertClass::Dealloc_Blitters(), 0x00465A00);
 DEFINE_IMPLEMENTATION(Blitter *ConvertClass::Select_Blitter(int), 0x00466130);
 DEFINE_IMPLEMENTATION(RLEBlitter *ConvertClass::Select_RLE_Blitter(int), 0x00466410);
 DEFINE_IMPLEMENTATION(void ConvertClass::Recalc_Color_Remap_Tables(int, int, int, int), 0x004666C0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightConvertClass::LightConvertClass(PaletteClass *, PaletteClass *, Surface *, int, int, int, bool, bool *, int), 0x00502A00);
+LightConvertClass::~LightConvertClass() {}
+DEFINE_IMPLEMENTATION(void LightConvertClass::Adjust(int, int, int, bool), 0x00502B90);
 
 
 /**
@@ -725,3 +731,4 @@ DynamicVectorClass<ObjectTypeClass *> &ObjectTypes = Make_Global<DynamicVectorCl
 DynamicVectorClass<TechnoTypeClass *> &TechnoTypes = Make_Global<DynamicVectorClass<TechnoTypeClass *>>(0x007E46C0);
 DynamicVectorClass<BuildingTypeClass *> &BuildingTypes = Make_Global<DynamicVectorClass<BuildingTypeClass *>>(0x007E21A0);
 DynamicVectorClass<ConvertClass *> &Converts = Make_Global<DynamicVectorClass<ConvertClass *>>(0x00761120);
+DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVectorClass<LightConvertClass *>>(0x00761120);
