@@ -93,6 +93,20 @@ typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 typedef enum HousesType {} HousesType;
 typedef enum TheaterType {} TheaterType;
+typedef enum PipType {} PipType;
+typedef enum PipScaleType {} PipScaleType;
+typedef enum CategoryType {} CategoryType;
+typedef enum BSizeType {} BSizeType;
+typedef enum MZoneType {} MZoneType;
+typedef enum SideType {} SideType;
+typedef enum SourceType {} SourceType;
+typedef enum SpeedType {} SpeedType;
+typedef enum PrerequisiteType {} PrerequisiteType;
+typedef enum SuperType {} SuperType;
+typedef enum ActionType {} ActionType;
+typedef enum VoxType {} VoxType;
+typedef enum LandType {} LandType;
+typedef enum ArmorType {} ArmorType;
 
 
 typedef enum ColorSchemeType
@@ -187,11 +201,27 @@ typedef struct VariableFlagStruct {
 
 
 #pragma pack(1)
-struct _rgb_struct
+struct RGBStruct
 {
+    bool operator==(const RGBStruct &that) const { return R == that.R && G == that.G && B == that.B; }
+    bool operator!=(const RGBStruct &that) const { return R != that.R && G != that.G && B != that.B; }
+
     unsigned char R;
     unsigned char G;
     unsigned char B;
+};
+#pragma pack()
+
+
+#pragma pack(1)
+struct HSVStruct
+{
+    bool operator==(const HSVStruct &that) const { return H == that.H && S == that.S && V == that.V; }
+    bool operator!=(const HSVStruct &that) const { return H != that.H && S != that.S && V != that.V; }
+
+    unsigned char H;
+    unsigned char S;
+    unsigned char V;
 };
 #pragma pack()
 
@@ -223,7 +253,7 @@ struct ShapeFileFrameStruct
     int16_t FrameWidth;
     int16_t FrameHeight;
     int32_t Flags; 
-    _rgb_struct Color;
+    RGBStruct Color;
     uint8_t field_F[5];
     int32_t FrameOffset;
 };
@@ -291,4 +321,17 @@ struct CoordStruct
     int32_t X; // X coordinate of the location.
     int32_t Y; // Y coordinate of the location.
     int32_t Z; // Z coordinate of the location.
+};
+
+
+struct AbilityStruct
+{
+};
+
+
+class xTargetClass
+{
+    public:
+        int RTTI;
+        int ID;
 };

@@ -246,6 +246,16 @@
         _asm { _emit 0xCC } \
     }
 
+#define DEFINE_IMPLEMENTATION_UNWIND(prototype, address, ...) \
+    /*[[ noreturn ]]*/ \
+    prototype \
+    { \
+        _asm { mov eax, address } \
+        _asm { jmp eax } \
+        _asm { _emit 0xCC } /* Align the jump */ \
+        _asm { _emit 0xCC } \
+    }
+
 #define DEFINE_IMPLEMENTATION_CONSTRUCTOR(prototype, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
