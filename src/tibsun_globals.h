@@ -50,6 +50,7 @@ class DSurface;
 class Random2Class;
 class ScenarioClass;
 class SessionClass;
+class SwizzleManagerClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
 class TechnoTypeClass;
@@ -74,6 +75,7 @@ extern Random2Class &NonCriticalRandomNumber;
 extern long &Frame;
 extern ScenarioClass *&Scen;
 extern SessionClass &Session;
+extern SwizzleManagerClass &SwizzleManager;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

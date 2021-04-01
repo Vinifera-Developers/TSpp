@@ -57,6 +57,7 @@
 #include "ccini.h"
 #include "objecttype.h"
 #include "technotype.h"
+#include "swizzle.h"
 
 
 /**
@@ -587,6 +588,19 @@ DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Is_Two_Shooter() const, 0x0063B980);
 DEFINE_IMPLEMENTATION(const WeaponControlStruct & TechnoTypeClass::Fetch_Weapon_Control(WeaponSlotType) const, 0x0063E6B0);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::In_Range(CoordStruct &, TARGET, WeaponTypeClass *), 0x0063D4C0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::QueryInterface(REFIID, LPVOID *), 0x0060DC60);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE SwizzleManagerClass::AddRef(), 0x0060DCE0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE SwizzleManagerClass::Release(), 0x0060DCF0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Reset(), 0x0060DA60);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Swizzle(void **), 0x0060DA70);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Fetch_Swizzle_ID(void *, LONG *), 0x0060DCC0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Here_I_Am(LONG, void *), 0x0060DAF0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Save_Interface(IStream *, IUnknown *), 0x0060DD00);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Load_Interface(IStream *, CLSID *, void **), 0x0060DD10);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Get_Save_Size(LONG *), 0x0060DC40);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SwizzleManagerClass::SwizzleManagerClass(), 0x0060D9B0);
+DEFINE_IMPLEMENTATION(SwizzleManagerClass::~SwizzleManagerClass(), 0x0060DA00);
+
 
 /**
  *  Global definitions
@@ -606,6 +620,7 @@ Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long &Frame = Make_Global<long>(0x0074BE40);
 ScenarioClass *&Scen = Make_Global<ScenarioClass *>(0x007E2438);
 SessionClass &Session = Make_Global<SessionClass>(0x007E2458);
+SwizzleManagerClass &SwizzleManager = Make_Global<SwizzleManagerClass>(0x0080CD50);
 
 
 /**
