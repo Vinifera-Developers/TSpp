@@ -51,6 +51,7 @@ class Random2Class;
 class ScenarioClass;
 class SessionClass;
 class AbstractTypeClass;
+class ObjectTypeClass;
 
 
 /**
@@ -74,3 +75,4 @@ extern ScenarioClass *&Scen;
 extern SessionClass &Session;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
+extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

@@ -55,6 +55,7 @@
 #include "textprint.h"
 #include "ini.h"
 #include "ccini.h"
+#include "objecttype.h"
 
 
 /**
@@ -542,6 +543,26 @@ DEFINE_IMPLEMENTATION(int CCINIClass::Get_Unique_ID() const, 0x0044C820);
 DEFINE_IMPLEMENTATION(void CCINIClass::Calculate_Message_Digest(), 0x0044C8C0);
 DEFINE_IMPLEMENTATION(void CCINIClass::Invalidate_Message_Digest(), 0x0044C940);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ObjectTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x00588FC0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectTypeClass::Load(IStream *), 0x00588DD0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectTypeClass::Save(IStream *, BOOL), 0x00588FA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::ObjectTypeClass(const char *), 0x00587620);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::ObjectTypeClass(const NoInitClass &), 0x00587810);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::~ObjectTypeClass(), 0x005878B0);
+DEFINE_IMPLEMENTATION(bool ObjectTypeClass::Read_INI(CCINIClass &), 0x00588A20);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectTypeClass::Coord_Fixup(CoordStruct *) const, 0x00410180);
+DEFINE_IMPLEMENTATION(int ObjectTypeClass::Get_Ownable() const, 0x00419B90);
+DEFINE_IMPLEMENTATION(int ObjectTypeClass::Max_Pips() const, 0x005879E0);
+DEFINE_IMPLEMENTATION(Point3D ObjectTypeClass::Pixel_Dimensions() const, 0x005879F0);
+DEFINE_IMPLEMENTATION(Point3D ObjectTypeClass::Lepton_Dimensions() const, 0x00587A10);
+DEFINE_IMPLEMENTATION(int ObjectTypeClass::Cost_Of(HouseClass *) const, 0x00587A40);
+DEFINE_IMPLEMENTATION(int ObjectTypeClass::Time_To_Build() const, 0x00587A50);
+DEFINE_IMPLEMENTATION(CellStruct * ObjectTypeClass::Occupy_List(bool) const, 0x00587A70);
+DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bool, bool, bool, HouseClass *) const, 0x00587B20);
+DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
+DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
+
 
 /**
  *  Global definitions
@@ -584,3 +605,4 @@ bool &DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);
  *  Global vectors and heaps.
  */
 DynamicVectorClass<AbstractTypeClass *> &AbstractTypes = Make_Global<DynamicVectorClass<AbstractTypeClass *>>(0x007E4550);
+DynamicVectorClass<ObjectTypeClass *> &ObjectTypes = Make_Global<DynamicVectorClass<ObjectTypeClass *>>(0x008087C0);
