@@ -39,6 +39,22 @@ class AbstractClass;
  */
 
 
+// Max stored views/bookmarks
+#define VIEW_COUNT 4
+
+// Save filename description.
+#define	DESCRIP_MAX	44			// 40 chars + CR + LF + CTRL-Z + NULL
+
+
+typedef enum WaypointEnum
+{
+    WAYPT_HOME = 98,	// Home-cell for this scenario
+    WAYPT_REINF,		// cell where reinforcements arrive
+    WAYPT_SPECIAL,		// Used by special airdrop reinforcements.
+    WAYPT_COUNT
+} WaypointEnum;
+
+
 typedef enum DiffType : int
 {
 	DIFF_EASY,
@@ -73,6 +89,10 @@ typedef enum DirType {} DirType;
 typedef enum MPHType {} MPHType;
 typedef enum CrateType {} CrateType;
 typedef enum VocType {} VocType;
+typedef enum VQType {} VQType;
+typedef enum ThemeType {} ThemeType;
+typedef enum HousesType {} HousesType;
+typedef enum TheaterType {} TheaterType;
 
 
 typedef enum RTTIType
@@ -152,6 +172,12 @@ DEFINE_ENUMERATION_OPERATORS(RTTIType);
 
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
+
+
+typedef struct VariableFlagStruct {
+    char Name[40];
+    unsigned char Value;
+} VariableFlagStruct;
 
 
 #pragma pack(1)

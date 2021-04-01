@@ -48,6 +48,7 @@ class RulesClass;
 class WWMouseClass;
 class DSurface;
 class Random2Class;
+class ScenarioClass;
 class AbstractTypeClass;
 
 
@@ -68,5 +69,6 @@ extern DSurface *&TempSurface;
 extern DSurface *&CompositeSurface;
 extern Random2Class &NonCriticalRandomNumber;
 extern long &Frame;
+extern ScenarioClass *&Scen;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;

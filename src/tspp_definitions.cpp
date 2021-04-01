@@ -49,6 +49,7 @@
 #include "abstract.h"
 #include "abstracttype.h"
 #include "random.h"
+#include "scenario.h"
 
 
 /**
@@ -391,6 +392,9 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(Random3Class::Random3Class(unsigned, unsigned)
 DEFINE_IMPLEMENTATION(int Random3Class::operator()(), 0x005BE140);
 DEFINE_IMPLEMENTATION(int Random3Class::operator()(int, int), 0x005BE1A0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScenarioClass::ScenarioClass(), 0x005DABC0);
+ScenarioClass::~ScenarioClass() {}
+
 
 /**
  *  Global definitions
@@ -408,6 +412,7 @@ DSurface *&TempSurface = Make_Global<DSurface *>(0x0074C5E4);
 DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
 Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long &Frame = Make_Global<long>(0x0074BE40);
+ScenarioClass *&Scen = Make_Global<ScenarioClass *>(0x007E2438);
 
 
 /**
