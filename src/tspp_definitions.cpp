@@ -50,6 +50,7 @@
 #include "abstracttype.h"
 #include "random.h"
 #include "scenario.h"
+#include "msglist.h"
 
 
 /**
@@ -394,6 +395,25 @@ DEFINE_IMPLEMENTATION(int Random3Class::operator()(int, int), 0x005BE1A0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScenarioClass::ScenarioClass(), 0x005DABC0);
 ScenarioClass::~ScenarioClass() {}
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MessageListClass::MessageListClass(), 0x00572E00);
+DEFINE_IMPLEMENTATION(MessageListClass::~MessageListClass(), 0x00572E80);
+DEFINE_IMPLEMENTATION(void MessageListClass::Init(int, int, int, int, int, int, int, int, int, int, int), 0x00572EA0);
+DEFINE_IMPLEMENTATION(TextLabelClass* MessageListClass::Add_Message(char const *, int, char const *, ColorSchemeType, TextPrintType, int), 0x00572FE0);
+DEFINE_IMPLEMENTATION(bool MessageListClass::Concat_Message(char const *, int, char const *, int), 0x005734B0);
+DEFINE_IMPLEMENTATION(char* MessageListClass::Get_Message(int), 0x00573450);
+DEFINE_IMPLEMENTATION(TextLabelClass* MessageListClass::Get_Label(int), 0x00573480);
+DEFINE_IMPLEMENTATION(TextLabelClass* MessageListClass::Add_Edit(ColorSchemeType, TextPrintType, char *, char, int), 0x005737D0);
+DEFINE_IMPLEMENTATION(void MessageListClass::Remove_Edit(), 0x00573950);
+DEFINE_IMPLEMENTATION(char* MessageListClass::Get_Edit_Buf(), 0x005739B0);
+DEFINE_IMPLEMENTATION(void MessageListClass::Set_Edit_Color(ColorSchemeType), 0x005739C0);
+DEFINE_IMPLEMENTATION(bool MessageListClass::Manage(), 0x005739E0);
+DEFINE_IMPLEMENTATION(int MessageListClass::Input(KeyNumType &), 0x00573AC0);
+DEFINE_IMPLEMENTATION(void MessageListClass::Draw(), 0x00573DC0);
+DEFINE_IMPLEMENTATION(int MessageListClass::Num_Messages(), 0x00573EC0);
+DEFINE_IMPLEMENTATION(void MessageListClass::Set_Width(int), 0x00573EF0);
+DEFINE_IMPLEMENTATION(void MessageListClass::Set_Edit_Focus(), 0x005737A0);
+DEFINE_IMPLEMENTATION(bool MessageListClass::Has_Edit_Focus(), 0x005737B0);
 
 
 /**
