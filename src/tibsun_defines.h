@@ -93,6 +93,7 @@ typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 typedef enum HousesType {} HousesType;
 typedef enum TheaterType {} TheaterType;
+typedef enum ColorSchemeType {} ColorSchemeType;
 
 
 typedef enum RTTIType

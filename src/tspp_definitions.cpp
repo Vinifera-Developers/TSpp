@@ -51,6 +51,7 @@
 #include "random.h"
 #include "scenario.h"
 #include "msglist.h"
+#include "session.h"
 
 
 /**
@@ -415,6 +416,9 @@ DEFINE_IMPLEMENTATION(void MessageListClass::Set_Width(int), 0x00573EF0);
 DEFINE_IMPLEMENTATION(void MessageListClass::Set_Edit_Focus(), 0x005737A0);
 DEFINE_IMPLEMENTATION(bool MessageListClass::Has_Edit_Focus(), 0x005737B0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SessionClass::SessionClass(), 0x005ECD00);
+DEFINE_IMPLEMENTATION(SessionClass::~SessionClass(), 0x005ED1C0);
+
 
 /**
  *  Global definitions
@@ -433,6 +437,7 @@ DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
 Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long &Frame = Make_Global<long>(0x0074BE40);
 ScenarioClass *&Scen = Make_Global<ScenarioClass *>(0x007E2438);
+SessionClass &Session = Make_Global<SessionClass>(0x007E2458);
 
 
 /**
