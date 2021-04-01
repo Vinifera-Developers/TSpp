@@ -59,6 +59,8 @@
 #include "technotype.h"
 #include "swizzle.h"
 #include "buildingtype.h"
+#include "rgb.h"
+#include "hsv.h"
 
 
 /**
@@ -629,6 +631,25 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
+
+RGBClass::RGBClass() : Red(0), Green(0), Blue(0) {}
+RGBClass::RGBClass(const RGBStruct &that) : Red(that.R), Green(that.G), Blue(that.B) {}
+RGBClass::RGBClass(const RGBClass &that) : Red(that.Red), Green(that.Green), Blue(that.Blue) {}
+RGBClass::RGBClass(unsigned char red, unsigned char green, unsigned char blue) : Red(red), Green(green), Blue(blue) {}
+DEFINE_IMPLEMENTATION(RGBClass::operator HSVClass () const, 0x005C32E0);
+DEFINE_IMPLEMENTATION(void RGBClass::Adjust(int, const RGBClass &), 0x005C3200);
+DEFINE_IMPLEMENTATION(int RGBClass::Difference(const RGBClass &) const, 0x005C3290);
+DEFINE_IMPLEMENTATION(RGBClass RGBClass::Average(const RGBClass &) const, 0x005C3200);
+DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Adjust_Brightness(RGBClass &, float), 0x005C30D0);
+DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Lerp(RGBClass &, RGBClass &, float), 0x005C2F60);
+
+HSVClass::HSVClass() : Hue(0), Saturation(0), Value(0) {}
+HSVClass::HSVClass(const HSVStruct &that) : Hue(that.H), Saturation(that.S), Value(that.V) {}
+HSVClass::HSVClass(const HSVClass &that) : Hue(that.Hue), Saturation(that.Saturation), Value(that.Value) {}
+HSVClass::HSVClass(unsigned char hue, unsigned char saturation, unsigned char value) : Hue(hue), Saturation(saturation), Value(value) {}
+DEFINE_IMPLEMENTATION(HSVClass::operator RGBClass () const, 0x004D1C60);
+DEFINE_IMPLEMENTATION(void HSVClass::Adjust(int, const HSVClass &), 0x004D1B80);
+DEFINE_IMPLEMENTATION(int HSVClass::Difference(const HSVClass &) const, 0x004D1C10);
 
 
 /**
