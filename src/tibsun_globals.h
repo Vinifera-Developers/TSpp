@@ -52,6 +52,7 @@ class ScenarioClass;
 class SessionClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
+class TechnoTypeClass;
 
 
 /**
@@ -76,3 +77,4 @@ extern SessionClass &Session;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
+extern DynamicVectorClass<TechnoTypeClass *> &TechnoTypes;

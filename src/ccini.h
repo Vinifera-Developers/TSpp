@@ -133,7 +133,7 @@ class CCINIClass : public INIClass
         SpeedType Get_SpeedType(const char *section, const char *entry, const SpeedType defvalue);
         bool Put_SpeedType(const char *section, const char *entry, SpeedType value);
 
-        AbilityStruct Get_Ability(const char *section, const char *entry, const AbilityStruct &defvalue);
+        AbilitiesStruct Get_Ability(const char *section, const char *entry, const AbilitiesStruct &defvalue);
 
         TypeList<RGBStruct> Get_RGB_List(const char *section, const char *entry, const TypeList<RGBStruct> defvalue);
 

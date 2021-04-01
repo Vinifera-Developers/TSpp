@@ -100,13 +100,60 @@ typedef enum BSizeType {} BSizeType;
 typedef enum MZoneType {} MZoneType;
 typedef enum SideType {} SideType;
 typedef enum SourceType {} SourceType;
-typedef enum SpeedType {} SpeedType;
+
+typedef enum AbilityType
+{
+    ABILITY_FASTER,
+    ABILITY_STRONGER,
+    ABILITY_FIREPOWER,
+    ABILITY_SCATTER,
+    ABILITY_ABILITY_ROF,
+    ABILITY_SIGHT,
+    ABILITY_CLOAK,
+    ABILITY_TIBERIUM_PROOF,
+    ABILITY_VEIN_PROOF,
+    ABILITY_SELF_HEAL,
+    ABILITY_EXPLODES,
+    ABILITY_RADAR_INVISIBLE,
+    ABILITY_SENSORS,
+    ABILITY_FEARLESS,
+    ABILITY_C4,
+    ABILITY_TIBERIUM_HEAL,
+    ABILITY_GUARD_AREA,
+    ABILITY_CRUSHER,
+
+    ABILITY_COUNT,
+
+    ABILITY_NONE = -1,
+    ABILITY_FIRST = 0
+} AbilityType;
+DEFINE_ENUMERATION_OPERATORS(AbilityType);
+
+typedef enum SpeedType
+{
+    SPEED_FOOT,
+    SPEED_TRACK,
+    SPEED_WHEEL,
+    SPEED_HOVER,
+    SPEED_WINGED,
+    SPEED_FLOAT,
+    SPEED_AMPHIBIOUS,
+    SPEED_CREEP,
+
+    SPEED_COUNT,
+
+    SPEED_NONE = -1,
+    SPEED_FIRST = 0
+} SpeedType;
+
 typedef enum PrerequisiteType {} PrerequisiteType;
 typedef enum SuperType {} SuperType;
 typedef enum ActionType {} ActionType;
 typedef enum VoxType {} VoxType;
 typedef enum LandType {} LandType;
 typedef enum ArmorType {} ArmorType;
+typedef enum MissionType {} MissionType;
+typedef enum WeaponSlotType {} WeaponSlotType;
 
 
 typedef enum ColorSchemeType
@@ -324,8 +371,21 @@ struct CoordStruct
 };
 
 
-struct AbilityStruct
+struct AbilitiesStruct
 {
+    public:
+        AbilitiesStruct()
+        {
+            // Init all flags to false.
+            for (AbilityType type = ABILITY_FIRST; type < ABILITY_COUNT; ++type) {
+                AbilitiesFlag[type] = false;
+            }
+        }
+
+        bool operator[](AbilityType type) const { return AbilitiesFlag[type]; }
+
+    public:
+        bool AbilitiesFlag[ABILITY_COUNT];
 };
 
 
