@@ -96,6 +96,47 @@ typedef enum TheaterType {} TheaterType;
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;
 typedef enum CategoryType {} CategoryType;
+
+typedef enum BAnimType
+{
+    BANIM_UPGRADE_ONE,
+    BANIM_UPGRADE_TWO,
+    BANIM_UPGRADE_THREE,
+    BANIM_ACTIVE_ONE,
+    BANIM_ACTIVE_TWO,
+    BANIM_ACTIVE_THREE,
+    BANIM_ACTIVE_FOUR,
+    BANIM_PRE_PRODUCTION,
+    BANIM_PRODUCTION,
+    BANIM_TURRET,
+    BANIM_SPECIAL_ONE,
+    BANIM_SPECIAL_TWO,
+    BANIM_SPECIAL_THREE,
+
+    BANIM_COUNT,
+
+    BANIM_M2 = -2,              // used to free all anims?
+    BANIM_NONE = -1,
+
+    BANIM_FIRST = 0
+};
+DEFINE_ENUMERATION_OPERATORS(BAnimType);
+
+
+typedef enum BStateType
+{
+    BSTATE_CONSTRUCTION,
+    BSTATE_IDLE,
+    BSTATE_ACTIVE,
+    BSTATE_FULL,
+    BSTATE_AUX1,
+    BSTATE_AUX2,
+
+    BSTATE_COUNT,
+
+    BSTATE_NONE = -1
+} BStateType;
+
 typedef enum BSizeType {} BSizeType;
 typedef enum MZoneType {} MZoneType;
 typedef enum SideType {} SideType;
@@ -128,6 +169,13 @@ typedef enum AbilityType
     ABILITY_FIRST = 0
 } AbilityType;
 DEFINE_ENUMERATION_OPERATORS(AbilityType);
+
+typedef enum BuildingType
+{
+    BUILDING_FIRST = 0,
+    BUILDING_NONE = -1
+} BuildingType;
+DEFINE_ENUMERATION_OPERATORS(BuildingType);
 
 typedef enum SpeedType
 {

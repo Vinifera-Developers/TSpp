@@ -58,6 +58,7 @@
 #include "objecttype.h"
 #include "technotype.h"
 #include "swizzle.h"
+#include "buildingtype.h"
 
 
 /**
@@ -601,6 +602,34 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Get_Save_Size(
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SwizzleManagerClass::SwizzleManagerClass(), 0x0060D9B0);
 DEFINE_IMPLEMENTATION(SwizzleManagerClass::~SwizzleManagerClass(), 0x0060DA00);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingTypeClass::GetClassID(CLSID *), 0x004434F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingTypeClass::Load(IStream *), 0x00443350);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingTypeClass::Save(IStream *, BOOL), 0x004434D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::BuildingTypeClass(const char *), 0x0043F410);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::BuildingTypeClass(const NoInitClass &), 0x0043F8C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::~BuildingTypeClass(), 0x0043F8F0);
+DEFINE_IMPLEMENTATION(RTTIType BuildingTypeClass::Kind_Of() const, 0x00443FC0);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Size_Of(bool) const, 0x00443FD0);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::entry_34() const, 0x00444000);
+DEFINE_IMPLEMENTATION(void BuildingTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00442F20);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Get_Heap_ID() const, 0x00444010);
+DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Read_INI(CCINIClass &), 0x00440AD0);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingTypeClass::Coord_Fixup(CoordStruct *) const, 0x00442E50);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Max_Pips() const, 0x0043FF90);
+DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Pixel_Dimensions() const, 0x0043FE50);
+DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Lepton_Dimensions() const, 0x00442ED0);
+DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0043FA60);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Cost_Of(HouseClass *) const, 0x00440080);
+DEFINE_IMPLEMENTATION(ObjectClass * const BuildingTypeClass::Create_One_Of(HouseClass *) const, 0x0043FED0);
+DEFINE_IMPLEMENTATION(CellStruct * BuildingTypeClass::Occupy_List(bool) const, 0x0043FED0);
+DEFINE_IMPLEMENTATION(ShapeFileStruct * const BuildingTypeClass::Get_Image_Data() const, 0x004402F0);
+DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Legal_Placement(CellStruct &, HouseClass *) const, 0x00442EA0);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Raw_Cost() const, 0x00440000);
+DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data(), 0x00443BC0);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
+DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
+
 
 /**
  *  Global definitions
@@ -646,3 +675,4 @@ bool &DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);
 DynamicVectorClass<AbstractTypeClass *> &AbstractTypes = Make_Global<DynamicVectorClass<AbstractTypeClass *>>(0x007E4550);
 DynamicVectorClass<ObjectTypeClass *> &ObjectTypes = Make_Global<DynamicVectorClass<ObjectTypeClass *>>(0x008087C0);
 DynamicVectorClass<TechnoTypeClass *> &TechnoTypes = Make_Global<DynamicVectorClass<TechnoTypeClass *>>(0x007E46C0);
+DynamicVectorClass<BuildingTypeClass *> &BuildingTypes = Make_Global<DynamicVectorClass<BuildingTypeClass *>>(0x007E21A0);

@@ -54,6 +54,7 @@ class SwizzleManagerClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
 class TechnoTypeClass;
+class BuildingTypeClass;
 
 
 /**
@@ -80,3 +81,4 @@ extern SwizzleManagerClass &SwizzleManager;
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
 extern DynamicVectorClass<TechnoTypeClass *> &TechnoTypes;
+extern DynamicVectorClass<BuildingTypeClass *> &BuildingTypes;
