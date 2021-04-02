@@ -73,6 +73,7 @@
 #include "version.h"
 #include "rle.h"
 #include "cdctrl.h"
+#include "wwfont.h"
 
 
 /**
@@ -757,6 +758,17 @@ DEFINE_IMPLEMENTATION(bool CDControlClass::Eject_CD_Drive(UINT), 0x0044EDC0);
 DEFINE_IMPLEMENTATION(bool CDControlClass::Lock_CD_Drive(UINT), 0x0044EF80);
 DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Drive(UINT), 0x0044F150);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWFontClass::WWFontClass(const void *, bool, int), 0x006A43D0);
+WWFontClass::~WWFontClass() {}
+DEFINE_IMPLEMENTATION(int WWFontClass::Char_Pixel_Width(char) const, 0x006A4480);
+DEFINE_IMPLEMENTATION(int WWFontClass::String_Pixel_Width(const char *) const, 0x006A44C0);
+DEFINE_IMPLEMENTATION(void WWFontClass::String_Pixel_Rect(const char *, Rect *) const, 0x006A4520);
+DEFINE_IMPLEMENTATION(int WWFontClass::Get_Char_Width() const, 0x006A45F0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Get_Char_Height() const, 0x006A4620);
+DEFINE_IMPLEMENTATION(Point2D WWFontClass::Print(const char *, Surface *, Rect *, Point2D *, ConvertClass *, unsigned char[]), 0x006A46F0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Set_X_Spacing(int), 0x006A4650);
+DEFINE_IMPLEMENTATION(int WWFontClass::Set_Y_Spacing(int), 0x006A46A0);
+
 
 /**
  *  Global definitions
@@ -788,6 +800,12 @@ ConvertClass *&SidebarDrawer = Make_Global<ConvertClass *>(0x0074820C);
 ToolTipManager *&ToolTipHandler = Make_Global<ToolTipManager *>(0x0074C638);
 VersionClass &VerNum = Make_Global<VersionClass>(0x007E4880);
 CDControlClass &CDControl = Make_Global<CDControlClass>(0x007608B8);
+WWFontClass *&Metal12FontPtr = Make_Global<WWFontClass *>(0x0074821C);
+WWFontClass *&MapFontPtr = Make_Global<WWFontClass *>(0x00748228);
+WWFontClass *&Font6Ptr = Make_Global<WWFontClass *>(0x00748220);
+WWFontClass *&EditorFont = Make_Global<WWFontClass *>(0x00748214);
+WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
+WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 
 
 /**
