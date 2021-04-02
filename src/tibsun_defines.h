@@ -92,6 +92,14 @@ typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 
+typedef enum UnitType
+{
+    UNIT_NONE = -1,
+
+    UNIT_FIRST = 0
+} UnitType;
+DEFINE_ENUMERATION_OPERATORS(UnitType);
+
 typedef enum HousesType
 {
     HOUSE_NONE = -1,

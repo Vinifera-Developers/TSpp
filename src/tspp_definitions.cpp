@@ -80,6 +80,7 @@
 #include "counter.h"
 #include "housetype.h"
 #include "tracker.h"
+#include "unittype.h"
 
 
 /**
@@ -837,6 +838,26 @@ DEFINE_IMPLEMENTATION(bool HouseTypeClass::Read_INI(CCINIClass &), 0x004CDF50);
 DEFINE_IMPLEMENTATION(void Detach_This_From_All(TARGET, bool), 0x006489B0);
 DEFINE_IMPLEMENTATION(void Remove_All_Inactive(), 0x00648CD0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitTypeClass::GetClassID(CLSID *), 0x0065C430);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitTypeClass::Load(IStream *), 0x0065C510);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitTypeClass::Save(IStream *, BOOL), 0x0065C670);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTypeClass::UnitTypeClass(const char *), 0x0065B8F0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTypeClass::UnitTypeClass(const NoInitClass &), 0x0065BAA0);
+DEFINE_IMPLEMENTATION(UnitTypeClass::~UnitTypeClass(), 0x0065BAC0);
+DEFINE_IMPLEMENTATION(RTTIType UnitTypeClass::Kind_Of() const, 0x0065C760);
+DEFINE_IMPLEMENTATION(int UnitTypeClass::Size_Of(bool) const, 0x0065C720);
+DEFINE_IMPLEMENTATION(int UnitTypeClass::entry_34() const, 0x0065C750);
+DEFINE_IMPLEMENTATION(void UnitTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0065C470);
+DEFINE_IMPLEMENTATION(int UnitTypeClass::Get_Heap_ID() const, 0x0065C770);
+DEFINE_IMPLEMENTATION(bool UnitTypeClass::Read_INI(CCINIClass &), 0x0065BDD0);
+DEFINE_IMPLEMENTATION(CoordStruct UnitTypeClass::Coord_Fixup(CoordStruct *) const, 0x0065C3B0);
+DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Pixel_Dimensions() const, 0x0065BD30);
+DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Lepton_Dimensions() const, 0x0065BD70);
+DEFINE_IMPLEMENTATION(bool UnitTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0065BC50);
+DEFINE_IMPLEMENTATION(ObjectClass* const UnitTypeClass::Create_One_Of(HouseClass *) const, 0x0065BD00);
+DEFINE_IMPLEMENTATION(int UnitTypeClass::Repair_Step() const, 0x0065C420);
+DEFINE_IMPLEMENTATION(const TPoint3D<int> UnitTypeClass::Turret_Adjust(DirType, TPoint3D<int> &) const, 0x0065BDB0);
+
 
 /**
  *  Global definitions
@@ -904,6 +925,7 @@ DynamicVectorClass<ConvertClass *> &Converts = Make_Global<DynamicVectorClass<Co
 DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVectorClass<LightConvertClass *>>(0x00761120);
 DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes = Make_Global<DynamicVectorClass<IsometricTileTypeClass *>>(0x007E48C8);
 DynamicVectorClass<HouseTypeClass *> &HouseTypes = Make_Global<DynamicVectorClass<HouseTypeClass *>>(0x007E21D0);
+DynamicVectorClass<UnitTypeClass *> &UnitTypes = Make_Global<DynamicVectorClass<UnitTypeClass *>>(0x007E2218);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
