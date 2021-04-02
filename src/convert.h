@@ -74,6 +74,8 @@ class ConvertClass
             };
         }
 
+	    static ConvertClass *Create_Drawer(const char *pal_filename, PaletteClass *pal, XSurface *surface);
+
     protected:
         int BytesPerPixel;
         Blitter *BlitPlainXlatPtr;
