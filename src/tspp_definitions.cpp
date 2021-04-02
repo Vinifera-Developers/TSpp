@@ -81,6 +81,7 @@
 #include "housetype.h"
 #include "tracker.h"
 #include "unittype.h"
+#include "infantrytype.h"
 
 
 /**
@@ -858,6 +859,26 @@ DEFINE_IMPLEMENTATION(ObjectClass* const UnitTypeClass::Create_One_Of(HouseClass
 DEFINE_IMPLEMENTATION(int UnitTypeClass::Repair_Step() const, 0x0065C420);
 DEFINE_IMPLEMENTATION(const TPoint3D<int> UnitTypeClass::Turret_Adjust(DirType, TPoint3D<int> &) const, 0x0065BDB0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE InfantryTypeClass::GetClassID(CLSID *), 0x004DB000);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryTypeClass::Load(IStream *), 0x004DAE20);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryTypeClass::Save(IStream *, BOOL), 0x004DAF70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(InfantryTypeClass::InfantryTypeClass(const char *), 0x004DA1E0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(InfantryTypeClass::InfantryTypeClass(const NoInitClass &), 0x004DA370);
+DEFINE_IMPLEMENTATION(InfantryTypeClass::~InfantryTypeClass(), 0x004DA3A0);
+DEFINE_IMPLEMENTATION(RTTIType InfantryTypeClass::Kind_Of() const, 0x004DB0D0);
+DEFINE_IMPLEMENTATION(int InfantryTypeClass::Size_Of(bool) const, 0x004DB0E0);
+DEFINE_IMPLEMENTATION(void InfantryTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004DAD10);
+DEFINE_IMPLEMENTATION(int InfantryTypeClass::Get_Heap_ID() const, 0x004DB110);
+DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Read_INI(CCINIClass &), 0x004DA960);
+DEFINE_IMPLEMENTATION(CoordStruct InfantryTypeClass::Coord_Fixup(CoordStruct *) const, 0x004DACA0);
+DEFINE_IMPLEMENTATION(Point3D InfantryTypeClass::Lepton_Dimensions() const, 0x004DAC50);
+DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004DA490);
+DEFINE_IMPLEMENTATION(ObjectClass *const InfantryTypeClass::Create_One_Of(HouseClass *) const, 0x004DA460);
+DEFINE_IMPLEMENTATION(CellStruct *InfantryTypeClass::Occupy_List(bool) const, 0x004DA570);
+DEFINE_IMPLEMENTATION(int InfantryTypeClass::Repair_Cost() const, 0x004DAC90);
+DEFINE_IMPLEMENTATION(int InfantryTypeClass::Repair_Step() const, 0x004DAC80);
+DEFINE_IMPLEMENTATION(void InfantryTypeClass::Sequence_Read_INI(), 0x004DA650);
+
 
 /**
  *  Global definitions
@@ -926,6 +947,7 @@ DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVector
 DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes = Make_Global<DynamicVectorClass<IsometricTileTypeClass *>>(0x007E48C8);
 DynamicVectorClass<HouseTypeClass *> &HouseTypes = Make_Global<DynamicVectorClass<HouseTypeClass *>>(0x007E21D0);
 DynamicVectorClass<UnitTypeClass *> &UnitTypes = Make_Global<DynamicVectorClass<UnitTypeClass *>>(0x007E2218);
+DynamicVectorClass<InfantryTypeClass *> &InfantryTypes = Make_Global<DynamicVectorClass<InfantryTypeClass *>>(0x007E4010);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);

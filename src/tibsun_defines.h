@@ -100,6 +100,14 @@ typedef enum UnitType
 } UnitType;
 DEFINE_ENUMERATION_OPERATORS(UnitType);
 
+typedef enum InfantryType
+{
+    INFANTRY_NONE = -1,
+
+    INFANTRY_FIRST = 0
+} InfantryType;
+DEFINE_ENUMERATION_OPERATORS(InfantryType);
+
 typedef enum HousesType
 {
     HOUSE_NONE = -1,
@@ -112,6 +120,7 @@ typedef enum TheaterType {} TheaterType;
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;
 typedef enum CategoryType {} CategoryType;
+
 typedef enum IsometricTileType
 {
     ISOTILE_CLEAR = 0,
@@ -520,6 +529,24 @@ struct AbilitiesStruct
     public:
         bool AbilitiesFlag[ABILITY_COUNT];
 };
+
+
+typedef struct DoStruct
+{
+    bool Interrupt;	        // Can it be interrupted?
+    bool IsMobile;	        // Can it move while doing this?
+    bool RandomStart;	    // Should animation be "randomized"?
+    unsigned char Rate;		// Frame rate.
+} DoStruct;
+
+
+typedef struct DoInfoStruct
+{
+    int Frame;	            // Starting frame of the animation.
+    unsigned int Count;	    // Number of frames of animation.
+    unsigned int Jump;	    // Frames to jump between facings.
+    FacingType Finish;	    // Direction to face when finished.
+} DoInfoStruct;
 
 
 class xTargetClass
