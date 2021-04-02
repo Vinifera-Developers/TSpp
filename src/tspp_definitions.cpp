@@ -72,6 +72,7 @@
 #include "filepcx.h"
 #include "version.h"
 #include "rle.h"
+#include "cdctrl.h"
 
 
 /**
@@ -750,6 +751,12 @@ DEFINE_IMPLEMENTATION(unsigned long VersionClass::Max_Version(), 0x006641C0);
 DEFINE_IMPLEMENTATION(int RLEClass::Compress(void *, void *, int), 0x005C3490);
 DEFINE_IMPLEMENTATION(int RLEClass::Uncompress(void *, void *), 0x005C3540);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDControlClass::CDControlClass(), 0x0044ED90);
+DEFINE_IMPLEMENTATION(CDControlClass::~CDControlClass(), 0x0044EDB0);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Eject_CD_Drive(UINT), 0x0044EDC0);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Lock_CD_Drive(UINT), 0x0044EF80);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Drive(UINT), 0x0044F150);
+
 
 /**
  *  Global definitions
@@ -780,6 +787,7 @@ ConvertClass *&MouseDrawer = Make_Global<ConvertClass *>(0x00748208);
 ConvertClass *&SidebarDrawer = Make_Global<ConvertClass *>(0x0074820C);
 ToolTipManager *&ToolTipHandler = Make_Global<ToolTipManager *>(0x0074C638);
 VersionClass &VerNum = Make_Global<VersionClass>(0x007E4880);
+CDControlClass &CDControl = Make_Global<CDControlClass>(0x007608B8);
 
 
 /**

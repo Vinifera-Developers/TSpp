@@ -55,6 +55,7 @@ class SwizzleManagerClass;
 class ConvertClass;
 class ToolTipManager;
 class VersionClass;
+class CDControlClass;
 class LightConvertClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
@@ -96,6 +97,7 @@ extern ConvertClass *&MouseDrawer;
 extern ConvertClass *&SidebarDrawer;
 extern ToolTipManager *&ToolTipHandler;
 extern VersionClass &VerNum;
+extern CDControlClass &CDControl;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
