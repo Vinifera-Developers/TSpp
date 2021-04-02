@@ -70,6 +70,7 @@
 #include "cctooltip.h"
 #include "readline.h"
 #include "filepcx.h"
+#include "version.h"
 
 
 /**
@@ -733,6 +734,18 @@ DEFINE_IMPLEMENTATION(int Read_Line(Straw &, char *, int, bool &), 0x005BED50);
 DEFINE_IMPLEMENTATION(Surface *Read_PCX_File(FileClass *, unsigned char *, void *, long), 0x005A79A0);
 DEFINE_IMPLEMENTATION(bool Write_PCX_File(FileClass *, Surface &, unsigned char *), 0x0069FAE0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VersionClass::VersionClass(), 0x00663B30);
+VersionClass::~VersionClass() {}
+DEFINE_IMPLEMENTATION(unsigned long VersionClass::Version_Number(), 0x00663B60);
+DEFINE_IMPLEMENTATION(unsigned short VersionClass::Major_Version(), 0x00663D60);
+DEFINE_IMPLEMENTATION(unsigned short VersionClass::Minor_Version(), 0x00663E20);
+DEFINE_IMPLEMENTATION(const char *VersionClass::Version_Name(), 0x00663ED0);
+DEFINE_IMPLEMENTATION(CommProtocolType VersionClass::Version_Protocol(unsigned long), 0x00664130);
+DEFINE_IMPLEMENTATION(void VersionClass::Init_Clipping(), 0x00664160);
+DEFINE_IMPLEMENTATION(unsigned long VersionClass::Clip_Version(unsigned long, unsigned long), 0x00664170);
+DEFINE_IMPLEMENTATION(unsigned long VersionClass::Min_Version(), 0x006641B0);
+DEFINE_IMPLEMENTATION(unsigned long VersionClass::Max_Version(), 0x006641C0);
+
 
 /**
  *  Global definitions
@@ -762,6 +775,7 @@ ConvertClass *&NormalDrawer = Make_Global<ConvertClass *>(0x0087F6C4);
 ConvertClass *&MouseDrawer = Make_Global<ConvertClass *>(0x00748208);
 ConvertClass *&SidebarDrawer = Make_Global<ConvertClass *>(0x0074820C);
 ToolTipManager *&ToolTipHandler = Make_Global<ToolTipManager *>(0x0074C638);
+VersionClass &VerNum = Make_Global<VersionClass>(0x007E4880);
 
 
 /**
