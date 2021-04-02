@@ -84,6 +84,7 @@
 #include "infantrytype.h"
 #include "aircrafttype.h"
 #include "combat.h"
+#include "saveload.h"
 
 
 /**
@@ -903,6 +904,9 @@ DEFINE_IMPLEMENTATION(void Explosion_Damage(const CoordStruct *, int, TechnoClas
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const CoordStruct *), 0x00460340);
 DEFINE_IMPLEMENTATION(void Do_Flash(int, WarheadTypeClass *, CoordStruct, bool), 0x00460460);
 DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const CoordStruct *, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
+
+DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);
+DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
 
 
 /**
