@@ -53,6 +53,7 @@ class ScenarioClass;
 class SessionClass;
 class SwizzleManagerClass;
 class ConvertClass;
+class ToolTipManager;
 class LightConvertClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
@@ -92,6 +93,7 @@ extern ConvertClass *&AnimDrawer;
 extern ConvertClass *&NormalDrawer;
 extern ConvertClass *&MouseDrawer;
 extern ConvertClass *&SidebarDrawer;
+extern ToolTipManager *&ToolTipHandler;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

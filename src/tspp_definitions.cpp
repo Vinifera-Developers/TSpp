@@ -66,6 +66,7 @@
 #include "lightconvert.h"
 #include "isotiletype.h"
 #include "command.h"
+#include "tooltip.h"
 
 
 /**
@@ -697,6 +698,24 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_D
 CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2AF4; }
 CommandClass::~CommandClass() {}
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ToolTipManager::ToolTipManager(HWND), 0x00647190);
+DEFINE_IMPLEMENTATION(ToolTipManager::~ToolTipManager(), 0x00647240);
+DEFINE_IMPLEMENTATION(bool ToolTipManager::Update(const ToolTipText *), 0x00647B60);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Reset(const ToolTipText *), 0x00647B70);
+DEFINE_IMPLEMENTATION(void ToolTipManager::entry_C(bool), 0x00647C40);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Draw(const ToolTipText *), 0x00647C70);
+DEFINE_IMPLEMENTATION(const char *ToolTipManager::ToolTip_Text(int), 0x00647C90);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Set_Active(bool), 0x00647330);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Message_Handler(MSG *), 0x00647390);
+DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Timer_Delay() const, 0x006475F0);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Set_Timer_Delay(int), 0x00647600);
+DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Lifetime() const, 0x00647610);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Set_Lifetime(int), 0x00647620);
+DEFINE_IMPLEMENTATION(bool ToolTipManager::Find(int id, ToolTip *), 0x00647980);
+DEFINE_IMPLEMENTATION(bool ToolTipManager::Add(const ToolTip *), 0x00647640);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Remove(int), 0x006477F0);
+DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Count() const, 0x00647630);
+
 
 /**
  *  Global definitions
@@ -725,6 +744,7 @@ ConvertClass *&AnimDrawer = Make_Global<ConvertClass *>(0x00748200);
 ConvertClass *&NormalDrawer = Make_Global<ConvertClass *>(0x0087F6C4);
 ConvertClass *&MouseDrawer = Make_Global<ConvertClass *>(0x00748208);
 ConvertClass *&SidebarDrawer = Make_Global<ConvertClass *>(0x0074820C);
+ToolTipManager *&ToolTipHandler = Make_Global<ToolTipManager *>(0x0074C638);
 
 
 /**
