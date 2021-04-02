@@ -77,6 +77,7 @@
 #include "utracker.h"
 #include "buildnum.h"
 #include "link.h"
+#include "counter.h"
 
 
 /**
@@ -802,6 +803,17 @@ DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Head_Of_List(), 0x00503130);
 DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Tail_Of_List(), 0x00503160);
 DEFINE_IMPLEMENTATION(void LinkClass::Zap(), 0x005030E0);
 DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Remove(), 0x00503200);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CounterClass::CounterClass(), 0x0046E9F0);
+DEFINE_IMPLEMENTATION(CounterClass::~CounterClass(), 0x0046EA10);
+DEFINE_IMPLEMENTATION(void CounterClass::Clear(), 0x0046EB60);
+DEFINE_IMPLEMENTATION(int CounterClass::Increment(int), 0x0046EA40);
+DEFINE_IMPLEMENTATION(int CounterClass::Decrement(int), 0x0046EAA0);
+DEFINE_IMPLEMENTATION(bool CounterClass::Grow(int), 0x0046EC90);
+DEFINE_IMPLEMENTATION(int CounterClass::Count_Of(int), 0x0046EB00);
+DEFINE_IMPLEMENTATION(int CounterClass::Total(), 0x0046EB80);
+DEFINE_IMPLEMENTATION(HRESULT CounterClass::Load(IStream *), 0x0046EC00);
+DEFINE_IMPLEMENTATION(HRESULT CounterClass::Save(IStream *), 0x0046EBA0);
 
 
 /**
