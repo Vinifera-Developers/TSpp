@@ -27,19 +27,19 @@
  ******************************************************************************/
 #include "isotiletype.h"
 #include "tibsun_globals.h"
-#include <cassert>
+#include "tspp_assert.h"
 
 
 const IsometricTileTypeClass &IsometricTileTypeClass::As_Reference(IsometricTileType type)
 {
-    assert(type != ISOTILE_NONE && type < IsoTileTypes.Count());
+    TSPP_ASSERT(type != ISOTILE_NONE && type < IsoTileTypes.Count());
     return *IsoTileTypes[type];
 }
 
 
 const IsometricTileTypeClass *IsometricTileTypeClass::As_Pointer(IsometricTileType type)
 {
-    assert(type != ISOTILE_NONE && type < IsoTileTypes.Count());
+    TSPP_ASSERT(type != ISOTILE_NONE && type < IsoTileTypes.Count());
     return type != ISOTILE_NONE && type < IsoTileTypes.Count() ? IsoTileTypes[type] : nullptr;
 }
 
@@ -58,7 +58,7 @@ const IsometricTileTypeClass *IsometricTileTypeClass::As_Pointer(const char *nam
 
 IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
 {
-    assert(name != nullptr);
+    TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
         return ISOTILE_NONE;

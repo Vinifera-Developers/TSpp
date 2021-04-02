@@ -27,18 +27,18 @@
  ******************************************************************************/
 #include "command.h"
 #include "tibsun_globals.h"
-#include <cassert>
+#include "tspp_assert.h"
 
 
 bool CommandClass::Activate_From_Name(const char *name)
 {
-    assert(name != nullptr);
-    assert(Commands.Count() > 0);
+    TSPP_ASSERT(name != nullptr);
+    TSPP_ASSERT(Commands.Count() > 0);
 
     if (name != nullptr) {
         for (int index = 0; index < Commands.Count(); ++index) {
             CommandClass *cmd = const_cast<CommandClass *>(Commands[index]);
-            //assert(cmd != nullptr);
+            //TSPP_ASSERT(cmd != nullptr);
             if (!strcasecmp(name, cmd->Get_Name())) {
                 return cmd->Process();
             }
@@ -50,13 +50,13 @@ bool CommandClass::Activate_From_Name(const char *name)
 
 CommandClass *CommandClass::From_Name(const char *name)
 {
-    assert(name != nullptr);
-    assert(Commands.Count() > 0);
+    TSPP_ASSERT(name != nullptr);
+    TSPP_ASSERT(Commands.Count() > 0);
 
     if (name != nullptr) {
         for (int index = 0; index < Commands.Count(); ++index) {
             CommandClass *cmd = const_cast<CommandClass *>(Commands[index]);
-            //assert(cmd != nullptr);
+            //TSPP_ASSERT(cmd != nullptr);
             if (!strcasecmp(name, cmd->Get_Name())) {
                 return cmd;
             }
@@ -68,11 +68,11 @@ CommandClass *CommandClass::From_Name(const char *name)
 
 CommandClass *CommandClass::From_KeyNum(KeyNumType key)
 {
-    assert(Commands.Count() > 0);
+    TSPP_ASSERT(Commands.Count() > 0);
 
     if (key != KN_NONE) {
         CommandClass *cmd = const_cast<CommandClass *>(HotkeyIndex[key]);
-        //assert(cmd != nullptr);
+        //TSPP_ASSERT(cmd != nullptr);
         if (cmd != nullptr) {
             return cmd;
         }

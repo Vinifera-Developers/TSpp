@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TEXTFILE.CPP
+ *  @file          TSPP_ASSERT.CPP
  *
  *  @authors       CCHyper
  *
- *  @brief         Text file i/o class.
+ *  @brief         Custom assertion macros with installable custom handler.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -25,35 +25,20 @@
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
  ******************************************************************************/
-#include "textfile.h"
-#include "readline.h"
 #include "tspp_assert.h"
 
 
-int TextFileClass::Read_Line(char *string, bool &eof)
+/**
+ *  The installable assertion function pointer.
+ */
+void (*TSPP_Assertion_Handler_Ptr)(const char *expr, const char *file, int line, const char *msg);
+
+
+/**
+ *  Installs the custom assertion handler that will handle all
+ *  assertions in the TS++ codebase.
+ */
+void TSPP_Install_Assertion_Handler(void (*handler_ptr)(const char *, const char *, int, const char *))
 {
-    TSPP_ASSERT(string != nullptr);
-
-    char buffer[MAX_LINE_LENGTH];
-    eof = false; // Reset
-
-    int total = ::Read_Line(*this, buffer, sizeof(buffer), eof);
-    std::strcpy(string, buffer);
-
-    return total;
-}
-
-
-int TextFileClass::Write_Line(char *string)
-{
-    TSPP_ASSERT(string != nullptr);
-
-    int len = std::strlen(string);
-
-    int total = RawFileClass::Write(string, len);
-    if (total == len) {
-        return total;
-    }
-
-    return -1;
+	TSPP_Assertion_Handler_Ptr = handler_ptr;
 }

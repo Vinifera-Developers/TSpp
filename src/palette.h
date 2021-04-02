@@ -29,7 +29,7 @@
 
 #include "always.h"
 #include "rgb.h"
-#include <cassert>
+#include "tspp_assert.h"
 
 
 class PaletteClass
@@ -47,8 +47,8 @@ class PaletteClass
 		operator const unsigned char * () const { return (const unsigned char *)&Palette[0]; }
 		operator unsigned char * () { return (unsigned char *)&Palette[0]; }
 
-        RGBClass &operator[](int index) { assert(index < COLOR_COUNT); return Palette[index % COLOR_COUNT]; }
-        const RGBClass &operator[](int index) const { assert(index < COLOR_COUNT); return Palette[index % COLOR_COUNT]; }
+        RGBClass &operator[](int index) { TSPP_ASSERT(index < COLOR_COUNT); return Palette[index % COLOR_COUNT]; }
+        const RGBClass &operator[](int index) const { TSPP_ASSERT(index < COLOR_COUNT); return Palette[index % COLOR_COUNT]; }
 
         bool operator==(const PaletteClass &that) const { return std::memcmp(Palette, that.Palette, sizeof(Palette)) == 0; }
         bool operator!=(const PaletteClass &that) const { return std::memcmp(Palette, that.Palette, sizeof(Palette)) != 0; }

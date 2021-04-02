@@ -27,19 +27,19 @@
  ******************************************************************************/
 #include "buildingtype.h"
 #include "tibsun_globals.h"
-#include <cassert>
+#include "tspp_assert.h"
 
 
 const BuildingTypeClass &BuildingTypeClass::As_Reference(BuildingType type)
 {
-    assert(type != BUILDING_NONE && type < BuildingTypes.Count());
+    TSPP_ASSERT(type != BUILDING_NONE && type < BuildingTypes.Count());
     return *BuildingTypes[type];
 }
 
 
 const BuildingTypeClass *BuildingTypeClass::As_Pointer(BuildingType type)
 {
-    assert(type != BUILDING_NONE && type < BuildingTypes.Count());
+    TSPP_ASSERT(type != BUILDING_NONE && type < BuildingTypes.Count());
     return type != BUILDING_NONE && type < BuildingTypes.Count() ? BuildingTypes[type] : nullptr;
 }
 
@@ -58,7 +58,7 @@ const BuildingTypeClass *BuildingTypeClass::As_Pointer(const char *name)
 
 BuildingType BuildingTypeClass::From_Name(const char *name)
 {
-    assert(name != nullptr);
+    TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
         return BUILDING_NONE;
@@ -84,7 +84,7 @@ const char *BuildingTypeClass::Name_From(BuildingType type)
 
 const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
 {
-    assert(name != nullptr);
+    TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
         return nullptr;
@@ -96,6 +96,6 @@ const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
     }
 
     BuildingTypeClass *ptr = new BuildingTypeClass(name);
-    assert(ptr != nullptr);
+    TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

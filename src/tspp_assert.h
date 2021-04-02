@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TEXTFILE.CPP
+ *  @file          TSPP_ASSERT.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Text file i/o class.
+ *  @brief         Custom assertion macros with installable custom handler.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -25,35 +25,41 @@
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
  ******************************************************************************/
-#include "textfile.h"
-#include "readline.h"
-#include "tspp_assert.h"
+#pragma once
+
+#include "always.h"
+#include <cassert>
 
 
-int TextFileClass::Read_Line(char *string, bool &eof)
-{
-    TSPP_ASSERT(string != nullptr);
+extern void (*TSPP_Assertion_Handler_Ptr)(const char *expr, const char *file, int line, const char *msg);
 
-    char buffer[MAX_LINE_LENGTH];
-    eof = false; // Reset
-
-    int total = ::Read_Line(*this, buffer, sizeof(buffer), eof);
-    std::strcpy(string, buffer);
-
-    return total;
-}
+void TSPP_Install_Assertion_Handler(void (*handler_ptr)(const char *, const char *, int, const char *));
 
 
-int TextFileClass::Write_Line(char *string)
-{
-    TSPP_ASSERT(string != nullptr);
+/**
+ *  Standard assert macro.
+ */
+#define TSPP_ASSERT(expr) \
+	{ \
+		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
+			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, nullptr); \
+		} else { \
+			assert(expr); \
+		} \
+	}
 
-    int len = std::strlen(string);
 
-    int total = RawFileClass::Write(string, len);
-    if (total == len) {
-        return total;
-    }
-
-    return -1;
-}
+/**
+ *  Assert macro with optional message to display.
+ * 
+ *  #NOTE: (if no custom handler is installed, then just the
+ *         expression is passed onto the regular C assert.)
+ */
+#define TSPP_ASSERT_PRINT(expr, msg) \
+	{ \
+		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
+			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, msg); \
+		} else { \
+			assert(expr); \
+		} \
+	}

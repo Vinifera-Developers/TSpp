@@ -28,7 +28,7 @@
 #pragma once
 
 #include "always.h"
-#include <cassert>
+#include "tspp_assert.h"
 
 
 class GenericList;
@@ -70,7 +70,7 @@ class GenericNode
 
         void Link(GenericNode *node)
         {
-            assert(node != nullptr);
+            TSPP_ASSERT(node != nullptr);
 
             node->Unlink();
             node->NextNode = NextNode;

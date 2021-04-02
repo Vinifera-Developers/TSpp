@@ -30,7 +30,6 @@
 #include "always.h"
 #include "vector.h"
 #include <unknwn.h>
-#include <cassert>
 
 
 template<class T>

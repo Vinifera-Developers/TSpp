@@ -28,8 +28,8 @@
 #pragma once
 
 #include "always.h"
+#include "tspp_assert.h"
 #include <cstdlib>
-#include <cassert>
 
 
 template<typename I, class T>
@@ -126,11 +126,11 @@ void IndexClass<I, T>::Clear()
 template<typename I, class T>
 bool IndexClass<I, T>::Increase_Table_Size(int amount)
 {
-    assert(amount > 0);
+    TSPP_ASSERT(amount > 0);
 
     if (amount < 0) return false;
 
-    assert(IndexCount < IndexSize + amount);
+    TSPP_ASSERT(IndexCount < IndexSize + amount);
 
     NodeElement * table = new NodeElement[IndexSize + amount];
     if (table != nullptr) {
@@ -182,7 +182,7 @@ bool IndexClass<I, T>::Is_Present(const I &id) const
 template<typename I, class T>
 T & IndexClass<I, T>::Fetch_By_Position(int index)
 {
-    assert(index < IndexCount);
+    TSPP_ASSERT(index < IndexCount);
     return IndexTable[index].Data;
 }
 
@@ -190,7 +190,7 @@ T & IndexClass<I, T>::Fetch_By_Position(int index)
 template<typename I, class T>
 I IndexClass<I, T>::Fetch_ID_By_Position(int index)
 {
-    assert(index < IndexCount);
+    TSPP_ASSERT(index < IndexCount);
     return IndexTable[index].ID;
 }
 
@@ -246,7 +246,7 @@ bool IndexClass<I, T>::Remove_Index(const I &id)
     }
 
     int found_index = found - IndexTable;
-    assert(found_index >= 0 && found_index < IndexCount);
+    TSPP_ASSERT(found_index >= 0 && found_index < IndexCount);
 
     if (found_index != -1) {
 

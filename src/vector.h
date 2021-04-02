@@ -28,9 +28,9 @@
 #pragma once
 
 #include "always.h"
+#include "tspp_assert.h"
 #include <memory>
 #include <new>
-#include <cassert>
 
 
 class NoInitClass;
@@ -71,7 +71,7 @@ class VectorClass
 template<typename T>
 T &VectorClass<T>::operator[](int index)
 {
-    assert(unsigned(index) < unsigned(VectorMax));
+    TSPP_ASSERT(unsigned(index) < unsigned(VectorMax));
     return Vector[index];
 }
 
@@ -79,7 +79,7 @@ T &VectorClass<T>::operator[](int index)
 template<typename T>
 const T &VectorClass<T>::operator[](int index) const
 {
-    assert(unsigned(index) < unsigned(VectorMax));
+    TSPP_ASSERT(unsigned(index) < unsigned(VectorMax));
     return Vector[index];
 }
 
