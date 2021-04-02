@@ -76,6 +76,7 @@
 #include "wwfont.h"
 #include "utracker.h"
 #include "buildnum.h"
+#include "link.h"
 
 
 /**
@@ -786,6 +787,21 @@ DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Builder_Name_Stri
 DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Date_String(char *, unsigned), 0x00686020);
 DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Builder_Initials(char *), 0x006860E0);
 DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Version_String(char *, unsigned), 0x00686110);
+
+LinkClass::LinkClass() : Next(nullptr), Prev(nullptr) { *((unsigned long *)this) = (unsigned long)0x006D0874; }
+LinkClass::LinkClass(const NoInitClass &) {}
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LinkClass::LinkClass(const LinkClass &), 0x00503050);
+DEFINE_IMPLEMENTATION(LinkClass::~LinkClass(), 0x00503090);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::operator=(const LinkClass &), 0x005030F0);
+DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Get_Next() const, 0x00503110);
+DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Get_Prev() const, 0x00503120);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Add(LinkClass &), 0x00503190);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Add_Tail(LinkClass &), 0x005031D0);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Add_Head(LinkClass &), 0x005031B0);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Head_Of_List(), 0x00503130);
+DEFINE_IMPLEMENTATION(LinkClass & LinkClass::Tail_Of_List(), 0x00503160);
+DEFINE_IMPLEMENTATION(void LinkClass::Zap(), 0x005030E0);
+DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Remove(), 0x00503200);
 
 
 /**
