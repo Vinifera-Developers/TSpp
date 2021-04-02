@@ -78,6 +78,7 @@
 #include "buildnum.h"
 #include "link.h"
 #include "counter.h"
+#include "housetype.h"
 
 
 /**
@@ -815,6 +816,23 @@ DEFINE_IMPLEMENTATION(int CounterClass::Total(), 0x0046EB80);
 DEFINE_IMPLEMENTATION(HRESULT CounterClass::Load(IStream *), 0x0046EC00);
 DEFINE_IMPLEMENTATION(HRESULT CounterClass::Save(IStream *), 0x0046EBA0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseTypeClass::QueryInterface(REFIID, LPVOID *), 0x004CE430);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE HouseTypeClass::AddRef(), 0x004CE5D0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE HouseTypeClass::Release(), 0x004CE5E0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseTypeClass::GetClassID(CLSID *), 0x004CE4D0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseTypeClass::IsDirty(), 0x004CE310);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseTypeClass::Load(IStream *), 0x004CE320);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseTypeClass::Save(IStream *, BOOL), 0x004CE3A0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x004CE400);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseTypeClass::HouseTypeClass(const char *), 0x004CDD10);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseTypeClass::HouseTypeClass(const NoInitClass &), 0x004CDE60);
+DEFINE_IMPLEMENTATION(HouseTypeClass::~HouseTypeClass(), 0x004CDE80);
+DEFINE_IMPLEMENTATION(RTTIType HouseTypeClass::Kind_Of() const, 0x004CE5A0);
+DEFINE_IMPLEMENTATION(int HouseTypeClass::Size_Of(bool) const, 0x004CE5B0);
+DEFINE_IMPLEMENTATION(void HouseTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004CE210);
+DEFINE_IMPLEMENTATION(int HouseTypeClass::Get_Heap_ID() const, 0x004CE5C0);
+DEFINE_IMPLEMENTATION(bool HouseTypeClass::Read_INI(CCINIClass &), 0x004CDF50);
+
 
 /**
  *  Global definitions
@@ -881,6 +899,7 @@ DynamicVectorClass<BuildingTypeClass *> &BuildingTypes = Make_Global<DynamicVect
 DynamicVectorClass<ConvertClass *> &Converts = Make_Global<DynamicVectorClass<ConvertClass *>>(0x00761120);
 DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVectorClass<LightConvertClass *>>(0x00761120);
 DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes = Make_Global<DynamicVectorClass<IsometricTileTypeClass *>>(0x007E48C8);
+DynamicVectorClass<HouseTypeClass *> &HouseTypes = Make_Global<DynamicVectorClass<HouseTypeClass *>>(0x007E21D0);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);

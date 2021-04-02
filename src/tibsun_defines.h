@@ -91,7 +91,15 @@ typedef enum CrateType {} CrateType;
 typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
-typedef enum HousesType {} HousesType;
+
+typedef enum HousesType
+{
+    HOUSE_NONE = -1,
+
+    HOUSE_FIRST = 0
+} HousesType;
+DEFINE_ENUMERATION_OPERATORS(HousesType);
+
 typedef enum TheaterType {} TheaterType;
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;

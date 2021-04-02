@@ -63,6 +63,7 @@ class ObjectTypeClass;
 class TechnoTypeClass;
 class BuildingTypeClass;
 class IsometricTileTypeClass;
+class HouseTypeClass;
 class CommandClass;
 
 enum KeyNumType;
@@ -113,6 +114,7 @@ extern DynamicVectorClass<BuildingTypeClass *> &BuildingTypes;
 extern DynamicVectorClass<ConvertClass *> &Converts;
 extern DynamicVectorClass<LightConvertClass *> &TileDrawers;
 extern DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes;
+extern DynamicVectorClass<HouseTypeClass *> &HouseTypes;
 extern DynamicVectorClass<CommandClass *> &Commands;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
