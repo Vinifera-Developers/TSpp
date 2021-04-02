@@ -68,6 +68,7 @@
 #include "command.h"
 #include "tooltip.h"
 #include "cctooltip.h"
+#include "readline.h"
 
 
 /**
@@ -724,6 +725,9 @@ DEFINE_IMPLEMENTATION(void CCToolTip::Reset(const ToolTipText *), 0x0044E530);
 DEFINE_IMPLEMENTATION(void CCToolTip::entry_C(bool), 0x0044E590);
 DEFINE_IMPLEMENTATION(void CCToolTip::Draw(const ToolTipText *), 0x0044E5B0);
 DEFINE_IMPLEMENTATION(const char *CCToolTip::ToolTip_Text(int), 0x0044E720);
+
+DEFINE_IMPLEMENTATION(int Read_Line(FileClass &, char *, int, bool &), 0x005BECA0);
+DEFINE_IMPLEMENTATION(int Read_Line(Straw &, char *, int, bool &), 0x005BED50);
 
 
 /**
