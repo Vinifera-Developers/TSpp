@@ -65,6 +65,7 @@
 #include "convert.h"
 #include "lightconvert.h"
 #include "isotiletype.h"
+#include "command.h"
 
 
 /**
@@ -693,6 +694,9 @@ DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(H
 DEFINE_IMPLEMENTATION(CellStruct *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
 
+CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2AF4; }
+CommandClass::~CommandClass() {}
+
 
 /**
  *  Global definitions
@@ -750,3 +754,6 @@ DynamicVectorClass<BuildingTypeClass *> &BuildingTypes = Make_Global<DynamicVect
 DynamicVectorClass<ConvertClass *> &Converts = Make_Global<DynamicVectorClass<ConvertClass *>>(0x00761120);
 DynamicVectorClass<LightConvertClass *> &TileDrawers = Make_Global<DynamicVectorClass<LightConvertClass *>>(0x00761120);
 DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes = Make_Global<DynamicVectorClass<IsometricTileTypeClass *>>(0x007E48C8);
+DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
+
+IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);

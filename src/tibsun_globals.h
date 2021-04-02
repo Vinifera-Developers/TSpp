@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "vector.h"
+#include "search.h"
 
 
 /**
@@ -58,6 +59,9 @@ class ObjectTypeClass;
 class TechnoTypeClass;
 class BuildingTypeClass;
 class IsometricTileTypeClass;
+class CommandClass;
+
+enum KeyNumType;
 
 
 /**
@@ -96,3 +100,6 @@ extern DynamicVectorClass<BuildingTypeClass *> &BuildingTypes;
 extern DynamicVectorClass<ConvertClass *> &Converts;
 extern DynamicVectorClass<LightConvertClass *> &TileDrawers;
 extern DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes;
+extern DynamicVectorClass<CommandClass *> &Commands;
+
+extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
