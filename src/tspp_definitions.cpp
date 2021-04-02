@@ -67,6 +67,7 @@
 #include "isotiletype.h"
 #include "command.h"
 #include "tooltip.h"
+#include "cctooltip.h"
 
 
 /**
@@ -715,6 +716,14 @@ DEFINE_IMPLEMENTATION(bool ToolTipManager::Find(int id, ToolTip *), 0x00647980);
 DEFINE_IMPLEMENTATION(bool ToolTipManager::Add(const ToolTip *), 0x00647640);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Remove(int), 0x006477F0);
 DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Count() const, 0x00647630);
+
+CCToolTip::CCToolTip(HWND hWnd) : ToolTipManager(hWnd), field_15C(false), Style(TPF_MAP) { Set_Timer_Delay(500); *((unsigned long *)this) = (unsigned long)0x006D9E4C; }
+CCToolTip::~CCToolTip() {}
+DEFINE_IMPLEMENTATION(bool CCToolTip::Update(const ToolTipText *), 0x0044E3B0);
+DEFINE_IMPLEMENTATION(void CCToolTip::Reset(const ToolTipText *), 0x0044E530);
+DEFINE_IMPLEMENTATION(void CCToolTip::entry_C(bool), 0x0044E590);
+DEFINE_IMPLEMENTATION(void CCToolTip::Draw(const ToolTipText *), 0x0044E5B0);
+DEFINE_IMPLEMENTATION(const char *CCToolTip::ToolTip_Text(int), 0x0044E720);
 
 
 /**
