@@ -71,6 +71,7 @@
 #include "readline.h"
 #include "filepcx.h"
 #include "version.h"
+#include "rle.h"
 
 
 /**
@@ -745,6 +746,9 @@ DEFINE_IMPLEMENTATION(void VersionClass::Init_Clipping(), 0x00664160);
 DEFINE_IMPLEMENTATION(unsigned long VersionClass::Clip_Version(unsigned long, unsigned long), 0x00664170);
 DEFINE_IMPLEMENTATION(unsigned long VersionClass::Min_Version(), 0x006641B0);
 DEFINE_IMPLEMENTATION(unsigned long VersionClass::Max_Version(), 0x006641C0);
+
+DEFINE_IMPLEMENTATION(int RLEClass::Compress(void *, void *, int), 0x005C3490);
+DEFINE_IMPLEMENTATION(int RLEClass::Uncompress(void *, void *), 0x005C3540);
 
 
 /**
