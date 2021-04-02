@@ -75,6 +75,7 @@
 #include "cdctrl.h"
 #include "wwfont.h"
 #include "utracker.h"
+#include "buildnum.h"
 
 
 /**
@@ -778,6 +779,13 @@ DEFINE_IMPLEMENTATION(void UnitTrackerClass::Clear_Unit_Total(), 0x0065D660);
 DEFINE_IMPLEMENTATION(long *UnitTrackerClass::Get_All_Totals(), 0x0065D650);
 DEFINE_IMPLEMENTATION(void UnitTrackerClass::To_Network_Format(), 0x0065D680);
 DEFINE_IMPLEMENTATION(void UnitTrackerClass::To_PC_Format(), 0x0065D6C0);
+
+DEFINE_IMPLEMENTATION(uint32_t BuildInfoClass::Original_Get_Build_Number(), 0x006860B0);
+DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Number_String(char *, unsigned), 0x00686090);
+DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Builder_Name_String(char *, unsigned), 0x006860C0);
+DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Date_String(char *, unsigned), 0x00686020);
+DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Builder_Initials(char *), 0x006860E0);
+DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Version_String(char *, unsigned), 0x00686110);
 
 
 /**
