@@ -79,6 +79,7 @@
 #include "link.h"
 #include "counter.h"
 #include "housetype.h"
+#include "tracker.h"
 
 
 /**
@@ -832,6 +833,9 @@ DEFINE_IMPLEMENTATION(int HouseTypeClass::Size_Of(bool) const, 0x004CE5B0);
 DEFINE_IMPLEMENTATION(void HouseTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004CE210);
 DEFINE_IMPLEMENTATION(int HouseTypeClass::Get_Heap_ID() const, 0x004CE5C0);
 DEFINE_IMPLEMENTATION(bool HouseTypeClass::Read_INI(CCINIClass &), 0x004CDF50);
+
+DEFINE_IMPLEMENTATION(void Detach_This_From_All(TARGET, bool), 0x006489B0);
+DEFINE_IMPLEMENTATION(void Remove_All_Inactive(), 0x00648CD0);
 
 
 /**
