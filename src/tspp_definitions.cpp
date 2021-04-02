@@ -83,6 +83,7 @@
 #include "unittype.h"
 #include "infantrytype.h"
 #include "aircrafttype.h"
+#include "combat.h"
 
 
 /**
@@ -895,6 +896,13 @@ DEFINE_IMPLEMENTATION(Point3D AircraftTypeClass::Lepton_Dimensions() const, 0x00
 DEFINE_IMPLEMENTATION(bool AircraftTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0040FE40);
 DEFINE_IMPLEMENTATION(ObjectClass *const AircraftTypeClass::Create_One_Of(HouseClass *) const, 0x0040FDA0);
 DEFINE_IMPLEMENTATION(CellStruct *AircraftTypeClass::Occupy_List(bool) const, 0x0040FDD0);
+
+DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType, int), 0x0045EB60);
+DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(CellStruct &), 0x0045EC30);
+DEFINE_IMPLEMENTATION(void Explosion_Damage(const CoordStruct *, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
+DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const CoordStruct *), 0x00460340);
+DEFINE_IMPLEMENTATION(void Do_Flash(int, WarheadTypeClass *, CoordStruct, bool), 0x00460460);
+DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const CoordStruct *, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
 
 
 /**
