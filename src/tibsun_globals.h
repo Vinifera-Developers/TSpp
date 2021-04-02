@@ -66,6 +66,7 @@ class IsometricTileTypeClass;
 class HouseTypeClass;
 class UnitTypeClass;
 class InfantryTypeClass;
+class AircraftTypeClass;
 class CommandClass;
 
 enum KeyNumType;
@@ -119,6 +120,7 @@ extern DynamicVectorClass<IsometricTileTypeClass *> &IsoTileTypes;
 extern DynamicVectorClass<HouseTypeClass *> &HouseTypes;
 extern DynamicVectorClass<UnitTypeClass *> &UnitTypes;
 extern DynamicVectorClass<InfantryTypeClass *> &InfantryTypes;
+extern DynamicVectorClass<AircraftTypeClass *> &AircraftTypes;
 extern DynamicVectorClass<CommandClass *> &Commands;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;

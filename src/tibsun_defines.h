@@ -92,6 +92,14 @@ typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 
+typedef enum AircraftType
+{
+    AIRCRAFT_NONE = -1,
+
+    AIRCRAFT_FIRST = 0
+} AircraftType;
+DEFINE_ENUMERATION_OPERATORS(AircraftType);
+
 typedef enum UnitType
 {
     UNIT_NONE = -1,
