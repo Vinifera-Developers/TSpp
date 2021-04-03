@@ -68,6 +68,7 @@ class UnitTypeClass;
 class InfantryTypeClass;
 class AircraftTypeClass;
 class VoxelAnimTypeClass;
+class WeaponTypeClass;
 class CommandClass;
 
 enum KeyNumType;
@@ -123,6 +124,7 @@ extern DynamicVectorClass<UnitTypeClass *> &UnitTypes;
 extern DynamicVectorClass<InfantryTypeClass *> &InfantryTypes;
 extern DynamicVectorClass<AircraftTypeClass *> &AircraftTypes;
 extern DynamicVectorClass<VoxelAnimTypeClass *> &VoxelAnimTypes;
+extern DynamicVectorClass<WeaponTypeClass *> &WeaponTypes;
 extern DynamicVectorClass<CommandClass *> &Commands;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;

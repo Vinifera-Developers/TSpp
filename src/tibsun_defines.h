@@ -92,6 +92,14 @@ typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 
+typedef enum WeaponType
+{
+    WEAPON_NONE = -1,
+
+    WEAPON_FIRST = 0
+} WeaponType;
+DEFINE_ENUMERATION_OPERATORS(WeaponType);
+
 typedef enum VoxelAnimType
 {
     VOXELANIM_NONE = -1,
@@ -333,6 +341,30 @@ typedef enum RTTIType
     RTTI_FIRST = 0,
 };
 DEFINE_ENUMERATION_OPERATORS(RTTIType);
+
+
+typedef enum ThreatType
+{
+    THREAT_NORMAL = 0x0000,			// Any distance threat scan?
+    THREAT_RANGE = 0x0001,			// Limit scan to weapon range?
+    THREAT_AREA = 0x0002,			// Limit scan to general area (twice weapon range)?
+    THREAT_AIR = 0x0004,			// Scan for air units?
+    THREAT_INFANTRY = 0x0008,		// Scan for infantry units?
+    THREAT_VEHICLES = 0x0010,		// Scan for vehicles?
+    THREAT_BUILDINGS = 0x0020,		// Scan for buildings?
+    THREAT_TIBERIUM = 0x0040,		// Limit scan to Tiberium processing objects?
+    THREAT_BOATS = 0x0080,			// Scan for gunboats?
+    THREAT_CIVILIANS = 0x0100,		// Consider civilians to be primary target?
+    THREAT_CAPTURE = 0x0200,		// Consider capturable buildings only?
+    THREAT_FAKES = 0x0400,			// Consider fake buildings a greater target?
+    THREAT_POWER = 0x0800,			// Consider power generating facilities a greater target?
+    THREAT_FACTORIES = 0x1000,		// Consider factories a greater target?
+    THREAT_BASE_DEFENSE = 0x2000,	// Consider base defense buildings a greater target?
+    THREAT_4000 = 0x4000,
+    THREAT_8000 = 0x8000,
+} ThreatType;
+DEFINE_ENUMERATION_OPERATORS(ThreatType);
+DEFINE_ENUMERATION_BITWISE_OPERATORS(ThreatType);
 
 
 typedef unsigned long LEPTON;
