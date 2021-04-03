@@ -92,6 +92,14 @@ typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 
+typedef enum VoxelAnimType
+{
+    VOXELANIM_NONE = -1,
+
+    VOXELANIM_FIRST = 0
+} VoxelAnimType;
+DEFINE_ENUMERATION_OPERATORS(VoxelAnimType);
+
 typedef enum AircraftType
 {
     AIRCRAFT_NONE = -1,
