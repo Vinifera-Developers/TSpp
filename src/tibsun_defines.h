@@ -92,6 +92,14 @@ typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 typedef enum ThemeType {} ThemeType;
 
+typedef enum BulletType
+{
+    BULLET_NONE = -1,
+
+    BULLET_FIRST = 0
+} BulletType;
+DEFINE_ENUMERATION_OPERATORS(BulletType);
+
 typedef enum WeaponType
 {
     WEAPON_NONE = -1,
