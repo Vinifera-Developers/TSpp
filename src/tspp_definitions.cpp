@@ -88,6 +88,7 @@
 #include "voxelanimtype.h"
 #include "weapontype.h"
 #include "bullettype.h"
+#include "locomotion.h"
 
 
 /**
@@ -953,6 +954,61 @@ DEFINE_IMPLEMENTATION(bool BulletTypeClass::Read_INI(CCINIClass &), 0x00447E70);
 DEFINE_IMPLEMENTATION(CoordStruct BulletTypeClass::Coord_Fixup(CoordStruct *) const, 0x00448340);
 DEFINE_IMPLEMENTATION(bool BulletTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004486F0);
 DEFINE_IMPLEMENTATION(ObjectClass *const BulletTypeClass::Create_One_Of(HouseClass *) const, 0x00448700);
+
+DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
+DEFINE_IMPLEMENTATION(ULONG LocomotionClass::AddRef(), 0x00506480);
+DEFINE_IMPLEMENTATION(ULONG LocomotionClass::Release(), 0x005064A0);
+DEFINE_IMPLEMENTATION(LONG LocomotionClass::IsDirty(), 0x00482280);
+DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::Save(IStream *, BOOL), 0x00506590);
+DEFINE_IMPLEMENTATION(LONG LocomotionClass::GetSizeMax(ULARGE_INTEGER *), 0x00506660);
+LocomotionClass::LocomotionClass() {}
+LocomotionClass::LocomotionClass(const NoInitClass &) {}
+LocomotionClass::~LocomotionClass() {}
+DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::Link_To_Object(void *), 0x00506250);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving(), 0x00506800);
+DEFINE_IMPLEMENTATION(CoordStruct LocomotionClass::Destination(), 0x00506790);
+DEFINE_IMPLEMENTATION(CoordStruct LocomotionClass::Head_To_Coord(), 0x005067C0);
+DEFINE_IMPLEMENTATION(MoveType LocomotionClass::Can_Enter_Cell(CellStruct), 0x00506710);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_To_Have_Shadow(), 0x00506700);
+DEFINE_IMPLEMENTATION(Matrix3D LocomotionClass::Draw_Matrix(int *), 0x00506260);
+DEFINE_IMPLEMENTATION(Matrix3D LocomotionClass::Shadow_Matrix(int *), 0x00506300);
+DEFINE_IMPLEMENTATION(Point2D LocomotionClass::Draw_Point(), 0x005066F0);
+DEFINE_IMPLEMENTATION(Point2D LocomotionClass::Shadow_Point(), 0x005063F0);
+DEFINE_IMPLEMENTATION(VisualType LocomotionClass::Visual_Character(bool), 0x005066E0);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Z_Adjust(), 0x005066C0);
+DEFINE_IMPLEMENTATION(ZGradientType LocomotionClass::Z_Gradient(), 0x5066D0);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Process(), 0x00506780);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Move_To(CoordStruct), 0x00506770);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Stop_Moving(), 0x00506760);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Do_Turn(DirStruct), 0x00506750);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Unlimbo(), 0x00506740);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Tilt_Pitch_AI(), 0x005066B0);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Power_On(), 0x00506420);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Power_Off(), 0x00506440);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Powered(), 0x00506460);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Ion_Sensitive(), 0x00506470);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Push(DirStruct), 0x00506690);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Shove(DirStruct), 0x005066A0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Track(int, CoordStruct), 0x00506730);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Immediate_Destination(CoordStruct), 0x00506720);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Force_New_Slope(int), 0x00506810);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Now(), 0x00483C60);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Apparent_Speed(), 0x00483C60);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Drawing_Code(), 0x00506820);
+DEFINE_IMPLEMENTATION(FireErrorType LocomotionClass::Can_Fire(), 0x00506830);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Status(), 0x004822B0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Acquire_Hunter_Seeker_Target(), 0x004822C0);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Surfacing(), 0x004822D0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Mark_All_Occupation_Bits(int), 0x00483C70);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Here(CoordStruct), 0x00483C80);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Will_Jump_Tracks(), 0x00483C90);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Really_Moving_Now(), 0x004822A0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Stop_Movement_Animation(), 0x004822E0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Lock(), 0x00483CA0);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Unlock(), 0x00483CB0);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Number(), 0x00483CC0);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Index(), 0x00483CD0);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Speed_Accum(), 0x00483CE0);
 
 
 /**

@@ -265,7 +265,82 @@ typedef enum SuperType {} SuperType;
 typedef enum ActionType {} ActionType;
 typedef enum VoxType {} VoxType;
 typedef enum LandType {} LandType;
-typedef enum ArmorType {} ArmorType;
+
+typedef enum FireErrorType
+{
+    FIRE_OK,            // Weapon is allowed to fire.
+    FIRE_AMMO,          // No ammo available to fire?
+    FIRE_FACING,        // Not correctly facing target?
+    FIRE_REARM,         // It is busy rearming?
+    FIRE_ROTATING,      // Is it in process of rotating?
+    FIRE_ILLEGAL,       // Is it targeting something illegal?
+    FIRE_CANT,          // Is this unit one that cannot fire anything?
+    FIRE_MOVING,        // Is it moving and not allowed to fire while moving?
+    FIRE_RANGE,         // Is the target out of range?
+    FIRE_CLOAKED,       // Is the shooter currently cloaked?
+    FIRE_BUSY,          // Is shooter currently doing something else?
+    FIRE_MUST_DEPLOY,   // Must it deploy first before firing?
+
+    FIRE_COUNT,
+
+    FIRE_NONE = -1,
+    FIRE_FIRST = 0
+} FireErrorType;
+
+typedef enum ZGradientType
+{
+    ZGRAD_GROUND,
+    ZGRAD_45DEG,
+    ZGRAD_90DEG,
+    ZGRAD_135DEG,
+
+    ZGRAD_COUNT,
+
+    ZGRAD_NONE = -1,
+    ZGRAD_FIRST = 0
+} ZGradientType;
+
+typedef enum VisualType
+{
+    VISUAL_NORMAL,         // Completely visible -- normal.
+    VISUAL_INDISTINCT,     // The edges shimmer and become indistinct.
+    VISUAL_DARKEN,         // Color and texture is muted along with shimmering.
+    VISUAL_SHADOWY,        // Body is translucent in addition to shimmering.
+    VISUAL_RIPPLE,         // Just a ripple (true predator effect).
+    VISUAL_HIDDEN,         // Nothing at all is visible.
+
+    VISUAL_COUNT,
+
+    VISUAL_NONE = -1,
+    VISUAL_FIRST = 0
+} VisualType;
+
+typedef enum MoveType
+{
+    MOVE_OK,                    // No blockage.
+    MOVE_CLOAK,                 // A cloaked blocking enemy object.
+    MOVE_MOVING_BLOCK,          // Blocked, but only temporarily.
+    MOVE_CLOSED_GATE,
+    MOVE_FRIENDLY_DESTROYABLE,
+    MOVE_DESTROYABLE,           // Enemy unit or building is blocking.
+    MOVE_TEMP,                  // Blocked by friendly unit.
+    MOVE_NO,                    // Strictly prohibited terrain.
+
+    MOVE_COUNT
+} MoveType;
+
+typedef enum ArmorType
+{
+	ARMOR_NONE,
+	ARMOR_WOOD,
+	ARMOR_ALUMINUM,
+	ARMOR_STEEL,
+	ARMOR_CONCRETE,
+
+	ARMOR_COUNT,
+	ARMOR_FIRST = 0
+} ArmorType;
+
 typedef enum MissionType {} MissionType;
 typedef enum WeaponSlotType {} WeaponSlotType;
 
@@ -610,4 +685,15 @@ class xTargetClass
     public:
         int RTTI;
         int ID;
+};
+
+
+typedef struct DirStruct
+{
+} DirStruct;
+
+
+class Matrix3D
+{
+    float Data[12];
 };
