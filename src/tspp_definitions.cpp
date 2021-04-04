@@ -90,6 +90,7 @@
 #include "bullettype.h"
 #include "locomotion.h"
 #include "wsproto.h"
+#include "droppodlocomotion.h"
 
 
 /**
@@ -1030,6 +1031,29 @@ DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Broadcast(void *, int), 0x006A
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Clear_Socket_Error(SOCKET), 0x006A16F0);
 DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Set_Socket_Options(), 0x006A1740);
 DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Get_Host_Name(char *, int) const, 0x006A17D0);
+
+DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x00483AD0);
+DEFINE_IMPLEMENTATION(ULONG DropPodLocomotionClass::AddRef(), 0x00483CF0);
+DEFINE_IMPLEMENTATION(ULONG DropPodLocomotionClass::Release(), 0x00483D00);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE DropPodLocomotionClass::GetClassID(CLSID *), 0x00483860);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Load(IStream *), 0x004838A0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Save(IStream *, BOOL), 0x00483920);
+DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Moving(), 0x00483170);
+DEFINE_IMPLEMENTATION(CoordStruct DropPodLocomotionClass::Destination(), 0x00483180);
+DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Process(), 0x004831B0);
+DEFINE_IMPLEMENTATION(void DropPodLocomotionClass::Move_To(CoordStruct), 0x00483620);
+DEFINE_IMPLEMENTATION(void DropPodLocomotionClass::Stop_Moving(), 0x00483A00);
+DEFINE_IMPLEMENTATION(LayerType DropPodLocomotionClass::In_Which_Layer(), 0x00483B30);
+DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Drawing_Code(), 0x00483C50);
+DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::Begin_Piggyback(ILocomotion *), 0x00483A10);
+DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::End_Piggyback(ILocomotion **), 0x00483A60);
+DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Ok_To_End(), 0x00483AA0);
+DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::Piggyback_CLSID(CLSID *), 0x00483B40);
+DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Piggybacking(), 0x00483D10);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropPodLocomotionClass::DropPodLocomotionClass(), 0x004830F0);
+DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
+DEFINE_IMPLEMENTATION(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
+DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Size_Of(bool) const, 0x00483D30);
 
 
 /**
