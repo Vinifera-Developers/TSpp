@@ -98,6 +98,7 @@
 #include "tactical.h"
 #include "fuse.h"
 #include "overlaytype.h"
+#include "base.h"
 
 
 /**
@@ -1212,6 +1213,22 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const OverlayTypeClass::Get_Image_Data() 
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Draw_It(Point2D &, Rect &, int) const, 0x0058D310);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Init(TheaterType), 0x0058D3A0);
 DEFINE_IMPLEMENTATION(RGBStruct OverlayTypeClass::Get_Radar_Color(int), 0x0058D9D0);
+
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Load(IStream *), 0x0041FB90);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Save(IStream *, BOOL), 0x0041FDB0);
+DEFINE_IMPLEMENTATION(void BaseClass::Compute_CRC(WWCRCEngine &) const, 0x0041FEB0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BaseClass::BaseClass(), 0x0041F4C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BaseClass::BaseClass(const NoInitClass &), 0x0041FF10);
+BaseClass::~BaseClass() {}
+DEFINE_IMPLEMENTATION(bool BaseClass::Is_Built(int) const, 0x0041F550);
+DEFINE_IMPLEMENTATION(BuildingClass * BaseClass::Get_Building(int) const, 0x0041F5D0);
+DEFINE_IMPLEMENTATION(bool BaseClass::Is_Node(const BuildingClass *), 0x0041F750);
+DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(const BuildingClass *), 0x0041F7E0);
+DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(CellStruct &), 0x0041F860);
+DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Next_Buildable(BuildingType), 0x0041F8B0);
+DEFINE_IMPLEMENTATION(int BaseClass::Next_Buildable_Index(BuildingType), 0x0041F8B0);
+DEFINE_IMPLEMENTATION(void BaseClass::Read_INI(CCINIClass &, const char *), 0x0041F970);
+DEFINE_IMPLEMENTATION(void BaseClass::Write_INI(const CCINIClass &, const char *), 0x0041FAC0);
 
 
 /**
