@@ -95,6 +95,7 @@
 #include "matrix3d.h"
 #include "cell.h"
 #include "warheadtype.h"
+#include "tactical.h"
 
 
 /**
@@ -1158,6 +1159,33 @@ DEFINE_IMPLEMENTATION(int WarheadTypeClass::Size_Of(bool) const, 0x0066FA50);
 DEFINE_IMPLEMENTATION(void WarheadTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0066F580);
 DEFINE_IMPLEMENTATION(bool WarheadTypeClass::Read_INI(CCINIClass &), 0x0066F060);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE Tactical::GetClassID(CLSID *), 0x00617EE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE Tactical::Load(IStream *), 0x00617F20);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE Tactical::Save(IStream *, BOOL), 0x00617F80);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Tactical::Tactical(), 0x0060EEC0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Tactical::Tactical(const NoInitClass &), 0x0060F090);
+DEFINE_IMPLEMENTATION(Tactical::~Tactical(), 0x0060F0D0);
+DEFINE_IMPLEMENTATION(void Tactical::Detach(TARGET, bool), 0x00616920);
+DEFINE_IMPLEMENTATION(RTTIType Tactical::Kind_Of() const, 0x00617FF0);
+DEFINE_IMPLEMENTATION(int Tactical::Size_Of(bool) const, 0x00618000);
+DEFINE_IMPLEMENTATION(void Tactical::AI(), 0x0060F960);
+DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0x00617CD0);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const CoordStruct &) const, 0x0060F150);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const CellStruct &) const, 0x0060F270);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const CoordStruct &) const, 0x0060F350);
+DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0() const, 0x0060F3C0);
+DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const CoordStruct &, Point2D &) const, 0x0060F4B0);
+DEFINE_IMPLEMENTATION(CoordStruct Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
+DEFINE_IMPLEMENTATION(CoordStruct Tactical::func_60F740(const Point2D &) const, 0x0060F740);
+DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const CoordStruct &, int), 0x0060F800);
+DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
+DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
+DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);
+DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(CellStruct &, bool), 0x00614F90);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
+DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
+DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
+
 
 /**
  *  Global definitions
@@ -1196,6 +1224,7 @@ WWFontClass *&EditorFont = Make_Global<WWFontClass *>(0x00748214);
 WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
 WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
+Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
 
 
 /**
