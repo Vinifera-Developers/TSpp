@@ -46,6 +46,9 @@ class AbstractClass;
 #define	DESCRIP_MAX	44			// 40 chars + CR + LF + CTRL-Z + NULL
 
 
+#define TARGET_NONE TargetClass()
+
+
 typedef enum WaypointEnum
 {
     WAYPT_HOME = 98,	// Home-cell for this scenario
@@ -514,6 +517,53 @@ typedef struct {
 } TheaterDataType;
 
 
+typedef enum EventType : unsigned char // We need this so the enum only takes up one byte.
+{
+	EMPTY,
+
+    // Public events.
+	POWERON,
+	POWEROFF,
+	ALLY,
+	MEGAMISSION,
+	MEGAMISSION_F,
+	IDLE,
+	SCATTER,
+	DESTRUCT,
+	DEPLOY,
+	PLACE,
+	OPTIONS,
+	GAMESPEED,
+	PRODUCE,
+	SUSPEND,
+	ABANDON,
+	PRIMARY,
+	SPECIAL_PLACE,
+	EXIT,
+	ANIMATION,
+	REPAIR,
+	SELL,
+	SELLCELL,
+	SPECIAL,
+
+	// Private events.
+	FRAMESYNC,
+	MESSAGE,
+	RESPONSE_TIME,
+	FRAMEINFO,
+	SAVEGAME,
+	ARCHIVE,
+	ADDPLAYER,
+	TIMING,
+	PROCESS_TIME,
+	PAGEUSER,
+	REMOVEPLAYER,
+	LATENCYFUDGE,
+
+	LAST_EVENT,
+} EventType;
+
+
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
 
@@ -721,6 +771,21 @@ struct CoordStruct
 };
 
 
+struct xCellStruct
+{
+    int16_t X; // X component of location.
+    int16_t Y; // Y component of location.
+};
+
+
+struct xCoordStruct
+{
+    int32_t X; // X coordinate of the location.
+    int32_t Y; // Y coordinate of the location.
+    int32_t Z; // Z coordinate of the location.
+};
+
+
 struct AbilitiesStruct
 {
     public:
@@ -759,6 +824,18 @@ typedef struct DoInfoStruct
 
 class xTargetClass
 {
+    public:
+        int RTTI;
+        int ID;
+};
+
+
+class TargetClass
+{
+    public:
+        TargetClass() {}
+        ~TargetClass() {}
+
     public:
         int RTTI;
         int ID;
