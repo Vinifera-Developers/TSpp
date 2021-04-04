@@ -57,6 +57,7 @@ class ToolTipManager;
 class VersionClass;
 class CDControlClass;
 class WWFontClass;
+class WinsockInterfaceClass;
 class LightConvertClass;
 class AbstractTypeClass;
 class ObjectTypeClass;
@@ -112,6 +113,7 @@ extern WWFontClass *&Font6Ptr;
 extern WWFontClass *&EditorFont;
 extern WWFontClass *&Font8Ptr;
 extern WWFontClass *&GradFont6Ptr;
+extern WinsockInterfaceClass *&PacketTransport;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

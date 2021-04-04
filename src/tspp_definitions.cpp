@@ -89,6 +89,7 @@
 #include "weapontype.h"
 #include "bullettype.h"
 #include "locomotion.h"
+#include "wsproto.h"
 
 
 /**
@@ -1010,6 +1011,26 @@ DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Number(), 0x00483CC0);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Index(), 0x00483CD0);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Speed_Accum(), 0x00483CE0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WinsockInterfaceClass::WinsockInterfaceClass(), 0x006A0EB0);
+DEFINE_IMPLEMENTATION(WinsockInterfaceClass::~WinsockInterfaceClass(), 0x006A0F60);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Close(), 0x006A0FE0);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Close_Socket(), 0x006A1010);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Start_Listening(), 0x006A1030);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Stop_Listening(), 0x006A1080);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Discard_In_Buffers(), 0x006A10A0);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Discard_Out_Buffers(), 0x006A1110);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Init(), 0x006A1180);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Build_Packet_CRC(WinsockInterfaceClass::WinsockBufferType *), 0x006A1280);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Passes_CRC_Check(WinsockInterfaceClass::WinsockBufferType *) const, 0x006A1300);
+DEFINE_IMPLEMENTATION(WinsockInterfaceClass::WinsockBufferType *WinsockInterfaceClass::Get_New_Out_Buffer(), 0x006A1390);
+DEFINE_IMPLEMENTATION(WinsockInterfaceClass::WinsockBufferType *WinsockInterfaceClass::Get_New_In_Buffer(), 0x006A1430);
+DEFINE_IMPLEMENTATION(int WinsockInterfaceClass::Read(void *, int &, void *, int &), 0x006A14D0);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::WriteTo(void *, int, void *), 0x006A1580);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Broadcast(void *, int), 0x006A1640);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Clear_Socket_Error(SOCKET), 0x006A16F0);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Set_Socket_Options(), 0x006A1740);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Get_Host_Name(char *, int) const, 0x006A17D0);
+
 
 /**
  *  Global definitions
@@ -1047,6 +1068,7 @@ WWFontClass *&Font6Ptr = Make_Global<WWFontClass *>(0x00748220);
 WWFontClass *&EditorFont = Make_Global<WWFontClass *>(0x00748214);
 WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
 WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
+WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
 
 
 /**
