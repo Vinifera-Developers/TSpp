@@ -96,6 +96,7 @@
 #include "cell.h"
 #include "warheadtype.h"
 #include "tactical.h"
+#include "fuse.h"
 
 
 /**
@@ -1185,6 +1186,12 @@ DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(CellStruct &, bool), 0x00614F90)
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(FuseClass::FuseClass(), 0x004E1100);
+FuseClass::FuseClass(const NoInitClass &) {}
+FuseClass::~FuseClass() {}
+DEFINE_IMPLEMENTATION(void FuseClass::Arm_Fuse(CoordStruct &, CoordStruct &, int, int), 0x004E1130);
+DEFINE_IMPLEMENTATION(FuseResultType FuseClass::Fuse_Checkup(CoordStruct &), 0x004E11F0);
 
 
 /**
