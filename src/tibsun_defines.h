@@ -148,7 +148,6 @@ typedef enum HousesType
 } HousesType;
 DEFINE_ENUMERATION_OPERATORS(HousesType);
 
-typedef enum TheaterType {} TheaterType;
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;
 typedef enum CategoryType {} CategoryType;
@@ -227,7 +226,22 @@ DEFINE_ENUMERATION_OPERATORS(MZoneType);
 typedef enum SideType {} SideType;
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
-typedef enum OverlayType {} OverlayType;
+
+typedef enum OverlayType
+{
+    OVERLAY_NONE = -1,
+
+    OVERLAY_FIRST = 0
+} OverlayType;
+DEFINE_ENUMERATION_OPERATORS(OverlayType);
+
+typedef enum AnimType
+{
+    ANIM_NONE = -1,
+
+    ANIM_FIRST = 0
+} AnimType;
+DEFINE_ENUMERATION_OPERATORS(AnimType);
 
 typedef enum WarheadType
 {
@@ -477,6 +491,27 @@ typedef enum ThreatType
 } ThreatType;
 DEFINE_ENUMERATION_OPERATORS(ThreatType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(ThreatType);
+
+typedef enum TheaterType
+{
+    THEATER_TEMPERATE,
+    THEATER_SNOW,
+
+    THEATER_COUNT,
+
+    THEATER_NONE = -1,
+    THEATER_FIRST = 0
+} TheaterType;
+DEFINE_ENUMERATION_OPERATORS(TheaterType);
+
+#define THEATERF_TEMPERATE   (1 << THEATER_TEMPERATE)
+#define THEATERF_SNOW        (1 << THEATER_SNOW)
+
+typedef struct {
+    char Name[16];
+    char Root[10];
+    char Suffix[4];
+} TheaterDataType;
 
 
 typedef unsigned long LEPTON;
