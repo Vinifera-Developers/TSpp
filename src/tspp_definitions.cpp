@@ -102,6 +102,7 @@
 #include "event.h"
 #include "queue.h"
 #include "msgbox.h"
+#include "spotlight.h"
 
 
 /**
@@ -1253,6 +1254,15 @@ DEFINE_IMPLEMENTATION(int WWMessageBox::Process(const char *, const char *, cons
 DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, bool), 0x00572B20);
 DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, bool), 0x00572B70);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(CoordStruct, int), 0x0058DFD0);
+DEFINE_IMPLEMENTATION(SpotlightClass::~SpotlightClass(), 0x0058E050);
+DEFINE_IMPLEMENTATION(void SpotlightClass::Remove_If_Large(), 0x0058E0A0);
+DEFINE_IMPLEMENTATION(void SpotlightClass::AI(), 0x0058E110);
+DEFINE_IMPLEMENTATION(void SpotlightClass::One_Time(), 0x0058E1A0);
+DEFINE_IMPLEMENTATION(void SpotlightClass::Clear_All(), 0x0058E580);
+DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_It(), 0x0058E5D0);
+DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_All(), 0x0058EA20);
+
 
 /**
  *  Global definitions
@@ -1330,6 +1340,7 @@ DynamicVectorClass<WeaponTypeClass *> &WeaponTypes = Make_Global<DynamicVectorCl
 DynamicVectorClass<BulletTypeClass *> &BulletTypes = Make_Global<DynamicVectorClass<BulletTypeClass *>>(0x007E21B8);
 DynamicVectorClass<WarheadTypeClass *> &WarheadTypes = Make_Global<DynamicVectorClass<WarheadTypeClass *>>(0x0074C798);
 DynamicVectorClass<OverlayTypeClass *> &OverlayTypes = Make_Global<DynamicVectorClass<OverlayTypeClass *>>(0x007E22A0);
+DynamicVectorClass<SpotlightClass *> &Spotlights = Make_Global<DynamicVectorClass<SpotlightClass *>>(0x008089A8);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);

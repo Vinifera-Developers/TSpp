@@ -76,6 +76,7 @@ class WeaponTypeClass;
 class BulletTypeClass;
 class WarheadTypeClass;
 class OverlayTypeClass;
+class SpotlightClass;
 class CommandClass;
 class EventClass;
 
@@ -138,6 +139,7 @@ extern DynamicVectorClass<WeaponTypeClass *> &WeaponTypes;
 extern DynamicVectorClass<BulletTypeClass *> &BulletTypes;
 extern DynamicVectorClass<WarheadTypeClass *> &WarheadTypes;
 extern DynamicVectorClass<OverlayTypeClass *> &OverlayTypes;
+extern DynamicVectorClass<SpotlightClass *> &Spotlights;
 extern DynamicVectorClass<CommandClass *> &Commands;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
