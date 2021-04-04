@@ -229,6 +229,14 @@ typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 typedef enum OverlayType {} OverlayType;
 
+typedef enum WarheadType
+{
+    WARHEAD_NONE = -1,
+
+    WARHEAD_FIRST = 0
+} WarheadType;
+DEFINE_ENUMERATION_OPERATORS(WarheadType);
+
 typedef enum AbilityType
 {
     ABILITY_FASTER,

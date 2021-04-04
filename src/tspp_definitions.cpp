@@ -94,6 +94,7 @@
 #include "quat.h"
 #include "matrix3d.h"
 #include "cell.h"
+#include "warheadtype.h"
 
 
 /**
@@ -1145,6 +1146,18 @@ DEFINE_IMPLEMENTATION(void CellClass::Shimmer(), 0x004590C0);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Move(SpeedType, bool, bool, int, MZoneType, int, bool), 0x004590E0);
 DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WarheadTypeClass::GetClassID(CLSID *), 0x0066F6B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WarheadTypeClass::Load(IStream *), 0x0066F6F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WarheadTypeClass::Save(IStream *, BOOL), 0x0066F8A0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WarheadTypeClass::WarheadTypeClass(const char *), 0x0066ED40);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WarheadTypeClass::WarheadTypeClass(const NoInitClass &), 0x0066EF00);
+DEFINE_IMPLEMENTATION(WarheadTypeClass::~WarheadTypeClass(), 0x0066EF60);
+DEFINE_IMPLEMENTATION(void WarheadTypeClass::Detach(TARGET, bool), 0x0066F9A0);
+DEFINE_IMPLEMENTATION(RTTIType WarheadTypeClass::Kind_Of() const, 0x0066FA70);
+DEFINE_IMPLEMENTATION(int WarheadTypeClass::Size_Of(bool) const, 0x0066FA50);
+DEFINE_IMPLEMENTATION(void WarheadTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0066F580);
+DEFINE_IMPLEMENTATION(bool WarheadTypeClass::Read_INI(CCINIClass &), 0x0066F060);
+
 
 /**
  *  Global definitions
@@ -1219,6 +1232,7 @@ DynamicVectorClass<AircraftTypeClass *> &AircraftTypes = Make_Global<DynamicVect
 DynamicVectorClass<VoxelAnimTypeClass *> &VoxelAnimTypes = Make_Global<DynamicVectorClass<VoxelAnimTypeClass *>>(0x007E46F0);
 DynamicVectorClass<WeaponTypeClass *> &WeaponTypes = Make_Global<DynamicVectorClass<WeaponTypeClass *>>(0x0074C828);
 DynamicVectorClass<BulletTypeClass *> &BulletTypes = Make_Global<DynamicVectorClass<BulletTypeClass *>>(0x007E21B8);
+DynamicVectorClass<WarheadTypeClass *> &WarheadTypes = Make_Global<DynamicVectorClass<WarheadTypeClass *>>(0x0074C798);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
