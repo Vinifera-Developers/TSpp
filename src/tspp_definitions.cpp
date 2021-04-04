@@ -101,6 +101,7 @@
 #include "base.h"
 #include "event.h"
 #include "queue.h"
+#include "msgbox.h"
 
 
 /**
@@ -1246,6 +1247,11 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, AnimType, HousesType, CoordStruct *), 0x00493F30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, void *, unsigned long), 0x00494210);
 DEFINE_IMPLEMENTATION(void EventClass::Execute(), 0x00494280);
+
+WWMessageBox::WWMessageBox(int caption) { Caption = caption; }
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(const char *, const char *, const char *, const char *, bool), 0x005727F0);
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, bool), 0x00572B20);
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, bool), 0x00572B70);
 
 
 /**

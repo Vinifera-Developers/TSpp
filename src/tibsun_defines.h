@@ -49,6 +49,10 @@ class AbstractClass;
 #define MAX_EVENTS 64
 
 
+#define TXT_NONE    0
+#define TXT_OK      10
+
+
 #define TARGET_NONE TargetClass()
 
 
