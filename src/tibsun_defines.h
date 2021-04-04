@@ -204,9 +204,30 @@ typedef enum BStateType
 } BStateType;
 
 typedef enum BSizeType {} BSizeType;
-typedef enum MZoneType {} MZoneType;
+
+typedef enum MZoneType
+{
+    MZONE_NORMAL,               // Normal terrestrial objects (can't crush walls).
+    MZONE_CRUSHER,              // Can crush crushable wall types.
+    MZONE_DESTROYER,            // Can destroy walls.
+    MZONE_AMPHIBIOUS_DESTROYER,
+    MZONE_AMPHIBIOUS_CRUSHER,
+    MZONE_AMPHIBIOUS,           // Water based objects.
+    MZONE_SUBTERANNEAN,
+    MZONE_INFANTRY,
+    MZONE_INFANTRY_DESTROYER,
+    MZONE_FLYER,
+    MZONE_COUNT,
+
+    MZONE_NONE = -1,
+    MZONE_FIRST = 0,
+} MZoneType;
+DEFINE_ENUMERATION_OPERATORS(MZoneType);
+
 typedef enum SideType {} SideType;
 typedef enum SourceType {} SourceType;
+typedef enum SmudgeType {} SmudgeType;
+typedef enum OverlayType {} OverlayType;
 
 typedef enum AbilityType
 {
@@ -469,6 +490,19 @@ struct RGBStruct
     unsigned char R;
     unsigned char G;
     unsigned char B;
+};
+#pragma pack()
+
+
+#pragma pack(1)
+struct wRGBStruct
+{
+    bool operator==(const RGBStruct &that) const { return R == that.R && G == that.G && B == that.B; }
+    bool operator!=(const RGBStruct &that) const { return R != that.R && G != that.G && B != that.B; }
+
+    unsigned short R;
+    unsigned short G;
+    unsigned short B;
 };
 #pragma pack()
 

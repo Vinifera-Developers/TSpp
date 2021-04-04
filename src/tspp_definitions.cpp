@@ -93,6 +93,7 @@
 #include "droppodlocomotion.h"
 #include "quat.h"
 #include "matrix3d.h"
+#include "cell.h"
 
 
 /**
@@ -1111,6 +1112,38 @@ DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_1(Vector3 &, Vector3 &, float), 0x0
 DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_2(Vector3 &, Vector3 &, float), 0x00555820);
 DEFINE_IMPLEMENTATION(Matrix3D operator*(const Matrix3D &, const Matrix3D &), 0x00555A90);
 DEFINE_IMPLEMENTATION(Matrix3D func_555D30(Matrix3D &), 0x00555D30);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE CellClass::GetClassID(CLSID *), 0x0045AE50);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CellClass::Load(IStream *), 0x004597E0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CellClass::Save(IStream *, BOOL), 0x00459990);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CellClass::CellClass(), 0x004517C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CellClass::CellClass(const NoInitClass &x), 0x00450F60);
+DEFINE_IMPLEMENTATION(CellClass::~CellClass(), 0x00451750);
+DEFINE_IMPLEMENTATION(RTTIType CellClass::Kind_Of() const, 0x0045D780);
+DEFINE_IMPLEMENTATION(int CellClass::Size_Of(bool) const, 0x0045D790);
+DEFINE_IMPLEMENTATION(CoordStruct CellClass::Center_Coord() const, 0x0045C4E0);
+DEFINE_IMPLEMENTATION(CoordStruct CellClass::entry_5C() const, 0x0045C530);
+DEFINE_IMPLEMENTATION(int CellClass::Get_Height(const CoordStruct &) const, 0x00450F90);
+DEFINE_IMPLEMENTATION(ObjectClass *CellClass::Cell_Find_Object(RTTIType, bool) const, 0x00452110);
+DEFINE_IMPLEMENTATION(ObjectClass *const CellClass::Cell_Object(const Point2D &, bool, ObjectClass *) const, 0x004521D0);
+DEFINE_IMPLEMENTATION(TechnoClass *const CellClass::Cell_Techno(const Point2D &, bool, TechnoClass *) const, 0x00452020);
+DEFINE_IMPLEMENTATION(UnitClass *const CellClass::Cell_Unit(bool) const, 0x00454AC0);
+DEFINE_IMPLEMENTATION(AircraftClass *const CellClass::Cell_Aircraft(bool) const, 0x00454B00);
+DEFINE_IMPLEMENTATION(InfantryClass *const CellClass::Cell_Infantry(bool) const, 0x00454B40);
+DEFINE_IMPLEMENTATION(BuildingClass *const CellClass::Cell_Building(bool) const, 0x00452160);
+DEFINE_IMPLEMENTATION(TerrainClass *const CellClass::Cell_Terrain(bool) const, 0x00452190);
+DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Build(SpeedType, const BuildingTypeClass *, const HouseClass *), 0x00452250);
+DEFINE_IMPLEMENTATION(void CellClass::Occupy_Down(ObjectClass *, bool), 0x00454810);
+DEFINE_IMPLEMENTATION(void CellClass::Occupy_Up(ObjectClass *, bool), 0x004549D0);
+DEFINE_IMPLEMENTATION(CoordStruct CellClass::Cell_Coord() const, 0x00456BA0);
+DEFINE_IMPLEMENTATION(CoordStruct CellClass::Closest_Free_Spot(CoordStruct &, bool, bool) const, 0x00457360);
+DEFINE_IMPLEMENTATION(CellClass &CellClass::Adjacent_Cell(FacingType) const, 0x00457970);
+DEFINE_IMPLEMENTATION(bool CellClass::Goodie_Check(FootClass *), 0x00457C00);
+DEFINE_IMPLEMENTATION(bool CellClass::Flag_Place(HousesType), 0x00459040);
+DEFINE_IMPLEMENTATION(bool CellClass::Flag_Remove(), 0x00459090);
+DEFINE_IMPLEMENTATION(void CellClass::Shimmer(), 0x004590C0);
+DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Move(SpeedType, bool, bool, int, MZoneType, int, bool), 0x004590E0);
+DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
 
 
 /**
