@@ -91,6 +91,7 @@
 #include "locomotion.h"
 #include "wsproto.h"
 #include "droppodlocomotion.h"
+#include "quat.h"
 
 
 /**
@@ -1054,6 +1055,24 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropPodLocomotionClass::DropPodLocomotionClass
 DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
 DEFINE_IMPLEMENTATION(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
 DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Size_Of(bool) const, 0x00483D30);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Quaternion::Quaternion(float, float, float, float), 0x005AFE70);
+DEFINE_IMPLEMENTATION(void Quaternion::Set(float, float, float, float), 0x005AFE90);
+DEFINE_IMPLEMENTATION(void Quaternion::Normalize(), 0x005AFEB0);
+DEFINE_IMPLEMENTATION(void Quaternion::Scale(float), 0x005AFF10);
+DEFINE_IMPLEMENTATION(float & Quaternion::operator[](int), 0x005AFF40);
+DEFINE_IMPLEMENTATION(const float & Quaternion::operator[](int) const, 0x005AFF50);
+DEFINE_IMPLEMENTATION(Quaternion Quaternion::operator=(const Quaternion &), 0x005AFF60);
+DEFINE_IMPLEMENTATION(Quaternion & Quaternion::func_5AFFA0(Quaternion &), 0x005AFFA0);
+DEFINE_IMPLEMENTATION(Quaternion Quaternion_5B0110(Quaternion &, Quaternion &), 0x005B0110);
+DEFINE_IMPLEMENTATION(Quaternion Quaternion_5B0280(Quaternion &, Quaternion &), 0x005B0280);
+DEFINE_IMPLEMENTATION(Quaternion Inverse(const Quaternion &), 0x005B0300);
+DEFINE_IMPLEMENTATION(Quaternion Conjugate(const Quaternion &), 0x005B0350);
+DEFINE_IMPLEMENTATION(Quaternion Trackball(float, float, float, float, float), 0x005B03A0);
+DEFINE_IMPLEMENTATION(Quaternion Axis_To_Quat(const Vector3 &, float), 0x005B06C0);
+DEFINE_IMPLEMENTATION(Quaternion Slerp(Quaternion &, Quaternion &, float), 0x005B07D0);
+DEFINE_IMPLEMENTATION(Quaternion Build_Quaternion(const Matrix3D &), 0x005B0970);
+DEFINE_IMPLEMENTATION(Matrix3D Build_Matrix3D(const Quaternion &), 0x005B0BC0);
 
 
 /**
