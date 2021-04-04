@@ -92,6 +92,7 @@
 #include "wsproto.h"
 #include "droppodlocomotion.h"
 #include "quat.h"
+#include "matrix3d.h"
 
 
 /**
@@ -1073,6 +1074,43 @@ DEFINE_IMPLEMENTATION(Quaternion Axis_To_Quat(const Vector3 &, float), 0x005B06C
 DEFINE_IMPLEMENTATION(Quaternion Slerp(Quaternion &, Quaternion &, float), 0x005B07D0);
 DEFINE_IMPLEMENTATION(Quaternion Build_Quaternion(const Matrix3D &), 0x005B0970);
 DEFINE_IMPLEMENTATION(Matrix3D Build_Matrix3D(const Quaternion &), 0x005B0BC0);
+
+DEFINE_IMPLEMENTATION(Matrix3D::Matrix3D(const Matrix3D &), 0x005546F0);
+DEFINE_IMPLEMENTATION(Matrix3D::Matrix3D(float, float, float, float, float, float, float, float, float, float, float, float), 0x00554740);
+DEFINE_IMPLEMENTATION(void Matrix3D::Set(const Vector3 &, const Vector3 &, const Vector3 &, const Vector3 &), 0x005547A0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Set(float, float), 0x00554800);
+DEFINE_IMPLEMENTATION(void Matrix3D::Set(const Vector3 &, float), 0x00554860);
+DEFINE_IMPLEMENTATION(void Matrix3D::Make_Identity(), 0x00554970);
+DEFINE_IMPLEMENTATION(void Matrix3D::Translate(float, float, float), 0x005549A0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Translate(const Vector3 &), 0x00554A00);
+DEFINE_IMPLEMENTATION(void Matrix3D::Translate_X(float), 0x00554A90);
+DEFINE_IMPLEMENTATION(void Matrix3D::Translate_Y(float), 0x00554AC0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Translate_Z(float), 0x00554AF0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Scale(float), 0x00554B20);
+DEFINE_IMPLEMENTATION(void Matrix3D::Scale(float,float,float), 0x00554B80);
+DEFINE_IMPLEMENTATION(void Matrix3D::Scale_X(float), 0x00554BE0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Scale_Y(float), 0x00554C00);
+DEFINE_IMPLEMENTATION(void Matrix3D::Scale_Z(float), 0x00554C30);
+DEFINE_IMPLEMENTATION(void Matrix3D::Shear_YZ(float, float), 0x00554C60);
+DEFINE_IMPLEMENTATION(void Matrix3D::Shear_XY(float, float), 0x00554CB0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Shear_XZ(float, float), 0x00554D00);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_X(float), 0x00555070);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_X(float, float), 0x00555110);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_Y(float), 0x00555190);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_Y(float, float), 0x00555230);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_Z(float), 0x005552B0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Rotate_Z(float, float), 0x00555350);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_X(), 0x005553D0);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_Y(), 0x00555420);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_Z(), 0x00555470);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_X_Rotation() const, 0x005554C0);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_Y_Rotation() const, 0x00555520);
+DEFINE_IMPLEMENTATION(float Matrix3D::Get_Z_Rotation() const, 0x00555580);
+DEFINE_IMPLEMENTATION(Vector3 Matrix3D::Rotate_Vector(const Vector3 &) const, 0x005555E0);
+DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_1(Vector3 &, Vector3 &, float), 0x00555660);
+DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_2(Vector3 &, Vector3 &, float), 0x00555820);
+DEFINE_IMPLEMENTATION(Matrix3D operator*(const Matrix3D &, const Matrix3D &), 0x00555A90);
+DEFINE_IMPLEMENTATION(Matrix3D func_555D30(Matrix3D &), 0x00555D30);
 
 
 /**

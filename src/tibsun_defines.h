@@ -691,9 +691,3 @@ class xTargetClass
 typedef struct DirStruct
 {
 } DirStruct;
-
-
-class Matrix3D
-{
-    float Data[12];
-};

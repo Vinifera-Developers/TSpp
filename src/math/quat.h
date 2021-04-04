@@ -28,10 +28,8 @@
 #pragma once
 
 #include "vector3.h"
+#include "matrix3d.h"
 #include "wwmath.h"
-
-
-class Matrix3D;
 
 
 class Quaternion

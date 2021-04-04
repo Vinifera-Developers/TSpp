@@ -28,13 +28,13 @@
 #pragma once
 
 #include "always.h"
+#include "matrix3d.h"
 #include <comdef.h>
 #include <unknwn.h>
 
 
 struct CoordStruct;
 class Point2D;
-class Matrix3D;
 struct CellStruct;
 struct DirStruct;
 
