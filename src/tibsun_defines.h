@@ -45,6 +45,9 @@ class AbstractClass;
 // Save filename description.
 #define	DESCRIP_MAX	44			// 40 chars + CR + LF + CTRL-Z + NULL
 
+// This is the max number of events supported in one frame.
+#define MAX_EVENTS 64
+
 
 #define TARGET_NONE TargetClass()
 

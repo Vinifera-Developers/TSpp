@@ -28,8 +28,10 @@
 #pragma once
 
 #include "always.h"
+#include "tibsun_defines.h"
 #include "vector.h"
 #include "search.h"
+#include "queue.h"
 
 
 /**
@@ -75,6 +77,7 @@ class BulletTypeClass;
 class WarheadTypeClass;
 class OverlayTypeClass;
 class CommandClass;
+class EventClass;
 
 enum KeyNumType;
 
@@ -138,3 +141,6 @@ extern DynamicVectorClass<OverlayTypeClass *> &OverlayTypes;
 extern DynamicVectorClass<CommandClass *> &Commands;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
+
+extern QueueClass<EventClass, MAX_EVENTS> &OutList;
+extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;

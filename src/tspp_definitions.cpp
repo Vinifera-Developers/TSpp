@@ -100,6 +100,7 @@
 #include "overlaytype.h"
 #include "base.h"
 #include "event.h"
+#include "queue.h"
 
 
 /**
@@ -1326,3 +1327,6 @@ DynamicVectorClass<OverlayTypeClass *> &OverlayTypes = Make_Global<DynamicVector
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
+
+QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
+QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
