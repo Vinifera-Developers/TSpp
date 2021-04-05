@@ -106,6 +106,7 @@
 #include "gscreen.h"
 #include "crate.h"
 #include "colorscheme.h"
+#include "storage.h"
 
 
 /**
@@ -1324,6 +1325,21 @@ DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C500(HSVClass *, Palett
 DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::Find_Or_Make(const char *, PaletteClass *, PaletteClass *, int), 0x005E27B0);
 DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::As_Pointer(const char *, int), 0x005E2840);
 DEFINE_IMPLEMENTATION(ColorSchemeType ColorScheme::From_Name(const char *, int), 0x005E28A0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(StorageClass::StorageClass(), 0x0060AD60);
+StorageClass::StorageClass(const NoInitClass &noinit) {}
+StorageClass::~StorageClass() {}
+DEFINE_IMPLEMENTATION(int StorageClass::Get_Total_Value() const, 0x0060AD80);
+DEFINE_IMPLEMENTATION(int StorageClass::Get_Total_Amount() const, 0x0060ADB0);
+DEFINE_IMPLEMENTATION(int StorageClass::Get_Amount(TiberiumType) const, 0x0060ADD0);
+DEFINE_IMPLEMENTATION(int StorageClass::Increase_Amount(int, TiberiumType), 0x0060ADE0);
+DEFINE_IMPLEMENTATION(int StorageClass::Decrease_Amount(int, TiberiumType), 0x0060AE00);
+DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator+(StorageClass &) const, 0x0060AE20);
+DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator+=(StorageClass &), 0x0060AE90);
+DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-(StorageClass &) const, 0x0060AEE0);
+DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-=(StorageClass &), 0x0060AF50);
+DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
+
 
 
 /**

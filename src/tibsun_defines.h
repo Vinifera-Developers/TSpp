@@ -39,6 +39,15 @@ class AbstractClass;
  */
 
 
+/**
+ *  #NOTE:
+ *  Some enumerations in this header mirror the object list in RULES.INI. The entries included
+ *  here are for completeness and should *not* be used when fetching a type from the heap.
+ *  If you wish to fetch a type from the heap, use the classes "From_Name" function, as
+ *  it will return a null pointer if not found. Worst case scenario, use "Find_Or_Make".
+ */
+
+
 // Max stored views/bookmarks
 #define VIEW_COUNT 4
 
@@ -397,6 +406,19 @@ typedef enum ArmorType
 typedef enum MissionType {} MissionType;
 typedef enum WeaponSlotType {} WeaponSlotType;
 
+enum TiberiumType
+{
+    TIBERIUM_RIPARIUS,
+    TIBERIUM_CRUENTUS,
+    TIBERIUM_VINIFERA,
+    TIBERIUM_ABOREUS,
+
+    TIBERIUM_COUNT,
+
+    TIBERIUM_NONE = -1,
+    TIBERIUM_FIRST = 0
+};
+DEFINE_ENUMERATION_OPERATORS(TiberiumType);
 
 typedef enum ColorSchemeType
 {
