@@ -57,6 +57,22 @@ class AbstractClass;
 // This is the max number of events supported in one frame.
 #define MAX_EVENTS 64
 
+// Size of the map in cells.
+#define	MAP_CELL_W 512
+#define	MAP_CELL_H 512
+#define	MAP_CELL_TOTAL (MAP_CELL_W * MAP_CELL_H)
+
+// Cell pixel dimensions.
+#define	CELL_PIXEL_W 24
+#define	CELL_PIXEL_H 48
+
+// Sub-cell dimensions.
+#define	CELL_LEPTON_W 256
+#define	CELL_LEPTON_H 256
+
+#define	PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
+#define	PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
+
 
 #define TXT_NONE    0
 #define TXT_OK      10
@@ -103,8 +119,25 @@ typedef enum FacingType
 } FacingType;
 DEFINE_ENUMERATION_OPERATORS(FacingType);
 
+typedef enum DirType
+{
+    DIR_N = 0,          // 0
+    DIR_NE = 1 << 5,    // 32
+    DIR_E = 2 << 5,     // 64
+    DIR_SE = 3 << 5,    // 96
+    DIR_S = 4 << 5,     // 128
+    DIR_SW = 5 << 5,    // 160
+    DIR_W = 6 << 5,     // 192
+    DIR_NW = 7 << 5,    // 224
 
-typedef enum DirType {} DirType;
+    DIR_MIN = 0,
+    DIR_MAX = 255,
+
+    DIR_SW_X1 = DirType((5<<5)-8),  // 152      // Direction of harvester while unloading.
+    DIR_SW_X2 = DirType((5<<5)-16), // 144      // Direction of harvester while unloading.
+} DirType;
+DEFINE_ENUMERATION_OPERATORS(DirType);
+
 typedef enum MPHType {} MPHType;
 typedef enum CrateType {} CrateType;
 typedef enum VocType {} VocType;

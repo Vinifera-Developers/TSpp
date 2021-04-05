@@ -1430,3 +1430,29 @@ IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<Key
 
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
+
+
+/**
+ *  Various global definitions, constants and strings.
+ */
+const CoordStruct AdjacentCoord[FACING_COUNT] = { // 0x007611A8
+    CoordStruct(0,    -256, 0),  // NORTH
+    CoordStruct(256,  -256, 0),  // NORTH EAST
+    CoordStruct(256,  0,    0),  // EAST
+    CoordStruct(256,  256,  0),  // SOUTH EAST
+    CoordStruct(0,    256,  0),  // SOUTH
+    CoordStruct(-256, 256,  0),  // SOUTH WEST
+    CoordStruct(-256, 0,    0),  // WEST
+    CoordStruct(-256, -256, 0),  // NORTH WEST
+};
+
+const CellStruct AdjacentCell[FACING_COUNT] = { // 0x00761148
+    CellStruct(0,  -1),  // NORTH
+    CellStruct(1,  -1),  // NORTH EAST
+    CellStruct(1,  0),   // EAST
+    CellStruct(1,  1),   // SOUTH EAST
+    CellStruct(0,  1),   // SOUTH
+    CellStruct(-1, 1),   // SOUTH WEST
+    CellStruct(-1, 0),   // WEST
+    CellStruct(-1, -1),  // NORTH WEST
+};
