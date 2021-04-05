@@ -45,6 +45,7 @@ class BuildingTypeClass;
 class FoggedObjectClass;
 class LightConvertClass;
 class TagClass;
+class TiberiumClass;
 
 
 class DECLSPEC_UUID("C1BF99CE-1A8C-11D2-8175-006008055BB5")
@@ -61,6 +62,11 @@ CellClass : public AbstractClass
          */
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+
+        /**
+         *  IRTTITypeInfo
+         */
+        IFACEMETHOD_(int, What_Am_I)();
 
     public:
         CellClass();
@@ -82,7 +88,7 @@ CellClass : public AbstractClass
         // 00451900
         // 00451AF0
         ObjectClass *Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
-        ObjectClass *const Cell_Object(const Point2D &xy = Point2D(), bool a2 = false, ObjectClass *a3 = nullptr) const;
+        ObjectClass *const Cell_Object(const Point2D &xy = Point2D(), bool a2 = false) const;
         TechnoClass *const Cell_Techno(const Point2D &xy = Point2D(), bool a2 = false, TechnoClass *a3 = nullptr) const;
         UnitClass *const Cell_Unit(bool a2 = false) const;
         AircraftClass *const Cell_Aircraft(bool a2 = false) const;
@@ -92,7 +98,7 @@ CellClass : public AbstractClass
         bool Is_Clear_To_Build(SpeedType loco, const BuildingTypeClass *buildtype = nullptr, const HouseClass *house = nullptr);
         // 004526A0
         // 004531A0
-        // 00453240
+        void Recalc_Attributes(int level = -1);
         // 00453CF0
         // 00453FB0
         // 004543E0
@@ -112,30 +118,29 @@ CellClass : public AbstractClass
         // 00456420
         // 004564D0
         // 00456690
-        // 004567A0
+        void Wall_Update(bool a1 = false);
         CoordStruct Cell_Coord() const;
-        // 00456BF0
-        // 00456E90
-        // 00457280
-        // 00457310
+        int Reduce_Tiberium(int levels);
+        int Reduce_Wall(int damage);
+        bool Is_Spot_Free(int spot_index, bool a2 = false) const;
         CoordStruct Closest_Free_Spot(CoordStruct &coord, bool a2 = false, bool a3 = false) const;
         // 00457600
         // 00457650
-        // 004577D0
+        void Incoming(CoordStruct &threat = CoordStruct(), bool forced = false, bool no_kidding = false, bool a4 = false);
         CellClass &Adjacent_Cell(FacingType facing) const;
-        // 004579D0
-        // 00457A50
+        void Adjust_Threat(HousesType house, int threat_value);
+        long Tiberium_Adjust(bool pre_game = false);
         bool Goodie_Check(FootClass *object = nullptr);
         bool Flag_Place(HousesType house);
         bool Flag_Remove();
         void Shimmer();
-        bool Is_Clear_To_Move(SpeedType loco, bool ignoreinfantry = false, bool ignorevehicles = false, int zone = -1, MZoneType check = MZONE_NORMAL, int cell_level = -1, bool a7 = true);
-        // 00459240
-        // 00459250
-        // 00459300
-        // 004593C0
-        // 004594D0
-        // 004596C0
+        bool Is_Clear_To_Move(SpeedType loco, bool ignore_infantry = false, bool ignore_vehicles = false, int zone = -1, MZoneType check = MZONE_NORMAL, int cell_level = -1, bool a7 = true);
+        bool Is_Bridge_Here() const;
+        bool Can_Tiberium_Grow() const;
+        bool Can_Tiberium_Spread() const; 
+        bool Grow_Tiberium();
+        bool Spread_Tiberium(bool forced = false);
+        bool Can_Tiberium_Germinate(TiberiumClass *tiberium = nullptr) const;
         // 00459A00
         // 00459B80
         // 00459D90
@@ -155,7 +160,7 @@ CellClass : public AbstractClass
         // 0045AC70
         // 0045ACB0
         // 0045ACD0
-        // 0045AD80
+        void Detach(TARGET target);
         // 0045AE90
         void Attach_Tag(TagClass *tag);
         // 0045AF20
@@ -207,6 +212,8 @@ CellClass : public AbstractClass
         // 0045D720
 
         LandType Land_Type() const { return Land; }
+
+        static int Spot_Index(CoordStruct &coord);
 
     public:
         CellStruct Pos;
