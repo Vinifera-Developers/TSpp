@@ -402,6 +402,7 @@ typedef enum ColorSchemeType
 {
     COLORSCHEME_NONE = 0
 } ColorSchemeType;
+DEFINE_ENUMERATION_OPERATORS(ColorSchemeType);
 
 
 typedef enum RTTIType

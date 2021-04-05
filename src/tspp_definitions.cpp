@@ -105,6 +105,7 @@
 #include "spotlight.h"
 #include "gscreen.h"
 #include "crate.h"
+#include "colorscheme.h"
 
 
 /**
@@ -1313,6 +1314,16 @@ bool CrateClass::Is_Valid() const { return Cell.X > 0 && Cell.Y > 0; }
 DEFINE_IMPLEMENTATION(bool CrateClass::Put_Crate(CellStruct &), 0x00470950);
 DEFINE_IMPLEMENTATION(bool CrateClass::Get_Crate(CellStruct &), 0x00470B60);
 void CrateClass::Make_Invalid() { Cell = CellStruct(-1, -1); Timer.Stop(); }
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(), 0x005E2430);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(const char *, HSVClass *, PaletteClass *, PaletteClass *, int), 0x005E24F0);
+DEFINE_IMPLEMENTATION(ColorScheme::~ColorScheme(), 0x005E26C0);
+DEFINE_IMPLEMENTATION(void ColorScheme::func_5E2650(PaletteClass *, PaletteClass *, int, int, int), 0x005E2650);
+DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C3B0(HSVClass *, PaletteClass *, PaletteClass *, PaletteClass *, Surface *, int, int, int, int, bool *), 0x005E2190);
+DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C500(HSVClass *, PaletteClass *, PaletteClass *, Surface *, PaletteClass *), 0x005E22E0);
+DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::Find_Or_Make(const char *, PaletteClass *, PaletteClass *, int), 0x005E27B0);
+DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::As_Pointer(const char *, int), 0x005E2840);
+DEFINE_IMPLEMENTATION(ColorSchemeType ColorScheme::From_Name(const char *, int), 0x005E28A0);
 
 
 /**
