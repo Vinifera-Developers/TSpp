@@ -103,6 +103,7 @@
 #include "queue.h"
 #include "msgbox.h"
 #include "spotlight.h"
+#include "gscreen.h"
 
 
 /**
@@ -1280,6 +1281,26 @@ DEFINE_IMPLEMENTATION(void SpotlightClass::Clear_All(), 0x0058E580);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_It(), 0x0058E5D0);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_All(), 0x0058EA20);
 
+DEFINE_IMPLEMENTATION(HRESULT GScreenClass::QueryInterface(REFIID, LPVOID *), 0x004B9390);
+DEFINE_IMPLEMENTATION(ULONG GScreenClass::AddRef(), 0x00402AD0);
+DEFINE_IMPLEMENTATION(ULONG GScreenClass::Release(), 0x00402AE0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(GScreenClass::GScreenClass(), 0x004B9370);
+GScreenClass::GScreenClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006D1A5C; }
+GScreenClass::~GScreenClass() {}
+DEFINE_IMPLEMENTATION(void GScreenClass::One_Time(), 0x004B93F0);
+DEFINE_IMPLEMENTATION(void GScreenClass::Init_Theater(TheaterType), 0x004B9400);
+DEFINE_IMPLEMENTATION(void GScreenClass::Init_Clear(), 0x004B9420);
+DEFINE_IMPLEMENTATION(void GScreenClass::Init_IO(), 0x004B9430);
+DEFINE_IMPLEMENTATION(void GScreenClass::Input(KeyNumType &, int &, int &), 0x004B9470);
+DEFINE_IMPLEMENTATION(void GScreenClass::AI(KeyNumType &, Point2D &), 0x004B9A70);
+DEFINE_IMPLEMENTATION(void GScreenClass::Add_A_Button(GadgetClass &), 0x004B9540);
+DEFINE_IMPLEMENTATION(void GScreenClass::Remove_A_Button(GadgetClass &), 0x004B9580);
+DEFINE_IMPLEMENTATION(void GScreenClass::Flag_To_Redraw(bool), 0x004B9440);
+DEFINE_IMPLEMENTATION(void GScreenClass::Render(), 0x004B95A0);
+DEFINE_IMPLEMENTATION(void GScreenClass::Draw_It(bool), 0x0047C180);
+DEFINE_IMPLEMENTATION(void GScreenClass::Blit_Display(), 0x004B96B0);
+DEFINE_IMPLEMENTATION(void GScreenClass::Blit(bool, Surface *, int), 0x004B96C0);
+
 
 /**
  *  Global definitions
@@ -1319,6 +1340,7 @@ WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
 WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
 Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
+GadgetClass *&GScreenClass::Buttons = Make_Global<GadgetClass *>(0x007E4ABC);
 
 
 /**
