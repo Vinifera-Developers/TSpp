@@ -104,6 +104,7 @@
 #include "msgbox.h"
 #include "spotlight.h"
 #include "gscreen.h"
+#include "crate.h"
 
 
 /**
@@ -1300,6 +1301,18 @@ DEFINE_IMPLEMENTATION(void GScreenClass::Render(), 0x004B95A0);
 DEFINE_IMPLEMENTATION(void GScreenClass::Draw_It(bool), 0x0047C180);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit_Display(), 0x004B96B0);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit(bool, Surface *, int), 0x004B96C0);
+
+CrateClass::CrateClass() : Timer(), Cell(-1, -1) {}
+CrateClass::~CrateClass() {}
+void CrateClass::Init() { Make_Invalid(); }
+DEFINE_IMPLEMENTATION(bool CrateClass::Create_Crate(CellStruct &), 0x00470820);
+bool CrateClass::Is_Here(CellStruct &cell) const { return Is_Valid() && cell == Cell; }
+DEFINE_IMPLEMENTATION(bool CrateClass::Remove_It(), 0x004707B0);
+bool CrateClass::Is_Expired() const { return Is_Valid() && Timer.Expired(); }
+bool CrateClass::Is_Valid() const { return Cell.X > 0 && Cell.Y > 0; }
+DEFINE_IMPLEMENTATION(bool CrateClass::Put_Crate(CellStruct &), 0x00470950);
+DEFINE_IMPLEMENTATION(bool CrateClass::Get_Crate(CellStruct &), 0x00470B60);
+void CrateClass::Make_Invalid() { Cell = CellStruct(-1, -1); Timer.Stop(); }
 
 
 /**
