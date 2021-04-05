@@ -108,6 +108,7 @@
 #include "colorscheme.h"
 #include "storage.h"
 #include "scenarioini.h"
+#include "map.h"
 
 
 /**
@@ -1344,6 +1345,42 @@ DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
 DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD4C0);
 DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 
+DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(CellStruct), 0x0050F1B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(), 0x0050EAD0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(const NoInitClass &), 0x0050EBE0);
+DEFINE_IMPLEMENTATION(MapClass::~MapClass(), 0x0050ED30);
+DEFINE_IMPLEMENTATION(void MapClass::One_Time(), 0x0050F2E0);
+DEFINE_IMPLEMENTATION(void MapClass::Init_Clear(), 0x0050F4D0);
+DEFINE_IMPLEMENTATION(void MapClass::Alloc_Cells(), 0x0050F590);
+DEFINE_IMPLEMENTATION(void MapClass::Free_Cells(), 0x0050F5F0);
+DEFINE_IMPLEMENTATION(void MapClass::Init_Cells(), 0x0050F6B0);
+DEFINE_IMPLEMENTATION(void MapClass::Detach(TARGET, bool), 0x0051DE80);
+DEFINE_IMPLEMENTATION(bool MapClass::entry_64() const, 0x0047C190);
+DEFINE_IMPLEMENTATION(void MapClass::Logic(), 0x00514300);
+DEFINE_IMPLEMENTATION(void MapClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x0050F700);
+DEFINE_IMPLEMENTATION(void MapClass::entry_70(), 0x00510A20);
+DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const CellStruct &), 0x0050F280);
+DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const CellStruct &) const, 0x0050F280);
+DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const CoordStruct &), 0x0050F210);
+DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const CoordStruct &) const, 0x0050F210);
+DEFINE_IMPLEMENTATION(void MapClass::Sight_From(CellStruct &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(void MapClass::Place_Down(CellStruct &, ObjectClass *), 0x00511070);
+DEFINE_IMPLEMENTATION(void MapClass::Pick_Up(CellStruct &, ObjectClass *), 0x005111B0);
+DEFINE_IMPLEMENTATION(long MapClass::Overpass(), 0x005112F0);
+DEFINE_IMPLEMENTATION(int MapClass::Cell_Region(CellStruct &), 0x00514460);
+DEFINE_IMPLEMENTATION(int MapClass::Cell_Threat(CellStruct &, HouseClass *), 0x00514490);
+DEFINE_IMPLEMENTATION(bool MapClass::Place_Random_Crate(), 0x00514500);
+DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(CellStruct &), 0x005145D0);
+DEFINE_IMPLEMENTATION(int MapClass::MapClass::Validate(), 0x005147E0);
+DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(CoordStruct &) const, 0x005147F0);
+DEFINE_IMPLEMENTATION(CellStruct MapClass::Nearby_Location(CellStruct &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, CellStruct) const, 0x005161A0);
+DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(CellStruct &, HousesType &, ZoneType &) const, 0x00516CB0);
+DEFINE_IMPLEMENTATION(const CellStruct MapClass::Pick_Random_Location(), 0x0051DFB0);
+DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
+DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellStruct &, bool) const, 0x0051E380);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CoordStruct &) const, 0x0051E510);
 
 
 /**

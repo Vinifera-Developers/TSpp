@@ -275,6 +275,20 @@ typedef enum MZoneType
 } MZoneType;
 DEFINE_ENUMERATION_OPERATORS(MZoneType);
 
+typedef enum ZoneType
+{
+    ZONE_CORE,		// Center of base.
+    ZONE_NORTH,		// North section.
+    ZONE_EAST,		// East section.
+    ZONE_SOUTH,		// South section.
+    ZONE_WEST,		// West section.
+
+    ZONE_COUNT,
+    ZONE_NONE = -1,
+    ZONE_FIRST = 0
+} ZoneType;
+DEFINE_ENUMERATION_OPERATORS(ZoneType);
+
 typedef enum SideType {} SideType;
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
@@ -974,6 +988,49 @@ class TargetClass
     public:
         int RTTI;
         int ID;
+};
+
+
+class ZoneConnectionClass
+{
+    public:
+        bool operator==(const ZoneConnectionClass &src) const { return false; }
+        bool operator!=(const ZoneConnectionClass &src) const { return true; }
+
+    public:
+        CellStruct field_0;
+        CellStruct field_4;
+        bool field_8;
+        int field_A;
+};
+
+
+struct SubzoneConnectionStruct
+{
+    bool operator==(const SubzoneConnectionStruct &src) const { return false; }
+    bool operator!=(const SubzoneConnectionStruct &src) const { return true; }
+
+    int field_4;
+    int field_8;
+};
+
+
+struct SubzoneTrackingStruct
+{
+    bool operator==(const SubzoneTrackingStruct &src) const { return false; }
+    bool operator!=(const SubzoneTrackingStruct &src) const { return true; }
+
+    // TODO
+};
+
+
+struct CrackedIceStruct
+{
+    bool operator==(const CrackedIceStruct &src) const { return false; }
+    bool operator!=(const CrackedIceStruct &src) const { return true; }
+
+    int field_0; // cell number?
+    int field_4; // cracking frame?
 };
 
 

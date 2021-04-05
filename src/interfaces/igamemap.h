@@ -44,5 +44,5 @@ DECLARE_INTERFACE_IID_(IGameMap, IUnknown, "96F02EC7-6FE8-11D1-B6FD-00A024DDAFD1
     /**
      *  Is location visible?
      */
-    STDMETHOD_(BOOL, Is_Visible)(CellStruct &cell) PURE;
+    STDMETHOD_(BOOL, Is_Visible)(CellStruct cell) PURE;
 };
