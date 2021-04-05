@@ -121,7 +121,24 @@ GlobDirectories(GLOB COMMON_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src)
 GlobHeaders(GLOB_RECURSE COMMON_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/src)
 GlobSources(GLOB_RECURSE COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-	
+
+################################################################################
+# Embed some git version information in the binary.
+################################################################################
+message(STATUS "Fetching the repository git information.")
+
+# Locate git binary to provide information to the build environment.
+# find_package(Git) # Removed, GitWatcher does this quietly.
+
+# The following two defines are automatically picked up by GitWatcher.
+set(GIT_PRE_CONFIGURE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp_gitinfo.cpp.in")
+set(GIT_POST_CONFIGURE_FILE "${CMAKE_CURRENT_BINARY_DIR}/generated/tspp_gitinfo.cpp")
+
+include(GitWatcher)
+GitWatcher_SetupInitial()  # Running the script function again forces the file to be
+					       # created locally so the file can be added to the filters.
+
+
 ################################################################################
 # Setup project IDE filters.
 ################################################################################
@@ -129,6 +146,9 @@ if(MSVC OR CMAKE_GENERATOR STREQUAL "Xcode")
 	message(STATUS "Setting up project file filters.")
 	include(ProjectFilters)
 	SetupProjectFilters("TS++" ${COMMON_HEADERS} ${COMMON_SOURCES})
+	
+	# Filter the configured git version source file manually.
+	SetCustomProjectFilters("Generated Files" ${GIT_POST_CONFIGURE_FILE})
 endif()
 
 
@@ -139,11 +159,15 @@ message(STATUS "Configuring static library for TS++.")
 
 add_library(${PROJECT_NAME} STATIC
 	${COMMON_HEADERS} ${COMMON_SOURCES}
+	${GIT_POST_CONFIGURE_FILE} # Configured git version info source file.
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
 	${COMMON_INCLUDE_DIRS}
 )
+
+# Make build check state of git to check for uncommitted changes.
+add_dependencies(${PROJECT_NAME} check_git)
 
 # Set the custom project name.
 set_target_properties("${PROJECT_NAME}" PROPERTIES PROJECT_LABEL "TS++")

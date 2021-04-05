@@ -1,0 +1,87 @@
+/*******************************************************************************
+/*                     O P E N  S O U R C E  --  T S + +                      **
+/*******************************************************************************
+ *
+ *  @project       TS++
+ *
+ *  @file          TSPP_GITINFO.CPP
+ *
+ *  @authors       OmniBlade, CCHyper
+ *
+ *  @brief         Globals for accessing git version information from the build system.
+ *
+ *  @license       TS++ is free software: you can redistribute it and/or
+ *                 modify it under the terms of the GNU General Public License
+ *                 as published by the Free Software Foundation, either version
+ *                 3 of the License, or (at your option) any later version.
+ *
+ *                 TS++ is distributed in the hope that it will be
+ *                 useful, but WITHOUT ANY WARRANTY; without even the implied
+ *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ *                 PURPOSE. See the GNU General Public License for more details.
+ *
+ *                 You should have received a copy of the GNU General Public
+ *                 License along with this program.
+ *                 If not, see <http://www.gnu.org/licenses/>.
+ *
+ ******************************************************************************/
+#include "tspp_gitinfo.h"
+#include <cstdio>
+
+
+/**
+ *  #WARNING:
+ *  This file is automatically populated by the CMake, do not edit!
+ */
+ 
+
+const char *TSPP_Git_Hash()
+{
+	return "@GIT_HEAD_SHA1@";
+}
+
+
+const char *TSPP_Git_Hash_Short()
+{
+	return "@GIT_HEAD_SHORT_SHA1@";
+}
+
+
+const char *TSPP_Git_Author()
+{
+	return "@GIT_AUTHOR_NAME@";
+}
+
+
+const char *TSPP_Git_Branch()
+{
+	return "@GIT_BRANCH@";
+}
+
+
+const char *TSPP_Git_DateTime()
+{
+	return "@GIT_COMMIT_DATE_ISO8601@";
+}
+
+
+bool TSPP_Git_Uncommitted_Changes()
+{
+	return @GIT_IS_DIRTY@;
+}
+
+
+const char *TSPP_Git_Version_String()
+{
+	static char _buffer[1024];
+	static bool _onetime = false;
+
+	if (!_onetime) {
+		std::snprintf(_buffer, sizeof(_buffer), "%s %s %s%s %s",
+			TSPP_Git_Branch(), TSPP_Git_Author(),
+			TSPP_Git_Uncommitted_Changes() ? "~" : "", TSPP_Git_Hash_Short(), TSPP_Git_DateTime());
+		_onetime = true;
+	}
+
+	return _buffer;
+}
