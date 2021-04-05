@@ -107,6 +107,7 @@
 #include "crate.h"
 #include "colorscheme.h"
 #include "storage.h"
+#include "scenarioini.h"
 
 
 /**
@@ -1339,6 +1340,9 @@ DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator+=(StorageClass &), 0x0
 DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-(StorageClass &) const, 0x0060AEE0);
 DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-=(StorageClass &), 0x0060AF50);
 DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
+
+DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 
 
 
