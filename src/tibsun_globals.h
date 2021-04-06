@@ -67,6 +67,7 @@ class TechnoTypeClass;
 class BuildingTypeClass;
 class IsometricTileTypeClass;
 class Tactical;
+class LogicClass;
 class HouseTypeClass;
 class UnitTypeClass;
 class InfantryTypeClass;
@@ -122,6 +123,7 @@ extern WWFontClass *&Font8Ptr;
 extern WWFontClass *&GradFont6Ptr;
 extern WinsockInterfaceClass *&PacketTransport;
 extern Tactical *&TacticalMap;
+extern LogicClass *&Logic;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

@@ -110,6 +110,7 @@
 #include "scenarioini.h"
 #include "map.h"
 #include "layer.h"
+#include "logic.h"
 
 
 /**
@@ -1392,6 +1393,17 @@ DEFINE_IMPLEMENTATION(void LayerClass::Sort(), 0x004FCDF0);
 DEFINE_IMPLEMENTATION(bool LayerClass::Sorted_Add(ObjectClass const *), 0x004FCE50);
 void LayerClass::Remove(ObjectClass *object) { DynamicVectorClass<ObjectClass *>::Delete(object); }
 
+LogicClass::LogicClass() : LayerClass() { *((unsigned long *)this) = (unsigned long)0x006CA704; }
+LogicClass::~LogicClass() {}
+DEFINE_IMPLEMENTATION(bool LogicClass::Submit(ObjectClass const *, bool), 0x00507600);
+DEFINE_IMPLEMENTATION(void LogicClass::Init(), 0x00402480);
+DEFINE_IMPLEMENTATION(void LogicClass::One_Time(), 0x00402490);
+DEFINE_IMPLEMENTATION(void LogicClass::Detach(TARGET, bool), 0x00507400);
+DEFINE_IMPLEMENTATION(void LogicClass::AI(), 0x00506AB0);
+DEFINE_IMPLEMENTATION(void LogicClass::func_507210(), 0x00507210);
+DEFINE_IMPLEMENTATION(void LogicClass::Remove(ObjectClass *const), 0x00507630);
+DEFINE_IMPLEMENTATION(void LogicClass::func_507470(), 0x00507470);
+
 
 /**
  *  Global definitions
@@ -1432,6 +1444,7 @@ WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
 Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
 GadgetClass *&GScreenClass::Buttons = Make_Global<GadgetClass *>(0x007E4ABC);
+LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
 
 
 /**
