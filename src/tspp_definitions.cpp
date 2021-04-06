@@ -117,6 +117,7 @@
 #include "credits.h"
 #include "radar.h"
 #include "power.h"
+#include "sidebar.h"
 
 
 /**
@@ -259,6 +260,7 @@ DEFINE_IMPLEMENTATION(bool CDFileClass::Find_Next_File(char *), 0x00450C80);
 DEFINE_IMPLEMENTATION(void CDFileClass::Find_Close(), 0x00450CF0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(), 0x005C4350);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(const NoInitClass &), 0x005C3E00);
 DEFINE_IMPLEMENTATION(RulesClass::~RulesClass(), 0x005C59B0);
 DEFINE_IMPLEMENTATION(void RulesClass::Process(CCINIClass &), 0x005C6710);
 DEFINE_IMPLEMENTATION(void RulesClass::Initialize(CCINIClass &), 0x005C6130);
@@ -1456,10 +1458,10 @@ DEFINE_IMPLEMENTATION(void DisplayClass::One_Time(), 0x00475C80);
 DEFINE_IMPLEMENTATION(void DisplayClass::Init_Clear(), 0x00475D20);
 DEFINE_IMPLEMENTATION(void DisplayClass::Init_IO(), 0x00475D90);
 DEFINE_IMPLEMENTATION(void DisplayClass::AI(KeyNumType &, Point2D &), 0x00476930);
-DEFINE_IMPLEMENTATION(void DisplayClass::Load(IStream *), 0x0047B1E0);
-DEFINE_IMPLEMENTATION(void DisplayClass::Save(IStream *), 0x0047B1B0);
+DEFINE_IMPLEMENTATION(HRESULT DisplayClass::Load(IStream *), 0x0047B1E0);
+DEFINE_IMPLEMENTATION(HRESULT DisplayClass::Save(IStream *), 0x0047B1B0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Read_INI(CCINIClass &), 0x00479C10);
-DEFINE_IMPLEMENTATION(void DisplayClass::Help_Text(int), 0x0047AF20);
+DEFINE_IMPLEMENTATION(const char *DisplayClass::Help_Text(int), 0x0047AF20);
 DEFINE_IMPLEMENTATION(void DisplayClass::entry_84(), 0x0047B170);
 DEFINE_IMPLEMENTATION(void DisplayClass::Abort_Drag_Select(), 0x0047C070);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(CellStruct &, HouseClass *), 0x00476AB0);
@@ -1520,8 +1522,8 @@ DEFINE_IMPLEMENTATION(void RadarClass::AI(KeyNumType &, Point2D &), 0x005B9130);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_It(bool), 0x005B8CD0);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x005B9580);
 DEFINE_IMPLEMENTATION(void RadarClass::entry_70(), 0x005B99D0);
-DEFINE_IMPLEMENTATION(void RadarClass::Load(IStream *), 0x005BBBE0);
-DEFINE_IMPLEMENTATION(void RadarClass::Save(IStream *), 0x005BBDA0);
+DEFINE_IMPLEMENTATION(HRESULT RadarClass::Load(IStream *), 0x005BBBE0);
+DEFINE_IMPLEMENTATION(HRESULT RadarClass::Save(IStream *), 0x005BBDA0);
 DEFINE_IMPLEMENTATION(void RadarClass::entry_84(), 0x005B9980);
 DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(CellStruct &, HouseClass *), 0x005B9110);
 DEFINE_IMPLEMENTATION(void RadarClass::entry_C0(CellStruct &), 0x005B9060);
@@ -1540,9 +1542,67 @@ DEFINE_IMPLEMENTATION(void PowerClass::One_Time(), 0x005AB0D0);
 DEFINE_IMPLEMENTATION(void PowerClass::Init_Clear(), 0x005AB050);
 DEFINE_IMPLEMENTATION(void PowerClass::AI(KeyNumType &, Point2D &), 0x005AB7C0);
 DEFINE_IMPLEMENTATION(void PowerClass::Draw_It(bool), 0x005AB460);
-DEFINE_IMPLEMENTATION(void PowerClass::Help_Text(int), 0x005ABD50);
+DEFINE_IMPLEMENTATION(const char *PowerClass::Help_Text(int), 0x005ABD50);
 DEFINE_IMPLEMENTATION(void PowerClass::entry_84(), 0x005ABCC0);
 DEFINE_IMPLEMENTATION(void PowerClass::Init_For_House(), 0x005AB0E0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::SidebarClass(), 0x005F2330);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::SidebarClass(const NoInitClass &), 0x005F2510);
+SidebarClass::~SidebarClass() {}
+DEFINE_IMPLEMENTATION(void SidebarClass::One_Time(), 0x005F2610);
+DEFINE_IMPLEMENTATION(void SidebarClass::Init_Clear(), 0x005F2660);
+DEFINE_IMPLEMENTATION(void SidebarClass::Init_IO(), 0x005F2720);
+DEFINE_IMPLEMENTATION(void SidebarClass::AI(KeyNumType &, Point2D &), 0x005F3C70);
+DEFINE_IMPLEMENTATION(void SidebarClass::Draw_It(bool), 0x005F3560);
+DEFINE_IMPLEMENTATION(HRESULT SidebarClass::Load(IStream *), 0x005F68A0);
+DEFINE_IMPLEMENTATION(HRESULT SidebarClass::Save(IStream *), 0x005F68B0);
+DEFINE_IMPLEMENTATION(const char *SidebarClass::Help_Text(int), 0x005F6620);
+DEFINE_IMPLEMENTATION(void SidebarClass::entry_84(), 0x005F6080);
+DEFINE_IMPLEMENTATION(void SidebarClass::Init_For_House(), 0x005F2900);
+// 005F25E0
+DEFINE_IMPLEMENTATION(void SidebarClass::Reload_Sidebar(), 0x005F2B00);
+DEFINE_IMPLEMENTATION(int SidebarClass::Which_Column(RTTIType), 0x005F2C30);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Factory_Link(FactoryClass *, RTTIType, int), 0x005F2C50);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Activate_Repair(int), 0x005F2CD0);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Activate_Upgrade(int), 0x005F2D40);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Activate_Demolish(int), 0x005F2DB0);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Add(RTTIType, int), 0x005F2E20);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Scroll(bool, int), 0x005F2E90);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Scroll_Page(bool, int), 0x005F30F0);
+// 005F38C0
+DEFINE_IMPLEMENTATION(void SidebarClass::Recalc(), 0x005F3E20);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Activate(int), 0x005F3E60);
+DEFINE_IMPLEMENTATION(bool SidebarClass::Abandon_Production(RTTIType, FactoryClass *), 0x005F5F70);
+SidebarClass::StripClass::SelectClass::SelectClass() : ControlClass(0, 0, 0, (OBJECT_WIDTH - 1), OBJECT_HEIGHT, LEFTPRESS|RIGHTPRESS|LEFTUP), Strip(0), Index(0) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
+SidebarClass::StripClass::SelectClass::SelectClass(const NoInitClass &x) : ControlClass(x) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::One_Time(int), 0x005F4210);
+DEFINE_IMPLEMENTATION(ShapeFileStruct const * SidebarClass::StripClass::Get_Special_Cameo(SpecialWeaponType), 0x005F4230);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_Clear(), 0x005F4260);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_IO(int), 0x005F42A0);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Activate(), 0x005F4450);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Deactivate(), 0x005F4560);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Add(RTTIType, int), 0x005F4630);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Scroll(bool), 0x005F46B0);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Scroll_Page(bool), 0x005F4760);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Flag_To_Redraw(), 0x005F48F0);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::AI(KeyNumType &, Point2D &), 0x005F4910);
+DEFINE_IMPLEMENTATION(const char *SidebarClass::StripClass::Help_Text(int), 0x005F4E40);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Draw_It(bool), 0x005F4F10);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Recalc(), 0x005F5610);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Factory_Link(FactoryClass *, RTTIType, int), 0x005F5F10);
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Abandon_Production(FactoryClass *), 0x005F5FB0);
+// 005F6030
+// 005F6080
+// 005F6620
+// 005F6670
+// 005F66E0
+DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::SelectClass::Action(unsigned, KeyNumType &), 0x005F59A0);
+DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::SelectClass::Set_Owner(StripClass &, int), 0x005F5980);
+SidebarClass::StripClass::StripClass() : StageClass() {}
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::StripClass::StripClass(const InitClass &), 0x005F4180);
+SidebarClass::StripClass::StripClass(const NoInitClass &x) : StageClass(x) {}
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::SBGadgetClass::SBGadgetClass(), 0x005F2310);
+DEFINE_IMPLEMENTATION(bool SidebarClass::SBGadgetClass::Action(unsigned, KeyNumType &), 0x005F5EF0);
 
 
 /**

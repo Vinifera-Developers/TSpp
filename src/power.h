@@ -49,7 +49,7 @@ class PowerClass : public RadarClass
         /**
          *  DisplayClass
          */
-		virtual void Help_Text(int text) override;
+		virtual const char *Help_Text(int text) override;
         virtual void entry_84() override;
 
 		/**

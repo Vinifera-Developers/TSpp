@@ -32,7 +32,8 @@
 #include "typelist.h"
 
 
-class IStream;
+class NoInitClass;
+struct IStream;
 class CCINIClass;
 class UnitTypeClass;
 class BuildingTypeClass;
@@ -71,6 +72,7 @@ class RulesClass
 {
     public:
         RulesClass();
+        RulesClass(const NoInitClass &x);
         ~RulesClass();
 
         void Process(CCINIClass &ini);

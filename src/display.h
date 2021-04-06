@@ -53,10 +53,10 @@ class DisplayClass : public MapClass
 		virtual void Init_IO() override;
 		virtual void AI(KeyNumType &input, Point2D &xy) override;
 
-		virtual void Load(IStream *pStm);
-		virtual void Save(IStream *pStm);
+		virtual HRESULT Load(IStream *pStm);
+		virtual HRESULT Save(IStream *pStm);
 		virtual void Read_INI(CCINIClass &ini);
-		virtual void Help_Text(int text);
+		virtual const char *Help_Text(int text);
         virtual void entry_84();
         virtual void Abort_Drag_Select();
 		virtual bool Map_Cell(CellStruct &cell, HouseClass *house);
