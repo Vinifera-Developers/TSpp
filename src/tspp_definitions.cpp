@@ -116,6 +116,7 @@
 #include "display.h"
 #include "credits.h"
 #include "radar.h"
+#include "power.h"
 
 
 /**
@@ -1531,6 +1532,17 @@ DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
 DEFINE_IMPLEMENTATION(bool RadarClass::RTacticalClass::Action(unsigned, KeyNumType &), 0x005B9190);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(PowerClass::PowerClass(), 0x005AAFD0);
+PowerClass::PowerClass(const NoInitClass &x) {}
+PowerClass::~PowerClass() {}
+DEFINE_IMPLEMENTATION(void PowerClass::One_Time(), 0x005AB0D0);
+DEFINE_IMPLEMENTATION(void PowerClass::Init_Clear(), 0x005AB050);
+DEFINE_IMPLEMENTATION(void PowerClass::AI(KeyNumType &, Point2D &), 0x005AB7C0);
+DEFINE_IMPLEMENTATION(void PowerClass::Draw_It(bool), 0x005AB460);
+DEFINE_IMPLEMENTATION(void PowerClass::Help_Text(int), 0x005ABD50);
+DEFINE_IMPLEMENTATION(void PowerClass::entry_84(), 0x005ABCC0);
+DEFINE_IMPLEMENTATION(void PowerClass::Init_For_House(), 0x005AB0E0);
 
 
 /**
