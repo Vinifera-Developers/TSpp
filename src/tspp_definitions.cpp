@@ -109,6 +109,7 @@
 #include "storage.h"
 #include "scenarioini.h"
 #include "map.h"
+#include "layer.h"
 
 
 /**
@@ -1381,6 +1382,15 @@ DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellStruct &, bool) const, 0x0051E380);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CoordStruct &) const, 0x0051E510);
+
+LayerClass::LayerClass() : DynamicVectorClass() { *((unsigned long *)this) = (unsigned long)0x006CDAE0; }
+LayerClass::~LayerClass() {}
+DEFINE_IMPLEMENTATION(bool LayerClass::Submit(ObjectClass const *, bool), 0x004FCD70);
+DEFINE_IMPLEMENTATION(void LayerClass::Init(), 0x00402480);
+DEFINE_IMPLEMENTATION(void LayerClass::One_Time(), 0x00402490);
+DEFINE_IMPLEMENTATION(void LayerClass::Sort(), 0x004FCDF0);
+DEFINE_IMPLEMENTATION(bool LayerClass::Sorted_Add(ObjectClass const *), 0x004FCE50);
+void LayerClass::Remove(ObjectClass *object) { DynamicVectorClass<ObjectClass *>::Delete(object); }
 
 
 /**
