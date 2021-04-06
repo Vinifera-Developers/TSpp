@@ -115,6 +115,7 @@
 #include "control.h"
 #include "display.h"
 #include "credits.h"
+#include "radar.h"
 
 
 /**
@@ -1509,6 +1510,28 @@ void CreditClass::Update(bool, bool) {}
 DEFINE_IMPLEMENTATION(void CreditClass::Graphic_Logic(bool), 0x00471460);
 DEFINE_IMPLEMENTATION(void CreditClass::AI(bool), 0x004715F0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarClass::RadarClass(), 0x005B8830);
+RadarClass::RadarClass(const NoInitClass &) {}
+DEFINE_IMPLEMENTATION(RadarClass::~RadarClass(), 0x005B8AC0);
+DEFINE_IMPLEMENTATION(void RadarClass::One_Time(), 0x005B8B90);
+DEFINE_IMPLEMENTATION(void RadarClass::Init_Clear(), 0x005B8C50);
+DEFINE_IMPLEMENTATION(void RadarClass::AI(KeyNumType &, Point2D &), 0x005B9130);
+DEFINE_IMPLEMENTATION(void RadarClass::Draw_It(bool), 0x005B8CD0);
+DEFINE_IMPLEMENTATION(void RadarClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x005B9580);
+DEFINE_IMPLEMENTATION(void RadarClass::entry_70(), 0x005B99D0);
+DEFINE_IMPLEMENTATION(void RadarClass::Load(IStream *), 0x005BBBE0);
+DEFINE_IMPLEMENTATION(void RadarClass::Save(IStream *), 0x005BBDA0);
+DEFINE_IMPLEMENTATION(void RadarClass::entry_84(), 0x005B9980);
+DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(CellStruct &, HouseClass *), 0x005B9110);
+DEFINE_IMPLEMENTATION(void RadarClass::entry_C0(CellStruct &), 0x005B9060);
+DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(CoordStruct &), 0x005B95A0);
+DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
+DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(CellStruct &) const, 0x005B95C0);
+DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
+DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
+RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
+DEFINE_IMPLEMENTATION(bool RadarClass::RTacticalClass::Action(unsigned, KeyNumType &), 0x005B9190);
+
 
 /**
  *  Global definitions
@@ -1573,6 +1596,7 @@ GadgetClass *&GadgetClass::Focused = Make_Global<GadgetClass *>(0x007B3390);
 char *&GadgetClass::GadgetColorScheme = Make_Global<char *>(0x006FB4FC);
 DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass>(0x007A2268);
 LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
+RadarClass::RTacticalClass &RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
 
 
 /**
