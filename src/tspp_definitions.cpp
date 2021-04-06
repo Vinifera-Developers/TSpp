@@ -114,6 +114,7 @@
 #include "gadget.h"
 #include "control.h"
 #include "display.h"
+#include "credits.h"
 
 
 /**
@@ -1500,6 +1501,13 @@ DEFINE_IMPLEMENTATION(ObjectClass *DisplayClass::Following_What() const, 0x0047C
 DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass *), 0x0047C0E0);
 DisplayClass::TacticalClass::TacticalClass() : GadgetClass(0, 0, 0, 0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS|RIGHTRELEASE|RIGHTHELD, true) { *((unsigned long *)this) = (unsigned long)0x006CDB08; }
 DEFINE_IMPLEMENTATION(bool DisplayClass::TacticalClass::Action(unsigned, KeyNumType &), 0x00477C10);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CreditClass::CreditClass(), 0x00471440);
+CreditClass::CreditClass(const NoInitClass &x) {}
+CreditClass::~CreditClass() {}
+void CreditClass::Update(bool, bool) {}
+DEFINE_IMPLEMENTATION(void CreditClass::Graphic_Logic(bool), 0x00471460);
+DEFINE_IMPLEMENTATION(void CreditClass::AI(bool), 0x004715F0);
 
 
 /**
