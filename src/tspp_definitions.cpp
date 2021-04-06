@@ -111,6 +111,7 @@
 #include "map.h"
 #include "layer.h"
 #include "logic.h"
+#include "gadget.h"
 
 
 /**
@@ -1404,6 +1405,37 @@ DEFINE_IMPLEMENTATION(void LogicClass::func_507210(), 0x00507210);
 DEFINE_IMPLEMENTATION(void LogicClass::Remove(ObjectClass *const), 0x00507630);
 DEFINE_IMPLEMENTATION(void LogicClass::func_507470(), 0x00507470);
 
+GadgetClass::GadgetClass() : X(0), Y(0), Width(0), Height(0), IsToRepaint(false), IsSticky(false), IsDisabled(false), Flags(0) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(int, int, int, int, unsigned, bool), 0x004A9BF0);
+GadgetClass::GadgetClass(const NoInitClass &x) : LinkClass(x) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(const GadgetClass &), 0x004A9C40);
+DEFINE_IMPLEMENTATION(GadgetClass::~GadgetClass(), 0x004A9C90);
+DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Get_Next() const, 0x004A9D90);
+DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Get_Prev() const, 0x004A9DA0);
+DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Remove(), 0x004A9D70);
+DEFINE_IMPLEMENTATION(KeyNumType GadgetClass::Input(), 0x004A9E70);
+DEFINE_IMPLEMENTATION(void GadgetClass::Draw_All(bool), 0x004A9E40);
+DEFINE_IMPLEMENTATION(void GadgetClass::Delete_List(), 0x004A9DB0);
+DEFINE_IMPLEMENTATION(ControlClass *GadgetClass::Extract_Gadget(unsigned), 0x004AA070);
+DEFINE_IMPLEMENTATION(void GadgetClass::Flag_List_To_Redraw(), 0x0045DFA0);
+DEFINE_IMPLEMENTATION(void GadgetClass::Disable(), 0x004A9D60);
+DEFINE_IMPLEMENTATION(void GadgetClass::Enable(), 0x004A9D50);
+DEFINE_IMPLEMENTATION(unsigned GadgetClass::Get_ID() const, 0x0047C150);
+DEFINE_IMPLEMENTATION(void GadgetClass::Flag_To_Redraw(), 0x004AA0B0);
+DEFINE_IMPLEMENTATION(void GadgetClass::Peer_To_Peer(unsigned, KeyNumType &, ControlClass &), 0x00463B50);
+DEFINE_IMPLEMENTATION(void GadgetClass::Set_Focus(), 0x004AA0F0);
+DEFINE_IMPLEMENTATION(void GadgetClass::Clear_Focus(), 0x004AA120);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Has_Focus(), 0x004AA140);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Is_List_To_Redraw(), 0x004AA150);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Is_To_Redraw(), 0x0045DFB0);
+DEFINE_IMPLEMENTATION(void GadgetClass::Set_Position(int, int), 0x004AA170);
+DEFINE_IMPLEMENTATION(void GadgetClass::Set_Size(int, int), 0x004AA190);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Draw_Me(bool), 0x004A9E20);
+DEFINE_IMPLEMENTATION(void GadgetClass::Sticky_Process(unsigned), 0x004AA0C0);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Action(unsigned, KeyNumType &), 0x004A9E00);
+DEFINE_IMPLEMENTATION(bool GadgetClass::Clicked_On(KeyNumType &, unsigned, int, int), 0x004A9CF0);
+DEFINE_IMPLEMENTATION(ColorSchemeType GadgetClass::Get_Color_Scheme(), 0x004A9BD0);
+
 
 /**
  *  Global definitions
@@ -1443,7 +1475,6 @@ WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
 WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
 Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
-GadgetClass *&GScreenClass::Buttons = Make_Global<GadgetClass *>(0x007E4ABC);
 LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
 
 
@@ -1462,6 +1493,11 @@ unsigned short &DSurface::ColorDarkGrey = Make_Global<unsigned short>(0x007A2CA4
 int &DSurface::RGBPixelFormat = Make_Global<int>(0x006F9808);
 bool &DSurface::AllowStretchBlits = Make_Global<bool>(0x007A2CA6);
 bool &DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);
+GadgetClass *&GScreenClass::Buttons = Make_Global<GadgetClass *>(0x007E4ABC);
+GadgetClass *&GadgetClass::StuckOn = Make_Global<GadgetClass *>(0x007B3388);
+GadgetClass *&GadgetClass::LastList = Make_Global<GadgetClass *>(0x007B338C);
+GadgetClass *&GadgetClass::Focused = Make_Global<GadgetClass *>(0x007B3390);
+char *&GadgetClass::GadgetColorScheme = Make_Global<char *>(0x006FB4FC);
 
 
 /**
