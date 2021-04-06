@@ -113,6 +113,7 @@
 #include "logic.h"
 #include "gadget.h"
 #include "control.h"
+#include "display.h"
 
 
 /**
@@ -258,8 +259,8 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(), 0x005C4350);
 DEFINE_IMPLEMENTATION(RulesClass::~RulesClass(), 0x005C59B0);
 DEFINE_IMPLEMENTATION(void RulesClass::Process(CCINIClass &), 0x005C6710);
 DEFINE_IMPLEMENTATION(void RulesClass::Initialize(CCINIClass &), 0x005C6130);
-DEFINE_IMPLEMENTATION(void RulesClass::Code_Pointers(IStream *), 0x005CE410);
-DEFINE_IMPLEMENTATION(void RulesClass::Decode_Pointers(IStream *), 0x005CEA60);
+DEFINE_IMPLEMENTATION(void RulesClass::Save(IStream *), 0x005CE410);
+DEFINE_IMPLEMENTATION(void RulesClass::Load(IStream *), 0x005CEA60);
 DEFINE_IMPLEMENTATION(int RulesClass::Get_Art_Unique_ID(), 0x005D1B00);
 DEFINE_IMPLEMENTATION(int RulesClass::Get_AI_Unique_ID(), 0x005D1BE0);
 DEFINE_IMPLEMENTATION(void RulesClass::Load_Art_INI(), 0x005D1C10);
@@ -560,7 +561,7 @@ DEFINE_IMPLEMENTATION(bool CCINIClass::Put_BSizeType(const char *, const char *,
 DEFINE_IMPLEMENTATION(MZoneType CCINIClass::Get_MZoneType(const char *, const char *, const MZoneType), 0x0044AB80);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_MZoneType(const char *, const char *, MZoneType), 0x0044ABF0);
 DEFINE_IMPLEMENTATION(ActionType CCINIClass::Get_ActionType(const char *, const char *, const ActionType), 0x0044AC20);
-DEFINE_IMPLEMENTATION(SuperType CCINIClass::Get_SuperType(const char *, const char *, const SuperType), 0x0044AC90);
+DEFINE_IMPLEMENTATION(SpecialWeaponType CCINIClass::Get_SpecialWeaponType(const char *, const char *, const SpecialWeaponType), 0x0044AC90);
 DEFINE_IMPLEMENTATION(VoxType CCINIClass::Get_VoxType(const char *, const char *, const VoxType), 0x0044ACE0);
 DEFINE_IMPLEMENTATION(RTTIType CCINIClass::Get_RTTIType(const char *, const char *, const RTTIType), 0x0044AD50);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_RTTIType(const char *, const char *, RTTIType), 0x0044AD90);
@@ -1445,6 +1446,61 @@ DEFINE_IMPLEMENTATION(bool ControlClass::Draw_Me(bool), 0x00463B20);
 DEFINE_IMPLEMENTATION(unsigned ControlClass::Get_ID() const, 0x00463B10);
 DEFINE_IMPLEMENTATION(bool ControlClass::Action(unsigned, KeyNumType &), 0x00463AA0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DisplayClass::DisplayClass(), 0x00475BA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DisplayClass::DisplayClass(const NoInitClass &), 0x005F6950);
+DisplayClass::~DisplayClass() {}
+DEFINE_IMPLEMENTATION(void DisplayClass::One_Time(), 0x00475C80);
+DEFINE_IMPLEMENTATION(void DisplayClass::Init_Clear(), 0x00475D20);
+DEFINE_IMPLEMENTATION(void DisplayClass::Init_IO(), 0x00475D90);
+DEFINE_IMPLEMENTATION(void DisplayClass::AI(KeyNumType &, Point2D &), 0x00476930);
+DEFINE_IMPLEMENTATION(void DisplayClass::Load(IStream *), 0x0047B1E0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Save(IStream *), 0x0047B1B0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Read_INI(CCINIClass &), 0x00479C10);
+DEFINE_IMPLEMENTATION(void DisplayClass::Help_Text(int), 0x0047AF20);
+DEFINE_IMPLEMENTATION(void DisplayClass::entry_84(), 0x0047B170);
+DEFINE_IMPLEMENTATION(void DisplayClass::Abort_Drag_Select(), 0x0047C070);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(CellStruct &, HouseClass *), 0x00476AB0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::entry_90(CellStruct &, HouseClass *), 0x00476EB0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::entry_94(CellStruct &, HouseClass *), 0x00477130);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Scroll_Map(DirType, int &, bool), 0x00476A60);
+DEFINE_IMPLEMENTATION(void DisplayClass::Set_View_Dimensions(Rect &), 0x00475DC0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Put_Place_Back(TechnoClass *), 0x00402AF0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Press(Point2D &), 0x00477D20);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Press(Point2D &), 0x004791E0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Up(CellStruct &, bool, ObjectClass *, ActionType, bool), 0x00477E60);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Held(Point2D &), 0x00479250);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Release(Point2D &, CellStruct &, ObjectClass *, ActionType, bool), 0x00478880);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Up(Point2D &), 0x00477D30);
+DEFINE_IMPLEMENTATION(void DisplayClass::Set_Cursor_Shape(CellStruct const *), 0x00476040);
+DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Set_Cursor_Pos(CellStruct &), 0x00476490);
+DEFINE_IMPLEMENTATION(wDimensionStruct DisplayClass::Get_Occupy_Dimensions(CellStruct const *) const, 0x004767D0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Cursor_Mark(CellStruct &, bool), 0x00476880);
+DEFINE_IMPLEMENTATION(void DisplayClass::Submit(ObjectClass const *), 0x00476950);
+DEFINE_IMPLEMENTATION(void DisplayClass::Remove(ObjectClass const *), 0x004769A0);
+DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Cell_Object(CellStruct &, Point2D &), 0x00477370);
+DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Next_Object(ObjectClass *) const, 0x00477390);
+DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Prev_Object(ObjectClass *) const, 0x00477430);
+DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Calculated_Cell(SourceType, CellStruct &, CellStruct &, SpeedType, bool, MZoneType) const, 0x004774C0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Good_Reinforcement_Cell(CellStruct &, CellStruct &, SpeedType, int, MZoneType) const, 0x00477B40);
+DEFINE_IMPLEMENTATION(void DisplayClass::Sell_Mode_Control(int), 0x004794E0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Waypoint_Mode_Control(int, bool), 0x00479580);
+DEFINE_IMPLEMENTATION(void DisplayClass::Power_Mode_Control(int), 0x00479690);
+DEFINE_IMPLEMENTATION(void DisplayClass::Repair_Mode_Control(int), 0x00479730);
+DEFINE_IMPLEMENTATION(CoordStruct DisplayClass::Closest_Free_Spot(CoordStruct &, bool) const, 0x004797D0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Is_Spot_Free(CoordStruct &, bool) const, 0x00479850);
+DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Shadow(), 0x00479880);
+DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Fog(), 0x00479970);
+DEFINE_IMPLEMENTATION(void DisplayClass::Fog_Cell(CellStruct &), 0x00479A00);
+DEFINE_IMPLEMENTATION(void DisplayClass::Shroud_Cell(CellStruct &), 0x00479B40);
+DEFINE_IMPLEMENTATION(void DisplayClass::Write_INI(CCINIClass &), 0x0047A540);
+DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
+DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(CoordStruct &, LEPTON), 0x0047AAF0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Compute_Start_Pos(), 0x0047ACD0);
+DEFINE_IMPLEMENTATION(ObjectClass *DisplayClass::Following_What() const, 0x0047C0C0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass *), 0x0047C0E0);
+DisplayClass::TacticalClass::TacticalClass() : GadgetClass(0, 0, 0, 0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS|RIGHTRELEASE|RIGHTHELD, true) { *((unsigned long *)this) = (unsigned long)0x006CDB08; }
+DEFINE_IMPLEMENTATION(bool DisplayClass::TacticalClass::Action(unsigned, KeyNumType &), 0x00477C10);
+
 
 /**
  *  Global definitions
@@ -1507,6 +1563,8 @@ GadgetClass *&GadgetClass::StuckOn = Make_Global<GadgetClass *>(0x007B3388);
 GadgetClass *&GadgetClass::LastList = Make_Global<GadgetClass *>(0x007B338C);
 GadgetClass *&GadgetClass::Focused = Make_Global<GadgetClass *>(0x007B3390);
 char *&GadgetClass::GadgetColorScheme = Make_Global<char *>(0x006FB4FC);
+DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass>(0x007A2268);
+LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
 
 
 /**

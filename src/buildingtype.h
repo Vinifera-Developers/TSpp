@@ -210,8 +210,8 @@ BuildingTypeClass : public TechnoTypeClass
         bool IsHelipad;
         bool IsGDIBarracks;
         bool IsNODBarracks;
-        SuperType SuperWeapon;
-        SuperType SuperWeapon2;
+        SpecialWeaponType SuperWeapon;
+        SpecialWeaponType SuperWeapon2;
         int GateStages;
         int PowersUpToLevel;
         char VoxelBarrelFile[12 + 4];

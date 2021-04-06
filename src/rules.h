@@ -76,8 +76,8 @@ class RulesClass
         void Process(CCINIClass &ini);
         void Initialize(CCINIClass &ini);
 
-        void Code_Pointers(IStream *pStm);
-        void Decode_Pointers(IStream *pStm);
+        void Save(IStream *pStm);
+        void Load(IStream *pStm);
 
         static int Get_Art_Unique_ID();
         static int Get_AI_Unique_ID();

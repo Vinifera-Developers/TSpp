@@ -370,7 +370,7 @@ typedef enum SpeedType
 } SpeedType;
 
 typedef enum PrerequisiteType {} PrerequisiteType;
-typedef enum SuperType {} SuperType;
+typedef enum SpecialWeaponType {} SpecialWeaponType;
 typedef enum ActionType {} ActionType;
 typedef enum VoxType {} VoxType;
 typedef enum LandType {} LandType;
@@ -932,6 +932,13 @@ struct xCoordStruct
     int32_t X; // X coordinate of the location.
     int32_t Y; // Y coordinate of the location.
     int32_t Z; // Z coordinate of the location.
+};
+
+
+struct wDimensionStruct
+{
+    int16_t W;
+    int16_t H;
 };
 
 
