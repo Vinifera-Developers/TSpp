@@ -112,6 +112,7 @@
 #include "layer.h"
 #include "logic.h"
 #include "gadget.h"
+#include "control.h"
 
 
 /**
@@ -1435,6 +1436,14 @@ DEFINE_IMPLEMENTATION(void GadgetClass::Sticky_Process(unsigned), 0x004AA0C0);
 DEFINE_IMPLEMENTATION(bool GadgetClass::Action(unsigned, KeyNumType &), 0x004A9E00);
 DEFINE_IMPLEMENTATION(bool GadgetClass::Clicked_On(KeyNumType &, unsigned, int, int), 0x004A9CF0);
 DEFINE_IMPLEMENTATION(ColorSchemeType GadgetClass::Get_Color_Scheme(), 0x004A9BD0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ControlClass::ControlClass(unsigned, int, int, int, int, unsigned, bool), 0x00463A20);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ControlClass::ControlClass(const ControlClass &), 0x00463A70);
+ControlClass::ControlClass(const NoInitClass &x) : GadgetClass(x) { *((unsigned long *)this) = (unsigned long)0x006CD1AC; }
+DEFINE_IMPLEMENTATION(void ControlClass::Make_Peer(GadgetClass &), 0x00463B00);
+DEFINE_IMPLEMENTATION(bool ControlClass::Draw_Me(bool), 0x00463B20);
+DEFINE_IMPLEMENTATION(unsigned ControlClass::Get_ID() const, 0x00463B10);
+DEFINE_IMPLEMENTATION(bool ControlClass::Action(unsigned, KeyNumType &), 0x00463AA0);
 
 
 /**
