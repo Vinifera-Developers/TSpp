@@ -118,6 +118,7 @@
 #include "radar.h"
 #include "power.h"
 #include "sidebar.h"
+#include "tab.h"
 
 
 /**
@@ -1603,6 +1604,18 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::StripClass::StripClass(const Ini
 SidebarClass::StripClass::StripClass(const NoInitClass &x) : StageClass(x) {}
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::SBGadgetClass::SBGadgetClass(), 0x005F2310);
 DEFINE_IMPLEMENTATION(bool SidebarClass::SBGadgetClass::Action(unsigned, KeyNumType &), 0x005F5EF0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TabClass::TabClass(), 0x0060E3F0);
+TabClass::TabClass(const NoInitClass &x) : SidebarClass(x) { *((unsigned long *)this) = (unsigned long)0x006D46B0; }
+TabClass::~TabClass() {}
+DEFINE_IMPLEMENTATION(void TabClass::One_Time(), 0x0060EA80);
+DEFINE_IMPLEMENTATION(void TabClass::AI(KeyNumType &, Point2D &), 0x0060E980);
+DEFINE_IMPLEMENTATION(void TabClass::Draw_It(bool), 0x0060E440);
+DEFINE_IMPLEMENTATION(void TabClass::Init_For_House(), 0x0060EA90);
+DEFINE_IMPLEMENTATION(void TabClass::Set_Active(int), 0x0060EA60);
+DEFINE_IMPLEMENTATION(void TabClass::Flash_Money(), 0x0060EAC0);
+DEFINE_IMPLEMENTATION(void TabClass::Draw_Credits_Tab(), 0x0060E690);
+DEFINE_IMPLEMENTATION(void TabClass::Hilite_Tab(int), 0x0060E8B0);
 
 
 /**
