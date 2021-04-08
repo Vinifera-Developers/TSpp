@@ -125,6 +125,7 @@
 #include "drawshape.h"
 #include "base64.h"
 #include "lcw.h"
+#include "fetchres.h"
 
 
 /**
@@ -1664,6 +1665,9 @@ DEFINE_IMPLEMENTATION(int Base64_Decode(const void *, int, void *, int), 0x00420
 
 DEFINE_IMPLEMENTATION(int __fastcall LCW_Compress(void const *, void *, int), 0x004FD210);
 DEFINE_IMPLEMENTATION(int __fastcall LCW_Uncompress(void const *, void *, unsigned long), 0x004FD020);
+
+DEFINE_IMPLEMENTATION(const char *Fetch_String(ULONG), 0x00472350);
+DEFINE_IMPLEMENTATION(HGLOBAL Fetch_Resource(const char *, const char *), 0x00472490);
 
 
 /**
