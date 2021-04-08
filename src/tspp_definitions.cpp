@@ -121,6 +121,7 @@
 #include "tab.h"
 #include "scroll.h"
 #include "mouse.h"
+#include "playmovie.h"
 
 
 /**
@@ -1646,6 +1647,12 @@ DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame(MouseType, bool) const, 0x
 DEFINE_IMPLEMENTATION(Point2D MouseClass::Get_Mouse_Hotspot(MouseType) const, 0x00562310);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Start_Frame(MouseType) const, 0x00563220);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame_Count(MouseType) const, 0x00563240);
+
+DEFINE_IMPLEMENTATION(void Play_Movie(const char *, ThemeType, bool, bool, bool), 0x00563670);
+DEFINE_IMPLEMENTATION(void Play_Movie(VQType, ThemeType, bool, bool), 0x005639A0);
+DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char *, ThemeType), 0x005638A0);
+DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
+DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 
 
 /**

@@ -142,7 +142,14 @@ typedef enum MPHType {} MPHType;
 typedef enum CrateType {} CrateType;
 typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
-typedef enum ThemeType {} ThemeType;
+
+typedef enum ThemeType
+{
+    THEME_NONE = -1,
+
+    THEME_FIRST = 0
+} ThemeType;
+DEFINE_ENUMERATION_OPERATORS(ThemeType);
 
 typedef enum BulletType
 {
