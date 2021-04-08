@@ -80,6 +80,7 @@ class WarheadTypeClass;
 class OverlayTypeClass;
 class SpotlightClass;
 class CommandClass;
+struct VQHandle;
 class EventClass;
 
 enum KeyNumType;
@@ -145,6 +146,7 @@ extern DynamicVectorClass<WarheadTypeClass *> &WarheadTypes;
 extern DynamicVectorClass<OverlayTypeClass *> &OverlayTypes;
 extern DynamicVectorClass<SpotlightClass *> &Spotlights;
 extern DynamicVectorClass<CommandClass *> &Commands;
+extern DynamicVectorClass<VQHandle *> &IngameVQ;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
