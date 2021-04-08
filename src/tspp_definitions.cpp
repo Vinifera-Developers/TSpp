@@ -120,6 +120,7 @@
 #include "sidebar.h"
 #include "tab.h"
 #include "scroll.h"
+#include "mouse.h"
 
 
 /**
@@ -1627,6 +1628,25 @@ DEFINE_IMPLEMENTATION(void ScrollClass::Abort_Drag_Select(), 0x005E9A30);
 DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Press(Point2D &), 0x005E99F0);
 DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Up(Point2D &), 0x005E99B0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MouseClass::MouseClass(), 0x005621A0);
+MouseClass::MouseClass(const NoInitClass &x) : ScrollClass(x) { *((unsigned long *)this) = (unsigned long)0x006CA754; }
+MouseClass::~MouseClass() {}
+DEFINE_IMPLEMENTATION(void MouseClass::One_Time(), 0x00562640);
+DEFINE_IMPLEMENTATION(void MouseClass::Init_Clear(), 0x00562660);
+DEFINE_IMPLEMENTATION(void MouseClass::Init_IO(), 0x00402B00);
+DEFINE_IMPLEMENTATION(void MouseClass::AI(KeyNumType &, Point2D &), 0x005624D0);
+DEFINE_IMPLEMENTATION(void MouseClass::Set_Default_Mouse(MouseType, bool), 0x005621D0);
+DEFINE_IMPLEMENTATION(bool MouseClass::Override_Mouse_Shape(MouseType, bool), 0x00562390);
+DEFINE_IMPLEMENTATION(void MouseClass::Revert_Mouse_Shape(), 0x005621F0);
+DEFINE_IMPLEMENTATION(void MouseClass::Mouse_Small(bool), 0x00562200);
+DEFINE_IMPLEMENTATION(HRESULT MouseClass::Load(IStream *), 0x00562680);
+DEFINE_IMPLEMENTATION(HRESULT MouseClass::Save(IStream *), 0x00562F10);
+DEFINE_IMPLEMENTATION(MouseType MouseClass::Get_Mouse_Shape() const, 0x00402B10);
+DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame(MouseType, bool) const, 0x005622D0);
+DEFINE_IMPLEMENTATION(Point2D MouseClass::Get_Mouse_Hotspot(MouseType) const, 0x00562310);
+DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Start_Frame(MouseType) const, 0x00563220);
+DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame_Count(MouseType) const, 0x00563240);
+
 
 /**
  *  Global definitions
@@ -1667,6 +1687,7 @@ WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
 Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
 LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
+MouseClass &Map = Make_Global<MouseClass>(0x00748348);
 
 
 /**
