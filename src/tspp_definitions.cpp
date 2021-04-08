@@ -119,6 +119,7 @@
 #include "power.h"
 #include "sidebar.h"
 #include "tab.h"
+#include "scroll.h"
 
 
 /**
@@ -1616,6 +1617,15 @@ DEFINE_IMPLEMENTATION(void TabClass::Set_Active(int), 0x0060EA60);
 DEFINE_IMPLEMENTATION(void TabClass::Flash_Money(), 0x0060EAC0);
 DEFINE_IMPLEMENTATION(void TabClass::Draw_Credits_Tab(), 0x0060E690);
 DEFINE_IMPLEMENTATION(void TabClass::Hilite_Tab(int), 0x0060E8B0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScrollClass::ScrollClass(), 0x005E85A0);
+ScrollClass::ScrollClass(const NoInitClass &x) : TabClass(x) { *((unsigned long *)this) = (unsigned long)0x006D64D4; }
+ScrollClass::~ScrollClass() {}
+DEFINE_IMPLEMENTATION(void ScrollClass::AI(KeyNumType &, Point2D &), 0x005E85E0);
+DEFINE_IMPLEMENTATION(bool ScrollClass::entry_64() const, 0x005E92C0);
+DEFINE_IMPLEMENTATION(void ScrollClass::Abort_Drag_Select(), 0x005E9A30);
+DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Press(Point2D &), 0x005E99F0);
+DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Up(Point2D &), 0x005E99B0);
 
 
 /**
