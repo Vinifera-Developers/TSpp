@@ -124,6 +124,7 @@
 #include "playmovie.h"
 #include "drawshape.h"
 #include "base64.h"
+#include "lcw.h"
 
 
 /**
@@ -1660,6 +1661,9 @@ DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, ShapeFileSt
 
 DEFINE_IMPLEMENTATION(int Base64_Encode(const void *, int, void *, int), 0x004208B0);
 DEFINE_IMPLEMENTATION(int Base64_Decode(const void *, int, void *, int), 0x004209D0);
+
+DEFINE_IMPLEMENTATION(int __fastcall LCW_Compress(void const *, void *, int), 0x004FD210);
+DEFINE_IMPLEMENTATION(int __fastcall LCW_Uncompress(void const *, void *, unsigned long), 0x004FD020);
 
 
 /**
