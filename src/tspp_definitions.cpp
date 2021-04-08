@@ -122,6 +122,7 @@
 #include "scroll.h"
 #include "mouse.h"
 #include "playmovie.h"
+#include "drawshape.h"
 
 
 /**
@@ -1653,6 +1654,8 @@ DEFINE_IMPLEMENTATION(void Play_Movie(VQType, ThemeType, bool, bool), 0x005639A0
 DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char *, ThemeType), 0x005638A0);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
+
+DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, int, int, ShapeFileStruct *, int, int, int), 0x0047C780);
 
 
 /**

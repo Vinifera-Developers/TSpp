@@ -720,6 +720,37 @@ typedef enum MouseType
 } MouseType;
 
 
+/**
+ *  Shape drawing flags.
+ */
+typedef enum ShapeFlagsType
+{
+    SHAPE_NORMAL,                   // Standard shape
+
+    SHAPE_DARKEN = 1 << 0,
+    SHAPE_TRANS25 = 1 << 1,
+    SHAPE_TRANS50 = 1 << 2,
+    SHAPE_TRANS75 = (SHAPE_TRANS25|SHAPE_TRANS50),
+    SHAPE_REMAP = 1 << 3,
+    SHAPE_Z_REMAP = 1 << 4,
+    SHAPE_PLAIN = 1 << 5,
+    SHAPE_WRITE_ALPHA = 1 << 6,
+    SHAPE_80 = 1 << 7,
+    SHAPE_MULTI_WRITE_ALPHA = 1 << 8,
+    SHAPE_CENTER = 1 << 9,
+    SHAPE_400 = 1 << 10,
+    SHAPE_ALPHA = 1 << 11,
+    SHAPE_1000 = 1 << 12,
+    SHAPE_FLAT = 1 << 13,
+    SHAPE_Z_READ_WRITE = 1 << 14,
+    SHAPE_8000 = 1 << 15,
+    SHAPE_ZERO_ALPHA = 1 << 16,
+    SHAPE_NON_ZERO_ALPHA = 1 << 17,
+
+} ShapeFlagsType;
+DEFINE_ENUMERATION_OPERATORS(ShapeFlagsType);
+
+
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
 
