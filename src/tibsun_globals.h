@@ -69,6 +69,7 @@ class IsometricTileTypeClass;
 class Tactical;
 class LogicClass;
 class MouseClass;
+class DirectSoundAudioClass;
 class HouseTypeClass;
 class UnitTypeClass;
 class InfantryTypeClass;
@@ -127,6 +128,7 @@ extern WinsockInterfaceClass *&PacketTransport;
 extern Tactical *&TacticalMap;
 extern LogicClass *&Logic;
 extern MouseClass &Map;
+extern DirectSoundAudioClass &Audio;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

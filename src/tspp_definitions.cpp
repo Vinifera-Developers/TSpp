@@ -126,6 +126,7 @@
 #include "base64.h"
 #include "lcw.h"
 #include "fetchres.h"
+#include "dsaudio.h"
 
 
 /**
@@ -1669,6 +1670,32 @@ DEFINE_IMPLEMENTATION(int __fastcall LCW_Uncompress(void const *, void *, unsign
 DEFINE_IMPLEMENTATION(const char *Fetch_String(ULONG), 0x00472350);
 DEFINE_IMPLEMENTATION(HGLOBAL Fetch_Resource(const char *, const char *), 0x00472490);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DirectSoundAudioClass::DirectSoundAudioClass(), 0x00487A20);
+DEFINE_IMPLEMENTATION(DirectSoundAudioClass::~DirectSoundAudioClass(), 0x00487B20);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Init(HWND, int, bool, int), 0x00487C50);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::End(), 0x00488380);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Sample(int), 0x00488540);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Sample_Status(int), 0x00488640);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Is_Sample_Playing(const void *), 0x00488730);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Sample_Playing(const void *), 0x00488780);
+DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::Play_Sample(const void *, int, int), 0x00488960);
+DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::File_Stream_Sample_Vol(char const *, int, bool), 0x00489850);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Fade_Sample(int, int), 0x0048A430);
+DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::Get_Playing_Sample_Handle(const void *), 0x0048A4D0);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Lock_Global_Mutex(), 0x00489140);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Unlock_Global_Mutex(), 0x00489160);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Lock_Mutex(), 0x00489170);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Unlock_Mutex(), 0x00489240);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Adjust_Volume_All(int), 0x00489F20);
+DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::Set_Volume_All(int), 0x00489E30);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Set_Handle_Volume(int, int), 0x0048A030);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Set_Sample_Volume(const void *, int), 0x0048A120);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::sub_48A250(int, int), 0x0048A250);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::sub_48A340(int), 0x0048A340);
+DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Start_Primary_Sound_Buffer(bool), 0x0048A520);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Primary_Sound_Buffer(), 0x0048A600);
+DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Sound_Callback(), 0x00489A40);
+
 
 /**
  *  Global definitions
@@ -1710,6 +1737,7 @@ WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0
 Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
 LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
 MouseClass &Map = Make_Global<MouseClass>(0x00748348);
+DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
 
 
 /**
