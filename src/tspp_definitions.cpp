@@ -127,6 +127,7 @@
 #include "lcw.h"
 #include "fetchres.h"
 #include "dsaudio.h"
+#include "preview.h"
 
 
 /**
@@ -1695,6 +1696,17 @@ DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::sub_48A340(int), 0x0048A340);
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Start_Primary_Sound_Buffer(bool), 0x0048A520);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Primary_Sound_Buffer(), 0x0048A600);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Sound_Callback(), 0x00489A40);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(PreviewClass::PreviewClass(), 0x005AC010);
+DEFINE_IMPLEMENTATION(PreviewClass::~PreviewClass(), 0x005AC020);
+DEFINE_IMPLEMENTATION(void PreviewClass::Render_Preview(HWND), 0x005AC040);
+DEFINE_IMPLEMENTATION(void PreviewClass::Draw_Map(), 0x005AC200);
+DEFINE_IMPLEMENTATION(bool PreviewClass::Write_Preview_INI(CCINIClass &ini), 0x005AC7E0);
+DEFINE_IMPLEMENTATION(bool PreviewClass::Read_Preview_INI(CCINIClass &ini), 0x005ACA30);
+DEFINE_IMPLEMENTATION(bool PreviewClass::Read_PCX_Preview(const char *), 0x005ACCD0);
+DEFINE_IMPLEMENTATION(bool PreviewClass::Read_INI_Preview(const char *), 0x005ACE00);
+DEFINE_IMPLEMENTATION(PreviewDataStruct *PreviewClass::Create_Paletted_Preview(int, int &), 0x005ACFF0);
+DEFINE_IMPLEMENTATION(void PreviewClass::Create_Preview_Surface(PreviewDataStruct *), 0x005AD490);
 
 
 /**
