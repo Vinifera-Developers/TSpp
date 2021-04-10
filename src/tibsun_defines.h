@@ -352,6 +352,17 @@ typedef enum AbilityType
 } AbilityType;
 DEFINE_ENUMERATION_OPERATORS(AbilityType);
 
+typedef enum VeterancyRankType
+{
+    RANK_ELITE,
+    RANK_VETERAN,
+    RANK_ROOKIE,       // Little experience
+    RANK_DUMBASS,
+
+    VETERANCY_NONE = -1,
+} VeterancyRankType;
+DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
+
 typedef enum BuildingType
 {
     BUILDING_FIRST = 0,

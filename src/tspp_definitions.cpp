@@ -128,6 +128,7 @@
 #include "fetchres.h"
 #include "dsaudio.h"
 #include "preview.h"
+#include "veterancy.h"
 
 
 /**
@@ -1707,6 +1708,22 @@ DEFINE_IMPLEMENTATION(bool PreviewClass::Read_PCX_Preview(const char *), 0x005AC
 DEFINE_IMPLEMENTATION(bool PreviewClass::Read_INI_Preview(const char *), 0x005ACE00);
 DEFINE_IMPLEMENTATION(PreviewDataStruct *PreviewClass::Create_Paletted_Preview(int, int &), 0x005ACFF0);
 DEFINE_IMPLEMENTATION(void PreviewClass::Create_Preview_Surface(PreviewDataStruct *), 0x005AD490);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VeterancyClass::VeterancyClass(), 0x00664340);
+VeterancyClass::VeterancyClass(const NoInitClass &noinit) {}
+DEFINE_IMPLEMENTATION(VeterancyClass::~VeterancyClass(), 0x00664350);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Gain_Experience(int, int), 0x00664360);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Veteran(), 0x006643A0);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie(), 0x006643D0);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Dumbass(), 0x00664400);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Elite(), 0x00664420);
+DEFINE_IMPLEMENTATION(double VeterancyClass::sub_664440(double), 0x00664440);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Rookie(bool), 0x006644B0);
+DEFINE_IMPLEMENTATION(void VeterancyClass::sub_6644E0(bool), 0x006644E0);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Veteran(bool), 0x006644F0);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Elite(bool), 0x00664520);
+DEFINE_IMPLEMENTATION(int VeterancyClass::To_Integer(), 0x00664550);
+DEFINE_IMPLEMENTATION(void VeterancyClass::From_Integer(int), 0x00664560);
 
 
 /**
