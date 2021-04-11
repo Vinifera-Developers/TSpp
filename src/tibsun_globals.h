@@ -82,6 +82,7 @@ class OverlayTypeClass;
 class SpotlightClass;
 class CommandClass;
 struct VQHandle;
+class SuperClass;
 class EventClass;
 
 enum KeyNumType;
@@ -149,6 +150,7 @@ extern DynamicVectorClass<OverlayTypeClass *> &OverlayTypes;
 extern DynamicVectorClass<SpotlightClass *> &Spotlights;
 extern DynamicVectorClass<CommandClass *> &Commands;
 extern DynamicVectorClass<VQHandle *> &IngameVQ;
+extern DynamicVectorClass<SuperClass *> &Supers;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

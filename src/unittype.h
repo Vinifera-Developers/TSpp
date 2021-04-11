@@ -37,9 +37,13 @@ UnitTypeClass : public TechnoTypeClass
 {
     public:
         /**
-         *  IPersistStream
+         *  IPersist
          */
         IFACEMETHOD(GetClassID)(CLSID *pClassID);
+
+        /**
+         *  IPersistStream
+         */
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 

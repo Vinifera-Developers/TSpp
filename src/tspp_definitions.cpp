@@ -129,6 +129,7 @@
 #include "dsaudio.h"
 #include "preview.h"
 #include "veterancy.h"
+#include "super.h"
 
 
 /**
@@ -1725,6 +1726,32 @@ DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Elite(bool), 0x00664520);
 DEFINE_IMPLEMENTATION(int VeterancyClass::To_Integer(), 0x00664550);
 DEFINE_IMPLEMENTATION(void VeterancyClass::From_Integer(int), 0x00664560);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SuperClass::GetClassID(CLSID *), 0x0060C750);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperClass::Load(IStream *), 0x0060C790);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperClass::Save(IStream *, BOOL), 0x0060C7E0);
+DEFINE_IMPLEMENTATION(int STDMETHODCALLTYPE SuperClass::What_Am_I(), 0x0060CBA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(), 0x0060B2C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(const SuperWeaponTypeClass *, HouseClass *), 0x0060B360);
+SuperClass::SuperClass(const NoInitClass & x) : Control(x) { *((unsigned long *)this) = (unsigned long)0x006D73D8; }
+DEFINE_IMPLEMENTATION(SuperClass::~SuperClass(), 0x0060B4C0);
+DEFINE_IMPLEMENTATION(void SuperClass::Detach(TARGET, bool), 0x0060C800);
+DEFINE_IMPLEMENTATION(RTTIType SuperClass::Kind_Of() const, 0x0060CBB0);
+DEFINE_IMPLEMENTATION(int SuperClass::Size_Of(bool) const, 0x0060CBC0);
+DEFINE_IMPLEMENTATION(void SuperClass::Compute_CRC(WWCRCEngine &) const, 0x0060C820);
+DEFINE_IMPLEMENTATION(bool SuperClass::AI(bool), 0x0060BBD0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Suspend(bool), 0x0060B5C0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Enable(bool, bool, bool), 0x0060B6B0);
+DEFINE_IMPLEMENTATION(void SuperClass::Forced_Charge(bool), 0x0060BE40);
+DEFINE_IMPLEMENTATION(bool SuperClass::Remove(), 0x0060B830);
+DEFINE_IMPLEMENTATION(bool SuperClass::Recharge(bool), 0x0060B860);
+DEFINE_IMPLEMENTATION(void SuperClass::Impatient_Click() const, 0x0060BE20);
+DEFINE_IMPLEMENTATION(int SuperClass::Anim_Stage() const, 0x0060BD10);
+DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, CellStruct *), 0x0060B8E0);
+DEFINE_IMPLEMENTATION(const char *SuperClass::Ready_String() const, 0x0060BEC0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
+DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
+DEFINE_IMPLEMENTATION(void SuperClass::Place(CellStruct *, bool), 0x0060BF70);
+
 
 /**
  *  Global definitions
@@ -1816,6 +1843,7 @@ DynamicVectorClass<OverlayTypeClass *> &OverlayTypes = Make_Global<DynamicVector
 DynamicVectorClass<SpotlightClass *> &Spotlights = Make_Global<DynamicVectorClass<SpotlightClass *>>(0x008089A8);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 DynamicVectorClass<VQHandle *> &IngameVQ = Make_Global<DynamicVectorClass<VQHandle *>>(0x00838028);
+DynamicVectorClass<SuperClass *> &Supers = Make_Global<DynamicVectorClass<SuperClass *>>(0x007E21F0);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

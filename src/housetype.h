@@ -41,10 +41,15 @@ HouseTypeClass : public AbstractTypeClass
         IFACEMETHOD_(ULONG, AddRef)();
         IFACEMETHOD_(ULONG, Release)();
 
+    public:
+        /**
+         *  IPersist
+         */
+        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+
         /**
          *  IPersistStream
          */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
         IFACEMETHOD_(LONG, IsDirty)();
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
