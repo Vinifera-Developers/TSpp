@@ -388,7 +388,24 @@ typedef enum SpeedType
 } SpeedType;
 
 typedef enum PrerequisiteType {} PrerequisiteType;
-typedef enum SpecialWeaponType {} SpecialWeaponType;
+
+typedef enum SpecialWeaponType
+{
+    SPECIAL_MULTI_MISSILE,        // Tactical nuclear weapon.
+    SPECIAL_EM_PULSE,
+    SPECIAL_FIRESTORM,
+    SPECIAL_ION_CANNON,           // Partical beam from satellite (Akira effect).
+    SPECIAL_HUNTER_SEEKER,
+    SPECIAL_CHEM_MISSILE,
+    SPECIAL_DROP_PODS,
+
+    SPECIAL_COUNT,
+
+    SPECIAL_NONE = -1,
+    SPECIAL_FIRST = 0
+} SpecialWeaponType;
+DEFINE_ENUMERATION_OPERATORS(SpecialWeaponType);
+
 typedef enum ActionType {} ActionType;
 typedef enum VoxType {} VoxType;
 typedef enum LandType {} LandType;

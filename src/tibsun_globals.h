@@ -83,6 +83,7 @@ class SpotlightClass;
 class CommandClass;
 struct VQHandle;
 class SuperClass;
+class SuperWeaponTypeClass;
 class EventClass;
 
 enum KeyNumType;
@@ -151,6 +152,7 @@ extern DynamicVectorClass<SpotlightClass *> &Spotlights;
 extern DynamicVectorClass<CommandClass *> &Commands;
 extern DynamicVectorClass<VQHandle *> &IngameVQ;
 extern DynamicVectorClass<SuperClass *> &Supers;
+extern DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

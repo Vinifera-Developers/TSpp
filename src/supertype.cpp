@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          OVERLAYTYPE.CPP
+ *  @file          SUPERTYPE.CPP
  *
  *  @authors       CCHyper
  *
- *  @brief         Class for overlay types.
+ *  @brief         Class for super weapon types.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -25,64 +25,64 @@
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
  ******************************************************************************/
-#include "overlaytype.h"
+#include "supertype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
 
 
-const OverlayTypeClass &OverlayTypeClass::As_Reference(OverlayType type)
+const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(SpecialWeaponType type)
 {
-    TSPP_ASSERT(type != OVERLAY_NONE && type < OverlayTypes.Count());
-    return *OverlayTypes[type];
+    TSPP_ASSERT(type != SPECIAL_NONE && type < SuperWeaponTypes.Count());
+    return *SuperWeaponTypes[type];
 }
 
 
-const OverlayTypeClass *OverlayTypeClass::As_Pointer(OverlayType type)
+const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(SpecialWeaponType type)
 {
-    TSPP_ASSERT(type != OVERLAY_NONE && type < OverlayTypes.Count());
-    return type != OVERLAY_NONE && type < OverlayTypes.Count() ? OverlayTypes[type] : nullptr;
+    TSPP_ASSERT(type != SPECIAL_NONE && type < SuperWeaponTypes.Count());
+    return type != SPECIAL_NONE && type < SuperWeaponTypes.Count() ? SuperWeaponTypes[type] : nullptr;
 }
 
 
-const OverlayTypeClass &OverlayTypeClass::As_Reference(const char *name)
+const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(const char *name)
 {
     return As_Reference(From_Name(name));
 }
 
 
-const OverlayTypeClass *OverlayTypeClass::As_Pointer(const char *name)
+const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(const char *name)
 {
     return As_Pointer(From_Name(name));
 }
 
 
-OverlayType OverlayTypeClass::From_Name(const char *name)
+SpecialWeaponType SuperWeaponTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return OVERLAY_NONE;
+        return SPECIAL_NONE;
     }
 
     if (name != nullptr) {
-        for (OverlayType index = OVERLAY_FIRST; index < OverlayTypes.Count(); ++index) {
+        for (SpecialWeaponType index = SPECIAL_FIRST; index < SuperWeaponTypes.Count(); ++index) {
             if (!strcasecmp(As_Reference(index).Name(), name)) {
                 return index;
             }
         }
     }
 
-    return OVERLAY_NONE;
+    return SPECIAL_NONE;
 }
 
 
-const char *OverlayTypeClass::Name_From(OverlayType type)
+const char *SuperWeaponTypeClass::Name_From(SpecialWeaponType type)
 {
-    return (type != OVERLAY_NONE && type < OverlayTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SPECIAL_NONE && type < SuperWeaponTypes.Count() ? As_Reference(type).Name() : "<none>");
 }
 
 
-const OverlayTypeClass *OverlayTypeClass::Find_Or_Make(const char *name)
+const SuperWeaponTypeClass *SuperWeaponTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -90,12 +90,12 @@ const OverlayTypeClass *OverlayTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    OverlayType type = From_Name(name);
-    if (type != OVERLAY_NONE) {
+    SpecialWeaponType type = From_Name(name);
+    if (type != SPECIAL_NONE) {
         return As_Pointer(type);
     }
 
-    OverlayTypeClass *ptr = new OverlayTypeClass(name);
+    SuperWeaponTypeClass *ptr = new SuperWeaponTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

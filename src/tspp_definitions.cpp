@@ -130,6 +130,7 @@
 #include "preview.h"
 #include "veterancy.h"
 #include "super.h"
+#include "supertype.h"
 
 
 /**
@@ -1752,6 +1753,20 @@ DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
 DEFINE_IMPLEMENTATION(void SuperClass::Place(CellStruct *, bool), 0x0060BF70);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SuperWeaponTypeClass::GetClassID(CLSID *), 0x0060D100);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Load(IStream *), 0x0060D140);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Save(IStream *, BOOL), 0x0060D200);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperWeaponTypeClass::SuperWeaponTypeClass(const char *), 0x0060CF70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperWeaponTypeClass::SuperWeaponTypeClass(const NoInitClass &), 0x0060D060);
+DEFINE_IMPLEMENTATION(SuperWeaponTypeClass::~SuperWeaponTypeClass(), 0x0060D090);
+DEFINE_IMPLEMENTATION(RTTIType SuperWeaponTypeClass::Kind_Of() const, 0x0060D220);
+DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Size_Of(bool) const, 0x0060D230);
+DEFINE_IMPLEMENTATION(void SuperWeaponTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0060D240);
+DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Get_Heap_ID() const, 0x0060D2E0);
+DEFINE_IMPLEMENTATION(bool SuperWeaponTypeClass::Read_INI(CCINIClass &), 0x0060D2F0);
+DEFINE_IMPLEMENTATION(ActionType SuperWeaponTypeClass::entry_70() const, 0x0060D6C0);
+DEFINE_IMPLEMENTATION(const SuperWeaponTypeClass *SuperWeaponTypeClass::From_Action(ActionType), 0x0060CF30);
+
 
 /**
  *  Global definitions
@@ -1844,6 +1859,7 @@ DynamicVectorClass<SpotlightClass *> &Spotlights = Make_Global<DynamicVectorClas
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);
 DynamicVectorClass<VQHandle *> &IngameVQ = Make_Global<DynamicVectorClass<VQHandle *>>(0x00838028);
 DynamicVectorClass<SuperClass *> &Supers = Make_Global<DynamicVectorClass<SuperClass *>>(0x007E21F0);
+DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes = Make_Global<DynamicVectorClass<SuperWeaponTypeClass *>>(0x007E3FF8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
