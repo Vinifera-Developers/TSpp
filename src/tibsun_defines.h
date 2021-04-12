@@ -32,6 +32,7 @@
 
 
 class AbstractClass;
+class HouseClass;
 
 
 /**
@@ -72,6 +73,16 @@ class AbstractClass;
 
 #define	PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define	PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
+
+
+/**
+ *  The map is broken down into regions of this specified dimensions.
+ */
+#define	REGION_WIDTH        4
+#define	REGION_HEIGHT       4
+#define	MAP_REGION_WIDTH    (((MAP_CELL_W + (REGION_WIDTH -1)) / REGION_WIDTH)+2)
+#define	MAP_REGION_HEIGHT   (((MAP_CELL_H + (REGION_WIDTH -1)) / REGION_HEIGHT)+2)
+#define MAP_TOTAL_REGIONS   (MAP_REGION_WIDTH * MAP_REGION_HEIGHT)
 
 
 #define TXT_NONE    0
@@ -410,6 +421,57 @@ typedef enum ActionType {} ActionType;
 typedef enum VoxType {} VoxType;
 typedef enum LandType {} LandType;
 
+typedef enum StateType
+{
+    STATE_BUILDUP,			// Base is building up (defensive buildup stage).
+    STATE_BROKE,			// Low on money, need cash or income source.
+    STATE_THREATENED,		// Enemy units are designated to move close by.
+    STATE_ATTACKED,		    // Base is under direct attack.
+    STATE_ENDGAME			// Resistance is futile.
+} StateType;
+DEFINE_ENUMERATION_OPERATORS(StateType);
+
+typedef enum UrgencyType
+{
+    URGENCY_NONE,			// No action on this matter is needed or desired.
+    URGENCY_LOW,			// Minimal attention requested.
+    URGENCY_MEDIUM,			// Normal attention requested.
+    URGENCY_HIGH,			// High attention requested.
+    URGENCY_CRITICAL,		// This matter must be addressed immediately.
+
+    URGENCY_COUNT,
+    URGENCY_FIRST = 0
+} UrgencyType;
+DEFINE_ENUMERATION_OPERATORS(UrgencyType);
+
+typedef enum StrategyType
+{
+    STRATEGY_FIRE_SALE,			// Situation hopeless, sell and attack.
+    STRATEGY_RAISE_MONEY,		// Money is low, emergency raise cash.
+
+    STRATEGY_COUNT,
+    STRATEGY_FIRST = 0
+} StrategyType;
+DEFINE_ENUMERATION_OPERATORS(StrategyType);
+
+typedef enum QuarryType
+{
+    QUARRY_NONE,
+
+    QUARRY_ANYTHING,	// Attack any enemy (same as "hunt").
+    QUARRY_BUILDINGS,	// Attack buildings (in general).
+    QUARRY_HARVESTERS,	// Attack harvesters or refineries.
+    QUARRY_INFANTRY,	// Attack infantry.
+    QUARRY_VEHICLES,	// Attack combat vehicles.
+    QUARRY_FACTORIES,	// Attack factories (all types).
+    QUARRY_DEFENSE,		// Attack base defense buildings.
+    QUARRY_THREAT,		// Attack enemies near friendly base.
+    QUARRY_POWER,		// Attack power facilities.
+
+    QUARRY_COUNT,
+    QUARRY_FIRST = 0
+} QuarryType;
+
 typedef enum FireErrorType
 {
     FIRE_OK,            // Weapon is allowed to fire.
@@ -746,6 +808,14 @@ typedef enum MouseType
 
     MOUSE_COUNT
 } MouseType;
+
+
+typedef enum ProdFailType {
+	PROD_OK,		// Production request successful.
+	PROD_LIMIT,		// Failed with production capacity limit reached.
+	PROD_ILLEGAL,	// Failed because of illegal request.
+	PROD_CANT		// Failed because unable to comply (busy or occupied).
+} ProdFailType;
 
 
 /**
@@ -1104,6 +1174,38 @@ struct CrackedIceStruct
 
     int field_0; // cell number?
     int field_4; // cracking frame?
+};
+
+
+struct AngerStruct
+{
+    bool operator==(const AngerStruct &that) const
+    {
+        return (Whom == that.Whom && Level == that.Level);
+    }
+    bool operator!=(const AngerStruct &that) const
+    {
+        return (Whom != that.Whom && Level != that.Level);
+    }
+
+    HouseClass *Whom;
+    int Level;
+};
+
+
+struct ScoutStruct
+{
+    bool operator==(const ScoutStruct &that) const
+    {
+        return (Whom == that.Whom && HasScouted == that.HasScouted);
+    }
+    bool operator!=(const ScoutStruct &that) const
+    {
+        return (Whom != that.Whom && HasScouted != that.HasScouted);
+    }
+
+    HouseClass *Whom;
+    bool HasScouted;
 };
 
 

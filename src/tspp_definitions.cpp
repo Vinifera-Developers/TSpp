@@ -133,6 +133,7 @@
 #include "supertype.h"
 #include "connpoint.h"
 #include "dropship.h"
+#include "house.h"
 
 
 /**
@@ -1814,6 +1815,196 @@ DEFINE_IMPLEMENTATION(void Dropship_Draw_Text(int, int, XSurface *, Point2D *, c
 DEFINE_IMPLEMENTATION(void Dropship_Draw_Info_Text(XSurface *, ConvertClass *, TechnoTypeClass *, bool), 0x00486EC0);
 DEFINE_IMPLEMENTATION(void Dropship_Loadout(), 0x004842C0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseClass::HouseStaticClass::HouseStaticClass(), 0x004BBC00);
+HouseClass::HouseStaticClass::HouseStaticClass(const HouseClass::HouseStaticClass &that) {}
+HouseClass::HouseStaticClass::HouseStaticClass(const NoInitClass &noinit) {}
+HouseClass::HouseStaticClass::~HouseStaticClass() {}
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::QueryInterface(REFIID, LPVOID *), 0x004BB020);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE HouseClass::AddRef(), 0x004CBC10);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE HouseClass::Release(), 0x004CBC20);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::GetClassID(CLSID *), 0x004C5320);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::Load(IStream *), 0x004C4A00);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::Save(IStream *, BOOL), 0x004C5050);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::ID_Number(), 0x004BB400);
+DEFINE_IMPLEMENTATION(BSTR STDMETHODCALLTYPE HouseClass::Name(), 0x004BB140);
+DEFINE_IMPLEMENTATION(IApplication * STDMETHODCALLTYPE HouseClass::Get_Application(), 0x004BB120);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Available_Money(), 0x004BB180);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Available_Storage(), 0x004BB1A0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Power_Output(), 0x004BB1C0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Power_Drain(), 0x004BB1D0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Category_Quantity(CategoryType), 0x004BB1E0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Category_Power(CategoryType), 0x004BB2A0);
+DEFINE_IMPLEMENTATION(CellStruct STDMETHODCALLTYPE HouseClass::Base_Center(), 0x004BB380);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Fire_Sale(), 0x004C3450);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::All_To_Hunt(), 0x004C34C0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Apparent_Category_Quantity(CategoryType), 0x004BB240);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Apparent_Category_Power(CategoryType), 0x004BB310);
+DEFINE_IMPLEMENTATION(CellStruct STDMETHODCALLTYPE HouseClass::Apparent_Base_Center(), 0x004BB3C0);
+DEFINE_IMPLEMENTATION(bool STDMETHODCALLTYPE HouseClass::Is_Powered(), 0x004BB100);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::EnumConnectionPoints(IEnumConnectionPoints **), 0x004C4350);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::FindConnectionPoint(REFIID, IConnectionPoint **), 0x004C43B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseClass::HouseClass(const HouseTypeClass *), 0x004BA0B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseClass::HouseClass(const NoInitClass &), 0x004B9EF0);
+DEFINE_IMPLEMENTATION(HouseClass::~HouseClass(), 0x004BB6B0);
+DEFINE_IMPLEMENTATION(void HouseClass::Detach(TARGET, bool), 0x004BEFF0);
+DEFINE_IMPLEMENTATION(RTTIType HouseClass::Kind_Of() const, 0x004CBC30);
+DEFINE_IMPLEMENTATION(int HouseClass::Size_Of(bool) const, 0x004C5360);
+DEFINE_IMPLEMENTATION(void HouseClass::Compute_CRC(WWCRCEngine &) const, 0x004C4760);
+DEFINE_IMPLEMENTATION(int HouseClass::Get_Heap_ID() const, 0x004CBC40);
+DEFINE_IMPLEMENTATION(void HouseClass::AI(), 0x004BC5E0);
+// 004BAED0
+DEFINE_IMPLEMENTATION(float HouseClass::Tiberium_Fraction() const, 0x004BB410);
+DEFINE_IMPLEMENTATION(DiffType HouseClass::Assign_Handicap(DiffType), 0x004BB460);
+DEFINE_IMPLEMENTATION(bool HouseClass::Can_Build(const ObjectTypeClass *, bool, bool) const, 0x004BBC20);
+DEFINE_IMPLEMENTATION(FactoryClass *HouseClass::Factory_Building_This(const ObjectTypeClass *) const, 0x004BC560);
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Handler(), 0x004BD2E0);
+DEFINE_IMPLEMENTATION(void HouseClass::Attacked(BuildingClass *), 0x004BD3C0);
+DEFINE_IMPLEMENTATION(void HouseClass::Tiberium_Harvested(unsigned, TiberiumType), 0x004BD590);
+DEFINE_IMPLEMENTATION(void HouseClass::Weed_Harvested(unsigned, TiberiumType), 0x004BD6F0);
+DEFINE_IMPLEMENTATION(float HouseClass::Weed_Fraction() const, 0x004BD730);
+DEFINE_IMPLEMENTATION(void HouseClass::Spend_Money(unsigned), 0x004BD770);
+DEFINE_IMPLEMENTATION(void HouseClass::Refund_Money(unsigned), 0x004BD900);
+DEFINE_IMPLEMENTATION(void HouseClass::Silo_Redraw_Check(long, long), 0x004BD920);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Ally(HousesType) const, 0x004BD9E0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Ally(const HouseClass *) const, 0x004BDA20);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Ally(const ObjectClass *) const, 0x004BDA60);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Ally(const TARGET) const, 0x004BDAC0);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Ally(HousesType), 0x004BDB30);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Ally(HouseClass *), 0x004BDB50);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(HousesType), 0x004BDE80);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(HouseClass *), 0x004BDEA0);
+DEFINE_IMPLEMENTATION(TypeList<const TeamTypeClass *> HouseClass::Suggested_New_Team(bool), 0x004BE0C0);
+DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Threat(int, int), 0x004BE190);
+DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Begin_Production(RTTIType, int, bool), 0x004BE200);
+DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Suspend_Production(RTTIType), 0x004BE5D0);
+DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Abandon_Production(RTTIType, int), 0x004BE6A0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Special_Weapon_AI(SpecialWeaponType), 0x004BE8A0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Special_Blast(SpecialWeaponType, CellStruct &), 0x004BE9E0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Object(RTTIType, CellStruct &), 0x004BEA10);
+DEFINE_IMPLEMENTATION(void HouseClass::Just_Built(TechnoClass *), 0x004BED80);
+DEFINE_IMPLEMENTATION(bool HouseClass::Manual_Place(BuildingClass *, BuildingClass *), 0x004BEEA0);
+DEFINE_IMPLEMENTATION(void HouseClass::Clobber_All(), 0x004BEF60);
+DEFINE_IMPLEMENTATION(bool HouseClass::Does_Enemy_Building_Exist(BuildingType) const, 0x004BF100);
+DEFINE_IMPLEMENTATION(const TechnoTypeClass *HouseClass::Suggest_New_Object(RTTIType, bool) const, 0x004BF180);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Remove(TARGET, bool), 0x004BF240);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Attach(CellStruct &, bool), 0x004BF370);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Attach(UnitClass *, bool), 0x004BF470);
+DEFINE_IMPLEMENTATION(void HouseClass::MPlayer_Defeated(), 0x004BF4C0);
+DEFINE_IMPLEMENTATION(void HouseClass::Blowup_All(), 0x004BF910);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Die(), 0x004BFB00);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Win(bool), 0x004BFC50);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Lose(bool), 0x004BFE00);
+// 004BFFB0
+DEFINE_IMPLEMENTATION(void HouseClass::Init_Data(ColorSchemeType, HousesType, int), 0x004BFFF0);
+DEFINE_IMPLEMENTATION(float HouseClass::Power_Fraction() const, 0x004C0020);
+DEFINE_IMPLEMENTATION(void HouseClass::Sell_Wall(CellStruct &, bool), 0x004C0070);
+DEFINE_IMPLEMENTATION(const BuildingTypeClass * HouseClass::Suggest_New_Building() const, 0x004C0220);
+DEFINE_IMPLEMENTATION(BuildingClass * HouseClass::Find_Building(BuildingType, ZoneType) const, 0x004C0240);
+DEFINE_IMPLEMENTATION(CoordStruct HouseClass::Find_Build_Location(BuildingClass *) const, 0x004C0310);
+DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Center(), 0x004C0340);
+DEFINE_IMPLEMENTATION(int HouseClass::Expert_AI(), 0x004C0630);
+DEFINE_IMPLEMENTATION(UrgencyType HouseClass::Check_Fire_Sale() const, 0x004C09D0);
+DEFINE_IMPLEMENTATION(UrgencyType HouseClass::Check_Raise_Money() const, 0x004C0A40);
+DEFINE_IMPLEMENTATION(bool HouseClass::AI_Fire_Sale(UrgencyType), 0x004C0CC0);
+DEFINE_IMPLEMENTATION(bool HouseClass::AI_Raise_Money(UrgencyType), 0x004C0CF0);
+DEFINE_IMPLEMENTATION(int HouseClass::AI_Building(), 0x004C10E0);
+DEFINE_IMPLEMENTATION(int HouseClass::AI_Unit(), 0x004C1650);
+DEFINE_IMPLEMENTATION(int HouseClass::AI_Infantry(), 0x004C1A30);
+DEFINE_IMPLEMENTATION(int HouseClass::AI_Aircraft(), 0x004C1D40);
+DEFINE_IMPLEMENTATION(void HouseClass::Production_Begun(const TechnoClass *), 0x004C2050);
+DEFINE_IMPLEMENTATION(void HouseClass::Tracking_Remove(const TechnoClass *), 0x004C2060);
+DEFINE_IMPLEMENTATION(void HouseClass::Tracking_Add(const TechnoClass *), 0x004C2190);
+DEFINE_IMPLEMENTATION(int *HouseClass::Factory_Counter(RTTIType), 0x004C2330);
+DEFINE_IMPLEMENTATION(void HouseClass::Active_Remove(const TechnoClass *), 0x004C23B0);
+DEFINE_IMPLEMENTATION(void HouseClass::Active_Add(const TechnoClass *), 0x004C2450);
+DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(CoordStruct &) const, 0x004C24F0);
+DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(const ObjectClass *) const, 0x004C2660);
+DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(CellStruct &) const, 0x004C26A0);
+DEFINE_IMPLEMENTATION(CellStruct HouseClass::Zone_Cell(ZoneType) const, 0x004C26E0);
+DEFINE_IMPLEMENTATION(CellStruct HouseClass::Where_To_Go(const FootClass *) const, 0x004C2A20);
+DEFINE_IMPLEMENTATION(TARGET HouseClass::Find_Juicy_Target(CoordStruct &) const, 0x004C2B20);
+DEFINE_IMPLEMENTATION(FactoryClass *HouseClass::Fetch_Factory(RTTIType) const, 0x004C2CA0);
+DEFINE_IMPLEMENTATION(void HouseClass::Set_Factory(RTTIType, FactoryClass *), 0x004C2D20);
+DEFINE_IMPLEMENTATION(int HouseClass::Factory_Count(RTTIType) const, 0x004C2DB0);
+// 004C2E40
+DEFINE_IMPLEMENTATION(void HouseClass::Read_INI(CCINIClass &), 0x004C2F10);
+// 004C31B0
+DEFINE_IMPLEMENTATION(void HouseClass::Write_INI(CCINIClass &) const, 0x004C3230);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Allowed_To_Ally(HouseClass *) const, 0x004C3550);
+DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Power(int), 0x004C3710);
+DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Drain(int), 0x004C3880);
+DEFINE_IMPLEMENTATION(void HouseClass::Update_Spied_Power_Plants(), 0x004C39E0);
+DEFINE_IMPLEMENTATION(CellStruct HouseClass::Find_Cell_In_Zone(const TechnoClass *, ZoneType) const, 0x004C3A60);
+DEFINE_IMPLEMENTATION(CellStruct HouseClass::Random_Cell_In_Zone(ZoneType) const, 0x004C3A80);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Ally(TechnoClass *), 0x004C3F80);
+DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass *), 0x004C3FA0);
+// 004C3FC0
+// 004C40F0
+// 004C4150
+// 004C4210
+// 004C42C0
+// 004C4450
+// 004C45D0
+// 004C5320
+// 004C5360
+// 004C5370
+// 004C53C0
+// 004C5510
+// 004C56A0
+// 004C5770
+// 004C5840
+// 004C5880
+// 004C58B0
+// 004C5920
+// 004C5BB0
+// 004C68E0
+// 004C6930
+// 004C6A10
+// 004C7300
+// 004C7310
+// 004C7320
+// 004C7470
+// 004C74F0
+// 004C7690
+// 004C83F0
+// 004C85A0
+// 004C8750
+// 004C8900
+// 004C8920
+// 004C93F0
+// 004C9560
+// 004C96A0
+// 004C96F0
+// 004C9730
+DEFINE_IMPLEMENTATION(void HouseClass::Update_Factories(RTTIType), 0x004C9740);
+DEFINE_IMPLEMENTATION(void HouseClass::Update_Radar_Spied(HouseClass *), 0x004C98E0);
+DEFINE_IMPLEMENTATION(void HouseClass::Update_Anger(HouseClass *), 0x004C9990);
+DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Threat_Regions(), 0x004C99D0);
+// 004C9B80
+// 004C9BC0
+// 004C9CB0
+// 004C9EA0
+// 004C9FB0
+// 004CA450
+// 004CA4A0
+// 004CA600
+// 004CA760
+// 004CA880
+// 004CB2D0
+// 004CB5B0
+// 004CB720
+// 004CB950
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Player_Control() const, 0x004CB950);
+DEFINE_IMPLEMENTATION(bool HouseClass::Is_Human_Control() const, 0x004CB990);
+// 004CB9C0
+// 004CBAA0
+// 004CBB30
+// 004CBC30
+// 004CBC40
+DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
+DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
+DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
+
 
 /**
  *  Global definitions
@@ -1907,6 +2098,7 @@ DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<Co
 DynamicVectorClass<VQHandle *> &IngameVQ = Make_Global<DynamicVectorClass<VQHandle *>>(0x00838028);
 DynamicVectorClass<SuperClass *> &Supers = Make_Global<DynamicVectorClass<SuperClass *>>(0x007E21F0);
 DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes = Make_Global<DynamicVectorClass<SuperWeaponTypeClass *>>(0x007E3FF8);
+DynamicVectorClass<HouseClass *> &Houses = Make_Global<DynamicVectorClass<HouseClass *>>(0x007E1558);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
