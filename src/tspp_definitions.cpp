@@ -132,6 +132,7 @@
 #include "super.h"
 #include "supertype.h"
 #include "connpoint.h"
+#include "dropship.h"
 
 
 /**
@@ -1800,6 +1801,18 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionPointsClass::Clone
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionPointsClass::EnumConnectionPointsClass(), 0x0046FC70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionPointsClass::EnumConnectionPointsClass(const DynamicVectorClass<LPCONNECTIONPOINT> &), 0x0046FD30);
 DEFINE_IMPLEMENTATION(EnumConnectionPointsClass::~EnumConnectionPointsClass(), 0x0046FE00);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropshipLoadoutClass::DropshipLoadoutClass(), 0x00484040);
+DEFINE_IMPLEMENTATION(DropshipLoadoutClass::~DropshipLoadoutClass(), 0x00484060);
+DEFINE_IMPLEMENTATION(bool DropshipLoadoutClass::Add(TechnoTypeClass *), 0x00484070);
+DEFINE_IMPLEMENTATION(bool DropshipLoadoutClass::Remove(int), 0x00484140);
+DEFINE_IMPLEMENTATION(void DropshipLoadoutClass::Remove_All(), 0x00484210);
+DEFINE_IMPLEMENTATION(void DropshipLoadoutClass::Load(), 0x00484240);
+DEFINE_IMPLEMENTATION(TechnoTypeClass *DropshipLoadoutClass::Fetch(int), 0x00484270);
+DEFINE_IMPLEMENTATION(int Dropship_Get_Allowable_Index(TechnoTypeClass *), 0x00484280);
+DEFINE_IMPLEMENTATION(void Dropship_Draw_Text(int, int, XSurface *, Point2D *, char *, bool, ConvertClass *, Blitter *), 0x00486CE0);
+DEFINE_IMPLEMENTATION(void Dropship_Draw_Info_Text(XSurface *, ConvertClass *, TechnoTypeClass *, bool), 0x00486EC0);
+DEFINE_IMPLEMENTATION(void Dropship_Loadout(), 0x004842C0);
 
 
 /**
