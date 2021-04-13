@@ -139,6 +139,7 @@
 #include "wspudp.h"
 #include "loadoptions.h"
 #include "side.h"
+#include "script.h"
 
 
 /**
@@ -2078,6 +2079,22 @@ DEFINE_IMPLEMENTATION(RTTIType SideClass::Kind_Of() const, 0x005F1D70);
 DEFINE_IMPLEMENTATION(int SideClass::Size_Of(bool) const, 0x005F1D60);
 DEFINE_IMPLEMENTATION(void SideClass::Compute_CRC(WWCRCEngine &) const, 0x005F1BB0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ScriptClass::GetClassID(CLSID *), 0x005E7A10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Load(IStream *), 0x005E7A50);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Save(IStream *, BOOL), 0x005E7AA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptClass::ScriptClass(ScriptTypeClass *), 0x005E7820);
+ScriptClass::ScriptClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D63D0; }
+DEFINE_IMPLEMENTATION(ScriptClass::~ScriptClass(), 0x005E78B0);
+DEFINE_IMPLEMENTATION(RTTIType ScriptClass::Kind_Of() const, 0x005E81B0);
+DEFINE_IMPLEMENTATION(int ScriptClass::Size_Of(bool) const, 0x005E81C0);
+DEFINE_IMPLEMENTATION(void ScriptClass::Compute_CRC(WWCRCEngine &) const, 0x005E7920);
+DEFINE_IMPLEMENTATION(ScriptMissionClass ScriptClass::Get_Current_Mission(), 0x005E7940);
+DEFINE_IMPLEMENTATION(ScriptMissionClass ScriptClass::Get_Next_Mission(), 0x005E7980);
+DEFINE_IMPLEMENTATION(bool ScriptClass::Stop_Script(), 0x005E79C0);
+DEFINE_IMPLEMENTATION(bool ScriptClass::Set_Line(int), 0x005E79D0);
+DEFINE_IMPLEMENTATION(bool ScriptClass::Next_Mission(), 0x005E79E0);
+DEFINE_IMPLEMENTATION(bool ScriptClass::Has_Missions_Remaining() const, 0x005E7A00);
+
 
 /**
  *  Global definitions
@@ -2174,6 +2191,7 @@ DynamicVectorClass<SuperClass *> &Supers = Make_Global<DynamicVectorClass<SuperC
 DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes = Make_Global<DynamicVectorClass<SuperWeaponTypeClass *>>(0x007E3FF8);
 DynamicVectorClass<HouseClass *> &Houses = Make_Global<DynamicVectorClass<HouseClass *>>(0x007E1558);
 DynamicVectorClass<SideClass *> &Sides = Make_Global<DynamicVectorClass<SideClass *>>(0x007B3470);
+DynamicVectorClass<ScriptClass *> &Scripts = Make_Global<DynamicVectorClass<ScriptClass *>>(0x0074C590);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

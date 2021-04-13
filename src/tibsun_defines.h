@@ -373,6 +373,68 @@ typedef enum AbilityType
 } AbilityType;
 DEFINE_ENUMERATION_OPERATORS(AbilityType);
 
+typedef enum ScriptMissionType
+{
+    SMISSION_ATTACK,				// Attack specified quarry type.
+    SMISSION_ATT_WAYPT,				// Attack specified waypoint
+    SMISSION_BEZERK,
+    SMISSION_MOVE,					// moves to waypoint specified.
+    SMISSION_MOVECELL,				// moves to cell # specified.
+    SMISSION_GUARD,					// works like an infantry's guard mission
+    SMISSION_LOOP,					// loop back to start of mission list
+    SMISSION_PLAYER_WIN,
+    SMISSION_UNLOAD,				// Unload at current location.
+    SMISSION_DEPLOY,				// Deploy mobile building type.
+    SMISSION_HOUND_DOG,				// Follow nearest friendly unit.
+    SMISSION_DO,					// Do guard, sticky, area guard (mission sticks on this).
+    SMISSION_SET_GLOBAL,			// Set global variable.
+    SMISSION_IDLE,
+    SMISSION_LOAD,					// Load onto transport member of team.
+    SMISSION_SPY,					// Spy enter the building at specified waypoint
+    SMISSION_PATROL,				// Move but look for enemies as well.
+    SMISSION_CHANGE_SCRIPT,
+    SMISSION_CHANGE_TEAM,
+    SMISSION_PANIC,
+    SMISSION_CHANGE_HOUSE,
+    SMISSION_SCATTER,
+    SMISSION_GOTO_NEARBY_SHROUD,
+    SMISSION_PLAYER_LOSES,
+    SMISSION_PLAY_SPEECH,
+    SMISSION_PLAY_SOUND,
+    SMISSION_PLAY_MOVIE,
+    SMISSION_PLAY_MUSIC,
+    SMISSION_REDUCE_TIBERIUM,
+    SMISSION_BEGIN_PRODUCTION,
+    SMISSION_FIRE_SALE,
+    SMISSION_SELF_DESTRUCT,
+    SMISSION_IOSTORM_START,
+    SMISSION_IONSTORM_END,
+    SMISSION_CENTER_VIEW_ON_TEAM,
+    SMISSION_RESHROUD_MAP,
+    SMISSION_REVEAL_MAP,
+    SMISSION_DELETE_TEAM_MEMBERS,
+    SMISSION_CLEAR_GLOBAL,
+    SMISSION_SET_LOCAL,
+    SMISSION_CLEAR_LOCAL,
+    SMISSION_UNPANIC,
+    SMISSION_FORCE_FACING,
+    SMISSION_WAIT_TILL_FULLY_LOADED,
+    SMISSION_TRUCK_UNLOAD,
+    SMISSION_TRUCK_LOAD,
+    SMISSION_ATTACK_ENEMY_BUILDING,
+    SMISSION_MOVETO_ENEMY_BUILDING,
+    SMISSION_SCOUT,
+    SMISSION_SUCCESS,
+    SMISSION_FLASH,
+    SMISSION_PLAY_ANIM,
+    SMISSION_TALK_BUBBLE,
+
+    SMISSION_COUNT,
+
+    SMISSION_NONE=-1,
+    SMISSION_FIRST = 0
+} ScriptMissionType;
+
 typedef enum VeterancyRankType
 {
     RANK_ELITE,

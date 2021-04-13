@@ -87,6 +87,7 @@ class SuperClass;
 class SuperWeaponTypeClass;
 class HouseClass;
 class SideClass;
+class ScriptClass;
 class EventClass;
 
 enum KeyNumType;
@@ -159,6 +160,7 @@ extern DynamicVectorClass<SuperClass *> &Supers;
 extern DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes;
 extern DynamicVectorClass<HouseClass *> &Houses;
 extern DynamicVectorClass<SideClass *> &Sides;
+extern DynamicVectorClass<ScriptClass *> &Scripts;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
