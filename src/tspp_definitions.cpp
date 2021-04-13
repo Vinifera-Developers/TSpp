@@ -136,6 +136,7 @@
 #include "house.h"
 #include "theme.h"
 #include "wspipx.h"
+#include "wspudp.h"
 
 
 /**
@@ -2038,6 +2039,18 @@ DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Open_Socket(SOCKET), 0x006A05B0);
 DEFINE_IMPLEMENTATION(LRESULT IPXInterfaceClass::Message_Handler(HWND, UINT, UINT, LONG), 0x006A08B0);
 DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address(int, SOCKADDR_IPX *), 0x006A0330);
 DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address_String(int, char *, int), 0x006A04A0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(UDPInterfaceClass::UDPInterfaceClass(), 0x006A1E70);
+DEFINE_IMPLEMENTATION(UDPInterfaceClass::~UDPInterfaceClass(), 0x006A1EF0);
+DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Broadcast(void *, int), 0x006A2390);
+DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Set_Broadcast_Address(void *), 0x006A2090);
+DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Clear_Broadcast_Addresses(), 0x006A2030);
+DEFINE_IMPLEMENTATION(ProtocolEnum UDPInterfaceClass::Get_Protocol(), 0x006A2730);
+DEFINE_IMPLEMENTATION(int UDPInterfaceClass::Protocol_Event_Message(), 0x006A2740);
+DEFINE_IMPLEMENTATION(bool UDPInterfaceClass::Open_Socket(SOCKET), 0x006A2130);
+DEFINE_IMPLEMENTATION(LRESULT UDPInterfaceClass::Message_Handler(HWND, UINT, UINT, LONG), 0x006A2480);
+DEFINE_IMPLEMENTATION(int UDPInterfaceClass::Local_Addresses_Count() const, 0x006A2750);
+DEFINE_IMPLEMENTATION(unsigned char * UDPInterfaceClass::Get_Local_Address(int) const, 0x006A2760);
 
 
 /**
