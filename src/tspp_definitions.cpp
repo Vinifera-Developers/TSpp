@@ -137,6 +137,7 @@
 #include "theme.h"
 #include "wspipx.h"
 #include "wspudp.h"
+#include "loadoptions.h"
 
 
 /**
@@ -2051,6 +2052,20 @@ DEFINE_IMPLEMENTATION(bool UDPInterfaceClass::Open_Socket(SOCKET), 0x006A2130);
 DEFINE_IMPLEMENTATION(LRESULT UDPInterfaceClass::Message_Handler(HWND, UINT, UINT, LONG), 0x006A2480);
 DEFINE_IMPLEMENTATION(int UDPInterfaceClass::Local_Addresses_Count() const, 0x006A2750);
 DEFINE_IMPLEMENTATION(unsigned char * UDPInterfaceClass::Get_Local_Address(int) const, 0x006A2760);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LoadOptionsClass::LoadOptionsClass(), 0x005047B0);
+DEFINE_IMPLEMENTATION(LoadOptionsClass::~LoadOptionsClass(), 0x00504800);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_File(const char *), 0x00505980);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_File(const char *, const char *), 0x005059D0);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_File(const char *), 0x00505A20);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_File(void *, void *), 0x00505A40);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Load_Dialog(), 0x00504860);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Save_Dialog(const char *), 0x00504880);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Delete_Dialog(), 0x005048A0);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Pick_Filename(char *), 0x00505270);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Clear_List(), 0x005052F0);
+DEFINE_IMPLEMENTATION(void LoadOptionsClass::Fill_List(HWND), 0x00505320);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_Save_Files(), 0x00505840);
 
 
 /**
