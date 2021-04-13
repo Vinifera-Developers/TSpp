@@ -138,6 +138,7 @@
 #include "wspipx.h"
 #include "wspudp.h"
 #include "loadoptions.h"
+#include "side.h"
 
 
 /**
@@ -2067,6 +2068,16 @@ DEFINE_IMPLEMENTATION(void LoadOptionsClass::Clear_List(), 0x005052F0);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Fill_List(HWND), 0x00505320);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_Save_Files(), 0x00505840);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SideClass::GetClassID(CLSID *), 0x005F1BD0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Load(IStream *), 0x005F1C10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Save(IStream *, BOOL), 0x005F1D00);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SideClass::SideClass(const char *), 0x005F1A30);
+SideClass::SideClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6730; }
+DEFINE_IMPLEMENTATION(SideClass::~SideClass(), 0x005F1AD0);
+DEFINE_IMPLEMENTATION(RTTIType SideClass::Kind_Of() const, 0x005F1D70);
+DEFINE_IMPLEMENTATION(int SideClass::Size_Of(bool) const, 0x005F1D60);
+DEFINE_IMPLEMENTATION(void SideClass::Compute_CRC(WWCRCEngine &) const, 0x005F1BB0);
+
 
 /**
  *  Global definitions
@@ -2162,6 +2173,7 @@ DynamicVectorClass<VQHandle *> &IngameVQ = Make_Global<DynamicVectorClass<VQHand
 DynamicVectorClass<SuperClass *> &Supers = Make_Global<DynamicVectorClass<SuperClass *>>(0x007E21F0);
 DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes = Make_Global<DynamicVectorClass<SuperWeaponTypeClass *>>(0x007E3FF8);
 DynamicVectorClass<HouseClass *> &Houses = Make_Global<DynamicVectorClass<HouseClass *>>(0x007E1558);
+DynamicVectorClass<SideClass *> &Sides = Make_Global<DynamicVectorClass<SideClass *>>(0x007B3470);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

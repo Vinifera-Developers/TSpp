@@ -310,7 +310,14 @@ typedef enum ZoneType
 } ZoneType;
 DEFINE_ENUMERATION_OPERATORS(ZoneType);
 
-typedef enum SideType {} SideType;
+typedef enum SideType
+{
+    SIDE_NONE = -1,
+
+    SIDE_FIRST = 0
+} SideType;
+DEFINE_ENUMERATION_OPERATORS(SideType);
+
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 

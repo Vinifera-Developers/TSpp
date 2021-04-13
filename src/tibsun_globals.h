@@ -86,6 +86,7 @@ struct VQHandle;
 class SuperClass;
 class SuperWeaponTypeClass;
 class HouseClass;
+class SideClass;
 class EventClass;
 
 enum KeyNumType;
@@ -157,6 +158,7 @@ extern DynamicVectorClass<VQHandle *> &IngameVQ;
 extern DynamicVectorClass<SuperClass *> &Supers;
 extern DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes;
 extern DynamicVectorClass<HouseClass *> &Houses;
+extern DynamicVectorClass<SideClass *> &Sides;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
