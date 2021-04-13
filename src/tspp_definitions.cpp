@@ -135,6 +135,7 @@
 #include "dropship.h"
 #include "house.h"
 #include "theme.h"
+#include "wspipx.h"
 
 
 /**
@@ -2028,6 +2029,15 @@ DEFINE_IMPLEMENTATION(void ThemeClass::Scan(), 0x00643C70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeControl::ThemeControl(), 0x006439B0);
 ThemeClass::ThemeControl::~ThemeControl() {}
 DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Fill_In(CCINIClass &), 0x00643AC0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXInterfaceClass::IPXInterfaceClass(), 0x006A02F0);
+IPXInterfaceClass::~IPXInterfaceClass() {}
+DEFINE_IMPLEMENTATION(ProtocolEnum IPXInterfaceClass::Get_Protocol(), 0x006A0C20);
+DEFINE_IMPLEMENTATION(int IPXInterfaceClass::Protocol_Event_Message(), 0x006A0C30);
+DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Open_Socket(SOCKET), 0x006A05B0);
+DEFINE_IMPLEMENTATION(LRESULT IPXInterfaceClass::Message_Handler(HWND, UINT, UINT, LONG), 0x006A08B0);
+DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address(int, SOCKADDR_IPX *), 0x006A0330);
+DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address_String(int, char *, int), 0x006A04A0);
 
 
 /**
