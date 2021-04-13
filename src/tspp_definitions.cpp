@@ -134,6 +134,7 @@
 #include "connpoint.h"
 #include "dropship.h"
 #include "house.h"
+#include "theme.h"
 
 
 /**
@@ -2005,6 +2006,29 @@ DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
 DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
 DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeClass(), 0x006439B0);
+ThemeClass::~ThemeClass() { Clear(); }
+DEFINE_IMPLEMENTATION(ThemeType ThemeClass::From_Name(const char *) const, 0x00644390);
+DEFINE_IMPLEMENTATION(ThemeType ThemeClass::Next_Song(ThemeType) const, 0x00643E80);
+DEFINE_IMPLEMENTATION(bool ThemeClass::Is_Allowed(ThemeType) const, 0x00644300);
+DEFINE_IMPLEMENTATION(const char *ThemeClass::Base_Name(ThemeType) const, 0x00643D40);
+DEFINE_IMPLEMENTATION(const char *ThemeClass::Full_Name(ThemeType) const, 0x00643DA0);
+DEFINE_IMPLEMENTATION(int ThemeClass::Play_Song(ThemeType), 0x00643FE0);
+DEFINE_IMPLEMENTATION(bool ThemeClass::Still_Playing() const, 0x006442B0);
+DEFINE_IMPLEMENTATION(int ThemeClass::Track_Length(ThemeType) const, 0x00644160);
+DEFINE_IMPLEMENTATION(void ThemeClass::AI(), 0x00643DC0);
+DEFINE_IMPLEMENTATION(void ThemeClass::Queue_Song(ThemeType), 0x00643F20);
+DEFINE_IMPLEMENTATION(void ThemeClass::Stop(bool), 0x00644190);
+DEFINE_IMPLEMENTATION(void ThemeClass::Suspend(), 0x00644250);
+DEFINE_IMPLEMENTATION(void ThemeClass::Clear(), 0x00643C20);
+DEFINE_IMPLEMENTATION(void ThemeClass::Set_Volume(int), 0x00644410);
+DEFINE_IMPLEMENTATION(int ThemeClass::Process(CCINIClass &), 0x00643AC0);
+DEFINE_IMPLEMENTATION(const char *ThemeClass::Theme_File_Name(ThemeType), 0x00644120);
+DEFINE_IMPLEMENTATION(void ThemeClass::Scan(), 0x00643C70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeControl::ThemeControl(), 0x006439B0);
+ThemeClass::ThemeControl::~ThemeControl() {}
+DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Fill_In(CCINIClass &), 0x00643AC0);
+
 
 /**
  *  Global definitions
@@ -2047,6 +2071,7 @@ Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
 LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
 MouseClass &Map = Make_Global<MouseClass>(0x00748348);
 DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
+ThemeClass &Theme = Make_Global<ThemeClass>(0x007E2248);
 
 
 /**

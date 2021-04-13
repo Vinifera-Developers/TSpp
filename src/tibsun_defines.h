@@ -156,8 +156,11 @@ typedef enum VQType {} VQType;
 
 typedef enum ThemeType
 {
+    THEME_QUIET = -3,
+    THEME_PICK_ANOTHER = -2,
     THEME_NONE = -1,
 
+    THEME_COUNT,
     THEME_FIRST = 0
 } ThemeType;
 DEFINE_ENUMERATION_OPERATORS(ThemeType);

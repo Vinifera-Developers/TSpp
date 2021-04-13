@@ -70,6 +70,7 @@ class Tactical;
 class LogicClass;
 class MouseClass;
 class DirectSoundAudioClass;
+class ThemeClass;
 class HouseTypeClass;
 class UnitTypeClass;
 class InfantryTypeClass;
@@ -132,6 +133,7 @@ extern Tactical *&TacticalMap;
 extern LogicClass *&Logic;
 extern MouseClass &Map;
 extern DirectSoundAudioClass &Audio;
+extern ThemeClass &Theme;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
