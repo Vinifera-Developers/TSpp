@@ -154,6 +154,14 @@ typedef enum CrateType {} CrateType;
 typedef enum VocType {} VocType;
 typedef enum VQType {} VQType;
 
+typedef enum ScriptType
+{
+    SCRIPT_NONE = -1,
+
+    SCRIPT_FIRST = 0
+} ScriptType;
+DEFINE_ENUMERATION_OPERATORS(ScriptType);
+
 typedef enum ThemeType
 {
     THEME_QUIET = -3,
@@ -1278,6 +1286,22 @@ struct ScoutStruct
 
     HouseClass *Whom;
     bool HasScouted;
+};
+
+
+class ScriptMissionClass
+{
+	public:
+        ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
+        ~ScriptMissionClass() {}
+
+		ScriptMissionType Mission;	// Mission type.
+		union {
+			xCellStruct Cell;
+			QuarryType Quarry;		// Combat quarry type.
+			MissionType Mission;	// General mission orders.
+			int Value;				// Usually a waypoint number.
+		} Data;
 };
 
 

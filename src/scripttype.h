@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          SCRIPT.H
+ *  @file          SCRIPTTYPE.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Script mission value container.
+ *  @brief         Class for script types.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,16 +27,18 @@
  ******************************************************************************/
 #pragma once
 
-#include "abstract.h"
+#include "abstracttype.h"
 #include "tibsun_defines.h"
 
 
-class ScriptTypeClass;
-
-
-class DECLSPEC_UUID("42F3A646-0789-11D2-ACA5-006008055BB5")
-ScriptClass : public AbstractClass
+class DECLSPEC_UUID("42F3A647-0789-11D2-ACA5-006008055BB5")
+ScriptTypeClass : public AbstractTypeClass
 {
+    public:
+		enum ScriptTypeClassEnums {
+			MAX_SCRIPT_MISSIONS = 50
+		};
+
     public:
         /**
          *  IPersist
@@ -49,10 +51,10 @@ ScriptClass : public AbstractClass
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
-	public:
-        ScriptClass(ScriptTypeClass *classof);
-        ScriptClass(const NoInitClass &noinit);
-        virtual ~ScriptClass();
+    public:
+        ScriptTypeClass(const char *ini_name = nullptr);
+        ScriptTypeClass(const NoInitClass &noinit);
+        virtual ~ScriptTypeClass();
 
         /**
          *  AbstractClass
@@ -60,16 +62,28 @@ ScriptClass : public AbstractClass
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual int Get_Heap_ID() const override;
 
-        ScriptMissionClass Get_Current_Mission();
-        ScriptMissionClass Get_Next_Mission();
-        bool Stop_Script();
-        bool Set_Line(int line);
-        bool Next_Mission();
-        bool Has_Missions_Remaining() const;
+        /**
+         *  AbstractTypeClass
+         */
+        virtual bool Read_INI(CCINIClass &ini) override;
+        virtual bool Write_INI(CCINIClass &ini) const override;
 
-	public:
-        ScriptTypeClass *Class;
-        int field_18;
-		int CurrentMission;
+        static void Read_Scenario_INI(CCINIClass &ini, bool a2 = false);
+        static void Write_Scenario_INI(CCINIClass &ini, bool a2 = false);
+
+        static const ScriptTypeClass &As_Reference(ScriptType type);
+        static const ScriptTypeClass *As_Pointer(ScriptType type);
+        static const ScriptTypeClass &As_Reference(const char *name);
+        static const ScriptTypeClass *As_Pointer(const char *name);
+        static ScriptType From_Name(const char *name);
+        static const char *Name_From(ScriptType type);
+        static const ScriptTypeClass *Find_Or_Make(const char *name);
+
+    public:
+        ScriptType ID;
+        int field_64;
+        int MissionCount;
+        ScriptMissionClass MissionList[MAX_SCRIPT_MISSIONS];
 };

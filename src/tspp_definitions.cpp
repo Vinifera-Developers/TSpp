@@ -140,6 +140,7 @@
 #include "loadoptions.h"
 #include "side.h"
 #include "script.h"
+#include "scripttype.h"
 
 
 /**
@@ -2095,6 +2096,21 @@ DEFINE_IMPLEMENTATION(bool ScriptClass::Set_Line(int), 0x005E79D0);
 DEFINE_IMPLEMENTATION(bool ScriptClass::Next_Mission(), 0x005E79E0);
 DEFINE_IMPLEMENTATION(bool ScriptClass::Has_Missions_Remaining() const, 0x005E7A00);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ScriptTypeClass::GetClassID(CLSID *), 0x005E80F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Load(IStream *), 0x005E8130);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Save(IStream *, BOOL), 0x005E8170);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptTypeClass::ScriptTypeClass(const char *), 0x005E7AC0);
+ScriptTypeClass::ScriptTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6434; }
+DEFINE_IMPLEMENTATION(ScriptTypeClass::~ScriptTypeClass(), 0x005E7B70);
+DEFINE_IMPLEMENTATION(RTTIType ScriptTypeClass::Kind_Of() const, 0x005E8250);
+DEFINE_IMPLEMENTATION(int ScriptTypeClass::Size_Of(bool) const, 0x005E8260);
+DEFINE_IMPLEMENTATION(void ScriptTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005E8190);
+DEFINE_IMPLEMENTATION(int ScriptTypeClass::Get_Heap_ID() const, 0x005E8270);
+DEFINE_IMPLEMENTATION(bool ScriptTypeClass::Read_INI(CCINIClass &), 0x005E7C80);
+DEFINE_IMPLEMENTATION(bool ScriptTypeClass::Write_INI(CCINIClass &) const, 0x005E7BE0);
+DEFINE_IMPLEMENTATION(void ScriptTypeClass::Read_Scenario_INI(CCINIClass &, bool), 0x005E7D40);
+DEFINE_IMPLEMENTATION(void ScriptTypeClass::Write_Scenario_INI(CCINIClass &, bool), 0x005E7EF0);
+
 
 /**
  *  Global definitions
@@ -2192,6 +2208,7 @@ DynamicVectorClass<SuperWeaponTypeClass *> &SuperWeaponTypes = Make_Global<Dynam
 DynamicVectorClass<HouseClass *> &Houses = Make_Global<DynamicVectorClass<HouseClass *>>(0x007E1558);
 DynamicVectorClass<SideClass *> &Sides = Make_Global<DynamicVectorClass<SideClass *>>(0x007B3470);
 DynamicVectorClass<ScriptClass *> &Scripts = Make_Global<DynamicVectorClass<ScriptClass *>>(0x0074C590);
+DynamicVectorClass<ScriptTypeClass *> &ScriptTypes = Make_Global<DynamicVectorClass<ScriptTypeClass *>>(0x007B3518);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
