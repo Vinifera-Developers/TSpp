@@ -231,7 +231,26 @@ DEFINE_ENUMERATION_OPERATORS(HousesType);
 
 typedef enum PipType {} PipType;
 typedef enum PipScaleType {} PipScaleType;
-typedef enum CategoryType {} CategoryType;
+
+typedef enum CategoryType
+{
+    CATEGORY_SOLDIER,           // Soldier
+    CATEGORY_CIVILIAN,          // Civilian
+    CATEGORY_VIP,               // VIP/Agent
+    CATEGORY_RECON,             // Recon Vehicle
+    CATEGORY_AFV,               // Armored Fighting Vehicle
+    CATEGORY_IFV,               // Infantry Fighting Vehicle
+    CATEGORY_ARTY,              // Indirect Fire Support
+    CATEGORY_SUPPORT,           // Misc. Support Vehicle
+    CATEGORY_TRANSPORT,         // Transport Vehicle
+    CATEGORY_AIRSUPPORT,        // Air Combat Support
+    CATEGORY_AIRTRANSPORT,      // Air Transport
+
+    CATEGORY_COUNT,
+
+    CATEGORY_NONE = -1,
+    CATEGORY_FIRST = 0
+} CategoryType;
 
 typedef enum IsometricTileType
 {
@@ -497,9 +516,181 @@ typedef enum SpecialWeaponType
 } SpecialWeaponType;
 DEFINE_ENUMERATION_OPERATORS(SpecialWeaponType);
 
-typedef enum ActionType {} ActionType;
+typedef enum LayerType
+{
+    LAYER_UNDERGROUND,
+    LAYER_SURFACE,      // Flat on the ground (no sorting or apparent vertical height).
+    LAYER_GROUND,       // Touching the ground type object (units & buildings).
+    LAYER_AIR,          // Flying above the ground (explosions & flames).
+    LAYER_TOP,          // Topmost layer (aircraft & bullets).
+
+    LAYER_COUNT,
+
+    LAYER_NONE = -1,
+    LAYER_FIRST = 0
+} LayerType;
+DEFINE_ENUMERATION_OPERATORS(LayerType);
+
+typedef enum RadioMessageType
+{
+    RADIO_STATIC,           // "hisssss" -- non-message
+    RADIO_ROGER,            // "Roger."
+    RADIO_HELLO,            // "Come in. I wish to talk."
+    RADIO_OVER_OUT,         // "Something came up, bye."
+    RADIO_PICK_UP,          // "Please pick me up."
+    RADIO_ATTACH,           // "Attach to transport."
+    RADIO_DELIVERY,         // "I've got a delivery for you."
+    RADIO_HOLD_STILL,       // "I'm performing load/unload maneuver. Be careful."
+    RADIO_UNLOADED,         // "I'm clear."
+    RADIO_UNLOAD,           // "You are clear to unload. Please start driving off now."
+    RADIO_NEGATIVE,         // "Am unable to comply."
+    RADIO_BUILDING,         // "I'm starting construction now... act busy."
+    RADIO_COMPLETE,         // "I've finished construction. You are free."
+    RADIO_REDRAW,           // "Oops, sorry. I might have bumped you a little."
+    RADIO_DOCKING,          // "I'm trying to load up now."
+    RADIO_CAN_LOAD,         // "May I become a passenger?"
+    RADIO_ARE_REFINERY,     // "Are you a refinery ready to take shipment?"
+    RADIO_TRYING_TO_LOAD,   // "Are you trying to become a passenger?"
+    RADIO_MOVE_HERE,        // "Move to location X."
+    RADIO_NEED_TO_MOVE,     // "Do you need to move somewhere?"
+    RADIO_YEA_NOW_WHAT,     // "All right already. Now what?"
+    RADIO_IM_IN,            // "I'm a passenger now."
+    RADIO_BACKUP_NOW,       // "Begin backup into refinery now."
+    RADIO_RUN_AWAY,         // "Run away! Run away!"
+    RADIO_TETHER,           // "Establish tether contact."
+    RADIO_UNTETHER,         // "Break tether contact."
+    RADIO_REPAIR,           // "Repair one step."
+    RADIO_PREPARED,         // "Are you prepared to fight?"
+    RADIO_ATTACK_THIS,      // "Attack this target please."
+    RADIO_RELOAD,           // "Reload one step please."
+    RADIO_CANT,             // "Circumstances prevent success."
+    RADIO_ALL_DONE,         // "I have completed the task."
+    RADIO_NEED_REPAIR,      // "Are you in need of service depot work?"
+    RADIO_ON_DEPOT,         // "Are you sitting on a service depot?"
+    RADIO_WANT_RIDE,        // "Gimme a ride!"
+
+    RADIO_COUNT
+} RadioMessageType;
+DEFINE_ENUMERATION_OPERATORS(RadioMessageType);
+
+typedef enum PCPType
+{
+    PCP_ROTATION,   // When sitting in place and performing rotations.
+    PCP_DURING,     // While moving between two cells.
+    PCP_END,        // When the 'center' of a cell is reached during movement.
+} PCPType;
+DEFINE_ENUMERATION_OPERATORS(PCPType);
+
+typedef enum ExitType
+{
+    EXIT_FAILED,
+    EXIT_TRY_AGAIN,
+    EXIT_NORMAL,
+} ExitType;
+
+typedef enum MarkType
+{
+    MARK_UP,              // Removed from the map.
+    MARK_DOWN,            // Placed on the map.
+    MARK_CHANGE,          // Altered in place on the map.
+    MARK_CHANGE_REDRAW,   // Redraw because of animation change.
+    MARK_OVERLAP_DOWN,    // Mark overlap cells on the map
+    MARK_OVERLAP_UP       // Clear overlap cells on the map
+} MarkType;
+
+typedef enum ResultType
+{
+    RESULT_NONE,          // No damage was taken by the target.
+    RESULT_LIGHT,         // Some damage was taken, but no state change occurred.
+    RESULT_HALF,          // Damaged to below half strength (only returned on transition).
+    RESULT_MAJOR,         // Damaged down to 1 hit point.
+    RESULT_DESTROYED      // Damaged to complete destruction.
+} ResultType;
+
+typedef enum ActionType
+{
+    ACTION_NONE,            // Either undefined action or "do nothing".
+    ACTION_MOVE,            // Can move there or at least try to.
+    ACTION_NOMOVE,          // Special case for movable object, but illegal mouse position.
+    ACTION_ENTER,           // Special case for infantry->APC or vehicle->Repair facility.
+    ACTION_SELF,            // Self select special case.
+    ACTION_ATTACK,          // Can attack or fire upon it in some fashion.
+    ACTION_HARVEST,         // Special harvest mode.
+    ACTION_SELECT,          // Would change selection to specified object.
+    ACTION_TOGGLE_SELECT,   // Toggles select state of the object.
+    ACTION_CAPTURE,         // The unit will try to capture the object.
+    ACTION_REPAIR,          // The target object should be repaired.
+    ACTION_SELL,            // The target building should be sold back.
+    ACTION_SELL_UNIT,       // The target unit should be sold back.
+    ACTION_NO_SELL,         // No sell or no repair.
+    ACTION_NO_REPAIR,       // No sell or no repair.
+    ACTION_SABOTAGE,        // The unit will try to sabotage/destroy the object.
+    ACTION_TOTE,
+    ACTION_PARA_BOMB,       // Parachute bomb strike.
+    ACTION_PARA_SABOTEUR,   // Parachute saboteur strike.
+    ACTION_NUKE_BOMB,       // That target object should be blasted.
+    ACTION_AIR_STRIKE,      // That target object should be blasted.
+    ACTION_CHRONOSPHERE,    // That target object should be teleported.
+    ACTION_CHRONO2,         // Teleport it to the given coordinates now.
+    ACTION_IRON_CURTAIN,    // That target object should be invulnerable.
+    ACTION_SPY_MISSION,     // Photo recon mission.
+    ACTION_GUARD_AREA,      // Guard the area/object clicked on.
+    ACTION_HEAL,            // Heal the infantryman clicked on.
+    ACTION_DAMAGE,          // Enter and damage building.
+    ACTION_GREPAIR,         // Enter and complete repair building.
+    ACTION_NO_DEPLOY,
+    ACTION_NO_ENTER,
+    ACTION_NO_GREPAIR,
+    ACTION_TOGGLE_POWER,
+    ACTION_NO_TOGGLE_POWER,
+    ACTION_ENTER_TUNNEL,
+    ACTION_NO_ENTER_TUNNEL,
+    ACTION_EMPULSE,
+    ACTION_ION_CANNON,
+    ACTION_EMPULSE_RANGE,
+    ACTION_CHEM_BOMB,
+    ACTION_PLACE_WAYPOINT,
+    ACTION_NO_PLACE_WAYPOINT,
+    ACTION_ENTER_WAYPOINT_MODE,
+    ACTION_FOLLOW_WAYPOINT,
+    ACTION_SELECT_WAYPOINT,
+    ACTION_LOOP_WAYPOINT_PATH,
+    ACTION_DRAG_WAYPOINT,
+    ACTION_ATTACK_WAYPOINT,
+    ACTION_ENTER_WAYPOINT,
+    ACTION_PATROL_WAYPOINT,
+    ACTION_DROP_POD,
+    ACTION_RALLY_TO_POINT,
+    ACTION_ATTACK_SUPPORT,
+
+    ACTION_COUNT,
+
+    ACTION_FIRST = 0
+} ActionType;
+
 typedef enum VoxType {} VoxType;
-typedef enum LandType {} LandType;
+
+typedef enum LandType
+{
+    LAND_CLEAR,         // "Clear" terrain.
+    LAND_ROAD,          // Road terrain.
+    LAND_WATER,         // Water.
+    LAND_ROCK,          // Impassable rock.
+    LAND_WALL,          // Wall (blocks movement).
+    LAND_TIBERIUM,      // Tiberium field.
+    LAND_BEACH,         // Beach terrain.
+    LAND_ROUGH,         // Rocky terrain.
+    LAND_ICE,    // LAND_RIVER
+    LAND_RAILROAD,
+    LAND_TUNNEL,
+    LAND_WEEDS,
+
+    LAND_COUNT,
+
+    LAND_NONE = -1,
+    LAND_FIRST = 0
+} LandType;
+DEFINE_ENUMERATION_OPERATORS(LandType);
 
 typedef enum StateType
 {
@@ -624,11 +815,56 @@ typedef enum ArmorType
 	ARMOR_CONCRETE,
 
 	ARMOR_COUNT,
+
 	ARMOR_FIRST = 0
 } ArmorType;
 
-typedef enum MissionType {} MissionType;
-typedef enum WeaponSlotType {} WeaponSlotType;
+typedef enum MissionType
+{
+    MISSION_SLEEP,          // Do nothing whatsoever.
+    MISSION_ATTACK,         // Attack nearest enemy.
+    MISSION_MOVE,           // Guard location or unit.
+    MISSION_QMOVE,          // A queue list movement mission.
+    MISSION_RETREAT,        // Return home for R & R.
+    MISSION_GUARD,          // Stay still.
+    MISSION_STICKY,         // Stay still -- never recruit.
+    MISSION_ENTER,          // Move into object cooperatively.
+    MISSION_CAPTURE,        // Move into in order to capture.
+    MISSION_HARVEST,        // Hunt for and collect nearby Tiberium.
+    MISSION_GUARD_AREA,     // Active guard of area.
+    MISSION_RETURN,         // Head back to refinery.
+    MISSION_STOP,           // Sit still.
+    MISSION_AMBUSH,         // Wait until discovered.
+    MISSION_HUNT,           // Active search and destroy.
+    MISSION_UNLOAD,         // Search for and deliver cargo.
+    MISSION_SABOTAGE,       // Move into in order to destroy.
+    MISSION_CONSTRUCTION,   // Building buildup operation.
+    MISSION_DECONSTRUCTION, // Building builddown operation.
+    MISSION_REPAIR,         // Repair process mission.
+    MISSION_RESCUE,
+    MISSION_MISSILE,
+    MISSION_HARMLESS,       // Sit around and don't appear like a threat.
+    MISSION_OPEN,
+    MISSION_PATROL,
+
+    MISSION_COUNT,
+
+    MISSION_NONE = -1,
+    MISSION_FIRST = 0
+} MissionType;
+DEFINE_ENUMERATION_OPERATORS(MissionType);
+
+typedef enum WeaponSlotType
+{
+    WEAPON_SLOT_PRIMARY,
+    WEAPON_SLOT_SECONDARY,
+    WEAPON_SLOT_ELITE,
+
+    WEAPON_SLOT_COUNT,
+
+    WEAPON_SLOT_NONE = -1,
+    WEAPON_SLOT_FIRST = 0,
+} WeaponSlotType;
 
 enum TiberiumType
 {

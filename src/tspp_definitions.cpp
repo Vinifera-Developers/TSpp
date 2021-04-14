@@ -141,6 +141,7 @@
 #include "side.h"
 #include "script.h"
 #include "scripttype.h"
+#include "object.h"
 
 
 /**
@@ -2111,6 +2112,116 @@ DEFINE_IMPLEMENTATION(bool ScriptTypeClass::Write_INI(CCINIClass &) const, 0x005
 DEFINE_IMPLEMENTATION(void ScriptTypeClass::Read_Scenario_INI(CCINIClass &, bool), 0x005E7D40);
 DEFINE_IMPLEMENTATION(void ScriptTypeClass::Write_Scenario_INI(CCINIClass &, bool), 0x005E7EF0);
 
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectClass::Load(IStream *), 0x005866F0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectClass::ObjectClass(), 0x005847D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectClass::ObjectClass(const NoInitClass &), 0x005849A0);
+DEFINE_IMPLEMENTATION(ObjectClass::~ObjectClass(), 0x005849C0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::operator < (const ObjectClass &) const, 0x005869D0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::operator > (const ObjectClass &) const, 0x00586A00);
+DEFINE_IMPLEMENTATION(void ObjectClass::Detach(TARGET, bool), 0x00585EF0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Compute_CRC(WWCRCEngine &) const, 0x00586A30);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Inactive() const, 0x00586E20);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Center_Coord() const, 0x00586D60);
+DEFINE_IMPLEMENTATION(bool ObjectClass::On_Ground() const, 0x00587280);
+DEFINE_IMPLEMENTATION(bool ObjectClass::In_Air() const, 0x005872A0);
+DEFINE_IMPLEMENTATION(void ObjectClass::AI(), 0x00584C10);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Players_Army() const, 0x00417400);
+DEFINE_IMPLEMENTATION(VisualType ObjectClass::Visual_Character(bool, const HouseClass *), 0x00417410);
+DEFINE_IMPLEMENTATION(void *const ObjectClass::Get_Image_Data() const, 0x00584BD0);
+DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(const ObjectClass *, bool), 0x00584EF0);
+DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(CellStruct &, bool, bool) const, 0x00584F00);
+DEFINE_IMPLEMENTATION(LayerType ObjectClass::In_Which_Layer() const, 0x00584F10);
+DEFINE_IMPLEMENTATION(bool ObjectClass::entry_7C() const, 0x005872F0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::entry_80() const, 0x00417420);
+DEFINE_IMPLEMENTATION(TechnoTypeClass *const ObjectClass::Techno_Class_Of() const, 0x005872C0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const ObjectClass::Class_Of() const, 0x004A8D90);
+DEFINE_IMPLEMENTATION(int ObjectClass::Get_Ownable() const, 0x00584F50);
+DEFINE_IMPLEMENTATION(const char *ObjectClass::Full_Name() const, 0x00417430);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Repair() const, 0x00584F60);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Demolish() const, 0x00584F70);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Fire() const, 0x00584F80);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Move() const, 0x00584F90);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::entry_A4() const, 0x0040F140);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Docking_Coord() const, 0x0040F170);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Render_Coord() const, 0x0040F1A0);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Fire_Coord(WeaponSlotType) const, 0x00417440);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Exit_Coord() const, 0x0040F1D0);
+DEFINE_IMPLEMENTATION(int ObjectClass::Sort_Y() const, 0x005872D0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::entry_BC(), 0x005871B0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::entry_C0() const, 0x00417480);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Limbo(), 0x00585A50);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Unlimbo(CoordStruct &, DirType), 0x00585BE0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Detach_All(bool), 0x00585F30);
+DEFINE_IMPLEMENTATION(void ObjectClass::Record_The_Kill(const ObjectClass *), 0x00584FA0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Paradrop(CoordStruct &), 0x005864C0);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_D8(), 0x00584E20);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Occupy_Bit(CoordStruct &), 0x00586880);
+DEFINE_IMPLEMENTATION(void ObjectClass::Clear_Occupy_Bit(CoordStruct &), 0x00586900);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_E4(), 0x00586DB0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Do_Shimmer(), 0x00584FB0);
+DEFINE_IMPLEMENTATION(ExitType ObjectClass::Exit_Object(const TechnoClass *), 0x00584FC0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Render(Rect &, bool, bool), 0x00585830);
+DEFINE_IMPLEMENTATION(CellStruct *ObjectClass::Occupy_List(bool) const, 0x005865B0);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_F8(Point2D &, Rect &) const, 0x00417490);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_FC(Point2D &, Rect &) const, 0x004174A0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Draw_It(Point2D &, Rect &) const, 0x00559850);
+DEFINE_IMPLEMENTATION(void ObjectClass::Placement_Draw_It(Point2D &, Rect &) const, 0x00586D90);
+DEFINE_IMPLEMENTATION(void ObjectClass::Hidden(), 0x00584FD0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Look(bool, bool), 0x00584FE0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Mark(MarkType), 0x00586400);
+DEFINE_IMPLEMENTATION(Rect ObjectClass::entry_114() const, 0x005853B0);
+DEFINE_IMPLEMENTATION(Rect ObjectClass::entry_118() const, 0x00585510);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_11C() const, 0x0040F200);
+DEFINE_IMPLEMENTATION(void ObjectClass::Mark_For_Redraw(), 0x00585A30);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x00584FF0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x00585000);
+DEFINE_IMPLEMENTATION(void ObjectClass::Clicked_As_Target(int), 0x00585010);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Select(), 0x005851D0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Unselect(), 0x00585150);
+DEFINE_IMPLEMENTATION(bool ObjectClass::In_Range(CoordStruct &, WeaponSlotType) const, 0x00585020);
+DEFINE_IMPLEMENTATION(int ObjectClass::Weapon_Range(WeaponSlotType) const, 0x00585030);
+DEFINE_IMPLEMENTATION(ResultType ObjectClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x00585FD0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Scatter(CoordStruct &, bool, bool), 0x00585040);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Catch_Fire(), 0x00585050);
+DEFINE_IMPLEMENTATION(void ObjectClass::Fire_Out(), 0x00585060);
+DEFINE_IMPLEMENTATION(int ObjectClass::Value() const, 0x00585070);
+DEFINE_IMPLEMENTATION(MissionType ObjectClass::Get_Mission() const, 0x00585080);
+DEFINE_IMPLEMENTATION(void ObjectClass::Assign_Mission(MissionType), 0x004174B0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Per_Cell_Process(PCPType), 0x004174C0);
+DEFINE_IMPLEMENTATION(BuildingClass *const ObjectClass::Who_Can_Build_Me(bool, bool) const, 0x00586640);
+DEFINE_IMPLEMENTATION(RadioMessageType ObjectClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x00585FB0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Revealed(const HouseClass *), 0x005864B0);
+DEFINE_IMPLEMENTATION(void ObjectClass::Repair(int), 0x00585090);
+DEFINE_IMPLEMENTATION(void ObjectClass::Sell_Back(int), 0x005850A0);
+DEFINE_IMPLEMENTATION(void ObjectClass::entry_174(int, int), 0x00587270);
+DEFINE_IMPLEMENTATION(void ObjectClass::Move(FacingType), 0x005850B0);
+DEFINE_IMPLEMENTATION(MoveType ObjectClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004174D0);
+DEFINE_IMPLEMENTATION(MoveType ObjectClass::entry_180(const CellClass *, FacingType, int *, bool *, const CellClass *), 0x004174E0);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Get_Coord() const, 0x0040F210);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Coord(CoordStruct), 0x005870C0);
+DEFINE_IMPLEMENTATION(CellStruct ObjectClass::Get_Cell() const, 0x0040F230);
+DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Cell_Ptr() const, 0x005870E0);
+DEFINE_IMPLEMENTATION(CellStruct ObjectClass::Get_Target_Cell() const, 0x00587100);
+DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Target_Cell_Ptr() const, 0x00587150);
+DEFINE_IMPLEMENTATION(int ObjectClass::Get_Height() const, 0x00586770);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Height(int) const, 0x005867B0);
+DEFINE_IMPLEMENTATION(int ObjectClass::Get_Z_Coord() const, 0x00586760);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Attach_Tag(TagClass *), 0x00586570);
+DEFINE_IMPLEMENTATION(float ObjectClass::Health_Ratio() const, 0x00586680);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Health_Ratio(double), 0x005866A0);
+DEFINE_IMPLEMENTATION(int ObjectClass::func_586730() const, 0x00586730);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Z_Coord(int), 0x00586840);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Foot() const, 0x00584BF0);
+DEFINE_IMPLEMENTATION(DirStruct ObjectClass::Direction(TARGET *), 0x00584B50);
+DEFINE_IMPLEMENTATION(int ObjectClass::Distance(TARGET) const, 0x00586B20);
+DEFINE_IMPLEMENTATION(int ObjectClass::Distance(const AbstractClass *) const, 0x00586C00);
+DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const AbstractClass *) const, 0x00586CC0);
+DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const CoordStruct &), 0x00586D20);
+// 00586E30
+// 00586F10
+// 00586F90
+DEFINE_IMPLEMENTATION(void ObjectClass::Shorten_Attached_Anims(), 0x00414500);
+
 
 /**
  *  Global definitions
@@ -2209,6 +2320,7 @@ DynamicVectorClass<HouseClass *> &Houses = Make_Global<DynamicVectorClass<HouseC
 DynamicVectorClass<SideClass *> &Sides = Make_Global<DynamicVectorClass<SideClass *>>(0x007B3470);
 DynamicVectorClass<ScriptClass *> &Scripts = Make_Global<DynamicVectorClass<ScriptClass *>>(0x0074C590);
 DynamicVectorClass<ScriptTypeClass *> &ScriptTypes = Make_Global<DynamicVectorClass<ScriptTypeClass *>>(0x007B3518);
+DynamicVectorClass<ObjectClass *> &Objects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4028);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
