@@ -143,6 +143,7 @@
 #include "scripttype.h"
 #include "object.h"
 #include "mission.h"
+#include "radio.h"
 
 
 /**
@@ -2266,6 +2267,17 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(MissionControlClass::MissionControlClass(), 0x
 DEFINE_IMPLEMENTATION(const char *MissionControlClass::Name() const, 0x00559590);
 DEFINE_IMPLEMENTATION(bool MissionControlClass::Read_INI(CCINIClass &), 0x005595B0);
 
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE RadioClass::Load(IStream *), 0x005BDAA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadioClass::RadioClass(), 0x005BD850);
+RadioClass::RadioClass(const NoInitClass &noinit) : MissionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D5B80; *((unsigned long *)this+4) = (unsigned long)0x006D5B64; }
+RadioClass::~RadioClass() { Radio = nullptr; }
+DEFINE_IMPLEMENTATION(void RadioClass::Detach(TARGET, bool), 0x005BDA30);
+DEFINE_IMPLEMENTATION(void RadioClass::Compute_CRC(WWCRCEngine &) const, 0x005BDA60);
+DEFINE_IMPLEMENTATION(bool RadioClass::Limbo(), 0x005BD9E0);
+DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x005BD880);
+DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, long &, RadioClass *), 0x005BDA10);
+DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, RadioClass *), 0x005BD940);
+
 
 /**
  *  Global definitions
@@ -2370,6 +2382,8 @@ IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<Key
 
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
+
+long &LParam = Make_Global<long>(0x007E47D8); // Additional information for RadioClass::Transmit_Message.
 
 
 /**
