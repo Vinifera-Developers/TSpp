@@ -142,6 +142,7 @@
 #include "script.h"
 #include "scripttype.h"
 #include "object.h"
+#include "mission.h"
 
 
 /**
@@ -2221,6 +2222,49 @@ DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const CoordStruct &), 0x
 // 00586F10
 // 00586F90
 DEFINE_IMPLEMENTATION(void ObjectClass::Shorten_Attached_Anims(), 0x00414500);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MissionClass::MissionClass(), 0x00558E40);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MissionClass::MissionClass(const NoInitClass &), 0x0063A600);
+MissionClass::~MissionClass() {}
+DEFINE_IMPLEMENTATION(void MissionClass::Compute_CRC(WWCRCEngine &) const, 0x005597C0);
+DEFINE_IMPLEMENTATION(void MissionClass::AI(), 0x00559010);
+DEFINE_IMPLEMENTATION(MissionType MissionClass::Get_Mission() const, 0x00559000);
+DEFINE_IMPLEMENTATION(void MissionClass::Assign_Mission(MissionType), 0x00559490);
+DEFINE_IMPLEMENTATION(bool MissionClass::Commence(), 0x00559450);
+DEFINE_IMPLEMENTATION(bool MissionClass::Ready_To_Commence() const, 0x004A8DA0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Sleep(), 0x00558E80);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Harmless(), 0x00558E90);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Ambush(), 0x00558EA0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Attack(), 0x00558EB0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Capture(), 0x00558EC0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Guard(), 0x00558ED0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Guard_Area(), 0x00558EE0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Harvest(), 0x00558EF0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Hunt(), 0x00558F00);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Move(), 0x00558F10);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Retreat(), 0x00558F20);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Return(), 0x00558F30);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Stop(), 0x00558F40);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Unload(), 0x00558F50);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Enter(), 0x00558F60);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Construction(), 0x00558F70);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Deconstruction(), 0x00558F80);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Repair(), 0x00558F90);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Missile(), 0x00558FA0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Open(), 0x00558FB0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Rescue(), 0x00558FC0);
+DEFINE_IMPLEMENTATION(int MissionClass::Mission_Patrol(), 0x00558FD0);
+DEFINE_IMPLEMENTATION(void MissionClass::Set_Mission(MissionType), 0x00558FE0);
+DEFINE_IMPLEMENTATION(void MissionClass::Override_Mission(MissionType, const TARGET *, const TARGET *), 0x005594D0);
+DEFINE_IMPLEMENTATION(bool MissionClass::Restore_Mission(), 0x00559510);
+DEFINE_IMPLEMENTATION(bool MissionClass::entry_214() const, 0x00559840);
+DEFINE_IMPLEMENTATION(const MissionControlClass &MissionClass::Get_Current_Mission_Control(), 0x00559830);
+DEFINE_IMPLEMENTATION(bool MissionClass::Is_Recruitable_Mission(MissionType), 0x00559530);
+DEFINE_IMPLEMENTATION(const char *MissionClass::Mission_Name(MissionType), 0x005597A0);
+DEFINE_IMPLEMENTATION(MissionType MissionClass::Mission_From_Name(const char *), 0x00559760);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MissionControlClass::MissionControlClass(), 0x00559550);
+DEFINE_IMPLEMENTATION(const char *MissionControlClass::Name() const, 0x00559590);
+DEFINE_IMPLEMENTATION(bool MissionControlClass::Read_INI(CCINIClass &), 0x005595B0);
 
 
 /**

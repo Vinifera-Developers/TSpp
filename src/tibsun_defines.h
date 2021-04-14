@@ -85,6 +85,17 @@ class HouseClass;
 #define MAP_TOTAL_REGIONS   (MAP_REGION_WIDTH * MAP_REGION_HEIGHT)
 
 
+/**
+ *  Timer constants.
+ */
+#define	TIMER_SECOND		60
+#define	TIMER_MINUTE		(TIMER_SECOND * 60)
+
+#define	TICKS_PER_SECOND	15
+#define	TICKS_PER_MINUTE	(TICKS_PER_SECOND * 60)
+#define	TICKS_PER_HOUR		(TICKS_PER_MINUTE * 60)
+
+
 #define TXT_NONE    0
 #define TXT_OK      10
 
