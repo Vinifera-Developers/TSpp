@@ -145,6 +145,7 @@
 #include "mission.h"
 #include "radio.h"
 #include "cargo.h"
+#include "facing.h"
 
 
 /**
@@ -2287,6 +2288,25 @@ DEFINE_IMPLEMENTATION(void CargoClass::Attach(FootClass *), 0x004491B0);
 DEFINE_IMPLEMENTATION(FootClass *CargoClass::Attached_Object() const, 0x00449260);
 DEFINE_IMPLEMENTATION(FootClass *CargoClass::Detach_Object(), 0x00449240);
 DEFINE_IMPLEMENTATION(void CargoClass::Detach(FootClass *), 0x00449270);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(FacingClass::FacingClass(), 0x00496530);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(FacingClass::FacingClass(int), 0x00496550);
+FacingClass::FacingClass(DirStruct &facing) : DesiredFacing(DIR_N), StartFacing(DIR_N), RotationTimer(0), ROT(0) {}
+FacingClass::FacingClass(DirType dir) : DesiredFacing(dir), StartFacing(dir), RotationTimer(0), ROT(0) {}
+FacingClass::FacingClass(const NoInitClass &noinit) : RotationTimer(noinit) {}
+DEFINE_IMPLEMENTATION(bool FacingClass::Set_Desired(DirStruct &), 0x00496590);
+DEFINE_IMPLEMENTATION(bool FacingClass::Set(DirStruct &), 0x00496670);
+DEFINE_IMPLEMENTATION(DirStruct FacingClass::Desired() const, 0x004967E0);
+DEFINE_IMPLEMENTATION(DirStruct FacingClass::Current() const, 0x00496740);
+DEFINE_IMPLEMENTATION(bool FacingClass::Is_Rotating() const, 0x004967F0);
+DEFINE_IMPLEMENTATION(bool FacingClass::Is_Rotating_CW() const, 0x00496820);
+DEFINE_IMPLEMENTATION(bool FacingClass::Is_Rotating_CCW() const, 0x00496860);
+DEFINE_IMPLEMENTATION(DirStruct FacingClass::Difference() const, 0x004968A0);
+DEFINE_IMPLEMENTATION(DirStruct FacingClass::Difference(DirStruct &) const, 0x00496940);
+DEFINE_IMPLEMENTATION(void FacingClass::Set_ROT(int), 0x004969F0);
+
+DEFINE_IMPLEMENTATION(bool DirStruct::func_5589F0(const DirStruct &, const DirStruct &), 0x005589F0);
+DEFINE_IMPLEMENTATION(bool DirStruct::func_558A20(const DirStruct &, const DirStruct &), 0x00558A20);
 
 
 /**

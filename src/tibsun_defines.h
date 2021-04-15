@@ -29,10 +29,12 @@
 
 #include "always.h"
 #include "rect.h"
+#include "fixed.h"
 
 
 class AbstractClass;
 class HouseClass;
+class NoInitClass;
 
 
 /**
@@ -1552,6 +1554,30 @@ class ScriptMissionClass
 };
 
 
-typedef struct DirStruct
+/**
+ *  DirStruct is in stages of 128 (0-32768) (128*256).
+ */
+#pragma pack(4)
+typedef struct DirStruct : public fixed
 {
+    private:
+        static inline FacingType Dir_To_Facing(DirType facing) { return (FacingType)(((unsigned char)((int)facing+0x10)&0xFF)>>5); }
+        static inline DirType Facing_To_Dir(FacingType facing) { return (DirType)((int)facing<<5); }
+
+    public:
+        explicit DirStruct() : fixed(0) {}
+        explicit DirStruct(int raw) { Set_Raw(raw); }
+        explicit DirStruct(const DirType dir) : fixed(dir) {}
+        explicit DirStruct(const FacingType facing) : fixed(Facing_To_Dir(facing)) {}
+        explicit DirStruct(const NoInitClass &noinit) {}
+
+        operator int () const { return fixed::Get_Raw(); }
+
+        operator DirType() const { return (DirType)((((Get_Raw() >> 7) + 1) >> 1) & 255); }
+        operator FacingType() const { return Dir_To_Facing((DirType)(Get_Raw() & 255)); }
+
+        bool func_5589F0(const DirStruct &a, const DirStruct &b);
+        bool func_558A20(const DirStruct &a, const DirStruct &b);
+
 } DirStruct;
+#pragma pack()
