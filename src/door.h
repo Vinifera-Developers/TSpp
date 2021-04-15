@@ -1,0 +1,59 @@
+/*******************************************************************************
+/*                     O P E N  S O U R C E  --  T S + +                      **
+/*******************************************************************************
+ *
+ *  @project       TS++
+ *
+ *  @file          DOOR.H
+ *
+ *  @authors       CCHyper, tomsons26
+ *
+ *  @brief         Door system for buildings and units.
+ *
+ *  @license       TS++ is free software: you can redistribute it and/or
+ *                 modify it under the terms of the GNU General Public License
+ *                 as published by the Free Software Foundation, either version
+ *                 3 of the License, or (at your option) any later version.
+ *
+ *                 TS++ is distributed in the hope that it will be
+ *                 useful, but WITHOUT ANY WARRANTY; without even the implied
+ *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ *                 PURPOSE. See the GNU General Public License for more details.
+ *
+ *                 You should have received a copy of the GNU General Public
+ *                 License along with this program.
+ *                 If not, see <http://www.gnu.org/licenses/>.
+ *
+ ******************************************************************************/
+#pragma once
+
+#include "always.h"
+#include "ttimer.h"
+#include "ftimer.h"
+
+
+class DoorClass
+{
+    public:
+        DoorClass();
+        ~DoorClass();
+
+        bool Is_Door_Opening() const;
+        bool Is_Door_Closing() const;
+        bool Has_Finished() const;
+        bool Is_Door_Open() const;
+        bool Is_Door_Closed() const;
+		void Open_Door(double rate);
+		void Close_Door(double rate);
+        void Flip_State();
+        void Force_Open();
+        void Force_Close();
+        double Get_Percent_Complete() const;
+        void AI();
+
+    public:
+        double Rate;
+        RateTimerClass<FrameTimerClass> Timer;
+        bool field_18; // in transition?
+        unsigned char field_19; // 0 == close, 1 == open.
+};

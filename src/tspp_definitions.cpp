@@ -146,6 +146,7 @@
 #include "radio.h"
 #include "cargo.h"
 #include "facing.h"
+#include "door.h"
 
 
 /**
@@ -2307,6 +2308,21 @@ DEFINE_IMPLEMENTATION(void FacingClass::Set_ROT(int), 0x004969F0);
 
 DEFINE_IMPLEMENTATION(bool DirStruct::func_5589F0(const DirStruct &, const DirStruct &), 0x005589F0);
 DEFINE_IMPLEMENTATION(bool DirStruct::func_558A20(const DirStruct &, const DirStruct &), 0x00558A20);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(DoorClass::DoorClass(), 0x00473C70);
+DoorClass::~DoorClass() {}
+DEFINE_IMPLEMENTATION(bool DoorClass::Is_Door_Opening() const, 0x00473C90);
+DEFINE_IMPLEMENTATION(bool DoorClass::Is_Door_Closing() const, 0x00473CB0);
+DEFINE_IMPLEMENTATION(bool DoorClass::Has_Finished() const, 0x00473CD0);
+DEFINE_IMPLEMENTATION(bool DoorClass::Is_Door_Open() const, 0x00473D30);
+DEFINE_IMPLEMENTATION(bool DoorClass::Is_Door_Closed() const, 0x00473D50);
+DEFINE_IMPLEMENTATION(void DoorClass::Open_Door(double), 0x00473D70);
+DEFINE_IMPLEMENTATION(void DoorClass::Close_Door(double), 0x00473DC0);
+DEFINE_IMPLEMENTATION(void DoorClass::Flip_State(), 0x00473E10);
+DEFINE_IMPLEMENTATION(void DoorClass::Force_Open(), 0x00473E50);
+DEFINE_IMPLEMENTATION(void DoorClass::Force_Close(), 0x00473E60);
+DEFINE_IMPLEMENTATION(double DoorClass::Get_Percent_Complete() const, 0x00473E70);
+DEFINE_IMPLEMENTATION(void DoorClass::AI(), 0x00473EE0);
 
 
 /**
