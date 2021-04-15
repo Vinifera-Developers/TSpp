@@ -148,7 +148,7 @@ class ObjectClass : public AbstractClass
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false);
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual CoordStruct Get_Coord() const;
-        virtual void Set_Coord(CoordStruct coord);
+        virtual void Set_Coord(CoordStruct &coord);
         virtual CellStruct Get_Cell() const;
         virtual CellClass *Get_Cell_Ptr() const;
         virtual CellStruct Get_Target_Cell() const;
@@ -171,16 +171,13 @@ class ObjectClass : public AbstractClass
         // 00586F10
         // 00586F90
 
-        static void Shorten_Attached_Anims();
-
-        TechnoClass *As_Techno(); // 
-        FootClass *As_Foot(); //
-
 		bool Is_Techno() const { RTTIType rtti = Kind_Of(); return rtti == RTTI_BUILDING || rtti == RTTI_UNIT || rtti == RTTI_INFANTRY || rtti == RTTI_AIRCRAFT; }
         bool Is_Foot() const; // 00584BF0
         bool Is_Infantry() const { RTTIType rtti = Kind_Of(); return rtti == RTTI_INFANTRY; }
 		
         bool Has_Class() const { return Class_Of() != nullptr; }
+
+        static void Shorten_Attached_Anims();
 
     public:
         int field_14;

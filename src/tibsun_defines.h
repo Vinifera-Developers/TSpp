@@ -486,6 +486,14 @@ typedef enum VeterancyRankType
 } VeterancyRankType;
 DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
 
+typedef enum CloakType
+{
+    UNCLOAKED,		// Completely visible (normal state).
+    CLOAKING,		// In process of cloaking.
+    CLOAKED,		// Completely cloaked (invisible).
+    UNCLOAKING		// In process of uncloaking.
+} CloakType;
+
 typedef enum BuildingType
 {
     BUILDING_FIRST = 0,

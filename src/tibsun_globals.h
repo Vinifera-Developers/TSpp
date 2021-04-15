@@ -90,6 +90,7 @@ class SideClass;
 class ScriptClass;
 class ScriptTypeClass;
 class ObjectClass;
+class TechnoClass;
 class EventClass;
 
 enum KeyNumType;
@@ -165,6 +166,7 @@ extern DynamicVectorClass<SideClass *> &Sides;
 extern DynamicVectorClass<ScriptClass *> &Scripts;
 extern DynamicVectorClass<ScriptTypeClass *> &ScriptTypes;
 extern DynamicVectorClass<ObjectClass *> &Objects;
+extern DynamicVectorClass<TechnoClass *> &Technos;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
