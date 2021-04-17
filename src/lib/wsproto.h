@@ -70,7 +70,7 @@ class WinsockInterfaceClass
 		virtual void Clear_Socket_Error(SOCKET socket);
 		virtual bool Set_Socket_Options();
 		virtual void Set_Broadcast_Address(void *addr);
-		virtual void Clear_Broadcast_Addresses() {}
+		virtual void Clear_Broadcast_Addresses();
 		virtual ProtocolEnum Get_Protocol();
 		virtual int Protocol_Event_Message();
 		virtual bool Open_Socket(SOCKET socket);

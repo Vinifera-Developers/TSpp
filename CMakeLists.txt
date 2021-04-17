@@ -169,7 +169,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 # Make build check state of git to check for uncommitted changes.
-add_dependencies(${PROJECT_NAME} check_git)
+add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_check_git)
 
 # Set the custom project name.
 set_target_properties("${PROJECT_NAME}" PROPERTIES PROJECT_LABEL "TS++")
@@ -226,10 +226,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4996") # disable C4996: 'This functio
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4324") # disable C4324: 'structure was padded due to alignment specifier.' Safe to ignore this.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4102") # disable C4102: 'unreferenced label.' Yea, so what?
 
-if(OPTION_DLL_BUILD)
-	# disable C4646: 'function declared with 'noreturn' has non-void return type' Yea, so what?
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4646") # Only needed for DLL builds.
-endif()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4646") # disable C4646: 'function declared with 'noreturn' has non-void return type' Yea, so what?
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4731") # disable C4731: 'frame pointer register 'ebp' modified by inline assembly code' Nothing to worry about.
 
 # disable D9035: 'option 'QIfist' has been deprecated and will be removed in a future release.' Yeah yeah, we need it for now though...
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd9035") # Not allowed to disable command line warnings.

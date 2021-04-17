@@ -265,6 +265,38 @@ typedef enum CategoryType
     CATEGORY_FIRST = 0
 } CategoryType;
 
+typedef enum WaypointType : char
+{
+    WAYPOINT_NONE = -1,
+    WAYPOINT_FIRST = 0,
+} WaypointType;
+DEFINE_ENUMERATION_OPERATORS(WaypointType);
+
+typedef enum TubeType : char
+{
+    TUBE_NONE = -1,
+    TUBE_FIRST = 0,
+} TubeType;
+DEFINE_ENUMERATION_OPERATORS(TubeType);
+
+typedef enum TubeDirType : char
+{
+    TUBE_FACING_N, // North
+    TUBE_FACING_NE, // North-East
+    TUBE_FACING_E, // East
+    TUBE_FACING_SE, // South-East
+    TUBE_FACING_S, // South
+    TUBE_FACING_SW, // South-West
+    TUBE_FACING_W, // West
+    TUBE_FACING_NW, // North-West
+
+    TUBE_FACING_COUNT,
+
+    TUBE_FACING_NONE = -1,
+    TUBE_FACING_FIRST = 0,
+} TubeDirType;
+DEFINE_ENUMERATION_OPERATORS(TubeDirType);
+
 typedef enum IsometricTileType
 {
     ISOTILE_CLEAR = 0,

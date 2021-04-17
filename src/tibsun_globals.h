@@ -91,6 +91,7 @@ class ScriptClass;
 class ScriptTypeClass;
 class ObjectClass;
 class TechnoClass;
+class FootClass;
 class EventClass;
 
 enum KeyNumType;
@@ -193,6 +194,7 @@ extern DynamicVectorClass<ScriptClass *> &Scripts;
 extern DynamicVectorClass<ScriptTypeClass *> &ScriptTypes;
 extern DynamicVectorClass<ObjectClass *> &Objects;
 extern DynamicVectorClass<TechnoClass *> &Technos;
+extern DynamicVectorClass<FootClass *> &Foots;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

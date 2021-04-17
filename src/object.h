@@ -172,7 +172,7 @@ class ObjectClass : public AbstractClass
         // 00586F90
 
 		bool Is_Techno() const { RTTIType rtti = Kind_Of(); return rtti == RTTI_BUILDING || rtti == RTTI_UNIT || rtti == RTTI_INFANTRY || rtti == RTTI_AIRCRAFT; }
-        bool Is_Foot() const; // 00584BF0
+        bool Is_Foot() const;
         bool Is_Infantry() const { RTTIType rtti = Kind_Of(); return rtti == RTTI_INFANTRY; }
 		
         bool Has_Class() const { return Class_Of() != nullptr; }

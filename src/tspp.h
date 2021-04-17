@@ -256,10 +256,52 @@
         _asm { _emit 0xCC } \
     }
 
+
+/**
+ *  For constructor jumps, we need to adjust the stack before we
+ *  make the jump to the address, otherwise the stack will be smashed.
+ */
+#ifndef NDEBUG
+#define CONSTRUCTOR_EPILOG \
+	_asm { pop edi } \
+	_asm { pop esi } \
+	_asm { pop ebx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+#else
+// RelWithDebInfo produces the same epilog as Debug.
+#define CONSTRUCTOR_EPILOG \
+	_asm { pop edi } \
+	_asm { pop esi } \
+	_asm { pop ebx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+
+/*
+#define CONSTRUCTOR_EPILOG \
+	_asm { pop ecx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+*/
+#endif
+
 #define DEFINE_IMPLEMENTATION_CONSTRUCTOR(prototype, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
     { \
+        CONSTRUCTOR_EPILOG; \
+        _asm { mov eax, address } \
+        _asm { jmp eax } \
+        _asm { _emit 0xCC } /* Align the jump */ \
+        _asm { _emit 0xCC } \
+    }
+
+// For classes with a base class that has no default constructor available.
+#define DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(prototype, base, address, ...) \
+    /*[[ noreturn ]]*/ __declspec(noinline) \
+    prototype : base(NoInitClass()) \
+    { \
+        CONSTRUCTOR_EPILOG; \
         _asm { mov eax, address } \
         _asm { jmp eax } \
         _asm { _emit 0xCC } /* Align the jump */ \
@@ -267,11 +309,44 @@
     }
 
 
-//
-// Declare a patch hook.
-//
-#define DECLARE_PATCH(name) \
-    [[ noreturn ]] __declspec(noinline) __declspec(naked) void name()
+/**
+ *  For deconstructor jumps, we need to adjust the stack before we
+ *  make the jump to the address, otherwise the stack will be smashed.
+ */
+#ifndef NDEBUG
+#define DECONSTRUCTOR_EPILOG \
+	_asm { pop edi } \
+	_asm { pop esi } \
+	_asm { pop ebx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+#else
+// RelWithDebInfo produces the same epilog as Debug.
+#define DECONSTRUCTOR_EPILOG \
+	_asm { pop edi } \
+	_asm { pop esi } \
+	_asm { pop ebx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+
+/*
+#define DECONSTRUCTOR_EPILOG \
+	_asm { pop ecx } \
+	_asm { mov esp, ebp } \
+	_asm { pop ebp }
+*/
+#endif
+
+#define DEFINE_IMPLEMENTATION_DECONSTRUCTOR(prototype, address, ...) \
+    /*[[ noreturn ]]*/ __declspec(noinline) \
+    prototype \
+    { \
+        DECONSTRUCTOR_EPILOG; \
+        _asm { mov eax, address } \
+        _asm { jmp eax } \
+        _asm { _emit 0xCC } /* Align the jump */ \
+        _asm { _emit 0xCC } \
+    }
 
 
 /**

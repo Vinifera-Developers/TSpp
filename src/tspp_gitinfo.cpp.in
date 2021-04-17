@@ -33,7 +33,14 @@
  *  #WARNING:
  *  This file is automatically populated by the CMake, do not edit!
  */
- 
+
+
+/**
+ *  Place code in custom segment.
+ */
+#pragma code_seg(push, r1, ".t_git")
+#define CUSTOM_SEGEMENT __declspec(allocate(".t_git"))
+
 
 const char *TSPP_Git_Hash()
 {
@@ -85,3 +92,7 @@ const char *TSPP_Git_Version_String()
 
 	return _buffer;
 }
+
+
+#undef CUSTOM_SEGMENT
+#pragma code_seg(pop, r1)

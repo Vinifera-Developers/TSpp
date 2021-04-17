@@ -168,16 +168,16 @@
  */
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(Pipe::Pipe(), 0x);
 Pipe::Pipe() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC84; }
-DEFINE_IMPLEMENTATION(Pipe::~Pipe(), 0x005A9430);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(Pipe::~Pipe(), 0x005A9430);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(Straw::Straw(), 0x);
 Straw::Straw() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC5C; }
-DEFINE_IMPLEMENTATION(Straw::~Straw(), 0x0060AFC0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(Straw::~Straw(), 0x0060AFC0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(), 0x);
 RawFileClass::RawFileClass() : Rights(FILE_ACCESS_READ), BiasStart(0), BiasLength(-1), Handle(INVALID_HANDLE_VALUE), Filename(nullptr), Date(0), Time(0), Allocated(false) { *((unsigned long *)this) = (unsigned long)0x006D5E34; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(const char *), 0x005BE310);
-DEFINE_IMPLEMENTATION(RawFileClass::~RawFileClass(), 0x005BE290);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(RawFileClass::~RawFileClass(), 0x005BE290);
 DEFINE_IMPLEMENTATION(const char* RawFileClass::File_Name() const, 0x005BDE00);
 DEFINE_IMPLEMENTATION(const char* RawFileClass::Set_Name(const char *), 0x005BDE10);
 DEFINE_IMPLEMENTATION(bool RawFileClass::Create(), 0x005BDB90);
@@ -198,7 +198,7 @@ DEFINE_IMPLEMENTATION(void RawFileClass::Bias(off_t, int), 0x005BEB20);
 DEFINE_IMPLEMENTATION(off_t RawFileClass::Raw_Seek(off_t, FileSeekType), 0x005BEB90);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MixFileClass::MixFileClass(const char *, const PKey *), 0x00559A10);
-DEFINE_IMPLEMENTATION(MixFileClass::~MixFileClass(), 0x00559D40);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(MixFileClass::~MixFileClass(), 0x00559D40);
 DEFINE_IMPLEMENTATION(void MixFileClass::Free(), 0x0055A190);
 DEFINE_IMPLEMENTATION(bool MixFileClass::Free(const char *), 0x00559C80);
 DEFINE_IMPLEMENTATION(bool MixFileClass::Cache(const Buffer *), 0x00559F30);
@@ -208,7 +208,7 @@ DEFINE_IMPLEMENTATION(const void* MixFileClass::Retrieve(const char *), 0x00559D
 DEFINE_IMPLEMENTATION(MixFileClass* MixFileClass::Finder(const char *), 0x00559E00);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWKeyboardClass::WWKeyboardClass(), 0x004FADC0);
-DEFINE_IMPLEMENTATION(WWKeyboardClass::~WWKeyboardClass(), 0x004FADB0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WWKeyboardClass::~WWKeyboardClass(), 0x004FADB0);
 DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Check() const, 0x004FAF30);
 DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Get(), 0x004FAF80);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Put(unsigned short), 0x004FB0C0);
@@ -234,7 +234,7 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(void *, long), 0x00425C30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(const void *, long), 0x00425CB0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(long), 0x00425CF0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(const Buffer &), 0x00425D20);
-DEFINE_IMPLEMENTATION(Buffer::~Buffer(), 0x00425D80);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(Buffer::~Buffer(), 0x00425D80);
 DEFINE_IMPLEMENTATION(Buffer& Buffer::operator=(const Buffer &), 0x00425D40);
 DEFINE_IMPLEMENTATION(void Buffer::Reset(), 0x00425DB0);
 
@@ -243,7 +243,7 @@ DEFINE_IMPLEMENTATION(void SpecialClass::Read_INI(CCINIClass &), 0x005FCC60);
 DEFINE_IMPLEMENTATION(void SpecialClass::Write_INI(CCINIClass &) const, 0x005FCAF0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RAMFileClass::RAMFileClass(void *, int), 0x005BDB00);
-DEFINE_IMPLEMENTATION(RAMFileClass::~RAMFileClass(), 0x005BDB50);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(RAMFileClass::~RAMFileClass(), 0x005BDB50);
 DEFINE_IMPLEMENTATION(const char *RAMFileClass::File_Name() const, 0x005BDE00);
 DEFINE_IMPLEMENTATION(const char *RAMFileClass::Set_Name(const char *), 0x005BDE10);
 DEFINE_IMPLEMENTATION(bool RAMFileClass::Create(), 0x005BDB90);
@@ -263,7 +263,7 @@ DEFINE_IMPLEMENTATION(void RAMFileClass::Error(FileErrorType, bool, const char *
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BufferIOFileClass::BufferIOFileClass(), 0x00420D30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BufferIOFileClass::BufferIOFileClass(const char *), 0x00420C40);
-DEFINE_IMPLEMENTATION(BufferIOFileClass::~BufferIOFileClass(), 0x00420D90);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BufferIOFileClass::~BufferIOFileClass(), 0x00420D90);
 DEFINE_IMPLEMENTATION(const char *BufferIOFileClass::Set_Name(const char *), 0x00421090);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Is_Available(bool), 0x00421120);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Is_Open() const, 0x00421140);
@@ -294,7 +294,7 @@ DEFINE_IMPLEMENTATION(void CDFileClass::Find_Close(), 0x00450CF0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(), 0x005C4350);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(const NoInitClass &), 0x005C3E00);
-DEFINE_IMPLEMENTATION(RulesClass::~RulesClass(), 0x005C59B0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(RulesClass::~RulesClass(), 0x005C59B0);
 DEFINE_IMPLEMENTATION(void RulesClass::Process(CCINIClass &), 0x005C6710);
 DEFINE_IMPLEMENTATION(void RulesClass::Initialize(CCINIClass &), 0x005C6130);
 DEFINE_IMPLEMENTATION(void RulesClass::Save(IStream *), 0x005CE410);
@@ -345,7 +345,7 @@ DEFINE_IMPLEMENTATION(bool Surface::entry_80() const, 0x00406E20);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(), 0x004497F0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(const char *), 0x004497B0);
-DEFINE_IMPLEMENTATION(CCFileClass::~CCFileClass(), 0x004E8970);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CCFileClass::~CCFileClass(), 0x004E8970);
 DEFINE_IMPLEMENTATION(bool CCFileClass::Is_Available(bool), 0x004499C0);
 DEFINE_IMPLEMENTATION(bool CCFileClass::Is_Open() const, 0x00449A00);
 DEFINE_IMPLEMENTATION(bool CCFileClass::Open(const char *, FileAccessType), 0x00407270);
@@ -360,7 +360,7 @@ DEFINE_IMPLEMENTATION(bool CCFileClass::Set_Date_Time(LONG), 0x00449C20);
 DEFINE_IMPLEMENTATION(void CCFileClass::Error(FileErrorType error, bool, const char *), 0x00449820);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWMouseClass::WWMouseClass(XSurface *, HWND), 0x006A5000);
-DEFINE_IMPLEMENTATION(WWMouseClass::~WWMouseClass(), 0x006A5170);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WWMouseClass::~WWMouseClass(), 0x006A5170);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Set_Cursor(Point2D *, void *, int), 0x006A52A0);
 DEFINE_IMPLEMENTATION(bool WWMouseClass::Is_Locked() const, 0x006A6910);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Hide_Mouse(), 0x006A6140);
@@ -427,7 +427,7 @@ DEFINE_IMPLEMENTATION(int BSurface::Get_Pitch() const, 0x00406EA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(), 0x0048AD10);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(int, int, bool), 0x0048ABB0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(LPDIRECTDRAWSURFACE), 0x0048B250);
-DEFINE_IMPLEMENTATION(DSurface::~DSurface(), 0x0048ACA0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(DSurface::~DSurface(), 0x0048ACA0);
 DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect &, Rect &, Surface &, Rect &, Rect &, bool, bool), 0x0048B5E0);
 DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect &, Surface &, Rect &, bool, bool), 0x0048B590);
 DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Surface &, bool, bool), 0x004901A0);
@@ -460,7 +460,7 @@ DEFINE_IMPLEMENTATION(int AbstractClass::Fetch_ID(), 0x00405BB0);
 DEFINE_IMPLEMENTATION(VOID AbstractClass::Create_ID(), 0x00405BC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractClass::AbstractClass(), 0x00405B50);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractClass::AbstractClass(const NoInitClass &), 0x00405B70);
-DEFINE_IMPLEMENTATION(AbstractClass::~AbstractClass(), 0x00405B90);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(AbstractClass::~AbstractClass(), 0x00405B90);
 DEFINE_IMPLEMENTATION(void AbstractClass::Init(), 0x00405E20);
 DEFINE_IMPLEMENTATION(void AbstractClass::Detach(TARGET, bool), 0x00405E30);
 DEFINE_IMPLEMENTATION(int AbstractClass::entry_34() const, 0x00405E40);
@@ -478,7 +478,7 @@ DEFINE_IMPLEMENTATION(void AbstractClass::AI(), 0x00405F30);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractTypeClass::AbstractTypeClass(const char *), 0x004061D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AbstractTypeClass::AbstractTypeClass(const NoInitClass &), 0x00406310);
-DEFINE_IMPLEMENTATION(AbstractTypeClass::~AbstractTypeClass(), 0x00406330);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(AbstractTypeClass::~AbstractTypeClass(), 0x00406330);
 DEFINE_IMPLEMENTATION(void AbstractTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00406460);
 DEFINE_IMPLEMENTATION(void AbstractTypeClass::entry_64(), 0x00406490);
 DEFINE_IMPLEMENTATION(bool AbstractTypeClass::Read_INI(CCINIClass &), 0x004063A0);
@@ -498,7 +498,7 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScenarioClass::ScenarioClass(), 0x005DABC0);
 ScenarioClass::~ScenarioClass() {}
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MessageListClass::MessageListClass(), 0x00572E00);
-DEFINE_IMPLEMENTATION(MessageListClass::~MessageListClass(), 0x00572E80);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(MessageListClass::~MessageListClass(), 0x00572E80);
 DEFINE_IMPLEMENTATION(void MessageListClass::Init(int, int, int, int, int, int, int, int, int, int, int), 0x00572EA0);
 DEFINE_IMPLEMENTATION(TextLabelClass* MessageListClass::Add_Message(char const *, int, char const *, ColorSchemeType, TextPrintType, int), 0x00572FE0);
 DEFINE_IMPLEMENTATION(bool MessageListClass::Concat_Message(char const *, int, char const *, int), 0x005734B0);
@@ -517,7 +517,7 @@ DEFINE_IMPLEMENTATION(void MessageListClass::Set_Edit_Focus(), 0x005737A0);
 DEFINE_IMPLEMENTATION(bool MessageListClass::Has_Edit_Focus(), 0x005737B0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SessionClass::SessionClass(), 0x005ECD00);
-DEFINE_IMPLEMENTATION(SessionClass::~SessionClass(), 0x005ED1C0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SessionClass::~SessionClass(), 0x005ED1C0);
 
 DEFINE_IMPLEMENTATION(int Format_Window_String(char *, WWFontClass *, int, int &, int &), 0x00474960);
 DEFINE_IMPLEMENTATION(Point2D Simple_Text_Print(const char *, XSurface *, Rect *, Point2D *, ColorScheme *, unsigned, TextPrintType, int), 0x00474A50);
@@ -529,7 +529,7 @@ DEFINE_IMPLEMENTATION(Point2D Conquer_Clip_Text_Print(const char *, XSurface *, 
 
 INIClass::INIClass() : SectionList(), SectionIndex(), LineComments(nullptr) { *((unsigned long *)this) = (unsigned long)0x006D193C; }
 INIClass::INIClass(FileClass &file, bool load_comments) : SectionList(), SectionIndex(), LineComments(nullptr) { Load(file, load_comments); *((unsigned long *)this) = (unsigned long)0x006D193C; }
-DEFINE_IMPLEMENTATION(INIClass::~INIClass(), 0x004DB470);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(INIClass::~INIClass(), 0x004DB470);
 DEFINE_IMPLEMENTATION(bool INIClass::Load(FileClass &, bool), 0x004DB780);
 DEFINE_IMPLEMENTATION(bool INIClass::Load(Straw &, bool), 0x004DB7D0);
 DEFINE_IMPLEMENTATION(int INIClass::Save(FileClass &, bool) const, 0x004DC180);
@@ -644,7 +644,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectTypeClass::Load(IStream *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectTypeClass::Save(IStream *, BOOL), 0x00588FA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::ObjectTypeClass(const char *), 0x00587620);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::ObjectTypeClass(const NoInitClass &), 0x00587810);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectTypeClass::~ObjectTypeClass(), 0x005878B0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ObjectTypeClass::~ObjectTypeClass(), 0x005878B0);
 DEFINE_IMPLEMENTATION(bool ObjectTypeClass::Read_INI(CCINIClass &), 0x00588A20);
 DEFINE_IMPLEMENTATION(CoordStruct ObjectTypeClass::Coord_Fixup(CoordStruct *) const, 0x00410180);
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Get_Ownable() const, 0x00419B90);
@@ -664,7 +664,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoTypeClass::Load(IStream *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoTypeClass::Save(IStream *, BOOL), 0x0063DF00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TechnoTypeClass::TechnoTypeClass(const char *, SpeedType), 0x0063ADE0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TechnoTypeClass::TechnoTypeClass(const NoInitClass &), 0x0063B480);
-DEFINE_IMPLEMENTATION(TechnoTypeClass::~TechnoTypeClass(), 0x0063B5F0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TechnoTypeClass::~TechnoTypeClass(), 0x0063B5F0);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::entry_34() const, 0x004101B0);
 DEFINE_IMPLEMENTATION(void TechnoTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0063E210);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Read_INI(CCINIClass &), 0x0063B9B0);
@@ -693,14 +693,14 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Save_Interface
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Load_Interface(IStream *, CLSID *, void **), 0x0060DD10);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::Get_Save_Size(LONG *), 0x0060DC40);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SwizzleManagerClass::SwizzleManagerClass(), 0x0060D9B0);
-DEFINE_IMPLEMENTATION(SwizzleManagerClass::~SwizzleManagerClass(), 0x0060DA00);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SwizzleManagerClass::~SwizzleManagerClass(), 0x0060DA00);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingTypeClass::GetClassID(CLSID *), 0x004434F0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingTypeClass::Load(IStream *), 0x00443350);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingTypeClass::Save(IStream *, BOOL), 0x004434D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::BuildingTypeClass(const char *), 0x0043F410);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::BuildingTypeClass(const NoInitClass &), 0x0043F8C0);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingTypeClass::~BuildingTypeClass(), 0x0043F8F0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BuildingTypeClass::~BuildingTypeClass(), 0x0043F8F0);
 DEFINE_IMPLEMENTATION(RTTIType BuildingTypeClass::Kind_Of() const, 0x00443FC0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Size_Of(bool) const, 0x00443FD0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::entry_34() const, 0x00444000);
@@ -753,7 +753,7 @@ DEFINE_IMPLEMENTATION(int PaletteClass::Closest_Color(RGBClass &) const, 0x005A2
 
 ConvertClass::ConvertClass() {}
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConvertClass::ConvertClass(PaletteClass *, PaletteClass *, XSurface *, int, bool), 0x00463C40);
-DEFINE_IMPLEMENTATION(ConvertClass::~ConvertClass(), 0x00465970);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ConvertClass::~ConvertClass(), 0x00465970);
 DEFINE_IMPLEMENTATION(void ConvertClass::Alloc_Blitters(), 0x00464100);
 DEFINE_IMPLEMENTATION(void ConvertClass::Dealloc_Blitters(), 0x00465A00);
 DEFINE_IMPLEMENTATION(Blitter *ConvertClass::Select_Blitter(int), 0x00466130);
@@ -769,7 +769,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileTypeClass::Load(ISt
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileTypeClass::Save(IStream *, BOOL), 0x004F8690);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileTypeClass::IsometricTileTypeClass(IsometricTileType, char, char, const char *, bool), 0x004F30A0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileTypeClass::IsometricTileTypeClass(const NoInitClass &), 0x004F32D0);
-DEFINE_IMPLEMENTATION(IsometricTileTypeClass::~IsometricTileTypeClass(), 0x004F3330);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(IsometricTileTypeClass::~IsometricTileTypeClass(), 0x004F3330);
 DEFINE_IMPLEMENTATION(RTTIType IsometricTileTypeClass::Kind_Of() const, 0x004F8A90);
 DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Size_Of(bool) const, 0x004F8AA0);
 DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004F84A0);
@@ -784,7 +784,7 @@ CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2
 CommandClass::~CommandClass() {}
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ToolTipManager::ToolTipManager(HWND), 0x00647190);
-DEFINE_IMPLEMENTATION(ToolTipManager::~ToolTipManager(), 0x00647240);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ToolTipManager::~ToolTipManager(), 0x00647240);
 DEFINE_IMPLEMENTATION(bool ToolTipManager::Update(const ToolTipText *), 0x00647B60);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Reset(const ToolTipText *), 0x00647B70);
 DEFINE_IMPLEMENTATION(void ToolTipManager::entry_C(bool), 0x00647C40);
@@ -831,7 +831,7 @@ DEFINE_IMPLEMENTATION(int RLEClass::Compress(void *, void *, int), 0x005C3490);
 DEFINE_IMPLEMENTATION(int RLEClass::Uncompress(void *, void *), 0x005C3540);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDControlClass::CDControlClass(), 0x0044ED90);
-DEFINE_IMPLEMENTATION(CDControlClass::~CDControlClass(), 0x0044EDB0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CDControlClass::~CDControlClass(), 0x0044EDB0);
 DEFINE_IMPLEMENTATION(bool CDControlClass::Eject_CD_Drive(UINT), 0x0044EDC0);
 DEFINE_IMPLEMENTATION(bool CDControlClass::Lock_CD_Drive(UINT), 0x0044EF80);
 DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Drive(UINT), 0x0044F150);
@@ -848,7 +848,7 @@ DEFINE_IMPLEMENTATION(int WWFontClass::Set_X_Spacing(int), 0x006A4650);
 DEFINE_IMPLEMENTATION(int WWFontClass::Set_Y_Spacing(int), 0x006A46A0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTrackerClass::UnitTrackerClass(int), 0x0065D5B0);
-DEFINE_IMPLEMENTATION(UnitTrackerClass::~UnitTrackerClass(), 0x0065D600);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(UnitTrackerClass::~UnitTrackerClass(), 0x0065D600);
 DEFINE_IMPLEMENTATION(void UnitTrackerClass::Increment_Unit_Total(int), 0x0065D610);
 DEFINE_IMPLEMENTATION(void UnitTrackerClass::Decrement_Unit_Total(int), 0x0065D630);
 DEFINE_IMPLEMENTATION(void UnitTrackerClass::Clear_Unit_Total(), 0x0065D660);
@@ -866,7 +866,7 @@ DEFINE_IMPLEMENTATION(const char *BuildInfoClass::Original_Get_Build_Version_Str
 LinkClass::LinkClass() : Next(nullptr), Prev(nullptr) { *((unsigned long *)this) = (unsigned long)0x006D0874; }
 LinkClass::LinkClass(const NoInitClass &) {}
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(LinkClass::LinkClass(const LinkClass &), 0x00503050);
-DEFINE_IMPLEMENTATION(LinkClass::~LinkClass(), 0x00503090);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(LinkClass::~LinkClass(), 0x00503090);
 DEFINE_IMPLEMENTATION(LinkClass & LinkClass::operator=(const LinkClass &), 0x005030F0);
 DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Get_Next() const, 0x00503110);
 DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Get_Prev() const, 0x00503120);
@@ -879,7 +879,7 @@ DEFINE_IMPLEMENTATION(void LinkClass::Zap(), 0x005030E0);
 DEFINE_IMPLEMENTATION(LinkClass * LinkClass::Remove(), 0x00503200);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CounterClass::CounterClass(), 0x0046E9F0);
-DEFINE_IMPLEMENTATION(CounterClass::~CounterClass(), 0x0046EA10);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CounterClass::~CounterClass(), 0x0046EA10);
 DEFINE_IMPLEMENTATION(void CounterClass::Clear(), 0x0046EB60);
 DEFINE_IMPLEMENTATION(int CounterClass::Increment(int), 0x0046EA40);
 DEFINE_IMPLEMENTATION(int CounterClass::Decrement(int), 0x0046EAA0);
@@ -899,7 +899,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseTypeClass::Save(IStream *, 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x004CE400);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseTypeClass::HouseTypeClass(const char *), 0x004CDD10);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseTypeClass::HouseTypeClass(const NoInitClass &), 0x004CDE60);
-DEFINE_IMPLEMENTATION(HouseTypeClass::~HouseTypeClass(), 0x004CDE80);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(HouseTypeClass::~HouseTypeClass(), 0x004CDE80);
 DEFINE_IMPLEMENTATION(RTTIType HouseTypeClass::Kind_Of() const, 0x004CE5A0);
 DEFINE_IMPLEMENTATION(int HouseTypeClass::Size_Of(bool) const, 0x004CE5B0);
 DEFINE_IMPLEMENTATION(void HouseTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004CE210);
@@ -914,7 +914,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitTypeClass::Load(IStream *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitTypeClass::Save(IStream *, BOOL), 0x0065C670);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTypeClass::UnitTypeClass(const char *), 0x0065B8F0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTypeClass::UnitTypeClass(const NoInitClass &), 0x0065BAA0);
-DEFINE_IMPLEMENTATION(UnitTypeClass::~UnitTypeClass(), 0x0065BAC0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(UnitTypeClass::~UnitTypeClass(), 0x0065BAC0);
 DEFINE_IMPLEMENTATION(RTTIType UnitTypeClass::Kind_Of() const, 0x0065C760);
 DEFINE_IMPLEMENTATION(int UnitTypeClass::Size_Of(bool) const, 0x0065C720);
 DEFINE_IMPLEMENTATION(int UnitTypeClass::entry_34() const, 0x0065C750);
@@ -934,7 +934,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryTypeClass::Load(IStream 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryTypeClass::Save(IStream *, BOOL), 0x004DAF70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(InfantryTypeClass::InfantryTypeClass(const char *), 0x004DA1E0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(InfantryTypeClass::InfantryTypeClass(const NoInitClass &), 0x004DA370);
-DEFINE_IMPLEMENTATION(InfantryTypeClass::~InfantryTypeClass(), 0x004DA3A0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(InfantryTypeClass::~InfantryTypeClass(), 0x004DA3A0);
 DEFINE_IMPLEMENTATION(RTTIType InfantryTypeClass::Kind_Of() const, 0x004DB0D0);
 DEFINE_IMPLEMENTATION(int InfantryTypeClass::Size_Of(bool) const, 0x004DB0E0);
 DEFINE_IMPLEMENTATION(void InfantryTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004DAD10);
@@ -954,7 +954,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftTypeClass::Load(IStream 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftTypeClass::Save(IStream *, BOOL), 0x0040FFC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AircraftTypeClass::AircraftTypeClass(const char *), 0x0040FBC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AircraftTypeClass::AircraftTypeClass(const NoInitClass &), 0x0040FCA0);
-DEFINE_IMPLEMENTATION(AircraftTypeClass::~AircraftTypeClass(), 0x0040FCC0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(AircraftTypeClass::~AircraftTypeClass(), 0x0040FCC0);
 DEFINE_IMPLEMENTATION(RTTIType AircraftTypeClass::Kind_Of() const, 0x004101C0);
 DEFINE_IMPLEMENTATION(int AircraftTypeClass::Size_Of(bool) const, 0x004101D0);
 DEFINE_IMPLEMENTATION(void AircraftTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0040FF20);
@@ -980,7 +980,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Load(IStream
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Save(IStream *, BOOL), 0x0065FF20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimTypeClass::VoxelAnimTypeClass(const char *), 0x0065F3B0);
 VoxelAnimTypeClass::VoxelAnimTypeClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006D9228; *((unsigned long *)this+4) = (unsigned long)0x006D920C; }
-DEFINE_IMPLEMENTATION(VoxelAnimTypeClass::~VoxelAnimTypeClass(), 0x0065F590);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(VoxelAnimTypeClass::~VoxelAnimTypeClass(), 0x0065F590);
 DEFINE_IMPLEMENTATION(void VoxelAnimTypeClass::Detach(TARGET, bool), 0x0065FF40);
 DEFINE_IMPLEMENTATION(RTTIType VoxelAnimTypeClass::Kind_Of() const, 0x00660040);
 DEFINE_IMPLEMENTATION(int VoxelAnimTypeClass::Size_Of(bool) const, 0x00660050);
@@ -994,7 +994,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WeaponTypeClass::Load(IStream *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WeaponTypeClass::Save(IStream *, BOOL), 0x00681730);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WeaponTypeClass::WeaponTypeClass(const char *), 0x00680A60);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WeaponTypeClass::WeaponTypeClass(const NoInitClass &), 0x00680C00);
-DEFINE_IMPLEMENTATION(WeaponTypeClass::~WeaponTypeClass(), 0x00680C40);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WeaponTypeClass::~WeaponTypeClass(), 0x00680C40);
 DEFINE_IMPLEMENTATION(RTTIType WeaponTypeClass::Kind_Of() const, 0x006818D0);
 DEFINE_IMPLEMENTATION(int WeaponTypeClass::Size_Of(bool) const, 0x006818B0);
 DEFINE_IMPLEMENTATION(void WeaponTypeClass::Compute_CRC(WWCRCEngine &) const, 0x006813C0);
@@ -1008,7 +1008,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletTypeClass::Load(IStream *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletTypeClass::Save(IStream *, BOOL), 0x004485B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BulletTypeClass::BulletTypeClass(const char *), 0x00447BC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BulletTypeClass::BulletTypeClass(const NoInitClass &), 0x00447D90);
-DEFINE_IMPLEMENTATION(BulletTypeClass::~BulletTypeClass(), 0x00447DB0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BulletTypeClass::~BulletTypeClass(), 0x00447DB0);
 DEFINE_IMPLEMENTATION(void BulletTypeClass::Detach(TARGET, bool), 0x004486A0);
 DEFINE_IMPLEMENTATION(RTTIType BulletTypeClass::Kind_Of() const, 0x004486C0);
 DEFINE_IMPLEMENTATION(int BulletTypeClass::Size_Of(bool) const, 0x004486D0);
@@ -1074,7 +1074,7 @@ DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Index(), 0x00483CD0);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Speed_Accum(), 0x00483CE0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WinsockInterfaceClass::WinsockInterfaceClass(), 0x006A0EB0);
-DEFINE_IMPLEMENTATION(WinsockInterfaceClass::~WinsockInterfaceClass(), 0x006A0F60);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WinsockInterfaceClass::~WinsockInterfaceClass(), 0x006A0F60);
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Close(), 0x006A0FE0);
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Close_Socket(), 0x006A1010);
 DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Start_Listening(), 0x006A1030);
@@ -1092,6 +1092,15 @@ DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Broadcast(void *, int), 0x006A
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Clear_Socket_Error(SOCKET), 0x006A16F0);
 DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Set_Socket_Options(), 0x006A1740);
 DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Get_Host_Name(char *, int) const, 0x006A17D0);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Set_Broadcast_Address(void *), 0x006A0BD0);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Clear_Broadcast_Addresses(), 0x006A0BE0); 
+DEFINE_IMPLEMENTATION(ProtocolEnum WinsockInterfaceClass::Get_Protocol(), 0x006A1820);
+DEFINE_IMPLEMENTATION(int WinsockInterfaceClass::Protocol_Event_Message(), 0x006A1830);
+DEFINE_IMPLEMENTATION(bool WinsockInterfaceClass::Open_Socket(SOCKET socket), 0x006A1840);
+DEFINE_IMPLEMENTATION(LRESULT WinsockInterfaceClass::Message_Handler(HWND, UINT, UINT, LONG), 0x006A1850);
+DEFINE_IMPLEMENTATION(int WinsockInterfaceClass::Local_Addresses_Count() const, 0x006A0BF0);
+DEFINE_IMPLEMENTATION(unsigned char * WinsockInterfaceClass::Get_Local_Address(int) const, 0x006A0C00);
+DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Set_NetCard(int), 0x006A0C10);
 
 DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x00483AD0);
 DEFINE_IMPLEMENTATION(ULONG DropPodLocomotionClass::AddRef(), 0x00483CF0);
@@ -1113,7 +1122,7 @@ DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::Piggyback_CLSID(CLSID *), 
 DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Piggybacking(), 0x00483D10);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropPodLocomotionClass::DropPodLocomotionClass(), 0x004830F0);
 DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
-DEFINE_IMPLEMENTATION(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
 DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Size_Of(bool) const, 0x00483D30);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Quaternion::Quaternion(float, float, float, float), 0x005AFE70);
@@ -1177,7 +1186,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CellClass::Save(IStream *, BOOL)
 DEFINE_IMPLEMENTATION(int STDMETHODCALLTYPE CellClass::What_Am_I(), 0x0045D770);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CellClass::CellClass(), 0x004517C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CellClass::CellClass(const NoInitClass &x), 0x00450F60);
-DEFINE_IMPLEMENTATION(CellClass::~CellClass(), 0x00451750);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CellClass::~CellClass(), 0x00451750);
 DEFINE_IMPLEMENTATION(RTTIType CellClass::Kind_Of() const, 0x0045D780);
 DEFINE_IMPLEMENTATION(int CellClass::Size_Of(bool) const, 0x0045D790);
 DEFINE_IMPLEMENTATION(CoordStruct CellClass::Center_Coord() const, 0x0045C4E0);
@@ -1225,7 +1234,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WarheadTypeClass::Load(IStream *
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WarheadTypeClass::Save(IStream *, BOOL), 0x0066F8A0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WarheadTypeClass::WarheadTypeClass(const char *), 0x0066ED40);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WarheadTypeClass::WarheadTypeClass(const NoInitClass &), 0x0066EF00);
-DEFINE_IMPLEMENTATION(WarheadTypeClass::~WarheadTypeClass(), 0x0066EF60);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WarheadTypeClass::~WarheadTypeClass(), 0x0066EF60);
 DEFINE_IMPLEMENTATION(void WarheadTypeClass::Detach(TARGET, bool), 0x0066F9A0);
 DEFINE_IMPLEMENTATION(RTTIType WarheadTypeClass::Kind_Of() const, 0x0066FA70);
 DEFINE_IMPLEMENTATION(int WarheadTypeClass::Size_Of(bool) const, 0x0066FA50);
@@ -1237,7 +1246,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE Tactical::Load(IStream *), 0x006
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE Tactical::Save(IStream *, BOOL), 0x00617F80);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Tactical::Tactical(), 0x0060EEC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(Tactical::Tactical(const NoInitClass &), 0x0060F090);
-DEFINE_IMPLEMENTATION(Tactical::~Tactical(), 0x0060F0D0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(Tactical::~Tactical(), 0x0060F0D0);
 DEFINE_IMPLEMENTATION(void Tactical::Detach(TARGET, bool), 0x00616920);
 DEFINE_IMPLEMENTATION(RTTIType Tactical::Kind_Of() const, 0x00617FF0);
 DEFINE_IMPLEMENTATION(int Tactical::Size_Of(bool) const, 0x00618000);
@@ -1270,7 +1279,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayTypeClass::Load(IStream *
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayTypeClass::Save(IStream *, BOOL), 0x0058D8E0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayTypeClass::OverlayTypeClass(const char *), 0x0058CFF0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayTypeClass::OverlayTypeClass(const NoInitClass &), 0x0058D140);
-DEFINE_IMPLEMENTATION(OverlayTypeClass::~OverlayTypeClass(), 0x0058D160);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(OverlayTypeClass::~OverlayTypeClass(), 0x0058D160);
 DEFINE_IMPLEMENTATION(RTTIType OverlayTypeClass::Kind_Of() const, 0x0058DC20);
 DEFINE_IMPLEMENTATION(int OverlayTypeClass::Size_Of(bool) const, 0x0058DC30);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0058D750);
@@ -1321,7 +1330,7 @@ DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, bool), 0x005
 DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, bool), 0x00572B70);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(CoordStruct, int), 0x0058DFD0);
-DEFINE_IMPLEMENTATION(SpotlightClass::~SpotlightClass(), 0x0058E050);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SpotlightClass::~SpotlightClass(), 0x0058E050);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Remove_If_Large(), 0x0058E0A0);
 DEFINE_IMPLEMENTATION(void SpotlightClass::AI(), 0x0058E110);
 DEFINE_IMPLEMENTATION(void SpotlightClass::One_Time(), 0x0058E1A0);
@@ -1363,7 +1372,7 @@ void CrateClass::Make_Invalid() { Cell = CellStruct(-1, -1); Timer.Stop(); }
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(), 0x005E2430);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(const char *, HSVClass *, PaletteClass *, PaletteClass *, int), 0x005E24F0);
-DEFINE_IMPLEMENTATION(ColorScheme::~ColorScheme(), 0x005E26C0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ColorScheme::~ColorScheme(), 0x005E26C0);
 DEFINE_IMPLEMENTATION(void ColorScheme::func_5E2650(PaletteClass *, PaletteClass *, int, int, int), 0x005E2650);
 DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C3B0(HSVClass *, PaletteClass *, PaletteClass *, PaletteClass *, Surface *, int, int, int, int, bool *), 0x005E2190);
 DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C500(HSVClass *, PaletteClass *, PaletteClass *, Surface *, PaletteClass *), 0x005E22E0);
@@ -1391,7 +1400,7 @@ DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(CellStruct), 0x0050F1B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(), 0x0050EAD0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(const NoInitClass &), 0x0050EBE0);
-DEFINE_IMPLEMENTATION(MapClass::~MapClass(), 0x0050ED30);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(MapClass::~MapClass(), 0x0050ED30);
 DEFINE_IMPLEMENTATION(void MapClass::One_Time(), 0x0050F2E0);
 DEFINE_IMPLEMENTATION(void MapClass::Init_Clear(), 0x0050F4D0);
 DEFINE_IMPLEMENTATION(void MapClass::Alloc_Cells(), 0x0050F590);
@@ -1449,7 +1458,7 @@ GadgetClass::GadgetClass() : X(0), Y(0), Width(0), Height(0), IsToRepaint(false)
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(int, int, int, int, unsigned, bool), 0x004A9BF0);
 GadgetClass::GadgetClass(const NoInitClass &x) : LinkClass(x) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(const GadgetClass &), 0x004A9C40);
-DEFINE_IMPLEMENTATION(GadgetClass::~GadgetClass(), 0x004A9C90);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(GadgetClass::~GadgetClass(), 0x004A9C90);
 DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Get_Next() const, 0x004A9D90);
 DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Get_Prev() const, 0x004A9DA0);
 DEFINE_IMPLEMENTATION(GadgetClass *GadgetClass::Remove(), 0x004A9D70);
@@ -1548,7 +1557,7 @@ DEFINE_IMPLEMENTATION(void CreditClass::AI(bool), 0x004715F0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarClass::RadarClass(), 0x005B8830);
 RadarClass::RadarClass(const NoInitClass &) {}
-DEFINE_IMPLEMENTATION(RadarClass::~RadarClass(), 0x005B8AC0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(RadarClass::~RadarClass(), 0x005B8AC0);
 DEFINE_IMPLEMENTATION(void RadarClass::One_Time(), 0x005B8B90);
 DEFINE_IMPLEMENTATION(void RadarClass::Init_Clear(), 0x005B8C50);
 DEFINE_IMPLEMENTATION(void RadarClass::AI(KeyNumType &, Point2D &), 0x005B9130);
@@ -1695,7 +1704,7 @@ DEFINE_IMPLEMENTATION(const char *Fetch_String(ULONG), 0x00472350);
 DEFINE_IMPLEMENTATION(HGLOBAL Fetch_Resource(const char *, const char *), 0x00472490);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DirectSoundAudioClass::DirectSoundAudioClass(), 0x00487A20);
-DEFINE_IMPLEMENTATION(DirectSoundAudioClass::~DirectSoundAudioClass(), 0x00487B20);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(DirectSoundAudioClass::~DirectSoundAudioClass(), 0x00487B20);
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Init(HWND, int, bool, int), 0x00487C50);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::End(), 0x00488380);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Sample(int), 0x00488540);
@@ -1721,7 +1730,7 @@ DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Primary_Sound_Buffer(), 0
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Sound_Callback(), 0x00489A40);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(PreviewClass::PreviewClass(), 0x005AC010);
-DEFINE_IMPLEMENTATION(PreviewClass::~PreviewClass(), 0x005AC020);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(PreviewClass::~PreviewClass(), 0x005AC020);
 DEFINE_IMPLEMENTATION(void PreviewClass::Render_Preview(HWND), 0x005AC040);
 DEFINE_IMPLEMENTATION(void PreviewClass::Draw_Map(), 0x005AC200);
 DEFINE_IMPLEMENTATION(bool PreviewClass::Write_Preview_INI(CCINIClass &ini), 0x005AC7E0);
@@ -1733,7 +1742,7 @@ DEFINE_IMPLEMENTATION(void PreviewClass::Create_Preview_Surface(PreviewDataStruc
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VeterancyClass::VeterancyClass(), 0x00664340);
 VeterancyClass::VeterancyClass(const NoInitClass &noinit) {}
-DEFINE_IMPLEMENTATION(VeterancyClass::~VeterancyClass(), 0x00664350);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(VeterancyClass::~VeterancyClass(), 0x00664350);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Gain_Experience(int, int), 0x00664360);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Veteran(), 0x006643A0);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie(), 0x006643D0);
@@ -1754,7 +1763,7 @@ DEFINE_IMPLEMENTATION(int STDMETHODCALLTYPE SuperClass::What_Am_I(), 0x0060CBA0)
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(), 0x0060B2C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(const SuperWeaponTypeClass *, HouseClass *), 0x0060B360);
 SuperClass::SuperClass(const NoInitClass & x) : Control(x) { *((unsigned long *)this) = (unsigned long)0x006D73D8; *((unsigned long *)this+4) = (unsigned long)0x006D73BC; }
-DEFINE_IMPLEMENTATION(SuperClass::~SuperClass(), 0x0060B4C0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SuperClass::~SuperClass(), 0x0060B4C0);
 DEFINE_IMPLEMENTATION(void SuperClass::Detach(TARGET, bool), 0x0060C800);
 DEFINE_IMPLEMENTATION(RTTIType SuperClass::Kind_Of() const, 0x0060CBB0);
 DEFINE_IMPLEMENTATION(int SuperClass::Size_Of(bool) const, 0x0060CBC0);
@@ -1778,7 +1787,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Load(IStre
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Save(IStream *, BOOL), 0x0060D200);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperWeaponTypeClass::SuperWeaponTypeClass(const char *), 0x0060CF70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperWeaponTypeClass::SuperWeaponTypeClass(const NoInitClass &), 0x0060D060);
-DEFINE_IMPLEMENTATION(SuperWeaponTypeClass::~SuperWeaponTypeClass(), 0x0060D090);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SuperWeaponTypeClass::~SuperWeaponTypeClass(), 0x0060D090);
 DEFINE_IMPLEMENTATION(RTTIType SuperWeaponTypeClass::Kind_Of() const, 0x0060D220);
 DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Size_Of(bool) const, 0x0060D230);
 DEFINE_IMPLEMENTATION(void SuperWeaponTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0060D240);
@@ -1796,7 +1805,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ConnectionPointClass::Advise(IUn
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ConnectionPointClass::Unadvise(DWORD), 0x0046F750);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ConnectionPointClass::EnumConnections(IEnumConnections **), 0x0046F7B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConnectionPointClass::ConnectionPointClass(REFIID, IUnknown *), 0x0046F8C0);
-DEFINE_IMPLEMENTATION(ConnectionPointClass::~ConnectionPointClass(), 0x0046F920);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ConnectionPointClass::~ConnectionPointClass(), 0x0046F920);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionsClass::QueryInterface(REFIID, LPVOID *), 0x0046EFD0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE EnumConnectionsClass::AddRef(), 0x0046F040);
@@ -1807,7 +1816,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionsClass::Reset(), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionsClass::Clone(IEnumConnections **), 0x0046F1E0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionsClass::EnumConnectionsClass(const DynamicVectorClass<CONNECTDATA> &), 0x0046F300);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionsClass::EnumConnectionsClass(const EnumConnectionsClass &), 0x0046F3D0);
-DEFINE_IMPLEMENTATION(EnumConnectionsClass::~EnumConnectionsClass(), 0x0046F4A0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(EnumConnectionsClass::~EnumConnectionsClass(), 0x0046F4A0);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionPointsClass::QueryInterface(REFIID, LPVOID *), 0x0046F970);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE EnumConnectionPointsClass::AddRef(), 0x0046F9E0);
@@ -1818,10 +1827,10 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionPointsClass::Reset
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EnumConnectionPointsClass::Clone(IEnumConnectionPoints **), 0x0046FB70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionPointsClass::EnumConnectionPointsClass(), 0x0046FC70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnumConnectionPointsClass::EnumConnectionPointsClass(const DynamicVectorClass<LPCONNECTIONPOINT> &), 0x0046FD30);
-DEFINE_IMPLEMENTATION(EnumConnectionPointsClass::~EnumConnectionPointsClass(), 0x0046FE00);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(EnumConnectionPointsClass::~EnumConnectionPointsClass(), 0x0046FE00);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropshipLoadoutClass::DropshipLoadoutClass(), 0x00484040);
-DEFINE_IMPLEMENTATION(DropshipLoadoutClass::~DropshipLoadoutClass(), 0x00484060);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(DropshipLoadoutClass::~DropshipLoadoutClass(), 0x00484060);
 DEFINE_IMPLEMENTATION(bool DropshipLoadoutClass::Add(TechnoTypeClass *), 0x00484070);
 DEFINE_IMPLEMENTATION(bool DropshipLoadoutClass::Remove(int), 0x00484140);
 DEFINE_IMPLEMENTATION(void DropshipLoadoutClass::Remove_All(), 0x00484210);
@@ -1862,7 +1871,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::EnumConnectionPoints
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::FindConnectionPoint(REFIID, IConnectionPoint **), 0x004C43B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseClass::HouseClass(const HouseTypeClass *), 0x004BA0B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(HouseClass::HouseClass(const NoInitClass &), 0x004B9EF0);
-DEFINE_IMPLEMENTATION(HouseClass::~HouseClass(), 0x004BB6B0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(HouseClass::~HouseClass(), 0x004BB6B0);
 DEFINE_IMPLEMENTATION(void HouseClass::Detach(TARGET, bool), 0x004BEFF0);
 DEFINE_IMPLEMENTATION(RTTIType HouseClass::Kind_Of() const, 0x004CBC30);
 DEFINE_IMPLEMENTATION(int HouseClass::Size_Of(bool) const, 0x004C5360);
@@ -2055,7 +2064,7 @@ DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address(int, SOCK
 DEFINE_IMPLEMENTATION(bool IPXInterfaceClass::Get_Network_Card_Address_String(int, char *, int), 0x006A04A0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(UDPInterfaceClass::UDPInterfaceClass(), 0x006A1E70);
-DEFINE_IMPLEMENTATION(UDPInterfaceClass::~UDPInterfaceClass(), 0x006A1EF0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(UDPInterfaceClass::~UDPInterfaceClass(), 0x006A1EF0);
 DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Broadcast(void *, int), 0x006A2390);
 DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Set_Broadcast_Address(void *), 0x006A2090);
 DEFINE_IMPLEMENTATION(void UDPInterfaceClass::Clear_Broadcast_Addresses(), 0x006A2030);
@@ -2067,7 +2076,7 @@ DEFINE_IMPLEMENTATION(int UDPInterfaceClass::Local_Addresses_Count() const, 0x00
 DEFINE_IMPLEMENTATION(unsigned char * UDPInterfaceClass::Get_Local_Address(int) const, 0x006A2760);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(LoadOptionsClass::LoadOptionsClass(), 0x005047B0);
-DEFINE_IMPLEMENTATION(LoadOptionsClass::~LoadOptionsClass(), 0x00504800);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(LoadOptionsClass::~LoadOptionsClass(), 0x00504800);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_File(const char *), 0x00505980);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_File(const char *, const char *), 0x005059D0);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_File(const char *), 0x00505A20);
@@ -2085,7 +2094,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Load(IStream *), 0x00
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Save(IStream *, BOOL), 0x005F1D00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SideClass::SideClass(const char *), 0x005F1A30);
 SideClass::SideClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6730; *((unsigned long *)this+4) = (unsigned long)0x006D6714; }
-DEFINE_IMPLEMENTATION(SideClass::~SideClass(), 0x005F1AD0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SideClass::~SideClass(), 0x005F1AD0);
 DEFINE_IMPLEMENTATION(RTTIType SideClass::Kind_Of() const, 0x005F1D70);
 DEFINE_IMPLEMENTATION(int SideClass::Size_Of(bool) const, 0x005F1D60);
 DEFINE_IMPLEMENTATION(void SideClass::Compute_CRC(WWCRCEngine &) const, 0x005F1BB0);
@@ -2095,7 +2104,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Load(IStream *), 0x
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Save(IStream *, BOOL), 0x005E7AA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptClass::ScriptClass(ScriptTypeClass *), 0x005E7820);
 ScriptClass::ScriptClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D63D0; *((unsigned long *)this+4) = (unsigned long)0x006D63B0; }
-DEFINE_IMPLEMENTATION(ScriptClass::~ScriptClass(), 0x005E78B0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ScriptClass::~ScriptClass(), 0x005E78B0);
 DEFINE_IMPLEMENTATION(RTTIType ScriptClass::Kind_Of() const, 0x005E81B0);
 DEFINE_IMPLEMENTATION(int ScriptClass::Size_Of(bool) const, 0x005E81C0);
 DEFINE_IMPLEMENTATION(void ScriptClass::Compute_CRC(WWCRCEngine &) const, 0x005E7920);
@@ -2111,7 +2120,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Load(IStream *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Save(IStream *, BOOL), 0x005E8170);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptTypeClass::ScriptTypeClass(const char *), 0x005E7AC0);
 ScriptTypeClass::ScriptTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6434; *((unsigned long *)this+4) = (unsigned long)0x006D6438; }
-DEFINE_IMPLEMENTATION(ScriptTypeClass::~ScriptTypeClass(), 0x005E7B70);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ScriptTypeClass::~ScriptTypeClass(), 0x005E7B70);
 DEFINE_IMPLEMENTATION(RTTIType ScriptTypeClass::Kind_Of() const, 0x005E8250);
 DEFINE_IMPLEMENTATION(int ScriptTypeClass::Size_Of(bool) const, 0x005E8260);
 DEFINE_IMPLEMENTATION(void ScriptTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005E8190);
@@ -2124,7 +2133,7 @@ DEFINE_IMPLEMENTATION(void ScriptTypeClass::Write_Scenario_INI(CCINIClass &, boo
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectClass::Load(IStream *), 0x005866F0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectClass::ObjectClass(), 0x005847D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ObjectClass::ObjectClass(const NoInitClass &), 0x005849A0);
-DEFINE_IMPLEMENTATION(ObjectClass::~ObjectClass(), 0x005849C0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ObjectClass::~ObjectClass(), 0x005849C0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::operator < (const ObjectClass &) const, 0x005869D0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::operator > (const ObjectClass &) const, 0x00586A00);
 DEFINE_IMPLEMENTATION(void ObjectClass::Detach(TARGET, bool), 0x00585EF0);
@@ -2331,7 +2340,7 @@ DEFINE_IMPLEMENTATION(void DoorClass::AI(), 0x00473EE0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoClass::Load(IStream *), 0x00638D70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TechnoClass::TechnoClass(HouseClass *house), 0x00629CB0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TechnoClass::TechnoClass(const NoInitClass &), 0x0062A7F0);
-DEFINE_IMPLEMENTATION(TechnoClass::~TechnoClass(), 0x0062A8E0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TechnoClass::~TechnoClass(), 0x0062A8E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Init(), 0x0062A7C0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Detach(TARGET, bool), 0x006362E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Compute_CRC(WWCRCEngine &) const, 0x00638E80);
@@ -2505,10 +2514,10 @@ DEFINE_IMPLEMENTATION(void Fatal(const char *, ...), 0x004F91D0);
 DEFINE_IMPLEMENTATION(void Emergency_Exit(int), 0x00602480);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Load(IStream *), 0x004A5F40);
-DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Save(IStream *), 0x004A61B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Save(IStream *, BOOL), 0x004A61B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(FootClass::FootClass(HouseClass *), TechnoClass, 0x004A00F0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(FootClass::FootClass(const NoInitClass &), TechnoClass, 0x004A0390);
-DEFINE_IMPLEMENTATION(FootClass::~FootClass(), 0x004A03D0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(FootClass::~FootClass(), 0x004A03D0);
 DEFINE_IMPLEMENTATION(void FootClass::Detach(TARGET, bool), 0x004A4E50);
 DEFINE_IMPLEMENTATION(void FootClass::Compute_CRC(WWCRCEngine &) const, 0x004A6580);
 DEFINE_IMPLEMENTATION(CoordStruct FootClass::Target_Coord() const, 0x004A68A0);
@@ -2521,6 +2530,7 @@ DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(const ObjectClass *, boo
 DEFINE_IMPLEMENTATION(LayerType FootClass::In_Which_Layer() const, 0x004A6300);
 DEFINE_IMPLEMENTATION(bool FootClass::Can_Demolish() const, 0x004A5230);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_BC(), 0x004A82E0);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_C0() const, 0x0040F330);
 DEFINE_IMPLEMENTATION(bool FootClass::Limbo(), 0x004A5E80);
 DEFINE_IMPLEMENTATION(bool FootClass::Unlimbo(CoordStruct &, DirType), 0x004A2C70);
 DEFINE_IMPLEMENTATION(void FootClass::Detach_All(bool), 0x004A4BC0);
@@ -2550,7 +2560,8 @@ DEFINE_IMPLEMENTATION(int FootClass::Mission_Patrol(), 0x004A1080);
 DEFINE_IMPLEMENTATION(void FootClass::Override_Mission(MissionType, const TARGET, const TARGET), 0x004A44F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Restore_Mission(), 0x004A4530);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Recloak() const, 0x004A6850);
-DEFINE_IMPLEMENTATION(bool FootClass::entry_264(const ObjectClass *) const, 0x004A6500);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_22C() const, 0x0040F310);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone_As(const ObjectClass *) const, 0x004A6500);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone(const CoordStruct &) const, 0x004A0620);
 DEFINE_IMPLEMENTATION(int FootClass::Get_Z_Adjustment() const, 0x004A5C00);
 DEFINE_IMPLEMENTATION(ZGradientType FootClass::Get_Z_Gradient() const, 0x004A5CE0);
@@ -2561,54 +2572,53 @@ DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) co
 DEFINE_IMPLEMENTATION(int FootClass::Greatest_Threat(ThreatType, CoordStruct &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
-DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, int, int, int, int, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x004A5B50);
 DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const TARGET, bool) const, 0x004A49F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool) const, 0x004A3AA0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_368(), 0x004A6E10);
-DEFINE_IMPLEMENTATION(void FootClass::entry_36C(), 0x004A69C0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_370(), 0x0040F320);
-DEFINE_IMPLEMENTATION(void FootClass::entry_374(), 0x004A5390);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_36C(), 0x004A69C0);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_370(), 0x0040F320);
+DEFINE_IMPLEMENTATION(CoordStruct FootClass::Likely_Coord() const, 0x004A5390);
 DEFINE_IMPLEMENTATION(void FootClass::entry_378(), 0x004A6A10);
-DEFINE_IMPLEMENTATION(void FootClass::entry_37C(), 0x0040F340);
-DEFINE_IMPLEMENTATION(void FootClass::entry_380(), 0x004A1D90);
-DEFINE_IMPLEMENTATION(void FootClass::entry_384(), 0x004A1D60);
-DEFINE_IMPLEMENTATION(void FootClass::entry_388(), 0x004A6480);
-DEFINE_IMPLEMENTATION(void FootClass::entry_38C(), 0x0040F350);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_37C(), 0x0040F340);
+DEFINE_IMPLEMENTATION(bool FootClass::Start_Driver(CoordStruct &), 0x004A1D90);
+DEFINE_IMPLEMENTATION(bool FootClass::Stop_Driver(), 0x004A1D60);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_388(), 0x004A6480);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Object(const ShapeFileStruct *, int, Point2D &, Rect &, DirType, int, int, int a8, bool, int, ShapeFileStruct *, int, int, int, ShapeFlagsType) const, 0x0040F350);
 DEFINE_IMPLEMENTATION(void FootClass::entry_390(), 0x0040F3B0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_394(), 0x0040F3C0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_398(), 0x0040F3D0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_39C(), 0x0040F3E0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3A0(), 0x004A4FC0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3A4(), 0x0040F3F0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3A8(), 0x004A5DD0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3AC(), 0x004A1E30);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3B0(), 0x0040F400);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3B4(), 0x004A0520);
+DEFINE_IMPLEMENTATION(void FootClass::entry_39C(int), 0x0040F3E0);
+DEFINE_IMPLEMENTATION(int FootClass::Offload_Tiberium_Bail(), 0x004A4FC0);
+DEFINE_IMPLEMENTATION(void FootClass::Overrun_Square(CellStruct &, bool), 0x0040F3F0);
+DEFINE_IMPLEMENTATION(int FootClass::entry_3A8(), 0x004A5DD0);
+DEFINE_IMPLEMENTATION(void FootClass::Approach_Target(), 0x004A1E30);
+DEFINE_IMPLEMENTATION(void FootClass::Fixup_Path(PathType *), 0x0040F400);
+DEFINE_IMPLEMENTATION(void FootClass::Set_Speed(double), 0x004A0520);
 DEFINE_IMPLEMENTATION(void FootClass::entry_3B8(), 0x004A64F0);
-DEFINE_IMPLEMENTATION(void FootClass::entry_3BC(), 0x004A8300);
-// 004A4C40
-// 004A5390
-// 004A53C0
-// 004A53D0
-// 004A5480
-// 004A5550
-// 004A55C0
-// 004A5620
+DEFINE_IMPLEMENTATION(bool FootClass::entry_3BC(FootClass *), 0x004A8300);
+DEFINE_IMPLEMENTATION(int FootClass::Rescue_Mission(TARGET), 0x004A4C40);
+DEFINE_IMPLEMENTATION(CellStruct FootClass::Adjust_Dest(CellStruct &), 0x004A53C0);
+DEFINE_IMPLEMENTATION(void FootClass::Handle_Navigation_List(), 0x004A53D0);
+DEFINE_IMPLEMENTATION(void FootClass::Queue_Navigation_List(TARGET target), 0x004A5480);
+DEFINE_IMPLEMENTATION(void FootClass::Clear_Navigation_List(), 0x004A5550);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_Recruitable(const HouseClass *) const, 0x004A55C0);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_On_Priority_Mission() const, 0x004A5620);
 // 004A5D10
 // 004A6370
 // 004A6DE0
 // 004A6F40
-// 004A74D0
-// 004A7630
-// 004A76F0
-// 004A7990
-// 004A7F40
-// 004A80A0
-// 004A8230
+DEFINE_IMPLEMENTATION(bool FootClass::Tiberium_Check(CellStruct &), 0x004A74D0);
+DEFINE_IMPLEMENTATION(bool FootClass::Goto_Tiberium(int, bool), 0x004A7630);
+DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Tiberium(int, bool), 0x004A76F0);
+DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Tiberium_Weighted(int), 0x004A7990);
+DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Weed(int), 0x004A7F40);
+DEFINE_IMPLEMENTATION(bool FootClass::Weed_Check(CellStruct &, int, int), 0x004A80A0);
+DEFINE_IMPLEMENTATION(bool FootClass::Goto_Weed(int), 0x004A8230);
 // 004A8800
-// 004A0730
-// 00498EF0
-// 00498F90
+DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(CellStruct &, int, int), 0x004A0730);
+DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(CellStruct &, int *, int, int, int, int), 0x00498EF0);
+DEFINE_IMPLEMENTATION(CellStruct FootClass::Safety_Point(CellStruct &, CellStruct &, int, int), 0x00498F90);
 
 
 /**
@@ -2737,6 +2747,7 @@ DynamicVectorClass<ScriptClass *> &Scripts = Make_Global<DynamicVectorClass<Scri
 DynamicVectorClass<ScriptTypeClass *> &ScriptTypes = Make_Global<DynamicVectorClass<ScriptTypeClass *>>(0x007B3518);
 DynamicVectorClass<ObjectClass *> &Objects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4028);
 DynamicVectorClass<TechnoClass *> &Technos = Make_Global<DynamicVectorClass<TechnoClass *>>(0x007E4820);
+DynamicVectorClass<FootClass *> &Foots = Make_Global<DynamicVectorClass<FootClass *>>(0x007B32E0);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

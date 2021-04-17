@@ -314,7 +314,7 @@ endfunction()
 #              check the state of git before every build. If the state has
 #              changed, then a file is configured.
 function(SetupGitMonitoring)
-    add_custom_target(check_git
+    add_custom_target(${PROJECT_NAME}_check_git
         ALL
         DEPENDS ${GIT_PRE_CONFIGURE_FILE}
         BYPRODUCTS
