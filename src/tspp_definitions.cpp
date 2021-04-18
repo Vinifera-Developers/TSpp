@@ -2492,6 +2492,8 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Infantry() const, 0x00638240);
 // 0063A530);
 DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeFileStruct *, int, Point2D &, Rect &, DirType, int, int, int a8, bool, int, ShapeFileStruct *, int, int, int, ShapeFlagsType) const, 0x00634E00);
 
+DEFINE_IMPLEMENTATION(char *strtrim(char *), 0x0064AC10);
+
 
 /**
  *  Global definitions
