@@ -2549,6 +2549,26 @@ unsigned &ExceptionReturnBase = Make_Global<unsigned>(0x007B304C);
 unsigned &ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
 unsigned &ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
 bool &CatchExceptions = Make_Global<bool>(0x007E4E94);
+bool &Debug_Windowed = Make_Global<bool>(0x007A1790);
+bool &Debug_MotionCapture = Make_Global<bool>(0x007E4901);
+bool &Debug_AllowModeToggle = Make_Global<bool>(0x007E4902);
+bool &Debug_Quiet = Make_Global<bool>(0x007E4903);
+bool &Debug_Cheat = Make_Global<bool>(0x007E4904);
+bool &Debug_Remap = Make_Global<bool>(0x007E4905);
+bool &Debug_Icon = Make_Global<bool>(0x007E4906);
+bool &Debug_Flag = Make_Global<bool>(0x007E4907);
+bool &Debug_Lose = Make_Global<bool>(0x007E4908);
+bool &Debug_Win = Make_Global<bool>(0x007E4909);
+bool &Debug_Map = Make_Global<bool>(0x007E490A);
+bool &Debug_Passable = Make_Global<bool>(0x007E490B);
+bool &Debug_Unshroud = Make_Global<bool>(0x007E490C);
+bool &Debug_Threat = Make_Global<bool>(0x007E490D);
+bool &Debug_Find_Path = Make_Global<bool>(0x007E490E);
+bool &Debug_Check_Map = Make_Global<bool>(0x007E490F);
+bool &Debug_Playtest = Make_Global<bool>(0x007E4910);
+bool &Debug_Trap_Check_Heap = Make_Global<bool>(0x007E4911);
+bool &Debug_Modem_Dump = Make_Global<bool>(0x007E4912);
+bool &Debug_Print_Events = Make_Global<bool>(0x007E4913);
 
 
 /**
