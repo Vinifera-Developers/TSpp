@@ -162,6 +162,8 @@ add_library(${PROJECT_NAME} STATIC
 	${GIT_POST_CONFIGURE_FILE} # Configured git version info source file.
 )
 
+target_link_libraries(${PROJECT_NAME} winmm)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
 	${COMMON_INCLUDE_DIRS}
 )
