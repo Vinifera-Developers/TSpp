@@ -148,6 +148,8 @@
 #include "facing.h"
 #include "door.h"
 #include "techno.h"
+#include "windialog.h"
+#include "foot.h"
 
 
 /**
@@ -2494,6 +2496,10 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeFileStruct
 
 DEFINE_IMPLEMENTATION(char *strtrim(char *), 0x0064AC10);
 
+DEFINE_IMPLEMENTATION(void WinDialogClass::End_Dialog(HWND), 0x005A0700);
+DEFINE_IMPLEMENTATION(bool WinDialogClass::Dialog_Move(HWND, WPARAM, LPARAM, UINT), 0x00685300);
+DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window_Within(HWND, HWND), 0x00685600);
+
 
 /**
  *  Global definitions
@@ -2544,6 +2550,7 @@ unsigned &ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
 unsigned &ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
 bool &CatchExceptions = Make_Global<bool>(0x007E4E94);
 
+
 /**
  *  Class/namespaced static definitions.
  */
@@ -2567,6 +2574,7 @@ char *&GadgetClass::GadgetColorScheme = Make_Global<char *>(0x006FB4FC);
 DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass>(0x007A2268);
 LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
 RadarClass::RTacticalClass &RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
+HWND &WinDialogClass::CurrentWindowHandle = Make_Global<HWND>(0x00864E54);
 
 
 /**
