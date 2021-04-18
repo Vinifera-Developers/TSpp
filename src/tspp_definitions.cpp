@@ -2537,7 +2537,8 @@ LogicClass *&Logic = Make_Global<LogicClass *>(0x007482C8);
 MouseClass &Map = Make_Global<MouseClass>(0x00748348);
 DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
 ThemeClass &Theme = Make_Global<ThemeClass>(0x007E2248);
-
+HWND &MainWindow = Make_Global<HWND>(0x00865040);
+HINSTANCE &ProgramInstance = Make_Global<HINSTANCE>(0x0086500C);
 
 /**
  *  Class/namespaced static definitions.

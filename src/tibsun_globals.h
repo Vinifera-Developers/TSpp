@@ -139,6 +139,8 @@ extern LogicClass *&Logic;
 extern MouseClass &Map;
 extern DirectSoundAudioClass &Audio;
 extern ThemeClass &Theme;
+extern HWND &MainWindow;
+extern HINSTANCE &ProgramInstance;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
