@@ -149,6 +149,7 @@
 #include "door.h"
 #include "techno.h"
 #include "windialog.h"
+#include "fatal.h"
 #include "foot.h"
 
 
@@ -2499,6 +2500,115 @@ DEFINE_IMPLEMENTATION(char *strtrim(char *), 0x0064AC10);
 DEFINE_IMPLEMENTATION(void WinDialogClass::End_Dialog(HWND), 0x005A0700);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Dialog_Move(HWND, WPARAM, LPARAM, UINT), 0x00685300);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window_Within(HWND, HWND), 0x00685600);
+
+DEFINE_IMPLEMENTATION(void Fatal(const char *, ...), 0x004F91D0);
+DEFINE_IMPLEMENTATION(void Emergency_Exit(int), 0x00602480);
+
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Load(IStream *), 0x004A5F40);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Save(IStream *), 0x004A61B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(FootClass::FootClass(HouseClass *), TechnoClass, 0x004A00F0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(FootClass::FootClass(const NoInitClass &), TechnoClass, 0x004A0390);
+DEFINE_IMPLEMENTATION(FootClass::~FootClass(), 0x004A03D0);
+DEFINE_IMPLEMENTATION(void FootClass::Detach(TARGET, bool), 0x004A4E50);
+DEFINE_IMPLEMENTATION(void FootClass::Compute_CRC(WWCRCEngine &) const, 0x004A6580);
+DEFINE_IMPLEMENTATION(CoordStruct FootClass::Target_Coord() const, 0x004A68A0);
+DEFINE_IMPLEMENTATION(bool FootClass::On_Ground() const, 0x004A8CC0);
+DEFINE_IMPLEMENTATION(bool FootClass::In_Air() const, 0x004A8BF0);
+DEFINE_IMPLEMENTATION(void FootClass::AI(), 0x004A5890);
+DEFINE_IMPLEMENTATION(VisualType FootClass::Visual_Character(bool, const HouseClass *), 0x004A5840);
+DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(CellStruct &, bool, bool) const, 0x004A8430);
+DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(const ObjectClass *, bool), 0x004A8520);
+DEFINE_IMPLEMENTATION(LayerType FootClass::In_Which_Layer() const, 0x004A6300);
+DEFINE_IMPLEMENTATION(bool FootClass::Can_Demolish() const, 0x004A5230);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_BC(), 0x004A82E0);
+DEFINE_IMPLEMENTATION(bool FootClass::Limbo(), 0x004A5E80);
+DEFINE_IMPLEMENTATION(bool FootClass::Unlimbo(CoordStruct &, DirType), 0x004A2C70);
+DEFINE_IMPLEMENTATION(void FootClass::Detach_All(bool), 0x004A4BC0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_E4(), 0x004A8BD0);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_It(Point2D &, Rect &) const, 0x004A5E70);
+DEFINE_IMPLEMENTATION(bool FootClass::Mark(MarkType), 0x004A0590);
+DEFINE_IMPLEMENTATION(bool FootClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x004A35A0);
+DEFINE_IMPLEMENTATION(bool FootClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x004A2EB0);
+DEFINE_IMPLEMENTATION(ResultType FootClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x004A2DE0);
+DEFINE_IMPLEMENTATION(void FootClass::Per_Cell_Process(PCPType), 0x004A3CA0);
+DEFINE_IMPLEMENTATION(RadioMessageType FootClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x004A4560);
+DEFINE_IMPLEMENTATION(void FootClass::Sell_Back(int), 0x004A5310);
+DEFINE_IMPLEMENTATION(void FootClass::entry_174(int, int), 0x004A6E90);
+DEFINE_IMPLEMENTATION(MoveType FootClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004A4FD0);
+DEFINE_IMPLEMENTATION(MoveType FootClass::entry_180(const CellClass *, FacingType, int *, bool *, const CellClass *), 0x004A5020);
+DEFINE_IMPLEMENTATION(void FootClass::Set_Coord(CoordStruct &), 0x004A6330);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Attack(), 0x004A1A30);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Capture(), 0x004A18E0);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Guard(), 0x004A1A90);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Guard_Area(), 0x004A2830);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Hunt(), 0x004A1BE0);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Move(), 0x004A0FB0);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Retreat(), 0x004A5630);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Enter(), 0x004A4820);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Rescue(), 0x004A85E0);
+DEFINE_IMPLEMENTATION(int FootClass::Mission_Patrol(), 0x004A1080);
+DEFINE_IMPLEMENTATION(void FootClass::Override_Mission(MissionType, const TARGET, const TARGET), 0x004A44F0);
+DEFINE_IMPLEMENTATION(bool FootClass::Restore_Mission(), 0x004A4530);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Recloak() const, 0x004A6850);
+DEFINE_IMPLEMENTATION(bool FootClass::entry_264(const ObjectClass *) const, 0x004A6500);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone(const CoordStruct &) const, 0x004A0620);
+DEFINE_IMPLEMENTATION(int FootClass::Get_Z_Adjustment() const, 0x004A5C00);
+DEFINE_IMPLEMENTATION(ZGradientType FootClass::Get_Z_Gradient() const, 0x004A5CE0);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Leave_Map() const, 0x004A5560);
+DEFINE_IMPLEMENTATION(void FootClass::entry_2C8() const, 0x004A8B80);
+DEFINE_IMPLEMENTATION(void FootClass::Stun(), 0x004A1E00);
+DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) const, 0x004A4D60);
+DEFINE_IMPLEMENTATION(int FootClass::Greatest_Threat(ThreatType, CoordStruct &, bool) const, 0x004A4DC0);
+DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
+DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
+DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, int, int, int, int, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const TARGET, bool) const, 0x004A49F0);
+DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool) const, 0x004A3AA0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_368(), 0x004A6E10);
+DEFINE_IMPLEMENTATION(void FootClass::entry_36C(), 0x004A69C0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_370(), 0x0040F320);
+DEFINE_IMPLEMENTATION(void FootClass::entry_374(), 0x004A5390);
+DEFINE_IMPLEMENTATION(void FootClass::entry_378(), 0x004A6A10);
+DEFINE_IMPLEMENTATION(void FootClass::entry_37C(), 0x0040F340);
+DEFINE_IMPLEMENTATION(void FootClass::entry_380(), 0x004A1D90);
+DEFINE_IMPLEMENTATION(void FootClass::entry_384(), 0x004A1D60);
+DEFINE_IMPLEMENTATION(void FootClass::entry_388(), 0x004A6480);
+DEFINE_IMPLEMENTATION(void FootClass::entry_38C(), 0x0040F350);
+DEFINE_IMPLEMENTATION(void FootClass::entry_390(), 0x0040F3B0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_394(), 0x0040F3C0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_398(), 0x0040F3D0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_39C(), 0x0040F3E0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3A0(), 0x004A4FC0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3A4(), 0x0040F3F0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3A8(), 0x004A5DD0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3AC(), 0x004A1E30);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3B0(), 0x0040F400);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3B4(), 0x004A0520);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3B8(), 0x004A64F0);
+DEFINE_IMPLEMENTATION(void FootClass::entry_3BC(), 0x004A8300);
+// 004A4C40
+// 004A5390
+// 004A53C0
+// 004A53D0
+// 004A5480
+// 004A5550
+// 004A55C0
+// 004A5620
+// 004A5D10
+// 004A6370
+// 004A6DE0
+// 004A6F40
+// 004A74D0
+// 004A7630
+// 004A76F0
+// 004A7990
+// 004A7F40
+// 004A80A0
+// 004A8230
+// 004A8800
+// 004A0730
+// 00498EF0
+// 00498F90
 
 
 /**
