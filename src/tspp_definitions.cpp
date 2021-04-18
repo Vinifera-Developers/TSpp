@@ -2539,6 +2539,10 @@ DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
 ThemeClass &Theme = Make_Global<ThemeClass>(0x007E2248);
 HWND &MainWindow = Make_Global<HWND>(0x00865040);
 HINSTANCE &ProgramInstance = Make_Global<HINSTANCE>(0x0086500C);
+unsigned &ExceptionReturnBase = Make_Global<unsigned>(0x007B304C);
+unsigned &ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
+unsigned &ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
+bool &CatchExceptions = Make_Global<bool>(0x007E4E94);
 
 /**
  *  Class/namespaced static definitions.

@@ -141,6 +141,10 @@ extern DirectSoundAudioClass &Audio;
 extern ThemeClass &Theme;
 extern HWND &MainWindow;
 extern HINSTANCE &ProgramInstance;
+extern unsigned &ExceptionReturnBase;
+extern unsigned &ExceptionReturnStack;
+extern unsigned &ExceptionReturnAddress;
+extern bool &CatchExceptions;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
