@@ -116,12 +116,12 @@ typedef enum WaypointEnum
 
 typedef enum DiffType : int
 {
-	DIFF_EASY,
-	DIFF_NORMAL,
-	DIFF_HARD,
+    DIFF_EASY,
+    DIFF_NORMAL,
+    DIFF_HARD,
 
-	DIFF_COUNT,
-	DIFF_FIRST = 0
+    DIFF_COUNT,
+    DIFF_FIRST = 0
 };
 
 
@@ -745,6 +745,13 @@ typedef enum LandType
 } LandType;
 DEFINE_ENUMERATION_OPERATORS(LandType);
 
+typedef enum CheckPointType
+{
+    CHECK_STACK,			// Holding area far away from airfield.
+    CHECK_DOWNWIND,			// Downwind leg of approach.
+    CHECK_CROSSWIND			// Crosswind leg of approach.
+} CheckPointType;
+
 typedef enum StateType
 {
     STATE_BUILDUP,			// Base is building up (defensive buildup stage).
@@ -861,15 +868,15 @@ typedef enum MoveType
 
 typedef enum ArmorType
 {
-	ARMOR_NONE,
-	ARMOR_WOOD,
-	ARMOR_ALUMINUM,
-	ARMOR_STEEL,
-	ARMOR_CONCRETE,
+    ARMOR_NONE,
+    ARMOR_WOOD,
+    ARMOR_ALUMINUM,
+    ARMOR_STEEL,
+    ARMOR_CONCRETE,
 
-	ARMOR_COUNT,
+    ARMOR_COUNT,
 
-	ARMOR_FIRST = 0
+    ARMOR_FIRST = 0
 } ArmorType;
 
 typedef enum MissionType
@@ -1062,48 +1069,48 @@ typedef struct {
 
 typedef enum EventType : unsigned char // We need this so the enum only takes up one byte.
 {
-	EMPTY,
+    EMPTY,
 
     // Public events.
-	POWERON,
-	POWEROFF,
-	ALLY,
-	MEGAMISSION,
-	MEGAMISSION_F,
-	IDLE,
-	SCATTER,
-	DESTRUCT,
-	DEPLOY,
-	PLACE,
-	OPTIONS,
-	GAMESPEED,
-	PRODUCE,
-	SUSPEND,
-	ABANDON,
-	PRIMARY,
-	SPECIAL_PLACE,
-	EXIT,
-	ANIMATION,
-	REPAIR,
-	SELL,
-	SELLCELL,
-	SPECIAL,
+    POWERON,
+    POWEROFF,
+    ALLY,
+    MEGAMISSION,
+    MEGAMISSION_F,
+    IDLE,
+    SCATTER,
+    DESTRUCT,
+    DEPLOY,
+    PLACE,
+    OPTIONS,
+    GAMESPEED,
+    PRODUCE,
+    SUSPEND,
+    ABANDON,
+    PRIMARY,
+    SPECIAL_PLACE,
+    EXIT,
+    ANIMATION,
+    REPAIR,
+    SELL,
+    SELLCELL,
+    SPECIAL,
 
-	// Private events.
-	FRAMESYNC,
-	MESSAGE,
-	RESPONSE_TIME,
-	FRAMEINFO,
-	SAVEGAME,
-	ARCHIVE,
-	ADDPLAYER,
-	TIMING,
-	PROCESS_TIME,
-	PAGEUSER,
-	REMOVEPLAYER,
-	LATENCYFUDGE,
+    // Private events.
+    FRAMESYNC,
+    MESSAGE,
+    RESPONSE_TIME,
+    FRAMEINFO,
+    SAVEGAME,
+    ARCHIVE,
+    ADDPLAYER,
+    TIMING,
+    PROCESS_TIME,
+    PAGEUSER,
+    REMOVEPLAYER,
+    LATENCYFUDGE,
 
-	LAST_EVENT,
+    LAST_EVENT,
 } EventType;
 
 typedef enum MouseType
@@ -1180,10 +1187,10 @@ typedef enum MouseType
 
 
 typedef enum ProdFailType {
-	PROD_OK,		// Production request successful.
-	PROD_LIMIT,		// Failed with production capacity limit reached.
-	PROD_ILLEGAL,	// Failed because of illegal request.
-	PROD_CANT		// Failed because unable to comply (busy or occupied).
+    PROD_OK,		// Production request successful.
+    PROD_LIMIT,		// Failed with production capacity limit reached.
+    PROD_ILLEGAL,	// Failed because of illegal request.
+    PROD_CANT		// Failed because unable to comply (busy or occupied).
 } ProdFailType;
 
 
@@ -1580,17 +1587,17 @@ struct ScoutStruct
 
 class ScriptMissionClass
 {
-	public:
+    public:
         ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
         ~ScriptMissionClass() {}
 
-		ScriptMissionType Mission;	// Mission type.
-		union {
-			xCellStruct Cell;
-			QuarryType Quarry;		// Combat quarry type.
-			MissionType Mission;	// General mission orders.
-			int Value;				// Usually a waypoint number.
-		} Data;
+        ScriptMissionType Mission;	// Mission type.
+        union {
+            xCellStruct Cell;
+            QuarryType Quarry;		// Combat quarry type.
+            MissionType Mission;	// General mission orders.
+            int Value;				// Usually a waypoint number.
+        } Data;
 };
 
 

@@ -74,7 +74,7 @@ class FootClass : public TechnoClass
          */
         virtual void Detach(TARGET target, bool all = false) override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual CoordStruct Target_Coord() const override;
+        virtual CoordStruct entry_50() const override;
         virtual bool On_Ground() const override;
         virtual bool In_Air() const override;
         virtual void AI() override;

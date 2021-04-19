@@ -151,12 +151,13 @@
 #include "windialog.h"
 #include "fatal.h"
 #include "foot.h"
+#include "building.h"
 
 
 /**
  *  #NOTE:
  *  Any constructors defined here are because they are inlined in the games binary and
- *  redefining them in TS++ will cause the game to use the new virtual table, so to get
+ *  redefining them in TS++ will cause the game to use the new table, so to get
  *  around this we need to define the constructor then immediately override the virtual
  *  table pointer with the games table.
  *  
@@ -470,7 +471,7 @@ DEFINE_IMPLEMENTATION(HouseClass *AbstractClass::Owning_House() const, 0x00405E6
 DEFINE_IMPLEMENTATION(int AbstractClass::Get_Heap_ID() const, 0x00405E70);
 DEFINE_IMPLEMENTATION(bool AbstractClass::Is_Inactive() const, 0x00405DE0);
 DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::Center_Coord() const, 0x00405E80);
-DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::Target_Coord() const, 0x00405EB0);
+DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::entry_50() const, 0x00405EB0);
 DEFINE_IMPLEMENTATION(bool AbstractClass::On_Ground() const, 0x00405EE0);
 DEFINE_IMPLEMENTATION(bool AbstractClass::In_Air() const, 0x00405EF0);
 DEFINE_IMPLEMENTATION(CoordStruct AbstractClass::entry_5C() const, 0x00405F00);
@@ -2151,7 +2152,7 @@ DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(CellStruct &, bool, bo
 DEFINE_IMPLEMENTATION(LayerType ObjectClass::In_Which_Layer() const, 0x00584F10);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_7C() const, 0x005872F0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_80() const, 0x00417420);
-DEFINE_IMPLEMENTATION(TechnoTypeClass *const ObjectClass::Techno_Class_Of() const, 0x005872C0);
+DEFINE_IMPLEMENTATION(TechnoTypeClass *const ObjectClass::Techno_Type_Class() const, 0x005872C0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const ObjectClass::Class_Of() const, 0x004A8D90);
 DEFINE_IMPLEMENTATION(int ObjectClass::Get_Ownable() const, 0x00584F50);
 DEFINE_IMPLEMENTATION(const char *ObjectClass::Full_Name() const, 0x00417430);
@@ -2159,7 +2160,7 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Repair() const, 0x00584F60);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Demolish() const, 0x00584F70);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Fire() const, 0x00584F80);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Move() const, 0x00584F90);
-DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::entry_A4() const, 0x0040F140);
+DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Target_Coord() const, 0x0040F140);
 DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Docking_Coord() const, 0x0040F170);
 DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Render_Coord() const, 0x0040F1A0);
 DEFINE_IMPLEMENTATION(CoordStruct ObjectClass::Fire_Coord(WeaponSlotType) const, 0x00417440);
@@ -2351,7 +2352,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Players_Army() const, 0x0062A070);
 DEFINE_IMPLEMENTATION(VisualType TechnoClass::Visual_Character(bool, const HouseClass *), 0x00633CB0);
 DEFINE_IMPLEMENTATION(ActionType TechnoClass::What_Action(CellStruct &, bool, bool) const, 0x00631AE0);
 DEFINE_IMPLEMENTATION(ActionType TechnoClass::What_Action(const ObjectClass *, bool), 0x00631700);
-DEFINE_IMPLEMENTATION(TechnoTypeClass *const TechnoClass::Techno_Class_Of() const, 0x0062A010);
+DEFINE_IMPLEMENTATION(TechnoTypeClass *const TechnoClass::Techno_Type_Class() const, 0x0062A010);
 DEFINE_IMPLEMENTATION(int TechnoClass::Get_Ownable() const, 0x00637200);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Repair() const, 0x00632380);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Player_Fire() const, 0x00632310);
@@ -2520,7 +2521,7 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(FootClass::FootClass(const NoInitClass &)
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(FootClass::~FootClass(), 0x004A03D0);
 DEFINE_IMPLEMENTATION(void FootClass::Detach(TARGET, bool), 0x004A4E50);
 DEFINE_IMPLEMENTATION(void FootClass::Compute_CRC(WWCRCEngine &) const, 0x004A6580);
-DEFINE_IMPLEMENTATION(CoordStruct FootClass::Target_Coord() const, 0x004A68A0);
+DEFINE_IMPLEMENTATION(CoordStruct FootClass::entry_50() const, 0x004A68A0);
 DEFINE_IMPLEMENTATION(bool FootClass::On_Ground() const, 0x004A8CC0);
 DEFINE_IMPLEMENTATION(bool FootClass::In_Air() const, 0x004A8BF0);
 DEFINE_IMPLEMENTATION(void FootClass::AI(), 0x004A5890);
@@ -2619,6 +2620,180 @@ DEFINE_IMPLEMENTATION(bool FootClass::Goto_Weed(int), 0x004A8230);
 DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(CellStruct &, int, int), 0x004A0730);
 DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(CellStruct &, int *, int, int, int, int), 0x00498EF0);
 DEFINE_IMPLEMENTATION(CellStruct FootClass::Safety_Point(CellStruct &, CellStruct &, int, int), 0x00498F90);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingClass::GetClassID(CLSID *), 0x0043B950);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingClass::Load(IStream *), 0x00438060);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingClass::Save(IStream *, BOOL), 0x00438210);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(BuildingClass::BuildingClass(BuildingTypeClass *, HouseClass *), TechnoClass, 0x00426190);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(BuildingClass::BuildingClass(NoInitClass &), TechnoClass, 0x00426140);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BuildingClass::~BuildingClass(), 0x00426620);
+DEFINE_IMPLEMENTATION(void BuildingClass::Init(), 0x0042BBE0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Detach(TARGET, bool), 0x00433EB0);
+DEFINE_IMPLEMENTATION(RTTIType BuildingClass::Kind_Of() const, 0x0043B990);
+DEFINE_IMPLEMENTATION(int BuildingClass::Size_Of(bool) const, 0x0043B930);
+DEFINE_IMPLEMENTATION(void BuildingClass::Compute_CRC(WWCRCEngine &) const, 0x00438240);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Center_Coord() const, 0x0042F250);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::entry_50() const, 0x0042F3B0);
+DEFINE_IMPLEMENTATION(void BuildingClass::AI(), 0x00429A60);
+DEFINE_IMPLEMENTATION(VisualType BuildingClass::Visual_Character(bool, const HouseClass *), 0x00438450);
+DEFINE_IMPLEMENTATION(void *const BuildingClass::Get_Image_Data() const, 0x00435E40);
+DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(const ObjectClass *, bool), 0x0042EED0);
+DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(CellStruct &, bool, bool) const, 0x0042EBD0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::entry_80() const, 0x0043AF40);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const BuildingClass::Class_Of() const, 0x0043B9B0);
+DEFINE_IMPLEMENTATION(const char *BuildingClass::Full_Name() const, 0x0043B9A0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Repair() const, 0x00436B60);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Demolish() const, 0x0042FEF0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Player_Move() const, 0x00434520);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Target_Coord() const, 0x00434FB0);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Docking_Coord() const, 0x0042F2C0);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Render_Coord() const, 0x0043B9C0);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Fire_Coord(WeaponSlotType) const, 0x00437BD0);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::Exit_Coord() const, 0x00434580);
+DEFINE_IMPLEMENTATION(int BuildingClass::Sort_Y() const, 0x0042FE40);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Limbo(), 0x0042DB50);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Unlimbo(CoordStruct &, DirType), 0x00429E20);
+DEFINE_IMPLEMENTATION(void BuildingClass::Detach_All(bool), 0x00434000);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Occupy_Bit(CoordStruct &), 0x00437FA0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Clear_Occupy_Bit(CoordStruct &), 0x00438000);
+DEFINE_IMPLEMENTATION(ExitType BuildingClass::Exit_Object(const TechnoClass *), 0x0042C640);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Render(Rect &, bool, bool), 0x00427210);
+DEFINE_IMPLEMENTATION(void BuildingClass::Draw_It(Point2D &, Rect &) const, 0x004275B0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Placement_Draw_It(Point2D &, Rect &) const, 0x00427390);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Mark(MarkType), 0x00429370);
+DEFINE_IMPLEMENTATION(Rect BuildingClass::entry_118() const, 0x00439B90);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_11C() const, 0x0043A6F0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0042C210);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x0042C0B0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Clicked_As_Target(int), 0x0043AB00);
+DEFINE_IMPLEMENTATION(ResultType BuildingClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool , bool), 0x0042B330);
+DEFINE_IMPLEMENTATION(RadioMessageType BuildingClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x004268C0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Revealed(const HouseClass *), 0x00433230);
+DEFINE_IMPLEMENTATION(void BuildingClass::Repair(int), 0x0042E9F0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Sell_Back(int), 0x0042EAE0);
+DEFINE_IMPLEMENTATION(MoveType BuildingClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x0042FE70);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Ready_To_Commence() const, 0x00438230);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Attack(), 0x00431360);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Guard(), 0x004300D0);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Guard_Area(), 0x00430490);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Harvest(), 0x00431870);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Unload(), 0x00433540);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Construction(), 0x004304A0);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Deconstruction(), 0x00430630);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Repair(), 0x00431880);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Missile(), 0x004326D0);
+DEFINE_IMPLEMENTATION(int BuildingClass::Mission_Open(), 0x00433AC0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::entry_220() const, 0x00439D10);;
+DEFINE_IMPLEMENTATION(bool BuildingClass::entry_23C() const, 0x0043B0A0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::entry_240() const, 0x0043B1F0);
+DEFINE_IMPLEMENTATION(DirStruct BuildingClass::Turret_Facing() const, 0x0042E030);
+DEFINE_IMPLEMENTATION(int BuildingClass::Pip_Count() const, 0x00433360);
+DEFINE_IMPLEMENTATION(DirStruct BuildingClass::entry_268(const ObjectClass *) const, 0x00428B70);
+DEFINE_IMPLEMENTATION(int BuildingClass::How_Many_Survivors() const, 0x00435DA0);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_274() const, 0x0043B020);
+DEFINE_IMPLEMENTATION(int BuildingClass::entry_278() const, 0x0043AED0);
+DEFINE_IMPLEMENTATION(int BuildingClass::Get_Z_Adjustment() const, 0x00428B20);
+DEFINE_IMPLEMENTATION(CellStruct BuildingClass::Find_Exit_Cell(const TechnoClass *) const, 0x00434140);
+DEFINE_IMPLEMENTATION(CoordStruct BuildingClass::entry_28C(WeaponSlotType) const, 0x00437D00);
+DEFINE_IMPLEMENTATION(DirStruct BuildingClass::Fire_Direction() const, 0x00433490);
+DEFINE_IMPLEMENTATION(InfantryTypeClass *const BuildingClass::Crew_Type() const, 0x00433FB0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::entry_2B8(int *) const, 0x0043AC70);
+DEFINE_IMPLEMENTATION(void BuildingClass::Death_Announcement(const TechnoClass *) const, 0x00433420);
+DEFINE_IMPLEMENTATION(FireErrorType BuildingClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x0042F400);
+DEFINE_IMPLEMENTATION(int BuildingClass::Greatest_Threat(ThreatType, CoordStruct &, bool) const, 0x0042E0E0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Assign_Target(TARGET) const, 0x0042C570);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Captured(HouseClass *), 0x0042F660);
+DEFINE_IMPLEMENTATION(WeaponInfoStruct *const BuildingClass::Get_Weapon(WeaponSlotType) const, 0x00436C10);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Is_Turret_Equipped() const, 0x00436CA0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Cloaking_AI(bool) const, 0x00438990);
+DEFINE_IMPLEMENTATION(int BuildingClass::entry_344(int) const, 0x0043AC40);
+DEFINE_IMPLEMENTATION(void BuildingClass::Assign_Destination(const TARGET, bool) const, 0x00439CC0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Enter_Idle_Mode(bool, bool) const, 0x00433300);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_358(), 0x0043A5C0);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_35C(), 0x0043A620);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_360() const, 0x0043A680);
+DEFINE_IMPLEMENTATION(void BuildingClass::Grand_Opening(bool), 0x0042E170);
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_Buildables(), 0x0042D9A0);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_370(Point2D &, Rect &), 0x00427B60);
+DEFINE_IMPLEMENTATION(DirStruct BuildingClass::entry_374(TARGET), 0x00428F60);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_378(TechnoClass *, TechnoClass *, bool, CellStruct *), 0x0042AB00);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Toggle_Primary(), 0x0042F590);
+DEFINE_IMPLEMENTATION(unsigned BuildingClass::entry_380(), 0x00436780);
+// 00428810
+// 00429070
+// 00429100
+DEFINE_IMPLEMENTATION(int BuildingClass::Shape_Number() const, 0x00429220);
+DEFINE_IMPLEMENTATION(void BuildingClass::Drop_Debris(TARGET), 0x0042BC60);
+// 0042C340
+DEFINE_IMPLEMENTATION(void BuildingClass::Begin_Mode(BStateType), 0x042F020);
+// 0042FF70
+// 004305C0
+// 00433A20
+DEFINE_IMPLEMENTATION(int BuildingClass::Power_Output() const, 0x00433DF0);
+DEFINE_IMPLEMENTATION(int BuildingClass::Power_Drain() const, 0x00433E60);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Flush_For_Placement(TechnoClass *, CellStruct &), 0x00434110);
+DEFINE_IMPLEMENTATION(CellStruct BuildingClass::Check_Point(CheckPointType) const, 0x00434680);
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_Radar_Spied(), 0x00434740);
+DEFINE_IMPLEMENTATION(void BuildingClass::Build_INI_Entry(CCINIClass &) const, 0x00434DE0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Factory_AI(), 0x00434FE0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Charging_AI(), 0x00435220);
+DEFINE_IMPLEMENTATION(void BuildingClass::Repair_AI(), 0x00435540);
+DEFINE_IMPLEMENTATION(void BuildingClass::Animation_AI(), 0x00435A50);
+// 00435E60
+// 00436020
+// 004360E0
+// 00436140
+// 00436200
+// 00436410
+// 004364A0
+// 00436500
+// 00436580
+// 00436610
+// 00436730
+// 00436790
+// 00436890
+// 00436950
+// 004369D0
+// 00436A80
+// 00436B20
+// 00436B90
+// 00436CF0
+// 00436D50
+// 00436EC0
+// 00437050
+// 004370D0
+// 00437370
+// 00437550
+// 00437680
+// 004376B0
+// 00437E30
+// 00438590
+// 004388D0
+// 00438910
+// 00438950
+// 00439280
+// 004392F0
+// 00439500
+// 004396D0
+// 00439750
+// 00439A90
+// 00439D40
+// 00439E90
+// 0043A180
+// 0043A4D0
+// 0043A520
+// 0043A570
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_Spied(HouseClass *house), 0x0043ADE0);
+// 0043AE50
+// 0043AF60
+// 0043AFC0
+// 0043B340
+// 0043B3D0
+// 0043B5C0
+// 0043B770
+// 0043B810
+DEFINE_IMPLEMENTATION(void BuildingClass::Read_INI(CCINIClass &), 0x004347C0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Write_INI(CCINIClass &), 0x00434D90);
 
 
 /**
@@ -2748,6 +2923,7 @@ DynamicVectorClass<ScriptTypeClass *> &ScriptTypes = Make_Global<DynamicVectorCl
 DynamicVectorClass<ObjectClass *> &Objects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4028);
 DynamicVectorClass<TechnoClass *> &Technos = Make_Global<DynamicVectorClass<TechnoClass *>>(0x007E4820);
 DynamicVectorClass<FootClass *> &Foots = Make_Global<DynamicVectorClass<FootClass *>>(0x007B32E0);
+DynamicVectorClass<BuildingClass *> &Buildings = Make_Global<DynamicVectorClass<BuildingClass *>>(0x007E4708);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

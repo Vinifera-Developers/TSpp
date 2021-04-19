@@ -83,7 +83,7 @@ class ObjectClass : public AbstractClass
         virtual LayerType In_Which_Layer() const;
         virtual bool entry_7C() const;
         virtual bool entry_80() const;
-        virtual TechnoTypeClass *const Techno_Class_Of() const;
+        virtual TechnoTypeClass *const Techno_Type_Class() const;
         virtual ObjectTypeClass *const Class_Of() const;
         virtual int Get_Ownable() const;
         virtual const char *Full_Name() const;
@@ -91,7 +91,7 @@ class ObjectClass : public AbstractClass
         virtual bool Can_Demolish() const;
         virtual bool Can_Player_Fire() const;
         virtual bool Can_Player_Move() const; 
-        virtual CoordStruct entry_A4() const;
+        virtual CoordStruct Target_Coord() const;
         virtual CoordStruct Docking_Coord() const;
         virtual CoordStruct Render_Coord() const;
         virtual CoordStruct Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
