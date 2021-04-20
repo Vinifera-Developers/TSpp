@@ -37,6 +37,7 @@
 #include "facing.h"
 #include "ttimer.h"
 #include "ftimer.h"
+#include "search.h"
 
 
 struct WeaponInfoStruct;

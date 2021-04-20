@@ -153,6 +153,7 @@
 #include "foot.h"
 #include "building.h"
 #include "teamtype.h"
+#include "team.h"
 
 
 /**
@@ -2820,6 +2821,97 @@ DEFINE_IMPLEMENTATION(TypeList<const TeamTypeClass *> TeamTypeClass::Suggested_N
 DEFINE_IMPLEMENTATION(void TeamTypeClass::Read_Scenario_INI(CCINIClass &, int), 0x00628CD0);
 DEFINE_IMPLEMENTATION(void TeamTypeClass::Write_Scenario_INI(CCINIClass &, int), 0x00628DD0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeamClass::GetClassID(CLSID *), 0x00625360);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamClass::Load(IStream *), 0x00625250);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamClass::Save(IStream *, BOOL), 0x00625340);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeamClass::TeamClass(TeamTypeClass *, HouseClass *, void *), 0x00622100);
+TeamClass::TeamClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7A54; *((unsigned long *)this+4) = (unsigned long)0x006D7A38; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TeamClass::~TeamClass(), 0x00622420);
+DEFINE_IMPLEMENTATION(void TeamClass::Detach(TARGET, bool), 0x00623FA0);
+DEFINE_IMPLEMENTATION(RTTIType TeamClass::Kind_Of() const, 0x00627A70);
+DEFINE_IMPLEMENTATION(int TeamClass::Size_Of(bool) const, 0x00627A60);
+DEFINE_IMPLEMENTATION(void TeamClass::Compute_CRC(WWCRCEngine &) const, 0x006253A0);
+DEFINE_IMPLEMENTATION(void TeamClass::AI(), 0x00622750);
+DEFINE_IMPLEMENTATION(void TeamClass::Assign_Mission_Target(TARGET), 0x00622660);
+// 00623360
+// 006233B0
+// 00623680
+DEFINE_IMPLEMENTATION(bool TeamClass::Add(FootClass *), 0x00623780);
+DEFINE_IMPLEMENTATION(bool TeamClass::Can_Add(FootClass *, int &) const, 0x00623880);
+DEFINE_IMPLEMENTATION(bool TeamClass::Remove(FootClass *, int), 0x00623A00);
+DEFINE_IMPLEMENTATION(int TeamClass::Recruit(int typeindex), 0x00623BF0);
+DEFINE_IMPLEMENTATION(void TeamClass::Calc_Center(TARGET &, TARGET &) const, 0x00624020);
+DEFINE_IMPLEMENTATION(void TeamClass::Took_Damage(FootClass *, ResultType, TechnoClass *), 0x00624440);
+DEFINE_IMPLEMENTATION(void TeamClass::Coordinate_Attack(), 0x006245B0);
+DEFINE_IMPLEMENTATION(bool TeamClass::Coordinate_Regroup(), 0x00624880);
+DEFINE_IMPLEMENTATION(void TeamClass::Coordinate_Move(), 0x0624A90);
+DEFINE_IMPLEMENTATION(bool TeamClass::Lagging_Units(), 0x00624E00);
+DEFINE_IMPLEMENTATION(bool TeamClass::Coordinate_Conscript(FootClass *), 0x00624FA0);
+DEFINE_IMPLEMENTATION(bool TeamClass::Is_A_Member(const FootClass *) const, 0x00625040);
+DEFINE_IMPLEMENTATION(bool TeamClass::Is_Leaving_Map() const, 0x00625120);
+DEFINE_IMPLEMENTATION(bool TeamClass::Has_Entered_Map() const, 0x00625190);
+DEFINE_IMPLEMENTATION(void TeamClass::Scan_Limit(), 0x006251C0);
+DEFINE_IMPLEMENTATION(FootClass *TeamClass::Fetch_A_Leader() const, 0x006251F0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Go_to_Shroud(ScriptMissionClass *, bool), 0x00625520);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Move_To_Cell(ScriptMissionClass *, bool), 0x00625560);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Move_To_Waypoint(ScriptMissionClass *, bool), 0x006255C0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Attack_Waypoint(ScriptMissionClass *, bool), 0x00625770);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Patrol(ScriptMissionClass *, bool), 0x00625840);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Spy(ScriptMissionClass *, bool), 0x00625980);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Scatter(ScriptMissionClass *, bool), 0x00625A30);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Change_House(ScriptMissionClass *, bool), 0x00625A70);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Change_Team(ScriptMissionClass *, bool), 0x00625AC0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Change_Script(ScriptMissionClass *, bool), 0x00625B30);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Attack(ScriptMissionClass *, bool), 0x00625B90);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Load(ScriptMissionClass *, bool), 0x00625DF0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Deploy(ScriptMissionClass *, bool), 0x00626010);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Guard(ScriptMissionClass *, bool), 0x00626200);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Do(ScriptMissionClass *, bool), 0x00626260);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Set_Global(ScriptMissionClass *, bool), 0x006264B0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Clear_Global(ScriptMissionClass *, bool), 0x006264D0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Set_Local(ScriptMissionClass *, bool), 0x006264F0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Clear_Local(ScriptMissionClass *, bool), 0x00626510);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Follow(ScriptMissionClass *, bool), 0x00626530);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Unpanic(ScriptMissionClass *, bool), 0x00626650);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Force_Facing(ScriptMissionClass *, bool), 0x00626680);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Panic(ScriptMissionClass *, bool), 0x00626730);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Go_Berzerk(ScriptMissionClass *, bool), 0x00626760);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Idle_Anim(ScriptMissionClass *, bool), 0x00626790);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Loop(ScriptMissionClass *, bool), 0x006267D0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Player_Wins(ScriptMissionClass *, bool), 0x006267F0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Player_Loses(ScriptMissionClass *, bool), 0x00626810);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Speech(ScriptMissionClass *, bool), 0x00626830);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Sound(ScriptMissionClass *, bool), 0x00626850);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Movie(ScriptMissionClass *, bool), 0x00626870);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Music(ScriptMissionClass *, bool), 0x00626890);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Reduce_Tiberium(ScriptMissionClass *, bool), 0x006268B0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Begin_Production(ScriptMissionClass *, bool), 0x00626920);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Fire_Sale(ScriptMissionClass *, bool), 0x00626940);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Self_Destruct(ScriptMissionClass *, bool), 0x00626960);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Delete_Members(ScriptMissionClass *, bool), 0x006269D0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Ion_Storm_Start(ScriptMissionClass *, bool), 0x00626A10);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Ion_Storm_End(ScriptMissionClass *, bool), 0x00626A50);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Center_View_On_Team(ScriptMissionClass *, bool), 0x00626A70);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Reshroud_Map(ScriptMissionClass *, bool), 0x00626B20);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Reveal_Map(ScriptMissionClass *, bool), 0x00626B40);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Wait_Until_Loaded(ScriptMissionClass *, bool), 0x00626B60);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Truck_Unload(ScriptMissionClass *, bool), 0x00626BA0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Truck_Load(ScriptMissionClass *, bool), 0x00626C10);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Attack_Enemy_Building(ScriptMissionClass *, bool), 0x00626C80);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Move_To_Enemy_Building(ScriptMissionClass *, bool), 0x00626D10);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Scout(ScriptMissionClass *, bool), 0x00626E90);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Unload(ScriptMissionClass *, bool), 0x006274B0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Success(ScriptMissionClass *, bool), 0x00627790);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Flash(ScriptMissionClass *, bool), 0x006278E0);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Animation(ScriptMissionClass *, bool), 0x00627930);
+DEFINE_IMPLEMENTATION(void TeamClass::TMission_Talk_Bubble(ScriptMissionClass *, bool), 0x006279F0);
+DEFINE_IMPLEMENTATION(void TeamClass::Flash_For(int), 0x00627910);
+DEFINE_IMPLEMENTATION(bool TeamClass::func_6277A0(), 0x006277A0);
+DEFINE_IMPLEMENTATION(void TeamClass::func_627800(DynamicVectorClass<const TechnoTypeClass *> &), 0x00627800);
+// 00627A20
+DEFINE_IMPLEMENTATION(void TeamClass::func_6271F0(BuildingTypeClass *, HouseClass *, FootClass *, int, bool), 0x006271F0);
+DEFINE_IMPLEMENTATION(void TeamClass::Suspend_Teams(int, const HouseClass *), 0x00625070);
+
 
 /**
  *  Global definitions
@@ -2950,6 +3042,7 @@ DynamicVectorClass<TechnoClass *> &Technos = Make_Global<DynamicVectorClass<Tech
 DynamicVectorClass<FootClass *> &Foots = Make_Global<DynamicVectorClass<FootClass *>>(0x007B32E0);
 DynamicVectorClass<BuildingClass *> &Buildings = Make_Global<DynamicVectorClass<BuildingClass *>>(0x007E4708);
 DynamicVectorClass<TeamTypeClass *> &TeamTypes = Make_Global<DynamicVectorClass<TeamTypeClass *>>(0x007E4840);
+DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClass *>>(0x007B3438);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
