@@ -93,6 +93,7 @@ class ObjectClass;
 class TechnoClass;
 class FootClass;
 class BuildingClass;
+class TeamTypeClass;
 class EventClass;
 
 enum KeyNumType;
@@ -197,6 +198,7 @@ extern DynamicVectorClass<ObjectClass *> &Objects;
 extern DynamicVectorClass<TechnoClass *> &Technos;
 extern DynamicVectorClass<FootClass *> &Foots;
 extern DynamicVectorClass<BuildingClass *> &Buildings;
+extern DynamicVectorClass<TeamTypeClass *> &TeamTypes;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

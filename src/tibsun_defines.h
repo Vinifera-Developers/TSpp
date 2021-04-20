@@ -265,6 +265,13 @@ typedef enum CategoryType
     CATEGORY_FIRST = 0
 } CategoryType;
 
+typedef enum TeamType
+{
+    TEAM_NONE = -1,
+    TEAM_FIRST = 0,
+} TeamType;
+DEFINE_ENUMERATION_OPERATORS(TeamType);
+
 typedef enum WaypointType : char
 {
     WAYPOINT_NONE = -1,

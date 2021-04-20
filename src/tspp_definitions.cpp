@@ -152,6 +152,7 @@
 #include "fatal.h"
 #include "foot.h"
 #include "building.h"
+#include "teamtype.h"
 
 
 /**
@@ -2795,6 +2796,30 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Update_Spied(HouseClass *house), 0x004
 DEFINE_IMPLEMENTATION(void BuildingClass::Read_INI(CCINIClass &), 0x004347C0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Write_INI(CCINIClass &), 0x00434D90);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeamTypeClass::GetClassID(CLSID *), 0x00628F50);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamTypeClass::Load(IStream *), 0x00628ED0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamTypeClass::Save(IStream *, BOOL), 0x00628EB0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeamTypeClass::TeamTypeClass(const char *), 0x00627D90);
+TeamTypeClass::TeamTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7AE8; *((unsigned long *)this+4) = (unsigned long)0x006D7ACC; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TeamTypeClass::~TeamTypeClass(), 0x00627EE0);
+DEFINE_IMPLEMENTATION(void TeamTypeClass::Detach(TARGET, bool), 0x00628570);
+DEFINE_IMPLEMENTATION(RTTIType TeamTypeClass::Kind_Of() const, 0x00629250);
+DEFINE_IMPLEMENTATION(int TeamTypeClass::Size_Of(bool) const, 0x00629260);
+DEFINE_IMPLEMENTATION(void TeamTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00628F90);
+DEFINE_IMPLEMENTATION(int TeamTypeClass::Get_Heap_ID() const, 0x00629270);
+DEFINE_IMPLEMENTATION(bool TeamTypeClass::Read_INI(CCINIClass &), 0x006285C0);
+DEFINE_IMPLEMENTATION(bool TeamTypeClass::Write_INI(CCINIClass &) const, 0x00628950);
+DEFINE_IMPLEMENTATION(TeamClass *TeamTypeClass::Create_One_Of(HouseClass *) const, 0x00627F50);
+DEFINE_IMPLEMENTATION(void TeamTypeClass::Destroy_All_Of() const, 0x00627FE0);
+DEFINE_IMPLEMENTATION(TypeList<const TeamTypeClass *> TeamTypeClass::Suggested_New_Team(HouseClass *, bool), 0x00628020);
+// 00628BE0
+// 00628C00
+// 006290F0
+// 006291E0
+// 00629220
+DEFINE_IMPLEMENTATION(void TeamTypeClass::Read_Scenario_INI(CCINIClass &, int), 0x00628CD0);
+DEFINE_IMPLEMENTATION(void TeamTypeClass::Write_Scenario_INI(CCINIClass &, int), 0x00628DD0);
+
 
 /**
  *  Global definitions
@@ -2924,6 +2949,7 @@ DynamicVectorClass<ObjectClass *> &Objects = Make_Global<DynamicVectorClass<Obje
 DynamicVectorClass<TechnoClass *> &Technos = Make_Global<DynamicVectorClass<TechnoClass *>>(0x007E4820);
 DynamicVectorClass<FootClass *> &Foots = Make_Global<DynamicVectorClass<FootClass *>>(0x007B32E0);
 DynamicVectorClass<BuildingClass *> &Buildings = Make_Global<DynamicVectorClass<BuildingClass *>>(0x007E4708);
+DynamicVectorClass<TeamTypeClass *> &TeamTypes = Make_Global<DynamicVectorClass<TeamTypeClass *>>(0x007E4840);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
