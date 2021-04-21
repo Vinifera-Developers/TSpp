@@ -30,6 +30,7 @@
 
 #include <always.h>
 #include "special.h"
+#include "target.h"
 #include "tibsun_defines.h"
 
 

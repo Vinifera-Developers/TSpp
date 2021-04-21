@@ -154,6 +154,7 @@
 #include "building.h"
 #include "teamtype.h"
 #include "team.h"
+#include "target.h"
 
 
 /**
@@ -636,8 +637,8 @@ DEFINE_IMPLEMENTATION_UNWIND(TypeList<TechnoTypeClass*> CCINIClass::Get_TechnoTy
 DEFINE_IMPLEMENTATION_UNWIND(bool CCINIClass::Put_TechnoType_List(const char *, const char *, const TypeList<TechnoTypeClass *>), 0x0044C190);
 DEFINE_IMPLEMENTATION_UNWIND(TypeList<SideType> CCINIClass::Get_SideType_List(const char *, const char *, const TypeList<SideType>), 0x0044C260);
 DEFINE_IMPLEMENTATION_UNWIND(TypeList<HousesType> CCINIClass::Get_HousesType_List(const char *, const char *, const TypeList<HousesType>), 0x0044C4C0);
-DEFINE_IMPLEMENTATION(xTargetClass CCINIClass::Get_Target(const char *, const char *, const xTargetClass), 0x0044C950);
-DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Target(const char *, const char *, xTargetClass), 0x0044CA50);
+DEFINE_IMPLEMENTATION(xTargetClass CCINIClass::Get_Target(const char *, const char *, const xTargetClass &), 0x0044C950);
+DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Target(const char *, const char *, xTargetClass &), 0x0044CA50);
 DEFINE_IMPLEMENTATION(int CCINIClass::Get_Unique_ID() const, 0x0044C820);
 DEFINE_IMPLEMENTATION(void CCINIClass::Calculate_Message_Digest(), 0x0044C8C0);
 DEFINE_IMPLEMENTATION(void CCINIClass::Invalidate_Message_Digest(), 0x0044C940);
@@ -2911,6 +2912,33 @@ DEFINE_IMPLEMENTATION(void TeamClass::func_627800(DynamicVectorClass<const Techn
 // 00627A20
 DEFINE_IMPLEMENTATION(void TeamClass::func_6271F0(BuildingTypeClass *, HouseClass *, FootClass *, int, bool), 0x006271F0);
 DEFINE_IMPLEMENTATION(void TeamClass::Suspend_Teams(int, const HouseClass *), 0x00625070);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(TARGET), 0x0061FEE0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(CellStruct &), 0x0061FF60);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(CoordStruct &), 0x0061FFB0);
+DEFINE_IMPLEMENTATION(AbstractTypeClass *xTargetClass::As_TypeClass() const, 0x0061FFF0);
+DEFINE_IMPLEMENTATION(TagClass *xTargetClass::As_Tag() const, 0x006200D0);
+DEFINE_IMPLEMENTATION(TagTypeClass *xTargetClass::As_TagType() const, 0x006201B0);
+DEFINE_IMPLEMENTATION(AbstractClass *xTargetClass::As_Abstract() const, 0x00620290);
+DEFINE_IMPLEMENTATION(TechnoClass *xTargetClass::As_Techno() const, 0x00620390);
+DEFINE_IMPLEMENTATION(ObjectClass *xTargetClass::As_Object() const, 0x00620460);
+DEFINE_IMPLEMENTATION(FootClass *xTargetClass::As_Foot() const, 0x00620540);
+DEFINE_IMPLEMENTATION(TriggerClass *xTargetClass::As_Trigger() const, 0x00620620);
+DEFINE_IMPLEMENTATION(HouseClass *xTargetClass::As_House() const, 0x00620700);
+DEFINE_IMPLEMENTATION(TechnoTypeClass *xTargetClass::As_TechnoType() const, 0x006207E0);
+DEFINE_IMPLEMENTATION(TriggerTypeClass *xTargetClass::As_TriggerType() const, 0x006208C0);
+DEFINE_IMPLEMENTATION(TeamTypeClass *xTargetClass::As_TeamType() const, 0x006209A0);
+DEFINE_IMPLEMENTATION(TerrainClass *xTargetClass::As_Terrain() const, 0x00620A80);
+DEFINE_IMPLEMENTATION(BulletClass *xTargetClass::As_Bullet() const, 0x00620B60);
+DEFINE_IMPLEMENTATION(AnimClass *xTargetClass::As_Anim() const, 0x00620C40);
+DEFINE_IMPLEMENTATION(TeamClass *xTargetClass::As_Team() const, 0x00620D20);
+DEFINE_IMPLEMENTATION(InfantryClass *xTargetClass::As_Infantry() const, 0x00620E00);
+DEFINE_IMPLEMENTATION(UnitClass *xTargetClass::As_Unit() const, 0x00620EE0);
+DEFINE_IMPLEMENTATION(BuildingClass *xTargetClass::As_Building() const, 0x00620FC0);
+DEFINE_IMPLEMENTATION(AircraftClass *xTargetClass::As_Aircraft() const, 0x006210A0);
+DEFINE_IMPLEMENTATION(CellClass *xTargetClass::As_Cell() const, 0x00621180);
+DEFINE_IMPLEMENTATION(int xTargetClass::Pack() const, 0x0050A060);
+DEFINE_IMPLEMENTATION(TargetClass xTargetClass::Unpack(int), 0x0050A080);
 
 
 /**

@@ -1497,26 +1497,6 @@ typedef struct DoInfoStruct
 } DoInfoStruct;
 
 
-class xTargetClass
-{
-    public:
-        int RTTI;
-        int ID;
-};
-
-
-class TargetClass
-{
-    public:
-        TargetClass() {}
-        ~TargetClass() {}
-
-    public:
-        int RTTI;
-        int ID;
-};
-
-
 class ZoneConnectionClass
 {
     public:

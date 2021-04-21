@@ -37,6 +37,7 @@ class FileClass;
 class Straw;
 class Pipe;
 class TechnoTypeClass;
+class xTargetClass;
 
 
 class CCINIClass : public INIClass
@@ -146,8 +147,8 @@ class CCINIClass : public INIClass
         TypeList<SideType> Get_SideType_List(const char *section, const char *entry, const TypeList<SideType> defvalue);
         TypeList<HousesType> Get_HousesType_List(const char *section, const char *entry, const TypeList<HousesType> defvalue);
         
-        xTargetClass Get_Target(const char *section, const char *entry, const xTargetClass defvalue);
-        bool Put_Target(const char *section, const char *entry, xTargetClass value);
+        xTargetClass Get_Target(const char *section, const char *entry, const xTargetClass &defvalue);
+        bool Put_Target(const char *section, const char *entry, xTargetClass &value);
 
         int Get_Unique_ID() const;
 
