@@ -104,6 +104,7 @@ TEventClass : public AbstractClass
             InfantryType Infantry;
             AircraftType Aircraft;
             HousesType House;
+            float Float;
             long Value;
         } Data;
 

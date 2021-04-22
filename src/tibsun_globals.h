@@ -96,6 +96,7 @@ class BuildingClass;
 class TeamTypeClass;
 class TeamClass;
 class TEventClass;
+class TActionClass;
 class EventClass;
 
 enum KeyNumType;
@@ -203,6 +204,7 @@ extern DynamicVectorClass<BuildingClass *> &Buildings;
 extern DynamicVectorClass<TeamTypeClass *> &TeamTypes;
 extern DynamicVectorClass<TeamClass *> &Teams;
 extern DynamicVectorClass<TEventClass *> &TEvents;
+extern DynamicVectorClass<TActionClass *> &TActions;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

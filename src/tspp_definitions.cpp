@@ -156,6 +156,7 @@
 #include "team.h"
 #include "target.h"
 #include "tevent.h"
+#include "taction.h"
 
 
 /**
@@ -2961,6 +2962,128 @@ DEFINE_IMPLEMENTATION(void TEventClass::Build_INI_Entry(char *) const, 0x00642A1
 DEFINE_IMPLEMENTATION(NeedType TEventClass::Needs(TEventType), 0x00642AD0);
 DEFINE_IMPLEMENTATION(AttachType TEventClass::Attaches_To(TEventType), 0x00642B90);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TActionClass::GetClassID(CLSID *), 0x0061D860);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Load(IStream *), 0x0061D8A0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Save(IStream *, BOOL), 0x0061D910);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TActionClass::TActionClass(), 0x00618B80);
+TActionClass::TActionClass(const NoInitClass &noinit) { *((unsigned long *)this) = (unsigned long)0x006D77C4; *((unsigned long *)this+4) = (unsigned long)0x006D77A8; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TActionClass::~TActionClass(), 0x00618CF0);
+DEFINE_IMPLEMENTATION(void TActionClass::Detach(TARGET, bool), 0x00618DF0);
+DEFINE_IMPLEMENTATION(RTTIType TActionClass::Kind_Of() const, 0x0061DAA0);
+DEFINE_IMPLEMENTATION(int TActionClass::Size_Of(bool) const, 0x0061DA90);
+DEFINE_IMPLEMENTATION(void TActionClass::Compute_CRC(WWCRCEngine &) const, 0x0061D930);
+DEFINE_IMPLEMENTATION(int TActionClass::Get_Heap_ID() const, 0x0061DAB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::operator() (HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x00619110);
+DEFINE_IMPLEMENTATION(void TActionClass::Read_INI(), 0x00618F70);
+DEFINE_IMPLEMENTATION(void TActionClass::Build_INI_Entry(char *) const, 0x00618E30);
+DEFINE_IMPLEMENTATION(CoordStruct TActionClass::Waypoint_As_Coord(), 0x0061DA50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Deactivate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AB80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Activate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061ABF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lightning_Strike_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AC60);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Remove_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AC90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AD10);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Self(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061ADC0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Vein_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Tiberium_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ice_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Sleepers(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AEB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Harmless(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AF20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Group(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AFA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Win(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B030);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Lose(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B050);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B070);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Apply_100_Damage(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B080);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Small_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B380);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Medium_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B3D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Large_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B420);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Sell_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B470);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Go_Bezerk(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B4E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_Off_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B550);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_On_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B5C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_House(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B630);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Team_ID(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B6B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_Change_House(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B6E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Text_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B740);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Ally(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B820);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Enemy(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B860);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Preferred_Target(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B8A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Base_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B8C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Grow_Shroud(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B980);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Global(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B990);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Clear_Global(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B9B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Area(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B9D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reduce_Tiberium_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BAF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Zone(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BB30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Map(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BC40);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Start_Timer(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BCB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Stop_Timer(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BD00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Extend(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BD80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Shorten(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BDF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Set(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BE80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Movie(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Ingame_Movie(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At_Random_Waypoint(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C000);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Music(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C030);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C050);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_One_Time_Special(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C060);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Full_Special(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C0B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Place_Drop_Zone_Flare(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C110);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Win(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C200);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lose(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C230);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Production(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C260);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Fire_Sale(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C280);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Autocreate(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2F0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Flash_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C310);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C330);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C340);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Talk_Bubble(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C350);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcements(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C390);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcement_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_To_Hunt(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Object(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3F0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Zoom_Level(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C560);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Resize_Player_View(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C570);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C620);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Do_Explosion_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C720);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Impact_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C900);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_Start(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C9E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lock_Input(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA40);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Unlock_Input(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA60);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Center_Camera_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_In(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CB30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_Out(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CBA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reshroud_Map(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CC00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Spotlight_Behavior(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CC10);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CCB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Tag(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CD00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CD50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CDA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CDE0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Radar_Event(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Set(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Clear(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Shower_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Step(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D070);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Rate(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D090);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Light(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D0B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_Begin(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D0E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D100);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_AI_Trigger_Teams(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D120);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Aircraft(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D140);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Infantry(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D160);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Units(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D180);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Cannon_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D1A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Nuke_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D230);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Chemical_Missile_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D460);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Toggle_Train_Cargo(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D690);
+DEFINE_IMPLEMENTATION(NeedType TActionClass::Needs(TActionType), 0x0061D6B0);
+DEFINE_IMPLEMENTATION(AttachType TActionClass::Attaches_To(TActionType), 0x0061D9C0);
+
 
 /**
  *  Global definitions
@@ -3093,6 +3216,7 @@ DynamicVectorClass<BuildingClass *> &Buildings = Make_Global<DynamicVectorClass<
 DynamicVectorClass<TeamTypeClass *> &TeamTypes = Make_Global<DynamicVectorClass<TeamTypeClass *>>(0x007E4840);
 DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClass *>>(0x007B3438);
 DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEventClass *>>(0x0080F0E0);
+DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TActionClass *>>(0x0080E6E8);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

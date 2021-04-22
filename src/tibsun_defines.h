@@ -1330,6 +1330,121 @@ typedef enum TEventType
     TEVENT_FIRST = 0
 } TEventType;
 
+typedef enum TActionType
+{
+    TACTION_NONE,
+
+    TACTION_WIN,                   // player wins!
+    TACTION_LOSE,                  // player loses.
+    TACTION_BEGIN_PRODUCTION,      // computer begins factory production.
+    TACTION_CREATE_TEAM,           // computer creates a certain type of team
+    TACTION_DESTROY_TEAM,          // destroys all teams of a certain type.
+    TACTION_ALL_HUNT,              // all enemy units go into hunt mode (teams destroyed).
+    TACTION_REINFORCEMENTS,        // player gets reinforcements (house that gets them is determined by the Reinforcement instance)
+    TACTION_DZ,                    // Deploy drop zone smoke.
+    TACTION_FIRE_SALE,             // Sell all buildings and go on rampage.
+    TACTION_PLAY_MOVIE,            // Play movie (temporarily suspend game).
+    TACTION_TEXT_TRIGGER,          // Triggers a text message display.
+    TACTION_DESTROY_TRIGGER,       // Destroy specified trigger.
+    TACTION_AUTOCREATE,            // Computer to auto-create teams.
+    TACTION_WINLOSE,               // Win if captured, lose if destroyed.
+    TACTION_ALLOWWIN,              // Allows winning if triggered.
+    TACTION_REVEAL_ALL,            // Reveal the entire map.
+    TACTION_REVEAL_SOME,           // Reveal map around cell #.
+    TACTION_REVEAL_ZONE,           // Reveal all of specified zone.
+    TACTION_PLAY_SOUND,            // Play sound effect.
+    TACTION_PLAY_MUSIC,            // Play musical score.
+    TACTION_PLAY_SPEECH,           // Play EVA speech.
+    TACTION_FORCE_TRIGGER,         // Force trigger to activate.
+    TACTION_START_TIMER,           // Start mission timer.
+    TACTION_STOP_TIMER,            // Stop mission timer.
+    TACTION_ADD_TIMER,             // Increase mission timer time.
+    TACTION_SUB_TIMER,             // Decrease mission timer time.
+    TACTION_SET_TIMER,             // Set and start the mission timer.
+    TACTION_SET_GLOBAL,            // Set global variable.
+    TACTION_CLEAR_GLOBAL,          // Clear global variable.
+    TACTION_BASE_BUILDING,         // Automated base building.
+    TACTION_CREEP_SHADOW,          // Shadow grows back one 'step'.
+    TACTION_DESTROY_OBJECT,        // Destroys the building this trigger is attached to.
+    TACTION_1_SPECIAL,             // Add a one-time special weapon ability to house.
+    TACTION_FULL_SPECIAL,          // Add a repeating special weapon ability to house.
+    TACTION_PREFERRED_TARGET,      // Designates preferred target for house.
+    TACTION_ALL_CHANGE_HOUSE,
+    TACTION_MAKE_ALLY,
+    TACTION_MAKE_ENEMY,
+    TACTION_CHANGE_ZOOM_LEVEL,
+    TACTION_RESIZE_VIEW,
+    TACTION_PLAY_ANIM,
+    TACTION_EXPLOSION,
+    TACTION_METEOR_IMPACT,
+    TACTION_ION_STORM_START,
+    TACTION_ION_STORM_STOP,
+    TACTION_LOCK_INPUT,
+    TACTION_UNLOCK_INPUT,
+    TACTION_CENTER_CAMERA,
+    TACTION_ZOOM_IN,
+    TACTION_ZOOM_OUT,
+    TACTION_RESHROUD_MAP,
+    TACTION_CHANGE_LIGHT_BEHAVIOR,
+    TACTION_ENABLE_TRIGGER,
+    TACTION_DISABLE_TRIGGER,
+    TACTION_CREATE_RADAR_EVENT,
+    TACTION_LOCAL_SET,
+    TACTION_LOCAL_CLEAR,
+    TACTION_METEOR_SHOWER,
+    TACTION_REDUCE_TIBERIUM,
+    TACTION_SELL_BUILDING,
+    TACTION_TURN_OFF_BUILDING,
+    TACTION_TURN_ON_BUILDING,
+    TACTION_APPLY_100_DAMAGE,
+    TACTION_LIGHT_FLASH_SMALL,
+    TACTION_LIGHT_FLASH_MEDIUM,
+    TACTION_LIGHT_FLASH_LARGE,
+    TACTION_ANNOUNCE_WIN,
+    TACTION_ANNOUNCE_LOSE,
+    TACTION_FORCE_END,
+    TACTION_DESTROY_TAG,
+    TACTION_SET_AMBIENT_STEP,
+    TACTION_SET_AMBIENT_RATE,
+    TACTION_SET_AMBIENT_LIGHT,
+    TACTION_AI_TRIGGERS_BEGIN,
+    TACTION_AI_TRIGGERS_STOP,
+    TACTION_RATIO_AI_TRIGGER_TEAMS,
+    TACTION_RADIO_TEAM_AIRCRAFT,
+    TACTION_RADIO_TEAM_INFANTRY,
+    TACTION_RADIO_TEAM_UNITS,
+    TACTION_REINFORCEMENT_TEAM,
+    TACTION_WAKEUP_SELF,
+    TACTION_WAKEUP_ALL_SLEEPERS,
+    TACTION_WAKEUP_ALL_HARMLESS,
+    TACTION_WAKEUP_GROUP,
+    TACTION_VEIN_GROWTH,
+    TACTION_TIBERIUM_GROWTH,
+    TACTION_ICE_GROWTH,
+    TACTION_PARTICLE_ANIM_AT,
+    TACTION_REMOVE_PARTICLE_AT,
+    TACTION_LIGHTENING_STRIKE,
+    TACTION_GO_BERZERK,
+    TACTION_ACTIVATE_FIRESTORM,
+    TACTION_DEACTIVATE_FIRESTORM,
+    TACTION_ION_CANNON_STRIKE,
+    TACTION_NUKE_STRIKE,
+    TACTION_CHEM_MISSILE_STRIKE,
+    TACTION_TOGGLE_TRAIN_CARGO,
+    TACTION_PLAY_RANDOM_SOUND_EFFECT,
+    TACTION_PLAY_SOUND_EFFECT_AT,
+    TACTION_PLAY_INGAME_MOVIE,
+    TACTION_FLASH_TEAM,
+    TACTION_DISABLE_SPEECH,
+    TACTION_ENABLE_SPEECH,
+    TACTION_SET_CONTROL_ID,
+    TACTION_TALK_BUBBLE,
+
+    TACTION_COUNT,
+
+    TACTION_FIRST = 0
+} TActionType;
+
 typedef enum ProdFailType {
     PROD_OK,        // Production request successful.
     PROD_LIMIT,     // Failed with production capacity limit reached.

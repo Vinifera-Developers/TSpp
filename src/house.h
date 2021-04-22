@@ -445,7 +445,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         int RatioAITriggerTeam;
         int RatioTeamAircraft;
         int RatioTeamInfantry;
-        int RatioTeamBuildings;
+        int RatioTeamUnits;
         int BaseDefenseTeamCount;
         DropshipLoadoutClass DropshipLoadouts[DROPSHIP_LOADOUT_MAX];
         int field_4EC;
