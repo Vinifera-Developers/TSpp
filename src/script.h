@@ -32,6 +32,7 @@
 
 
 class ScriptTypeClass;
+class ScriptMissionClass;
 
 
 class DECLSPEC_UUID("42F3A646-0789-11D2-ACA5-006008055BB5")

@@ -33,6 +33,7 @@
 #include "vector.h"
 
 
+class ScriptMissionClass;
 class BuildingTypeClass;
 class TechnoTypeClass;
 class TeamTypeClass;

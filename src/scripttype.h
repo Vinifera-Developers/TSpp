@@ -31,6 +31,35 @@
 #include "tibsun_defines.h"
 
 
+class ScriptMissionClass
+{
+    public:
+        ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
+        ~ScriptMissionClass() {}
+
+        static const char *Mission_Name(ScriptMissionType mission);
+        static const char *Mission_Description(ScriptMissionType mission);
+
+    public:
+        ScriptMissionType Mission;  // Mission type.
+        union {
+            xCellStruct Cell;
+            QuarryType Quarry;      // Combat quarry type.
+            MissionType Mission;    // General mission orders.
+            int Value;              // Usually a waypoint number.
+        } Data;
+
+    private:
+        struct MissionDescriptionStruct
+        {
+            char const *Name;
+            char const *Description;
+        };
+
+        static MissionDescriptionStruct MissionDescriptions[SMISSION_COUNT];
+};
+
+
 class DECLSPEC_UUID("42F3A647-0789-11D2-ACA5-006008055BB5")
 ScriptTypeClass : public AbstractTypeClass
 {

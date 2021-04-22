@@ -1824,22 +1824,6 @@ struct ScoutStruct
 };
 
 
-class ScriptMissionClass
-{
-    public:
-        ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
-        ~ScriptMissionClass() {}
-
-        ScriptMissionType Mission;  // Mission type.
-        union {
-            xCellStruct Cell;
-            QuarryType Quarry;      // Combat quarry type.
-            MissionType Mission;    // General mission orders.
-            int Value;              // Usually a waypoint number.
-        } Data;
-};
-
-
 /**
  *  DirStruct is in stages of 128 (0-32768) (128*256).
  */

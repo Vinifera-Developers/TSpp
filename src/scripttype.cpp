@@ -30,6 +30,75 @@
 #include "tspp_assert.h"
 
 
+const char *ScriptMissionClass::Mission_Name(ScriptMissionType mission)
+{
+    return MissionDescriptions[mission].Name;
+}
+
+
+const char *ScriptMissionClass::Mission_Description(ScriptMissionType mission)
+{
+    return MissionDescriptions[mission].Description;
+}
+
+
+ScriptMissionClass::MissionDescriptionStruct ScriptMissionClass::MissionDescriptions[SMISSION_COUNT] = {
+    { "Attack...", "Attack some general target." },
+    { "Attack Waypoint...", "Attack anything nearby the specified waypoint." },
+    { "Go Berzerk", "Cyborg members of the team will go berzerk." },
+    { "Move to waypoint...", "Orders the team to move to a waypoint on the map." },
+    { "Move to Cell...", "Orders the team to move to a specific cell on the map." },
+    { "Guard area (timer ticks)...", "Guard an area for a specified amount of time." },
+    { "Jump to line #...", "Move to a new line number in the script. Used for loops." },
+    { "Player wins", "The player wins. The game will end immediately." },
+    { "Unload...", "Unloads all loaded units. The command parameter specifies which units should stay a part of the team, and which should be severed from the team." },
+    { "Deploy", "Causes all deployable units in the team to deploy." },
+    { "Follow friendlies", "Causes the team to follow the nearest friendly unit." },
+    { "Do this...", "Give all team members the specified mission." },
+    { "Set global...", "Sets a global variable." },
+    { "Idle Anim...", "Causes team members to enter their idle animation." },
+    { "Load onto Transport", "Causes all units to load into transports, if able." },
+    { "Spy on bldg @ waypt...", "Spy on a building at the specified waypoint." },
+    { "Patrol to waypoint...", "Move to a waypoint while scanning for enemies." },
+    { "Change script...", "Causes the team to start using a new script." },
+    { "Change team...", "Causes the team to switch team types." },
+    { "Panic", "Causes all units in the team to panic." },
+    { "Change house...", "All units in the team switch houses." },
+    { "Scatter", "Tells all units to scatter." },
+    { "Goto nearby shroud", "Causes units to flee to a shrouded cell." },
+    { "Player loses", "Causes the player to lose." },
+    { "Play speech...", "Plays the specified voice file." },
+    { "Play sound...", "Plays the specified sound file." },
+    { "Play movie...", "Plays the specified movie file." },
+    { "Play music...", "Plays the specified theme." },
+    { "Reduce tiberium", "Reduces the amount of tiberium around team members." },
+    { "Begin production", "Signals the owning house to begin production." },
+    { "Fire sale", "Causes an AI house to sell all of its buildings and do a Braveheart." },
+    { "Self destruct", "Causes all team members to self destruct." },
+    { "Ion storm start in...", "Causes an ion storm to begin at the specified time." },
+    { "Ion storm end", "Causes an ion storm to end." },
+    { "Center view on team (speed)...", "Center view on team (speed)..." },
+    { "Reshroud map", "Reshrouds the map." },
+    { "Reveal map", "Reveals the map." },
+    { "Delete team members", "Delete all members from the team." },
+    { "Clear global...", "Clears the specified global variable." },
+    { "Set local...", "Sets the specified local variable." },
+    { "Clear local...", "Clears the specified local variable." },
+    { "Unpanic", "Causes all team members to stop panicking." },
+    { "Force facing...", "Forces team members to face a certain direction." },
+    { "Wait till fully loaded", "Waits until all transports are full." },
+    { "Truck unload", "Causes all trucks to unload their crates (ie, change imagery)." },
+    { "Truck load", "Causes all trucks to load crates (ie, change imagery)." },
+    { "Attack enemy building", "Attack a specific type of building with the specified property." },
+    { "Move to enemy building", "Move to a specific type of building with the specified property." },
+    { "Scout", "The team will scout the bases of the players that have not been scouted." },
+    { "Success", "Record a team as having successfully accomplished its mission. Used for AI trigger weighting. Put this at the end of every AITrigger script." },
+    { "Flash", "Flashes a team for a period of team." },
+    { "Play Anim", "Plays an anim over every unit in the team." },
+    { "Talk Bubble", "Displays talk bubble over first unit in the team." }
+};
+
+
 const ScriptTypeClass &ScriptTypeClass::As_Reference(ScriptType type)
 {
     TSPP_ASSERT(type != SCRIPT_NONE && type < ScriptTypes.Count());
