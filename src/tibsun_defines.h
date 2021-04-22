@@ -55,47 +55,47 @@ class NoInitClass;
 #define VIEW_COUNT 4
 
 // Save filename description.
-#define	DESCRIP_MAX	44			// 40 chars + CR + LF + CTRL-Z + NULL
+#define DESCRIP_MAX 44          // 40 chars + CR + LF + CTRL-Z + NULL
 
 // This is the max number of events supported in one frame.
 #define MAX_EVENTS 64
 
 // Size of the map in cells.
-#define	MAP_CELL_W 512
-#define	MAP_CELL_H 512
-#define	MAP_CELL_TOTAL (MAP_CELL_W * MAP_CELL_H)
+#define MAP_CELL_W 512
+#define MAP_CELL_H 512
+#define MAP_CELL_TOTAL (MAP_CELL_W * MAP_CELL_H)
 
 // Cell pixel dimensions.
-#define	CELL_PIXEL_W 24
-#define	CELL_PIXEL_H 48
+#define CELL_PIXEL_W 24
+#define CELL_PIXEL_H 48
 
 // Sub-cell dimensions.
-#define	CELL_LEPTON_W 256
-#define	CELL_LEPTON_H 256
+#define CELL_LEPTON_W 256
+#define CELL_LEPTON_H 256
 
-#define	PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
-#define	PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
+#define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
+#define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
 
 
 /**
  *  The map is broken down into regions of this specified dimensions.
  */
-#define	REGION_WIDTH        4
-#define	REGION_HEIGHT       4
-#define	MAP_REGION_WIDTH    (((MAP_CELL_W + (REGION_WIDTH -1)) / REGION_WIDTH)+2)
-#define	MAP_REGION_HEIGHT   (((MAP_CELL_H + (REGION_WIDTH -1)) / REGION_HEIGHT)+2)
+#define REGION_WIDTH        4
+#define REGION_HEIGHT       4
+#define MAP_REGION_WIDTH    (((MAP_CELL_W + (REGION_WIDTH -1)) / REGION_WIDTH)+2)
+#define MAP_REGION_HEIGHT   (((MAP_CELL_H + (REGION_WIDTH -1)) / REGION_HEIGHT)+2)
 #define MAP_TOTAL_REGIONS   (MAP_REGION_WIDTH * MAP_REGION_HEIGHT)
 
 
 /**
  *  Timer constants.
  */
-#define	TIMER_SECOND		60
-#define	TIMER_MINUTE		(TIMER_SECOND * 60)
+#define TIMER_SECOND        60
+#define TIMER_MINUTE        (TIMER_SECOND * 60)
 
-#define	TICKS_PER_SECOND	15
-#define	TICKS_PER_MINUTE	(TICKS_PER_SECOND * 60)
-#define	TICKS_PER_HOUR		(TICKS_PER_MINUTE * 60)
+#define TICKS_PER_SECOND    15
+#define TICKS_PER_MINUTE    (TICKS_PER_SECOND * 60)
+#define TICKS_PER_HOUR      (TICKS_PER_MINUTE * 60)
 
 
 #define TXT_NONE    0
@@ -107,9 +107,9 @@ class NoInitClass;
 
 typedef enum WaypointEnum
 {
-    WAYPT_HOME = 98,	// Home-cell for this scenario
-    WAYPT_REINF,		// cell where reinforcements arrive
-    WAYPT_SPECIAL,		// Used by special airdrop reinforcements.
+    WAYPT_HOME = 98,    // Home-cell for this scenario
+    WAYPT_REINF,        // cell where reinforcements arrive
+    WAYPT_SPECIAL,      // Used by special airdrop reinforcements.
     WAYPT_COUNT
 } WaypointEnum;
 
@@ -377,11 +377,11 @@ DEFINE_ENUMERATION_OPERATORS(MZoneType);
 
 typedef enum ZoneType
 {
-    ZONE_CORE,		// Center of base.
-    ZONE_NORTH,		// North section.
-    ZONE_EAST,		// East section.
-    ZONE_SOUTH,		// South section.
-    ZONE_WEST,		// West section.
+    ZONE_CORE,      // Center of base.
+    ZONE_NORTH,     // North section.
+    ZONE_EAST,      // East section.
+    ZONE_SOUTH,     // South section.
+    ZONE_WEST,      // West section.
 
     ZONE_COUNT,
     ZONE_NONE = -1,
@@ -454,23 +454,23 @@ DEFINE_ENUMERATION_OPERATORS(AbilityType);
 
 typedef enum ScriptMissionType
 {
-    SMISSION_ATTACK,				// Attack specified quarry type.
-    SMISSION_ATT_WAYPT,				// Attack specified waypoint
+    SMISSION_ATTACK,                // Attack specified quarry type.
+    SMISSION_ATT_WAYPT,             // Attack specified waypoint
     SMISSION_BEZERK,
-    SMISSION_MOVE,					// moves to waypoint specified.
-    SMISSION_MOVECELL,				// moves to cell # specified.
-    SMISSION_GUARD,					// works like an infantry's guard mission
-    SMISSION_LOOP,					// loop back to start of mission list
+    SMISSION_MOVE,                  // moves to waypoint specified.
+    SMISSION_MOVECELL,              // moves to cell # specified.
+    SMISSION_GUARD,                 // works like an infantry's guard mission
+    SMISSION_LOOP,                  // loop back to start of mission list
     SMISSION_PLAYER_WIN,
-    SMISSION_UNLOAD,				// Unload at current location.
-    SMISSION_DEPLOY,				// Deploy mobile building type.
-    SMISSION_HOUND_DOG,				// Follow nearest friendly unit.
-    SMISSION_DO,					// Do guard, sticky, area guard (mission sticks on this).
-    SMISSION_SET_GLOBAL,			// Set global variable.
+    SMISSION_UNLOAD,                // Unload at current location.
+    SMISSION_DEPLOY,                // Deploy mobile building type.
+    SMISSION_HOUND_DOG,             // Follow nearest friendly unit.
+    SMISSION_DO,                    // Do guard, sticky, area guard (mission sticks on this).
+    SMISSION_SET_GLOBAL,            // Set global variable.
     SMISSION_IDLE,
-    SMISSION_LOAD,					// Load onto transport member of team.
-    SMISSION_SPY,					// Spy enter the building at specified waypoint
-    SMISSION_PATROL,				// Move but look for enemies as well.
+    SMISSION_LOAD,                  // Load onto transport member of team.
+    SMISSION_SPY,                   // Spy enter the building at specified waypoint
+    SMISSION_PATROL,                // Move but look for enemies as well.
     SMISSION_CHANGE_SCRIPT,
     SMISSION_CHANGE_TEAM,
     SMISSION_PANIC,
@@ -527,10 +527,10 @@ DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
 
 typedef enum CloakType
 {
-    UNCLOAKED,		// Completely visible (normal state).
-    CLOAKING,		// In process of cloaking.
-    CLOAKED,		// Completely cloaked (invisible).
-    UNCLOAKING		// In process of uncloaking.
+    UNCLOAKED,      // Completely visible (normal state).
+    CLOAKING,       // In process of cloaking.
+    CLOAKED,        // Completely cloaked (invisible).
+    UNCLOAKING      // In process of uncloaking.
 } CloakType;
 
 typedef enum BuildingType
@@ -754,28 +754,28 @@ DEFINE_ENUMERATION_OPERATORS(LandType);
 
 typedef enum CheckPointType
 {
-    CHECK_STACK,			// Holding area far away from airfield.
-    CHECK_DOWNWIND,			// Downwind leg of approach.
-    CHECK_CROSSWIND			// Crosswind leg of approach.
+    CHECK_STACK,            // Holding area far away from airfield.
+    CHECK_DOWNWIND,         // Downwind leg of approach.
+    CHECK_CROSSWIND         // Crosswind leg of approach.
 } CheckPointType;
 
 typedef enum StateType
 {
-    STATE_BUILDUP,			// Base is building up (defensive buildup stage).
-    STATE_BROKE,			// Low on money, need cash or income source.
-    STATE_THREATENED,		// Enemy units are designated to move close by.
-    STATE_ATTACKED,		    // Base is under direct attack.
-    STATE_ENDGAME			// Resistance is futile.
+    STATE_BUILDUP,          // Base is building up (defensive buildup stage).
+    STATE_BROKE,            // Low on money, need cash or income source.
+    STATE_THREATENED,       // Enemy units are designated to move close by.
+    STATE_ATTACKED,         // Base is under direct attack.
+    STATE_ENDGAME           // Resistance is futile.
 } StateType;
 DEFINE_ENUMERATION_OPERATORS(StateType);
 
 typedef enum UrgencyType
 {
-    URGENCY_NONE,			// No action on this matter is needed or desired.
-    URGENCY_LOW,			// Minimal attention requested.
-    URGENCY_MEDIUM,			// Normal attention requested.
-    URGENCY_HIGH,			// High attention requested.
-    URGENCY_CRITICAL,		// This matter must be addressed immediately.
+    URGENCY_NONE,           // No action on this matter is needed or desired.
+    URGENCY_LOW,            // Minimal attention requested.
+    URGENCY_MEDIUM,         // Normal attention requested.
+    URGENCY_HIGH,           // High attention requested.
+    URGENCY_CRITICAL,       // This matter must be addressed immediately.
 
     URGENCY_COUNT,
     URGENCY_FIRST = 0
@@ -784,8 +784,8 @@ DEFINE_ENUMERATION_OPERATORS(UrgencyType);
 
 typedef enum StrategyType
 {
-    STRATEGY_FIRE_SALE,			// Situation hopeless, sell and attack.
-    STRATEGY_RAISE_MONEY,		// Money is low, emergency raise cash.
+    STRATEGY_FIRE_SALE,         // Situation hopeless, sell and attack.
+    STRATEGY_RAISE_MONEY,       // Money is low, emergency raise cash.
 
     STRATEGY_COUNT,
     STRATEGY_FIRST = 0
@@ -796,15 +796,15 @@ typedef enum QuarryType
 {
     QUARRY_NONE,
 
-    QUARRY_ANYTHING,	// Attack any enemy (same as "hunt").
-    QUARRY_BUILDINGS,	// Attack buildings (in general).
-    QUARRY_HARVESTERS,	// Attack harvesters or refineries.
-    QUARRY_INFANTRY,	// Attack infantry.
-    QUARRY_VEHICLES,	// Attack combat vehicles.
-    QUARRY_FACTORIES,	// Attack factories (all types).
-    QUARRY_DEFENSE,		// Attack base defense buildings.
-    QUARRY_THREAT,		// Attack enemies near friendly base.
-    QUARRY_POWER,		// Attack power facilities.
+    QUARRY_ANYTHING,    // Attack any enemy (same as "hunt").
+    QUARRY_BUILDINGS,   // Attack buildings (in general).
+    QUARRY_HARVESTERS,  // Attack harvesters or refineries.
+    QUARRY_INFANTRY,    // Attack infantry.
+    QUARRY_VEHICLES,    // Attack combat vehicles.
+    QUARRY_FACTORIES,   // Attack factories (all types).
+    QUARRY_DEFENSE,     // Attack base defense buildings.
+    QUARRY_THREAT,      // Attack enemies near friendly base.
+    QUARRY_POWER,       // Attack power facilities.
 
     QUARRY_COUNT,
     QUARRY_FIRST = 0
@@ -1031,21 +1031,21 @@ DEFINE_ENUMERATION_OPERATORS(RTTIType);
 
 typedef enum ThreatType
 {
-    THREAT_NORMAL = 0x0000,			// Any distance threat scan?
-    THREAT_RANGE = 0x0001,			// Limit scan to weapon range?
-    THREAT_AREA = 0x0002,			// Limit scan to general area (twice weapon range)?
-    THREAT_AIR = 0x0004,			// Scan for air units?
-    THREAT_INFANTRY = 0x0008,		// Scan for infantry units?
-    THREAT_VEHICLES = 0x0010,		// Scan for vehicles?
-    THREAT_BUILDINGS = 0x0020,		// Scan for buildings?
-    THREAT_TIBERIUM = 0x0040,		// Limit scan to Tiberium processing objects?
-    THREAT_BOATS = 0x0080,			// Scan for gunboats?
-    THREAT_CIVILIANS = 0x0100,		// Consider civilians to be primary target?
-    THREAT_CAPTURE = 0x0200,		// Consider capturable buildings only?
-    THREAT_FAKES = 0x0400,			// Consider fake buildings a greater target?
-    THREAT_POWER = 0x0800,			// Consider power generating facilities a greater target?
-    THREAT_FACTORIES = 0x1000,		// Consider factories a greater target?
-    THREAT_BASE_DEFENSE = 0x2000,	// Consider base defense buildings a greater target?
+    THREAT_NORMAL = 0x0000,         // Any distance threat scan?
+    THREAT_RANGE = 0x0001,          // Limit scan to weapon range?
+    THREAT_AREA = 0x0002,           // Limit scan to general area (twice weapon range)?
+    THREAT_AIR = 0x0004,            // Scan for air units?
+    THREAT_INFANTRY = 0x0008,       // Scan for infantry units?
+    THREAT_VEHICLES = 0x0010,       // Scan for vehicles?
+    THREAT_BUILDINGS = 0x0020,      // Scan for buildings?
+    THREAT_TIBERIUM = 0x0040,       // Limit scan to Tiberium processing objects?
+    THREAT_BOATS = 0x0080,          // Scan for gunboats?
+    THREAT_CIVILIANS = 0x0100,      // Consider civilians to be primary target?
+    THREAT_CAPTURE = 0x0200,        // Consider capturable buildings only?
+    THREAT_FAKES = 0x0400,          // Consider fake buildings a greater target?
+    THREAT_POWER = 0x0800,          // Consider power generating facilities a greater target?
+    THREAT_FACTORIES = 0x1000,      // Consider factories a greater target?
+    THREAT_BASE_DEFENSE = 0x2000,   // Consider base defense buildings a greater target?
     THREAT_4000 = 0x4000,
     THREAT_8000 = 0x8000,
 } ThreatType;
@@ -1192,12 +1192,149 @@ typedef enum MouseType
     MOUSE_COUNT
 } MouseType;
 
+typedef enum SplitGroupType
+{
+    SPLIT_KEEP_BOTH,            // Keep transports, keep units.
+    SPLIT_LOSE_UNITS,           // Keep transports, lose units.
+    SPLIT_LOSE_TRANSPORTS,      // Lose transports, keep units.
+    SPLIT_LOSE_BOTH,            // Lose transports, lose units.
+};
+
+typedef enum FindTargetType
+{
+    ATTACK_LEAST_THREAT,
+    ATTACK_GREATEST_THREAT,
+    ATTACK_NEAREST,
+    ATTACK_FARTHEST,
+};
+
+typedef enum NeedType
+{
+    NEED_NONE,              // No additional data is required.
+    NEED_THEME,             // Need a musical theme.
+    NEED_MOVIE,             // Need a movie to play.
+    NEED_SOUND,             // Sound effect.
+    NEED_SPEECH,            // Speech from EVA.
+    NEED_INFANTRY,          // Infantry type class.
+    NEED_UNIT,              // Unit type class.
+    NEED_AIRCRAFT,          // Aircraft type class.
+    NEED_STRUCTURE,         // Structure type class.
+    NEED_WAYPOINT,          // Waypoint letter.
+    NEED_NUMBER,            // General number.
+    NEED_TRIGGER,           // Trigger object reference.
+    NEED_TEAM,              // Team type class.
+    NEED_HOUSE,             // House type number.
+    NEED_TIME,              // Time delay value required.
+    NEED_QUARRY,            // Quarry type is needed.
+    NEED_BOOL,              // Boolean value is needed.
+    NEED_SPECIAL,           // Special weapon ability.
+    NEED_MISSION,           // General unit mission type.
+    NEED_HEX_NUMBER,        // General number.
+    NEED_SCRIPT,            // Script type.
+    NEED_RECT,              // Rectangle.
+    NEED_GLOBAL,            // Global variable.
+    NEED_ANIM_WAYPOINT,     // Anim type class and waypoint pair.
+    NEED_WEAPON_WAYPOINT,   // weapon type class and waypoint pair.
+    NEED_LIGHT_BEHAVIOR,    // Spotlight behavior type.
+    NEED_TAG,               // Tag type.
+    NEED_METEOR_WAYPOINT,   // Meteor size type and waypoint pair.
+    NEED_RADAR_WAYPOINT,    // Radar event type and waypoint pair.
+    NEED_LOCAL,             // Local variable.
+    NEED_VELOCITY_WAYPOINT, // Move camera velocity type and waypoint.
+    NEED_METEOR_SHOWER_WAYPOINT,   // Meteor shower type and waypoint pair.
+    NEED_VELOCITY,          // Move camera velocity type.
+    NEED_FLOAT,             // Floating point number.
+    NEED_TEAM_WAYPOINT,     // Team type class and waypoint pair.
+    NEED_PARTICLE_WAYPOINT, // Particle type class and waypoint pair.
+    NEED_BUILDING_ATTACK,   // Building type and find target type pair.
+    NEED_SPLIT,             // Split group type.
+    NEED_SOUND_WAYPOINT,    // Sound effect and waypoint pair.
+    NEED_TEAM_FLASH,        // Team type and flash count pair.
+    NEED_ANIM,              // Anim type.
+    NEED_TALK_BUBBLE,       // Unit talk bubble type.
+} NeedType;
+
+typedef enum AttachType
+{
+    ATTACH_NONE,                // Trigger doesn't attach to anything (orphan trigger types).
+    ATTACH_CELL = 1 << 0,       // Trigger can only attach to a cell.
+    ATTACH_OBJECT = 1 << 1,     // Trigger can attach only to object (usually building or vehicle).
+    ATTACH_MAP = 1 << 3,        // Trigger applies to the general map (usually zone or parallel triggers).
+    ATTACH_HOUSE = 1 << 4,      // Trigger applies only to a house.
+    ATTACH_GENERAL = 1 << 5,    // General purpose trigger attached to game state.
+    ATTACH_TEAM = 1 << 6        // Trigger applies to team object.
+} AttachType;
+
+typedef enum TEventType
+{
+    TEVENT_NONE,
+
+    TEVENT_PLAYER_ENTERED,            // player enters this square
+    TEVENT_SPIED,                     // Spied by.
+    TEVENT_THIEVED,                   // Thieved by (raided or stolen vehicle).
+    TEVENT_DISCOVERED,                // player discovers this object
+    TEVENT_HOUSE_DISCOVERED,          // House has been discovered.
+    TEVENT_ATTACKED,                  // player attacks this object
+    TEVENT_DESTROYED,                 // player destroys this object
+    TEVENT_ANY,                       // Any object event will cause the trigger.
+    TEVENT_UNITS_DESTROYED,           // all house's units destroyed
+    TEVENT_BUILDINGS_DESTROYED,       // all house's buildings destroyed
+    TEVENT_ALL_DESTROYED,             // all house's units & buildings destroyed
+    TEVENT_CREDITS,                   // house reaches this many credits
+    TEVENT_TIME,                      // Scenario elapsed time from start.
+    TEVENT_MISSION_TIMER_EXPIRED,     // Pre expired mission timer.
+    TEVENT_NBUILDINGS_DESTROYED,      // Number of buildings destroyed.
+    TEVENT_NUNITS_DESTROYED,          // Number of units destroyed.
+    TEVENT_NOFACTORIES,               // No factories left.
+    TEVENT_EVAC_CIVILIAN,             // Civilian has been evacuated.
+    TEVENT_BUILD,                     // Specified building has been built.
+    TEVENT_BUILD_UNIT,                // Specified unit has been built.
+    TEVENT_BUILD_INFANTRY,            // Specified infantry has been built.
+    TEVENT_BUILD_AIRCRAFT,            // Specified aircraft has been built.
+    TEVENT_LEAVES_MAP,                // Specified team member leaves map.
+    TEVENT_ENTERS_ZONE,               // Enters same zone as waypoint 'x'.
+    TEVENT_CROSS_HORIZONTAL,          // Crosses horizontal trigger line.
+    TEVENT_CROSS_VERTICAL,            // Crosses vertical trigger line.
+    TEVENT_GLOBAL_SET,                // If specified global has been set.
+    TEVENT_GLOBAL_CLEAR,              // If specified global has been cleared.
+    TEVENT_FAKES_DESTROYED,           // If all fake structures are gone.
+    TEVENT_LOW_POWER,                 // When power drops below 100%.
+    TEVENT_BRIDGE_DESTROYED,          // Attached bridge destroyed.
+    TEVENT_BUILDING_EXISTS,           // Check for building existing.
+    TEVENT_SELECTED_BY_PLAYER,
+    TEVENT_COMES_NEAR_WAYPOINT,
+    TEVENT_ENEMY_IN_SPOTLIGHT,
+    TEVENT_LOCAL_SET,
+    TEVENT_LOCAL_CLEARED,
+    TEVENT_COMBAT_FIRST_DAMAGED,
+    TEVENT_COMBAT_HALF_HEALTH,
+    TEVENT_COMBAT_QUATER_HEALTH,
+    TEVENT_FIRST_DAMAGED,
+    TEVENT_HALF_HEALTH,
+    TEVENT_QUARTER_HEALTH,
+    TEVENT_ATTACKED_BY_HOUSE,
+    TEVENT_AMBIENT_LESS_THAN,
+    TEVENT_AMBIENT_GREATER_THAN,
+    TEVENT_ELAPSED_SCENARIO_TIME,
+    TEVENT_DESTROYED_BY_ANYTHING,
+    TEVENT_PICKUP_CRATE,
+    TEVENT_PICKUP_CRATE_ANY,
+    TEVENT_RANDOM_DELAY,
+    TEVENT_CREDITS_BELOW,
+    TEVENT_PARALYZED,
+    TEVENT_54, // Looks to be a copy of TEVENT_ENEMY_IN_SPOTLIGHT.
+    TEVENT_LIMPED,
+
+    TEVENT_COUNT,
+
+    TEVENT_FIRST = 0
+} TEventType;
 
 typedef enum ProdFailType {
-    PROD_OK,		// Production request successful.
-    PROD_LIMIT,		// Failed with production capacity limit reached.
-    PROD_ILLEGAL,	// Failed because of illegal request.
-    PROD_CANT		// Failed because unable to comply (busy or occupied).
+    PROD_OK,        // Production request successful.
+    PROD_LIMIT,     // Failed with production capacity limit reached.
+    PROD_ILLEGAL,   // Failed because of illegal request.
+    PROD_CANT       // Failed because unable to comply (busy or occupied).
 } ProdFailType;
 
 
@@ -1481,19 +1618,19 @@ struct AbilitiesStruct
 
 typedef struct DoStruct
 {
-    bool Interrupt;	        // Can it be interrupted?
-    bool IsMobile;	        // Can it move while doing this?
-    bool RandomStart;	    // Should animation be "randomized"?
-    unsigned char Rate;		// Frame rate.
+    bool Interrupt;         // Can it be interrupted?
+    bool IsMobile;          // Can it move while doing this?
+    bool RandomStart;       // Should animation be "randomized"?
+    unsigned char Rate;     // Frame rate.
 } DoStruct;
 
 
 typedef struct DoInfoStruct
 {
-    int Frame;	            // Starting frame of the animation.
-    unsigned int Count;	    // Number of frames of animation.
-    unsigned int Jump;	    // Frames to jump between facings.
-    FacingType Finish;	    // Direction to face when finished.
+    int Frame;              // Starting frame of the animation.
+    unsigned int Count;     // Number of frames of animation.
+    unsigned int Jump;      // Frames to jump between facings.
+    FacingType Finish;      // Direction to face when finished.
 } DoInfoStruct;
 
 
@@ -1578,12 +1715,12 @@ class ScriptMissionClass
         ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
         ~ScriptMissionClass() {}
 
-        ScriptMissionType Mission;	// Mission type.
+        ScriptMissionType Mission;  // Mission type.
         union {
             xCellStruct Cell;
-            QuarryType Quarry;		// Combat quarry type.
-            MissionType Mission;	// General mission orders.
-            int Value;				// Usually a waypoint number.
+            QuarryType Quarry;      // Combat quarry type.
+            MissionType Mission;    // General mission orders.
+            int Value;              // Usually a waypoint number.
         } Data;
 };
 

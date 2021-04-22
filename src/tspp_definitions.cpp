@@ -155,6 +155,7 @@
 #include "teamtype.h"
 #include "team.h"
 #include "target.h"
+#include "tevent.h"
 
 
 /**
@@ -2940,6 +2941,26 @@ DEFINE_IMPLEMENTATION(CellClass *xTargetClass::As_Cell() const, 0x00621180);
 DEFINE_IMPLEMENTATION(int xTargetClass::Pack() const, 0x0050A060);
 DEFINE_IMPLEMENTATION(TargetClass xTargetClass::Unpack(int), 0x0050A080);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TEventClass::GetClassID(CLSID *), 0x00642D60);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Load(IStream *), 0x00642DA0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Save(IStream *, BOOL), 0x00642E00);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TEventClass::TEventClass(), 0x006420C0);
+TEventClass::TEventClass(TEventType event) : Event(event) { Data.Value = 0; *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
+TEventClass::TEventClass(const NoInitClass &noinit) { *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TEventClass::~TEventClass(), 0x00642210);
+DEFINE_IMPLEMENTATION(void TEventClass::Detach(TARGET, bool), 0x00642CE0);
+DEFINE_IMPLEMENTATION(RTTIType TEventClass::Kind_Of() const, 0x00642EF0);
+DEFINE_IMPLEMENTATION(int TEventClass::Size_Of(bool) const, 0x00642EE0);
+DEFINE_IMPLEMENTATION(void TEventClass::Compute_CRC(WWCRCEngine &) const, 0x00642D00);
+DEFINE_IMPLEMENTATION(int TEventClass::Get_Heap_ID() const, 0x00642F00);
+DEFINE_IMPLEMENTATION(bool TEventClass::operator () (TEventType, HouseClass *, const ObjectClass *, TDEventClass &, bool &, TechnoClass *), 0x00642310);
+// 00642E20
+// 00642E80
+DEFINE_IMPLEMENTATION(void TEventClass::Read_INI(), 0x00642A60);
+DEFINE_IMPLEMENTATION(void TEventClass::Build_INI_Entry(char *) const, 0x00642A10);
+DEFINE_IMPLEMENTATION(NeedType TEventClass::Needs(TEventType), 0x00642AD0);
+DEFINE_IMPLEMENTATION(AttachType TEventClass::Attaches_To(TEventType), 0x00642B90);
+
 
 /**
  *  Global definitions
@@ -3071,6 +3092,7 @@ DynamicVectorClass<FootClass *> &Foots = Make_Global<DynamicVectorClass<FootClas
 DynamicVectorClass<BuildingClass *> &Buildings = Make_Global<DynamicVectorClass<BuildingClass *>>(0x007E4708);
 DynamicVectorClass<TeamTypeClass *> &TeamTypes = Make_Global<DynamicVectorClass<TeamTypeClass *>>(0x007E4840);
 DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClass *>>(0x007B3438);
+DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEventClass *>>(0x0080F0E0);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
