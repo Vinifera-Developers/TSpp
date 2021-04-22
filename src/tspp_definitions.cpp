@@ -157,6 +157,7 @@
 #include "target.h"
 #include "tevent.h"
 #include "taction.h"
+#include "taskforce.h"
 
 
 /**
@@ -3084,6 +3085,23 @@ DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Toggle_Train_Cargo(HouseClass *
 DEFINE_IMPLEMENTATION(NeedType TActionClass::Needs(TActionType), 0x0061D6B0);
 DEFINE_IMPLEMENTATION(AttachType TActionClass::Attaches_To(TActionType), 0x0061D9C0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TaskForceClass::GetClassID(CLSID *), 0x00621D70);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TaskForceClass::Load(IStream *), 0x00621D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TaskForceClass::Save(IStream *, BOOL), 0x00621CF0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TaskForceClass::TaskForceClass(const char *), 0x00621420);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TaskForceClass::TaskForceClass(const NoInitClass &), 0x006214D0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TaskForceClass::~TaskForceClass(), 0x006214F0);
+DEFINE_IMPLEMENTATION(RTTIType TaskForceClass::Kind_Of() const, 0x00621E10);
+DEFINE_IMPLEMENTATION(int TaskForceClass::Size_Of(bool) const, 0x00621E20);
+DEFINE_IMPLEMENTATION(void TaskForceClass::Compute_CRC(WWCRCEngine &) const, 0x00621DB0);
+DEFINE_IMPLEMENTATION(bool TaskForceClass::Read_INI(CCINIClass &), 0x00621A20);
+DEFINE_IMPLEMENTATION(bool TaskForceClass::Write_INI(CCINIClass &) const, 0x00621AE0);
+// 006216C0
+// 00621B80
+// 00621DE0
+DEFINE_IMPLEMENTATION(void TaskForceClass::Read_Scenario_INI(CCINIClass &, int), 0x00621780);
+DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass &, int), 0x00621940);
+
 
 /**
  *  Global definitions
@@ -3091,6 +3109,7 @@ DEFINE_IMPLEMENTATION(AttachType TActionClass::Attaches_To(TActionType), 0x0061D
 WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
 OptionsClass &Options = Make_Global<OptionsClass>(0x007E4720);
 SpecialClass &Special = Make_Global<SpecialClass>(0x007E4540);
+RulesClass *&Rule = Make_Global<RulesClass *>(0x0074C488);
 WWMouseClass *&WWMouse = Make_Global<WWMouseClass *>(0x0074C8F0);
 DSurface *&TileSurface = Make_Global<DSurface *>(0x0074C5CC);
 DSurface *&SidebarSurface = Make_Global<DSurface *>(0x0074C5D0);
@@ -3218,6 +3237,7 @@ DynamicVectorClass<TeamTypeClass *> &TeamTypes = Make_Global<DynamicVectorClass<
 DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClass *>>(0x007B3438);
 DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEventClass *>>(0x0080F0E0);
 DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TActionClass *>>(0x0080E6E8);
+DynamicVectorClass<TaskForceClass *> &TaskForces = Make_Global<DynamicVectorClass<TaskForceClass *>>(0x007E44B8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

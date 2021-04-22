@@ -31,6 +31,7 @@
 #include "colorscheme.h"
 #include "link.h"
 #include "wwkeyboard.h"
+#include "options.h"
 #include "tibsun_globals.h"
 
 

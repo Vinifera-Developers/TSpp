@@ -97,7 +97,9 @@ class TeamTypeClass;
 class TeamClass;
 class TEventClass;
 class TActionClass;
+class TaskForceClass;
 class EventClass;
+class MouseClass;
 
 enum KeyNumType;
 
@@ -206,6 +208,7 @@ extern DynamicVectorClass<TeamTypeClass *> &TeamTypes;
 extern DynamicVectorClass<TeamClass *> &Teams;
 extern DynamicVectorClass<TEventClass *> &TEvents;
 extern DynamicVectorClass<TActionClass *> &TActions;
+extern DynamicVectorClass<TaskForceClass *> &TaskForces;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

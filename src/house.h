@@ -39,6 +39,8 @@
 #include "base.h"
 #include "ttimer.h"
 #include "ftimer.h"
+#include "typelist.h"
+#include "dropship.h"
 #include "tibsun_defines.h"
 #include <ocidl.h> // for IConnectionPointContainer.
 

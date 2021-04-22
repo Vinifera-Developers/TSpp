@@ -62,6 +62,8 @@ class AbstractTypeClass : public AbstractClass
 			((char &)IniName[sizeof(IniName)-1]) = '\0';
 		};
 
+        char const * Full_Name() const { return IniName; }
+
     public:
         char IniName[24 + 1];
         char FullName[48 + 1];

@@ -514,6 +514,16 @@ typedef enum ScriptMissionType
     SMISSION_FIRST = 0
 } ScriptMissionType;
 
+typedef enum TaskForceType
+{
+    TASKFORCE_COUNT,
+
+    TASKFORCE_NONE = -1,
+
+    TASKFORCE_FIRST = 0
+} TaskForceType;
+DEFINE_ENUMERATION_OPERATORS(TaskForceType);
+
 typedef enum VeterancyRankType
 {
     RANK_ELITE,
