@@ -528,3 +528,305 @@ bool Pointer_Vector_Remove(const T *ptr, VectorClass<T *> &vec)
     }
     return false;
 }
+
+
+template<class T>
+class SimpleVecClass
+{
+    public:
+        SimpleVecClass(unsigned size = 0);
+        virtual ~SimpleVecClass();
+
+        virtual bool Resize(int newsize);
+        virtual bool Uninitialised_Grow(int newsize);
+
+        T &operator[](int index)
+        {
+            TSPP_ASSERT(index < VectorMax);
+            return Vector[index];
+        }
+        T const &operator[](int index) const
+        {
+            TSPP_ASSERT(index < VectorMax);
+            return Vector[index];
+        }
+
+        int Length() const { return VectorMax; }
+
+        void Zero_Memory()
+        {
+            if (Vector != nullptr) {
+                std::memset(Vector, 0, VectorMax * sizeof(T));
+            }
+        }
+
+    protected:
+        T *Vector;
+        int VectorMax;
+};
+
+
+template<class T>
+SimpleVecClass<T>::SimpleVecClass(unsigned size) :
+    Vector(nullptr),
+    VectorMax(0)
+{
+    if (size > 0) {
+        Resize(size);
+    }
+}
+
+
+template<class T>
+SimpleVecClass<T>::~SimpleVecClass()
+{
+    if (Vector != nullptr) {
+        delete[] Vector;
+        Vector = nullptr;
+        VectorMax = 0;
+    }
+}
+
+
+template<class T>
+bool SimpleVecClass<T>::Resize(int newsize)
+{
+    if (newsize == VectorMax) {
+        return true;
+    }
+
+    if (newsize > 0) {
+        T *newptr = new T[newsize];
+
+        if (Vector != nullptr) {
+            int copycount = (newsize < VectorMax) ? newsize : VectorMax;
+            std::memcpy(newptr, Vector, copycount * sizeof(T));
+
+            delete[] Vector;
+            Vector = nullptr;
+        }
+
+        Vector = newptr;
+        VectorMax = newsize;
+
+    } else {
+        VectorMax = 0;
+        if (Vector != nullptr) {
+            delete[] Vector;
+            Vector = nullptr;
+        }
+    }
+    return true;
+}
+
+
+template<class T>
+bool SimpleVecClass<T>::Uninitialised_Grow(int newsize)
+{
+    if (newsize <= VectorMax) {
+        return true;
+    }
+
+    if (newsize > 0) {
+        delete[] Vector;
+        Vector = new T[newsize];
+        VectorMax = newsize;
+    }
+    return true;
+}
+
+
+template<class T>
+class SimpleDynVecClass : public SimpleVecClass<T>
+{
+        using SimpleVecClass<T>::Vector;
+        using SimpleVecClass<T>::VectorMax;
+        using SimpleVecClass<T>::Length;
+
+    public:
+        SimpleDynVecClass(unsigned size = 0);
+        virtual ~SimpleDynVecClass();
+
+        virtual bool Resize(int newsize);
+
+        T &operator[](int index)
+        {
+            TSPP_ASSERT(index < ActiveCount);
+            return Vector[index];
+        }
+        const T &operator[](int index) const
+        {
+            TSPP_ASSERT(index < ActiveCount);
+            return Vector[index];
+        }
+
+        int Count() const { return (ActiveCount); }
+
+        bool Add(const T &object, int new_size_hint = 0);
+        T *Add_Multiple(int number_to_add);
+
+        bool Delete(int index, bool allow_shrink = true);
+        bool Delete(const T &object, bool allow_shrink = true);
+        bool Delete_Range(int start, int count, bool allow_shrink = true);
+        void Delete_All(bool allow_shrink = true);
+
+    protected:
+        bool Grow(int new_size_hint);
+        bool Shrink();
+
+        int Find_Index(const T &object);
+
+    protected:
+        int ActiveCount;
+};
+
+
+template<class T>
+SimpleDynVecClass<T>::SimpleDynVecClass(unsigned size) :
+    SimpleVecClass<T>(size),
+    ActiveCount(0)
+{
+}
+
+
+template<class T>
+SimpleDynVecClass<T>::~SimpleDynVecClass()
+{
+    if (Vector != nullptr) {
+        delete[] Vector;
+        Vector = nullptr;
+    }
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Resize(int newsize)
+{
+    if (SimpleVecClass<T>::Resize(newsize)) {
+        if (Length() < ActiveCount) {
+            ActiveCount = Length();
+        }
+        return true;
+    }
+    return false;
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Add(const T &object, int new_size_hint)
+{
+    if (ActiveCount >= VectorMax) {
+        if (!Grow(new_size_hint)) {
+            return false;
+        }
+    }
+
+    (*this)[ActiveCount++] = object;
+    return true;
+}
+
+
+template<class T>
+T *SimpleDynVecClass<T>::Add_Multiple(int number_to_add)
+{
+    int i = ActiveCount;
+    ActiveCount += number_to_add;
+
+    if (ActiveCount >= VectorMax) {
+        Grow(ActiveCount);
+    }
+
+    return &Vector[i];
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Delete(int index, bool allow_shrink)
+{
+    TSPP_ASSERT(index < ActiveCount);
+
+    if (index < ActiveCount - 1) {
+        std::memmove(&(Vector[index]), &(Vector[index + 1]), (ActiveCount - index - 1) * sizeof(T));
+    }
+    --ActiveCount;
+
+    if (allow_shrink) {
+        Shrink();
+    }
+
+    return true;
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Delete(const T &object, bool allow_shrink)
+{
+    int id = Find_Index(object);
+    if (id != -1) {
+        return Delete(id, allow_shrink);
+    }
+    return false;
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Delete_Range(int start, int count, bool allow_shrink)
+{
+    TSPP_ASSERT(start >= 0);
+    TSPP_ASSERT(start <= ActiveCount - count);
+
+    if (start < ActiveCount - count) {
+        std::memmove(&(Vector[start]), &(Vector[start + count]), (ActiveCount - start - count) * sizeof(T));
+    }
+
+    ActiveCount -= count;
+
+    if (allow_shrink) {
+        Shrink();
+    }
+
+    return true;
+}
+
+
+template<class T>
+void SimpleDynVecClass<T>::Delete_All(bool allow_shrink)
+{
+    ActiveCount = 0;
+    if (allow_shrink) {
+        Shrink();
+    }
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Grow(int new_size_hint)
+{
+    int new_size = std::max(Length() + Length() / 4, Length() + 4);
+    new_size = std::max(new_size, new_size_hint);
+
+    return Resize(new_size);
+}
+
+
+template<class T>
+bool SimpleDynVecClass<T>::Shrink()
+{
+    // Shrink the array if it is wasting more than 25%.
+    if (ActiveCount < VectorMax / 4) {
+        return Resize(ActiveCount);
+    }
+    return true;
+}
+
+
+template<class T>
+int SimpleDynVecClass<T>::Find_Index(const T &object)
+{
+    for (int i = 0; i < Count(); ++i) {
+        if ((*this)[i] == object) {
+            return i;
+        }
+    }
+    return -1;
+}
