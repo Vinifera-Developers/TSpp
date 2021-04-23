@@ -171,6 +171,7 @@ extern bool &Debug_Playtest;
 extern bool &Debug_Trap_Check_Heap;
 extern bool &Debug_Modem_Dump;
 extern bool &Debug_Print_Events;
+extern HouseClass *&PlayerPtr;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

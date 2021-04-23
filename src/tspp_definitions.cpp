@@ -3153,6 +3153,7 @@ bool &Debug_Playtest = Make_Global<bool>(0x007E4910);
 bool &Debug_Trap_Check_Heap = Make_Global<bool>(0x007E4911);
 bool &Debug_Modem_Dump = Make_Global<bool>(0x007E4912);
 bool &Debug_Print_Events = Make_Global<bool>(0x007E4913);
+HouseClass *&PlayerPtr = Make_Global<HouseClass *>(0x007E2284);
 
 
 /**
