@@ -159,6 +159,7 @@
 #include "taction.h"
 #include "taskforce.h"
 #include "aircraft.h"
+#include "infantry.h"
 
 
 /**
@@ -3173,6 +3174,74 @@ DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_LZ(), 0x0040D710);
 DEFINE_IMPLEMENTATION(void AircraftClass::Read_INI(CCINIClass &), 0x0040E7A0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Write_INI(CCINIClass &), 0x0040E620);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Counts_As_Civ_Evac(const ObjectClass *), 0x00408580);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE InfantryClass::GetClassID(CLSID *), 0x004D9E20);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryClass::Load(IStream *), 0x004D92F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryClass::Save(IStream *, BOOL), 0x004D94D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(InfantryClass::InfantryClass(InfantryTypeClass *, HouseClass *), FootClass, 0x004D1FD0);
+InfantryClass::InfantryClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D211C; *((unsigned long *)this+4) = (unsigned long)0x006D2100; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(InfantryClass::~InfantryClass(), 0x004D2240);
+DEFINE_IMPLEMENTATION(void InfantryClass::Init(), 0x004D21F0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Detach(TARGET, bool), 0x004D40C0);
+DEFINE_IMPLEMENTATION(RTTIType InfantryClass::Kind_Of() const, 0x004D9E60);
+DEFINE_IMPLEMENTATION(int InfantryClass::Size_Of(bool) const, 0x004D9E00);
+DEFINE_IMPLEMENTATION(void InfantryClass::Compute_CRC(WWCRCEngine &) const, 0x004D9640);
+DEFINE_IMPLEMENTATION(void InfantryClass::AI(), 0x004D4EB0);
+DEFINE_IMPLEMENTATION(void *const InfantryClass::Get_Image_Data() const, 0x004D90B0);
+DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(const ObjectClass *, bool), 0x004D78B0);
+DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(CellStruct &, bool, bool) const, 0x004D6FB0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const InfantryClass::Class_Of() const, 0x004D7B20);
+DEFINE_IMPLEMENTATION(const char *InfantryClass::Full_Name() const, 0x004D77A0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Limbo(), 0x004D6B20);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Unlimbo(CoordStruct &, DirType), 0x004D6BD0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Paradrop(CoordStruct &), 0x004D9180);
+DEFINE_IMPLEMENTATION(void InfantryClass::Set_Occupy_Bit(CoordStruct &), 0x004D91D0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Clear_Occupy_Bit(CoordStruct &), 0x004D9260);
+DEFINE_IMPLEMENTATION(void InfantryClass::Draw_It(Point2D &, Rect &) const, 0x004D2D50);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x004D9E70);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x004D7710);
+DEFINE_IMPLEMENTATION(ResultType InfantryClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x004D2400);
+DEFINE_IMPLEMENTATION(void InfantryClass::Scatter(CoordStruct &, bool, bool), 0x004D60A0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Per_Cell_Process(PCPType), 0x004D3240);
+DEFINE_IMPLEMENTATION(MoveType InfantryClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004D5210);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Ready_To_Commence() const, 0x004D9510);
+DEFINE_IMPLEMENTATION(int InfantryClass::Mission_Attack(), 0x004D7800);
+DEFINE_IMPLEMENTATION(int InfantryClass::Mission_Guard(), 0x004D9D30);
+DEFINE_IMPLEMENTATION(CoordStruct InfantryClass::entry_28C(WeaponSlotType) const, 0x004D96E0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::entry_2A4() const, 0x004D5B90);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Renovator() const, 0x004D9D20);
+DEFINE_IMPLEMENTATION(FireErrorType InfantryClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x004D5AA0);
+DEFINE_IMPLEMENTATION(int InfantryClass::Greatest_Threat(ThreatType, CoordStruct &, bool) const, 0x004D6D10);
+DEFINE_IMPLEMENTATION(void InfantryClass::Assign_Target(TARGET) const, 0x004D4770);
+DEFINE_IMPLEMENTATION(const BulletClass *InfantryClass::Fire_At(TARGET, WeaponSlotType) const, 0x004D6B50);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Ready_To_Random_Animate() const, 0x004D9110);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Random_Animate(), 0x004D5D90);
+DEFINE_IMPLEMENTATION(void InfantryClass::Assign_Destination(const TARGET, bool) const, 0x004D40F0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Enter_Idle_Mode(bool, bool) const, 0x004D5BD0);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_378(), 0x004D9770);
+DEFINE_IMPLEMENTATION(bool InfantryClass::entry_37C(), 0x004D9850);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Start_Driver(CoordStruct &), 0x004D6800);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Stop_Driver(), 0x004D6750);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_390(), 0x004D9A90);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_394(), 0x004D95C0);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_398(), 0x004D95F0);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_39C(int), 0x004D9610);
+DEFINE_IMPLEMENTATION(int InfantryClass::entry_3A8(), 0x004D9720);
+DEFINE_IMPLEMENTATION(void InfantryClass::Approach_Target(), 0x004D9CE0);
+DEFINE_IMPLEMENTATION(void InfantryClass::entry_3B8(), 0x004D94F0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Do_Action(DoType, bool, bool), 0x004D6600);
+DEFINE_IMPLEMENTATION(int InfantryClass::Shape_Number() const, 0x004D2BA0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Tunnel_AI(), 0x004D4830);
+DEFINE_IMPLEMENTATION(void InfantryClass::Fear_AI(), 0x004D8100);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Edge_Of_World_AI(), 0x004D8310);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Theft_AI(), 0x004D8390);
+DEFINE_IMPLEMENTATION(void InfantryClass::Firing_AI(), 0x004D8750);
+DEFINE_IMPLEMENTATION(void InfantryClass::Doing_AI(), 0x004D8AA0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Movement_AI(), 0x004D8CB0);
+// 004D9AA0
+// 004D9B70
+DEFINE_IMPLEMENTATION(void InfantryClass::Read_INI(CCINIClass &), 0x004D7B30);
+DEFINE_IMPLEMENTATION(void InfantryClass::Write_INI(CCINIClass &), 0x004D7F50);
 
 
 /**

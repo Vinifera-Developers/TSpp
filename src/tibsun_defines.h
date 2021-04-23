@@ -535,6 +535,45 @@ typedef enum VeterancyRankType
 } VeterancyRankType;
 DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
 
+typedef enum DoType
+{
+    DO_STAND_READY = 0,
+    DO_STAND_GUARD,
+    DO_PRONE,
+    DO_WALK,
+    DO_FIRE_WEAPON,
+    DO_LIE_DOWN,
+    DO_CRAWL,
+    DO_GET_UP,
+    DO_FIRE_PRONE,
+    DO_IDLE1,
+    DO_IDLE2,
+    DO_GUN_DEATH,
+    DO_EXPLOSION_DEATH,
+    DO_EXPLOSION2_DEATH,
+    DO_GRENADE_DEATH,
+    DO_FIRE_DEATH,
+    DO_HOVER,
+    DO_FLY,
+    DO_TUMBLE,
+    DO_FIREFLY,
+    DO_STRUGGLE,
+
+    DO_COUNT,
+
+    DO_NOTHING = -1,		// Not performing any choreographed sequence.
+    DO_FIRST = 0
+} DoType;
+
+typedef enum FearType
+{
+    FEAR_NONE = 0,			// No fear at all (default state).
+    FEAR_ANXIOUS = 10,		// Something makes them scared.
+    FEAR_SCARED = 100,		// Scared enough to take cover.
+    FEAR_PANIC = 200,		// Run away! Run away!
+    FEAR_MAXIMUM = 255		// Scared to death.
+} FearType;
+
 typedef enum CloakType
 {
     UNCLOAKED,      // Completely visible (normal state).
