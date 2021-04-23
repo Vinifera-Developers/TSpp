@@ -158,6 +158,7 @@
 #include "tevent.h"
 #include "taction.h"
 #include "taskforce.h"
+#include "aircraft.h"
 
 
 /**
@@ -3102,6 +3103,77 @@ DEFINE_IMPLEMENTATION(bool TaskForceClass::Write_INI(CCINIClass &) const, 0x0062
 DEFINE_IMPLEMENTATION(void TaskForceClass::Read_Scenario_INI(CCINIClass &, int), 0x00621780);
 DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass &, int), 0x00621940);
 
+DEFINE_IMPLEMENTATION(HRESULT AircraftClass::QueryInterface(REFIID, LPVOID *), 0x004088C0);
+DEFINE_IMPLEMENTATION(ULONG AircraftClass::AddRef(), 0x00408920);
+DEFINE_IMPLEMENTATION(ULONG AircraftClass::Release(), 0x00408930);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AircraftClass::GetClassID(CLSID *), 0x00621D70);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Load(IStream *), 0x00621D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Save(IStream *, BOOL), 0x00621CF0);
+DEFINE_IMPLEMENTATION(LONG AircraftClass::Landing_Altitude(), 0x0040EDD0);
+DEFINE_IMPLEMENTATION(LONG AircraftClass::Landing_Direction(), 0x0040EE70);
+DEFINE_IMPLEMENTATION(BOOL AircraftClass::Is_Loaded(), 0x0040EEC0);
+DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Strafe(), 0x0040EEE0);
+DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Locked(), 0x0040EF30);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AircraftClass::AircraftClass(AircraftTypeClass *, HouseClass *), FootClass, 0x004085D0);
+AircraftClass::AircraftClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CADF8; *((unsigned long *)this+4) = (unsigned long)0x006CADDC; *((unsigned long *)this+0x350) = (unsigned long)0x006CADB8; }
+DEFINE_IMPLEMENTATION(AircraftClass::~AircraftClass(), 0x0040DB20);
+DEFINE_IMPLEMENTATION(void AircraftClass::Init(), 0x00408820);
+DEFINE_IMPLEMENTATION(void AircraftClass::Detach(TARGET, bool), 0x0040EDA0);
+DEFINE_IMPLEMENTATION(RTTIType AircraftClass::Kind_Of() const, 0x0040F430);
+DEFINE_IMPLEMENTATION(int AircraftClass::Size_Of(bool) const, 0x0040F410);
+DEFINE_IMPLEMENTATION(void AircraftClass::Compute_CRC(WWCRCEngine &) const, 0x0040ED20);
+DEFINE_IMPLEMENTATION(void AircraftClass::AI(), 0x004090C0);
+DEFINE_IMPLEMENTATION(ActionType AircraftClass::What_Action(const ObjectClass *, bool), 0x0040B9E0);
+DEFINE_IMPLEMENTATION(ActionType AircraftClass::What_Action(CellStruct &, bool, bool) const, 0x0040B7E0);
+DEFINE_IMPLEMENTATION(LayerType AircraftClass::In_Which_Layer() const, 0x0040E520);
+DEFINE_IMPLEMENTATION(bool AircraftClass::entry_80() const, 0x0040EFA0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const AircraftClass::Class_Of() const, 0x0040F4B0);
+DEFINE_IMPLEMENTATION(const char *AircraftClass::Full_Name() const, 0x0040F480);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Unlimbo(CoordStruct &, DirType), 0x00408940);
+DEFINE_IMPLEMENTATION(ExitType AircraftClass::Exit_Object(const TechnoClass *), 0x00409920);
+DEFINE_IMPLEMENTATION(void AircraftClass::Draw_It(Point2D &, Rect &) const, 0x00408AD0);
+DEFINE_IMPLEMENTATION(void AircraftClass::Look(bool, bool), 0x0040E550);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0040B740);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x0040B690);
+DEFINE_IMPLEMENTATION(ResultType AircraftClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0040A1E0);
+DEFINE_IMPLEMENTATION(void AircraftClass::Scatter(CoordStruct &, bool, bool), 0x0040DCE0);
+DEFINE_IMPLEMENTATION(RadioMessageType AircraftClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x0040C8A0);
+DEFINE_IMPLEMENTATION(MoveType AircraftClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x0040CDF0);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Commence(), 0x0040EF40);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Ready_To_Commence() const, 0x0040ECF0);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Attack(), 0x0040BA40);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Guard(), 0x0040DD10);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Guard_Area(), 0x0040E0A0);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Hunt(), 0x00408FB0);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Move(), 0x0040A350);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Retreat(), 0x00409910);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Unload(), 0x004093F0);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Enter(), 0x0040D360);
+DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Patrol(), 0x0040AEF0);
+DEFINE_IMPLEMENTATION(DirStruct AircraftClass::Turret_Facing() const, 0x0040F490);
+DEFINE_IMPLEMENTATION(FacingType AircraftClass::Desired_Load_Dir(const ObjectClass *, CellStruct &) const, 0x0040CCE0);
+DEFINE_IMPLEMENTATION(DirStruct AircraftClass::Fire_Direction() const, 0x0040DB00);
+DEFINE_IMPLEMENTATION(void AircraftClass::Player_Assign_Mission(MissionType, TARGET, TARGET), 0x0040B760);
+DEFINE_IMPLEMENTATION(void AircraftClass::Reduce_Ammunition() const, 0x0040EF90);
+DEFINE_IMPLEMENTATION(FireErrorType AircraftClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x0040E110);
+DEFINE_IMPLEMENTATION(const BulletClass *AircraftClass::Fire_At(TARGET, WeaponSlotType) const, 0x00409B70);
+DEFINE_IMPLEMENTATION(void AircraftClass::Assign_Destination(const TARGET, bool) const, 0x0040E1B0);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Enter_Idle_Mode(bool, bool) const, 0x0040B310);
+DEFINE_IMPLEMENTATION(bool AircraftClass::entry_368(), 0x0040EF50);
+DEFINE_IMPLEMENTATION(void AircraftClass::Draw_Rotors(Point2D &, Rect &) const, 0x00408FA0);
+DEFINE_IMPLEMENTATION(int AircraftClass::Paradrop_Cargo(), 0x00409A70);
+DEFINE_IMPLEMENTATION(int AircraftClass::Drop_Off_Cargo(), 0x0040A750);
+DEFINE_IMPLEMENTATION(int AircraftClass::Do_Mission_Move_Carryall(), 0x0040A960);
+DEFINE_IMPLEMENTATION(DirType AircraftClass::Pose_Dir() const, 0x0040BA30);
+DEFINE_IMPLEMENTATION(CellClass *AircraftClass::New_LZ(CellClass *), 0x0040C610);
+DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_Fire_Location(TARGET) const, 0x0040CF00);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Cell_Seems_Ok(CellStruct &, bool) const, 0x0040D260);
+DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_LZ(), 0x0040D710);
+// 0040EFB0
+DEFINE_IMPLEMENTATION(void AircraftClass::Read_INI(CCINIClass &), 0x0040E7A0);
+DEFINE_IMPLEMENTATION(void AircraftClass::Write_INI(CCINIClass &), 0x0040E620);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Counts_As_Civ_Evac(const ObjectClass *), 0x00408580);
+
 
 /**
  *  Global definitions
@@ -3238,6 +3310,7 @@ DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClas
 DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEventClass *>>(0x0080F0E0);
 DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TActionClass *>>(0x0080E6E8);
 DynamicVectorClass<TaskForceClass *> &TaskForces = Make_Global<DynamicVectorClass<TaskForceClass *>>(0x007E44B8);
+DynamicVectorClass<AircraftClass *> &Aircrafts = Make_Global<DynamicVectorClass<AircraftClass *>>(0x007E4058);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
