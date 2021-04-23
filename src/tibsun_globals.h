@@ -206,6 +206,8 @@ extern DynamicVectorClass<TeamClass *> &Teams;
 extern DynamicVectorClass<TEventClass *> &TEvents;
 extern DynamicVectorClass<TActionClass *> &TActions;
 
+extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
+
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;

@@ -3218,6 +3218,8 @@ DynamicVectorClass<TeamClass *> &Teams = Make_Global<DynamicVectorClass<TeamClas
 DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEventClass *>>(0x0080F0E0);
 DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TActionClass *>>(0x0080E6E8);
 
+DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
+
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
