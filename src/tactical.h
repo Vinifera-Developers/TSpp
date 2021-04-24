@@ -111,7 +111,7 @@ Tactical : public AbstractClass
         // 00612F00
         // 00612F90
         // 00613040
-        // 006131C0
+        CellStruct Click_Cell_Calc(Point2D &pixel) const;
         // 006136F0
         // 00613730
         // 00613750
