@@ -162,6 +162,7 @@
 #include "infantry.h"
 #include "vox.h"
 #include "voc.h"
+#include "ionstorm.h"
 
 
 /**
@@ -3271,6 +3272,18 @@ DEFINE_IMPLEMENTATION(VocType VocClass::From_Name(const char *), 0x00665100);
 DEFINE_IMPLEMENTATION(VocType VocClass::From_Name_INI(const char *), 0x00665140);
 DEFINE_IMPLEMENTATION(const char *VocClass::Name_From(VocType), 0x006651A0);
 
+DEFINE_IMPLEMENTATION(void IonStorm_Init_Clear(), 0x004EC760);
+DEFINE_IMPLEMENTATION(HRESULT IonStorm_Save(IStream *), 0x004EC780);
+DEFINE_IMPLEMENTATION(HRESULT IonStorm_Load(IStream *), 0x004EC7D0);
+DEFINE_IMPLEMENTATION(void IonStorm_Do_Screen_Static(), 0x004EC820);
+DEFINE_IMPLEMENTATION(void IonStorm_Set_Active(bool), 0x004EC910);
+DEFINE_IMPLEMENTATION(void IonStorm_Start(int, int), 0x004EC920);
+DEFINE_IMPLEMENTATION(void IonStorm_Stop(), 0x004ECC70);
+DEFINE_IMPLEMENTATION(bool IonStorm_Is_Active(), 0x004ECEB0);
+DEFINE_IMPLEMENTATION(void IonStorm_Lightning_Strike_At(CellStruct), 0x004ECEC0);
+DEFINE_IMPLEMENTATION(void IonStorm_AI(), 0x004ED280);
+DEFINE_IMPLEMENTATION(void IonStorm_Init(bool), 0x004ED5F0);
+
 
 /**
  *  Global definitions
@@ -3382,6 +3395,12 @@ char *CDFileClass::RawPath = Make_Global<char *>(0x0076092C);
 CDFileClass::SearchDriveType *&CDFileClass::First = Make_Global<CDFileClass::SearchDriveType *>(0x00760920);
 int &CDFileClass::CurrentCDDrive = Make_Global<int>(0x00760924);
 int &CDFileClass::LastCDDrive = Make_Global<int>(0x00760928);
+bool &IonStorm_IsActive = Make_Global<bool>(0x007F50E4);
+// 007F50E8
+int &IonStorm_StaticLoopCounter = Make_Global<int>(0x007F50F0);
+int &IonStorm_StartFrame = Make_Global<int>(0x006FF280);
+int &IonStorm_Duration = Make_Global<int>(0x006FF284);
+ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 
 
 /**
