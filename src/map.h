@@ -168,8 +168,8 @@ class MapClass : public GScreenClass
         void Shroud_The_Map();
         void Reveal_The_Map();
         // 0051E130
-        // 0051E1B0
-        // 0051E270
+        CellClass *Iterator_Next_Cell();
+        void Iterator_Reset();
         // 0051E2B0
         bool In_Radar(CellStruct &cell, bool a2 = true) const;
         bool In_Radar(CellClass &cell, bool a2 = true) const;

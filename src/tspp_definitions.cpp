@@ -1441,6 +1441,8 @@ DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(CellStruct &, HousesType &, Zon
 DEFINE_IMPLEMENTATION(const CellStruct MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
+DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
+DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellStruct &, bool) const, 0x0051E380);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CoordStruct &) const, 0x0051E510);
