@@ -3345,6 +3345,9 @@ void **SpeechBuffer = Make_Global<void **>(0x0080FC9C);
 VoxType *SpeechRecord = Make_Global<VoxType *>(0x0080FC88);
 VoxType &SpeakQueue = Make_Global<VoxType>(0x00712610);
 VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
+Rect &SidebarRect = Make_Global<Rect>(0x0074C240);
+Rect &TacticalRect = Make_Global<Rect>(0x0074C250);
+Rect &ScreenRect = Make_Global<Rect>(0x0074C260);
 
 
 /**

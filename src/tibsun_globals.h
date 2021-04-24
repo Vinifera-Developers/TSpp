@@ -102,6 +102,7 @@ class AircraftClass;
 class VocClass;
 class EventClass;
 class MouseClass;
+class Rect;
 
 enum KeyNumType;
 
@@ -176,6 +177,9 @@ extern bool &Debug_Trap_Check_Heap;
 extern bool &Debug_Modem_Dump;
 extern bool &Debug_Print_Events;
 extern HouseClass *&PlayerPtr;
+extern Rect &SidebarRect;
+extern Rect &TacticalRect;
+extern Rect &ScreenRect;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
