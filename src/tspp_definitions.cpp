@@ -1215,6 +1215,7 @@ DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Build(SpeedType, const Buildin
 DEFINE_IMPLEMENTATION(void CellClass::Recalc_Attributes(int), 0x00453240);
 DEFINE_IMPLEMENTATION(void CellClass::Occupy_Down(ObjectClass *, bool), 0x00454810);
 DEFINE_IMPLEMENTATION(void CellClass::Occupy_Up(ObjectClass *, bool), 0x004549D0);
+DEFINE_IMPLEMENTATION(Rect CellClass::Get_Rect() const, 0x004560B0);
 DEFINE_IMPLEMENTATION(void CellClass::Wall_Update(bool), 0x004567A0);
 DEFINE_IMPLEMENTATION(CoordStruct CellClass::Cell_Coord() const, 0x00456BA0);
 DEFINE_IMPLEMENTATION(int CellClass::Reduce_Tiberium(int), 0x00456BF0);
@@ -1705,7 +1706,7 @@ DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char *, ThemeType), 0x005
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 
-DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, int, int, ShapeFileStruct *, int, int, int), 0x0047C780);
+DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, const ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, int, int, ShapeFileStruct *, int, int, int), 0x0047C780);
 
 DEFINE_IMPLEMENTATION(int Base64_Encode(const void *, int, void *, int), 0x004208B0);
 DEFINE_IMPLEMENTATION(int Base64_Decode(const void *, int, void *, int), 0x004209D0);

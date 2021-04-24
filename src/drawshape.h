@@ -38,7 +38,7 @@
 void CC_Draw_Shape(
 	XSurface *surface,						// Destination surface to draw the shape to.
 	ConvertClass *drawer,
-	ShapeFileStruct *shapefile,				// Pointer to the shape data file. This data file contains all the embedded shapes.
+	const ShapeFileStruct *shapefile,		// Pointer to the shape data file. This data file contains all the embedded shapes.
 	int shapenum,							// The shape number within the shapefile that will be drawn.
 	Point2D *xy,							// The pixel coordinates to draw the shape.
 	Rect *rect,								// The clipping rect/window to use.

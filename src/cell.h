@@ -111,7 +111,7 @@ CellClass : public AbstractClass
         // 004555E0
         // 00455B30
         // 00455E40
-        // 004560B0
+        Rect Get_Rect() const;
         // 00456270
         // 00456300
         // 00456370
