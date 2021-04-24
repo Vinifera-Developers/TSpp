@@ -161,6 +161,7 @@
 #include "aircraft.h"
 #include "infantry.h"
 #include "vox.h"
+#include "voc.h"
 
 
 /**
@@ -3250,6 +3251,22 @@ DEFINE_IMPLEMENTATION(void Stop_Speaking(), 0x00665AF0);
 DEFINE_IMPLEMENTATION(bool Is_Speaking(), 0x00665B20);
 DEFINE_IMPLEMENTATION(void Set_Speech_Volume(int), 0x00665B70);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VocClass::VocClass(const char *), 0x00664840);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(VocClass::~VocClass(), 0x00664920);
+DEFINE_IMPLEMENTATION(void VocClass::Read_INI(CCINIClass &), 0x00664970);
+DEFINE_IMPLEMENTATION(bool VocClass::Can_Play() const, 0x006651F0);
+DEFINE_IMPLEMENTATION(int VocClass::Play(float, int), 0x00664A50);
+DEFINE_IMPLEMENTATION(int VocClass::Play(float), 0x00664B00);
+DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, int, float), 0x00664BA0);
+DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, float), 0x00664C60);
+DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, CoordStruct &), 0x00664D10);
+// 00664EC0
+// 00665080
+// 006651C0
+DEFINE_IMPLEMENTATION(VocType VocClass::From_Name(const char *), 0x00665100);
+DEFINE_IMPLEMENTATION(VocType VocClass::From_Name_INI(const char *), 0x00665140);
+DEFINE_IMPLEMENTATION(const char *VocClass::Name_From(VocType), 0x006651A0);
+
 
 /**
  *  Global definitions
@@ -3398,6 +3415,7 @@ DynamicVectorClass<TEventClass *> &TEvents = Make_Global<DynamicVectorClass<TEve
 DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TActionClass *>>(0x0080E6E8);
 DynamicVectorClass<TaskForceClass *> &TaskForces = Make_Global<DynamicVectorClass<TaskForceClass *>>(0x007E44B8);
 DynamicVectorClass<AircraftClass *> &Aircrafts = Make_Global<DynamicVectorClass<AircraftClass *>>(0x007E4058);
+DynamicVectorClass<VocClass *> &Vocs = Make_Global<DynamicVectorClass<VocClass *>>(0x0080FC68);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

@@ -99,6 +99,7 @@ class TEventClass;
 class TActionClass;
 class TaskForceClass;
 class AircraftClass;
+class VocClass;
 class EventClass;
 class MouseClass;
 
@@ -211,6 +212,7 @@ extern DynamicVectorClass<TEventClass *> &TEvents;
 extern DynamicVectorClass<TActionClass *> &TActions;
 extern DynamicVectorClass<TaskForceClass *> &TaskForces;
 extern DynamicVectorClass<AircraftClass *> &Aircrafts;
+extern DynamicVectorClass<VocClass *> &Vocs;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

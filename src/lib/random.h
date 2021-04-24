@@ -38,7 +38,7 @@ class RandomClass
         operator int() { return operator()(); }
         int operator()();
         int operator()(int minval, int maxval);
-        template<typename T> T operator()(T minval, T maxval) { return T(*this)(int(minval), int(maxval)); }
+        template<typename T> T operator()(T minval, T maxval) { return (T)(*this)(int(minval), int(maxval)); }
 
     protected:
         unsigned long Seed;
@@ -53,7 +53,7 @@ class Random2Class
         operator int() { return operator()(); }
         int operator()();
         int operator()(int minval, int maxval);
-        template<typename T> T operator()(T minval, T maxval) { return T(*this)(int(minval), int(maxval)); }
+        template<typename T> T operator()(T minval, T maxval) { return (T)(*this)(int(minval), int(maxval)); }
 
     protected:
         int Index1;

@@ -164,7 +164,15 @@ DEFINE_ENUMERATION_OPERATORS(DirType);
 
 typedef enum MPHType {} MPHType;
 typedef enum CrateType {} CrateType;
-typedef enum VocType {} VocType;
+
+typedef enum VocType
+{
+    VOC_NONE = -1,
+
+    VOC_FIRST = 0
+} VocType;
+DEFINE_ENUMERATION_OPERATORS(VocType);
+
 typedef enum VQType {} VQType;
 
 typedef enum ScriptType

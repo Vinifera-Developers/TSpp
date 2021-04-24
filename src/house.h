@@ -53,7 +53,7 @@
 class CCINIClass;
 class HouseTypeClass;
 class WaypointPathClass;
-class SuperWeaponClass;
+class SuperClass;
 class UnitTrackerClass;
 class FactoryClass;
 class TagClass;
@@ -358,7 +358,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool IsToLook;
         int IQ;
         StateType State;
-        DynamicVectorClass<SuperWeaponClass *> SuperWeapon;
+        DynamicVectorClass<SuperClass *> SuperWeapon;
         BuildingType JustBuiltStructure;
         InfantryType JustBuiltInfantry;
         UnitType JustBuiltUnit;
