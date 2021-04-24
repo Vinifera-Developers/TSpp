@@ -160,6 +160,7 @@
 #include "taskforce.h"
 #include "aircraft.h"
 #include "infantry.h"
+#include "vox.h"
 
 
 /**
@@ -3243,6 +3244,12 @@ DEFINE_IMPLEMENTATION(void InfantryClass::Movement_AI(), 0x004D8CB0);
 DEFINE_IMPLEMENTATION(void InfantryClass::Read_INI(CCINIClass &), 0x004D7B30);
 DEFINE_IMPLEMENTATION(void InfantryClass::Write_INI(CCINIClass &), 0x004D7F50);
 
+DEFINE_IMPLEMENTATION(void Speak(VoxType, bool), 0x00665800);
+DEFINE_IMPLEMENTATION(void Speak_AI(), 0x00665940);
+DEFINE_IMPLEMENTATION(void Stop_Speaking(), 0x00665AF0);
+DEFINE_IMPLEMENTATION(bool Is_Speaking(), 0x00665B20);
+DEFINE_IMPLEMENTATION(void Set_Speech_Volume(int), 0x00665B70);
+
 
 /**
  *  Global definitions
@@ -3314,6 +3321,13 @@ bool &Debug_Trap_Check_Heap = Make_Global<bool>(0x007E4911);
 bool &Debug_Modem_Dump = Make_Global<bool>(0x007E4912);
 bool &Debug_Print_Events = Make_Global<bool>(0x007E4913);
 HouseClass *&PlayerPtr = Make_Global<HouseClass *>(0x007E2284);
+int &SpeechVolume = Make_Global<int>(0x00712618);
+bool &IsSpeechAllowed = Make_Global<bool>(0x0071261C);
+CDTimerClass<SystemTimerClass> &SpeakTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0080FC90);
+void **SpeechBuffer = Make_Global<void **>(0x0080FC9C);
+VoxType *SpeechRecord = Make_Global<VoxType *>(0x0080FC88);
+VoxType &SpeakQueue = Make_Global<VoxType>(0x00712610);
+VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
 
 
 /**
@@ -3340,6 +3354,10 @@ DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass
 LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
 RadarClass::RTacticalClass &RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
 HWND &WinDialogClass::CurrentWindowHandle = Make_Global<HWND>(0x00864E54);
+char *CDFileClass::RawPath = Make_Global<char *>(0x0076092C);
+CDFileClass::SearchDriveType *&CDFileClass::First = Make_Global<CDFileClass::SearchDriveType *>(0x00760920);
+int &CDFileClass::CurrentCDDrive = Make_Global<int>(0x00760924);
+int &CDFileClass::LastCDDrive = Make_Global<int>(0x00760928);
 
 
 /**
