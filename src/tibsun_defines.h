@@ -2101,6 +2101,54 @@ typedef enum ProdFailType {
     PROD_CANT       // Failed because unable to comply (busy or occupied).
 } ProdFailType;
 
+typedef enum TileRampType
+{
+    /**
+     *  A flat tile (i.e. no ramp).
+     */
+    RAMP_NONE = 0,
+    
+    /**
+     *  Basic, two adjacent corners raised.
+     */
+    RAMP_WEST = 1,      // The west corner of the tile is raised.
+    RAMP_NORTH = 2,     // The south corner of the tile is raised.
+    RAMP_EAST = 3,      // The east corner of the tile is raised.
+    RAMP_SOUTH = 4,     // The north corner of the tile is raised.
+    
+    /**
+     *  Tile outside corners (One corner raised by half a cell).
+     */
+    RAMP_CORNER_NW = 5,
+    RAMP_CORNER_NE = 6,
+    RAMP_CORNER_SE = 7,
+    RAMP_CORNER_SW = 8,
+    
+    /**
+     *  Tile inside corners (three corners raised by half a cell).
+     */
+    RAMP_MID_NW = 9,
+    RAMP_MID_NE = 10,
+    RAMP_MID_SE = 11,
+    RAMP_MID_SW = 12,
+    
+    /**
+     *  Full tile sloped (mid corners raised by half cell, far corner by full cell).
+     */
+    RAMP_STEEP_SE = 13,     // Almost a invisible tile, but actually a fixup tile for ??.
+    RAMP_STEEP_SW = 14,     // Full steep tile that faces NW (on the screen).
+    RAMP_STEEP_NW = 15,     // Full steep tile that faces SE (on the screen).
+    RAMP_STEEP_NE = 16,     // Full steep tile that faces SE (on the screen).
+
+    /**
+     *  Double ramps (two corners raised, alternating).
+     */
+    RAMP_DOUBLE_UP_SW_NE = 17,      // Double ramp tile that slopes up, faces SW-NE (in the game world).
+    RAMP_DOUBLE_DOWN_SW_NE = 18,    // Double ramp tile that slopes down, faces SW-NE (in the game world).
+    RAMP_DOUBLE_UP_NW_SE = 19,      // Double ramp tile that slopes up, faces NW-SE (in the game world).
+    RAMP_DOUBLE_DOWN_NW_SE = 20,    // Double ramp tile that slopes down, faces NW-SE (in the game world).
+} TileRampType;
+DEFINE_ENUMERATION_OPERATORS(TileRampType);
 
 /**
  *  Shape drawing flags.
