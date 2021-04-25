@@ -164,6 +164,7 @@
 #include "voc.h"
 #include "ionstorm.h"
 #include "ionblast.h"
+#include "bounce.h"
 
 
 /**
@@ -3293,6 +3294,16 @@ DEFINE_IMPLEMENTATION(void IonBlastClass::Update_All(), 0x004EE580);
 DEFINE_IMPLEMENTATION(void IonBlastClass::Draw_All(), 0x004EEAC0);
 DEFINE_IMPLEMENTATION(void IonBlastClass::One_Time(),  0x004EE5A0);
 DEFINE_IMPLEMENTATION(void IonBlastClass::Clear_All(), 0x004EE7C0);
+
+BounceClass::BounceClass() {}
+BounceClass::BounceClass(const NoInitClass &) {}
+BounceClass::~BounceClass() {}
+// 004245B0
+// 00424700
+// 004248C0
+// 00424900
+// 00424930
+// 00424A20
 
 
 /**
