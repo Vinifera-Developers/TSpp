@@ -405,6 +405,42 @@ typedef enum SideType
 } SideType;
 DEFINE_ENUMERATION_OPERATORS(SideType);
 
+typedef enum AITriggerType
+{
+    AITRIGGER_NONE = -1,
+
+    AITRIGGER_FIRST = 0
+} AITriggerType;
+DEFINE_ENUMERATION_OPERATORS(AITriggerType);
+
+typedef enum AITriggerEventType
+{
+    EVENT_ENEMY_OWNS,
+    EVENT_HOUSE_OWNS,
+    EVENT_ENEMY_YELLOW_POWER,
+    EVENT_ENEMY_RED_POWER,
+    EVENT_ENEMY_OWNS_N_MONEY,
+    
+    EVENT_NONE = -1,
+} AITriggerEventType;
+
+typedef enum AITriggerConditionType
+{
+    CONDITION_LESS,
+    CONDITION_LESS_OR_EQUAL,
+    CONDITION_EQUAL,
+    CONDITION_GREATER_OR_EQUAL,
+    CONDITION_GREATER,
+    CONDITION_NOT_EQUAL
+} AITriggerConditionType;
+
+typedef enum AITriggerHouseType
+{
+    AITRIG_HOUSE_NONE,     // <none>
+    AITRIG_HOUSE_INDEX,    // Index from the rules list.
+    AITRIG_HOUSE_ALL,      // <any>
+} AITriggerHouseType;
+
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 

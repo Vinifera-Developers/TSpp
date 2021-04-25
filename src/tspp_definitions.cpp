@@ -171,6 +171,7 @@
 #include "particletype.h"
 #include "particlesystype.h"
 #include "voxelanim.h"
+#include "aitrigtype.h"
 
 
 /**
@@ -3430,6 +3431,31 @@ DEFINE_IMPLEMENTATION(CellStruct *VoxelAnimClass::Occupy_List(bool) const, 0x006
 DEFINE_IMPLEMENTATION(void VoxelAnimClass::Draw_It(Point2D &, Rect &) const, 0x0065E050);
 DEFINE_IMPLEMENTATION(void VoxelAnimClass::Init(), 0x0065E3C0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AITriggerTypeClass::GetClassID(CLSID *), 0x00410660);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AITriggerTypeClass::Load(IStream *), 0x004106A0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AITriggerTypeClass::Save(IStream *, BOOL), 0x00410710);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AITriggerTypeClass::AITriggerTypeClass(const char *), 0x004104E0);
+AITriggerTypeClass::AITriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB308; *((unsigned long *)this+4) = (unsigned long)0x006CB2EC; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(AITriggerTypeClass::~AITriggerTypeClass(), 0x004105F0);
+DEFINE_IMPLEMENTATION(RTTIType AITriggerTypeClass::Kind_Of() const, 0x00411BF0);
+DEFINE_IMPLEMENTATION(int AITriggerTypeClass::Size_Of(bool) const, 0x00411C00);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00410730);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Read_INI(CCINIClass &), 0x004112E0);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Write_INI(CCINIClass &) const, 0x00411830);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Process(HouseClass *, HouseClass *, bool), 0x00410840);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Check_Enemy_Owns(HouseClass *, HouseClass *), 0x00410BD0);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Check_House_Owns(HouseClass *, HouseClass *), 0x00410D70);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Check_Enemy_Yellow_Power(HouseClass *, HouseClass *), 0x00410F10);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Check_Enemy_Red_Power(HouseClass *, HouseClass *), 0x00410F60);
+DEFINE_IMPLEMENTATION(bool AITriggerTypeClass::Check_Enemy_Money(HouseClass *, HouseClass *), 0x00410FB0);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Set_Condition_Object(TechnoTypeClass *), 0x00411A40);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Set_First_TeamType(TeamTypeClass *), 0x00411A50);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Set_Second_TeamType(TeamTypeClass *), 0x00411A60);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Record_Success(), 0x00411A70);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Record_Fail(), 0x00411B30);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Read_Scenario_INI(CCINIClass &, int), 0x00411060);
+DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Write_Scenario_INI(CCINIClass &, int), 0x00411200);
+
 
 /**
  *  Global definitions
@@ -3595,6 +3621,7 @@ DynamicVectorClass<TerrainTypeClass *> &TerrainTypes = Make_Global<DynamicVector
 DynamicVectorClass<ParticleTypeClass *> &ParticleTypes = Make_Global<DynamicVectorClass<ParticleTypeClass *>>(0x007E22B8);
 DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes = Make_Global<DynamicVectorClass<ParticleSystemTypeClass *>>(0x007E2288);
 DynamicVectorClass<VoxelAnimClass *> &VoxelAnims = Make_Global<DynamicVectorClass<VoxelAnimClass *>>(0x0074C658);
+DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes = Make_Global<DynamicVectorClass<AITriggerTypeClass *>>(0x007E2408);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
