@@ -432,6 +432,14 @@ typedef enum ParticleType
 } ParticleType;
 DEFINE_ENUMERATION_OPERATORS(ParticleType);
 
+typedef enum ParticleSystemType
+{
+    PARTICLESYS_NONE = -1,
+
+    PARTICLESYS_FIRST = 0
+} ParticleSystemType;
+DEFINE_ENUMERATION_OPERATORS(ParticleSystemType);
+
 typedef enum TerrainType
 {
     TERRAIN_NONE = -1,

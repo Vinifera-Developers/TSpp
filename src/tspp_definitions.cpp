@@ -169,6 +169,7 @@
 #include "animtype.h"
 #include "terraintype.h"
 #include "particletype.h"
+#include "particlesystype.h"
 
 
 /**
@@ -3397,6 +3398,19 @@ DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Read_INI(CCINIClass &), 0x005AF240
 DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AFC00);
 DEFINE_IMPLEMENTATION(ObjectClass *const ParticleTypeClass::Create_One_Of(HouseClass *) const, 0x005AFC10);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleSystemTypeClass::GetClassID(CLSID *), 0x005AEAA0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemTypeClass::Load(IStream *), 0x005AEAE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemTypeClass::Save(IStream *, BOOL), 0x005AEB20);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemTypeClass::ParticleSystemTypeClass(const char *), 0x005AE3D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemTypeClass::ParticleSystemTypeClass(const NoInitClass &), 0x005AE540);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ParticleSystemTypeClass::~ParticleSystemTypeClass(), 0x005AE560);
+DEFINE_IMPLEMENTATION(RTTIType ParticleSystemTypeClass::Kind_Of() const, 0x005AEC20);
+DEFINE_IMPLEMENTATION(int ParticleSystemTypeClass::Size_Of(bool) const, 0x005AEC10);
+DEFINE_IMPLEMENTATION(void ParticleSystemTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005AEA00);
+DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Read_INI(CCINIClass &), 0x005AE5D0);
+DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AEC30);
+DEFINE_IMPLEMENTATION(ObjectClass *const ParticleSystemTypeClass::Create_One_Of(HouseClass *) const, 0x005AEC40);
+
 
 /**
  *  Global definitions
@@ -3560,6 +3574,7 @@ DynamicVectorClass<AnimClass *> &Anims = Make_Global<DynamicVectorClass<AnimClas
 DynamicVectorClass<AnimTypeClass *> &AnimTypes = Make_Global<DynamicVectorClass<AnimTypeClass *>>(0x007B34A0);
 DynamicVectorClass<TerrainTypeClass *> &TerrainTypes = Make_Global<DynamicVectorClass<TerrainTypeClass *>>(0x007E3FE0);
 DynamicVectorClass<ParticleTypeClass *> &ParticleTypes = Make_Global<DynamicVectorClass<ParticleTypeClass *>>(0x007E22B8);
+DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes = Make_Global<DynamicVectorClass<ParticleSystemTypeClass *>>(0x007E2288);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

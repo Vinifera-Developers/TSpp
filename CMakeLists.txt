@@ -46,7 +46,7 @@ if(POLICY CMP0074)
 endif()
 
 # Check supported generators
-if(MSVC AND MSVC_VERSION LESS 1920)
+if(MSVC AND MSVC_VERSION LESS 1910)
     message(FATAL_ERROR "This version of Visual Studio is not supported: ${CMAKE_GENERATOR}.")
 endif()
 
