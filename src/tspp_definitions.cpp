@@ -165,6 +165,7 @@
 #include "ionstorm.h"
 #include "ionblast.h"
 #include "bounce.h"
+#include "anim.h"
 
 
 /**
@@ -3305,6 +3306,43 @@ BounceClass::~BounceClass() {}
 // 00424930
 // 00424A20
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimClass::GetClassID(CLSID *), 0x00417500);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Load(IStream *), 0x004164B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Save(IStream *, BOOL), 0x00416510);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(), 0x00414170);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(const AnimTypeClass *, CoordStruct &, unsigned, unsigned, unsigned, unsigned), 0x00413AE0);
+AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+4) = (unsigned long)0x006CB92C; }
+DEFINE_IMPLEMENTATION(AnimClass::~AnimClass(), 0x004142B0);
+DEFINE_IMPLEMENTATION(void AnimClass::Detach(TARGET, bool), 0x00416390);
+DEFINE_IMPLEMENTATION(RTTIType AnimClass::Kind_Of() const, 0x00417540);
+DEFINE_IMPLEMENTATION(int AnimClass::Size_Of(bool) const, 0x004174F0);
+DEFINE_IMPLEMENTATION(void AnimClass::Compute_CRC(WWCRCEngine &) const, 0x00416530);
+DEFINE_IMPLEMENTATION(CoordStruct AnimClass::Center_Coord() const, 0x00414540);
+DEFINE_IMPLEMENTATION(void AnimClass::AI(), 0x00414E80);
+DEFINE_IMPLEMENTATION(LayerType AnimClass::In_Which_Layer() const, 0x00415D30);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const AnimClass::Class_Of() const, 0x00416640);
+DEFINE_IMPLEMENTATION(int AnimClass::Sort_Y() const, 0x00414530);
+DEFINE_IMPLEMENTATION(bool AnimClass::Limbo(), 0x00416650);
+DEFINE_IMPLEMENTATION(void AnimClass::entry_E4(), 0x004167C0);
+DEFINE_IMPLEMENTATION(bool AnimClass::Render(Rect &, bool, bool), 0x004145C0);
+DEFINE_IMPLEMENTATION(CellStruct *AnimClass::Occupy_List(bool) const, 0x00414C80);
+DEFINE_IMPLEMENTATION(void AnimClass::Draw_It(Point2D &, Rect &) const, 0x004145F0);
+DEFINE_IMPLEMENTATION(bool AnimClass::Mark(MarkType), 0x00414C60);
+DEFINE_IMPLEMENTATION(int AnimClass::Get_Z_Coord() const, 0x004167E0);
+DEFINE_IMPLEMENTATION(int AnimClass::entry_1A8(), 0x00414CE0);
+DEFINE_IMPLEMENTATION(int AnimClass::entry_1AC() const, 0x00416630);
+DEFINE_IMPLEMENTATION(void AnimClass::Attach_To(ObjectClass *), 0x00415C00);
+DEFINE_IMPLEMENTATION(void AnimClass::Start(), 0x00415D60);
+DEFINE_IMPLEMENTATION(void AnimClass::Middle(), 0x00415F40);
+DEFINE_IMPLEMENTATION(void AnimClass::Enable(), 0x00416490);
+DEFINE_IMPLEMENTATION(void AnimClass::Disable(), 0x004164A0);
+DEFINE_IMPLEMENTATION(void AnimClass::Vein_Attack_AI(), 0x004166C0);
+DEFINE_IMPLEMENTATION(void AnimClass::Flaming_Guy_AI(), 0x00416820);
+// 00416E90
+// 00417270
+DEFINE_IMPLEMENTATION(void AnimClass::Init(), 0x00417340);
+DEFINE_IMPLEMENTATION(void AnimClass::Do_Atom_Damage(HousesType, CellStruct &), 0x004163E0);
+
 
 /**
  *  Global definitions
@@ -3464,6 +3502,7 @@ DynamicVectorClass<TaskForceClass *> &TaskForces = Make_Global<DynamicVectorClas
 DynamicVectorClass<AircraftClass *> &Aircrafts = Make_Global<DynamicVectorClass<AircraftClass *>>(0x007E4058);
 DynamicVectorClass<VocClass *> &Vocs = Make_Global<DynamicVectorClass<VocClass *>>(0x0080FC68);
 DynamicVectorClass<IonBlastClass *> &IonBlasts = Make_Global<DynamicVectorClass<IonBlastClass *>>(0x007F5750);
+DynamicVectorClass<AnimClass *> &Anims = Make_Global<DynamicVectorClass<AnimClass *>>(0x007E4588);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
