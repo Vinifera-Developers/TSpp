@@ -168,6 +168,7 @@
 #include "anim.h"
 #include "animtype.h"
 #include "terraintype.h"
+#include "particletype.h"
 
 
 /**
@@ -3382,6 +3383,20 @@ DEFINE_IMPLEMENTATION(ObjectClass *const TerrainTypeClass::Create_One_Of(HouseCl
 DEFINE_IMPLEMENTATION(CellStruct *TerrainTypeClass::Occupy_List(bool) const, 0x006417E0);
 DEFINE_IMPLEMENTATION(void TerrainTypeClass::Init(TheaterType), 0x006416B0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleTypeClass::GetClassID(CLSID *), 0x005AF900);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleTypeClass::Load(IStream *), 0x005AF940);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleTypeClass::Save(IStream *, BOOL), 0x005AFA70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleTypeClass::ParticleTypeClass(const char *), 0x005AEF00);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleTypeClass::ParticleTypeClass(const NoInitClass &), 0x005AF0E0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ParticleTypeClass::~ParticleTypeClass(), 0x005AF140);
+DEFINE_IMPLEMENTATION(void ParticleTypeClass::Detach(TARGET, bool), 0x005AFB80);
+DEFINE_IMPLEMENTATION(RTTIType ParticleTypeClass::Kind_Of() const, 0x005AFBF0);
+DEFINE_IMPLEMENTATION(int ParticleTypeClass::Size_Of(bool) const, 0x005AFBE0);
+DEFINE_IMPLEMENTATION(void ParticleTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005AF7C0);
+DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Read_INI(CCINIClass &), 0x005AF240);
+DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AFC00);
+DEFINE_IMPLEMENTATION(ObjectClass *const ParticleTypeClass::Create_One_Of(HouseClass *) const, 0x005AFC10);
+
 
 /**
  *  Global definitions
@@ -3544,6 +3559,7 @@ DynamicVectorClass<IonBlastClass *> &IonBlasts = Make_Global<DynamicVectorClass<
 DynamicVectorClass<AnimClass *> &Anims = Make_Global<DynamicVectorClass<AnimClass *>>(0x007E4588);
 DynamicVectorClass<AnimTypeClass *> &AnimTypes = Make_Global<DynamicVectorClass<AnimTypeClass *>>(0x007B34A0);
 DynamicVectorClass<TerrainTypeClass *> &TerrainTypes = Make_Global<DynamicVectorClass<TerrainTypeClass *>>(0x007E3FE0);
+DynamicVectorClass<ParticleTypeClass *> &ParticleTypes = Make_Global<DynamicVectorClass<ParticleTypeClass *>>(0x007E22B8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

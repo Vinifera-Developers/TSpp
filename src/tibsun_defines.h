@@ -408,6 +408,30 @@ DEFINE_ENUMERATION_OPERATORS(SideType);
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 
+typedef enum ParticleBehaviourType
+{
+    BEHAVIOUR_GAS,
+    BEHAVIOUR_SMOKE,
+    BEHAVIOUR_FIRE,
+    BEHAVIOUR_SPARK,
+    BEHAVIOUR_RAILGUN,
+    BEHAVIOUR_WEB,
+    BEHAVIOUR_WEAKGAS,
+
+    BEHAVIOUR_NONE = -1,
+
+    BEHAVIOUR_FIRST = 0
+} ParticleBehaviourType;
+DEFINE_ENUMERATION_OPERATORS(ParticleBehaviourType);
+
+typedef enum ParticleType
+{
+    PARTICLE_NONE = -1,
+
+    PARTICLE_FIRST = 0
+} ParticleType;
+DEFINE_ENUMERATION_OPERATORS(ParticleType);
+
 typedef enum TerrainType
 {
     TERRAIN_NONE = -1,

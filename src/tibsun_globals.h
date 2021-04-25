@@ -104,6 +104,7 @@ class IonBlastClass;
 class AnimClass;
 class AnimTypeClass;
 class TerrainTypeClass;
+class ParticleTypeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -225,6 +226,7 @@ extern DynamicVectorClass<IonBlastClass *> &IonBlasts;
 extern DynamicVectorClass<AnimClass *> &Anims;
 extern DynamicVectorClass<AnimTypeClass *> &AnimTypes;
 extern DynamicVectorClass<TerrainTypeClass *> &TerrainTypes;
+extern DynamicVectorClass<ParticleTypeClass *> &ParticleTypes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
