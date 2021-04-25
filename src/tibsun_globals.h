@@ -102,6 +102,7 @@ class AircraftClass;
 class VocClass;
 class IonBlastClass;
 class AnimClass;
+class AnimTypeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -221,6 +222,7 @@ extern DynamicVectorClass<AircraftClass *> &Aircrafts;
 extern DynamicVectorClass<VocClass *> &Vocs;
 extern DynamicVectorClass<IonBlastClass *> &IonBlasts;
 extern DynamicVectorClass<AnimClass *> &Anims;
+extern DynamicVectorClass<AnimTypeClass *> &AnimTypes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

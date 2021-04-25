@@ -166,13 +166,14 @@
 #include "ionblast.h"
 #include "bounce.h"
 #include "anim.h"
+#include "animtype.h"
 
 
 /**
  *  #NOTE:
  *  Any constructors defined here are because they are inlined in the games binary and
  *  redefining them in TS++ will cause the game to use the new table, so to get
- *  around this we need to define the constructor then immediately override the virtual
+ *  around this we need to define the constructor then immediately the virtual
  *  table pointer with the games table.
  *  
  */
@@ -3343,6 +3344,26 @@ DEFINE_IMPLEMENTATION(void AnimClass::Flaming_Guy_AI(), 0x00416820);
 DEFINE_IMPLEMENTATION(void AnimClass::Init(), 0x00417340);
 DEFINE_IMPLEMENTATION(void AnimClass::Do_Atom_Damage(HousesType, CellStruct &), 0x004163E0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimTypeClass::GetClassID(CLSID *), 0x004197B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimTypeClass::Load(IStream *), 0x00419640);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimTypeClass::Save(IStream *, BOOL), 0x00419790);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimTypeClass::AnimTypeClass(const char *), 0x004184C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimTypeClass::AnimTypeClass(const NoInitClass &), 0x004187A0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(AnimTypeClass::~AnimTypeClass(), 0x004187C0);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Detach(TARGET, bool), 0x00419A00);
+DEFINE_IMPLEMENTATION(RTTIType AnimTypeClass::Kind_Of() const, 0x00419BA0);
+DEFINE_IMPLEMENTATION(int AnimTypeClass::Size_Of(bool) const, 0x00419BC0);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004197F0);
+DEFINE_IMPLEMENTATION(int AnimTypeClass::Get_Heap_ID() const, 0x00419BB0);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::entry_64(), 0x004189E0);
+DEFINE_IMPLEMENTATION(bool AnimTypeClass::Read_INI(CCINIClass &), 0x00418C20);
+DEFINE_IMPLEMENTATION(bool AnimTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x00419BD0);
+DEFINE_IMPLEMENTATION(ObjectClass *const AnimTypeClass::Create_One_Of(HouseClass *) const, 0x00419BE0);
+DEFINE_IMPLEMENTATION(ShapeFileStruct *const AnimTypeClass::Get_Image_Data() const, 0x00419A20);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(const char *), 0x00418A70);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Free_Image(), 0x0419B40);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Init(TheaterType), 0x00418890);
+
 
 /**
  *  Global definitions
@@ -3503,6 +3524,7 @@ DynamicVectorClass<AircraftClass *> &Aircrafts = Make_Global<DynamicVectorClass<
 DynamicVectorClass<VocClass *> &Vocs = Make_Global<DynamicVectorClass<VocClass *>>(0x0080FC68);
 DynamicVectorClass<IonBlastClass *> &IonBlasts = Make_Global<DynamicVectorClass<IonBlastClass *>>(0x007F5750);
 DynamicVectorClass<AnimClass *> &Anims = Make_Global<DynamicVectorClass<AnimClass *>>(0x007E4588);
+DynamicVectorClass<AnimTypeClass *> &AnimTypes = Make_Global<DynamicVectorClass<AnimTypeClass *>>(0x007B34A0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
