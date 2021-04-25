@@ -163,6 +163,7 @@
 #include "vox.h"
 #include "voc.h"
 #include "ionstorm.h"
+#include "ionblast.h"
 
 
 /**
@@ -3284,6 +3285,15 @@ DEFINE_IMPLEMENTATION(void IonStorm_Lightning_Strike_At(CellStruct), 0x004ECEC0)
 DEFINE_IMPLEMENTATION(void IonStorm_AI(), 0x004ED280);
 DEFINE_IMPLEMENTATION(void IonStorm_Init(bool), 0x004ED5F0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(IonBlastClass::IonBlastClass(CoordStruct), 0x004EDC20);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(IonBlastClass::~IonBlastClass(), 0x004EDCA0);
+DEFINE_IMPLEMENTATION(void IonBlastClass::AI(), 0x004EDCF0);
+DEFINE_IMPLEMENTATION(void IonBlastClass::Draw_It(), 0x004EE7F0);
+DEFINE_IMPLEMENTATION(void IonBlastClass::Update_All(), 0x004EE580);
+DEFINE_IMPLEMENTATION(void IonBlastClass::Draw_All(), 0x004EEAC0);
+DEFINE_IMPLEMENTATION(void IonBlastClass::One_Time(),  0x004EE5A0);
+DEFINE_IMPLEMENTATION(void IonBlastClass::Clear_All(), 0x004EE7C0);
+
 
 /**
  *  Global definitions
@@ -3442,6 +3452,7 @@ DynamicVectorClass<TActionClass *> &TActions = Make_Global<DynamicVectorClass<TA
 DynamicVectorClass<TaskForceClass *> &TaskForces = Make_Global<DynamicVectorClass<TaskForceClass *>>(0x007E44B8);
 DynamicVectorClass<AircraftClass *> &Aircrafts = Make_Global<DynamicVectorClass<AircraftClass *>>(0x007E4058);
 DynamicVectorClass<VocClass *> &Vocs = Make_Global<DynamicVectorClass<VocClass *>>(0x0080FC68);
+DynamicVectorClass<IonBlastClass *> &IonBlasts = Make_Global<DynamicVectorClass<IonBlastClass *>>(0x007F5750);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

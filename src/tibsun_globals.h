@@ -100,6 +100,7 @@ class TActionClass;
 class TaskForceClass;
 class AircraftClass;
 class VocClass;
+class IonBlastClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -217,6 +218,7 @@ extern DynamicVectorClass<TActionClass *> &TActions;
 extern DynamicVectorClass<TaskForceClass *> &TaskForces;
 extern DynamicVectorClass<AircraftClass *> &Aircrafts;
 extern DynamicVectorClass<VocClass *> &Vocs;
+extern DynamicVectorClass<IonBlastClass *> &IonBlasts;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
