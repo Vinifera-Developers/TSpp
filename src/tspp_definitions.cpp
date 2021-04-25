@@ -170,6 +170,7 @@
 #include "terraintype.h"
 #include "particletype.h"
 #include "particlesystype.h"
+#include "voxelanim.h"
 
 
 /**
@@ -3411,6 +3412,24 @@ DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Read_INI(CCINIClass &), 0x00
 DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AEC30);
 DEFINE_IMPLEMENTATION(ObjectClass *const ParticleSystemTypeClass::Create_One_Of(HouseClass *) const, 0x005AEC40);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimClass::GetClassID(CLSID *), 0x0065F0C0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Load(IStream *), 0x0065EF90);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Save(IStream *, BOOL), 0x0065F000);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimClass::VoxelAnimClass(), 0x0065DE30);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimClass::VoxelAnimClass(const VoxelAnimTypeClass *, CoordStruct &, HouseClass *), 0x0065D950);
+VoxelAnimClass::VoxelAnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9050; *((unsigned long *)this+4) = (unsigned long)0x006D9034; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(VoxelAnimClass::~VoxelAnimClass(), 0x0065DF10);
+DEFINE_IMPLEMENTATION(RTTIType VoxelAnimClass::Kind_Of() const, 0x0065F110);
+DEFINE_IMPLEMENTATION(int VoxelAnimClass::Size_Of(bool) const, 0x0065F100);
+DEFINE_IMPLEMENTATION(void VoxelAnimClass::Compute_CRC(WWCRCEngine &) const, 0x0065F020);
+DEFINE_IMPLEMENTATION(void VoxelAnimClass::AI(), 0x0065E3F0);
+DEFINE_IMPLEMENTATION(LayerType VoxelAnimClass::In_Which_Layer() const, 0x0065EF80);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const VoxelAnimClass::Class_Of() const, 0x0065F120);
+DEFINE_IMPLEMENTATION(bool VoxelAnimClass::Render(Rect &, bool, bool), 0x0065E000);
+DEFINE_IMPLEMENTATION(CellStruct *VoxelAnimClass::Occupy_List(bool) const, 0x0065F130);
+DEFINE_IMPLEMENTATION(void VoxelAnimClass::Draw_It(Point2D &, Rect &) const, 0x0065E050);
+DEFINE_IMPLEMENTATION(void VoxelAnimClass::Init(), 0x0065E3C0);
+
 
 /**
  *  Global definitions
@@ -3575,6 +3594,7 @@ DynamicVectorClass<AnimTypeClass *> &AnimTypes = Make_Global<DynamicVectorClass<
 DynamicVectorClass<TerrainTypeClass *> &TerrainTypes = Make_Global<DynamicVectorClass<TerrainTypeClass *>>(0x007E3FE0);
 DynamicVectorClass<ParticleTypeClass *> &ParticleTypes = Make_Global<DynamicVectorClass<ParticleTypeClass *>>(0x007E22B8);
 DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes = Make_Global<DynamicVectorClass<ParticleSystemTypeClass *>>(0x007E2288);
+DynamicVectorClass<VoxelAnimClass *> &VoxelAnims = Make_Global<DynamicVectorClass<VoxelAnimClass *>>(0x0074C658);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

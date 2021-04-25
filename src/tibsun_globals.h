@@ -106,6 +106,7 @@ class AnimTypeClass;
 class TerrainTypeClass;
 class ParticleTypeClass;
 class ParticleSystemTypeClass;
+class VoxelAnimClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -229,6 +230,7 @@ extern DynamicVectorClass<AnimTypeClass *> &AnimTypes;
 extern DynamicVectorClass<TerrainTypeClass *> &TerrainTypes;
 extern DynamicVectorClass<ParticleTypeClass *> &ParticleTypes;
 extern DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes;
+extern DynamicVectorClass<VoxelAnimClass *> &VoxelAnims;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
