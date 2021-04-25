@@ -408,6 +408,14 @@ DEFINE_ENUMERATION_OPERATORS(SideType);
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 
+typedef enum TerrainType
+{
+    TERRAIN_NONE = -1,
+
+    TERRAIN_FIRST = 0
+} TerrainType;
+DEFINE_ENUMERATION_OPERATORS(TerrainType);
+
 typedef enum OverlayType
 {
     OVERLAY_NONE = -1,

@@ -167,6 +167,7 @@
 #include "bounce.h"
 #include "anim.h"
 #include "animtype.h"
+#include "terraintype.h"
 
 
 /**
@@ -3364,6 +3365,23 @@ DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(const char *), 0x00418A70);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Free_Image(), 0x0419B40);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Init(TheaterType), 0x00418890);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TerrainTypeClass::GetClassID(CLSID *), 0x00641C60);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainTypeClass::Load(IStream *), 0x00641B80);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainTypeClass::Save(IStream *, BOOL), 0x00641C40);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainTypeClass::TerrainTypeClass(const char *), 0x006414E0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainTypeClass::TerrainTypeClass(const NoInitClass &), 0x00641620);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TerrainTypeClass::~TerrainTypeClass(), 0x00641640);
+DEFINE_IMPLEMENTATION(RTTIType TerrainTypeClass::Kind_Of() const, 0x00641D30);
+DEFINE_IMPLEMENTATION(int TerrainTypeClass::Size_Of(bool) const, 0x00641D40);
+DEFINE_IMPLEMENTATION(void TerrainTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00641AF0);
+DEFINE_IMPLEMENTATION(int TerrainTypeClass::Get_Heap_ID() const, 0x00641D60);
+DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Read_INI(CCINIClass &), 0x00641840);
+DEFINE_IMPLEMENTATION(CoordStruct TerrainTypeClass::Coord_Fixup(CoordStruct *) const, 0x00641A80);
+DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x00641780);
+DEFINE_IMPLEMENTATION(ObjectClass *const TerrainTypeClass::Create_One_Of(HouseClass *) const, 0x006417B0);
+DEFINE_IMPLEMENTATION(CellStruct *TerrainTypeClass::Occupy_List(bool) const, 0x006417E0);
+DEFINE_IMPLEMENTATION(void TerrainTypeClass::Init(TheaterType), 0x006416B0);
+
 
 /**
  *  Global definitions
@@ -3525,6 +3543,7 @@ DynamicVectorClass<VocClass *> &Vocs = Make_Global<DynamicVectorClass<VocClass *
 DynamicVectorClass<IonBlastClass *> &IonBlasts = Make_Global<DynamicVectorClass<IonBlastClass *>>(0x007F5750);
 DynamicVectorClass<AnimClass *> &Anims = Make_Global<DynamicVectorClass<AnimClass *>>(0x007E4588);
 DynamicVectorClass<AnimTypeClass *> &AnimTypes = Make_Global<DynamicVectorClass<AnimTypeClass *>>(0x007B34A0);
+DynamicVectorClass<TerrainTypeClass *> &TerrainTypes = Make_Global<DynamicVectorClass<TerrainTypeClass *>>(0x007E3FE0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
