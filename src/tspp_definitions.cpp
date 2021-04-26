@@ -172,6 +172,7 @@
 #include "particlesystype.h"
 #include "voxelanim.h"
 #include "aitrigtype.h"
+#include "tagtype.h"
 
 
 /**
@@ -1000,7 +1001,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimTypeClass::GetClassID(CLSI
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Load(IStream *), 0x0065FE70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Save(IStream *, BOOL), 0x0065FF20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimTypeClass::VoxelAnimTypeClass(const char *), 0x0065F3B0);
-VoxelAnimTypeClass::VoxelAnimTypeClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006D9228; *((unsigned long *)this+4) = (unsigned long)0x006D920C; }
+VoxelAnimTypeClass::VoxelAnimTypeClass(const NoInitClass &noinit) : ObjectTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9228; *((unsigned long *)this+4) = (unsigned long)0x006D920C; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(VoxelAnimTypeClass::~VoxelAnimTypeClass(), 0x0065F590);
 DEFINE_IMPLEMENTATION(void VoxelAnimTypeClass::Detach(TARGET, bool), 0x0065FF40);
 DEFINE_IMPLEMENTATION(RTTIType VoxelAnimTypeClass::Kind_Of() const, 0x00660040);
@@ -1142,7 +1143,7 @@ DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Ok_To_End(), 0x00483AA0);
 DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::Piggyback_CLSID(CLSID *), 0x00483B40);
 DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Piggybacking(), 0x00483D10);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropPodLocomotionClass::DropPodLocomotionClass(), 0x004830F0);
-DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
+DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
 DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Size_Of(bool) const, 0x00483D30);
 
@@ -2966,7 +2967,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Load(IStream *), 0x
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Save(IStream *, BOOL), 0x00642E00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TEventClass::TEventClass(), 0x006420C0);
 TEventClass::TEventClass(TEventType event) : Event(event) { Data.Value = 0; *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
-TEventClass::TEventClass(const NoInitClass &noinit) { *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
+TEventClass::TEventClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TEventClass::~TEventClass(), 0x00642210);
 DEFINE_IMPLEMENTATION(void TEventClass::Detach(TARGET, bool), 0x00642CE0);
 DEFINE_IMPLEMENTATION(RTTIType TEventClass::Kind_Of() const, 0x00642EF0);
@@ -2985,7 +2986,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TActionClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Load(IStream *), 0x0061D8A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Save(IStream *, BOOL), 0x0061D910);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TActionClass::TActionClass(), 0x00618B80);
-TActionClass::TActionClass(const NoInitClass &noinit) { *((unsigned long *)this) = (unsigned long)0x006D77C4; *((unsigned long *)this+4) = (unsigned long)0x006D77A8; }
+TActionClass::TActionClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D77C4; *((unsigned long *)this+4) = (unsigned long)0x006D77A8; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TActionClass::~TActionClass(), 0x00618CF0);
 DEFINE_IMPLEMENTATION(void TActionClass::Detach(TARGET, bool), 0x00618DF0);
 DEFINE_IMPLEMENTATION(RTTIType TActionClass::Kind_Of() const, 0x0061DAA0);
@@ -3456,6 +3457,29 @@ DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Record_Fail(), 0x00411B30);
 DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Read_Scenario_INI(CCINIClass &, int), 0x00411060);
 DEFINE_IMPLEMENTATION(void AITriggerTypeClass::Write_Scenario_INI(CCINIClass &, int), 0x00411200);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TagTypeClass::GetClassID(CLSID *), 0x0061F7C0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagTypeClass::Load(IStream *), 0x0061F820);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagTypeClass::Save(IStream *, BOOL), 0x0061F870);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TagTypeClass::TagTypeClass(const char *), 0x0061F030);
+TagTypeClass::TagTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D791C; *((unsigned long *)this+4) = (unsigned long)0x006D7900; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TagTypeClass::~TagTypeClass(), 0x0061F150);
+DEFINE_IMPLEMENTATION(void TagTypeClass::Detach(TARGET, bool), 0x0061F2D0);
+DEFINE_IMPLEMENTATION(RTTIType TagTypeClass::Kind_Of() const, 0x0061F890);
+DEFINE_IMPLEMENTATION(int TagTypeClass::Size_Of(bool) const, 0x0061F8A0);
+DEFINE_IMPLEMENTATION(void TagTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0061F800);
+DEFINE_IMPLEMENTATION(int TagTypeClass::Get_Heap_ID() const, 0x0061F8B0);
+DEFINE_IMPLEMENTATION(bool TagTypeClass::Read_INI(CCINIClass &), 0x0061F4F0);
+DEFINE_IMPLEMENTATION(bool TagTypeClass::Write_INI(CCINIClass &) const, 0x0061F5C0);
+// 0061F270
+// 0061F290
+DEFINE_IMPLEMENTATION(AttachType TagTypeClass::Attaches_To() const, 0x0061F640);
+// 0061F660
+// 0061F690
+// 0061F6C0
+// 0061F6F0
+DEFINE_IMPLEMENTATION(void TagTypeClass::Read_Scenario_INI(CCINIClass &), 0x0061F350);
+DEFINE_IMPLEMENTATION(void TagTypeClass::Write_Scenario_INI(CCINIClass &), 0x0061F450);
+
 
 /**
  *  Global definitions
@@ -3622,6 +3646,7 @@ DynamicVectorClass<ParticleTypeClass *> &ParticleTypes = Make_Global<DynamicVect
 DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes = Make_Global<DynamicVectorClass<ParticleSystemTypeClass *>>(0x007E2288);
 DynamicVectorClass<VoxelAnimClass *> &VoxelAnims = Make_Global<DynamicVectorClass<VoxelAnimClass *>>(0x0074C658);
 DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes = Make_Global<DynamicVectorClass<AITriggerTypeClass *>>(0x007E2408);
+DynamicVectorClass<TagTypeClass *> &TagTypes = Make_Global<DynamicVectorClass<TagTypeClass *>>(0x0080E800);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

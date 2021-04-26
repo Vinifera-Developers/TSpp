@@ -405,6 +405,14 @@ typedef enum SideType
 } SideType;
 DEFINE_ENUMERATION_OPERATORS(SideType);
 
+typedef enum TagType
+{
+    TAG_NONE = -1,
+
+    TAG_FIRST = 0
+} TagType;
+DEFINE_ENUMERATION_OPERATORS(TagType);
+
 typedef enum AITriggerType
 {
     AITRIGGER_NONE = -1,
