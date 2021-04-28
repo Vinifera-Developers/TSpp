@@ -113,6 +113,7 @@ class BuildingLightClass;
 class LightSourceClass;
 class SmudgeTypeClass;
 class FactoryClass;
+class SmudgeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -244,6 +245,7 @@ extern DynamicVectorClass<LightSourceClass *> &LightSources;
 //extern DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells; // See lightsource.h
 extern DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes;
 extern DynamicVectorClass<FactoryClass *> &Factories;
+extern DynamicVectorClass<SmudgeClass *> &Smudges;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

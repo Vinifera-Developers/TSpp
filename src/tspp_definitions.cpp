@@ -178,6 +178,7 @@
 #include "smudgetype.h"
 #include "coord.h"
 #include "factory.h"
+#include "smudge.h"
 
 
 /**
@@ -3575,6 +3576,21 @@ DEFINE_IMPLEMENTATION(int FactoryClass::Cost_Per_Tick() const, 0x004974C0);
 DEFINE_IMPLEMENTATION(int FactoryClass::Build_Rate() const, 0x004972F0);
 DEFINE_IMPLEMENTATION(void FactoryClass::Recalculate_Times(HouseClass *), 0x00497A00);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SmudgeClass::GetClassID(CLSID *), 0x005FAEA0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Load(IStream *), 0x005FAE00);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Save(IStream *, BOOL), 0x005FAE50);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SmudgeClass::SmudgeClass(SmudgeTypeClass *, CoordStruct &, HousesType), 0x005FA9E0);
+SmudgeClass::SmudgeClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D69F4; *((unsigned long *)this+4) = (unsigned long)0x006D69D8; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SmudgeClass::~SmudgeClass(), 0x005FAAC0);
+DEFINE_IMPLEMENTATION(RTTIType SmudgeClass::Kind_Of() const, 0x005FAE90);
+DEFINE_IMPLEMENTATION(int SmudgeClass::Size_Of(bool) const, 0x005FAE80);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const SmudgeClass::Class_Of() const, 0x005FAE70);
+DEFINE_IMPLEMENTATION(void SmudgeClass::Draw_It(Point2D &, Rect &) const, 0x005FAEE0);
+DEFINE_IMPLEMENTATION(bool SmudgeClass::Mark(MarkType), 0x005FAB50);
+DEFINE_IMPLEMENTATION(void SmudgeClass::Disown(CellStruct &), 0x005FABE0);
+DEFINE_IMPLEMENTATION(void SmudgeClass::Read_INI(CCINIClass &), 0x005FABF0);
+DEFINE_IMPLEMENTATION(void SmudgeClass::Write_INI(CCINIClass &), 0x005FAD30);
+
 
 /**
  *  Global definitions
@@ -3747,6 +3763,7 @@ DynamicVectorClass<LightSourceClass *> &LightSources = Make_Global<DynamicVector
 DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells = Make_Global<DynamicVectorClass<LightSourceClass::PendingCellClass *>>(0x00804AF0);
 DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes = Make_Global<DynamicVectorClass<SmudgeTypeClass *>>(0x007E47C0);
 DynamicVectorClass<FactoryClass *> &Factories = Make_Global<DynamicVectorClass<FactoryClass *>>(0x007E2348);
+DynamicVectorClass<SmudgeClass *> &Smudges = Make_Global<DynamicVectorClass<SmudgeClass *>>(0x007E23E8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
