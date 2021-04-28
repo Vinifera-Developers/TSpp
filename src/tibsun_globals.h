@@ -110,6 +110,7 @@ class VoxelAnimClass;
 class AITriggerTypeClass;
 class TagTypeClass;
 class BuildingLightClass;
+class LightSourceClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -237,6 +238,8 @@ extern DynamicVectorClass<VoxelAnimClass *> &VoxelAnims;
 extern DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes;
 extern DynamicVectorClass<TagTypeClass *> &TagTypes;
 extern DynamicVectorClass<BuildingLightClass *> &BuildingLights;
+extern DynamicVectorClass<LightSourceClass *> &LightSources;
+//extern DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells; // See lightsource.h
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

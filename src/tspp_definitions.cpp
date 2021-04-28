@@ -174,6 +174,7 @@
 #include "aitrigtype.h"
 #include "tagtype.h"
 #include "buildinglight.h"
+#include "lightsource.h"
 
 
 /**
@@ -3502,6 +3503,22 @@ DEFINE_IMPLEMENTATION(void BuildingLightClass::Set_Behavior(SpotlightBehaviorTyp
 // 00422EE0
 // 00422FC0
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE LightSourceClass::GetClassID(CLSID *), 0x00501CD0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Load(IStream *), 0x00501D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Save(IStream *, BOOL), 0x00501D50);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightSourceClass::LightSourceClass(), 0x00501510);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightSourceClass::LightSourceClass(CoordStruct, int, int, int, int, int), 0x00501460);
+LightSourceClass::LightSourceClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D38D8; *((unsigned long *)this+4) = (unsigned long)0x006D38BC; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(LightSourceClass::~LightSourceClass(), 0x005015B0);
+DEFINE_IMPLEMENTATION(RTTIType LightSourceClass::Kind_Of() const, 0x00501D80);
+DEFINE_IMPLEMENTATION(int LightSourceClass::Size_Of(bool) const, 0x00501D70);
+DEFINE_IMPLEMENTATION(void LightSourceClass::Compute_CRC(WWCRCEngine &) const, 0x00501C70);
+DEFINE_IMPLEMENTATION(void LightSourceClass::Enable(bool), 0x005016C0);
+DEFINE_IMPLEMENTATION(void LightSourceClass::Disable(bool), 0x005016E0);
+DEFINE_IMPLEMENTATION(void LightSourceClass::Process(), 0x00501700);
+DEFINE_IMPLEMENTATION(void LightSourceClass::Init_Clear(), 0x00501650);
+// 00501950
+
 
 /**
  *  Global definitions
@@ -3670,6 +3687,8 @@ DynamicVectorClass<VoxelAnimClass *> &VoxelAnims = Make_Global<DynamicVectorClas
 DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes = Make_Global<DynamicVectorClass<AITriggerTypeClass *>>(0x007E2408);
 DynamicVectorClass<TagTypeClass *> &TagTypes = Make_Global<DynamicVectorClass<TagTypeClass *>>(0x0080E800);
 DynamicVectorClass<BuildingLightClass *> &BuildingLights = Make_Global<DynamicVectorClass<BuildingLightClass *>>(0x007B34E0);
+DynamicVectorClass<LightSourceClass *> &LightSources = Make_Global<DynamicVectorClass<LightSourceClass *>>(0x00804AC0);
+DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells = Make_Global<DynamicVectorClass<LightSourceClass::PendingCellClass *>>(0x00804AF0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
