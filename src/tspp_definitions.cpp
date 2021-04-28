@@ -176,6 +176,7 @@
 #include "buildinglight.h"
 #include "lightsource.h"
 #include "smudgetype.h"
+#include "coord.h"
 
 
 /**
@@ -3539,6 +3540,9 @@ DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(CellStruct &), 0x005FBF30);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(CoordStruct &, int, int, bool), 0x005FB870);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(CoordStruct &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
+
+DEFINE_IMPLEMENTATION(CoordStruct Coord_Move(CoordStruct &, DirType, unsigned short), 0x004231B0);
+DEFINE_IMPLEMENTATION(CoordStruct Coord_Scatter(CoordStruct &, unsigned, bool), 0x0046E850);
 
 
 /**
