@@ -179,6 +179,7 @@
 #include "coord.h"
 #include "factory.h"
 #include "smudge.h"
+#include "overlay.h"
 
 
 /**
@@ -3591,6 +3592,24 @@ DEFINE_IMPLEMENTATION(void SmudgeClass::Disown(CellStruct &), 0x005FABE0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Read_INI(CCINIClass &), 0x005FABF0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Write_INI(CCINIClass &), 0x005FAD30);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE OverlayClass::GetClassID(CLSID *), 0x0058CAA0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Load(IStream *), 0x0058C4D0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Save(IStream *, BOOL), 0x0058C520);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayClass::OverlayClass(OverlayTypeClass *, CellStruct &, HousesType), 0x0058B460);
+OverlayClass::OverlayClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D4F9C; *((unsigned long *)this+4) = (unsigned long)0x006D4F80; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(OverlayClass::~OverlayClass(), 0x0058B550);
+DEFINE_IMPLEMENTATION(RTTIType OverlayClass::Kind_Of() const, 0x0058CAE0);
+DEFINE_IMPLEMENTATION(int OverlayClass::Size_Of(bool) const, 0x0058CA90);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const OverlayClass::Class_Of() const, 0x0058C970);
+DEFINE_IMPLEMENTATION(void OverlayClass::Draw_It(Point2D &, Rect &) const, 0x0058CAF0);
+DEFINE_IMPLEMENTATION(void OverlayClass::Placement_Draw_It(Point2D &, Rect &) const, 0x0058C540);
+DEFINE_IMPLEMENTATION(bool OverlayClass::Mark(MarkType), 0x0058B5E0);
+// 0058C850
+// 0058C8B0
+// 0058C980
+DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass &), 0x0058BE30);
+DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass &), 0x0058C280);
+
 
 /**
  *  Global definitions
@@ -3764,6 +3783,7 @@ DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells = Ma
 DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes = Make_Global<DynamicVectorClass<SmudgeTypeClass *>>(0x007E47C0);
 DynamicVectorClass<FactoryClass *> &Factories = Make_Global<DynamicVectorClass<FactoryClass *>>(0x007E2348);
 DynamicVectorClass<SmudgeClass *> &Smudges = Make_Global<DynamicVectorClass<SmudgeClass *>>(0x007E23E8);
+DynamicVectorClass<OverlayClass *> &Overlays = Make_Global<DynamicVectorClass<OverlayClass *>>(0x007E4800);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

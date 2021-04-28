@@ -114,6 +114,7 @@ class LightSourceClass;
 class SmudgeTypeClass;
 class FactoryClass;
 class SmudgeClass;
+class OverlayClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -246,6 +247,7 @@ extern DynamicVectorClass<LightSourceClass *> &LightSources;
 extern DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes;
 extern DynamicVectorClass<FactoryClass *> &Factories;
 extern DynamicVectorClass<SmudgeClass *> &Smudges;
+extern DynamicVectorClass<OverlayClass *> &Overlays;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
