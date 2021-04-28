@@ -177,6 +177,7 @@
 #include "lightsource.h"
 #include "smudgetype.h"
 #include "coord.h"
+#include "factory.h"
 
 
 /**
@@ -3544,6 +3545,36 @@ DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 DEFINE_IMPLEMENTATION(CoordStruct Coord_Move(CoordStruct &, DirType, unsigned short), 0x004231B0);
 DEFINE_IMPLEMENTATION(CoordStruct Coord_Scatter(CoordStruct &, unsigned, bool), 0x0046E850);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 0x00497570);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Load(IStream *), 0x004975B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Save(IStream *, BOOL), 0x004976F0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(FactoryClass::FactoryClass(), 0x00496C60);
+FactoryClass::FactoryClass(const NoInitClass &x) : AbstractClass(x) { *((unsigned long *)this) = (unsigned long)0x006D0080; *((unsigned long *)this+4) = (unsigned long)0x006D0064; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(FactoryClass::~FactoryClass(), 0x00496DA0);
+DEFINE_IMPLEMENTATION(void FactoryClass::Detach(TARGET, bool), 0x004978B0);
+DEFINE_IMPLEMENTATION(RTTIType FactoryClass::Kind_Of() const, 0x00497A70);
+DEFINE_IMPLEMENTATION(int FactoryClass::Size_Of(bool) const, 0x00497A80);
+DEFINE_IMPLEMENTATION(void FactoryClass::Compute_CRC(WWCRCEngine &) const, 0x00497760);
+DEFINE_IMPLEMENTATION(void FactoryClass::AI(), 0x00496EA0);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Abandon(), 0x00497330);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Completed(), 0x004974E0);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Has_Changed(), 0x00496FB0);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Has_Completed(), 0x00497470);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Set(const TechnoTypeClass &, HouseClass &, bool), 0x00496FC0);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Set(TechnoClass &), 0x00497150);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Start(bool), 0x004971E0);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Suspend(bool), 0x004971A0);
+DEFINE_IMPLEMENTATION(int FactoryClass::Completion(), 0x00497460);
+DEFINE_IMPLEMENTATION(TechnoClass *FactoryClass::Get_Object() const, 0x004974A0);
+DEFINE_IMPLEMENTATION(int FactoryClass::Get_Special_Item() const, 0x004974B0);
+// 004978D0
+DEFINE_IMPLEMENTATION(bool FactoryClass::Remove_From_Queue(const TechnoTypeClass &), 0x00497940);
+DEFINE_IMPLEMENTATION(bool FactoryClass::Is_Queued(const TechnoTypeClass &), 0x004979D0);
+DEFINE_IMPLEMENTATION(int FactoryClass::Total_Queued(const TechnoTypeClass &), 0x00497990);
+DEFINE_IMPLEMENTATION(int FactoryClass::Cost_Per_Tick() const, 0x004974C0);
+DEFINE_IMPLEMENTATION(int FactoryClass::Build_Rate() const, 0x004972F0);
+DEFINE_IMPLEMENTATION(void FactoryClass::Recalculate_Times(HouseClass *), 0x00497A00);
+
 
 /**
  *  Global definitions
@@ -3715,6 +3746,7 @@ DynamicVectorClass<BuildingLightClass *> &BuildingLights = Make_Global<DynamicVe
 DynamicVectorClass<LightSourceClass *> &LightSources = Make_Global<DynamicVectorClass<LightSourceClass *>>(0x00804AC0);
 DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells = Make_Global<DynamicVectorClass<LightSourceClass::PendingCellClass *>>(0x00804AF0);
 DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes = Make_Global<DynamicVectorClass<SmudgeTypeClass *>>(0x007E47C0);
+DynamicVectorClass<FactoryClass *> &Factories = Make_Global<DynamicVectorClass<FactoryClass *>>(0x007E2348);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
