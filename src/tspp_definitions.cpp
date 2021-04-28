@@ -175,6 +175,7 @@
 #include "tagtype.h"
 #include "buildinglight.h"
 #include "lightsource.h"
+#include "smudgetype.h"
 
 
 /**
@@ -3519,6 +3520,26 @@ DEFINE_IMPLEMENTATION(void LightSourceClass::Process(), 0x00501700);
 DEFINE_IMPLEMENTATION(void LightSourceClass::Init_Clear(), 0x00501650);
 // 00501950
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SmudgeTypeClass::GetClassID(CLSID *), 0x005FB7A0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeTypeClass::Load(IStream *), 0x005FB730);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeTypeClass::Save(IStream *, BOOL), 0x005FB780);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SmudgeTypeClass::SmudgeTypeClass(const char *), 0x005FB1E0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SmudgeTypeClass::SmudgeTypeClass(const NoInitClass &), 0x005FB2E0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SmudgeTypeClass::~SmudgeTypeClass(), 0x005FB300);
+DEFINE_IMPLEMENTATION(RTTIType SmudgeTypeClass::Kind_Of() const, 0x005FBFE0);
+DEFINE_IMPLEMENTATION(int SmudgeTypeClass::Size_Of(bool) const, 0x005FBFF0);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005FB6D0);
+DEFINE_IMPLEMENTATION(int SmudgeTypeClass::Get_Heap_ID() const, 0x005FC000);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Read_INI(CCINIClass &), 0x005FB5C0);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005FB440);
+DEFINE_IMPLEMENTATION(ObjectClass *const SmudgeTypeClass::Create_One_Of(HouseClass *) const, 0x005FB4B0);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Draw_It(Point2D &, Rect &, int, int, CellStruct &) const, 0x005FB4E0);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Can_Place_Here(CellStruct &, bool), 0x005FBE30);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(CellStruct &), 0x005FBF30);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(CoordStruct &, int, int, bool), 0x005FB870);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(CoordStruct &, int, int, bool), 0x005FBB50);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
+
 
 /**
  *  Global definitions
@@ -3689,6 +3710,7 @@ DynamicVectorClass<TagTypeClass *> &TagTypes = Make_Global<DynamicVectorClass<Ta
 DynamicVectorClass<BuildingLightClass *> &BuildingLights = Make_Global<DynamicVectorClass<BuildingLightClass *>>(0x007B34E0);
 DynamicVectorClass<LightSourceClass *> &LightSources = Make_Global<DynamicVectorClass<LightSourceClass *>>(0x00804AC0);
 DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells = Make_Global<DynamicVectorClass<LightSourceClass::PendingCellClass *>>(0x00804AF0);
+DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes = Make_Global<DynamicVectorClass<SmudgeTypeClass *>>(0x007E47C0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

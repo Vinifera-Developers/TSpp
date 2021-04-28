@@ -111,6 +111,7 @@ class AITriggerTypeClass;
 class TagTypeClass;
 class BuildingLightClass;
 class LightSourceClass;
+class SmudgeTypeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -240,6 +241,7 @@ extern DynamicVectorClass<TagTypeClass *> &TagTypes;
 extern DynamicVectorClass<BuildingLightClass *> &BuildingLights;
 extern DynamicVectorClass<LightSourceClass *> &LightSources;
 //extern DynamicVectorClass<LightSourceClass::PendingCellClass *> &PendingLightCells; // See lightsource.h
+extern DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

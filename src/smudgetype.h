@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          OVERLAYTYPE.H
+ *  @file          SMUGETYPE.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Class for overlay types.
+ *  @brief         Class for smudge types.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -31,8 +31,8 @@
 #include "tibsun_defines.h"
 
 
-class DECLSPEC_UUID("5AF2CE79-0634-11D2-ACA4-006008055BB5")
-OverlayTypeClass : public ObjectTypeClass
+class DECLSPEC_UUID("5AF2CE78-0634-11D2-ACA4-006008055BB5")
+SmudgeTypeClass : public ObjectTypeClass
 {
     public:
         /**
@@ -47,9 +47,9 @@ OverlayTypeClass : public ObjectTypeClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        OverlayTypeClass(const char *ini_name = nullptr);
-        OverlayTypeClass(const NoInitClass &noinit);
-        virtual ~OverlayTypeClass();
+        SmudgeTypeClass(const char *ini_name = nullptr);
+        SmudgeTypeClass(const NoInitClass &noinit);
+        virtual ~SmudgeTypeClass();
 
         /**
          *  AbstractClass
@@ -67,46 +67,33 @@ OverlayTypeClass : public ObjectTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual CoordStruct Coord_Fixup(CoordStruct *coord) const override;
         virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
-        virtual ShapeFileStruct *const Get_Image_Data() const override;
 
         /**
-         *  OverlayTypeClass
+         *  SmudgeTypeClass
          */
-		virtual void Draw_It(Point2D &xy, Rect &a2, int frame) const;
+		virtual void Draw_It(Point2D &xy, Rect &a2, int index, int a4, CellStruct &cell) const;
 
-        RGBStruct Get_Radar_Color(int a1 = 0);
-        
+        bool Can_Place_Here(CellStruct &cell, bool a3);
+        void Place(CellStruct &cell);
+
+        static bool Create_Scorch(CoordStruct &coord, int width, int height, bool a4);
+        static bool Create_Crater(CoordStruct &coord, int width, int height, bool a4);
         static void Init(TheaterType theater = THEATER_TEMPERATE);
 
-        static const OverlayTypeClass &As_Reference(OverlayType type);
-        static const OverlayTypeClass *As_Pointer(OverlayType type);
-        static const OverlayTypeClass &As_Reference(const char *name);
-        static const OverlayTypeClass *As_Pointer(const char *name);
-        static OverlayType From_Name(const char *name);
-        static const char *Name_From(OverlayType type);
-        static const OverlayTypeClass *Find_Or_Make(const char *name);
+        static const SmudgeTypeClass &As_Reference(SmudgeType type);
+        static const SmudgeTypeClass *As_Pointer(SmudgeType type);
+        static const SmudgeTypeClass &As_Reference(const char *name);
+        static const SmudgeTypeClass *As_Pointer(const char *name);
+        static SmudgeType From_Name(const char *name);
+        static const char *Name_From(SmudgeType type);
+        static const SmudgeTypeClass *Find_Or_Make(const char *name);
 
     public:
-		OverlayType Type;
-		LandType Land;
-        AnimType CellAnim;
-		int DamageLevels;
-		int DamagePoints;
-		bool IsWall;
-		bool IsHigh;
-		bool IsTiberium;
-		bool IsCrate;
-		bool IsCrateTrigger;
-        bool NoUseTileLandType;
-        bool IsVeinholeMonster;
-        bool IsVeins;
-        bool IsDemandLoad;
-        bool IsExplodes;
-        bool IsChainReaction;
-        bool IsOverrides;
-        bool IsDrawFlat;
-        bool IsARock;
+		SmudgeType Type;
+		int Width;
+		int Height;
+        bool IsCrater;
+        bool IsScorch;
 };

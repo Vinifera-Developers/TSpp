@@ -458,7 +458,14 @@ typedef enum SpotlightBehaviorType
 } SpotlightBehaviorType;
 
 typedef enum SourceType {} SourceType;
-typedef enum SmudgeType {} SmudgeType;
+
+typedef enum SmudgeType
+{
+    SMUDGE_NONE = -1,
+
+    SMUDGE_FIRST = 0
+} SmudgeType;
+DEFINE_ENUMERATION_OPERATORS(SmudgeType);
 
 typedef enum ParticleBehaviourType
 {
@@ -1811,6 +1818,7 @@ DEFINE_ENUMERATION_OPERATORS(TheaterType);
 typedef struct {
     char Name[16];
     char Root[10];
+    char DataRoot[10];
     char Suffix[4];
 } TheaterDataType;
 
