@@ -1681,7 +1681,7 @@ typedef enum WeaponSlotType
     WEAPON_SLOT_FIRST = 0,
 } WeaponSlotType;
 
-enum TiberiumType
+typedef enum TiberiumType
 {
     TIBERIUM_RIPARIUS,
     TIBERIUM_CRUENTUS,
@@ -1692,8 +1692,22 @@ enum TiberiumType
 
     TIBERIUM_NONE = -1,
     TIBERIUM_FIRST = 0
-};
+} TiberiumType;
 DEFINE_ENUMERATION_OPERATORS(TiberiumType);
+
+typedef enum TiberiumImageType
+{
+    TIBIMAGE_1,
+    TIBIMAGE_2,
+    TIBIMAGE_3,
+    TIBIMAGE_4,
+
+    TIBIMAGE_COUNT,
+
+    TIBIMAGE_NONE = -1,
+    TIBIMAGE_FIRST = 0
+} TiberiumImageType;
+DEFINE_ENUMERATION_OPERATORS(TiberiumImageType);
 
 typedef enum ColorSchemeType
 {

@@ -115,6 +115,7 @@ class SmudgeTypeClass;
 class FactoryClass;
 class SmudgeClass;
 class OverlayClass;
+class TiberiumClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -248,6 +249,7 @@ extern DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes;
 extern DynamicVectorClass<FactoryClass *> &Factories;
 extern DynamicVectorClass<SmudgeClass *> &Smudges;
 extern DynamicVectorClass<OverlayClass *> &Overlays;
+extern DynamicVectorClass<TiberiumClass *> &Tiberiums;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

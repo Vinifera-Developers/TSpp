@@ -180,6 +180,7 @@
 #include "factory.h"
 #include "smudge.h"
 #include "overlay.h"
+#include "tiberium.h"
 
 
 /**
@@ -1319,6 +1320,7 @@ DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Read_INI(CCINIClass &), 0x0058D490)
 DEFINE_IMPLEMENTATION(CoordStruct OverlayTypeClass::Coord_Fixup(CoordStruct *) const, 0x0058D730);
 DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0058D2B0);
 DEFINE_IMPLEMENTATION(ObjectClass *const OverlayTypeClass::Create_One_Of(HouseClass *) const, 0x0058D2E0);
+DEFINE_IMPLEMENTATION(CellStruct *OverlayTypeClass::Occupy_List(bool) const, 0x0058D240);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const OverlayTypeClass::Get_Image_Data() const, 0x0058DB20);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Draw_It(Point2D &, Rect &, int) const, 0x0058D310);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Init(TheaterType), 0x0058D3A0);
@@ -3610,6 +3612,39 @@ DEFINE_IMPLEMENTATION(bool OverlayClass::Mark(MarkType), 0x0058B5E0);
 DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass &), 0x0058BE30);
 DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass &), 0x0058C280);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TiberiumClass::GetClassID(CLSID *), 0x00644FD0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::Load(IStream *), 0x00645010);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::Save(IStream *, BOOL), 0x00645250);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::GetSizeMax(ULARGE_INTEGER *), 0x00645220);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TiberiumClass::TiberiumClass(const char *), 0x00644890);
+TiberiumClass::TiberiumClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D86F0; *((unsigned long *)this+4) = (unsigned long)0x006D86D4; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TiberiumClass::~TiberiumClass(), 0x00644A30);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Detach(TARGET, bool), 0x006452C0);
+DEFINE_IMPLEMENTATION(RTTIType TiberiumClass::Kind_Of() const, 0x00646860);
+DEFINE_IMPLEMENTATION(int TiberiumClass::Size_Of(bool) const, 0x00646850);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Compute_CRC(WWCRCEngine &) const, 0x00644F60);
+DEFINE_IMPLEMENTATION(int TiberiumClass::Get_Heap_ID() const, 0x00646870);
+DEFINE_IMPLEMENTATION(bool TiberiumClass::Read_INI(CCINIClass &), 0x00644BF0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Process(CCINIClass &), 0x00644EB0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_AI(), 0x00645330);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_Init_Clear(), 0x00645510);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Spread(), 0x006455C0);
+// 006458F0
+// 00645A30
+// 00645BA0
+// 00645C30
+DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Spread_Cell(CellStruct &), 0x00645C70);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_AI(), 0x00645DC0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_Init_Clear(), 0x00645E80);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Grow(), 0x00645FD0);
+// 00646080
+// 006463D0
+// 00646510
+// 00646680
+DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Growth_Cell(CellStruct &), 0x00646710);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Init_Cells(), 0x006453C0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Init(), 0x00646840);
+
 
 /**
  *  Global definitions
@@ -3784,6 +3819,7 @@ DynamicVectorClass<SmudgeTypeClass *> &SmudgeTypes = Make_Global<DynamicVectorCl
 DynamicVectorClass<FactoryClass *> &Factories = Make_Global<DynamicVectorClass<FactoryClass *>>(0x007E2348);
 DynamicVectorClass<SmudgeClass *> &Smudges = Make_Global<DynamicVectorClass<SmudgeClass *>>(0x007E23E8);
 DynamicVectorClass<OverlayClass *> &Overlays = Make_Global<DynamicVectorClass<OverlayClass *>>(0x007E4800);
+DynamicVectorClass<TiberiumClass *> &Tiberiums = Make_Global<DynamicVectorClass<TiberiumClass *>>(0x0080F408);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          STIMER.H
+ *  @file          SESSION.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Basic Windows system timer interfaces.
+ *  @brief         Game session values.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
