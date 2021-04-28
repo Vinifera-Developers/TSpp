@@ -109,6 +109,7 @@ class ParticleSystemTypeClass;
 class VoxelAnimClass;
 class AITriggerTypeClass;
 class TagTypeClass;
+class BuildingLightClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -235,6 +236,7 @@ extern DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes;
 extern DynamicVectorClass<VoxelAnimClass *> &VoxelAnims;
 extern DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes;
 extern DynamicVectorClass<TagTypeClass *> &TagTypes;
+extern DynamicVectorClass<BuildingLightClass *> &BuildingLights;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

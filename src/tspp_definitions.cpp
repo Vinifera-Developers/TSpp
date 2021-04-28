@@ -173,6 +173,7 @@
 #include "voxelanim.h"
 #include "aitrigtype.h"
 #include "tagtype.h"
+#include "buildinglight.h"
 
 
 /**
@@ -3480,6 +3481,27 @@ DEFINE_IMPLEMENTATION(AttachType TagTypeClass::Attaches_To() const, 0x0061F640);
 DEFINE_IMPLEMENTATION(void TagTypeClass::Read_Scenario_INI(CCINIClass &), 0x0061F350);
 DEFINE_IMPLEMENTATION(void TagTypeClass::Write_Scenario_INI(CCINIClass &), 0x0061F450);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingLightClass::GetClassID(CLSID *), 0x00422A80);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingLightClass::Load(IStream *), 0x00422AC0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingLightClass::Save(IStream *, BOOL), 0x00422B20);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingLightClass::BuildingLightClass(TechnoClass *), 0x00421AE0);
+BuildingLightClass::BuildingLightClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CBFE0; *((unsigned long *)this+4) = (unsigned long)0x006CBFC4; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BuildingLightClass::~BuildingLightClass(), 0x00421D70);
+DEFINE_IMPLEMENTATION(void BuildingLightClass::Detach(TARGET, bool), 0x00422B60);
+DEFINE_IMPLEMENTATION(RTTIType BuildingLightClass::Kind_Of() const, 0x00423240);
+DEFINE_IMPLEMENTATION(int BuildingLightClass::Size_Of(bool) const, 0x00422A70);
+DEFINE_IMPLEMENTATION(void BuildingLightClass::Compute_CRC(WWCRCEngine &) const, 0x00423080);
+DEFINE_IMPLEMENTATION(void BuildingLightClass::AI(), 0x004223D0);
+DEFINE_IMPLEMENTATION(LayerType BuildingLightClass::In_Which_Layer() const, 0x00422B50);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const BuildingLightClass::Class_Of() const, 0x00422B40);
+DEFINE_IMPLEMENTATION(bool BuildingLightClass::Limbo(), 0x00423150);
+DEFINE_IMPLEMENTATION(bool BuildingLightClass::Unlimbo(CoordStruct &, DirType), 0x00423170);
+DEFINE_IMPLEMENTATION(void BuildingLightClass::Draw_It(Point2D &, Rect &) const, 0x00421DF0);
+// 00422BA0
+DEFINE_IMPLEMENTATION(void BuildingLightClass::Set_Behavior(SpotlightBehaviorType), 0x00422D40);
+// 00422EE0
+// 00422FC0
+
 
 /**
  *  Global definitions
@@ -3647,6 +3669,7 @@ DynamicVectorClass<ParticleSystemTypeClass *> &ParticleSystemTypes = Make_Global
 DynamicVectorClass<VoxelAnimClass *> &VoxelAnims = Make_Global<DynamicVectorClass<VoxelAnimClass *>>(0x0074C658);
 DynamicVectorClass<AITriggerTypeClass *> &AITriggerTypes = Make_Global<DynamicVectorClass<AITriggerTypeClass *>>(0x007E2408);
 DynamicVectorClass<TagTypeClass *> &TagTypes = Make_Global<DynamicVectorClass<TagTypeClass *>>(0x0080E800);
+DynamicVectorClass<BuildingLightClass *> &BuildingLights = Make_Global<DynamicVectorClass<BuildingLightClass *>>(0x007B34E0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

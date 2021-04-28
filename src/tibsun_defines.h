@@ -449,6 +449,14 @@ typedef enum AITriggerHouseType
     AITRIG_HOUSE_ALL,      // <any>
 } AITriggerHouseType;
 
+typedef enum SpotlightBehaviorType
+{
+    BEHAVIOR_NONE,
+    BEHAVIOR_SWEEP,
+    BEHAVIOR_CIRCLE,
+    BEHAVIOR_FOLLOW
+} SpotlightBehaviorType;
+
 typedef enum SourceType {} SourceType;
 typedef enum SmudgeType {} SmudgeType;
 
