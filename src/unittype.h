@@ -36,6 +36,12 @@ class DECLSPEC_UUID("DCBD42EA-0546-11D2-ACA4-006008055BB5")
 UnitTypeClass : public TechnoTypeClass
 {
     public:
+        enum UnitTypeClassEnums
+        {
+            FIRING_SYNC_FRAME_MAX = 2
+        };
+
+    public:
         /**
          *  IPersist
          */
@@ -119,8 +125,7 @@ UnitTypeClass : public TechnoTypeClass
         char DeathFrameRate;
         int MaxCharge;
         int StartCharge;
-        int FiringSyncFrame1;
-        int FiringSyncFrame2;
+        int FiringSyncFrame[FIRING_SYNC_FRAME_MAX];
         int StartStandFrame;
         int StartWalkFrame;
         int StartFiringFrame;

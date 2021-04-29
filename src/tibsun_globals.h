@@ -117,6 +117,7 @@ class SmudgeClass;
 class OverlayClass;
 class TiberiumClass;
 class BulletClass;
+class UnitClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -252,6 +253,7 @@ extern DynamicVectorClass<SmudgeClass *> &Smudges;
 extern DynamicVectorClass<OverlayClass *> &Overlays;
 extern DynamicVectorClass<TiberiumClass *> &Tiberiums;
 extern DynamicVectorClass<BulletClass *> &Bullets;
+extern DynamicVectorClass<UnitClass *> &Units;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

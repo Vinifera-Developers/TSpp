@@ -182,6 +182,7 @@
 #include "overlay.h"
 #include "tiberium.h"
 #include "bullet.h"
+#include "unit.h"
 
 
 /**
@@ -3685,6 +3686,91 @@ DEFINE_IMPLEMENTATION(void FlyClass::If_XY_0_Set_X_100(), 0x0040F760);
 
 DEFINE_IMPLEMENTATION(int Projectile_Motion(CoordStruct &, FlyClass &, CoordStruct &, DirStruct &, bool, bool, bool), 0x00558230);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitClass::GetClassID(CLSID *), 0x0065B5D0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Load(IStream *), 0x00659580);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Save(IStream *, BOOL), 0x00659740);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(UnitClass::UnitClass(UnitTypeClass *, HouseClass *), FootClass, 0x0064D4B0);
+UnitClass::UnitClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8B6C; *((unsigned long *)this+4) = (unsigned long)0x006D8B50; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(UnitClass::~UnitClass(), 0x0064D7C0);
+DEFINE_IMPLEMENTATION(void UnitClass::Detach(TARGET, bool), 0x00659830);
+DEFINE_IMPLEMENTATION(RTTIType UnitClass::Kind_Of() const, 0x0065B610);
+DEFINE_IMPLEMENTATION(int UnitClass::Size_Of(bool) const, 0x0065B5B0);
+DEFINE_IMPLEMENTATION(void UnitClass::Compute_CRC(WWCRCEngine &) const, 0x00659760);
+DEFINE_IMPLEMENTATION(void UnitClass::AI(), 0x0064E020);
+DEFINE_IMPLEMENTATION(ActionType UnitClass::What_Action(const ObjectClass *, bool), 0x006564A0);
+DEFINE_IMPLEMENTATION(ActionType UnitClass::What_Action(CellStruct &, bool, bool) const, 0x00655F90);
+DEFINE_IMPLEMENTATION(bool UnitClass::entry_80() const, 0x0065B2D0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const UnitClass::Class_Of() const, 0x00657190);
+DEFINE_IMPLEMENTATION(const char *UnitClass::Full_Name() const, 0x0065B620);
+DEFINE_IMPLEMENTATION(bool UnitClass::Limbo(), 0x00659270);
+DEFINE_IMPLEMENTATION(bool UnitClass::Unlimbo(CoordStruct &, DirType), 0x0064F940);
+DEFINE_IMPLEMENTATION(void UnitClass::Record_The_Kill(const ObjectClass *), 0x00659870);
+DEFINE_IMPLEMENTATION(void UnitClass::Set_Occupy_Bit(CoordStruct &), 0x00659300);
+DEFINE_IMPLEMENTATION(void UnitClass::Clear_Occupy_Bit(CoordStruct &), 0x00659360);
+DEFINE_IMPLEMENTATION(bool UnitClass::Render(Rect &, bool, bool), 0x00651EC0);
+DEFINE_IMPLEMENTATION(void UnitClass::Draw_It(Point2D &, Rect &) const, 0x00653A70);
+DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x006503A0);
+DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x00650330);
+DEFINE_IMPLEMENTATION(ResultType UnitClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0064FA70);
+DEFINE_IMPLEMENTATION(void UnitClass::Scatter(CoordStruct &, bool, bool), 0x00658D80);
+DEFINE_IMPLEMENTATION(void UnitClass::Per_Cell_Process(PCPType), 0x006511B0);
+DEFINE_IMPLEMENTATION(RadioMessageType UnitClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x0064F440);
+DEFINE_IMPLEMENTATION(MoveType UnitClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x00655330);
+DEFINE_IMPLEMENTATION(bool UnitClass::Ready_To_Commence() const, 0x006593C0);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Attack(), 0x006598F0);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Guard(), 0x006566E0);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Guard_Area(), 0x006592C0);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Harvest(), 0x00654A80);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Hunt(), 0x00655270);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Move(), 0x00656840);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Unload(), 0x006540C0);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Repair(), 0x00656D20);
+DEFINE_IMPLEMENTATION(int UnitClass::Mission_Patrol(), 0x00656890);
+DEFINE_IMPLEMENTATION(bool UnitClass::entry_238() const, 0x006592D0);
+DEFINE_IMPLEMENTATION(DirStruct UnitClass::Turret_Facing() const, 0x0065B630);
+DEFINE_IMPLEMENTATION(double UnitClass::Tiberium_Load() const, 0x006571A0);
+DEFINE_IMPLEMENTATION(double UnitClass::Weed_Load() const, 0x00659900);
+DEFINE_IMPLEMENTATION(int UnitClass::Pip_Count() const, 0x00656BD0);
+DEFINE_IMPLEMENTATION(FacingType UnitClass::Desired_Load_Dir(const ObjectClass *, CellStruct &) const, 0x006568E0);
+DEFINE_IMPLEMENTATION(DirStruct UnitClass::Fire_Direction() const, 0x00656DC0);
+DEFINE_IMPLEMENTATION(InfantryTypeClass *const UnitClass::Crew_Type() const, 0x00656D10);
+DEFINE_IMPLEMENTATION(bool UnitClass::entry_2A4() const, 0x0065B590);
+DEFINE_IMPLEMENTATION(int UnitClass::entry_2A8() const, 0x00659940);
+DEFINE_IMPLEMENTATION(FireErrorType UnitClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x00656E10);
+DEFINE_IMPLEMENTATION(int UnitClass::Greatest_Threat(ThreatType, CoordStruct &, bool) const, 0x00658520);
+DEFINE_IMPLEMENTATION(const BulletClass *UnitClass::Fire_At(TARGET, WeaponSlotType) const, 0x00657070);
+DEFINE_IMPLEMENTATION(bool UnitClass::Captured(HouseClass *), 0x0065B280);
+DEFINE_IMPLEMENTATION(void UnitClass::Assign_Destination(const TARGET, bool) const, 0x00657520);
+DEFINE_IMPLEMENTATION(bool UnitClass::Enter_Idle_Mode(bool, bool) const, 0x006503C0);
+DEFINE_IMPLEMENTATION(bool UnitClass::entry_370(), 0x0064E880);
+DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(CellStruct &, bool), 0x006572B0);
+DEFINE_IMPLEMENTATION(void UnitClass::Approach_Target(), 0x006571E0);
+DEFINE_IMPLEMENTATION(void UnitClass::entry_3C0(int, int, int, int, int, int, int, int), 0x00652330);
+DEFINE_IMPLEMENTATION(void UnitClass::entry_3C4(int, int, int, int, int, int, int, int), 0x00653090);
+DEFINE_IMPLEMENTATION(void UnitClass::entry_3C8(int, int, int, int, int, int, int, int, int), 0x00651F50);
+DEFINE_IMPLEMENTATION(void UnitClass::Tunnel_AI(), 0x0064D9D0);
+DEFINE_IMPLEMENTATION(void UnitClass::Rotation_AI(), 0x0064E560);
+DEFINE_IMPLEMENTATION(bool UnitClass::Edge_Of_World_AI(), 0x0064E6F0);
+DEFINE_IMPLEMENTATION(void UnitClass::Reload_AI(), 0x0064E760);
+DEFINE_IMPLEMENTATION(void UnitClass::Firing_AI(), 0x0064E920);
+DEFINE_IMPLEMENTATION(void UnitClass::Visceroid_AI(), 0x0064ECF0);
+DEFINE_IMPLEMENTATION(void UnitClass::Jellyfish_AI(), 0x0064F020);
+DEFINE_IMPLEMENTATION(bool UnitClass::Goto_Clear_Spot(), 0x00650680);
+DEFINE_IMPLEMENTATION(bool UnitClass::Try_To_Deploy(), 0x00650B70);
+DEFINE_IMPLEMENTATION(bool UnitClass::Harvesting(), 0x00653EE0);
+DEFINE_IMPLEMENTATION(bool UnitClass::Flag_Attach(HousesType), 0x00656B70);
+DEFINE_IMPLEMENTATION(bool UnitClass::Flag_Remove(), 0x00656BA0);
+DEFINE_IMPLEMENTATION(void UnitClass::APC_Close_Door(), 0x00656C90);
+DEFINE_IMPLEMENTATION(void UnitClass::APC_Open_Door(), 0x00656CB0);
+DEFINE_IMPLEMENTATION(int UnitClass::Credit_Load() const, 0x00658C10);
+DEFINE_IMPLEMENTATION(bool UnitClass::Should_Crush_It(const TechnoClass *) const, 0x00658C20);
+// 00659970
+// 0065B180
+// 0065B2F0
+// 0065B400
+DEFINE_IMPLEMENTATION(void UnitClass::Read_INI(CCINIClass &), 0x006585C0);
+DEFINE_IMPLEMENTATION(void UnitClass::Write_INI(CCINIClass &), 0x00658A40);
+
 
 /**
  *  Global definitions
@@ -3861,6 +3947,7 @@ DynamicVectorClass<SmudgeClass *> &Smudges = Make_Global<DynamicVectorClass<Smud
 DynamicVectorClass<OverlayClass *> &Overlays = Make_Global<DynamicVectorClass<OverlayClass *>>(0x007E4800);
 DynamicVectorClass<TiberiumClass *> &Tiberiums = Make_Global<DynamicVectorClass<TiberiumClass *>>(0x0080F408);
 DynamicVectorClass<BulletClass *> &Bullets = Make_Global<DynamicVectorClass<BulletClass *>>(0x007E48E0);
+DynamicVectorClass<UnitClass *> &Units = Make_Global<DynamicVectorClass<UnitClass *>>(0x007B3458);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
