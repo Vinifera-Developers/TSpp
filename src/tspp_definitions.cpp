@@ -181,6 +181,7 @@
 #include "smudge.h"
 #include "overlay.h"
 #include "tiberium.h"
+#include "bullet.h"
 
 
 /**
@@ -1048,12 +1049,12 @@ DEFINE_IMPLEMENTATION(CoordStruct BulletTypeClass::Coord_Fixup(CoordStruct *) co
 DEFINE_IMPLEMENTATION(bool BulletTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004486F0);
 DEFINE_IMPLEMENTATION(ObjectClass *const BulletTypeClass::Create_One_Of(HouseClass *) const, 0x00448700);
 
-DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
-DEFINE_IMPLEMENTATION(ULONG LocomotionClass::AddRef(), 0x00506480);
-DEFINE_IMPLEMENTATION(ULONG LocomotionClass::Release(), 0x005064A0);
-DEFINE_IMPLEMENTATION(LONG LocomotionClass::IsDirty(), 0x00482280);
-DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::Save(IStream *, BOOL), 0x00506590);
-DEFINE_IMPLEMENTATION(LONG LocomotionClass::GetSizeMax(ULARGE_INTEGER *), 0x00506660);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE LocomotionClass::AddRef(), 0x00506480);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE LocomotionClass::Release(), 0x005064A0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE LocomotionClass::IsDirty(), 0x00482280);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LocomotionClass::Save(IStream *, BOOL), 0x00506590);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE LocomotionClass::GetSizeMax(ULARGE_INTEGER *), 0x00506660);
 LocomotionClass::LocomotionClass() {}
 LocomotionClass::LocomotionClass(const NoInitClass &) {}
 LocomotionClass::~LocomotionClass() {}
@@ -1132,9 +1133,9 @@ DEFINE_IMPLEMENTATION(int WinsockInterfaceClass::Local_Addresses_Count() const, 
 DEFINE_IMPLEMENTATION(unsigned char * WinsockInterfaceClass::Get_Local_Address(int) const, 0x006A0C00);
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Set_NetCard(int), 0x006A0C10);
 
-DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x00483AD0);
-DEFINE_IMPLEMENTATION(ULONG DropPodLocomotionClass::AddRef(), 0x00483CF0);
-DEFINE_IMPLEMENTATION(ULONG DropPodLocomotionClass::Release(), 0x00483D00);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x00483AD0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE DropPodLocomotionClass::AddRef(), 0x00483CF0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE DropPodLocomotionClass::Release(), 0x00483D00);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE DropPodLocomotionClass::GetClassID(CLSID *), 0x00483860);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Load(IStream *), 0x004838A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Save(IStream *, BOOL), 0x00483920);
@@ -1371,9 +1372,9 @@ DEFINE_IMPLEMENTATION(void SpotlightClass::Clear_All(), 0x0058E580);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_It(), 0x0058E5D0);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_All(), 0x0058EA20);
 
-DEFINE_IMPLEMENTATION(HRESULT GScreenClass::QueryInterface(REFIID, LPVOID *), 0x004B9390);
-DEFINE_IMPLEMENTATION(ULONG GScreenClass::AddRef(), 0x00402AD0);
-DEFINE_IMPLEMENTATION(ULONG GScreenClass::Release(), 0x00402AE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE GScreenClass::QueryInterface(REFIID, LPVOID *), 0x004B9390);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE GScreenClass::AddRef(), 0x00402AD0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE GScreenClass::Release(), 0x00402AE0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(GScreenClass::GScreenClass(), 0x004B9370);
 GScreenClass::GScreenClass(const NoInitClass &) { *((unsigned long *)this) = (unsigned long)0x006D1A5C; }
 GScreenClass::~GScreenClass() {}
@@ -3130,9 +3131,9 @@ DEFINE_IMPLEMENTATION(bool TaskForceClass::Write_INI(CCINIClass &) const, 0x0062
 DEFINE_IMPLEMENTATION(void TaskForceClass::Read_Scenario_INI(CCINIClass &, int), 0x00621780);
 DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass &, int), 0x00621940);
 
-DEFINE_IMPLEMENTATION(HRESULT AircraftClass::QueryInterface(REFIID, LPVOID *), 0x004088C0);
-DEFINE_IMPLEMENTATION(ULONG AircraftClass::AddRef(), 0x00408920);
-DEFINE_IMPLEMENTATION(ULONG AircraftClass::Release(), 0x00408930);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::QueryInterface(REFIID, LPVOID *), 0x004088C0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AircraftClass::AddRef(), 0x00408920);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AircraftClass::Release(), 0x00408930);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AircraftClass::GetClassID(CLSID *), 0x00621D70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Load(IStream *), 0x00621D10);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Save(IStream *, BOOL), 0x00621CF0);
@@ -3645,6 +3646,45 @@ DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Growth_Cell(CellStruct &), 0x00646
 DEFINE_IMPLEMENTATION(void TiberiumClass::Init_Cells(), 0x006453C0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Init(), 0x00646840);
 
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE BulletClass::AddRef(), 0x004471B0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE BulletClass::Release(), 0x004471D0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BulletClass::GetClassID(CLSID *), 0x00447460);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletClass::Load(IStream *), 0x004470F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletClass::Save(IStream *, BOOL), 0x00447190);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(BulletClass::BulletClass(), 0x004444A0);
+//BulletClass::BulletClass(BulletType id, TARGET target, TechnoClass *payback, int strength, WarheadType warhead, int speed), 0x);
+BulletClass::BulletClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CC88C; *((unsigned long *)this+4) = (unsigned long)0x006CC870; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(BulletClass::~BulletClass(), 0x004445E0);
+DEFINE_IMPLEMENTATION(void BulletClass::Detach(TARGET, bool), 0x00445F00);
+DEFINE_IMPLEMENTATION(RTTIType BulletClass::Kind_Of() const, 0x00447450);
+DEFINE_IMPLEMENTATION(int BulletClass::Size_Of(bool) const, 0x00447440);
+DEFINE_IMPLEMENTATION(void BulletClass::AI(), 0x004446F0);
+DEFINE_IMPLEMENTATION(LayerType BulletClass::In_Which_Layer() const, 0x004462B0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const BulletClass::Class_Of() const, 0x004474B0);
+DEFINE_IMPLEMENTATION(CellStruct *BulletClass::Occupy_List(bool) const, 0x00444670);
+DEFINE_IMPLEMENTATION(void BulletClass::Draw_It(Point2D &, Rect &) const, 0x00445C00);
+DEFINE_IMPLEMENTATION(bool BulletClass::Mark(MarkType), 0x004446D0);
+DEFINE_IMPLEMENTATION(int BulletClass::Shape_Number() const, 0x00445B70);
+DEFINE_IMPLEMENTATION(void BulletClass::Assign_Target(TARGET), 0x004474A0);
+DEFINE_IMPLEMENTATION(bool BulletClass::Unlimbo(CoordStruct &, FlyClass &), 0x00445F40);
+// 00444580
+DEFINE_IMPLEMENTATION(bool BulletClass::Is_Forced_To_Explode(CoordStruct &coord) const, 0x004462C0);
+DEFINE_IMPLEMENTATION(void BulletClass::Bullet_Explodes(bool forced), 0x004463D0);
+// 00446640
+DEFINE_IMPLEMENTATION(bool BulletClass::Homes_In() const, 0x00447210);
+// 004472C0
+DEFINE_IMPLEMENTATION(BulletClass *BulletClass::Create_Bullet(BulletTypeClass *, TARGET, TechnoClass *, int, WarheadTypeClass *, int, int, bool), 0x00447220);
+
+DEFINE_IMPLEMENTATION(DirStruct FlyClass::Direction(), 0x0040F5E0);
+DEFINE_IMPLEMENTATION(double FlyClass::Distance_2D(), 0x0040F650);
+DEFINE_IMPLEMENTATION(double FlyClass::Distance_3D(), 0x0040F6C0);
+DEFINE_IMPLEMENTATION(double FlyClass::Distance_2D_0(), 0x0040F730);
+DEFINE_IMPLEMENTATION(void FlyClass::Update_Position(DirStruct &), 0x00558A90);
+DEFINE_IMPLEMENTATION(void FlyClass::If_XYZ_0_Set_X_100(), 0x0040F6F0);
+DEFINE_IMPLEMENTATION(void FlyClass::If_XY_0_Set_X_100(), 0x0040F760);
+
+DEFINE_IMPLEMENTATION(int Projectile_Motion(CoordStruct &, FlyClass &, CoordStruct &, DirStruct &, bool, bool, bool), 0x00558230);
+
 
 /**
  *  Global definitions
@@ -3820,6 +3860,7 @@ DynamicVectorClass<FactoryClass *> &Factories = Make_Global<DynamicVectorClass<F
 DynamicVectorClass<SmudgeClass *> &Smudges = Make_Global<DynamicVectorClass<SmudgeClass *>>(0x007E23E8);
 DynamicVectorClass<OverlayClass *> &Overlays = Make_Global<DynamicVectorClass<OverlayClass *>>(0x007E4800);
 DynamicVectorClass<TiberiumClass *> &Tiberiums = Make_Global<DynamicVectorClass<TiberiumClass *>>(0x0080F408);
+DynamicVectorClass<BulletClass *> &Bullets = Make_Global<DynamicVectorClass<BulletClass *>>(0x007E48E0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
