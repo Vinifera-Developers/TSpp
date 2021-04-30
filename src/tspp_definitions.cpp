@@ -183,6 +183,7 @@
 #include "tiberium.h"
 #include "bullet.h"
 #include "unit.h"
+#include "fastmath.h"
 
 
 /**
@@ -3770,6 +3771,25 @@ DEFINE_IMPLEMENTATION(bool UnitClass::Should_Crush_It(const TechnoClass *) const
 // 0065B400
 DEFINE_IMPLEMENTATION(void UnitClass::Read_INI(CCINIClass &), 0x006585C0);
 DEFINE_IMPLEMENTATION(void UnitClass::Write_INI(CCINIClass &), 0x00658A40);
+
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Sqrt(double), 0x00497F50);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Sin(double), 0x00497FC0);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Cos(double), 0x00498010);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Tan(double), 0x00498060);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Asin(double), 0x00498090);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Acos(double), 0x004980C0);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Atan(double), 0x004980F0);
+DEFINE_IMPLEMENTATION(float __cdecl FastMath::Atan2(double, double), 0x00498140);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Sqrtf(float), 0x00498370);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Sinf(float), 0x00498460);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Cosf(float), 0x004984B0);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Tanf(float), 0x00498630);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Asinf(float), 0x00498570);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Acosf(float), 0x004985A0);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Atanf(float), 0x00498790);
+DEFINE_IMPLEMENTATION(float __stdcall FastMath::Atan2f(float, float), 0x004986E0);
+//DEFINE_IMPLEMENTATION(int __cdecl FastMath::ftol(double), 0x006B2330);
+//__int64 __cdecl FastMath::ftol64(double val) { return static_cast<int>(FastMath::ftol(val)); }
 
 
 /**
