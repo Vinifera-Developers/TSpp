@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TAGTYPE.H
+ *  @file          TRIGGERTYPE.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Class for object trigger-tag types.
+ *  @brief         Class for trigger types.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -31,11 +31,13 @@
 #include "tibsun_defines.h"
 
 
-class TriggerTypeClass;
+class TEventClass;
+class TActionClass;
+class HouseTypeClass;
 
 
-class DECLSPEC_UUID("54F6E433-09ED-11D2-ACA5-006008055BB5")
-TagTypeClass : public AbstractTypeClass
+class DECLSPEC_UUID("C02D1591-0A2A-11D2-ACA7-006008055BB5")
+TriggerTypeClass : public AbstractTypeClass
 {
     public:
         /**
@@ -50,14 +52,14 @@ TagTypeClass : public AbstractTypeClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        TagTypeClass(const char *ini_name = nullptr);
-        TagTypeClass(const NoInitClass &noinit);
-        virtual ~TagTypeClass();
+        TriggerTypeClass(const char *ini_name = nullptr);
+        TriggerTypeClass(const NoInitClass &noinit);
+        virtual ~TriggerTypeClass();
 
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true);
+        virtual void Detach(TARGET target, bool all = true) override;
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
@@ -69,27 +71,36 @@ TagTypeClass : public AbstractTypeClass
         virtual bool Read_INI(CCINIClass &ini) override;
         virtual bool Write_INI(CCINIClass &ini) const override;
 
-		// 0061F270
-		// 0061F290
-		AttachType Attaches_To() const;
-		// 0061F660
-		// 0061F690
-		// 0061F6C0
-		// 0061F6F0
+        // 00649F30
+        // 00649F50
+        // 00649F70
+        // 00649F90
+        // 00649FB0
+        // 00649FF0
+        AttachType Attaches_To() const;
+        bool Remove_Action(TActionClass *action);
+        bool Remove_Event(TEventClass *event);
 
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
 
-        static const TagTypeClass &As_Reference(TagType type);
-        static const TagTypeClass *As_Pointer(TagType type);
-        static const TagTypeClass &As_Reference(const char *name);
-        static const TagTypeClass *As_Pointer(const char *name);
-        static TagType From_Name(const char *name);
-        static const char *Name_From(TagType type);
-        static const TagTypeClass *Find_Or_Make(const char *name);
+        static const TriggerTypeClass &As_Reference(TriggerType type);
+        static const TriggerTypeClass *As_Pointer(TriggerType type);
+        static const TriggerTypeClass &As_Reference(const char *name);
+        static const TriggerTypeClass *As_Pointer(const char *name);
+        static TriggerType From_Name(const char *name);
+        static const char *Name_From(TriggerType type);
+        static const TriggerTypeClass *Find_Or_Make(const char *name);
 
     public:
-        TagType Type;
-		PersistantType IsPersistant;
-        TriggerTypeClass *TriggerType;
+        TriggerType Type;
+        bool field_64;
+        bool Easy;
+        bool Normal;
+        bool Hard;
+        PersistantType IsPersistant;
+        HouseTypeClass *House;
+        TriggerTypeClass *Next;
+        TEventClass *Event;
+        TActionClass *Action;
 };

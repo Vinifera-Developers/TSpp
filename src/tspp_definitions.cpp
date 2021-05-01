@@ -185,6 +185,7 @@
 #include "unit.h"
 #include "fastmath.h"
 #include "terrain.h"
+#include "triggertype.h"
 
 
 /**
@@ -3823,6 +3824,31 @@ DEFINE_IMPLEMENTATION(bool TerrainClass::Is_Animating() const, 0x006407F0);
 DEFINE_IMPLEMENTATION(void TerrainClass::Read_INI(CCINIClass &), 0x00640340);
 DEFINE_IMPLEMENTATION(void TerrainClass::Write_INI(CCINIClass &), 0x00640460);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TriggerTypeClass::GetClassID(CLSID *), 0x0064AA70);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Load(IStream *), 0x0064AAB0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Save(IStream *, BOOL), 0x0064AB20);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerTypeClass::TriggerTypeClass(const char *), 0x00649CA0);
+TriggerTypeClass::TriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass (noinit) { *((unsigned long *)this) = (unsigned long)0x006D888C; *((unsigned long *)this+4) = (unsigned long)0x006D8870; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TriggerTypeClass::~TriggerTypeClass(), 0x00649DF0);
+DEFINE_IMPLEMENTATION(void TriggerTypeClass::Detach(TARGET, bool), 0x0064A030);
+DEFINE_IMPLEMENTATION(RTTIType TriggerTypeClass::Kind_Of() const, 0x0064AB40);
+DEFINE_IMPLEMENTATION(int TriggerTypeClass::Size_Of(bool) const, 0x0064AB50);
+DEFINE_IMPLEMENTATION(void TriggerTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0064A9F0);
+DEFINE_IMPLEMENTATION(int TriggerTypeClass::Get_Heap_ID() const, 0x0064AB60);
+DEFINE_IMPLEMENTATION(bool TriggerTypeClass::Read_INI(CCINIClass &), 0x0064A1B0);
+DEFINE_IMPLEMENTATION(bool TriggerTypeClass::Write_INI(CCINIClass &) const, 0x0064A590);
+// 00649F30
+// 00649F50
+// 00649F70
+// 00649F90
+// 00649FB0
+// 00649FF0
+DEFINE_IMPLEMENTATION(AttachType TriggerTypeClass::Attaches_To() const, 0x0064A160);
+DEFINE_IMPLEMENTATION(bool TriggerTypeClass::Remove_Action(TActionClass *), 0x0064A8B0);
+DEFINE_IMPLEMENTATION(bool TriggerTypeClass::Remove_Event(TEventClass *), 0x0064A910);
+DEFINE_IMPLEMENTATION(void TriggerTypeClass::Read_Scenario_INI(CCINIClass &), 0x0064A4C0);
+DEFINE_IMPLEMENTATION(void TriggerTypeClass::Write_Scenario_INI(CCINIClass &), 0x0064A750);
+
 
 /**
  *  Global definitions
@@ -4001,6 +4027,7 @@ DynamicVectorClass<TiberiumClass *> &Tiberiums = Make_Global<DynamicVectorClass<
 DynamicVectorClass<BulletClass *> &Bullets = Make_Global<DynamicVectorClass<BulletClass *>>(0x007E48E0);
 DynamicVectorClass<UnitClass *> &Units = Make_Global<DynamicVectorClass<UnitClass *>>(0x007B3458);
 DynamicVectorClass<TerrainClass *> &Terrains = Make_Global<DynamicVectorClass<TerrainClass *>>(0x007E4568);
+DynamicVectorClass<TriggerTypeClass *> &TriggerTypes = Make_Global<DynamicVectorClass<TriggerTypeClass *>>(0x007B34C8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

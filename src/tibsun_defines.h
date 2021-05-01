@@ -523,6 +523,14 @@ typedef enum AnimType
 } AnimType;
 DEFINE_ENUMERATION_OPERATORS(AnimType);
 
+typedef enum TriggerType
+{
+    TRIGGER_NONE = -1,
+
+    TRIGGER_FIRST = 0
+} TriggerType;
+DEFINE_ENUMERATION_OPERATORS(TriggerType);
+
 typedef enum WarheadType
 {
     WARHEAD_NONE = -1,
@@ -530,6 +538,16 @@ typedef enum WarheadType
     WARHEAD_FIRST = 0
 } WarheadType;
 DEFINE_ENUMERATION_OPERATORS(WarheadType);
+
+typedef enum PersistantType
+{
+    VOLATILE = 0,			// trigger destroys itself immediately after going off, and removes itself from
+                            // all objects it's attached to.
+    SEMIPERSISTANT = 1,		// trigger is "Semi-Persistent"; it maintains a count of all objects it's attached
+                            // to, and only actually "springs" after its been triggered from all the objects; then,
+                            // it removes itself.
+    PERSISTANT = 2			// trigger is Fully Persistent; it just won't go away.
+} PersistantType;
 
 typedef enum AbilityType
 {

@@ -119,6 +119,7 @@ class TiberiumClass;
 class BulletClass;
 class UnitClass;
 class TerrainClass;
+class TriggerTypeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -256,6 +257,7 @@ extern DynamicVectorClass<TiberiumClass *> &Tiberiums;
 extern DynamicVectorClass<BulletClass *> &Bullets;
 extern DynamicVectorClass<UnitClass *> &Units;
 extern DynamicVectorClass<TerrainClass *> &Terrains;
+extern DynamicVectorClass<TriggerTypeClass *> &TriggerTypes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
