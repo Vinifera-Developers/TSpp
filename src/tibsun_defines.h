@@ -66,8 +66,8 @@ class NoInitClass;
 #define MAP_CELL_TOTAL (MAP_CELL_W * MAP_CELL_H)
 
 // Cell pixel dimensions.
-#define CELL_PIXEL_W 24
-#define CELL_PIXEL_H 48
+#define CELL_PIXEL_W 48
+#define CELL_PIXEL_H 24
 
 // Sub-cell dimensions.
 #define CELL_LEPTON_W 256

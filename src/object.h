@@ -184,7 +184,7 @@ class ObjectClass : public AbstractClass
         int field_18;
         int Riser;
         ObjectClass *Next;
-        TagClass *Trigger;
+        TagClass *Tag;
         int Strength;
         bool IsDown;
         bool IsToDamage;

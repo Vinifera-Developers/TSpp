@@ -187,6 +187,7 @@
 #include "terrain.h"
 #include "triggertype.h"
 #include "trigger.h"
+#include "tag.h"
 
 
 /**
@@ -3829,7 +3830,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TriggerTypeClass::GetClassID(CLSID 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Load(IStream *), 0x0064AAB0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Save(IStream *, BOOL), 0x0064AB20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerTypeClass::TriggerTypeClass(const char *), 0x00649CA0);
-TriggerTypeClass::TriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass (noinit) { *((unsigned long *)this) = (unsigned long)0x006D888C; *((unsigned long *)this+4) = (unsigned long)0x006D8870; }
+TriggerTypeClass::TriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D888C; *((unsigned long *)this+4) = (unsigned long)0x006D8870; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TriggerTypeClass::~TriggerTypeClass(), 0x00649DF0);
 DEFINE_IMPLEMENTATION(void TriggerTypeClass::Detach(TARGET, bool), 0x0064A030);
 DEFINE_IMPLEMENTATION(RTTIType TriggerTypeClass::Kind_Of() const, 0x0064AB40);
@@ -3855,7 +3856,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Load(IStream *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Save(IStream *, BOOL), 0x006498D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(), 0x00649190);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(TriggerTypeClass *), 0x00649040);
-TriggerClass::TriggerClass(const NoInitClass &noinit) : AbstractClass (noinit) { *((unsigned long *)this) = (unsigned long)0x006D87F0; *((unsigned long *)this+4) = (unsigned long)0x006D87D4; }
+TriggerClass::TriggerClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D87F0; *((unsigned long *)this+4) = (unsigned long)0x006D87D4; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TriggerClass::~TriggerClass(), 0x00649190);
 DEFINE_IMPLEMENTATION(void TriggerClass::Detach(TARGET, bool), 0x006496A0);
 DEFINE_IMPLEMENTATION(RTTIType TriggerClass::Kind_Of() const, 0x00649920);
@@ -3878,6 +3879,36 @@ DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Tripped(int), 0x00649710);
 // 00649790
 DEFINE_IMPLEMENTATION(void TriggerClass::Enable(), 0x006498F0);
 DEFINE_IMPLEMENTATION(void TriggerClass::Disable(), 0x00649900);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TagClass::GetClassID(CLSID *), 0x0061EB50);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Load(IStream *), 0x0061EBE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Save(IStream *, BOOL), 0x0061EC40);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TagClass::TagClass(TagTypeClass *), 0x0061E330);
+TagClass::TagClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7850; *((unsigned long *)this+4) = (unsigned long)0x006D7834; }
+DEFINE_IMPLEMENTATION(TagClass::~TagClass(), 0x0061E4A0);
+DEFINE_IMPLEMENTATION(void TagClass::Detach(TARGET, bool), 0x0061EAC0);
+DEFINE_IMPLEMENTATION(RTTIType TagClass::Kind_Of() const, 0x0061ED30);
+DEFINE_IMPLEMENTATION(int TagClass::Size_Of(bool) const, 0x0061ED20);
+DEFINE_IMPLEMENTATION(void TagClass::Compute_CRC(WWCRCEngine &) const, 0x0061EB90);
+DEFINE_IMPLEMENTATION(bool TagClass::Spring(TEventType, ObjectClass *, CellStruct, bool, ObjectClass *), 0x0061E880);
+// 0061E750
+// 0061E7B0
+DEFINE_IMPLEMENTATION(CellStruct TagClass::Get_Cell() const, 0x0061E810);
+// 0061E820
+// 0061E830
+// 0061E840
+// 0061E850
+// 0061E860
+DEFINE_IMPLEMENTATION(void TagClass::Set_Cell(CellStruct), 0x0061EA10);
+// 0061EA20
+// 0061EA50
+// 0061EA60
+DEFINE_IMPLEMENTATION(void TagClass::Link_Trigger(TriggerClass *), 0x0061EA70);
+DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80);
+// 0061EC60
+// 0061EC80
+// 0061ECB0
+// 0061ECE0
 
 
 /**
@@ -4059,6 +4090,7 @@ DynamicVectorClass<UnitClass *> &Units = Make_Global<DynamicVectorClass<UnitClas
 DynamicVectorClass<TerrainClass *> &Terrains = Make_Global<DynamicVectorClass<TerrainClass *>>(0x007E4568);
 DynamicVectorClass<TriggerTypeClass *> &TriggerTypes = Make_Global<DynamicVectorClass<TriggerTypeClass *>>(0x007B34C8);
 DynamicVectorClass<TriggerClass *> &Triggers = Make_Global<DynamicVectorClass<TriggerClass *>>(0x007E46A8);
+DynamicVectorClass<TagClass *> &Tags = Make_Global<DynamicVectorClass<TagClass *>>(0x0080E7B8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

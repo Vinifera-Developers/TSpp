@@ -121,6 +121,7 @@ class UnitClass;
 class TerrainClass;
 class TriggerTypeClass;
 class TriggerClass;
+class TagClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -260,6 +261,7 @@ extern DynamicVectorClass<UnitClass *> &Units;
 extern DynamicVectorClass<TerrainClass *> &Terrains;
 extern DynamicVectorClass<TriggerTypeClass *> &TriggerTypes;
 extern DynamicVectorClass<TriggerClass *> &Triggers;
+extern DynamicVectorClass<TagClass *> &Tags;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

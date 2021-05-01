@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TRIGGER.H
+ *  @file          TAG.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Trigger game object class.
+ *  @brief         Cell tag trigger object class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,18 +28,15 @@
 #pragma once
 
 #include "abstract.h"
-#include "tevent.h"
-#include "ttimer.h"
-#include "ftimer.h"
 
 
+class TagTypeClass;
 class ObjectClass;
-class TechnoClass;
-class TriggerTypeClass;
+class TriggerClass;
 
 
-class DECLSPEC_UUID("C02D1590-0A2A-11D2-ACA7-006008055BB5")
-TriggerClass : public AbstractClass
+class DECLSPEC_UUID("54F6E432-09ED-11D2-ACA5-006008055BB5")
+TagClass : public AbstractClass
 {
     public:
         /**
@@ -54,10 +51,9 @@ TriggerClass : public AbstractClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        TriggerClass();
-        TriggerClass(TriggerTypeClass *classof);
-        TriggerClass(const NoInitClass &noinit);
-        virtual ~TriggerClass();
+        TagClass(TagTypeClass *classof = nullptr);
+        TagClass(const NoInitClass &noinit);
+        virtual ~TagClass();
 
         /**
          *  AbstractClass
@@ -67,31 +63,33 @@ TriggerClass : public AbstractClass
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, bool a4 = false, bool a5 = false, ObjectClass *source = nullptr);
-        void Reset();
-        // 006495E0
-        // 00649290
-        // 006492D0
-        // 00649310
-        // 00649350
-        // 00649390
-        // 006493E0
-        // 00649410
-        void Set_Tripped(int event_index);
-        void Clear_Tripped(int event_index);
-        bool Is_Tripped(int event_index);
-        // 00649730
-        // 00649790
-        void Enable();
-        void Disable();
+        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, CellStruct cell = CellStruct(-1,-1), bool a4 = false, ObjectClass *source = nullptr);
+        // 0061E750
+        // 0061E7B0
+        CellStruct Get_Cell() const; // 0061E810
+        // 0061E820
+        // 0061E830
+        // 0061E840
+        // 0061E850
+        // 0061E860
+        void Set_Cell(CellStruct cell); // 0061EA10
+        // 0061EA20
+        // 0061EA50
+        // 0061EA60
+        void Link_Trigger(TriggerClass *trig); // 0061EA70
+        bool Unlink_Trigger(TriggerClass *trig); // 0061EA80
+        // 0061EC60
+        // 0061EC80
+        // 0061ECB0
+        // 0061ECE0
 
-        TriggerTypeClass *const Class_Of() const { return Class; }
+        TagTypeClass *const Class_Of() const { return Class; }
 
     public:
-        TriggerTypeClass *Class;
-        TriggerClass *Next;
+        TagTypeClass *Class;
+        TriggerClass *AttachedTrigger;
+        int AttachCount;
+        CellStruct Cell;
         bool IsDestroyed;
-        TDEventClass Event;
-        int IsTripped;
-        bool IsEnabled;
+        bool IsSprung;
 };
