@@ -118,6 +118,7 @@ class OverlayClass;
 class TiberiumClass;
 class BulletClass;
 class UnitClass;
+class TerrainClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -254,6 +255,7 @@ extern DynamicVectorClass<OverlayClass *> &Overlays;
 extern DynamicVectorClass<TiberiumClass *> &Tiberiums;
 extern DynamicVectorClass<BulletClass *> &Bullets;
 extern DynamicVectorClass<UnitClass *> &Units;
+extern DynamicVectorClass<TerrainClass *> &Terrains;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

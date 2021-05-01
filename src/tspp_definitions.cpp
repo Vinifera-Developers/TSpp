@@ -184,6 +184,7 @@
 #include "bullet.h"
 #include "unit.h"
 #include "fastmath.h"
+#include "terrain.h"
 
 
 /**
@@ -3791,6 +3792,37 @@ DEFINE_IMPLEMENTATION(float __stdcall FastMath::Atan2f(float, float), 0x004986E0
 //DEFINE_IMPLEMENTATION(int __cdecl FastMath::ftol(double), 0x006B2330);
 //__int64 __cdecl FastMath::ftol64(double val) { return static_cast<int>(FastMath::ftol(val)); }
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TerrainClass::GetClassID(CLSID *), 0x00640BE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Load(IStream *), 0x00640650);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Save(IStream *, BOOL), 0x006407D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(), 0x0063F710);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(TerrainTypeClass *classof, CellStruct &pos), 0x0063F500);
+TerrainClass::TerrainClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D828C; *((unsigned long *)this+4) = (unsigned long)0x006D8270; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TerrainClass::~TerrainClass(), 0x0063F170);
+DEFINE_IMPLEMENTATION(void TerrainClass::Detach(TARGET, bool), 0x00640880);
+DEFINE_IMPLEMENTATION(RTTIType TerrainClass::Kind_Of() const, 0x00640BD0);
+DEFINE_IMPLEMENTATION(int TerrainClass::Size_Of(bool) const, 0x00640BC0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Compute_CRC(WWCRCEngine &) const, 0x00640810);
+DEFINE_IMPLEMENTATION(void TerrainClass::AI(), 0x0063FFB0);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const TerrainClass::Class_Of() const, 0x006409E0);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Limbo(), 0x00640210);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Unlimbo(CoordStruct &, DirType), 0x006408B0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Set_Occupy_Bit(CoordStruct &), 0x0063F9A0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Clear_Occupy_Bit(CoordStruct &), 0x0063F910);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Render(Rect &, bool, bool), 0x00640510);
+DEFINE_IMPLEMENTATION(void TerrainClass::Draw_It(Point2D &, Rect &) const, 0x0063FA30);
+DEFINE_IMPLEMENTATION(void TerrainClass::Placement_Draw_It(Point2D &, Rect &) const, 0x0063FC00);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Mark(MarkType), 0x0063F8A0);
+DEFINE_IMPLEMENTATION(Rect TerrainClass::entry_118() const, 0x006409F0);
+DEFINE_IMPLEMENTATION(ResultType TerrainClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0063F2D0);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Catch_Fire(), 0x0063FE60);
+DEFINE_IMPLEMENTATION(void TerrainClass::Fire_Out(), 0x0063FF40);
+DEFINE_IMPLEMENTATION(MoveType TerrainClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x0063FD80);
+DEFINE_IMPLEMENTATION(void TerrainClass::Start_To_Crumble(), 0x006401D0);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Is_Animating() const, 0x006407F0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Read_INI(CCINIClass &), 0x00640340);
+DEFINE_IMPLEMENTATION(void TerrainClass::Write_INI(CCINIClass &), 0x00640460);
+
 
 /**
  *  Global definitions
@@ -3968,6 +4000,7 @@ DynamicVectorClass<OverlayClass *> &Overlays = Make_Global<DynamicVectorClass<Ov
 DynamicVectorClass<TiberiumClass *> &Tiberiums = Make_Global<DynamicVectorClass<TiberiumClass *>>(0x0080F408);
 DynamicVectorClass<BulletClass *> &Bullets = Make_Global<DynamicVectorClass<BulletClass *>>(0x007E48E0);
 DynamicVectorClass<UnitClass *> &Units = Make_Global<DynamicVectorClass<UnitClass *>>(0x007B3458);
+DynamicVectorClass<TerrainClass *> &Terrains = Make_Global<DynamicVectorClass<TerrainClass *>>(0x007E4568);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
