@@ -186,6 +186,7 @@
 #include "fastmath.h"
 #include "terrain.h"
 #include "triggertype.h"
+#include "trigger.h"
 
 
 /**
@@ -3849,6 +3850,35 @@ DEFINE_IMPLEMENTATION(bool TriggerTypeClass::Remove_Event(TEventClass *), 0x0064
 DEFINE_IMPLEMENTATION(void TriggerTypeClass::Read_Scenario_INI(CCINIClass &), 0x0064A4C0);
 DEFINE_IMPLEMENTATION(void TriggerTypeClass::Write_Scenario_INI(CCINIClass &), 0x0064A750);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TriggerClass::GetClassID(CLSID *), 0x00649830);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Load(IStream *), 0x00649870);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Save(IStream *, BOOL), 0x006498D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(), 0x00649190);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(TriggerTypeClass *), 0x00649040);
+TriggerClass::TriggerClass(const NoInitClass &noinit) : AbstractClass (noinit) { *((unsigned long *)this) = (unsigned long)0x006D87F0; *((unsigned long *)this+4) = (unsigned long)0x006D87D4; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TriggerClass::~TriggerClass(), 0x00649190);
+DEFINE_IMPLEMENTATION(void TriggerClass::Detach(TARGET, bool), 0x006496A0);
+DEFINE_IMPLEMENTATION(RTTIType TriggerClass::Kind_Of() const, 0x00649920);
+DEFINE_IMPLEMENTATION(int TriggerClass::Size_Of(bool) const, 0x00649910);
+DEFINE_IMPLEMENTATION(void TriggerClass::Compute_CRC(WWCRCEngine &) const, 0x006497A0);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Spring(TEventType, ObjectClass *, bool, bool, ObjectClass *), 0x00649500);
+DEFINE_IMPLEMENTATION(void TriggerClass::Reset(), 0x00649440);
+// 006495E0
+// 00649290
+// 006492D0
+// 00649310
+// 00649350
+// 00649390
+// 006493E0
+// 00649410
+DEFINE_IMPLEMENTATION(void TriggerClass::Set_Tripped(int), 0x006496D0);
+DEFINE_IMPLEMENTATION(void TriggerClass::Clear_Tripped(int), 0x006496F0);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Tripped(int), 0x00649710);
+// 00649730
+// 00649790
+DEFINE_IMPLEMENTATION(void TriggerClass::Enable(), 0x006498F0);
+DEFINE_IMPLEMENTATION(void TriggerClass::Disable(), 0x00649900);
+
 
 /**
  *  Global definitions
@@ -4028,6 +4058,7 @@ DynamicVectorClass<BulletClass *> &Bullets = Make_Global<DynamicVectorClass<Bull
 DynamicVectorClass<UnitClass *> &Units = Make_Global<DynamicVectorClass<UnitClass *>>(0x007B3458);
 DynamicVectorClass<TerrainClass *> &Terrains = Make_Global<DynamicVectorClass<TerrainClass *>>(0x007E4568);
 DynamicVectorClass<TriggerTypeClass *> &TriggerTypes = Make_Global<DynamicVectorClass<TriggerTypeClass *>>(0x007B34C8);
+DynamicVectorClass<TriggerClass *> &Triggers = Make_Global<DynamicVectorClass<TriggerClass *>>(0x007E46A8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

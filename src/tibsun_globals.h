@@ -120,6 +120,7 @@ class BulletClass;
 class UnitClass;
 class TerrainClass;
 class TriggerTypeClass;
+class TriggerClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -258,6 +259,7 @@ extern DynamicVectorClass<BulletClass *> &Bullets;
 extern DynamicVectorClass<UnitClass *> &Units;
 extern DynamicVectorClass<TerrainClass *> &Terrains;
 extern DynamicVectorClass<TriggerTypeClass *> &TriggerTypes;
+extern DynamicVectorClass<TriggerClass *> &Triggers;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
