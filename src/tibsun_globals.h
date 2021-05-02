@@ -122,6 +122,7 @@ class TerrainClass;
 class TriggerTypeClass;
 class TriggerClass;
 class TagClass;
+class WaypointPathClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -262,6 +263,7 @@ extern DynamicVectorClass<TerrainClass *> &Terrains;
 extern DynamicVectorClass<TriggerTypeClass *> &TriggerTypes;
 extern DynamicVectorClass<TriggerClass *> &Triggers;
 extern DynamicVectorClass<TagClass *> &Tags;
+extern DynamicVectorClass<WaypointPathClass *> &WaypointPaths;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

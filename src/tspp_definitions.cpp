@@ -188,6 +188,8 @@
 #include "triggertype.h"
 #include "trigger.h"
 #include "tag.h"
+#include "waypointpath.h"
+#include "waypoint.h"
 
 
 /**
@@ -3915,6 +3917,32 @@ DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x
 DEFINE_IMPLEMENTATION(CoordStruct *ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Load(IStream *), 0x006738F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Save(IStream *, BOOL), 0x00673A00);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaypointPathClass::WaypointPathClass(), 0x006733D0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaypointPathClass::WaypointPathClass(int), 0x006734A0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaypointPathClass::WaypointPathClass(const NoInitClass &), 0x00673470);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WaypointPathClass::~WaypointPathClass(), 0x00673550);
+DEFINE_IMPLEMENTATION(RTTIType WaypointPathClass::Kind_Of() const, 0x00673A80);
+DEFINE_IMPLEMENTATION(int WaypointPathClass::Size_Of(bool) const, 0x00673A70);
+DEFINE_IMPLEMENTATION(void WaypointPathClass::Compute_CRC(WWCRCEngine &) const, 0x00673880);
+// 00673600
+// 00673620
+// 006736D0
+// 00673770
+// 006737B0
+// 00673820
+// 00673860
+// 00673390
+// 006733A0
+// 006733C0
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaypointClass::WaypointClass(), 0x00673390);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WaypointClass::~WaypointClass(), 0x006733C0);
+DEFINE_IMPLEMENTATION(const char *Waypoint_As_String(int), 0x006732B0);
+DEFINE_IMPLEMENTATION(int Waypoint_From_String(const char *), 0x00673330);
+
 
 /**
  *  Global definitions
@@ -4096,6 +4124,7 @@ DynamicVectorClass<TerrainClass *> &Terrains = Make_Global<DynamicVectorClass<Te
 DynamicVectorClass<TriggerTypeClass *> &TriggerTypes = Make_Global<DynamicVectorClass<TriggerTypeClass *>>(0x007B34C8);
 DynamicVectorClass<TriggerClass *> &Triggers = Make_Global<DynamicVectorClass<TriggerClass *>>(0x007E46A8);
 DynamicVectorClass<TagClass *> &Tags = Make_Global<DynamicVectorClass<TagClass *>>(0x0080E7B8);
+DynamicVectorClass<WaypointPathClass *> &WaypointPaths = Make_Global<DynamicVectorClass<WaypointPathClass *>>(0x008645F0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
