@@ -154,8 +154,8 @@ Tactical : public AbstractClass
         // 00616C40
         // 00616C90
         // 00616F20
-        // 006173B0
-        // 006177A0
+        void Debug_Draw_Occupiers(); // 006173B0
+        void Debug_Draw_Occupiers_Flags(); // 006177A0
         // 00617CD0
         // 00617EE0
         // 00617FA0

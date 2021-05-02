@@ -1308,6 +1308,8 @@ DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(CellStruct &, bool), 0x00614F90)
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
+DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
+DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers_Flags(), 0x006177A0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(FuseClass::FuseClass(), 0x004A99F0);
 FuseClass::FuseClass(const NoInitClass &) {}
