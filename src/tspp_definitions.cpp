@@ -3910,6 +3910,11 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 // 0061ECB0
 // 0061ECE0
 
+DEFINE_IMPLEMENTATION(CellStruct ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
+DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
+DEFINE_IMPLEMENTATION(CoordStruct *ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
+
 
 /**
  *  Global definitions
