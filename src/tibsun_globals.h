@@ -32,6 +32,8 @@
 #include "vector.h"
 #include "search.h"
 #include "queue.h"
+#include "ttimer.h"
+#include "ccfile.h"
 
 
 /**
@@ -127,6 +129,10 @@ class CampaignClass;
 class EventClass;
 class MouseClass;
 class Rect;
+class PaletteClass;
+class PKey;
+class CCINIClass;
+class SystemTimerClass;
 
 enum KeyNumType;
 
@@ -181,6 +187,8 @@ extern unsigned &ExceptionReturnStack;
 extern unsigned &ExceptionReturnAddress;
 extern bool &CatchExceptions;
 extern bool &Debug_Windowed;
+extern bool &Debug_ScenarioFilenameSet;
+extern char *Debug_ScenarioFilename; // [128]
 extern bool &Debug_MotionCapture;
 extern bool &Debug_AllowModeToggle;
 extern bool &Debug_Quiet;
@@ -204,6 +212,52 @@ extern HouseClass *&PlayerPtr;
 extern Rect &SidebarRect;
 extern Rect &TacticalRect;
 extern Rect &ScreenRect;
+extern unsigned &Seed;
+extern unsigned &CustomSeed;
+extern bool &UserInputLocked;
+extern PaletteClass &BlackPalette;
+extern PaletteClass &WaypointPalette;
+extern PaletteClass &CCPalette;
+extern PaletteClass &GamePalette;
+extern PaletteClass &InGamePalette;
+extern PaletteClass &WhitePalette;
+extern PaletteClass &OriginalPalette;
+extern PaletteClass &UnitPalette;
+extern PaletteClass &VoxelPalette;
+extern PKey &FastKey;
+extern CCINIClass *&RuleINI;
+extern CCINIClass &ConfigINI;
+extern CCINIClass &AIINI;
+extern CCINIClass &ArtINI;
+extern CCINIClass &FSAIINI;
+extern CCINIClass &FSRuleINI;
+extern CDTimerClass<SystemTimerClass> &NetFrameTimer;
+extern TTimerClass<SystemTimerClass> &TickCount;
+extern CDTimerClass<SystemTimerClass> &FrameTimer;
+extern DynamicVectorClass<MFCC *> &ExpansionMixFiles;
+extern DynamicVectorClass<MFCC *> &SideMixFiles;
+extern MFCC *&MultiMix;
+extern MFCC *&TibSunMix;
+extern MFCC *&TheaterMix;
+extern MFCC *&TheaterCachedMix;
+extern MFCC *&TheaterIsoMix;
+extern MFCC *&MoviesMix;
+extern MFCC *&ScoreMix;
+extern MFCC *&MainMix;
+extern MFCC *&ConquerMix;
+extern MFCC *&CacheMix;
+extern MFCC *&LocalMix;
+extern MFCC *&MapsMix;
+extern MFCC *&SpeechMix;
+extern MFCC *&SoundsMix;
+extern MFCC *&FSSoundsMix;
+extern MFCC *&FSScoresMix;
+extern MFCC *&SideCachedMix;
+extern MFCC *&SideNotCachedMix;
+extern MFCC *&SideCDMix;
+extern bool &Cheat_Pengo;
+extern bool &Cheat_TheTeam;
+extern int &NewINIFormat;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

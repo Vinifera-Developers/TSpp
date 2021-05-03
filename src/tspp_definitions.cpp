@@ -191,6 +191,9 @@
 #include "waypointpath.h"
 #include "waypoint.h"
 #include "campaign.h"
+#include "ttimer.h"
+#include "stimer.h"
+#include "ftimer.h"
 
 
 /**
@@ -4010,6 +4013,8 @@ unsigned &ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
 unsigned &ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
 bool &CatchExceptions = Make_Global<bool>(0x007E4E94);
 bool &Debug_Windowed = Make_Global<bool>(0x007A1790);
+bool &Debug_ScenarioFilenameSet = Make_Global<bool>(0x007E48FD);
+char *Debug_ScenarioFilename = Make_Global<char *>(0x007E2360);
 bool &Debug_MotionCapture = Make_Global<bool>(0x007E4901);
 bool &Debug_AllowModeToggle = Make_Global<bool>(0x007E4902);
 bool &Debug_Quiet = Make_Global<bool>(0x007E4903);
@@ -4040,6 +4045,52 @@ VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
 Rect &SidebarRect = Make_Global<Rect>(0x0074C240);
 Rect &TacticalRect = Make_Global<Rect>(0x0074C250);
 Rect &ScreenRect = Make_Global<Rect>(0x0074C260);
+unsigned &Seed = Make_Global<unsigned>(0x007E4934);
+unsigned &CustomSeed = Make_Global<unsigned>(0x007E4938);
+bool &UserInputLocked = Make_Global<bool>(0x007E493C);
+PaletteClass &BlackPalette = Make_Global<PaletteClass>(0x0074A138);
+PaletteClass &WaypointPalette = Make_Global<PaletteClass>(0x0074A438);
+PaletteClass &CCPalette = Make_Global<PaletteClass>(0x0074A738);
+PaletteClass &GamePalette = Make_Global<PaletteClass>(0x0074AA38);
+PaletteClass &InGamePalette = Make_Global<PaletteClass>(0x0074AD38);
+PaletteClass &WhitePalette = Make_Global<PaletteClass>(0x0074B038);
+PaletteClass &OriginalPalette = Make_Global<PaletteClass>(0x0074B338);
+PaletteClass &UnitPalette = Make_Global<PaletteClass>(0x0074B638);
+PaletteClass &VoxelPalette = Make_Global<PaletteClass>(0x0074B938);
+PKey &FastKey = Make_Global<PKey>(0x0074BC38);
+CCINIClass *&RuleINI = Make_Global<CCINIClass *>(0x0074C2F0);
+CCINIClass &ConfigINI = Make_Global<CCINIClass>(0x0074C378);
+CCINIClass &AIINI = Make_Global<CCINIClass>(0x0074C3D8);
+CCINIClass &ArtINI = Make_Global<CCINIClass>(0x0074C430);
+CCINIClass &FSAIINI = Make_Global<CCINIClass>(0x0074C4A0);
+CCINIClass &FSRuleINI = Make_Global<CCINIClass>(0x0074C4F0);
+CDTimerClass<SystemTimerClass> &NetFrameTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0074C5F8);
+TTimerClass<SystemTimerClass> &TickCount = Make_Global<TTimerClass<SystemTimerClass>>(0x0074C608);
+CDTimerClass<SystemTimerClass> &FrameTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0074C618);
+DynamicVectorClass<MFCC *> &ExpansionMixFiles = Make_Global<DynamicVectorClass<MFCC *>>(0x0074A098);
+DynamicVectorClass<MFCC *> &SideMixFiles = Make_Global<DynamicVectorClass<MFCC *>>(0x0074A0B0);
+MFCC *&MultiMix = Make_Global<MFCC *>(0x0074A0C8);
+MFCC *&TibSunMix = Make_Global<MFCC *>(0x0074A0E8);
+MFCC *&TheaterMix = Make_Global<MFCC *>(0x0074A0EC);
+MFCC *&TheaterCachedMix = Make_Global<MFCC *>(0x0074A0F0);
+MFCC *&TheaterIsoMix = Make_Global<MFCC *>(0x0074A0F4);
+MFCC *&MoviesMix = Make_Global<MFCC *>(0x0074A0F8);
+MFCC *&ScoreMix = Make_Global<MFCC *>(0x0074A0FC);
+MFCC *&MainMix = Make_Global<MFCC *>(0x0074A100);
+MFCC *&ConquerMix = Make_Global<MFCC *>(0x0074A104);
+MFCC *&CacheMix = Make_Global<MFCC *>(0x0074A108);
+MFCC *&LocalMix = Make_Global<MFCC *>(0x0074A10C);
+MFCC *&MapsMix = Make_Global<MFCC *>(0x0074A110);
+MFCC *&SpeechMix = Make_Global<MFCC *>(0x0074A114);
+MFCC *&SoundsMix = Make_Global<MFCC *>(0x0074A118);
+MFCC *&FSSoundsMix = Make_Global<MFCC *>(0x0074A11C);
+MFCC *&FSScoresMix = Make_Global<MFCC *>(0x0074A120);
+MFCC *&SideCachedMix = Make_Global<MFCC *>(0x0074A124);
+MFCC *&SideNotCachedMix = Make_Global<MFCC *>(0x0074A128);
+MFCC *&SideCDMix = Make_Global<MFCC *>(0x0074A12C);
+bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
+bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
+int &NewINIFormat = Make_Global<int>(0x007E491C);
 
 
 /**
