@@ -885,6 +885,7 @@ DEFINE_IMPLEMENTATION(int WWFontClass::Get_Char_Height() const, 0x006A4620);
 DEFINE_IMPLEMENTATION(Point2D WWFontClass::Print(const char *, Surface *, Rect *, Point2D *, ConvertClass *, unsigned char[]), 0x006A46F0);
 DEFINE_IMPLEMENTATION(int WWFontClass::Set_X_Spacing(int), 0x006A4650);
 DEFINE_IMPLEMENTATION(int WWFontClass::Set_Y_Spacing(int), 0x006A46A0);
+DEFINE_IMPLEMENTATION(WWFontClass *Font_Ptr(TextPrintType), 0x00474D30);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTrackerClass::UnitTrackerClass(int), 0x0065D5B0);
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(UnitTrackerClass::~UnitTrackerClass(), 0x0065D600);

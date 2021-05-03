@@ -123,3 +123,6 @@ class WWFontClass
 		int YSpacing;
 		WWFontFileStruct *FontPtr;
 };
+
+
+WWFontClass *Font_Ptr(TextPrintType flag);
