@@ -37,6 +37,7 @@ class WWFontClass;
 class XSurface;
 class HSVClass;
 class ColorScheme;
+class ConvertClass;
 
 
 /**
@@ -123,6 +124,11 @@ typedef enum TextPrintType
     TPF_BRIGHT_COLOR = 0x2000,	// Use bright color for all text gradient
     TPF_USE_GRAD_PAL = 0x4000,	// Use a gradient palette based on fore color
 
+    /**
+     *  Transparent background fill.
+     */
+    TPF_TRANSBLACK_BG = 0x8000,
+
 } TextPrintType;
 DEFINE_ENUMERATION_OPERATORS(TextPrintType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(TextPrintType);
@@ -139,3 +145,6 @@ Point2D Fancy_Text_Print(int text, XSurface *surface, Rect *rect, Point2D *xy, C
 Point2D Fancy_Text_Print(const char *text, XSurface *surface, Rect *rect, Point2D *xy, ColorScheme *fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ...);
 
 Point2D Conquer_Clip_Text_Print(const char *text, XSurface *surface, Rect *rect, Point2D *xy, ColorScheme *fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, int width = -1, const int *tabs = nullptr);
+
+
+Point2D Simple_Text_Print(const char *text, XSurface *surface, Rect *rect, Point2D *xy, ConvertClass *drawer, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, int a8 = 1);
