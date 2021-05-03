@@ -183,6 +183,30 @@ typedef enum ScriptType
 } ScriptType;
 DEFINE_ENUMERATION_OPERATORS(ScriptType);
 
+typedef enum DiskID
+{
+    DISK_GDI,
+    DISK_NOD,
+    DISK_FIRESTORM,
+
+    DISK_LOCAL = -2,
+    DISK_ANY = -1,
+} DiskID;
+
+typedef enum AddonType
+{
+    ADDON_NONE,
+    ADDON_FIRESTORM,
+} AddonType;
+
+typedef enum CampaignType
+{
+    CAMPAIGN_NONE = -1,
+
+    CAMPAIGN_FIRST = 0
+} CampaignType;
+DEFINE_ENUMERATION_OPERATORS(CampaignType);
+
 typedef enum ThemeType
 {
     THEME_QUIET = -3,

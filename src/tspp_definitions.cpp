@@ -190,6 +190,7 @@
 #include "tag.h"
 #include "waypointpath.h"
 #include "waypoint.h"
+#include "campaign.h"
 
 
 /**
@@ -3946,6 +3947,18 @@ DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WaypointClass::~WaypointClass(), 0x006733C0)
 DEFINE_IMPLEMENTATION(const char *Waypoint_As_String(int), 0x006732B0);
 DEFINE_IMPLEMENTATION(int Waypoint_From_String(const char *), 0x00673330);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE CampaignClass::GetClassID(CLSID *), 0x00448DC0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CampaignClass::Load(IStream *), 0x00448E60);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CampaignClass::Save(IStream *, BOOL), 0x00448EA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(CampaignClass::CampaignClass(const char *), 0x00448A10);
+CampaignClass::CampaignClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CCBA8; *((unsigned long *)this+4) = (unsigned long)0x006CCB8C; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CampaignClass::~CampaignClass(), 0x00448AD0);
+DEFINE_IMPLEMENTATION(RTTIType CampaignClass::Kind_Of() const, 0x00448ED0);
+DEFINE_IMPLEMENTATION(int CampaignClass::Size_Of(bool) const, 0x00448EC0);
+DEFINE_IMPLEMENTATION(void CampaignClass::Compute_CRC(WWCRCEngine &) const, 0x00448E00);
+DEFINE_IMPLEMENTATION(bool CampaignClass::Read_INI(CCINIClass &), 0x00448B80);
+DEFINE_IMPLEMENTATION(int CampaignClass::Process(CCINIClass &), 0x00448C30);
+
 
 /**
  *  Global definitions
@@ -4128,6 +4141,7 @@ DynamicVectorClass<TriggerTypeClass *> &TriggerTypes = Make_Global<DynamicVector
 DynamicVectorClass<TriggerClass *> &Triggers = Make_Global<DynamicVectorClass<TriggerClass *>>(0x007E46A8);
 DynamicVectorClass<TagClass *> &Tags = Make_Global<DynamicVectorClass<TagClass *>>(0x0080E7B8);
 DynamicVectorClass<WaypointPathClass *> &WaypointPaths = Make_Global<DynamicVectorClass<WaypointPathClass *>>(0x008645F0);
+DynamicVectorClass<CampaignClass *> &Campaigns = Make_Global<DynamicVectorClass<CampaignClass *>>(0x007E2230);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

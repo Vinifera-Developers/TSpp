@@ -112,7 +112,7 @@ class ScenarioClass
         bool IsRandom;
         bool CratePickedUp;
         CDTimerClass<FrameTimerClass> FadeTimer;
-        int CurrentScenIndex;
+        CampaignType CampaignID;
         int StartingDropships;
         TypeList<TechnoTypeClass *> AllowableUnits;
         TypeList<int> AllowableUnitMaximums;
@@ -133,7 +133,7 @@ class ScenarioClass
         int IonLevel;
         bool field_1E38;                    // Currently reading scenario ini?
         int InitTime;
-        int RequiredAddOn;
+        AddonType RequiredAddOn;
         int SpeechSide;
         unsigned short Stage;
         bool UserInputLocked;
