@@ -94,8 +94,8 @@ InfantryTypeClass : public TechnoTypeClass
 		InfantryType Type;
         PipType Pip;
         DoInfoStruct * DoControls;
-        char FireLaunch;
-        char ProneLaunch;
+        int FireLaunch;
+        int ProneLaunch;
         TypeList<VocType> VoiceComment;
         bool IsCyborg;
         bool IsFearless;

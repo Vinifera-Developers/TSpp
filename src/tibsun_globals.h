@@ -126,6 +126,7 @@ class TriggerClass;
 class TagClass;
 class WaypointPathClass;
 class CampaignClass;
+class WaveClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -320,6 +321,7 @@ extern DynamicVectorClass<TriggerClass *> &Triggers;
 extern DynamicVectorClass<TagClass *> &Tags;
 extern DynamicVectorClass<WaypointPathClass *> &WaypointPaths;
 extern DynamicVectorClass<CampaignClass *> &Campaigns;
+extern DynamicVectorClass<WaveClass *> &Waves;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

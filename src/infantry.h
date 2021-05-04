@@ -126,7 +126,7 @@ InfantryClass : public FootClass
         /**
          *  InfantryClass
          */
-        virtual bool Do_Action(DoType todo, bool force, bool randomise = false);
+        virtual bool Do_Action(DoType todo, bool force = false, bool randomise = false);
 
         int Shape_Number() const;
         void Tunnel_AI();

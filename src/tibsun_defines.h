@@ -563,6 +563,19 @@ typedef enum WarheadType
 } WarheadType;
 DEFINE_ENUMERATION_OPERATORS(WarheadType);
 
+typedef enum WaveType
+{
+    WAVE_SONIC,
+    WAVE_BIG_LASER,
+    WAVE_LASER,
+
+    WAVE_COUNT,
+
+    WAVE_NONE = -1,
+    WAVE_FIRST = 0,
+} WaveType;
+DEFINE_ENUMERATION_OPERATORS(WaveType);
+
 typedef enum PersistantType
 {
     VOLATILE = 0,			// trigger destroys itself immediately after going off, and removes itself from

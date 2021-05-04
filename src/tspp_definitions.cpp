@@ -194,6 +194,7 @@
 #include "ttimer.h"
 #include "stimer.h"
 #include "ftimer.h"
+#include "wave.h"
 
 
 /**
@@ -3962,6 +3963,36 @@ DEFINE_IMPLEMENTATION(void CampaignClass::Compute_CRC(WWCRCEngine &) const, 0x00
 DEFINE_IMPLEMENTATION(bool CampaignClass::Read_INI(CCINIClass &), 0x00448B80);
 DEFINE_IMPLEMENTATION(int CampaignClass::Process(CCINIClass &), 0x00448C30);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaveClass::GetClassID(CLSID *), 0x00670D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Load(IStream *), 0x00670B50);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Save(IStream *, BOOL), 0x00670CA0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaveClass::WaveClass(), 0x006700B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaveClass::WaveClass(CoordStruct &, CoordStruct &, TARGET, WaveType, TARGET), 0x0066FDE0);
+WaveClass::WaveClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D97C8; *((unsigned long *)this+4) = (unsigned long)0x006D97AC; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WaveClass::~WaveClass(), 0x006702C0);
+DEFINE_IMPLEMENTATION(void WaveClass::Detach(TARGET, bool), 0x00670B10);
+DEFINE_IMPLEMENTATION(RTTIType WaveClass::Kind_Of() const, 0x00672E50);
+DEFINE_IMPLEMENTATION(int WaveClass::Size_Of(bool) const, 0x00670D50);
+DEFINE_IMPLEMENTATION(void WaveClass::AI(), 0x00671B00);
+DEFINE_IMPLEMENTATION(LayerType WaveClass::In_Which_Layer() const, 0x00670D60);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const WaveClass::Class_Of() const, 0x00670D70);
+DEFINE_IMPLEMENTATION(bool WaveClass::Limbo(), 0x00670E40);
+DEFINE_IMPLEMENTATION(bool WaveClass::Unlimbo(CoordStruct &, DirType), 0x00670D80);
+DEFINE_IMPLEMENTATION(void WaveClass::Draw_It(Point2D &, Rect &) const, 0x00670EA0);
+DEFINE_IMPLEMENTATION(void WaveClass::Sonic_AI(), 0x00671BB0);
+DEFINE_IMPLEMENTATION(void WaveClass::Laser_AI(), 0x00671C20);
+DEFINE_IMPLEMENTATION(void WaveClass::func_6709C0(CellStruct &), 0x006709C0);
+DEFINE_IMPLEMENTATION(void WaveClass::Sonic_Draw_It(Point2D &, Rect &) const, 0x00670F10);
+DEFINE_IMPLEMENTATION(void WaveClass::Laser_Draw_It(Point2D &, Rect &) const, 0x006715F0);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670370(int, int, int, int), 0x00670370);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670650(), 0x00670650);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670840(CoordStruct &), 0x00670840);
+DEFINE_IMPLEMENTATION(void WaveClass::func_671C40(), 0x00671C40);
+DEFINE_IMPLEMENTATION(void WaveClass::func_672AA0(), 0x00672AA0);
+DEFINE_IMPLEMENTATION(void WaveClass::func_672160(), 0x00672160);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670580(), 0x00670580);
+DEFINE_IMPLEMENTATION(void WaveClass::func_6704B0(int, int), 0x6704B0);
+
 
 /**
  *  Global definitions
@@ -4193,6 +4224,7 @@ DynamicVectorClass<TriggerClass *> &Triggers = Make_Global<DynamicVectorClass<Tr
 DynamicVectorClass<TagClass *> &Tags = Make_Global<DynamicVectorClass<TagClass *>>(0x0080E7B8);
 DynamicVectorClass<WaypointPathClass *> &WaypointPaths = Make_Global<DynamicVectorClass<WaypointPathClass *>>(0x008645F0);
 DynamicVectorClass<CampaignClass *> &Campaigns = Make_Global<DynamicVectorClass<CampaignClass *>>(0x007E2230);
+DynamicVectorClass<WaveClass *> &Waves = Make_Global<DynamicVectorClass<WaveClass *>>(0x007E47E8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
