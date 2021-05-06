@@ -2290,6 +2290,7 @@ DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const CoordStruct &), 0x
 // 00586E30
 // 00586F10
 // 00586F90
+const char *ObjectClass::Name() const { return Class_Of()->Name(); }
 DEFINE_IMPLEMENTATION(void ObjectClass::Shorten_Attached_Anims(), 0x00414500);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MissionClass::MissionClass(), 0x00558E40);
