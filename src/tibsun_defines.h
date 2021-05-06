@@ -60,6 +60,9 @@ class NoInitClass;
 // This is the max number of events supported in one frame.
 #define MAX_EVENTS 64
 
+// The maximum number of players allowed in multiplayer games.
+#define MAX_PLAYERS 8
+
 // Size of the map in cells.
 #define MAP_CELL_W 512
 #define MAP_CELL_H 512

@@ -110,6 +110,27 @@ class WinsockInterfaceClass
 			WinsockPacketType PacketData;	// Buffer to store packet in.
 		} WinsockBufferType;
 
+		void Delete_In_Buffer(WinsockBufferType *buf)
+		{
+			if (buf->Allocated) {
+				delete buf;
+			} else {
+				buf->InUse = false;
+				--StaticInBuffersInUse;
+			}
+		}
+
+
+		void Delete_Out_Buffer(WinsockBufferType *buf)
+		{
+			if (buf->Allocated) {
+				delete buf;
+			} else {
+				buf->InUse = false;
+				--StaticOutBuffersInUse;
+			}
+		}
+
 	protected:
 		virtual void Build_Packet_CRC(WinsockBufferType *packet);
 		virtual bool Passes_CRC_Check(WinsockBufferType *packet) const;
