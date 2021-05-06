@@ -227,7 +227,7 @@ BuildingClass : public TechnoClass
         // 004388D0
         // 00438910
         // 00438950
-        // 00439280
+        bool Is_Powered_On() const;
         // 004392F0
         // 00439500
         // 004396D0
@@ -239,7 +239,7 @@ BuildingClass : public TechnoClass
         // 0043A4D0
         // 0043A520
         // 0043A570
-        void Update_Spied(HouseClass *house); // 0043ADE0
+        void Update_Spied(HouseClass *house);
         // 0043AE50
         // 0043AF60
         // 0043AFC0

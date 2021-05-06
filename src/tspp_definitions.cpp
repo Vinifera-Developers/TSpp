@@ -2823,7 +2823,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Animation_AI(), 0x00435A50);
 // 004388D0
 // 00438910
 // 00438950
-// 00439280
+DEFINE_IMPLEMENTATION(bool BuildingClass::Is_Powered_On() const, 0x00439280);
 // 004392F0
 // 00439500
 // 004396D0
@@ -4011,7 +4011,7 @@ DSurface *&AlternateSurface = Make_Global<DSurface *>(0x0074C5E0);
 DSurface *&TempSurface = Make_Global<DSurface *>(0x0074C5E4);
 DSurface *&CompositeSurface = Make_Global<DSurface *>(0x0074C5EC);
 Random2Class &NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
-long &Frame = Make_Global<long>(0x0074BE40);
+long &Frame = Make_Global<long>(0x007E4924);
 ScenarioClass *&Scen = Make_Global<ScenarioClass *>(0x007E2438);
 SessionClass &Session = Make_Global<SessionClass>(0x007E2458);
 SwizzleManagerClass &SwizzleManager = Make_Global<SwizzleManagerClass>(0x0080CD50);
