@@ -298,7 +298,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool Is_Player_Control() const;
         bool Is_Human_Control() const;
         // 004CB9C0
-        // 004CBAA0
+        void Init_Remap_Color();
         // 004CBB30
 
         static void One_Time();
