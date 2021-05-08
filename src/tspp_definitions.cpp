@@ -1604,6 +1604,7 @@ DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Next_Object(ObjectClass *) cons
 DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Prev_Object(ObjectClass *) const, 0x00477430);
 DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Calculated_Cell(SourceType, CellStruct &, CellStruct &, SpeedType, bool, MZoneType) const, 0x004774C0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Good_Reinforcement_Cell(CellStruct &, CellStruct &, SpeedType, int, MZoneType) const, 0x00477B40);
+DEFINE_IMPLEMENTATION(void DisplayClass::Compute_Start_Pos(), 0x004793A0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Sell_Mode_Control(int), 0x004794E0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Waypoint_Mode_Control(int, bool), 0x00479580);
 DEFINE_IMPLEMENTATION(void DisplayClass::Power_Mode_Control(int), 0x00479690);

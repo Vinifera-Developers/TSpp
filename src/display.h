@@ -87,7 +87,7 @@ class DisplayClass : public MapClass
         CellStruct Calculated_Cell(SourceType dir, CellStruct &waypoint = CellStruct(-1,-1), CellStruct &cell = CellStruct(-1,-1), SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
         bool Good_Reinforcement_Cell(CellStruct &outcell, CellStruct &incell, SpeedType loco, int zone, MZoneType mzone) const;
         // 00479150
-        // 004793A0
+        void Compute_Start_Pos();
         void Sell_Mode_Control(int control);
         void Waypoint_Mode_Control(int control, bool a2);
         void Power_Mode_Control(int control);
