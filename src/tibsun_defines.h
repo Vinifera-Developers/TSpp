@@ -1773,6 +1773,23 @@ typedef enum ColorSchemeType
 } ColorSchemeType;
 DEFINE_ENUMERATION_OPERATORS(ColorSchemeType);
 
+typedef enum PlayerColorType
+{
+	PCOLOR_NONE = -1,
+	PCOLOR_GOLD,
+	PCOLOR_RED,
+	PCOLOR_BLUE,
+	PCOLOR_GREEN,
+	PCOLOR_ORANGE,
+	PCOLOR_LTBLUE,
+	PCOLOR_PURPLE,
+	PCOLOR_PINK,
+
+	PCOLOR_COUNT,
+	PCOLOR_FIRST = 0,
+	PCOLOR_LAST = PCOLOR_COUNT-1
+} PlayerColorType;
+DEFINE_ENUMERATION_OPERATORS(PlayerColorType);
 
 typedef enum RTTIType
 {

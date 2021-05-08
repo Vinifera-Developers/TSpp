@@ -562,6 +562,22 @@ DEFINE_IMPLEMENTATION(bool MessageListClass::Has_Edit_Focus(), 0x005737B0);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SessionClass::SessionClass(), 0x005ECD00);
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(SessionClass::~SessionClass(), 0x005ED1C0);
+DEFINE_IMPLEMENTATION(void SessionClass::One_Time(), 0x005ED470);
+DEFINE_IMPLEMENTATION(void SessionClass::Init(), 0x005ED500);
+DEFINE_IMPLEMENTATION(int SessionClass::Create_Connections(), 0x005ED510);
+DEFINE_IMPLEMENTATION(bool SessionClass::Am_I_Master(), 0x005ED6C0);
+DEFINE_IMPLEMENTATION(void SessionClass::Read_MultiPlayer_Settings(), 0x005ED760);
+// 005EE190
+DEFINE_IMPLEMENTATION(void SessionClass::Write_MultiPlayer_Settings(), 0x005EE470);
+DEFINE_IMPLEMENTATION(void SessionClass::Read_Scenario_Descriptions(), 0x005EE7D0);
+DEFINE_IMPLEMENTATION(void SessionClass::Free_Scenario_Descriptions(), 0x005EEE60);
+DEFINE_IMPLEMENTATION(void SessionClass::Trap_Object(), 0x005EEF60);
+DEFINE_IMPLEMENTATION(ColorSchemeType SessionClass::Player_Color_To_Scheme_Color(PlayerColorType) const, 0x005EEF70);
+DEFINE_IMPLEMENTATION(void SessionClass::Setup_Squads(), 0x005EFBF0);
+DEFINE_IMPLEMENTATION(void SessionClass::Loading_Callback(int), 0x005EF930);
+DEFINE_IMPLEMENTATION(unsigned SessionClass::Compute_Unique_ID(), 0x005EEF90);
+DEFINE_IMPLEMENTATION(bool GameOptionsType::Save(IStream *), 0x005EFFA0);
+DEFINE_IMPLEMENTATION(bool GameOptionsType::Load(IStream *), 0x005EFFF0);
 
 DEFINE_IMPLEMENTATION(int Format_Window_String(char *, WWFontClass *, int, int &, int &), 0x00474960);
 DEFINE_IMPLEMENTATION(Point2D Simple_Text_Print(const char *, XSurface *, Rect *, Point2D *, ColorScheme *, unsigned, TextPrintType, int), 0x00474A50);

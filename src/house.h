@@ -46,8 +46,8 @@
 
 
 #define DROPSHIP_LOADOUT_MAX 3
-#define HOUSE_NAME_MAX	20 // 12
-#define MAX_WAYPOINT_PATHS	12
+#define HOUSE_NAME_MAX    20 // 12
+#define MAX_WAYPOINT_PATHS    12
 
 
 class CCINIClass;
@@ -144,9 +144,9 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         HouseClass(const NoInitClass &noinit);
         virtual ~HouseClass();
 
-		/**
-		 *  AbstractClass
-		 */
+        /**
+         *  AbstractClass
+         */
         virtual void Detach(TARGET target, bool all = true) override;
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
@@ -341,7 +341,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool field_D1;
         bool IsRecalcNeeded;
         int field_D4;
-        int field_D8;
+        int Clan;
         bool field_DC;
         int field_E0; // selected waypoint path index?
         WaypointPathClass *WaypointPaths[MAX_WAYPOINT_PATHS];
@@ -438,7 +438,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         HousesType Enemy;
         DynamicVectorClass<AngerStruct> AngerNodes;
         DynamicVectorClass<ScoutStruct> ScoutNodes;
-		CDTimerClass<FrameTimerClass> AITimer;
+        CDTimerClass<FrameTimerClass> AITimer;
         CDTimerClass<FrameTimerClass> ExpertAITimer;
         BuildingType BuildStructure;
         UnitType BuildUnit;
@@ -459,7 +459,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         CellStruct field_56E;
         CellStruct NukeDest;
         unsigned Allies;
-		CDTimerClass<FrameTimerClass> DamageTime;
+        CDTimerClass<FrameTimerClass> DamageTime;
         CDTimerClass<FrameTimerClass> TeamTime;
         CDTimerClass<FrameTimerClass> TriggerTime;
         CDTimerClass<FrameTimerClass> SpeakAttackDelay;
@@ -468,7 +468,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         CDTimerClass<FrameTimerClass> SpeakMaxedDelay;
         IAIHouse *AIGeneral;
         RegionClass Regions[MAP_TOTAL_REGIONS];
-		char IniName[HOUSE_NAME_MAX+1];
+        char IniName[HOUSE_NAME_MAX+1];
         ColorSchemeType RemapColor;
         int field_10E00;
         DynamicVectorClass<IConnectionPoint *> field_10E04;
