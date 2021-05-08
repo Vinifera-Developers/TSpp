@@ -50,7 +50,6 @@ class RGBClass
 
         void Adjust(int adjust, const RGBClass &that);
         int Difference(const RGBClass &that) const;
-        RGBClass Average(const RGBClass &that) const;
 
         RGBClass *Adjust_Brightness(RGBClass &color, float adjust);
         RGBClass *Lerp(RGBClass &color, RGBClass &input_rgb_2, float adjust);

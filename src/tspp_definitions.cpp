@@ -197,6 +197,7 @@
 #include "wave.h"
 #include "cstream.h"
 #include "multimiss.h"
+#include "particle.h"
 
 
 /**
@@ -795,7 +796,6 @@ RGBClass::RGBClass(unsigned char red, unsigned char green, unsigned char blue) :
 DEFINE_IMPLEMENTATION(RGBClass::operator HSVClass () const, 0x005C32E0);
 DEFINE_IMPLEMENTATION(void RGBClass::Adjust(int, const RGBClass &), 0x005C3200);
 DEFINE_IMPLEMENTATION(int RGBClass::Difference(const RGBClass &) const, 0x005C3290);
-DEFINE_IMPLEMENTATION(RGBClass RGBClass::Average(const RGBClass &) const, 0x005C3200);
 DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Adjust_Brightness(RGBClass &, float), 0x005C30D0);
 DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Lerp(RGBClass &, RGBClass &, float), 0x005C2F60);
 
@@ -4049,6 +4049,33 @@ DEFINE_IMPLEMENTATION(void MultiMission::Set_Filename(const char *), 0x005EF860)
 DEFINE_IMPLEMENTATION(void MultiMission::Set_Digest(const char *), 0x005EF8C0);
 DEFINE_IMPLEMENTATION(void MultiMission::Set_Official(bool), 0x005EF920);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleClass::GetClassID(CLSID *), 0x00670D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Load(IStream *), 0x005A4E30);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Save(IStream *, BOOL), 0x005A4E90);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleClass::ParticleClass(), 0x005A3170);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleClass::ParticleClass(ParticleTypeClass *, CoordStruct &, CoordStruct &, ParticleSystemClass *), 0x005A2C90);
+ParticleClass::ParticleClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D52CC; *((unsigned long *)this+4) = (unsigned long)0x006D52B0; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ParticleClass::~ParticleClass(), 0x005A32E0);
+DEFINE_IMPLEMENTATION(RTTIType ParticleClass::Kind_Of() const, 0x005A5000);
+DEFINE_IMPLEMENTATION(int ParticleClass::Size_Of(bool) const, 0x005A4FF0);
+DEFINE_IMPLEMENTATION(LayerType ParticleClass::In_Which_Layer() const, 0x005A4E00);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const ParticleClass::Class_Of() const, 0x005A5010);
+DEFINE_IMPLEMENTATION(CellStruct *ParticleClass::Occupy_List(bool) const, 0x005A4DA0);
+DEFINE_IMPLEMENTATION(void ParticleClass::Draw_It(Point2D &, Rect &) const, 0x005A45C0);
+DEFINE_IMPLEMENTATION(bool ParticleClass::Mark(MarkType), 0x005A4D80);
+DEFINE_IMPLEMENTATION(int ParticleClass::Shape_Number() const, 0x005A4EB0);
+DEFINE_IMPLEMENTATION(void ParticleClass::Smoke_Behavior_AI(), 0x005A3360);
+DEFINE_IMPLEMENTATION(void ParticleClass::Railgun_Behavior_AI(), 0x005A3A00);
+DEFINE_IMPLEMENTATION(void ParticleClass::Gas_Behavior_AI(), 0x005A3B80);
+DEFINE_IMPLEMENTATION(void ParticleClass::Spark_Behavior_AI(), 0x005A3D00);
+DEFINE_IMPLEMENTATION(void ParticleClass::Fire_Behavior_AI(), 0x005A4120);
+DEFINE_IMPLEMENTATION(void ParticleClass::Web_Behavior_AI(), 0x005A4440);
+DEFINE_IMPLEMENTATION(void ParticleClass::Behaviour_AI(), 0x005A4530);
+DEFINE_IMPLEMENTATION(void ParticleClass::Smoke_Coord_AI(), 0x005A4940);
+DEFINE_IMPLEMENTATION(void ParticleClass::Gas_Coord_AI(), 0x005A4A80);
+DEFINE_IMPLEMENTATION(void ParticleClass::Fire_Coord_AI(), 0x005A4B90);
+DEFINE_IMPLEMENTATION(void ParticleClass::Coord_AI(), 0x005A4C60);
+
 
 /**
  *  Global definitions
@@ -4281,6 +4308,7 @@ DynamicVectorClass<TagClass *> &Tags = Make_Global<DynamicVectorClass<TagClass *
 DynamicVectorClass<WaypointPathClass *> &WaypointPaths = Make_Global<DynamicVectorClass<WaypointPathClass *>>(0x008645F0);
 DynamicVectorClass<CampaignClass *> &Campaigns = Make_Global<DynamicVectorClass<CampaignClass *>>(0x007E2230);
 DynamicVectorClass<WaveClass *> &Waves = Make_Global<DynamicVectorClass<WaveClass *>>(0x007E47E8);
+DynamicVectorClass<ParticleClass *> &Particles = Make_Global<DynamicVectorClass<ParticleClass *>>(0x007E22E0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

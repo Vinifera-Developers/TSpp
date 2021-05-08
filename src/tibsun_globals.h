@@ -127,6 +127,7 @@ class TagClass;
 class WaypointPathClass;
 class CampaignClass;
 class WaveClass;
+class ParticleClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -322,6 +323,7 @@ extern DynamicVectorClass<TagClass *> &Tags;
 extern DynamicVectorClass<WaypointPathClass *> &WaypointPaths;
 extern DynamicVectorClass<CampaignClass *> &Campaigns;
 extern DynamicVectorClass<WaveClass *> &Waves;
+extern DynamicVectorClass<ParticleClass *> &Particles;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
