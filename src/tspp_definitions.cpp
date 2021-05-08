@@ -196,6 +196,7 @@
 #include "ftimer.h"
 #include "wave.h"
 #include "cstream.h"
+#include "multimiss.h"
 
 
 /**
@@ -1480,7 +1481,7 @@ DEFINE_IMPLEMENTATION(void MapClass::Detach(TARGET, bool), 0x0051DE80);
 DEFINE_IMPLEMENTATION(bool MapClass::entry_64() const, 0x0047C190);
 DEFINE_IMPLEMENTATION(void MapClass::Logic(), 0x00514300);
 DEFINE_IMPLEMENTATION(void MapClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x0050F700);
-DEFINE_IMPLEMENTATION(void MapClass::entry_70(), 0x00510A20);
+DEFINE_IMPLEMENTATION(void MapClass::entry_70(Rect &), 0x00510A20);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const CellStruct &), 0x0050F280);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const CellStruct &) const, 0x0050F280);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const CoordStruct &), 0x0050F210);
@@ -1635,12 +1636,12 @@ DEFINE_IMPLEMENTATION(void RadarClass::Init_Clear(), 0x005B8C50);
 DEFINE_IMPLEMENTATION(void RadarClass::AI(KeyNumType &, Point2D &), 0x005B9130);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_It(bool), 0x005B8CD0);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x005B9580);
-DEFINE_IMPLEMENTATION(void RadarClass::entry_70(), 0x005B99D0);
+DEFINE_IMPLEMENTATION(void RadarClass::entry_70(Rect &), 0x005B99D0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Load(IStream *), 0x005BBBE0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Save(IStream *), 0x005BBDA0);
 DEFINE_IMPLEMENTATION(void RadarClass::entry_84(), 0x005B9980);
 DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(CellStruct &, HouseClass *), 0x005B9110);
-DEFINE_IMPLEMENTATION(void RadarClass::entry_C0(CellStruct &), 0x005B9060);
+DEFINE_IMPLEMENTATION(CellStruct RadarClass::Click_Cell_Calc(Point2D &), 0x005B9060);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(CoordStruct &), 0x005B95A0);
 DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
 DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(CellStruct &) const, 0x005B95C0);
@@ -4034,6 +4035,16 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(CStreamClass::CStreamClass(), 0x004717C0);
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(CStreamClass::~CStreamClass(), 0x00471820);
 DEFINE_IMPLEMENTATION(HRESULT CStreamClass::Compress(void *, ULONG), 0x00471FC0);
 DEFINE_IMPLEMENTATION(HRESULT CStreamClass::Compress(), 0x00472080);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MultiMission::MultiMission(INIClass &, const char *), 0x005EF000);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(MultiMission::MultiMission(const char *, const char *, const char *, bool), 0x005EF3C0);
+MultiMission::~MultiMission() {}
+DEFINE_IMPLEMENTATION(bool MultiMission::Is_Available(DiskID), 0x005EF730);
+DEFINE_IMPLEMENTATION(DiskID MultiMission::Get_Disk() const, 0x005EF800);
+DEFINE_IMPLEMENTATION(void MultiMission::Set_Description(const char *), 0x005EF810);
+DEFINE_IMPLEMENTATION(void MultiMission::Set_Filename(const char *), 0x005EF860);
+DEFINE_IMPLEMENTATION(void MultiMission::Set_Digest(const char *), 0x005EF8C0);
+DEFINE_IMPLEMENTATION(void MultiMission::Set_Official(bool), 0x005EF920);
 
 
 /**

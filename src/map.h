@@ -67,7 +67,7 @@ class MapClass : public GScreenClass
         virtual bool entry_64() const;
         virtual void Logic();
         virtual void Set_Map_Dimensions(Rect &rect, bool a2 = true, int level = 1, bool a4 = false);
-        virtual void entry_70();
+        virtual void entry_70(Rect &rect);
 
         CellClass & operator [] (const CellStruct &cell);
         const CellClass & operator [] (const CellStruct &cell) const;

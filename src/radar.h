@@ -58,7 +58,7 @@ class RadarClass : public DisplayClass
          *  MapClass
          */
         virtual void Set_Map_Dimensions(Rect &rect, bool a2 = true, int level = 1, bool a4 = false) override;
-        virtual void entry_70() override;
+        virtual void entry_70(Rect &rect) override;
 
         /**
          *  DisplayClass
@@ -68,7 +68,7 @@ class RadarClass : public DisplayClass
         virtual void entry_84() override;
 		virtual bool Map_Cell(CellStruct &cell, HouseClass *house) override;
 
-        virtual void entry_C0(CellStruct &cell);
+        virtual CellStruct Click_Cell_Calc(Point2D &cell);
         virtual void Set_Tactical_Position(CoordStruct &coord);
         virtual void Init_For_House();
 
