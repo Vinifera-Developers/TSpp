@@ -1593,6 +1593,8 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Release(Point2D &, CellStruc
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Up(Point2D &), 0x00477D30);
 DEFINE_IMPLEMENTATION(void DisplayClass::Set_Cursor_Shape(CellStruct const *), 0x00476040);
 DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Set_Cursor_Pos(CellStruct &), 0x00476490);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Proximity_Check(const ObjectTypeClass *, HousesType, const CellStruct *, CellStruct &), 0x004761A0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Shroud_Check(const ObjectTypeClass *, HousesType, const CellStruct *, CellStruct &), 0x00476350);
 DEFINE_IMPLEMENTATION(wDimensionStruct DisplayClass::Get_Occupy_Dimensions(CellStruct const *) const, 0x004767D0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Cursor_Mark(CellStruct &, bool), 0x00476880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Submit(ObjectClass const *), 0x00476950);
@@ -1615,7 +1617,7 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Shroud_Cell(CellStruct &), 0x00479B40);
 DEFINE_IMPLEMENTATION(void DisplayClass::Write_INI(CCINIClass &), 0x0047A540);
 DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
 DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(CoordStruct &, LEPTON), 0x0047AAF0);
-DEFINE_IMPLEMENTATION(void DisplayClass::Compute_Start_Pos(), 0x0047ACD0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Center_On_Selection(), 0x0047ACD0);
 DEFINE_IMPLEMENTATION(ObjectClass *DisplayClass::Following_What() const, 0x0047C0C0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass *), 0x0047C0E0);
 DisplayClass::TacticalClass::TacticalClass() : GadgetClass(0, 0, 0, 0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS|RIGHTRELEASE|RIGHTHELD, true) { *((unsigned long *)this) = (unsigned long)0x006CDB08; }

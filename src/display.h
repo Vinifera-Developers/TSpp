@@ -48,43 +48,43 @@ class DisplayClass : public MapClass
         /**
          *  GScreenClass
          */
-		virtual void One_Time() override;
-		virtual void Init_Clear() override;
-		virtual void Init_IO() override;
-		virtual void AI(KeyNumType &input, Point2D &xy) override;
+        virtual void One_Time() override;
+        virtual void Init_Clear() override;
+        virtual void Init_IO() override;
+        virtual void AI(KeyNumType &input, Point2D &xy) override;
 
-		virtual HRESULT Load(IStream *pStm);
-		virtual HRESULT Save(IStream *pStm);
-		virtual void Read_INI(CCINIClass &ini);
-		virtual const char *Help_Text(int text);
+        virtual HRESULT Load(IStream *pStm);
+        virtual HRESULT Save(IStream *pStm);
+        virtual void Read_INI(CCINIClass &ini);
+        virtual const char *Help_Text(int text);
         virtual void entry_84();
         virtual void Abort_Drag_Select();
-		virtual bool Map_Cell(CellStruct &cell, HouseClass *house);
+        virtual bool Map_Cell(CellStruct &cell, HouseClass *house);
         virtual bool entry_90(CellStruct &cell, HouseClass *house);
         virtual bool entry_94(CellStruct &cell, HouseClass *house);
         virtual MouseType Get_Mouse_Shape() const = 0;
-		virtual bool Scroll_Map(DirType facing, int &distance, bool really = true);
-		virtual void Set_View_Dimensions(Rect &rect);
+        virtual bool Scroll_Map(DirType facing, int &distance, bool really = true);
+        virtual void Set_View_Dimensions(Rect &rect);
         virtual void Put_Place_Back(TechnoClass *techno);
-		virtual void Mouse_Right_Press(Point2D &xy = Point2D());
-		virtual void Mouse_Left_Press(Point2D &xy);
-		virtual void Mouse_Left_Up(CellStruct &cell, bool shadow, ObjectClass *object, ActionType action, bool wsmall = false);
-		virtual void Mouse_Left_Held(Point2D &xy);
-		virtual void Mouse_Left_Release(Point2D &xy, CellStruct &cell, ObjectClass *object, ActionType action, bool wsmall = false);
-		virtual void Mouse_Right_Up(Point2D &xy = Point2D());
+        virtual void Mouse_Right_Press(Point2D &xy = Point2D());
+        virtual void Mouse_Left_Press(Point2D &xy);
+        virtual void Mouse_Left_Up(CellStruct &cell, bool shadow, ObjectClass *object, ActionType action, bool wsmall = false);
+        virtual void Mouse_Left_Held(Point2D &xy);
+        virtual void Mouse_Left_Release(Point2D &xy, CellStruct &cell, ObjectClass *object, ActionType action, bool wsmall = false);
+        virtual void Mouse_Right_Up(Point2D &xy = Point2D());
 
         void Set_Cursor_Shape(CellStruct const *list);
-        // 004761A0
-        // 00476350
+        bool Passes_Proximity_Check(const ObjectTypeClass *object, HousesType house, const CellStruct *list, CellStruct &trycell);
+        bool Passes_Shroud_Check(const ObjectTypeClass *object, HousesType house, const CellStruct *list, CellStruct &trycell);
         CellStruct Set_Cursor_Pos(CellStruct &pos = CellStruct(-1,-1));
         wDimensionStruct Get_Occupy_Dimensions(CellStruct const *list) const;
         void Cursor_Mark(CellStruct &pos, bool on);
         void Submit(ObjectClass const *object);
         void Remove(ObjectClass const *object);
-		ObjectClass *Cell_Object(CellStruct &cell, Point2D &xy = Point2D());
-		ObjectClass *Next_Object(ObjectClass *object) const;
-		ObjectClass *Prev_Object(ObjectClass *object) const;
-		CellStruct Calculated_Cell(SourceType dir, CellStruct &waypoint = CellStruct(-1,-1), CellStruct &cell = CellStruct(-1,-1), SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
+        ObjectClass *Cell_Object(CellStruct &cell, Point2D &xy = Point2D());
+        ObjectClass *Next_Object(ObjectClass *object) const;
+        ObjectClass *Prev_Object(ObjectClass *object) const;
+        CellStruct Calculated_Cell(SourceType dir, CellStruct &waypoint = CellStruct(-1,-1), CellStruct &cell = CellStruct(-1,-1), SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
         bool Good_Reinforcement_Cell(CellStruct &outcell, CellStruct &incell, SpeedType loco, int zone, MZoneType mzone) const;
         // 00479150
         // 004793A0
@@ -103,7 +103,7 @@ class DisplayClass : public MapClass
         // 0047A900
         void All_To_Look(bool units_only = false, bool a2 = false);
         void Constrained_Look(CoordStruct &coord, LEPTON distance);
-        void Compute_Start_Pos();
+        void Center_On_Selection();
         // 0047AE80
         // 0047AEF0
         // 0047B170
@@ -119,7 +119,7 @@ class DisplayClass : public MapClass
         CellStruct ZoneOffset;
         CellStruct *CursorSize;
         bool IsProximityCheck;
-        bool field_11A9;                    // shroud proximity check?
+        bool IsShroudCheck;
         bool IsFollowingObject;
         ObjectClass *FollowingObjectPtr;
         ObjectClass *PendingObjectPtr;
@@ -136,8 +136,8 @@ class DisplayClass : public MapClass
         bool IsRubberBand;
         bool IsTentative;
         bool IsShadowPresent;
-		Point2D Band;
-		Point2D New;
+        Point2D Band;
+        Point2D New;
 
     public:
         class TacticalClass : public GadgetClass
