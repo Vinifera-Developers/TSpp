@@ -102,6 +102,9 @@ BuildingTypeClass : public TechnoTypeClass
 
         void Init_Anim(BStateType state, int start, int count, int rate) const;
 
+        static void One_Time();
+        static void Init(TheaterType theater);
+
         static const BuildingTypeClass &As_Reference(BuildingType type);
         static const BuildingTypeClass *As_Pointer(BuildingType type);
         static const BuildingTypeClass &As_Reference(const char *name);
