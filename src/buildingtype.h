@@ -97,7 +97,8 @@ BuildingTypeClass : public TechnoTypeClass
         virtual ShapeFileStruct *const Get_Buildup_Data();
 
         int Width() const;
-		int Height(bool bib = false) const;
+        int Height(bool bib = false) const;
+        int Flush_For_Placement(CellStruct &cell, HouseClass *house) const;
 
         void Init_Anim(BStateType state, int start, int count, int rate) const;
 
@@ -109,8 +110,8 @@ BuildingTypeClass : public TechnoTypeClass
         static const char *Name_From(BuildingType type);
         static const BuildingTypeClass *Find_Or_Make(const char *name);
 
-	public:
-		BuildingType Type;
+    public:
+        BuildingType Type;
         CellStruct * OccupyList;
         ShapeFileStruct * BuildupData;
         TPoint3D<int> HalfDamageSmokeLocation1;
@@ -142,9 +143,9 @@ BuildingTypeClass : public TechnoTypeClass
         int DoorStages;
 
         struct AnimControlStruct {
-            int	Start;
-            int	Count;
-            int	Rate;
+            int    Start;
+            int    Count;
+            int    Rate;
         } Anims[BSTATE_COUNT];
 
         struct Anim2Struct {

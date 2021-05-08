@@ -783,6 +783,7 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Flush_For_Placement(CellStruct &, HouseClass *) const, 0x00440120);
 
 RGBClass::RGBClass() : Red(0), Green(0), Blue(0) {}
 RGBClass::RGBClass(const RGBStruct &that) : Red(that.R), Green(that.G), Blue(that.B) {}
