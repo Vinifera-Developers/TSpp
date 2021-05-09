@@ -198,6 +198,7 @@
 #include "cstream.h"
 #include "multimiss.h"
 #include "particle.h"
+#include "particlesys.h"
 
 
 /**
@@ -4076,6 +4077,35 @@ DEFINE_IMPLEMENTATION(void ParticleClass::Gas_Coord_AI(), 0x005A4A80);
 DEFINE_IMPLEMENTATION(void ParticleClass::Fire_Coord_AI(), 0x005A4B90);
 DEFINE_IMPLEMENTATION(void ParticleClass::Coord_AI(), 0x005A4C60);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleSystemClass::GetClassID(CLSID *), 0x005A7840);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Load(IStream *), 0x005A75E0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Save(IStream *, BOOL), 0x005A7730);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemClass::ParticleSystemClass(), 0x005A5580);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemClass::ParticleSystemClass(ParticleSystemTypeClass *, CoordStruct &, TARGET, TARGET, CoordStruct &), 0x005A5300);
+ParticleSystemClass::ParticleSystemClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D54B4; *((unsigned long *)this+4) = (unsigned long)0x006D5498; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ParticleSystemClass::~ParticleSystemClass(), 0x005A56C0);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Detach(TARGET, bool), 0x005A7550);
+DEFINE_IMPLEMENTATION(RTTIType ParticleSystemClass::Kind_Of() const, 0x005A78A0);
+DEFINE_IMPLEMENTATION(int ParticleSystemClass::Size_Of(bool) const, 0x005A7890);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Compute_CRC(WWCRCEngine &) const, 0x005A77A0);
+DEFINE_IMPLEMENTATION(bool ParticleSystemClass::Is_Inactive() const, 0x005A7520);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::AI(), 0x005A7420);
+DEFINE_IMPLEMENTATION(LayerType ParticleSystemClass::In_Which_Layer() const, 0x005A7540);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const ParticleSystemClass::Class_Of() const, 0x005A78B0);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::entry_E4(), 0x005A7880);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Draw_It(Point2D &, Rect &) const, 0x005A58A0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle(CoordStruct &, CoordStruct &), 0x005A59B0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Particle(ParticleTypeClass *, CoordStruct &), 0x005A5A50);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle_Random(CoordStruct &, CoordStruct &, int), 0x005A5AD0);
+DEFINE_IMPLEMENTATION(bool ParticleSystemClass::Delete_Particle(int), 0x005A5BD0);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Delete_All_Particles(), 0x005A5C40);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Gas_AI(), 0x005A5CB0);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Spark_AI(), 0x005A5E30);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Smoke_AI(), 0x005A6300);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Railgun_AI(), 0x005A67F0);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Fire_AI(), 0x005A6F20);
+DEFINE_IMPLEMENTATION(void ParticleSystemClass::Web_AI(), 0x005A72A0);
+
 
 /**
  *  Global definitions
@@ -4309,6 +4339,7 @@ DynamicVectorClass<WaypointPathClass *> &WaypointPaths = Make_Global<DynamicVect
 DynamicVectorClass<CampaignClass *> &Campaigns = Make_Global<DynamicVectorClass<CampaignClass *>>(0x007E2230);
 DynamicVectorClass<WaveClass *> &Waves = Make_Global<DynamicVectorClass<WaveClass *>>(0x007E47E8);
 DynamicVectorClass<ParticleClass *> &Particles = Make_Global<DynamicVectorClass<ParticleClass *>>(0x007E22E0);
+DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<DynamicVectorClass<ParticleSystemClass *>>(0x007E1540);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
