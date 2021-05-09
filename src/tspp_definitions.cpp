@@ -199,6 +199,7 @@
 #include "multimiss.h"
 #include "particle.h"
 #include "particlesys.h"
+#include "wstring.h"
 
 
 /**
@@ -4105,6 +4106,45 @@ DEFINE_IMPLEMENTATION(void ParticleSystemClass::Smoke_AI(), 0x005A6300);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Railgun_AI(), 0x005A67F0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Fire_AI(), 0x005A6F20);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Web_AI(), 0x005A72A0);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Wstring::Wstring(), 0x006A2C10);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Wstring::Wstring(const char *), 0x006A2C20);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(Wstring::Wstring(const Wstring &), 0x006A2C70);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(Wstring::~Wstring(), 0x006A2CD0);
+DEFINE_IMPLEMENTATION(bool Wstring::operator==(const char *) const, 0x006A2CF0);
+DEFINE_IMPLEMENTATION(bool Wstring::operator==(const Wstring &) const, 0x006A2D50);
+DEFINE_IMPLEMENTATION(bool Wstring::operator!=(const char *) const, 0x006A2DC0);
+DEFINE_IMPLEMENTATION(bool Wstring::operator!=(const Wstring &) const, 0x006A2E10);
+DEFINE_IMPLEMENTATION(const Wstring &Wstring::operator=(const char *), 0x006A2E80);
+DEFINE_IMPLEMENTATION(const Wstring &Wstring::operator=(const Wstring &), 0x006A2EE0);
+DEFINE_IMPLEMENTATION(bool Wstring::Concat(const char *), 0x006A2FA0);
+DEFINE_IMPLEMENTATION(bool Wstring::Concat(unsigned, const char *), 0x006A3050);
+DEFINE_IMPLEMENTATION(bool Wstring::Concat(const Wstring &), 0x006A30E0);
+DEFINE_IMPLEMENTATION(Wstring &Wstring::operator+=(const char *), 0x006A31B0);
+DEFINE_IMPLEMENTATION(Wstring &Wstring::operator+=(const Wstring &), 0x006A3260);
+DEFINE_IMPLEMENTATION(Wstring Wstring::operator+(const char *) const, 0x006A3330);
+DEFINE_IMPLEMENTATION(Wstring Wstring::operator+(const Wstring &) const, 0x006A3460);
+DEFINE_IMPLEMENTATION(bool Wstring::Trim_Range(int, int), 0x006A35B0);
+DEFINE_IMPLEMENTATION(bool Wstring::Remove_Character(const char), 0x006A3680);
+DEFINE_IMPLEMENTATION(void Wstring::Remove_Spaces(), 0x006A3740);
+DEFINE_IMPLEMENTATION(void Wstring::Release_Buffer(), 0x006A3760);
+DEFINE_IMPLEMENTATION(void Wstring::Reserve(int), 0x006A3780);
+DEFINE_IMPLEMENTATION(void Wstring::Merge_Strings(char *, int), 0x006A37D0);
+DEFINE_IMPLEMENTATION(char *Wstring::Peek_Buffer(), 0x006A3820);
+DEFINE_IMPLEMENTATION(char Wstring::operator[](int), 0x006A3830);
+DEFINE_IMPLEMENTATION(int Wstring::Get_Length() const, 0x006A3860);
+DEFINE_IMPLEMENTATION(bool Wstring::func_7B54D0(const char *, unsigned), 0x006A3880);
+DEFINE_IMPLEMENTATION(bool Wstring::func_6A39E0(char, unsigned), 0x006A39E0);
+DEFINE_IMPLEMENTATION(bool Wstring::func_6A3B20(const char *, const char *), 0x006A3B20);
+DEFINE_IMPLEMENTATION(bool Wstring::Set(const char *), 0x006A3DB0);
+DEFINE_IMPLEMENTATION(bool Wstring::Replace_Char(char, unsigned), 0x006A3E10);
+DEFINE_IMPLEMENTATION(bool Wstring::Replace(unsigned, const char *), 0x006A3E40);
+DEFINE_IMPLEMENTATION(Wstring Wstring::To_Lower() const, 0x006A3E90);
+DEFINE_IMPLEMENTATION(Wstring Wstring::To_Upper() const, 0x006A3EE0);
+DEFINE_IMPLEMENTATION(bool Wstring::Resize(unsigned), 0x006A3F30);
+DEFINE_IMPLEMENTATION(bool Wstring::Trim_To_Char(char), 0x006A3FD0);
+DEFINE_IMPLEMENTATION(int Wstring::Token(int, char *, Wstring &), 0x006A40A0);
+DEFINE_IMPLEMENTATION(int Wstring::Next_Line(int, Wstring &), 0x006A4240);
 
 
 /**
