@@ -52,7 +52,7 @@ class ColorScheme
 		static ConvertClass * func_68C3B0(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, PaletteClass *pal3, Surface *surface, int shade_count, int r, int g, int b, bool *indexes);
 		static ConvertClass * func_68C500(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, Surface *surface, PaletteClass *pal3);
 
-		static ColorScheme *Find_Or_Make(const char *name, PaletteClass *a2, PaletteClass *a3, int a4 = 63);
+		static ColorScheme *Find_Or_Make(const char *name, HSVClass &, PaletteClass *a2, PaletteClass *a3, int a4 = 63);
 		static ColorScheme *As_Pointer(const char *name, int a2 = 63);
 		static ColorSchemeType From_Name(const char *name, int a2 = 63);
 

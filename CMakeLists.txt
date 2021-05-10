@@ -133,6 +133,8 @@ message(STATUS "Fetching the repository git information.")
 # The following two defines are automatically picked up by GitWatcher.
 set(GIT_PRE_CONFIGURE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp_gitinfo.cpp.in")
 set(GIT_POST_CONFIGURE_FILE "${CMAKE_CURRENT_BINARY_DIR}/generated/tspp_gitinfo.cpp")
+set(GIT_STATE_FILE "${CMAKE_CURRENT_BINARY_DIR}/tspp-git-state-hash")
+set(GIT_WORKING_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
 include(GitWatcher)
 GitWatcher_SetupInitial()  # Running the script function again forces the file to be
@@ -225,11 +227,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4800") # disable C4800: 'BOOL' : forc
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4996") # disable C4996: 'This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.'
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4324") # disable C4324: 'structure was padded due to alignment specifier.' Safe to ignore this.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4102") # disable C4102: 'unreferenced label.' Yea, so what?
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4646") # disable C4646: 'function declared with 'noreturn' has non-void return type' Yea, so what?
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4731") # disable C4731: 'frame pointer register 'ebp' modified by inline assembly code' Nothing to worry about.
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4740") # disable C4740: 'flow in or out of inline asm code suppresses global optimization' Nothing to worry about.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4239") # disable C4239: 'nonstandard extension used: 'default argument': conversion from 'value' to 'value &'. Shoosh...
 
 # disable D9035: 'option 'QIfist' has been deprecated and will be removed in a future release.' Yeah yeah, we need it for now though...

@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TSPP_GITINFO.CPP
+ *  @file          TIBSUN_FUNCTIONS.H
  *
- *  @authors       OmniBlade, CCHyper
+ *  @authors       CCHyper
  *
- *  @brief         Globals for accessing git version information from the build system.
+ *  @brief         Global and uncategorised functions.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -25,63 +25,7 @@
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
  ******************************************************************************/
-#include "tspp_gitinfo.h"
-#include <cstdio>
+#pragma once
 
 
-/**
- *  #WARNING:
- *  This file is automatically populated by the CMake, do not edit!
- */
-
-
-const char *TSPP_Git_Hash()
-{
-	return "@GIT_HEAD_SHA1@";
-}
-
-
-const char *TSPP_Git_Hash_Short()
-{
-	return "@GIT_HEAD_SHORT_SHA1@";
-}
-
-
-const char *TSPP_Git_Author()
-{
-	return "@GIT_AUTHOR_NAME@";
-}
-
-
-const char *TSPP_Git_Branch()
-{
-	return "@GIT_BRANCH@";
-}
-
-
-const char *TSPP_Git_DateTime()
-{
-	return "@GIT_COMMIT_DATE_ISO8601@";
-}
-
-
-bool TSPP_Git_Uncommitted_Changes()
-{
-	return @GIT_IS_DIRTY@;
-}
-
-
-const char *TSPP_Git_Version_String()
-{
-	static char _buffer[1024];
-	static bool _onetime = false;
-
-	if (!_onetime) {
-		std::snprintf(_buffer, sizeof(_buffer), "%s %s %s%s %s",
-			TSPP_Git_Branch(), TSPP_Git_Author(),
-			TSPP_Git_Uncommitted_Changes() ? "~" : "", TSPP_Git_Hash_Short(), TSPP_Git_DateTime());
-		_onetime = true;
-	}
-
-	return _buffer;
-}
+void Call_Back();

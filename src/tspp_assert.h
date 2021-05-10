@@ -43,8 +43,6 @@ void TSPP_Install_Assertion_Handler(void (*handler_ptr)(const char *, const char
 	{ \
 		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
 			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, nullptr); \
-		} else { \
-			assert(expr); \
 		} \
 	}
 
@@ -59,7 +57,5 @@ void TSPP_Install_Assertion_Handler(void (*handler_ptr)(const char *, const char
 	{ \
 		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
 			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, msg); \
-		} else { \
-			assert(expr); \
 		} \
 	}

@@ -200,6 +200,7 @@
 #include "particle.h"
 #include "particlesys.h"
 #include "wstring.h"
+#include "tibsun_functions.h"
 
 
 /**
@@ -1449,7 +1450,7 @@ DEFINE_IMPLEMENTATION_DECONSTRUCTOR(ColorScheme::~ColorScheme(), 0x005E26C0);
 DEFINE_IMPLEMENTATION(void ColorScheme::func_5E2650(PaletteClass *, PaletteClass *, int, int, int), 0x005E2650);
 DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C3B0(HSVClass *, PaletteClass *, PaletteClass *, PaletteClass *, Surface *, int, int, int, int, bool *), 0x005E2190);
 DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C500(HSVClass *, PaletteClass *, PaletteClass *, Surface *, PaletteClass *), 0x005E22E0);
-DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::Find_Or_Make(const char *, PaletteClass *, PaletteClass *, int), 0x005E27B0);
+DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::Find_Or_Make(const char *, HSVClass &, PaletteClass *, PaletteClass *, int), 0x005E27B0);
 DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::As_Pointer(const char *, int), 0x005E2840);
 DEFINE_IMPLEMENTATION(ColorSchemeType ColorScheme::From_Name(const char *, int), 0x005E28A0);
 
@@ -4145,6 +4146,12 @@ DEFINE_IMPLEMENTATION(bool Wstring::Resize(unsigned), 0x006A3F30);
 DEFINE_IMPLEMENTATION(bool Wstring::Trim_To_Char(char), 0x006A3FD0);
 DEFINE_IMPLEMENTATION(int Wstring::Token(int, char *, Wstring &), 0x006A40A0);
 DEFINE_IMPLEMENTATION(int Wstring::Next_Line(int, Wstring &), 0x006A4240);
+
+
+/**
+ *  Various global functions
+ */
+DEFINE_IMPLEMENTATION(void Call_Back(), 0x00462C60);
 
 
 /**

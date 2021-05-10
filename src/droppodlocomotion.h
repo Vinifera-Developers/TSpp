@@ -31,6 +31,15 @@
 #include "ipiggyback.h"
 
 
+typedef enum DropPodDirType
+{
+    DPOD_DIR_NE,
+    DPOD_DIR_NW,
+    DPOD_DIR_SE,
+    DPOD_DIR_SW,
+} DropPodDirType;
+
+
 class DECLSPEC_UUID("4A582747-9839-11D1-B709-00A024DDAFD1")
 DropPodLocomotionClass : public LocomotionClass, public IPiggyback
 {
@@ -84,7 +93,7 @@ DropPodLocomotionClass : public LocomotionClass, public IPiggyback
         virtual int Size_Of(bool firestorm = false) const override;
 
     protected:
-        bool field_18;
+        DropPodDirType field_18;
         CoordStruct DestinationCoord;
         IPiggybackPtr Piggybacker;
 
