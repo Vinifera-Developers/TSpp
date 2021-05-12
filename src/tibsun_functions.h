@@ -29,3 +29,4 @@
 
 
 void Call_Back();
+void Load_Keyboard_Hotkeys();
