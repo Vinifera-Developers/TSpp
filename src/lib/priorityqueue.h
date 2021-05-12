@@ -53,7 +53,7 @@ class PriorityQueueClass
 
 
 template <typename T>
-PriorityQueueClass<T>::PriorityQueueClass(int capacity = 0) :
+PriorityQueueClass<T>::PriorityQueueClass(int capacity) :
     HeapSize(0),
     Capacity(capacity),
     Heap(new int [capacity + 4]),

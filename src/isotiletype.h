@@ -59,6 +59,7 @@ IsometricTileTypeClass : public ObjectTypeClass
         /**
          *  AbstractClass
          */
+        virtual void Detach(TARGET target, bool all = true) override;
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
@@ -95,7 +96,7 @@ IsometricTileTypeClass : public ObjectTypeClass
         IsometricTileTypeClass *NextTileTypeInSet;
         int ToSnowTheater;
         int ToTemperateTheater;
-        AnimTypeClass *Anim;
+        AnimType Anim;
         int XOffset;
         int YOffset;
         int AttachesTo;
