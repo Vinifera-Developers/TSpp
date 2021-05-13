@@ -114,7 +114,7 @@ UnitClass : public FootClass
         virtual DirStruct Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
         virtual bool entry_2A4() const override;
-        virtual int entry_2A8() const override;
+        virtual int Get_Max_Speed() const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual int Greatest_Threat(ThreatType method, CoordStruct &coord, bool a3 = false) const override;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;

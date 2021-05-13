@@ -163,7 +163,7 @@ class FootClass : public TechnoClass
         virtual void entry_39C(int a1);
         virtual int Offload_Tiberium_Bail();
         virtual void Overrun_Square(CellStruct &cell, bool threaten);
-        virtual int entry_3A8();
+        virtual int Current_Speed();
         virtual void Approach_Target();
         virtual void Fixup_Path(PathType *path);
         virtual void Set_Speed(double speed);

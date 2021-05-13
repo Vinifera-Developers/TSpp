@@ -148,7 +148,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool entry_29C() const;
         virtual bool entry_2A0() const;
         virtual bool entry_2A4() const;
-        virtual int entry_2A8() const;
+        virtual int Get_Max_Speed() const;
         virtual int Rearm_Delay(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual int Threat_Range(int control) const;
         virtual bool Is_Allowed_To_Leave_Map() const;
@@ -323,5 +323,5 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         TARGET field_20C; // closet object to me?
         int EMPFramesRemaining;
         unsigned field_214;
-        float field_218; // speed multiplier?
+        float LimpetSpeedFactor;
 };

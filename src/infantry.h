@@ -119,7 +119,7 @@ InfantryClass : public FootClass
         virtual void entry_394() override;
         virtual void entry_398() override;
         virtual void entry_39C(int a1) override;
-        virtual int entry_3A8() override;
+        virtual int Current_Speed() override;
         virtual void Approach_Target() override;
         virtual void entry_3B8() override;
 
