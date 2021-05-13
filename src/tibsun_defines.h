@@ -2554,6 +2554,12 @@ struct CellStruct
     bool operator==(const CellStruct &that) const { return X == that.X && Y == that.Y; }
     bool operator!=(const CellStruct &that) const { return X != that.X && Y != that.Y; }
 
+    CellStruct operator+(const CellStruct &that) const { return CellStruct(X + that.X, Y + that.Y); }
+    CellStruct &operator+=(const CellStruct &that) { X += that.X; Y += that.Y; return *this; }
+
+    CellStruct operator-(const CellStruct &that) const { return CellStruct(X - that.X, Y - that.Y); }
+    CellStruct &operator-=(const CellStruct &that) { X -= that.X; Y -= that.Y; return *this; }
+
     int32_t As_Cell_Number() const { return X + (Y << 9); }
 
     int16_t X; // X component of location.
@@ -2570,6 +2576,12 @@ struct CoordStruct
 
     bool operator==(const CoordStruct &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
     bool operator!=(const CoordStruct &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+
+    CoordStruct operator+(const CoordStruct &that) const { return CoordStruct(X + that.X, Y + that.Y, Z + that.Z); }
+    CoordStruct &operator+=(const CoordStruct &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
+
+    CoordStruct operator-(const CoordStruct &that) const { return CoordStruct(X - that.X, Y - that.Y, Z - that.Z); }
+    CoordStruct &operator-=(const CoordStruct &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
 
     int32_t X; // X coordinate of the location.
     int32_t Y; // Y coordinate of the location.
