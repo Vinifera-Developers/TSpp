@@ -57,7 +57,7 @@ class EventClass
 		EventClass(unsigned int house_id, EventType type, RTTIType object, int id);
 		EventClass(unsigned int house_id, EventType type, RTTIType object, CellStruct *cell);
 		EventClass(unsigned int house_id, EventType type, int id, CellStruct *cell);
-		EventClass(unsigned int house_id, AnimType anim, HousesType owner, CoordStruct *coord);
+		EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
 		EventClass(unsigned int house_id, void *ptr, unsigned long size);
 
 		int operator==(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
@@ -88,7 +88,7 @@ class EventClass
 			struct {
 				AnimType What;
 				HousesType Owner;
-				xCoordStruct Where;
+				xCoordinate Where;
 			} Anim;
 			struct {
 				int Value;
@@ -132,12 +132,12 @@ class EventClass
 
 			struct {
 				RTTIType Type;
-				xCoordStruct Cell;
+				xCoordinate Cell;
 			} Place;
 
 			struct {
 				int ID;
-				xCoordStruct Cell;
+				xCoordinate Cell;
 			} Special;
 
 			struct {

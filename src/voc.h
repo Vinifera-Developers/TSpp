@@ -48,7 +48,7 @@ class VocClass
 
         static int Play(VocType voc, int a2, float volume = 1.0f);
         static int Play(VocType voc, float volume = 1.0f);
-        static int Play(VocType voc, CoordStruct &coord);
+        static int Play(VocType voc, Coordinate &coord);
         // 00664EC0
         // 00665080
         // 006651C0
@@ -76,7 +76,7 @@ inline int Sound_Effect(VocType voc, float volume = 1.0f)
 /**
  *  Plays a sound effect in the tactical map.
  */
-inline void Sound_Effect(VocType voc, CoordStruct &coord)
+inline void Sound_Effect(VocType voc, Coordinate &coord)
 {
     VocClass::Play(voc, coord);
 }

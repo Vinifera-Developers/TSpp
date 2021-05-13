@@ -71,7 +71,7 @@ BulletTypeClass : public ObjectTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual CoordStruct Coord_Fixup(CoordStruct *coord) const override;
+        virtual Coordinate Coord_Fixup(Coordinate *coord) const override;
         virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 

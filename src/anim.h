@@ -54,7 +54,7 @@ AnimClass : public ObjectClass, public StageClass
 
 	public:
 		AnimClass();
-		AnimClass(const AnimTypeClass *classof, CoordStruct &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, unsigned zadjust = 0);
+		AnimClass(const AnimTypeClass *classof, Coordinate &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, unsigned zadjust = 0);
         AnimClass(const NoInitClass &noinit);
 		virtual ~AnimClass();
 
@@ -65,7 +65,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual CoordStruct Center_Coord() const override;
+        virtual Coordinate Center_Coord() const override;
         virtual void AI() override;
 
         /**
@@ -112,7 +112,7 @@ AnimClass : public ObjectClass, public StageClass
         unsigned TintColor;
         int ZAdjust;
         int YSortAdjust;
-        CoordStruct FlamingGuyCoords;
+        Coordinate FlamingGuyCoords;
         int FlamingGuyRetries;
         bool IsBuildingAnim;
         BounceClass Bounce;

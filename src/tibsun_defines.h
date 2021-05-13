@@ -2589,6 +2589,9 @@ struct CoordStruct
 };
 
 
+using Coordinate = CoordStruct;
+
+
 struct xCellStruct
 {
     int16_t X; // X component of location.
@@ -2596,7 +2599,7 @@ struct xCellStruct
 };
 
 
-struct xCoordStruct
+struct xCoordinate
 {
     int32_t X; // X coordinate of the location.
     int32_t Y; // Y coordinate of the location.

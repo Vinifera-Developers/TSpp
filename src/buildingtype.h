@@ -75,7 +75,7 @@ BuildingTypeClass : public TechnoTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual CoordStruct Coord_Fixup(CoordStruct *coord) const override;
+        virtual Coordinate Coord_Fixup(Coordinate *coord) const override;
         virtual int Max_Pips() const override;
         virtual Point3D Pixel_Dimensions() const override;
         virtual Point3D Lepton_Dimensions() const override;
@@ -135,7 +135,7 @@ BuildingTypeClass : public TechnoTypeClass
         FacingType FoundationFace;
         int Adjacent;
         RTTIType ToBuild;
-        CoordStruct ExitCoordinate;
+        Coordinate ExitCoordinate;
         CellStruct * ExitList;
         DirType StartFace;
         int Power;

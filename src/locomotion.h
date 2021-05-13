@@ -59,8 +59,8 @@ class LocomotionClass : public IPersistStream, public ILocomotion
          */
         IFACEMETHOD(Link_To_Object)(void *object);
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(CoordStruct, Destination)();
-        IFACEMETHOD_(CoordStruct, Head_To_Coord)();
+        IFACEMETHOD_(Coordinate, Destination)();
+        IFACEMETHOD_(Coordinate, Head_To_Coord)();
         IFACEMETHOD_(MoveType, Can_Enter_Cell)(CellStruct cell);
         IFACEMETHOD_(bool, Is_To_Have_Shadow)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
@@ -71,7 +71,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         IFACEMETHOD_(int, Z_Adjust)();
         IFACEMETHOD_(ZGradientType, Z_Gradient)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(CoordStruct to);
+        IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
         IFACEMETHOD_(void, Unlimbo)();
@@ -82,8 +82,8 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         IFACEMETHOD_(bool, Is_Ion_Sensitive)();
         IFACEMETHOD_(bool, Push)(DirStruct dir);
         IFACEMETHOD_(bool, Shove)(DirStruct dir);
-        IFACEMETHOD_(void, Force_Track)(int track, CoordStruct coord);
-        IFACEMETHOD_(void, Force_Immediate_Destination)(CoordStruct coord);
+        IFACEMETHOD_(void, Force_Track)(int track, Coordinate coord);
+        IFACEMETHOD_(void, Force_Immediate_Destination)(Coordinate coord);
         IFACEMETHOD_(void, Force_New_Slope)(int ramp);
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(int, Apparent_Speed)();
@@ -93,7 +93,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         IFACEMETHOD_(void, Acquire_Hunter_Seeker_Target)();
         IFACEMETHOD_(bool, Is_Surfacing)();
         IFACEMETHOD_(void, Mark_All_Occupation_Bits)(int mark);
-        IFACEMETHOD_(bool, Is_Moving_Here)(CoordStruct to);
+        IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
         IFACEMETHOD_(bool, Will_Jump_Tracks)();
         IFACEMETHOD_(bool, Is_Really_Moving_Now)();
         IFACEMETHOD_(void, Stop_Movement_Animation)();

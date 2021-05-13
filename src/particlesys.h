@@ -52,7 +52,7 @@ class ParticleSystemClass : public ObjectClass
 
     public:
         ParticleSystemClass();
-        ParticleSystemClass(ParticleSystemTypeClass *classof, CoordStruct &a2, TARGET a3 = nullptr, TARGET a4 = nullptr, CoordStruct &a5 = CoordStruct(0,0,0));
+        ParticleSystemClass(ParticleSystemTypeClass *classof, Coordinate &a2, TARGET a3 = nullptr, TARGET a4 = nullptr, Coordinate &a5 = Coordinate(0,0,0));
         ParticleSystemClass(const NoInitClass &noinit);
         virtual ~ParticleSystemClass();
         
@@ -74,9 +74,9 @@ class ParticleSystemClass : public ObjectClass
         virtual void entry_E4() override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
-        ParticleClass *Spawn_Held_Particle(CoordStruct &a1, CoordStruct &a2);
-        ParticleClass *Spawn_Particle(ParticleTypeClass *particletype, CoordStruct &a2);
-        ParticleClass *Spawn_Held_Particle_Random(CoordStruct &a1, CoordStruct &a2, int a3);
+        ParticleClass *Spawn_Held_Particle(Coordinate &a1, Coordinate &a2);
+        ParticleClass *Spawn_Particle(ParticleTypeClass *particletype, Coordinate &a2);
+        ParticleClass *Spawn_Held_Particle_Random(Coordinate &a1, Coordinate &a2, int a3);
         bool Delete_Particle(int index);
         void Delete_All_Particles();
         void Gas_AI();
@@ -88,9 +88,9 @@ class ParticleSystemClass : public ObjectClass
 
     public:
         ParticleSystemTypeClass *Class;
-        CoordStruct field_50;
+        Coordinate field_50;
         DynamicVectorClass<ParticleClass *> Particles;
-        CoordStruct SpawnCoord;
+        Coordinate SpawnCoord;
         TARGET xObject;
         TARGET Target;
         int SpawnFrames;

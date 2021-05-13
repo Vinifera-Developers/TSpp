@@ -80,7 +80,7 @@ LightSourceClass : public AbstractClass
 
     public:
         LightSourceClass();
-        LightSourceClass(CoordStruct coord, int visibility, int intensity, int red, int green, int blue);
+        LightSourceClass(Coordinate coord, int visibility, int intensity, int red, int green, int blue);
         LightSourceClass(const NoInitClass &noinit);
         virtual ~LightSourceClass();
         
@@ -103,7 +103,7 @@ LightSourceClass : public AbstractClass
         int RedTint;
         int GreenTint;
         int BlueTint;
-        CoordStruct Where;
+        Coordinate Where;
         int Visibility;
         bool IsEnabled;
 };

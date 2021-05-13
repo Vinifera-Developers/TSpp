@@ -202,7 +202,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Sell_Wall(CellStruct &cell, bool quiet = true);
         const BuildingTypeClass * Suggest_New_Building() const;
         BuildingClass * Find_Building(BuildingType type, ZoneType zone = ZONE_NONE) const;
-        CoordStruct Find_Build_Location(BuildingClass *building) const;
+        Coordinate Find_Build_Location(BuildingClass *building) const;
         void Recalc_Center();
         int Expert_AI();
         UrgencyType Check_Fire_Sale() const;
@@ -219,12 +219,12 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         int * Factory_Counter(RTTIType rtti);
         void Active_Remove(const TechnoClass *techno);
         void Active_Add(const TechnoClass *techno);
-        ZoneType Which_Zone(CoordStruct &coord) const;
+        ZoneType Which_Zone(Coordinate &coord) const;
         ZoneType Which_Zone(const ObjectClass * object) const;
         ZoneType Which_Zone(CellStruct &cell) const;
         CellStruct Zone_Cell(ZoneType zone) const;
         CellStruct Where_To_Go(const FootClass *object) const;
-        TARGET Find_Juicy_Target(CoordStruct &coord) const;
+        TARGET Find_Juicy_Target(Coordinate &coord) const;
         FactoryClass *Fetch_Factory(RTTIType rtti) const;
         void Set_Factory(RTTIType rtti, FactoryClass * factory);
         int Factory_Count(RTTIType rtti) const;
@@ -406,7 +406,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         unsigned BuildingsKilled[20];
         unsigned BuildingsLost;
         HousesType WhoLastHurtMe;
-        CoordStruct Center;
+        Coordinate Center;
         int Radius;
 
         struct {

@@ -69,7 +69,7 @@ BuildingLightClass : public ObjectClass
         virtual LayerType In_Which_Layer() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
         // 00422BA0
@@ -79,8 +79,8 @@ BuildingLightClass : public ObjectClass
 
     public:
         double Speed;
-        CoordStruct Coord1;
-        CoordStruct Coord2;
+        Coordinate Coord1;
+        Coordinate Coord2;
         double Acceleration;
         bool SweepToggle;
         SpotlightBehaviorType Behavior;

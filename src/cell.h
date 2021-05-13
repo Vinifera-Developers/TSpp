@@ -81,10 +81,10 @@ CellClass : public AbstractClass
          */
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
-        virtual CoordStruct Center_Coord() const override;
-        virtual CoordStruct entry_5C() const override;
+        virtual Coordinate Center_Coord() const override;
+        virtual Coordinate entry_5C() const override;
 
-        int Get_Height(const CoordStruct &coord) const;
+        int Get_Height(const Coordinate &coord) const;
         // 00451900
         // 00451AF0
         ObjectClass *Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
@@ -119,14 +119,14 @@ CellClass : public AbstractClass
         // 004564D0
         // 00456690
         void Wall_Update(bool a1 = false);
-        CoordStruct Cell_Coord() const;
+        Coordinate Cell_Coord() const;
         int Reduce_Tiberium(int levels);
         int Reduce_Wall(int damage);
         bool Is_Spot_Free(int spot_index, bool a2 = false) const;
-        CoordStruct Closest_Free_Spot(CoordStruct &coord, bool a2 = false, bool a3 = false) const;
+        Coordinate Closest_Free_Spot(Coordinate &coord, bool a2 = false, bool a3 = false) const;
         // 00457600
         // 00457650
-        void Incoming(CoordStruct &threat = CoordStruct(), bool forced = false, bool no_kidding = false, bool a4 = false);
+        void Incoming(Coordinate &threat = Coordinate(), bool forced = false, bool no_kidding = false, bool a4 = false);
         CellClass &Adjacent_Cell(FacingType facing) const;
         void Adjust_Threat(HousesType house, int threat_value);
         long Tiberium_Adjust(bool pre_game = false);
@@ -213,7 +213,7 @@ CellClass : public AbstractClass
 
         LandType Land_Type() const { return Land; }
 
-        static int Spot_Index(CoordStruct &coord);
+        static int Spot_Index(Coordinate &coord);
 
     public:
         CellStruct Pos;

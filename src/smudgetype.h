@@ -78,8 +78,8 @@ SmudgeTypeClass : public ObjectTypeClass
         bool Can_Place_Here(CellStruct &cell, bool a3);
         void Place(CellStruct &cell);
 
-        static bool Create_Scorch(CoordStruct &coord, int width, int height, bool a4);
-        static bool Create_Crater(CoordStruct &coord, int width, int height, bool a4);
+        static bool Create_Scorch(Coordinate &coord, int width, int height, bool a4);
+        static bool Create_Crater(Coordinate &coord, int width, int height, bool a4);
         static void Init(TheaterType theater = THEATER_TEMPERATE);
 
         static const SmudgeTypeClass &As_Reference(SmudgeType type);

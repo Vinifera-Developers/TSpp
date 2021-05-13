@@ -92,8 +92,8 @@ class DisplayClass : public MapClass
         void Waypoint_Mode_Control(int control, bool a2);
         void Power_Mode_Control(int control);
         void Repair_Mode_Control(int control);
-        CoordStruct Closest_Free_Spot(CoordStruct &coord, bool any = false) const;
-        bool Is_Spot_Free(CoordStruct &coord, bool a2 = false) const;
+        Coordinate Closest_Free_Spot(Coordinate &coord, bool any = false) const;
+        bool Is_Spot_Free(Coordinate &coord, bool a2 = false) const;
         void Encroach_Shadow();
         void Encroach_Fog();
         void Fog_Cell(CellStruct &cell);
@@ -102,7 +102,7 @@ class DisplayClass : public MapClass
         // 0047A790
         // 0047A900
         void All_To_Look(bool units_only = false, bool a2 = false);
-        void Constrained_Look(CoordStruct &coord, LEPTON distance);
+        void Constrained_Look(Coordinate &coord, LEPTON distance);
         void Center_On_Selection();
         // 0047AE80
         // 0047AEF0
@@ -130,8 +130,8 @@ class DisplayClass : public MapClass
         bool IsPowerMode;
         bool IsWaypointMode;
         SpecialWeaponType TargettingType;
-        CoordStruct *field_11C4;            // waypoint related
-        CoordStruct field_11C8;             // current waypoint coord (as user is moving mouse around).
+        Coordinate *field_11C4;            // waypoint related
+        Coordinate field_11C8;             // current waypoint coord (as user is moving mouse around).
         RGBStruct field_11D4;               // waypoint related, waypoint scrolling color?
         bool IsRubberBand;
         bool IsTentative;

@@ -71,8 +71,8 @@ class MapClass : public GScreenClass
 
         CellClass & operator [] (const CellStruct &cell);
         const CellClass & operator [] (const CellStruct &cell) const;
-        CellClass & operator [] (const CoordStruct &coord);
-        const CellClass & operator [] (const CoordStruct &coord) const;
+        CellClass & operator [] (const Coordinate &coord);
+        const CellClass & operator [] (const Coordinate &coord) const;
 
         int ID(CellClass *ptr) { return Array.ID(ptr); }
         int ID(CellClass &ptr) { return Array.ID(&ptr); }
@@ -117,7 +117,7 @@ class MapClass : public GScreenClass
         bool Place_Random_Crate();
         bool Remove_Crate(CellStruct &cell);
         int Validate();
-        ObjectClass *Close_Object(CoordStruct &coord) const;
+        ObjectClass *Close_Object(Coordinate &coord) const;
         // 00514AF0
         // 00514B00
         // 00515160
@@ -173,7 +173,7 @@ class MapClass : public GScreenClass
         // 0051E2B0
         bool In_Radar(CellStruct &cell, bool a2 = true) const;
         bool In_Radar(CellClass &cell, bool a2 = true) const;
-        bool In_Radar(CoordStruct &coord) const;
+        bool In_Radar(Coordinate &coord) const;
         // 0051E560
         // 0051E630
         // 0051E770

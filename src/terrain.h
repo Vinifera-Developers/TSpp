@@ -71,9 +71,9 @@ TerrainClass : public ObjectClass, public StageClass
          */
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
-        virtual void Set_Occupy_Bit(CoordStruct &coord) override;
-        virtual void Clear_Occupy_Bit(CoordStruct &coord) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual void Set_Occupy_Bit(Coordinate &coord) override;
+        virtual void Clear_Occupy_Bit(Coordinate &coord) override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;

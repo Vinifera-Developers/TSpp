@@ -51,10 +51,10 @@ class FuseClass {
 		FuseClass(const NoInitClass &noinit);
 		~FuseClass();
 
-		void Arm_Fuse(CoordStruct &location, CoordStruct &target, int time = 255, int arming = 0);
-		FuseResultType Fuse_Checkup(CoordStruct &newlocation);
+		void Arm_Fuse(Coordinate &location, Coordinate &target, int time = 255, int arming = 0);
+		FuseResultType Fuse_Checkup(Coordinate &newlocation);
 
-		CoordStruct Fuse_Target()
+		Coordinate Fuse_Target()
 		{
 			return HeadTo;
 		}
@@ -64,7 +64,7 @@ class FuseClass {
 
 	private:
 		CDTimerClass<FrameTimerClass> Arming;
-		CoordStruct HeadTo;
+		Coordinate HeadTo;
 		int Proximity;
 };
 

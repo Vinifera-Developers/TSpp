@@ -29,11 +29,11 @@
 
 #include "always.h"
 #include "matrix3d.h"
+#include "tibsun_defines.h"
 #include <comdef.h>
 #include <unknwn.h>
 
 
-struct CoordStruct;
 class Point2D;
 struct CellStruct;
 struct DirStruct;
@@ -65,12 +65,12 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Fetches destination coordinate.
      */
-    STDMETHOD_(CoordStruct, Destination)() PURE;
+    STDMETHOD_(Coordinate, Destination)() PURE;
 
     /**
      *  Fetches immediate (next cell) destination coordinate.
      */
-    STDMETHOD_(CoordStruct, Head_To_Coord)() PURE;
+    STDMETHOD_(Coordinate, Head_To_Coord)() PURE;
 
     /**
      *  Determine if specific cell can be entered.
@@ -125,7 +125,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Instruct to move to location specified.
      */
-    STDMETHOD_(void, Move_To)(CoordStruct to) PURE;
+    STDMETHOD_(void, Move_To)(Coordinate to) PURE;
 
     /**
      *  Stop moving at first opportunity.
@@ -180,7 +180,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Force drive track -- special case only.
      */
-    STDMETHOD_(void, Force_Track)(int track, CoordStruct coord) PURE;
+    STDMETHOD_(void, Force_Track)(int track, Coordinate coord) PURE;
 
     /**
      *  What display layer is it located in.
@@ -190,7 +190,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Force object to destination (no processing). NOTE: Don't use this function!
      */
-    STDMETHOD_(void, Force_Immediate_Destination)(CoordStruct coord) PURE;
+    STDMETHOD_(void, Force_Immediate_Destination)(Coordinate coord) PURE;
 
     /**
      *  Force a voxel unit to a given slope. Used in cratering.
@@ -240,7 +240,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Is this object in the process of moving into this coord.
      */
-    STDMETHOD_(bool, Is_Moving_Here)(CoordStruct to) PURE;
+    STDMETHOD_(bool, Is_Moving_Here)(Coordinate to) PURE;
 
     /**
      *  Will this object jump tracks?

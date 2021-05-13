@@ -31,5 +31,5 @@
 #include "tibsun_defines.h"
 
 
-CoordStruct Coord_Move(CoordStruct &start, DirType facing, unsigned short distance);
-CoordStruct Coord_Scatter(CoordStruct &coord, unsigned distance, bool lock = false);
+Coordinate Coord_Move(Coordinate &start, DirType facing, unsigned short distance);
+Coordinate Coord_Scatter(Coordinate &coord, unsigned distance, bool lock = false);

@@ -71,8 +71,8 @@ BuildingClass : public TechnoClass
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual CoordStruct Center_Coord() const override;
-        virtual CoordStruct entry_50() const override;
+        virtual Coordinate Center_Coord() const override;
+        virtual Coordinate entry_50() const override;
         virtual void AI() override;
 
         /**
@@ -88,17 +88,17 @@ BuildingClass : public TechnoClass
         virtual bool Can_Repair() const override;
         virtual bool Can_Demolish() const override;
         virtual bool Can_Player_Move() const override;
-        virtual CoordStruct Target_Coord() const override;
-        virtual CoordStruct Docking_Coord() const override;
-        virtual CoordStruct Render_Coord() const override;
-        virtual CoordStruct Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual CoordStruct Exit_Coord() const override;
+        virtual Coordinate Target_Coord() const override;
+        virtual Coordinate Docking_Coord() const override;
+        virtual Coordinate Render_Coord() const override;
+        virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual Coordinate Exit_Coord() const override;
         virtual int Sort_Y() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual void Detach_All(bool all = false) override;
-        virtual void Set_Occupy_Bit(CoordStruct &coord) override;
-        virtual void Clear_Occupy_Bit(CoordStruct &coord) override;
+        virtual void Set_Occupy_Bit(Coordinate &coord) override;
+        virtual void Clear_Occupy_Bit(Coordinate &coord) override;
         virtual ExitType Exit_Object(const TechnoClass *object) override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
@@ -145,13 +145,13 @@ BuildingClass : public TechnoClass
         virtual int entry_278() const override;
         virtual int Get_Z_Adjustment() const override;
         virtual CellStruct Find_Exit_Cell(const TechnoClass *object) const override;
-        virtual CoordStruct entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual DirStruct Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
         virtual bool entry_2B8(int *a1) const override;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual int Greatest_Threat(ThreatType method, CoordStruct &coord, bool a3 = false) const override;
+        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual void Assign_Target(TARGET target) const;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
@@ -276,7 +276,7 @@ BuildingClass : public TechnoClass
         int FirestormWallFrame; // Current frame of the firestorm wall animation.
         StageClass field_2C0;
         TRect<int> field_2D8;
-        CoordStruct field_2E8;
+        Coordinate field_2E8;
         TPoint2D<int> field_2F4; // some radar pos.
         bool IsPowerOn; // energy support?
         bool IsNominal;

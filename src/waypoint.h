@@ -43,7 +43,7 @@ class WaypointClass
         bool operator!=(const WaypointClass &that) const { return Coord != that.Coord; }
 
     public:
-        CoordStruct Coord;
+        Coordinate Coord;
 };
 
 

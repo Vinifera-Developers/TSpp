@@ -54,7 +54,7 @@ WaveClass : public ObjectClass
 
     public:
         WaveClass();
-        WaveClass(CoordStruct &from, CoordStruct &to, TARGET a3, WaveType type, TARGET source);
+        WaveClass(Coordinate &from, Coordinate &to, TARGET a3, WaveType type, TARGET source);
         WaveClass(const NoInitClass &noinit);
         virtual ~WaveClass();
 
@@ -72,7 +72,7 @@ WaveClass : public ObjectClass
         virtual LayerType In_Which_Layer() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
         void Sonic_AI();
@@ -82,7 +82,7 @@ WaveClass : public ObjectClass
         void Laser_Draw_It(Point2D &xy, Rect &rect) const; // draw laser beam?
         void func_670370(int a1, int a2, int a3, int a4); // blend sonic beam?
         void func_670650(); // default sonic beam colour?
-        void func_670840(CoordStruct &coord); // sonic beam damage update/ai?
+        void func_670840(Coordinate &coord); // sonic beam damage update/ai?
         void func_671C40(); // update cells under sonic beam? or start and end cells?
         void func_672AA0(); // update sonic beam/beam ai?
         void func_672160();
@@ -93,18 +93,18 @@ WaveClass : public ObjectClass
     private:
         TARGET xTarget;
         WaveType Type;
-        CoordStruct field_54;
-        CoordStruct field_60;
+        Coordinate field_54;
+        Coordinate field_60;
         Point2D field_6C; // initial wave pixel start
         Point2D field_74; // initial wave pixel end
         Point2D field_7C; // initial wave pixel end left
         Point2D field_84; // initial wave pixel end right
         Point2D field_8C; // initial wave pixel start left
         Point2D field_94; // initial wave pixel start right
-        CoordStruct field_9C;
-        CoordStruct field_A8;
-        CoordStruct field_B4;
-        CoordStruct field_C0;
+        Coordinate field_9C;
+        Coordinate field_A8;
+        Coordinate field_B4;
+        Coordinate field_C0;
         bool field_CC;
         int SonicEC;
         double field_D8; // sonic starting percent

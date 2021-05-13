@@ -109,7 +109,7 @@ class TechnoTypeClass : public ObjectTypeClass
 
 		bool Is_Two_Shooter() const;
         const WeaponControlStruct & Fetch_Weapon_Control(WeaponSlotType slot) const;
-        bool In_Range(CoordStruct &coord, TARGET target, WeaponTypeClass *weapon);
+        bool In_Range(Coordinate &coord, TARGET target, WeaponTypeClass *weapon);
 
     public:
         double CollateralDamageCoefficient;

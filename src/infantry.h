@@ -74,15 +74,15 @@ InfantryClass : public FootClass
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
-        virtual bool Paradrop(CoordStruct &coord) override;
-        virtual void Set_Occupy_Bit(CoordStruct &coord) override;
-        virtual void Clear_Occupy_Bit(CoordStruct &coord) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Paradrop(Coordinate &coord) override;
+        virtual void Set_Occupy_Bit(Coordinate &coord) override;
+        virtual void Clear_Occupy_Bit(Coordinate &coord) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
         virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
-        virtual void Scatter(CoordStruct &coord = CoordStruct{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
+        virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual void Per_Cell_Process(PCPType why) override;
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false) override;
 
@@ -96,11 +96,11 @@ InfantryClass : public FootClass
         /**
          *  TechnoClass
          */
-        virtual CoordStruct entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool entry_2A4() const override;
         virtual bool Is_Renovator() const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual int Greatest_Threat(ThreatType method, CoordStruct &coord, bool a3 = false) const override;
+        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual void Assign_Target(TARGET target) const override;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Is_Ready_To_Random_Animate() const override;
@@ -113,7 +113,7 @@ InfantryClass : public FootClass
          */
         virtual void entry_378() override;
         virtual bool entry_37C() override;
-        virtual bool Start_Driver(CoordStruct &headto) override;
+        virtual bool Start_Driver(Coordinate &headto) override;
         virtual bool Stop_Driver() override;
         virtual void entry_390() override;
         virtual void entry_394() override;

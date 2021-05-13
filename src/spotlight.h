@@ -33,7 +33,7 @@
 class SpotlightClass
 {
 	public:
-		SpotlightClass(CoordStruct coord, int spotlight_size);
+		SpotlightClass(Coordinate coord, int spotlight_size);
 		~SpotlightClass();
 
 		void Remove_If_Large();
@@ -45,7 +45,7 @@ class SpotlightClass
 		static void Draw_All();
 
 	private:
-		CoordStruct Coord;
+		Coordinate Coord;
 		int Radius;
 		int Size;
 };

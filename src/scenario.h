@@ -48,7 +48,7 @@ class ScenarioClass
 
         CellStruct Get_Waypoint_Location(int wp) const;
         CellClass *Get_Waypoint_Cell(int wp) const;
-        CoordStruct *Get_Waypoint_Coord(int wp) const;
+        Coordinate *Get_Waypoint_Coord(int wp) const;
         bool Is_Valid_Waypoint(int wp) const;
 
     public:

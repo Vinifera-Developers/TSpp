@@ -66,9 +66,9 @@ DropPodLocomotionClass : public LocomotionClass, public IPiggyback
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(CoordStruct, Destination)();
+        IFACEMETHOD_(Coordinate, Destination)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(CoordStruct to);
+        IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(int, Drawing_Code)();
@@ -94,7 +94,7 @@ DropPodLocomotionClass : public LocomotionClass, public IPiggyback
 
     protected:
         DropPodDirType field_18;
-        CoordStruct DestinationCoord;
+        Coordinate DestinationCoord;
         IPiggybackPtr Piggybacker;
 
     private:

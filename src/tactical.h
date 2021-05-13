@@ -38,7 +38,7 @@
 class CellClass;
 
 
-struct IsoCoordStruct : public Point2D {};
+struct IsoCoordinate : public Point2D {};
 
 
 class DECLSPEC_UUID("CF56B38A-240D-11D2-817C-006008055BB5")
@@ -74,14 +74,14 @@ Tactical : public AbstractClass
          */
         virtual bool entry_64(Rect &a1, Rect &a2, unsigned color, bool a4 = false);
 
-        Point2D func_60F150(const CoordStruct &coord) const; // Coord to Pixel (without validation)?
+        Point2D func_60F150(const Coordinate &coord) const; // Coord to Pixel (without validation)?
         Point2D func_60F270(const CellStruct &cell) const; // Cell to pixel (without validation)?
-        Point2D func_60F350(const CoordStruct &coord) const;
+        Point2D func_60F350(const Coordinate &coord) const;
         int func_60F3C0() const;
-        bool Coord_To_Pixel(const CoordStruct &coord, Point2D &pixel) const;
-        CoordStruct Pixel_To_Coord(const Point2D &pixel) const;
-        CoordStruct func_60F740(const Point2D &pixel) const;
-        void func_60F800(const CoordStruct &coord, int a2);
+        bool Coord_To_Pixel(const Coordinate &coord, Point2D &pixel) const;
+        Coordinate Pixel_To_Coord(const Point2D &pixel) const;
+        Coordinate func_60F740(const Point2D &pixel) const;
+        void func_60F800(const Coordinate &coord, int a2);
         // 0060FBB0
         // 0060FF70
         // 0060FF80
@@ -169,20 +169,20 @@ Tactical : public AbstractClass
         int LastAIFrame;
         bool field_58;
         bool field_59;
-        IsoCoordStruct field_5C;
-        IsoCoordStruct field_64;
+        IsoCoordinate field_5C;
+        IsoCoordinate field_64;
         int field_6C;
         double ZoomFactor;
         int field_78;
-        IsoCoordStruct MoveFrom;
-        IsoCoordStruct MoveTo;
+        IsoCoordinate MoveFrom;
+        IsoCoordinate MoveTo;
         float MoveRate;
         float MoveFactor;
         int field_94;
         CellClass *field_98[800];
-        IsoCoordStruct field_D18;
-        IsoCoordStruct field_D20;
-        IsoCoordStruct field_D28;
+        IsoCoordinate field_D18;
+        IsoCoordinate field_D20;
+        IsoCoordinate field_D28;
         bool field_D30;
         bool IsToRedraw;
         bool field_D32;

@@ -67,7 +67,7 @@ class ObjectClass : public AbstractClass
         virtual void Detach(TARGET target, bool all = false) override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
         virtual bool Is_Inactive() const override;
-        virtual CoordStruct Center_Coord() const override;
+        virtual Coordinate Center_Coord() const override;
         virtual bool On_Ground() const override;
         virtual bool In_Air() const override;
         virtual void AI() override;
@@ -91,22 +91,22 @@ class ObjectClass : public AbstractClass
         virtual bool Can_Demolish() const;
         virtual bool Can_Player_Fire() const;
         virtual bool Can_Player_Move() const; 
-        virtual CoordStruct Target_Coord() const;
-        virtual CoordStruct Docking_Coord() const;
-        virtual CoordStruct Render_Coord() const;
-        virtual CoordStruct Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-        virtual CoordStruct Exit_Coord() const;
+        virtual Coordinate Target_Coord() const;
+        virtual Coordinate Docking_Coord() const;
+        virtual Coordinate Render_Coord() const;
+        virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual Coordinate Exit_Coord() const;
         virtual int Sort_Y() const;
         virtual bool entry_BC();
         virtual bool entry_C0() const;
         virtual bool Limbo();
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N);
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N);
         virtual void Detach_All(bool all = false);
         virtual void Record_The_Kill(const ObjectClass *source);
-        virtual bool Paradrop(CoordStruct &coord);
+        virtual bool Paradrop(Coordinate &coord);
         virtual void entry_D8();
-        virtual void Set_Occupy_Bit(CoordStruct &coord);
-        virtual void Clear_Occupy_Bit(CoordStruct &coord);
+        virtual void Set_Occupy_Bit(Coordinate &coord);
+        virtual void Clear_Occupy_Bit(Coordinate &coord);
         virtual void entry_E4();
         virtual void Do_Shimmer();
         virtual ExitType Exit_Object(const TechnoClass *object);
@@ -128,10 +128,10 @@ class ObjectClass : public AbstractClass
         virtual void Clicked_As_Target(int count = 7);
         virtual bool Select();
         virtual void Unselect();
-        virtual bool In_Range(CoordStruct &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual int Weapon_Range(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false);
-        virtual void Scatter(CoordStruct &coord = CoordStruct{-1, -1, -1}, bool forced = false, bool nokidding = false);
+        virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false);
         virtual bool Catch_Fire();
         virtual void Fire_Out();
         virtual int Value() const;
@@ -147,8 +147,8 @@ class ObjectClass : public AbstractClass
         virtual void Move(FacingType facing);
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false);
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
-        virtual CoordStruct Get_Coord() const;
-        virtual void Set_Coord(CoordStruct &coord);
+        virtual Coordinate Get_Coord() const;
+        virtual void Set_Coord(Coordinate &coord);
         virtual CellStruct Get_Cell() const;
         virtual CellClass *Get_Cell_Ptr() const;
         virtual CellStruct Get_Target_Cell() const;
@@ -166,7 +166,7 @@ class ObjectClass : public AbstractClass
         int Distance(TARGET target) const;
         int Distance(const AbstractClass *target) const;
         int Distance_Squared(const AbstractClass *object) const;
-        int Distance_Squared(const CoordStruct &coord);
+        int Distance_Squared(const Coordinate &coord);
         // 00586E30
         // 00586F10
         // 00586F90
@@ -200,7 +200,7 @@ class ObjectClass : public AbstractClass
         bool IsActive;
         LayerType Layer;
         bool IsSubmittedToLayer;
-        CoordStruct Coord;
+        Coordinate Coord;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

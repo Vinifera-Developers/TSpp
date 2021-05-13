@@ -55,7 +55,7 @@ ParticleClass : public ObjectClass
 
     public:
         ParticleClass();
-        ParticleClass(ParticleTypeClass *classof, CoordStruct &a2, CoordStruct &a3 = CoordStruct(0,0,0), ParticleSystemClass *particlesys = nullptr);
+        ParticleClass(ParticleTypeClass *classof, Coordinate &a2, Coordinate &a3 = Coordinate(0,0,0), ParticleSystemClass *particlesys = nullptr);
         ParticleClass(const NoInitClass &noinit);
         virtual ~ParticleClass();
         
@@ -93,13 +93,13 @@ ParticleClass : public ObjectClass
         RGBClass Color;
         int field_54;
         double field_58;
-        CoordStruct field_60;
+        Coordinate field_60;
         Vector3 field_6C;
-        CoordStruct field_78;
+        Coordinate field_78;
         float Velocity;
-        CoordStruct field_88;
-        CoordStruct field_94;
-        CoordStruct field_A0;
+        Coordinate field_88;
+        Coordinate field_94;
+        Coordinate field_A0;
         Vector3 field_AC;
         Vector3 field_B8;
         ParticleSystemClass *ParticleSystem;

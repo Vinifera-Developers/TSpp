@@ -51,7 +51,7 @@ struct FlyClass
 };
 
 
-int Projectile_Motion(CoordStruct &a1, FlyClass &a2, CoordStruct &a3, DirStruct &dir, bool is_aircraft, bool is_airburst, bool is_very_high);
+int Projectile_Motion(Coordinate &a1, FlyClass &a2, Coordinate &a3, DirStruct &dir, bool is_aircraft, bool is_airburst, bool is_very_high);
 
 
 class DECLSPEC_UUID("0E272DC9-9C0F-11D1-B709-00A024DDAFD1")
@@ -103,10 +103,10 @@ BulletClass :	public ObjectClass
          */
         virtual int Shape_Number() const;
         virtual void Assign_Target(TARGET target);
-        virtual bool Unlimbo(CoordStruct &coord, FlyClass &flyer);
+        virtual bool Unlimbo(Coordinate &coord, FlyClass &flyer);
 
         // 00444580
-        bool Is_Forced_To_Explode(CoordStruct &coord) const;
+        bool Is_Forced_To_Explode(Coordinate &coord) const;
         void Bullet_Explodes(bool forced);
         // 00446640
         bool Homes_In() const; // 00447210

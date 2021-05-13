@@ -72,7 +72,7 @@ TActionClass : public AbstractClass
         void Read_INI();
         void Build_INI_Entry(char *buffer) const;
 
-        CoordStruct Waypoint_As_Coord();
+        Coordinate Waypoint_As_Coord();
 
         bool TAction_Deactivate_Firestorm_Defense(HouseClass *house, ObjectClass *object, TriggerClass *trigger, CellStruct &cell);
         bool TAction_Activate_Firestorm_Defense(HouseClass *house, ObjectClass *object, TriggerClass *trigger, CellStruct &cell);

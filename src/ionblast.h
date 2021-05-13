@@ -33,7 +33,7 @@
 class IonBlastClass
 {
     public:
-        IonBlastClass(CoordStruct coord);
+        IonBlastClass(Coordinate coord);
         ~IonBlastClass();
 
         void AI();
@@ -45,7 +45,7 @@ class IonBlastClass
         static void Clear_All();
 
     public:
-        CoordStruct Coord;
+        Coordinate Coord;
         int field_0C; // ripple related? or lifetime?
         bool field_10; // disable beam anim?
 };

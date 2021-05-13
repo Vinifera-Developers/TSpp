@@ -74,7 +74,7 @@ class FootClass : public TechnoClass
          */
         virtual void Detach(TARGET target, bool all = false) override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual CoordStruct entry_50() const override;
+        virtual Coordinate entry_50() const override;
         virtual bool On_Ground() const override;
         virtual bool In_Air() const override;
         virtual void AI() override;
@@ -90,7 +90,7 @@ class FootClass : public TechnoClass
         virtual bool entry_BC() override;
         virtual bool entry_C0() const;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual void Detach_All(bool all = false) override;
         virtual void entry_E4() override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
@@ -104,7 +104,7 @@ class FootClass : public TechnoClass
         virtual void entry_174(int a1, int a2) override;
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false) override;
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr) override;
-        virtual void Set_Coord(CoordStruct &coord) override;
+        virtual void Set_Coord(Coordinate &coord) override;
 
         /**
          *  MissionClass
@@ -128,14 +128,14 @@ class FootClass : public TechnoClass
         virtual bool Is_Allowed_To_Recloak() const override;
         virtual bool entry_22C() const;
         virtual bool Is_In_Same_Zone_As(const ObjectClass *object) const override;
-        virtual bool Is_In_Same_Zone(const CoordStruct &cell) const override;
+        virtual bool Is_In_Same_Zone(const Coordinate &cell) const override;
         virtual int Get_Z_Adjustment() const override;
         virtual ZGradientType Get_Z_Gradient() const override;
         virtual bool Is_Allowed_To_Leave_Map() const override;
         virtual void entry_2C8() const override;
         virtual void Stun() override;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
-        virtual int Greatest_Threat(ThreatType method, CoordStruct &coord, bool a3 = false) const override;
+        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual void entry_324() const override;
         virtual void entry_328(int a1, int a2, int a3, IndexClass<int, int> *a4, Rect *a5, int a6, int a7, int a8, int a9) const override;
@@ -148,10 +148,10 @@ class FootClass : public TechnoClass
         virtual bool entry_368();
         virtual bool entry_36C();
         virtual bool entry_370();
-        virtual CoordStruct Likely_Coord() const;
+        virtual Coordinate Likely_Coord() const;
         virtual void entry_378();
         virtual bool entry_37C();
-        virtual bool Start_Driver(CoordStruct &headto);
+        virtual bool Start_Driver(Coordinate &headto);
         virtual bool Stop_Driver();
         virtual bool entry_388();
 		virtual void Draw_Object(const ShapeFileStruct *shapefile, int shapenum, Point2D &xy,
@@ -202,7 +202,7 @@ class FootClass : public TechnoClass
         int CurrentWalkingFrame;
         CellStruct field_23C;
         CellStruct field_240;
-        CoordStruct field_244;
+        Coordinate field_244;
         double Speed;
         double SpeedBias;
         DynamicVectorClass<TARGET> field_260;
@@ -218,7 +218,7 @@ class FootClass : public TechnoClass
 		CDTimerClass<FrameTimerClass> BaseAttackTimer;
         CDTimerClass<FrameTimerClass> BlockagePathDelay;
         ILocomotionPtr Locomotion;
-		CoordStruct HeadToCoord;
+		Coordinate HeadToCoord;
         TubeType CurrentTube;
         TubeDirType CurrentTubeDir;
         WaypointType field_33E;

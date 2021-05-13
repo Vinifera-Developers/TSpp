@@ -68,7 +68,7 @@ IsometricTileTypeClass : public ObjectTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual CoordStruct Coord_Fixup(CoordStruct *coord) const;
+        virtual Coordinate Coord_Fixup(Coordinate *coord) const;
         virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
         virtual CellStruct *Occupy_List(bool placement = false) const override;

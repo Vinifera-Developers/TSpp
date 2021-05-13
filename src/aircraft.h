@@ -91,14 +91,14 @@ AircraftClass : public FootClass, public IFlyControl
         virtual bool entry_80() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
-        virtual bool Unlimbo(CoordStruct &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual ExitType Exit_Object(const TechnoClass *object) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Look(bool incremental = false, bool a2 = false) override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
         virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
-        virtual void Scatter(CoordStruct &coord = CoordStruct{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
+        virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false) override;
 
