@@ -3592,7 +3592,7 @@ DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(Coordinate &, int, int
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(Coordinate &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 
-DEFINE_IMPLEMENTATION(Coordinate Coord_Move(Coordinate &, DirType, unsigned short), 0x004231B0);
+DEFINE_IMPLEMENTATION(Coordinate Coord_Move(Coordinate &, DirStruct &, unsigned), 0x004231B0);
 DEFINE_IMPLEMENTATION(Coordinate Coord_Scatter(Coordinate &, unsigned, bool), 0x0046E850);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 0x00497570);
@@ -3721,9 +3721,9 @@ DEFINE_IMPLEMENTATION(bool BulletClass::Homes_In() const, 0x00447210);
 DEFINE_IMPLEMENTATION(BulletClass *BulletClass::Create_Bullet(BulletTypeClass *, TARGET, TechnoClass *, int, WarheadTypeClass *, int, int, bool), 0x00447220);
 
 DEFINE_IMPLEMENTATION(DirStruct FlyClass::Direction(), 0x0040F5E0);
-DEFINE_IMPLEMENTATION(double FlyClass::Distance_2D(), 0x0040F650);
-DEFINE_IMPLEMENTATION(double FlyClass::Distance_3D(), 0x0040F6C0);
-DEFINE_IMPLEMENTATION(double FlyClass::Distance_2D_0(), 0x0040F730);
+DEFINE_IMPLEMENTATION(double FlyClass::Length_2D(), 0x0040F650);
+DEFINE_IMPLEMENTATION(double FlyClass::Length_3D(), 0x0040F6C0);
+DEFINE_IMPLEMENTATION(double FlyClass::Length_2D_0(), 0x0040F730);
 DEFINE_IMPLEMENTATION(void FlyClass::Update_Position(DirStruct &), 0x00558A90);
 DEFINE_IMPLEMENTATION(void FlyClass::If_XYZ_0_Set_X_100(), 0x0040F6F0);
 DEFINE_IMPLEMENTATION(void FlyClass::If_XY_0_Set_X_100(), 0x0040F760);

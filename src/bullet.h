@@ -38,9 +38,9 @@ class BulletTypeClass;
 struct FlyClass
 {
     DirStruct Direction();
-    double Distance_2D();
-    double Distance_3D();
-    double Distance_2D_0();
+    double Length_2D();
+    double Length_3D();
+    double Length_2D_0();
     void Update_Position(DirStruct &dir);
     void If_XYZ_0_Set_X_100();
     void If_XY_0_Set_X_100();

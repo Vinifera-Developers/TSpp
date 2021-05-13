@@ -30,6 +30,7 @@
 #include "always.h"
 #include "rect.h"
 #include "fixed.h"
+#include "wwmath.h"
 
 
 class AbstractClass;
@@ -38,7 +39,7 @@ class NoInitClass;
 
 
 /**
- *  This head contains all the game enums, structs and primitive types.
+ *  This header contains all the game enums, structs and primitive types.
  */
 
 
@@ -2562,6 +2563,11 @@ struct CellStruct
 
     int32_t As_Cell_Number() const { return X + (Y << 9); }
 
+    int Length() const
+    {
+        return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
+    }
+
     int16_t X; // X component of location.
     int16_t Y; // Y component of location.
 };
@@ -2585,6 +2591,11 @@ struct CoordStruct
 
     CoordStruct operator-(const CoordStruct &that) const { return CoordStruct(X - that.X, Y - that.Y, Z - that.Z); }
     CoordStruct &operator-=(const CoordStruct &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
+
+    int Length() const
+    {
+        return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
+    }
 
     int32_t X; // X coordinate of the location.
     int32_t Y; // Y coordinate of the location.

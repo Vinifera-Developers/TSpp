@@ -110,11 +110,26 @@ inline LEPTON Pixel_To_Lepton(int pixel)
 }
 
 
+inline int Distance(const Coordinate &coord1, const Coordinate &coord2)
+{
+    Coordinate coord;
+    coord = coord1 - coord2;
+    return coord.Length();
+}
+
+
+inline int Distance(const Cell &cell1, const Cell &cell2)
+{
+    Cell cell;
+    cell = cell1 - cell2;
+    return cell.Length();
+}
+
+
 inline Coordinate Coord_Add(const Coordinate &coord1, const Coordinate &coord2)
 {
     Coordinate coord;
-    coord.X = coord1.X + coord2.X;
-    coord.Y = coord1.Y + coord2.Y;
+    coord = coord1 + coord2;
     return coord;
 }
 
@@ -122,8 +137,7 @@ inline Coordinate Coord_Add(const Coordinate &coord1, const Coordinate &coord2)
 inline Coordinate Coord_Sub(const Coordinate &coord1, const Coordinate &coord2)
 {
     Coordinate coord;
-    coord.X = coord1.X - coord2.X;
-    coord.Y = coord1.Y - coord2.Y;
+    coord = coord1 - coord2;
     return coord;
 }
 
