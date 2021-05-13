@@ -15,13 +15,13 @@ class BaseNodeClass
 {
 	public:
 		BaseNodeClass() : Type(BUILDING_NONE), Cell(-1, -1) {}
-		BaseNodeClass(BuildingType building, CellStruct cell) : Type(building), Cell(cell) {}
+		BaseNodeClass(BuildingType building, Cell cell) : Type(building), Cell(cell) {}
 		bool operator == (const BaseNodeClass & node) const { return Type == node.Type && Cell == node.Cell; }
 		bool operator != (const BaseNodeClass & node) const { return Type != node.Type && Cell != node.Cell; }
 		bool operator > (const BaseNodeClass & node) const { return true; }
 
 		BuildingType Type;
-		CellStruct Cell;
+		Cell Cell;
 };
 
 
@@ -51,7 +51,7 @@ class BaseClass
 		BuildingClass * Get_Building(int index) const;
 		bool Is_Node(const BuildingClass * obj);
 		BaseNodeClass * Get_Node(const BuildingClass * obj);
-		BaseNodeClass * Get_Node(CellStruct &cell);
+		BaseNodeClass * Get_Node(Cell &cell);
 		BaseNodeClass * Next_Buildable(BuildingType type = BUILDING_NONE);
 		int Next_Buildable_Index(BuildingType type = BUILDING_NONE);
 
@@ -61,8 +61,8 @@ class BaseClass
 	public:
 		DynamicVectorClass<BaseNodeClass> Nodes;
 		int PercentBuilt;
-		DynamicVectorClass<CellStruct> field_20;
-		DynamicVectorClass<CellStruct> field_38;
+		DynamicVectorClass<Cell> field_20;
+		DynamicVectorClass<Cell> field_38;
 		int field_50;
 		Rect field_54;
 		int field_64;

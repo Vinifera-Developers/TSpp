@@ -75,7 +75,7 @@ Tactical : public AbstractClass
         virtual bool entry_64(Rect &a1, Rect &a2, unsigned color, bool a4 = false);
 
         Point2D func_60F150(const Coordinate &coord) const; // Coord to Pixel (without validation)?
-        Point2D func_60F270(const CellStruct &cell) const; // Cell to pixel (without validation)?
+        Point2D func_60F270(const Cell &cell) const; // Cell to pixel (without validation)?
         Point2D func_60F350(const Coordinate &coord) const;
         int func_60F3C0() const;
         bool Coord_To_Pixel(const Coordinate &coord, Point2D &pixel) const;
@@ -111,7 +111,7 @@ Tactical : public AbstractClass
         // 00612F00
         // 00612F90
         // 00613040
-        CellStruct Click_Cell_Calc(Point2D &pixel) const;
+        Cell Click_Cell_Calc(Point2D &pixel) const;
         // 006136F0
         // 00613730
         // 00613750
@@ -126,7 +126,7 @@ Tactical : public AbstractClass
         // 00614DB0
         // 00614EB0
         // 00614EC0
-        int Cell_Shadow(CellStruct &cell, bool a2 = false);
+        int Cell_Shadow(Cell &cell, bool a2 = false);
         // 00615380
         // 006153D0
         // 006154E0

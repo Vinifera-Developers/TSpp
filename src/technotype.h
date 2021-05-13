@@ -101,7 +101,7 @@ class TechnoTypeClass : public ObjectTypeClass
         /**
          *  TechnoTypeClass
          */
-        virtual bool Legal_Placement(CellStruct &pos, HouseClass *house = nullptr) const;
+        virtual bool Legal_Placement(Cell &pos, HouseClass *house = nullptr) const;
 		virtual int Raw_Cost() const;
 		virtual int Repair_Cost() const;
 		virtual int Repair_Step() const;

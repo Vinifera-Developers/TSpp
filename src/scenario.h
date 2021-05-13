@@ -46,7 +46,7 @@ class ScenarioClass
         ScenarioClass();
         ~ScenarioClass();
 
-        CellStruct Get_Waypoint_Location(int wp) const;
+        Cell Get_Waypoint_Location(int wp) const;
         CellClass *Get_Waypoint_Cell(int wp) const;
         Coordinate *Get_Waypoint_Coord(int wp) const;
         bool Is_Valid_Waypoint(int wp) const;
@@ -55,14 +55,14 @@ class ScenarioClass
         SpecialClass SpecialFlags;
         char NextScenario[PATH_MAX];
         char AltNextScenario[PATH_MAX];
-        CellStruct HomeCell;
-        CellStruct AltHomeCell;
+        Cell HomeCell;
+        Cell AltHomeCell;
         int UniqueID;
         Random2Class RandomNumber;
         DiffType Difficulty;			        // For human player.
         DiffType CDifficulty;		            // For computer players.
         TTimerClass<FrameTimerClass> ElapsedTimer;
-        CellStruct Waypoint[WAYPT_COUNT];
+        Cell Waypoint[WAYPT_COUNT];
         CDTimerClass<FrameTimerClass> MissionTimer;
         CDTimerClass<FrameTimerClass> ShroudTimer;
         CDTimerClass<FrameTimerClass> FogTimer;
@@ -88,7 +88,7 @@ class ScenarioClass
         int Percent;
         VariableFlagStruct GlobalFlags[50];
         VariableFlagStruct LocalFlags[50];
-        CellStruct Views[VIEW_COUNT];
+        Cell Views[VIEW_COUNT];
         int BridgeCount;
         bool IsFreeRadar;
         bool IsTrainCrate;

@@ -68,9 +68,9 @@ OverlayTypeClass : public ObjectTypeClass
          *  ObjectTypeClass
          */
         virtual Coordinate Coord_Fixup(Coordinate *coord) const override;
-        virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
+        virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
-        virtual CellStruct *Occupy_List(bool placement = false) const override;
+        virtual Cell *Occupy_List(bool placement = false) const override;
         virtual ShapeFileStruct *const Get_Image_Data() const override;
 
         /**

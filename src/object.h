@@ -79,7 +79,7 @@ class ObjectClass : public AbstractClass
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr);
         virtual void *const Get_Image_Data() const;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false);
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const;
         virtual LayerType In_Which_Layer() const;
         virtual bool entry_7C() const;
         virtual bool entry_80() const;
@@ -111,7 +111,7 @@ class ObjectClass : public AbstractClass
         virtual void Do_Shimmer();
         virtual ExitType Exit_Object(const TechnoClass *object);
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false);
-        virtual CellStruct *Occupy_List(bool placement = false) const;
+        virtual Cell *Occupy_List(bool placement = false) const;
         virtual void entry_F8(Point2D &point, Rect &bounds) const;
         virtual void entry_FC(Point2D &point, Rect &bounds) const;
         virtual void Draw_It(Point2D &point, Rect &bounds) const;
@@ -124,7 +124,7 @@ class ObjectClass : public AbstractClass
         virtual void entry_11C() const;
         virtual void Mark_For_Redraw();
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3);
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target);
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target);
         virtual void Clicked_As_Target(int count = 7);
         virtual bool Select();
         virtual void Unselect();
@@ -149,9 +149,9 @@ class ObjectClass : public AbstractClass
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual Coordinate Get_Coord() const;
         virtual void Set_Coord(Coordinate &coord);
-        virtual CellStruct Get_Cell() const;
+        virtual Cell Get_Cell() const;
         virtual CellClass *Get_Cell_Ptr() const;
-        virtual CellStruct Get_Target_Cell() const;
+        virtual Cell Get_Target_Cell() const;
         virtual CellClass *Get_Target_Cell_Ptr() const;
         virtual int Get_Height() const;
         virtual void Set_Height(int a1) const;

@@ -69,7 +69,7 @@ UnitClass : public FootClass
          *  ObjectClass
          */
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
@@ -81,7 +81,7 @@ UnitClass : public FootClass
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual void Per_Cell_Process(PCPType why) override;
@@ -110,7 +110,7 @@ UnitClass : public FootClass
         virtual double Tiberium_Load() const override;
         virtual double Weed_Load() const override;
         virtual int Pip_Count() const override;
-        virtual FacingType Desired_Load_Dir(const ObjectClass *object, CellStruct &cell) const override;
+        virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
         virtual DirStruct Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
         virtual bool entry_2A4() const override;
@@ -126,7 +126,7 @@ UnitClass : public FootClass
          *  FootClass
          */
         virtual bool entry_370() override;
-        virtual void Overrun_Square(CellStruct &cell, bool threaten) override;
+        virtual void Overrun_Square(Cell &cell, bool threaten) override;
         virtual void Approach_Target() override;
 
         /**

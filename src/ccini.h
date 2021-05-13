@@ -58,8 +58,8 @@ class CCINIClass : public INIClass
         unsigned Get_Degree(const char *section, const char *entry, unsigned defvalue = 0) const;
         bool Put_Degree(const char *section, const char *entry, unsigned value);
 
-        CellStruct Get_Cell(const char *section, const char *entry, const CellStruct &defvalue);
-        bool Put_Cell(const char *section, const char *entry, CellStruct &value);
+        Cell Get_Cell(const char *section, const char *entry, const Cell &defvalue);
+        bool Put_Cell(const char *section, const char *entry, Cell &value);
 
         Coordinate Get_Coord(const char *section, const char *entry, const Coordinate &defvalue);
 

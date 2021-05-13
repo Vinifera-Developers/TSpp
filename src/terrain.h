@@ -53,7 +53,7 @@ TerrainClass : public ObjectClass, public StageClass
 
     public:
         TerrainClass();
-        TerrainClass(TerrainTypeClass *classof, CellStruct &pos);
+        TerrainClass(TerrainTypeClass *classof, Cell &pos);
         TerrainClass(const NoInitClass &noinit);
         virtual ~TerrainClass();
 

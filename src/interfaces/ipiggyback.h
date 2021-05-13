@@ -29,11 +29,9 @@
 
 #include "always.h"
 #include "ilocomotion.h"
+#include "tibsun_defines.h"
 #include <comdef.h>
 #include <unknwn.h>
-
-
-struct CellStruct;
 
 
 /*******************************************************************************

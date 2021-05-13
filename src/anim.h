@@ -77,7 +77,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual bool Limbo() override;
         virtual void entry_E4() override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
-        virtual CellStruct *Occupy_List(bool placement = false) const override;
+        virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual int Get_Z_Coord() const override;
@@ -102,7 +102,7 @@ AnimClass : public ObjectClass, public StageClass
 		void Make_Visible() { IsInvisible = false; }
 
         static void Init();
-        static void Do_Atom_Damage(HousesType ownerhouse, CellStruct &cell);
+        static void Do_Atom_Damage(HousesType ownerhouse, Cell &cell);
 
 	public:
         AnimTypeClass *Class;

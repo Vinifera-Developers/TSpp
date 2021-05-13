@@ -43,7 +43,7 @@ class ScriptMissionClass
     public:
         ScriptMissionType Mission;  // Mission type.
         union {
-            xCellStruct Cell;
+            xCell Cell;
             QuarryType Quarry;      // Combat quarry type.
             MissionType Mission;    // General mission orders.
             int Value;              // Usually a waypoint number.

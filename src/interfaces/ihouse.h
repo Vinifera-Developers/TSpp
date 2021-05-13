@@ -29,10 +29,9 @@
 
 #include "always.h"
 #include "iapplication.h"
+#include "tibsun_defines.h"
 #include <unknwn.h>
 
-
-struct CellStruct;
 
 enum CategoryType;
 
@@ -92,7 +91,7 @@ DECLARE_INTERFACE_IID_(IHouse, IUnknown, "941582E0-86DA-11D1-B706-00A024DDAFD1")
     /**
      *  Center location of base.
      */
-    STDMETHOD_(CellStruct, Base_Center)() PURE;
+    STDMETHOD_(Cell, Base_Center)() PURE;
 
     /**
      *  Sell all buildings.

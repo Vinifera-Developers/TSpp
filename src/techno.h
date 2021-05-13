@@ -77,7 +77,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
          */
         virtual bool Is_Players_Army() const override;
         virtual VisualType Visual_Character(bool flag = false, const HouseClass *house = nullptr);
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
         virtual TechnoTypeClass *const Techno_Type_Class() const override;
         virtual int Get_Ownable() const;
@@ -140,9 +140,9 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int Get_Z_Adjustment() const;
         virtual ZGradientType Get_Z_Gradient() const;
         virtual BuildingClass *const Find_Docking_Bay(const BuildingTypeClass *buildingtype, bool a2 = false, bool a3 = false) const;
-        virtual CellStruct Find_Exit_Cell(const TechnoClass *object) const;
+        virtual Cell Find_Exit_Cell(const TechnoClass *object) const;
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-        virtual FacingType Desired_Load_Dir(const ObjectClass *object, CellStruct &cell) const;
+        virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const;
         virtual DirStruct Fire_Direction() const;
         virtual InfantryTypeClass *const Crew_Type() const;
         virtual bool entry_29C() const;
@@ -203,13 +203,13 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 0062BEA0
         // 0062BFE0
         // 0062CD00
-        double Area_Modify(CellStruct &cell) const;
+        double Area_Modify(Cell &cell) const;
         bool Evaluate_Object(ThreatType method, int mask, int range, const TechnoClass *object, int &value, int zone, Coordinate &coord) const;
-        bool Evaluate_Cell(ThreatType method, int mask, CellStruct &cell, int range, const TechnoClass **object, int &value, int zone) const;
-        int Evaluate_Just_Cell(CellStruct &cell) const;
+        bool Evaluate_Cell(ThreatType method, int mask, Cell &cell, int range, const TechnoClass **object, int &value, int zone) const;
+        int Evaluate_Just_Cell(Cell &cell) const;
         // 006313D0
         // 00632730
-        CellStruct Nearby_Location(const TechnoClass *techno) const;
+        Cell Nearby_Location(const TechnoClass *techno) const;
         // 00633F60
         // 00634110
         // 006342C0

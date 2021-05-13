@@ -34,7 +34,7 @@
 #include <algorithm>
 
 
-extern const CellStruct AdjacentCell[FACING_COUNT];
+extern const Cell AdjacentCell[FACING_COUNT];
 extern const Coordinate AdjacentCoord[FACING_COUNT];
 
 
@@ -80,7 +80,7 @@ inline DirType Direction8(const Coordinate &coord1, const Coordinate &coord2)
 }
 
 
-inline DirType Direction(const CellStruct &cell1, const CellStruct &cell2)
+inline DirType Direction(const Cell &cell1, const Cell &cell2)
 {
 	return Desired_Facing8(cell1.X, cell1.Y, cell2.X, cell2.Y);
 }
@@ -140,7 +140,7 @@ inline Coordinate Coord_Mid(const Coordinate &coord1, const Coordinate &coord2)
 inline Coordinate Coord_Snap(const Coordinate &coord)
 {
     // Convert coord to cell, and back again to get the absolute position.
-    CellStruct cell;
+    Cell cell;
     cell.X = coord.X / 256;
     cell.Y = coord.Y / 256;
 
@@ -171,7 +171,7 @@ inline Coordinate Coord_Fraction(const Coordinate &coord)
 inline Coordinate Coord_Whole(const Coordinate &coord)
 {
     // Convert coord to cell, and back again to get the absolute position.
-    CellStruct cell;
+    Cell cell;
     cell.X = coord.X / CELL_LEPTON_W;
     cell.Y = coord.Y / CELL_LEPTON_H;
 
@@ -183,9 +183,9 @@ inline Coordinate Coord_Whole(const Coordinate &coord)
 }
 
 
-inline CellStruct Coord_Cell(const Coordinate &coord)
+inline Cell Coord_Cell(const Coordinate &coord)
 {
-    CellStruct tmp;
+    Cell tmp;
     tmp.X = coord.X / CELL_LEPTON_W;
     tmp.Y = coord.Y / CELL_LEPTON_H;
     return tmp;
@@ -210,22 +210,22 @@ inline Coordinate XYP_Coord(int x, int y)
 }
 
 
-inline CellStruct XY_Cell(int x, int y)
+inline Cell XY_Cell(int x, int y)
 {
-    CellStruct cell;
+    Cell cell;
     cell.X = x;
     cell.Y = y;
     return cell;
 }
 
 
-inline CellStruct Coord_XCell(const Coordinate &coord)
+inline Cell Coord_XCell(const Coordinate &coord)
 {
     return coord.X / 256;
 }
 
 
-inline CellStruct Coord_YCell(const Coordinate &coord)
+inline Cell Coord_YCell(const Coordinate &coord)
 {
     return coord.Y / 256;
 }
@@ -247,7 +247,7 @@ inline int Lepton_To_Cell(LEPTON lepton_distance)
 }
 
 
-inline Coordinate Cell_Coord(const CellStruct &cell, bool snap = false, int z_value = 0)
+inline Coordinate Cell_Coord(const Cell &cell, bool snap = false, int z_value = 0)
 {
     Coordinate tmp;
     tmp.X = cell.X * 256;
@@ -273,13 +273,13 @@ inline Coordinate Adjacent_Cell(const Coordinate &coord, DirType dir)
 }
 
 
-inline CellStruct Adjacent_Cell(const CellStruct &cell, FacingType dir)
+inline Cell Adjacent_Cell(const Cell &cell, FacingType dir)
 {
-	return (CellStruct)(cell + AdjacentCell[(int)dir & 0x07]);
+	return (Cell)(cell + AdjacentCell[(int)dir & 0x07]);
 }
 
 
-inline CellStruct Adjacent_Cell(const CellStruct &cell, DirType dir)
+inline Cell Adjacent_Cell(const Cell &cell, DirType dir)
 {
 	return Adjacent_Cell(cell, Dir_Facing(dir));
 }

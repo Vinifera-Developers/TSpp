@@ -61,7 +61,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         IFACEMETHOD_(bool, Is_Moving)();
         IFACEMETHOD_(Coordinate, Destination)();
         IFACEMETHOD_(Coordinate, Head_To_Coord)();
-        IFACEMETHOD_(MoveType, Can_Enter_Cell)(CellStruct cell);
+        IFACEMETHOD_(MoveType, Can_Enter_Cell)(Cell cell);
         IFACEMETHOD_(bool, Is_To_Have_Shadow)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
         IFACEMETHOD_(Matrix3D, Shadow_Matrix)(int *key);

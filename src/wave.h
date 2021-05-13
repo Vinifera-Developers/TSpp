@@ -77,7 +77,7 @@ WaveClass : public ObjectClass
 
         void Sonic_AI();
         void Laser_AI();
-        void func_6709C0(CellStruct &cell); // add cell?
+        void func_6709C0(Cell &cell); // add cell?
         void Sonic_Draw_It(Point2D &xy, Rect &rect) const; // draw sonic beam?
         void Laser_Draw_It(Point2D &xy, Rect &rect) const; // draw laser beam?
         void func_670370(int a1, int a2, int a3, int a4); // blend sonic beam?

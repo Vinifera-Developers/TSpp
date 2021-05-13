@@ -2567,6 +2567,9 @@ struct CellStruct
 };
 
 
+using Cell = CellStruct;
+
+
 struct CoordStruct
 {
     CoordStruct(int32_t x = 0, int32_t y = 0, int32_t z = 0) : X(x), Y(y), Z(z) {}
@@ -2592,7 +2595,7 @@ struct CoordStruct
 using Coordinate = CoordStruct;
 
 
-struct xCellStruct
+struct xCell
 {
     int16_t X; // X component of location.
     int16_t Y; // Y component of location.
@@ -2657,8 +2660,8 @@ class ZoneConnectionClass
         bool operator!=(const ZoneConnectionClass &src) const { return true; }
 
     public:
-        CellStruct field_0;
-        CellStruct field_4;
+        Cell field_0;
+        Cell field_4;
         bool field_8;
         int field_A;
 };

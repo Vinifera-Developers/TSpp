@@ -28,6 +28,7 @@
 #pragma once
 
 #include "abstract.h"
+#include "tibsun_defines.h"
 
 
 class TagTypeClass;
@@ -63,16 +64,16 @@ TagClass : public AbstractClass
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, CellStruct cell = CellStruct(-1,-1), bool a4 = false, ObjectClass *source = nullptr);
+        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, Cell cell = Cell(-1,-1), bool a4 = false, ObjectClass *source = nullptr);
         // 0061E750
         // 0061E7B0
-        CellStruct Get_Cell() const; // 0061E810
+        Cell Get_Cell() const; // 0061E810
         // 0061E820
         // 0061E830
         // 0061E840
         // 0061E850
         // 0061E860
-        void Set_Cell(CellStruct cell); // 0061EA10
+        void Set_Cell(Cell cell); // 0061EA10
         // 0061EA20
         // 0061EA50
         // 0061EA60
@@ -89,7 +90,7 @@ TagClass : public AbstractClass
         TagTypeClass *Class;
         TriggerClass *AttachedTrigger;
         int AttachCount;
-        CellStruct Cell;
+        Cell Location;
         bool IsDestroyed;
         bool IsSprung;
 };

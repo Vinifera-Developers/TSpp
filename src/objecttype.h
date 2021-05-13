@@ -65,11 +65,11 @@ class ObjectTypeClass : public AbstractTypeClass
         virtual int Max_Pips() const;
         virtual Point3D Pixel_Dimensions() const;
         virtual Point3D Lepton_Dimensions() const;
-        virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const = 0;
+        virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const = 0;
         virtual int Cost_Of(HouseClass *house = nullptr) const;
         virtual int Time_To_Build() const;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const = 0;
-        virtual CellStruct *Occupy_List(bool placement = false) const;
+        virtual Cell *Occupy_List(bool placement = false) const;
         virtual BuildingClass *const Who_Can_Build_Me(bool in_theory = false, bool a2 = false, bool legal = false, HouseClass *house = nullptr) const;
         virtual ShapeFileStruct *const Get_Cameo_Data() const;
         virtual ShapeFileStruct *const Get_Image_Data() const;

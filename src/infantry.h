@@ -70,7 +70,7 @@ InfantryClass : public FootClass
          */
         virtual void *const Get_Image_Data() const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Limbo() override;
@@ -80,7 +80,7 @@ InfantryClass : public FootClass
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual void Per_Cell_Process(PCPType why) override;

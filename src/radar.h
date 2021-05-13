@@ -66,14 +66,14 @@ class RadarClass : public DisplayClass
 		virtual HRESULT Load(IStream *pStm) override;
 		virtual HRESULT Save(IStream *pStm) override;
         virtual void entry_84() override;
-		virtual bool Map_Cell(CellStruct &cell, HouseClass *house) override;
+		virtual bool Map_Cell(Cell &cell, HouseClass *house) override;
 
-        virtual CellStruct Click_Cell_Calc(Point2D &cell);
+        virtual Cell Click_Cell_Calc(Point2D &cell);
         virtual void Set_Tactical_Position(Coordinate &coord);
         virtual void Init_For_House();
 
         // 005B9050
-        int Cell_On_Radar(CellStruct &cell) const;
+        int Cell_On_Radar(Cell &cell) const;
         void Draw_Names();
         // 005B99D0
         // 005B9B90
@@ -125,7 +125,7 @@ class RadarClass : public DisplayClass
         Rect field_1214;
         DSurface *field_1224;
         BSurface *field_1228;
-        DynamicVectorClass<CellStruct> field_122C;
+        DynamicVectorClass<Cell> field_122C;
         int field_1244;
         int field_1248;
         int field_124C;

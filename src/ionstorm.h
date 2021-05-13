@@ -38,7 +38,7 @@ bool IonStorm_Is_Active();
 void IonStorm_Start(int duration, int warning = 0);
 void IonStorm_Stop();
 void IonStorm_AI();
-void IonStorm_Lightning_Strike_At(CellStruct where);
+void IonStorm_Lightning_Strike_At(Cell where);
 void IonStorm_Do_Screen_Static();
 void IonStorm_Init(bool start = false);
 void IonStorm_Init_Clear();

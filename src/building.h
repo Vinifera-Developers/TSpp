@@ -81,7 +81,7 @@ BuildingClass : public TechnoClass
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr) override;
         virtual void *const Get_Image_Data() const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
@@ -107,7 +107,7 @@ BuildingClass : public TechnoClass
         virtual Rect entry_118() const override;
         virtual void entry_11C() const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
         virtual void Clicked_As_Target(int frames) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
@@ -144,7 +144,7 @@ BuildingClass : public TechnoClass
         virtual void entry_274() const override;
         virtual int entry_278() const override;
         virtual int Get_Z_Adjustment() const override;
-        virtual CellStruct Find_Exit_Cell(const TechnoClass *object) const override;
+        virtual Cell Find_Exit_Cell(const TechnoClass *object) const override;
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual DirStruct Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
@@ -171,7 +171,7 @@ BuildingClass : public TechnoClass
         virtual void Update_Buildables();
         virtual void entry_370(Point2D &point, Rect &rect);
         virtual DirStruct entry_374(TARGET target);
-        virtual void entry_378(TechnoClass *a1, TechnoClass *source, bool a3, CellStruct *a4);
+        virtual void entry_378(TechnoClass *a1, TechnoClass *source, bool a3, Cell *a4);
         virtual bool Toggle_Primary();
         virtual unsigned entry_380();
 
@@ -187,8 +187,8 @@ BuildingClass : public TechnoClass
         // 00433A20
         int Power_Output() const;
         int Power_Drain() const;
-        bool Flush_For_Placement(TechnoClass *techno, CellStruct &cell);
-        CellStruct Check_Point(CheckPointType cp) const;
+        bool Flush_For_Placement(TechnoClass *techno, Cell &cell);
+        Cell Check_Point(CheckPointType cp) const;
         void Update_Radar_Spied();
         void Build_INI_Entry(CCINIClass &ini) const;
         void Factory_AI();

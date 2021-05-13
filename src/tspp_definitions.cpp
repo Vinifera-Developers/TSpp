@@ -643,8 +643,8 @@ DEFINE_IMPLEMENTATION(LEPTON CCINIClass::Get_Lepton(const char *, const char *, 
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Lepton(const char *, const char *, LEPTON), 0x0044A3A0);
 DEFINE_IMPLEMENTATION(unsigned CCINIClass::Get_Degree(const char *, const char *, unsigned) const, 0x0044A420);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Degree(const char *, const char *, unsigned), 0x0044A3D0);
-DEFINE_IMPLEMENTATION(CellStruct CCINIClass::Get_Cell(const char *, const char *, const CellStruct &), 0x0044A480);
-DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Cell(const char *, const char *, CellStruct &), 0x0044A500);
+DEFINE_IMPLEMENTATION(Cell CCINIClass::Get_Cell(const char *, const char *, const Cell &), 0x0044A480);
+DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Cell(const char *, const char *, Cell &), 0x0044A500);
 DEFINE_IMPLEMENTATION(Coordinate CCINIClass::Get_Coord(const char *, const char *, const Coordinate &), 0x0044BDE0);
 DEFINE_IMPLEMENTATION(MPHType CCINIClass::Get_MPHType(const char *, const char *, const MPHType), 0x0044A550);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_MPHType(const char *, const char *, MPHType), 0x0044A5B0);
@@ -719,7 +719,7 @@ DEFINE_IMPLEMENTATION(Point3D ObjectTypeClass::Pixel_Dimensions() const, 0x00587
 DEFINE_IMPLEMENTATION(Point3D ObjectTypeClass::Lepton_Dimensions() const, 0x00587A10);
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Cost_Of(HouseClass *) const, 0x00587A40);
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Time_To_Build() const, 0x00587A50);
-DEFINE_IMPLEMENTATION(CellStruct * ObjectTypeClass::Occupy_List(bool) const, 0x00587A70);
+DEFINE_IMPLEMENTATION(Cell * ObjectTypeClass::Occupy_List(bool) const, 0x00587A70);
 DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bool, bool, bool, HouseClass *) const, 0x00587B20);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
@@ -739,7 +739,7 @@ DEFINE_IMPLEMENTATION(int TechnoTypeClass::Max_Pips() const, 0x0063D460);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Cost_Of(HouseClass *) const, 0x0063B8D0);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Time_To_Build() const, 0x0063B8B0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct* const TechnoTypeClass::Get_Cameo_Data() const, 0x0063B910);
-DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Legal_Placement(CellStruct &, HouseClass *) const, 0x0063D320);
+DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Legal_Placement(Cell &, HouseClass *) const, 0x0063D320);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Raw_Cost() const, 0x0063B880);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Cost() const, 0x0063B920);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Step() const, 0x0063B970);
@@ -777,18 +777,18 @@ DEFINE_IMPLEMENTATION(Coordinate BuildingTypeClass::Coord_Fixup(Coordinate *) co
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Max_Pips() const, 0x0043FF90);
 DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Pixel_Dimensions() const, 0x0043FE50);
 DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Lepton_Dimensions() const, 0x00442ED0);
-DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0043FA60);
+DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0043FA60);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Cost_Of(HouseClass *) const, 0x00440080);
 DEFINE_IMPLEMENTATION(ObjectClass * const BuildingTypeClass::Create_One_Of(HouseClass *) const, 0x0043FED0);
-DEFINE_IMPLEMENTATION(CellStruct * BuildingTypeClass::Occupy_List(bool) const, 0x0043FED0);
+DEFINE_IMPLEMENTATION(Cell * BuildingTypeClass::Occupy_List(bool) const, 0x0043FED0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const BuildingTypeClass::Get_Image_Data() const, 0x004402F0);
-DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Legal_Placement(CellStruct &, HouseClass *) const, 0x00442EA0);
+DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Legal_Placement(Cell &, HouseClass *) const, 0x00442EA0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Raw_Cost() const, 0x00440000);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data(), 0x00443BC0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
-DEFINE_IMPLEMENTATION(int BuildingTypeClass::Flush_For_Placement(CellStruct &, HouseClass *) const, 0x00440120);
+DEFINE_IMPLEMENTATION(int BuildingTypeClass::Flush_For_Placement(Cell &, HouseClass *) const, 0x00440120);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::One_Time(), 0x0043F9B0);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init(TheaterType), 0x0043FC40);
 
@@ -844,9 +844,9 @@ DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Size_Of(bool) const, 0x004F8AA
 DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004F84A0);
 DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Get_Heap_ID() const, 0x004F8AB0);
 DEFINE_IMPLEMENTATION(Coordinate IsometricTileTypeClass::Coord_Fixup(Coordinate *) const, 0x004F8480);
-DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004F83D0);
+DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004F83D0);
 DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(HouseClass *) const, 0x004F8410);
-DEFINE_IMPLEMENTATION(CellStruct *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
+DEFINE_IMPLEMENTATION(Cell *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
 
 CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2AF4; }
@@ -994,7 +994,7 @@ DEFINE_IMPLEMENTATION(bool UnitTypeClass::Read_INI(CCINIClass &), 0x0065BDD0);
 DEFINE_IMPLEMENTATION(Coordinate UnitTypeClass::Coord_Fixup(Coordinate *) const, 0x0065C3B0);
 DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Pixel_Dimensions() const, 0x0065BD30);
 DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Lepton_Dimensions() const, 0x0065BD70);
-DEFINE_IMPLEMENTATION(bool UnitTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0065BC50);
+DEFINE_IMPLEMENTATION(bool UnitTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0065BC50);
 DEFINE_IMPLEMENTATION(ObjectClass* const UnitTypeClass::Create_One_Of(HouseClass *) const, 0x0065BD00);
 DEFINE_IMPLEMENTATION(int UnitTypeClass::Repair_Step() const, 0x0065C420);
 DEFINE_IMPLEMENTATION(const TPoint3D<int> UnitTypeClass::Turret_Adjust(DirType, TPoint3D<int> &) const, 0x0065BDB0);
@@ -1012,9 +1012,9 @@ DEFINE_IMPLEMENTATION(int InfantryTypeClass::Get_Heap_ID() const, 0x004DB110);
 DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Read_INI(CCINIClass &), 0x004DA960);
 DEFINE_IMPLEMENTATION(Coordinate InfantryTypeClass::Coord_Fixup(Coordinate *) const, 0x004DACA0);
 DEFINE_IMPLEMENTATION(Point3D InfantryTypeClass::Lepton_Dimensions() const, 0x004DAC50);
-DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004DA490);
+DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004DA490);
 DEFINE_IMPLEMENTATION(ObjectClass *const InfantryTypeClass::Create_One_Of(HouseClass *) const, 0x004DA460);
-DEFINE_IMPLEMENTATION(CellStruct *InfantryTypeClass::Occupy_List(bool) const, 0x004DA570);
+DEFINE_IMPLEMENTATION(Cell *InfantryTypeClass::Occupy_List(bool) const, 0x004DA570);
 DEFINE_IMPLEMENTATION(int InfantryTypeClass::Repair_Cost() const, 0x004DAC90);
 DEFINE_IMPLEMENTATION(int InfantryTypeClass::Repair_Step() const, 0x004DAC80);
 DEFINE_IMPLEMENTATION(void InfantryTypeClass::Sequence_Read_INI(), 0x004DA650);
@@ -1031,12 +1031,12 @@ DEFINE_IMPLEMENTATION(void AircraftTypeClass::Compute_CRC(WWCRCEngine &) const, 
 DEFINE_IMPLEMENTATION(int AircraftTypeClass::Get_Heap_ID() const, 0x00410200);
 DEFINE_IMPLEMENTATION(bool AircraftTypeClass::Read_INI(CCINIClass &), 0x0040FE80);
 DEFINE_IMPLEMENTATION(Point3D AircraftTypeClass::Lepton_Dimensions() const, 0x0040FE50);
-DEFINE_IMPLEMENTATION(bool AircraftTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0040FE40);
+DEFINE_IMPLEMENTATION(bool AircraftTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0040FE40);
 DEFINE_IMPLEMENTATION(ObjectClass *const AircraftTypeClass::Create_One_Of(HouseClass *) const, 0x0040FDA0);
-DEFINE_IMPLEMENTATION(CellStruct *AircraftTypeClass::Occupy_List(bool) const, 0x0040FDD0);
+DEFINE_IMPLEMENTATION(Cell *AircraftTypeClass::Occupy_List(bool) const, 0x0040FDD0);
 
 DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType, int), 0x0045EB60);
-DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(CellStruct &), 0x0045EC30);
+DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(Cell &), 0x0045EC30);
 DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate *, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
 DEFINE_IMPLEMENTATION(void Do_Flash(int, WarheadTypeClass *, Coordinate, bool), 0x00460460);
@@ -1056,7 +1056,7 @@ DEFINE_IMPLEMENTATION(RTTIType VoxelAnimTypeClass::Kind_Of() const, 0x00660040);
 DEFINE_IMPLEMENTATION(int VoxelAnimTypeClass::Size_Of(bool) const, 0x00660050);
 DEFINE_IMPLEMENTATION(void VoxelAnimTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0065FCE0);
 DEFINE_IMPLEMENTATION(bool VoxelAnimTypeClass::Read_INI(CCINIClass &), 0x0065F660);
-DEFINE_IMPLEMENTATION(bool VoxelAnimTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x00660060);
+DEFINE_IMPLEMENTATION(bool VoxelAnimTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x00660060);
 DEFINE_IMPLEMENTATION(ObjectClass *const VoxelAnimTypeClass::Create_One_Of(HouseClass *) const, 0x00660070);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WeaponTypeClass::GetClassID(CLSID *), 0x00681520);
@@ -1085,7 +1085,7 @@ DEFINE_IMPLEMENTATION(int BulletTypeClass::Size_Of(bool) const, 0x004486D0);
 DEFINE_IMPLEMENTATION(void BulletTypeClass::Compute_CRC(WWCRCEngine &) const, 0x004483B0);
 DEFINE_IMPLEMENTATION(bool BulletTypeClass::Read_INI(CCINIClass &), 0x00447E70);
 DEFINE_IMPLEMENTATION(Coordinate BulletTypeClass::Coord_Fixup(Coordinate *) const, 0x00448340);
-DEFINE_IMPLEMENTATION(bool BulletTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x004486F0);
+DEFINE_IMPLEMENTATION(bool BulletTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004486F0);
 DEFINE_IMPLEMENTATION(ObjectClass *const BulletTypeClass::Create_One_Of(HouseClass *) const, 0x00448700);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
@@ -1101,7 +1101,7 @@ DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::Link_To_Object(void *), 0x0050625
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving(), 0x00506800);
 DEFINE_IMPLEMENTATION(Coordinate LocomotionClass::Destination(), 0x00506790);
 DEFINE_IMPLEMENTATION(Coordinate LocomotionClass::Head_To_Coord(), 0x005067C0);
-DEFINE_IMPLEMENTATION(MoveType LocomotionClass::Can_Enter_Cell(CellStruct), 0x00506710);
+DEFINE_IMPLEMENTATION(MoveType LocomotionClass::Can_Enter_Cell(Cell), 0x00506710);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_To_Have_Shadow(), 0x00506700);
 DEFINE_IMPLEMENTATION(Matrix3D LocomotionClass::Draw_Matrix(int *), 0x00506260);
 DEFINE_IMPLEMENTATION(Matrix3D LocomotionClass::Shadow_Matrix(int *), 0x00506300);
@@ -1324,7 +1324,7 @@ DEFINE_IMPLEMENTATION(int Tactical::Size_Of(bool) const, 0x00618000);
 DEFINE_IMPLEMENTATION(void Tactical::AI(), 0x0060F960);
 DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0x00617CD0);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coordinate &) const, 0x0060F150);
-DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const CellStruct &) const, 0x0060F270);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Cell &) const, 0x0060F270);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coordinate &) const, 0x0060F350);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0() const, 0x0060F3C0);
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D &) const, 0x0060F4B0);
@@ -1334,8 +1334,8 @@ DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coordinate &, int), 0x006
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);
-DEFINE_IMPLEMENTATION(CellStruct Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
-DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(CellStruct &, bool), 0x00614F90);
+DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
+DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
@@ -1360,9 +1360,9 @@ DEFINE_IMPLEMENTATION(void OverlayTypeClass::Compute_CRC(WWCRCEngine &) const, 0
 DEFINE_IMPLEMENTATION(int OverlayTypeClass::Get_Heap_ID() const, 0x0058DC40);
 DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Read_INI(CCINIClass &), 0x0058D490);
 DEFINE_IMPLEMENTATION(Coordinate OverlayTypeClass::Coord_Fixup(Coordinate *) const, 0x0058D730);
-DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x0058D2B0);
+DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0058D2B0);
 DEFINE_IMPLEMENTATION(ObjectClass *const OverlayTypeClass::Create_One_Of(HouseClass *) const, 0x0058D2E0);
-DEFINE_IMPLEMENTATION(CellStruct *OverlayTypeClass::Occupy_List(bool) const, 0x0058D240);
+DEFINE_IMPLEMENTATION(Cell *OverlayTypeClass::Occupy_List(bool) const, 0x0058D240);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const OverlayTypeClass::Get_Image_Data() const, 0x0058DB20);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Draw_It(Point2D &, Rect &, int) const, 0x0058D310);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Init(TheaterType), 0x0058D3A0);
@@ -1378,7 +1378,7 @@ DEFINE_IMPLEMENTATION(bool BaseClass::Is_Built(int) const, 0x0041F550);
 DEFINE_IMPLEMENTATION(BuildingClass * BaseClass::Get_Building(int) const, 0x0041F5D0);
 DEFINE_IMPLEMENTATION(bool BaseClass::Is_Node(const BuildingClass *), 0x0041F750);
 DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(const BuildingClass *), 0x0041F7E0);
-DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(CellStruct &), 0x0041F860);
+DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(Cell &), 0x0041F860);
 DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Next_Buildable(BuildingType), 0x0041F8B0);
 DEFINE_IMPLEMENTATION(int BaseClass::Next_Buildable_Index(BuildingType), 0x0041F8B0);
 DEFINE_IMPLEMENTATION(void BaseClass::Read_INI(CCINIClass &, const char *), 0x0041F970);
@@ -1388,13 +1388,13 @@ EventClass::EventClass() : ID(-1), Type(EMPTY) {}
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, SpecialClass), 0x00493CC0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, TargetClass), 0x00493D00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType), 0x00493DE0);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, CellStruct *), 0x00493D70);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, Cell *), 0x00493D70);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, TargetClass, TargetClass), 0x00493EB0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, TargetClass, MissionType, TargetClass, TargetClass), 0x00493FA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, TargetClass, MissionType, TargetClass, TargetClass, SpeedType, MPHType), 0x00494010);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, RTTIType, int), 0x004940A0);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, RTTIType, CellStruct *), 0x00494110);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, int, CellStruct *), 0x00494190);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, RTTIType, Cell *), 0x00494110);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, int, Cell *), 0x00494190);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, AnimType, HousesType, Coordinate *), 0x00493F30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, void *, unsigned long), 0x00494210);
 DEFINE_IMPLEMENTATION(void EventClass::Execute(), 0x00494280);
@@ -1433,17 +1433,17 @@ DEFINE_IMPLEMENTATION(void GScreenClass::Draw_It(bool), 0x0047C180);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit_Display(), 0x004B96B0);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit(bool, Surface *, int), 0x004B96C0);
 
-CrateClass::CrateClass() : Timer(), Cell(-1, -1) {}
+CrateClass::CrateClass() : Timer(), Location(-1, -1) {}
 CrateClass::~CrateClass() {}
 void CrateClass::Init() { Make_Invalid(); }
-DEFINE_IMPLEMENTATION(bool CrateClass::Create_Crate(CellStruct &), 0x00470820);
-bool CrateClass::Is_Here(CellStruct &cell) const { return Is_Valid() && cell == Cell; }
+DEFINE_IMPLEMENTATION(bool CrateClass::Create_Crate(Cell &), 0x00470820);
+bool CrateClass::Is_Here(Cell &cell) const { return Is_Valid() && cell == Location; }
 DEFINE_IMPLEMENTATION(bool CrateClass::Remove_It(), 0x004707B0);
 bool CrateClass::Is_Expired() const { return Is_Valid() && Timer.Expired(); }
-bool CrateClass::Is_Valid() const { return Cell.X > 0 && Cell.Y > 0; }
-DEFINE_IMPLEMENTATION(bool CrateClass::Put_Crate(CellStruct &), 0x00470950);
-DEFINE_IMPLEMENTATION(bool CrateClass::Get_Crate(CellStruct &), 0x00470B60);
-void CrateClass::Make_Invalid() { Cell = CellStruct(-1, -1); Timer.Stop(); }
+bool CrateClass::Is_Valid() const { return Location.X > 0 && Location.Y > 0; }
+DEFINE_IMPLEMENTATION(bool CrateClass::Put_Crate(Cell &), 0x00470950);
+DEFINE_IMPLEMENTATION(bool CrateClass::Get_Crate(Cell &), 0x00470B60);
+void CrateClass::Make_Invalid() { Location = Cell(-1, -1); Timer.Stop(); }
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(), 0x005E2430);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(const char *, HSVClass *, PaletteClass *, PaletteClass *, int), 0x005E24F0);
@@ -1472,7 +1472,7 @@ DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
 DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD4C0);
 DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 
-DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(CellStruct), 0x0050F1B0);
+DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(Cell), 0x0050F1B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(), 0x0050EAD0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(const NoInitClass &), 0x0050EBE0);
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(MapClass::~MapClass(), 0x0050ED30);
@@ -1486,28 +1486,28 @@ DEFINE_IMPLEMENTATION(bool MapClass::entry_64() const, 0x0047C190);
 DEFINE_IMPLEMENTATION(void MapClass::Logic(), 0x00514300);
 DEFINE_IMPLEMENTATION(void MapClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x0050F700);
 DEFINE_IMPLEMENTATION(void MapClass::entry_70(Rect &), 0x00510A20);
-DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const CellStruct &), 0x0050F280);
-DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const CellStruct &) const, 0x0050F280);
+DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Cell &), 0x0050F280);
+DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) const, 0x0050F280);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coordinate &), 0x0050F210);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coordinate &) const, 0x0050F210);
-DEFINE_IMPLEMENTATION(void MapClass::Sight_From(CellStruct &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
-DEFINE_IMPLEMENTATION(void MapClass::Place_Down(CellStruct &, ObjectClass *), 0x00511070);
-DEFINE_IMPLEMENTATION(void MapClass::Pick_Up(CellStruct &, ObjectClass *), 0x005111B0);
+DEFINE_IMPLEMENTATION(void MapClass::Sight_From(Cell &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(void MapClass::Place_Down(Cell &, ObjectClass *), 0x00511070);
+DEFINE_IMPLEMENTATION(void MapClass::Pick_Up(Cell &, ObjectClass *), 0x005111B0);
 DEFINE_IMPLEMENTATION(long MapClass::Overpass(), 0x005112F0);
-DEFINE_IMPLEMENTATION(int MapClass::Cell_Region(CellStruct &), 0x00514460);
-DEFINE_IMPLEMENTATION(int MapClass::Cell_Threat(CellStruct &, HouseClass *), 0x00514490);
+DEFINE_IMPLEMENTATION(int MapClass::Cell_Region(Cell &), 0x00514460);
+DEFINE_IMPLEMENTATION(int MapClass::Cell_Threat(Cell &, HouseClass *), 0x00514490);
 DEFINE_IMPLEMENTATION(bool MapClass::Place_Random_Crate(), 0x00514500);
-DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(CellStruct &), 0x005145D0);
+DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(Cell &), 0x005145D0);
 DEFINE_IMPLEMENTATION(int MapClass::MapClass::Validate(), 0x005147E0);
 DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(Coordinate &) const, 0x005147F0);
-DEFINE_IMPLEMENTATION(CellStruct MapClass::Nearby_Location(CellStruct &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, CellStruct) const, 0x005161A0);
-DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(CellStruct &, HousesType &, ZoneType &) const, 0x00516CB0);
-DEFINE_IMPLEMENTATION(const CellStruct MapClass::Pick_Random_Location(), 0x0051DFB0);
+DEFINE_IMPLEMENTATION(Cell MapClass::Nearby_Location(Cell &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, Cell) const, 0x005161A0);
+DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(Cell &, HousesType &, ZoneType &) const, 0x00516CB0);
+DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellStruct &, bool) const, 0x0051E380);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &, bool) const, 0x0051E380);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x0051E510);
 
@@ -1583,31 +1583,31 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Read_INI(CCINIClass &), 0x00479C10);
 DEFINE_IMPLEMENTATION(const char *DisplayClass::Help_Text(int), 0x0047AF20);
 DEFINE_IMPLEMENTATION(void DisplayClass::entry_84(), 0x0047B170);
 DEFINE_IMPLEMENTATION(void DisplayClass::Abort_Drag_Select(), 0x0047C070);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(CellStruct &, HouseClass *), 0x00476AB0);
-DEFINE_IMPLEMENTATION(bool DisplayClass::entry_90(CellStruct &, HouseClass *), 0x00476EB0);
-DEFINE_IMPLEMENTATION(bool DisplayClass::entry_94(CellStruct &, HouseClass *), 0x00477130);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(Cell &, HouseClass *), 0x00476AB0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::entry_90(Cell &, HouseClass *), 0x00476EB0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::entry_94(Cell &, HouseClass *), 0x00477130);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Scroll_Map(DirType, int &, bool), 0x00476A60);
 DEFINE_IMPLEMENTATION(void DisplayClass::Set_View_Dimensions(Rect &), 0x00475DC0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Put_Place_Back(TechnoClass *), 0x00402AF0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Press(Point2D &), 0x00477D20);
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Press(Point2D &), 0x004791E0);
-DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Up(CellStruct &, bool, ObjectClass *, ActionType, bool), 0x00477E60);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Up(Cell &, bool, ObjectClass *, ActionType, bool), 0x00477E60);
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Held(Point2D &), 0x00479250);
-DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Release(Point2D &, CellStruct &, ObjectClass *, ActionType, bool), 0x00478880);
+DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Left_Release(Point2D &, Cell &, ObjectClass *, ActionType, bool), 0x00478880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Up(Point2D &), 0x00477D30);
-DEFINE_IMPLEMENTATION(void DisplayClass::Set_Cursor_Shape(CellStruct const *), 0x00476040);
-DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Set_Cursor_Pos(CellStruct &), 0x00476490);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Proximity_Check(const ObjectTypeClass *, HousesType, const CellStruct *, CellStruct &), 0x004761A0);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Shroud_Check(const ObjectTypeClass *, HousesType, const CellStruct *, CellStruct &), 0x00476350);
-DEFINE_IMPLEMENTATION(wDimensionStruct DisplayClass::Get_Occupy_Dimensions(CellStruct const *) const, 0x004767D0);
-DEFINE_IMPLEMENTATION(void DisplayClass::Cursor_Mark(CellStruct &, bool), 0x00476880);
+DEFINE_IMPLEMENTATION(void DisplayClass::Set_Cursor_Shape(Cell const *), 0x00476040);
+DEFINE_IMPLEMENTATION(Cell DisplayClass::Set_Cursor_Pos(Cell &), 0x00476490);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Proximity_Check(const ObjectTypeClass *, HousesType, const Cell *, Cell &), 0x004761A0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Shroud_Check(const ObjectTypeClass *, HousesType, const Cell *, Cell &), 0x00476350);
+DEFINE_IMPLEMENTATION(wDimensionStruct DisplayClass::Get_Occupy_Dimensions(Cell const *) const, 0x004767D0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Cursor_Mark(Cell &, bool), 0x00476880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Submit(ObjectClass const *), 0x00476950);
 DEFINE_IMPLEMENTATION(void DisplayClass::Remove(ObjectClass const *), 0x004769A0);
-DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Cell_Object(CellStruct &, Point2D &), 0x00477370);
+DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Cell_Object(Cell &, Point2D &), 0x00477370);
 DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Next_Object(ObjectClass *) const, 0x00477390);
 DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Prev_Object(ObjectClass *) const, 0x00477430);
-DEFINE_IMPLEMENTATION(CellStruct DisplayClass::Calculated_Cell(SourceType, CellStruct &, CellStruct &, SpeedType, bool, MZoneType) const, 0x004774C0);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Good_Reinforcement_Cell(CellStruct &, CellStruct &, SpeedType, int, MZoneType) const, 0x00477B40);
+DEFINE_IMPLEMENTATION(Cell DisplayClass::Calculated_Cell(SourceType, Cell &, Cell &, SpeedType, bool, MZoneType) const, 0x004774C0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Good_Reinforcement_Cell(Cell &, Cell &, SpeedType, int, MZoneType) const, 0x00477B40);
 DEFINE_IMPLEMENTATION(void DisplayClass::Compute_Start_Pos(), 0x004793A0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Sell_Mode_Control(int), 0x004794E0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Waypoint_Mode_Control(int, bool), 0x00479580);
@@ -1617,8 +1617,8 @@ DEFINE_IMPLEMENTATION(Coordinate DisplayClass::Closest_Free_Spot(Coordinate &, b
 DEFINE_IMPLEMENTATION(bool DisplayClass::Is_Spot_Free(Coordinate &, bool) const, 0x00479850);
 DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Shadow(), 0x00479880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Fog(), 0x00479970);
-DEFINE_IMPLEMENTATION(void DisplayClass::Fog_Cell(CellStruct &), 0x00479A00);
-DEFINE_IMPLEMENTATION(void DisplayClass::Shroud_Cell(CellStruct &), 0x00479B40);
+DEFINE_IMPLEMENTATION(void DisplayClass::Fog_Cell(Cell &), 0x00479A00);
+DEFINE_IMPLEMENTATION(void DisplayClass::Shroud_Cell(Cell &), 0x00479B40);
 DEFINE_IMPLEMENTATION(void DisplayClass::Write_INI(CCINIClass &), 0x0047A540);
 DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
 DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(Coordinate &, LEPTON), 0x0047AAF0);
@@ -1647,11 +1647,11 @@ DEFINE_IMPLEMENTATION(void RadarClass::entry_70(Rect &), 0x005B99D0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Load(IStream *), 0x005BBBE0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Save(IStream *), 0x005BBDA0);
 DEFINE_IMPLEMENTATION(void RadarClass::entry_84(), 0x005B9980);
-DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(CellStruct &, HouseClass *), 0x005B9110);
-DEFINE_IMPLEMENTATION(CellStruct RadarClass::Click_Cell_Calc(Point2D &), 0x005B9060);
+DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(Cell &, HouseClass *), 0x005B9110);
+DEFINE_IMPLEMENTATION(Cell RadarClass::Click_Cell_Calc(Point2D &), 0x005B9060);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coordinate &), 0x005B95A0);
 DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
-DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(CellStruct &) const, 0x005B95C0);
+DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell &) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
@@ -1856,11 +1856,11 @@ DEFINE_IMPLEMENTATION(bool SuperClass::Remove(), 0x0060B830);
 DEFINE_IMPLEMENTATION(bool SuperClass::Recharge(bool), 0x0060B860);
 DEFINE_IMPLEMENTATION(void SuperClass::Impatient_Click() const, 0x0060BE20);
 DEFINE_IMPLEMENTATION(int SuperClass::Anim_Stage() const, 0x0060BD10);
-DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, CellStruct *), 0x0060B8E0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, Cell *), 0x0060B8E0);
 DEFINE_IMPLEMENTATION(const char *SuperClass::Ready_String() const, 0x0060BEC0);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
-DEFINE_IMPLEMENTATION(void SuperClass::Place(CellStruct *, bool), 0x0060BF70);
+DEFINE_IMPLEMENTATION(void SuperClass::Place(Cell *, bool), 0x0060BF70);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SuperWeaponTypeClass::GetClassID(CLSID *), 0x0060D100);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Load(IStream *), 0x0060D140);
@@ -1940,12 +1940,12 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Power_Output(), 0x004BB
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Power_Drain(), 0x004BB1D0);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Category_Quantity(CategoryType), 0x004BB1E0);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Category_Power(CategoryType), 0x004BB2A0);
-DEFINE_IMPLEMENTATION(CellStruct STDMETHODCALLTYPE HouseClass::Base_Center(), 0x004BB380);
+DEFINE_IMPLEMENTATION(Cell STDMETHODCALLTYPE HouseClass::Base_Center(), 0x004BB380);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Fire_Sale(), 0x004C3450);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::All_To_Hunt(), 0x004C34C0);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Apparent_Category_Quantity(CategoryType), 0x004BB240);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HouseClass::Apparent_Category_Power(CategoryType), 0x004BB310);
-DEFINE_IMPLEMENTATION(CellStruct STDMETHODCALLTYPE HouseClass::Apparent_Base_Center(), 0x004BB3C0);
+DEFINE_IMPLEMENTATION(Cell STDMETHODCALLTYPE HouseClass::Apparent_Base_Center(), 0x004BB3C0);
 DEFINE_IMPLEMENTATION(bool STDMETHODCALLTYPE HouseClass::Is_Powered(), 0x004BB100);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::EnumConnectionPoints(IEnumConnectionPoints **), 0x004C4350);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HouseClass::FindConnectionPoint(REFIID, IConnectionPoint **), 0x004C43B0);
@@ -1985,15 +1985,15 @@ DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Begin_Production(RTTIType, int, b
 DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Suspend_Production(RTTIType), 0x004BE5D0);
 DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Abandon_Production(RTTIType, int), 0x004BE6A0);
 DEFINE_IMPLEMENTATION(bool HouseClass::Special_Weapon_AI(SpecialWeaponType), 0x004BE8A0);
-DEFINE_IMPLEMENTATION(bool HouseClass::Place_Special_Blast(SpecialWeaponType, CellStruct &), 0x004BE9E0);
-DEFINE_IMPLEMENTATION(bool HouseClass::Place_Object(RTTIType, CellStruct &), 0x004BEA10);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Special_Blast(SpecialWeaponType, Cell &), 0x004BE9E0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Object(RTTIType, Cell &), 0x004BEA10);
 DEFINE_IMPLEMENTATION(void HouseClass::Just_Built(TechnoClass *), 0x004BED80);
 DEFINE_IMPLEMENTATION(bool HouseClass::Manual_Place(BuildingClass *, BuildingClass *), 0x004BEEA0);
 DEFINE_IMPLEMENTATION(void HouseClass::Clobber_All(), 0x004BEF60);
 DEFINE_IMPLEMENTATION(bool HouseClass::Does_Enemy_Building_Exist(BuildingType) const, 0x004BF100);
 DEFINE_IMPLEMENTATION(const TechnoTypeClass *HouseClass::Suggest_New_Object(RTTIType, bool) const, 0x004BF180);
 DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Remove(TARGET, bool), 0x004BF240);
-DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Attach(CellStruct &, bool), 0x004BF370);
+DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Attach(Cell &, bool), 0x004BF370);
 DEFINE_IMPLEMENTATION(bool HouseClass::Flag_Attach(UnitClass *, bool), 0x004BF470);
 DEFINE_IMPLEMENTATION(void HouseClass::MPlayer_Defeated(), 0x004BF4C0);
 DEFINE_IMPLEMENTATION(void HouseClass::Blowup_All(), 0x004BF910);
@@ -2003,7 +2003,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Lose(bool), 0x004BFE00);
 // 004BFFB0
 DEFINE_IMPLEMENTATION(void HouseClass::Init_Data(ColorSchemeType, HousesType, int), 0x004BFFF0);
 DEFINE_IMPLEMENTATION(float HouseClass::Power_Fraction() const, 0x004C0020);
-DEFINE_IMPLEMENTATION(void HouseClass::Sell_Wall(CellStruct &, bool), 0x004C0070);
+DEFINE_IMPLEMENTATION(void HouseClass::Sell_Wall(Cell &, bool), 0x004C0070);
 DEFINE_IMPLEMENTATION(const BuildingTypeClass * HouseClass::Suggest_New_Building() const, 0x004C0220);
 DEFINE_IMPLEMENTATION(BuildingClass * HouseClass::Find_Building(BuildingType, ZoneType) const, 0x004C0240);
 DEFINE_IMPLEMENTATION(Coordinate HouseClass::Find_Build_Location(BuildingClass *) const, 0x004C0310);
@@ -2025,9 +2025,9 @@ DEFINE_IMPLEMENTATION(void HouseClass::Active_Remove(const TechnoClass *), 0x004
 DEFINE_IMPLEMENTATION(void HouseClass::Active_Add(const TechnoClass *), 0x004C2450);
 DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(Coordinate &) const, 0x004C24F0);
 DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(const ObjectClass *) const, 0x004C2660);
-DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(CellStruct &) const, 0x004C26A0);
-DEFINE_IMPLEMENTATION(CellStruct HouseClass::Zone_Cell(ZoneType) const, 0x004C26E0);
-DEFINE_IMPLEMENTATION(CellStruct HouseClass::Where_To_Go(const FootClass *) const, 0x004C2A20);
+DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(Cell &) const, 0x004C26A0);
+DEFINE_IMPLEMENTATION(Cell HouseClass::Zone_Cell(ZoneType) const, 0x004C26E0);
+DEFINE_IMPLEMENTATION(Cell HouseClass::Where_To_Go(const FootClass *) const, 0x004C2A20);
 DEFINE_IMPLEMENTATION(TARGET HouseClass::Find_Juicy_Target(Coordinate &) const, 0x004C2B20);
 DEFINE_IMPLEMENTATION(FactoryClass *HouseClass::Fetch_Factory(RTTIType) const, 0x004C2CA0);
 DEFINE_IMPLEMENTATION(void HouseClass::Set_Factory(RTTIType, FactoryClass *), 0x004C2D20);
@@ -2040,8 +2040,8 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Is_Allowed_To_Ally(HouseClass *) const, 0
 DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Power(int), 0x004C3710);
 DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Drain(int), 0x004C3880);
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Spied_Power_Plants(), 0x004C39E0);
-DEFINE_IMPLEMENTATION(CellStruct HouseClass::Find_Cell_In_Zone(const TechnoClass *, ZoneType) const, 0x004C3A60);
-DEFINE_IMPLEMENTATION(CellStruct HouseClass::Random_Cell_In_Zone(ZoneType) const, 0x004C3A80);
+DEFINE_IMPLEMENTATION(Cell HouseClass::Find_Cell_In_Zone(const TechnoClass *, ZoneType) const, 0x004C3A60);
+DEFINE_IMPLEMENTATION(Cell HouseClass::Random_Cell_In_Zone(ZoneType) const, 0x004C3A80);
 DEFINE_IMPLEMENTATION(void HouseClass::Make_Ally(TechnoClass *), 0x004C3F80);
 DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass *), 0x004C3FA0);
 // 004C3FC0
@@ -2227,7 +2227,7 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Players_Army() const, 0x00417400);
 DEFINE_IMPLEMENTATION(VisualType ObjectClass::Visual_Character(bool, const HouseClass *), 0x00417410);
 DEFINE_IMPLEMENTATION(void *const ObjectClass::Get_Image_Data() const, 0x00584BD0);
 DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(const ObjectClass *, bool), 0x00584EF0);
-DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(CellStruct &, bool, bool) const, 0x00584F00);
+DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(Cell &, bool, bool) const, 0x00584F00);
 DEFINE_IMPLEMENTATION(LayerType ObjectClass::In_Which_Layer() const, 0x00584F10);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_7C() const, 0x005872F0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_80() const, 0x00417420);
@@ -2259,7 +2259,7 @@ DEFINE_IMPLEMENTATION(void ObjectClass::entry_E4(), 0x00586DB0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Do_Shimmer(), 0x00584FB0);
 DEFINE_IMPLEMENTATION(ExitType ObjectClass::Exit_Object(const TechnoClass *), 0x00584FC0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Render(Rect &, bool, bool), 0x00585830);
-DEFINE_IMPLEMENTATION(CellStruct *ObjectClass::Occupy_List(bool) const, 0x005865B0);
+DEFINE_IMPLEMENTATION(Cell *ObjectClass::Occupy_List(bool) const, 0x005865B0);
 DEFINE_IMPLEMENTATION(void ObjectClass::entry_F8(Point2D &, Rect &) const, 0x00417490);
 DEFINE_IMPLEMENTATION(void ObjectClass::entry_FC(Point2D &, Rect &) const, 0x004174A0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Draw_It(Point2D &, Rect &) const, 0x00559850);
@@ -2272,7 +2272,7 @@ DEFINE_IMPLEMENTATION(Rect ObjectClass::entry_118() const, 0x00585510);
 DEFINE_IMPLEMENTATION(void ObjectClass::entry_11C() const, 0x0040F200);
 DEFINE_IMPLEMENTATION(void ObjectClass::Mark_For_Redraw(), 0x00585A30);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x00584FF0);
-DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x00585000);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x00585000);
 DEFINE_IMPLEMENTATION(void ObjectClass::Clicked_As_Target(int), 0x00585010);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Select(), 0x005851D0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Unselect(), 0x00585150);
@@ -2297,9 +2297,9 @@ DEFINE_IMPLEMENTATION(MoveType ObjectClass::Can_Enter_Cell(const CellClass *, Fa
 DEFINE_IMPLEMENTATION(MoveType ObjectClass::entry_180(const CellClass *, FacingType, int *, bool *, const CellClass *), 0x004174E0);
 DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Get_Coord() const, 0x0040F210);
 DEFINE_IMPLEMENTATION(void ObjectClass::Set_Coord(Coordinate &), 0x005870C0);
-DEFINE_IMPLEMENTATION(CellStruct ObjectClass::Get_Cell() const, 0x0040F230);
+DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Cell() const, 0x0040F230);
 DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Cell_Ptr() const, 0x005870E0);
-DEFINE_IMPLEMENTATION(CellStruct ObjectClass::Get_Target_Cell() const, 0x00587100);
+DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Target_Cell() const, 0x00587100);
 DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Target_Cell_Ptr() const, 0x00587150);
 DEFINE_IMPLEMENTATION(int ObjectClass::Get_Height() const, 0x00586770);
 DEFINE_IMPLEMENTATION(void ObjectClass::Set_Height(int) const, 0x005867B0);
@@ -2430,7 +2430,7 @@ DEFINE_IMPLEMENTATION(HouseClass *TechnoClass::Owning_House() const, 0x0062E700)
 DEFINE_IMPLEMENTATION(void TechnoClass::AI(), 0x0062E750);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Players_Army() const, 0x0062A070);
 DEFINE_IMPLEMENTATION(VisualType TechnoClass::Visual_Character(bool, const HouseClass *), 0x00633CB0);
-DEFINE_IMPLEMENTATION(ActionType TechnoClass::What_Action(CellStruct &, bool, bool) const, 0x00631AE0);
+DEFINE_IMPLEMENTATION(ActionType TechnoClass::What_Action(Cell &, bool, bool) const, 0x00631AE0);
 DEFINE_IMPLEMENTATION(ActionType TechnoClass::What_Action(const ObjectClass *, bool), 0x00631700);
 DEFINE_IMPLEMENTATION(TechnoTypeClass *const TechnoClass::Techno_Type_Class() const, 0x0062A010);
 DEFINE_IMPLEMENTATION(int TechnoClass::Get_Ownable() const, 0x00637200);
@@ -2485,9 +2485,9 @@ DEFINE_IMPLEMENTATION(int TechnoClass::entry_278() const, 0x0063A090);
 DEFINE_IMPLEMENTATION(int TechnoClass::Get_Z_Adjustment() const, 0x00634790);
 DEFINE_IMPLEMENTATION(ZGradientType TechnoClass::Get_Z_Gradient() const, 0x0043B8F0);
 DEFINE_IMPLEMENTATION(BuildingClass *const TechnoClass::Find_Docking_Bay(const BuildingTypeClass *, bool, bool) const, 0x00637E60);
-DEFINE_IMPLEMENTATION(CellStruct TechnoClass::Find_Exit_Cell(const TechnoClass *) const, 0x00638040);
+DEFINE_IMPLEMENTATION(Cell TechnoClass::Find_Exit_Cell(const TechnoClass *) const, 0x00638040);
 DEFINE_IMPLEMENTATION(Coordinate TechnoClass::entry_28C(WeaponSlotType) const, 0x0062A5A0);
-DEFINE_IMPLEMENTATION(FacingType TechnoClass::Desired_Load_Dir(const ObjectClass *, CellStruct &) const, 0x00637240);
+DEFINE_IMPLEMENTATION(FacingType TechnoClass::Desired_Load_Dir(const ObjectClass *, Cell &) const, 0x00637240);
 DEFINE_IMPLEMENTATION(DirStruct TechnoClass::Fire_Direction() const, 0x00637310);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const TechnoClass::Crew_Type() const, 0x006364A0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::entry_29C() const, 0x00632020);
@@ -2546,13 +2546,13 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Time_To_Build() const, 0x0062A970);
 // 0062BEA0);
 // 0062BFE0);
 // 0062CD00);
-DEFINE_IMPLEMENTATION(double TechnoClass::Area_Modify(CellStruct &) const, 0x0062CDE0);
+DEFINE_IMPLEMENTATION(double TechnoClass::Area_Modify(Cell &) const, 0x0062CDE0);
 // 0062D0F0);
 // 0062D8D0);
-DEFINE_IMPLEMENTATION(int TechnoClass::Evaluate_Just_Cell(CellStruct &) const, 0x0062DA70);
+DEFINE_IMPLEMENTATION(int TechnoClass::Evaluate_Just_Cell(Cell &) const, 0x0062DA70);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Object(ThreatType, int, int, const TechnoClass *, int &, int, Coordinate &) const, 0x0062D0F0);
-DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Cell(ThreatType, int, CellStruct &, int, const TechnoClass **, int &, int) const, 0x0062D8D0);
-DEFINE_IMPLEMENTATION(CellStruct TechnoClass::Nearby_Location(const TechnoClass *) const, 0x00633A00);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Cell(ThreatType, int, Cell &, int, const TechnoClass **, int &, int) const, 0x0062D8D0);
+DEFINE_IMPLEMENTATION(Cell TechnoClass::Nearby_Location(const TechnoClass *) const, 0x00633A00);
 // 00633F60);
 // 00634110);
 // 006342C0);
@@ -2606,7 +2606,7 @@ DEFINE_IMPLEMENTATION(bool FootClass::On_Ground() const, 0x004A8CC0);
 DEFINE_IMPLEMENTATION(bool FootClass::In_Air() const, 0x004A8BF0);
 DEFINE_IMPLEMENTATION(void FootClass::AI(), 0x004A5890);
 DEFINE_IMPLEMENTATION(VisualType FootClass::Visual_Character(bool, const HouseClass *), 0x004A5840);
-DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(CellStruct &, bool, bool) const, 0x004A8430);
+DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(Cell &, bool, bool) const, 0x004A8430);
 DEFINE_IMPLEMENTATION(ActionType FootClass::What_Action(const ObjectClass *, bool), 0x004A8520);
 DEFINE_IMPLEMENTATION(LayerType FootClass::In_Which_Layer() const, 0x004A6300);
 DEFINE_IMPLEMENTATION(bool FootClass::Can_Demolish() const, 0x004A5230);
@@ -2619,7 +2619,7 @@ DEFINE_IMPLEMENTATION(void FootClass::entry_E4(), 0x004A8BD0);
 DEFINE_IMPLEMENTATION(void FootClass::Draw_It(Point2D &, Rect &) const, 0x004A5E70);
 DEFINE_IMPLEMENTATION(bool FootClass::Mark(MarkType), 0x004A0590);
 DEFINE_IMPLEMENTATION(bool FootClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x004A35A0);
-DEFINE_IMPLEMENTATION(bool FootClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x004A2EB0);
+DEFINE_IMPLEMENTATION(bool FootClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x004A2EB0);
 DEFINE_IMPLEMENTATION(ResultType FootClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x004A2DE0);
 DEFINE_IMPLEMENTATION(void FootClass::Per_Cell_Process(PCPType), 0x004A3CA0);
 DEFINE_IMPLEMENTATION(RadioMessageType FootClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x004A4560);
@@ -2671,7 +2671,7 @@ DEFINE_IMPLEMENTATION(void FootClass::entry_394(), 0x0040F3C0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_398(), 0x0040F3D0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_39C(int), 0x0040F3E0);
 DEFINE_IMPLEMENTATION(int FootClass::Offload_Tiberium_Bail(), 0x004A4FC0);
-DEFINE_IMPLEMENTATION(void FootClass::Overrun_Square(CellStruct &, bool), 0x0040F3F0);
+DEFINE_IMPLEMENTATION(void FootClass::Overrun_Square(Cell &, bool), 0x0040F3F0);
 DEFINE_IMPLEMENTATION(int FootClass::Current_Speed(), 0x004A5DD0);
 DEFINE_IMPLEMENTATION(void FootClass::Approach_Target(), 0x004A1E30);
 DEFINE_IMPLEMENTATION(void FootClass::Fixup_Path(PathType *), 0x0040F400);
@@ -2679,7 +2679,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Set_Speed(double), 0x004A0520);
 DEFINE_IMPLEMENTATION(void FootClass::entry_3B8(), 0x004A64F0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_3BC(FootClass *), 0x004A8300);
 DEFINE_IMPLEMENTATION(int FootClass::Rescue_Mission(TARGET), 0x004A4C40);
-DEFINE_IMPLEMENTATION(CellStruct FootClass::Adjust_Dest(CellStruct &), 0x004A53C0);
+DEFINE_IMPLEMENTATION(Cell FootClass::Adjust_Dest(Cell &), 0x004A53C0);
 DEFINE_IMPLEMENTATION(void FootClass::Handle_Navigation_List(), 0x004A53D0);
 DEFINE_IMPLEMENTATION(void FootClass::Queue_Navigation_List(TARGET target), 0x004A5480);
 DEFINE_IMPLEMENTATION(void FootClass::Clear_Navigation_List(), 0x004A5550);
@@ -2689,17 +2689,17 @@ DEFINE_IMPLEMENTATION(bool FootClass::Is_On_Priority_Mission() const, 0x004A5620
 // 004A6370
 // 004A6DE0
 // 004A6F40
-DEFINE_IMPLEMENTATION(bool FootClass::Tiberium_Check(CellStruct &), 0x004A74D0);
+DEFINE_IMPLEMENTATION(bool FootClass::Tiberium_Check(Cell &), 0x004A74D0);
 DEFINE_IMPLEMENTATION(bool FootClass::Goto_Tiberium(int, bool), 0x004A7630);
-DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Tiberium(int, bool), 0x004A76F0);
-DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Tiberium_Weighted(int), 0x004A7990);
-DEFINE_IMPLEMENTATION(CellStruct FootClass::Search_For_Weed(int), 0x004A7F40);
-DEFINE_IMPLEMENTATION(bool FootClass::Weed_Check(CellStruct &, int, int), 0x004A80A0);
+DEFINE_IMPLEMENTATION(Cell FootClass::Search_For_Tiberium(int, bool), 0x004A76F0);
+DEFINE_IMPLEMENTATION(Cell FootClass::Search_For_Tiberium_Weighted(int), 0x004A7990);
+DEFINE_IMPLEMENTATION(Cell FootClass::Search_For_Weed(int), 0x004A7F40);
+DEFINE_IMPLEMENTATION(bool FootClass::Weed_Check(Cell &, int, int), 0x004A80A0);
 DEFINE_IMPLEMENTATION(bool FootClass::Goto_Weed(int), 0x004A8230);
 // 004A8800
-DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(CellStruct &, int, int), 0x004A0730);
-DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(CellStruct &, int *, int, int, int, int), 0x00498EF0);
-DEFINE_IMPLEMENTATION(CellStruct FootClass::Safety_Point(CellStruct &, CellStruct &, int, int), 0x00498F90);
+DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(Cell &, int, int), 0x004A0730);
+DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(Cell &, int *, int, int, int, int), 0x00498EF0);
+DEFINE_IMPLEMENTATION(Cell FootClass::Safety_Point(Cell &, Cell &, int, int), 0x00498F90);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingClass::GetClassID(CLSID *), 0x0043B950);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingClass::Load(IStream *), 0x00438060);
@@ -2718,7 +2718,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::AI(), 0x00429A60);
 DEFINE_IMPLEMENTATION(VisualType BuildingClass::Visual_Character(bool, const HouseClass *), 0x00438450);
 DEFINE_IMPLEMENTATION(void *const BuildingClass::Get_Image_Data() const, 0x00435E40);
 DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(const ObjectClass *, bool), 0x0042EED0);
-DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(CellStruct &, bool, bool) const, 0x0042EBD0);
+DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(Cell &, bool, bool) const, 0x0042EBD0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::entry_80() const, 0x0043AF40);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const BuildingClass::Class_Of() const, 0x0043B9B0);
 DEFINE_IMPLEMENTATION(const char *BuildingClass::Full_Name() const, 0x0043B9A0);
@@ -2744,7 +2744,7 @@ DEFINE_IMPLEMENTATION(bool BuildingClass::Mark(MarkType), 0x00429370);
 DEFINE_IMPLEMENTATION(Rect BuildingClass::entry_118() const, 0x00439B90);
 DEFINE_IMPLEMENTATION(void BuildingClass::entry_11C() const, 0x0043A6F0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0042C210);
-DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x0042C0B0);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x0042C0B0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Clicked_As_Target(int), 0x0043AB00);
 DEFINE_IMPLEMENTATION(ResultType BuildingClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool , bool), 0x0042B330);
 DEFINE_IMPLEMENTATION(RadioMessageType BuildingClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x004268C0);
@@ -2773,7 +2773,7 @@ DEFINE_IMPLEMENTATION(int BuildingClass::How_Many_Survivors() const, 0x00435DA0)
 DEFINE_IMPLEMENTATION(void BuildingClass::entry_274() const, 0x0043B020);
 DEFINE_IMPLEMENTATION(int BuildingClass::entry_278() const, 0x0043AED0);
 DEFINE_IMPLEMENTATION(int BuildingClass::Get_Z_Adjustment() const, 0x00428B20);
-DEFINE_IMPLEMENTATION(CellStruct BuildingClass::Find_Exit_Cell(const TechnoClass *) const, 0x00434140);
+DEFINE_IMPLEMENTATION(Cell BuildingClass::Find_Exit_Cell(const TechnoClass *) const, 0x00434140);
 DEFINE_IMPLEMENTATION(Coordinate BuildingClass::entry_28C(WeaponSlotType) const, 0x00437D00);
 DEFINE_IMPLEMENTATION(DirStruct BuildingClass::Fire_Direction() const, 0x00433490);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const BuildingClass::Crew_Type() const, 0x00433FB0);
@@ -2796,7 +2796,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Grand_Opening(bool), 0x0042E170);
 DEFINE_IMPLEMENTATION(void BuildingClass::Update_Buildables(), 0x0042D9A0);
 DEFINE_IMPLEMENTATION(void BuildingClass::entry_370(Point2D &, Rect &), 0x00427B60);
 DEFINE_IMPLEMENTATION(DirStruct BuildingClass::entry_374(TARGET), 0x00428F60);
-DEFINE_IMPLEMENTATION(void BuildingClass::entry_378(TechnoClass *, TechnoClass *, bool, CellStruct *), 0x0042AB00);
+DEFINE_IMPLEMENTATION(void BuildingClass::entry_378(TechnoClass *, TechnoClass *, bool, Cell *), 0x0042AB00);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Toggle_Primary(), 0x0042F590);
 DEFINE_IMPLEMENTATION(unsigned BuildingClass::entry_380(), 0x00436780);
 // 00428810
@@ -2811,8 +2811,8 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Begin_Mode(BStateType), 0x042F020);
 // 00433A20
 DEFINE_IMPLEMENTATION(int BuildingClass::Power_Output() const, 0x00433DF0);
 DEFINE_IMPLEMENTATION(int BuildingClass::Power_Drain() const, 0x00433E60);
-DEFINE_IMPLEMENTATION(bool BuildingClass::Flush_For_Placement(TechnoClass *, CellStruct &), 0x00434110);
-DEFINE_IMPLEMENTATION(CellStruct BuildingClass::Check_Point(CheckPointType) const, 0x00434680);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Flush_For_Placement(TechnoClass *, Cell &), 0x00434110);
+DEFINE_IMPLEMENTATION(Cell BuildingClass::Check_Point(CheckPointType) const, 0x00434680);
 DEFINE_IMPLEMENTATION(void BuildingClass::Update_Radar_Spied(), 0x00434740);
 DEFINE_IMPLEMENTATION(void BuildingClass::Build_INI_Entry(CCINIClass &) const, 0x00434DE0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Factory_AI(), 0x00434FE0);
@@ -2991,7 +2991,7 @@ DEFINE_IMPLEMENTATION(void TeamClass::func_6271F0(BuildingTypeClass *, HouseClas
 DEFINE_IMPLEMENTATION(void TeamClass::Suspend_Teams(int, const HouseClass *), 0x00625070);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(TARGET), 0x0061FEE0);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(CellStruct &), 0x0061FF60);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(Cell &), 0x0061FF60);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(Coordinate &), 0x0061FFB0);
 DEFINE_IMPLEMENTATION(AbstractTypeClass *xTargetClass::As_TypeClass() const, 0x0061FFF0);
 DEFINE_IMPLEMENTATION(TagClass *xTargetClass::As_Tag() const, 0x006200D0);
@@ -3048,114 +3048,114 @@ DEFINE_IMPLEMENTATION(RTTIType TActionClass::Kind_Of() const, 0x0061DAA0);
 DEFINE_IMPLEMENTATION(int TActionClass::Size_Of(bool) const, 0x0061DA90);
 DEFINE_IMPLEMENTATION(void TActionClass::Compute_CRC(WWCRCEngine &) const, 0x0061D930);
 DEFINE_IMPLEMENTATION(int TActionClass::Get_Heap_ID() const, 0x0061DAB0);
-DEFINE_IMPLEMENTATION(bool TActionClass::operator() (HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x00619110);
+DEFINE_IMPLEMENTATION(bool TActionClass::operator() (HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x00619110);
 DEFINE_IMPLEMENTATION(void TActionClass::Read_INI(), 0x00618F70);
 DEFINE_IMPLEMENTATION(void TActionClass::Build_INI_Entry(char *) const, 0x00618E30);
 DEFINE_IMPLEMENTATION(Coordinate TActionClass::Waypoint_As_Coord(), 0x0061DA50);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Deactivate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AB80);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Activate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061ABF0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lightning_Strike_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AC60);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Remove_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AC90);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AD10);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Self(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061ADC0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Vein_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE50);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Tiberium_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE70);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ice_Growth(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AE90);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Sleepers(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AEB0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Harmless(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AF20);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Group(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061AFA0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Win(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B030);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Lose(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B050);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B070);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Apply_100_Damage(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B080);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Small_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B380);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Medium_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B3D0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Large_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B420);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Sell_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B470);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Go_Bezerk(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B4E0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_Off_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B550);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_On_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B5C0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_House(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B630);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Team_ID(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B6B0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_Change_House(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B6E0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Text_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B740);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Ally(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B820);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Enemy(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B860);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Preferred_Target(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B8A0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Base_Building(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B8C0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Grow_Shroud(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B980);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Global(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B990);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Clear_Global(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B9B0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Area(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061B9D0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reduce_Tiberium_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BAF0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Zone(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BB30);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Map(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BC40);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Start_Timer(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BCB0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Stop_Timer(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BD00);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Extend(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BD80);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Shorten(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BDF0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Set(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BE80);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Movie(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF00);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Ingame_Movie(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF20);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF30);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At_Random_Waypoint(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061BF50);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C000);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Music(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C030);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C050);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_One_Time_Special(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C060);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Full_Special(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C0B0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Place_Drop_Zone_Flare(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C110);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Win(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C200);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lose(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C230);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Production(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C260);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Fire_Sale(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C280);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Autocreate(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2A0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2C0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C2F0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Flash_Team(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C310);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C330);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Speech(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C340);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Talk_Bubble(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C350);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcements(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C390);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcement_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3B0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_To_Hunt(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3D0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Object(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C3F0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Zoom_Level(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C560);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Resize_Player_View(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C570);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C620);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Do_Explosion_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C720);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Impact_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C900);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_Start(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061C9E0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA20);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lock_Input(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA40);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Unlock_Input(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA60);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Center_Camera_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CA70);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_In(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CB30);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_Out(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CBA0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reshroud_Map(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CC00);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Spotlight_Behavior(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CC10);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CCB0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Tag(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CD00);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CD50);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CDA0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CDE0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Radar_Event(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE20);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Set(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE50);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Clear(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE70);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Shower_At(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061CE90);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Step(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D070);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Rate(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D090);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Light(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D0B0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_Begin(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D0E0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_End(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D100);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_AI_Trigger_Teams(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D120);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Aircraft(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D140);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Infantry(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D160);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Units(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D180);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Cannon_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D1A0);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Nuke_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D230);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Chemical_Missile_Strike(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D460);
-DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Toggle_Train_Cargo(HouseClass *, ObjectClass *, TriggerClass *, CellStruct &), 0x0061D690);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Deactivate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AB80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Activate_Firestorm_Defense(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061ABF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lightning_Strike_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AC60);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Remove_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AC90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Particle_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AD10);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Self(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061ADC0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Vein_Growth(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AE50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Tiberium_Growth(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AE70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ice_Growth(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AE90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Sleepers(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AEB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Harmless(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AF20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Wakeup_Group(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061AFA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Win(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B030);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Annouce_Lose(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B050);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_End(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B070);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Apply_100_Damage(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B080);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Small_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B380);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Medium_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B3D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Large_Light_Flash_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B420);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Sell_Building(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B470);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Go_Bezerk(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B4E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_Off_Building(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B550);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Turn_On_Building(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B5C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_House(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B630);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Team_ID(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B6B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_Change_House(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B6E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Text_Trigger(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B740);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Ally(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B820);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Make_Enemy(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B860);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Preferred_Target(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B8A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Base_Building(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B8C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Grow_Shroud(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B980);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Global(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B990);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Clear_Global(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B9B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Area(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061B9D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reduce_Tiberium_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BAF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Zone(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BB30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reveal_Map(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BC40);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Start_Timer(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BCB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Stop_Timer(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BD00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Extend(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BD80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Shorten(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BDF0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Timer_Set(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BE80);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Movie(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BF00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Ingame_Movie(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BF20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BF30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At_Random_Waypoint(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061BF50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Sound_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C000);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Music(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C030);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Speech(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C050);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_One_Time_Special(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C060);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Full_Special(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C0B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Place_Drop_Zone_Flare(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C110);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Win(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C200);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lose(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C230);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Production(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C260);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Fire_Sale(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C280);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Begin_Autocreate(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C2A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Team(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C2C0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Team(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C2F0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Flash_Team(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C310);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Speech(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C330);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Speech(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C340);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Talk_Bubble(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C350);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcements(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C390);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reinforcement_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C3B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_All_To_Hunt(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C3D0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Object(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C3F0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Zoom_Level(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C560);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Resize_Player_View(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C570);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Play_Anim_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C620);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Do_Explosion_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C720);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Impact_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C900);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_Start(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061C9E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Storm_End(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CA20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Lock_Input(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CA40);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Unlock_Input(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CA60);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Center_Camera_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CA70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_In(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CB30);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Zoom_Out(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CBA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Reshroud_Map(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CC00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Change_Spotlight_Behavior(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CC10);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Trigger(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CCB0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Destroy_Tag(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CD00);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Force_Trigger(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CD50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Enable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CDA0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Disable_Trigger(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CDE0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Create_Radar_Event(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CE20);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Set(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CE50);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Local_Clear(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CE70);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Meteor_Shower_At(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061CE90);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Step(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D070);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Rate(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D090);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ambient_Light(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D0B0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_Begin(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D0E0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_AI_Triggers_End(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D100);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_AI_Trigger_Teams(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D120);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Aircraft(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D140);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Infantry(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D160);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Set_Ratio_Of_Team_Units(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D180);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Ion_Cannon_Strike(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D1A0);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Nuke_Strike(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D230);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Chemical_Missile_Strike(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D460);
+DEFINE_IMPLEMENTATION(bool TActionClass::TAction_Toggle_Train_Cargo(HouseClass *, ObjectClass *, TriggerClass *, Cell &), 0x0061D690);
 DEFINE_IMPLEMENTATION(NeedType TActionClass::Needs(TActionType), 0x0061D6B0);
 DEFINE_IMPLEMENTATION(AttachType TActionClass::Attaches_To(TActionType), 0x0061D9C0);
 
@@ -3197,7 +3197,7 @@ DEFINE_IMPLEMENTATION(int AircraftClass::Size_Of(bool) const, 0x0040F410);
 DEFINE_IMPLEMENTATION(void AircraftClass::Compute_CRC(WWCRCEngine &) const, 0x0040ED20);
 DEFINE_IMPLEMENTATION(void AircraftClass::AI(), 0x004090C0);
 DEFINE_IMPLEMENTATION(ActionType AircraftClass::What_Action(const ObjectClass *, bool), 0x0040B9E0);
-DEFINE_IMPLEMENTATION(ActionType AircraftClass::What_Action(CellStruct &, bool, bool) const, 0x0040B7E0);
+DEFINE_IMPLEMENTATION(ActionType AircraftClass::What_Action(Cell &, bool, bool) const, 0x0040B7E0);
 DEFINE_IMPLEMENTATION(LayerType AircraftClass::In_Which_Layer() const, 0x0040E520);
 DEFINE_IMPLEMENTATION(bool AircraftClass::entry_80() const, 0x0040EFA0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const AircraftClass::Class_Of() const, 0x0040F4B0);
@@ -3207,7 +3207,7 @@ DEFINE_IMPLEMENTATION(ExitType AircraftClass::Exit_Object(const TechnoClass *), 
 DEFINE_IMPLEMENTATION(void AircraftClass::Draw_It(Point2D &, Rect &) const, 0x00408AD0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Look(bool, bool), 0x0040E550);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0040B740);
-DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x0040B690);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x0040B690);
 DEFINE_IMPLEMENTATION(ResultType AircraftClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0040A1E0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Scatter(Coordinate &, bool, bool), 0x0040DCE0);
 DEFINE_IMPLEMENTATION(RadioMessageType AircraftClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x0040C8A0);
@@ -3224,7 +3224,7 @@ DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Unload(), 0x004093F0);
 DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Enter(), 0x0040D360);
 DEFINE_IMPLEMENTATION(int AircraftClass::Mission_Patrol(), 0x0040AEF0);
 DEFINE_IMPLEMENTATION(DirStruct AircraftClass::Turret_Facing() const, 0x0040F490);
-DEFINE_IMPLEMENTATION(FacingType AircraftClass::Desired_Load_Dir(const ObjectClass *, CellStruct &) const, 0x0040CCE0);
+DEFINE_IMPLEMENTATION(FacingType AircraftClass::Desired_Load_Dir(const ObjectClass *, Cell &) const, 0x0040CCE0);
 DEFINE_IMPLEMENTATION(DirStruct AircraftClass::Fire_Direction() const, 0x0040DB00);
 DEFINE_IMPLEMENTATION(void AircraftClass::Player_Assign_Mission(MissionType, TARGET, TARGET), 0x0040B760);
 DEFINE_IMPLEMENTATION(void AircraftClass::Reduce_Ammunition() const, 0x0040EF90);
@@ -3240,7 +3240,7 @@ DEFINE_IMPLEMENTATION(int AircraftClass::Do_Mission_Move_Carryall(), 0x0040A960)
 DEFINE_IMPLEMENTATION(DirType AircraftClass::Pose_Dir() const, 0x0040BA30);
 DEFINE_IMPLEMENTATION(CellClass *AircraftClass::New_LZ(CellClass *), 0x0040C610);
 DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_Fire_Location(TARGET) const, 0x0040CF00);
-DEFINE_IMPLEMENTATION(bool AircraftClass::Cell_Seems_Ok(CellStruct &, bool) const, 0x0040D260);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Cell_Seems_Ok(Cell &, bool) const, 0x0040D260);
 DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_LZ(), 0x0040D710);
 // 0040EFB0
 DEFINE_IMPLEMENTATION(void AircraftClass::Read_INI(CCINIClass &), 0x0040E7A0);
@@ -3261,7 +3261,7 @@ DEFINE_IMPLEMENTATION(void InfantryClass::Compute_CRC(WWCRCEngine &) const, 0x00
 DEFINE_IMPLEMENTATION(void InfantryClass::AI(), 0x004D4EB0);
 DEFINE_IMPLEMENTATION(void *const InfantryClass::Get_Image_Data() const, 0x004D90B0);
 DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(const ObjectClass *, bool), 0x004D78B0);
-DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(CellStruct &, bool, bool) const, 0x004D6FB0);
+DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(Cell &, bool, bool) const, 0x004D6FB0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const InfantryClass::Class_Of() const, 0x004D7B20);
 DEFINE_IMPLEMENTATION(const char *InfantryClass::Full_Name() const, 0x004D77A0);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Limbo(), 0x004D6B20);
@@ -3271,7 +3271,7 @@ DEFINE_IMPLEMENTATION(void InfantryClass::Set_Occupy_Bit(Coordinate &), 0x004D91
 DEFINE_IMPLEMENTATION(void InfantryClass::Clear_Occupy_Bit(Coordinate &), 0x004D9260);
 DEFINE_IMPLEMENTATION(void InfantryClass::Draw_It(Point2D &, Rect &) const, 0x004D2D50);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x004D9E70);
-DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x004D7710);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x004D7710);
 DEFINE_IMPLEMENTATION(ResultType InfantryClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x004D2400);
 DEFINE_IMPLEMENTATION(void InfantryClass::Scatter(Coordinate &, bool, bool), 0x004D60A0);
 DEFINE_IMPLEMENTATION(void InfantryClass::Per_Cell_Process(PCPType), 0x004D3240);
@@ -3345,7 +3345,7 @@ DEFINE_IMPLEMENTATION(void IonStorm_Set_Active(bool), 0x004EC910);
 DEFINE_IMPLEMENTATION(void IonStorm_Start(int, int), 0x004EC920);
 DEFINE_IMPLEMENTATION(void IonStorm_Stop(), 0x004ECC70);
 DEFINE_IMPLEMENTATION(bool IonStorm_Is_Active(), 0x004ECEB0);
-DEFINE_IMPLEMENTATION(void IonStorm_Lightning_Strike_At(CellStruct), 0x004ECEC0);
+DEFINE_IMPLEMENTATION(void IonStorm_Lightning_Strike_At(Cell), 0x004ECEC0);
 DEFINE_IMPLEMENTATION(void IonStorm_AI(), 0x004ED280);
 DEFINE_IMPLEMENTATION(void IonStorm_Init(bool), 0x004ED5F0);
 
@@ -3387,7 +3387,7 @@ DEFINE_IMPLEMENTATION(int AnimClass::Sort_Y() const, 0x00414530);
 DEFINE_IMPLEMENTATION(bool AnimClass::Limbo(), 0x00416650);
 DEFINE_IMPLEMENTATION(void AnimClass::entry_E4(), 0x004167C0);
 DEFINE_IMPLEMENTATION(bool AnimClass::Render(Rect &, bool, bool), 0x004145C0);
-DEFINE_IMPLEMENTATION(CellStruct *AnimClass::Occupy_List(bool) const, 0x00414C80);
+DEFINE_IMPLEMENTATION(Cell *AnimClass::Occupy_List(bool) const, 0x00414C80);
 DEFINE_IMPLEMENTATION(void AnimClass::Draw_It(Point2D &, Rect &) const, 0x004145F0);
 DEFINE_IMPLEMENTATION(bool AnimClass::Mark(MarkType), 0x00414C60);
 DEFINE_IMPLEMENTATION(int AnimClass::Get_Z_Coord() const, 0x004167E0);
@@ -3403,7 +3403,7 @@ DEFINE_IMPLEMENTATION(void AnimClass::Flaming_Guy_AI(), 0x00416820);
 // 00416E90
 // 00417270
 DEFINE_IMPLEMENTATION(void AnimClass::Init(), 0x00417340);
-DEFINE_IMPLEMENTATION(void AnimClass::Do_Atom_Damage(HousesType, CellStruct &), 0x004163E0);
+DEFINE_IMPLEMENTATION(void AnimClass::Do_Atom_Damage(HousesType, Cell &), 0x004163E0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimTypeClass::GetClassID(CLSID *), 0x004197B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimTypeClass::Load(IStream *), 0x00419640);
@@ -3418,7 +3418,7 @@ DEFINE_IMPLEMENTATION(void AnimTypeClass::Compute_CRC(WWCRCEngine &) const, 0x00
 DEFINE_IMPLEMENTATION(int AnimTypeClass::Get_Heap_ID() const, 0x00419BB0);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::entry_64(), 0x004189E0);
 DEFINE_IMPLEMENTATION(bool AnimTypeClass::Read_INI(CCINIClass &), 0x00418C20);
-DEFINE_IMPLEMENTATION(bool AnimTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x00419BD0);
+DEFINE_IMPLEMENTATION(bool AnimTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x00419BD0);
 DEFINE_IMPLEMENTATION(ObjectClass *const AnimTypeClass::Create_One_Of(HouseClass *) const, 0x00419BE0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const AnimTypeClass::Get_Image_Data() const, 0x00419A20);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(const char *), 0x00418A70);
@@ -3437,9 +3437,9 @@ DEFINE_IMPLEMENTATION(void TerrainTypeClass::Compute_CRC(WWCRCEngine &) const, 0
 DEFINE_IMPLEMENTATION(int TerrainTypeClass::Get_Heap_ID() const, 0x00641D60);
 DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Read_INI(CCINIClass &), 0x00641840);
 DEFINE_IMPLEMENTATION(Coordinate TerrainTypeClass::Coord_Fixup(Coordinate *) const, 0x00641A80);
-DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x00641780);
+DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x00641780);
 DEFINE_IMPLEMENTATION(ObjectClass *const TerrainTypeClass::Create_One_Of(HouseClass *) const, 0x006417B0);
-DEFINE_IMPLEMENTATION(CellStruct *TerrainTypeClass::Occupy_List(bool) const, 0x006417E0);
+DEFINE_IMPLEMENTATION(Cell *TerrainTypeClass::Occupy_List(bool) const, 0x006417E0);
 DEFINE_IMPLEMENTATION(void TerrainTypeClass::Init(TheaterType), 0x006416B0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleTypeClass::GetClassID(CLSID *), 0x005AF900);
@@ -3453,7 +3453,7 @@ DEFINE_IMPLEMENTATION(RTTIType ParticleTypeClass::Kind_Of() const, 0x005AFBF0);
 DEFINE_IMPLEMENTATION(int ParticleTypeClass::Size_Of(bool) const, 0x005AFBE0);
 DEFINE_IMPLEMENTATION(void ParticleTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005AF7C0);
 DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Read_INI(CCINIClass &), 0x005AF240);
-DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AFC00);
+DEFINE_IMPLEMENTATION(bool ParticleTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x005AFC00);
 DEFINE_IMPLEMENTATION(ObjectClass *const ParticleTypeClass::Create_One_Of(HouseClass *) const, 0x005AFC10);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleSystemTypeClass::GetClassID(CLSID *), 0x005AEAA0);
@@ -3466,7 +3466,7 @@ DEFINE_IMPLEMENTATION(RTTIType ParticleSystemTypeClass::Kind_Of() const, 0x005AE
 DEFINE_IMPLEMENTATION(int ParticleSystemTypeClass::Size_Of(bool) const, 0x005AEC10);
 DEFINE_IMPLEMENTATION(void ParticleSystemTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005AEA00);
 DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Read_INI(CCINIClass &), 0x005AE5D0);
-DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005AEC30);
+DEFINE_IMPLEMENTATION(bool ParticleSystemTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x005AEC30);
 DEFINE_IMPLEMENTATION(ObjectClass *const ParticleSystemTypeClass::Create_One_Of(HouseClass *) const, 0x005AEC40);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimClass::GetClassID(CLSID *), 0x0065F0C0);
@@ -3483,7 +3483,7 @@ DEFINE_IMPLEMENTATION(void VoxelAnimClass::AI(), 0x0065E3F0);
 DEFINE_IMPLEMENTATION(LayerType VoxelAnimClass::In_Which_Layer() const, 0x0065EF80);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const VoxelAnimClass::Class_Of() const, 0x0065F120);
 DEFINE_IMPLEMENTATION(bool VoxelAnimClass::Render(Rect &, bool, bool), 0x0065E000);
-DEFINE_IMPLEMENTATION(CellStruct *VoxelAnimClass::Occupy_List(bool) const, 0x0065F130);
+DEFINE_IMPLEMENTATION(Cell *VoxelAnimClass::Occupy_List(bool) const, 0x0065F130);
 DEFINE_IMPLEMENTATION(void VoxelAnimClass::Draw_It(Point2D &, Rect &) const, 0x0065E050);
 DEFINE_IMPLEMENTATION(void VoxelAnimClass::Init(), 0x0065E3C0);
 
@@ -3583,11 +3583,11 @@ DEFINE_IMPLEMENTATION(int SmudgeTypeClass::Size_Of(bool) const, 0x005FBFF0);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Compute_CRC(WWCRCEngine &) const, 0x005FB6D0);
 DEFINE_IMPLEMENTATION(int SmudgeTypeClass::Get_Heap_ID() const, 0x005FC000);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Read_INI(CCINIClass &), 0x005FB5C0);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_And_Place(CellStruct &, HouseClass *) const, 0x005FB440);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x005FB440);
 DEFINE_IMPLEMENTATION(ObjectClass *const SmudgeTypeClass::Create_One_Of(HouseClass *) const, 0x005FB4B0);
-DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Draw_It(Point2D &, Rect &, int, int, CellStruct &) const, 0x005FB4E0);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Can_Place_Here(CellStruct &, bool), 0x005FBE30);
-DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(CellStruct &), 0x005FBF30);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Draw_It(Point2D &, Rect &, int, int, Cell &) const, 0x005FB4E0);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Can_Place_Here(Cell &, bool), 0x005FBE30);
+DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(Cell &), 0x005FBF30);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(Coordinate &, int, int, bool), 0x005FB870);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(Coordinate &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
@@ -3636,14 +3636,14 @@ DEFINE_IMPLEMENTATION(int SmudgeClass::Size_Of(bool) const, 0x005FAE80);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const SmudgeClass::Class_Of() const, 0x005FAE70);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Draw_It(Point2D &, Rect &) const, 0x005FAEE0);
 DEFINE_IMPLEMENTATION(bool SmudgeClass::Mark(MarkType), 0x005FAB50);
-DEFINE_IMPLEMENTATION(void SmudgeClass::Disown(CellStruct &), 0x005FABE0);
+DEFINE_IMPLEMENTATION(void SmudgeClass::Disown(Cell &), 0x005FABE0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Read_INI(CCINIClass &), 0x005FABF0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Write_INI(CCINIClass &), 0x005FAD30);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE OverlayClass::GetClassID(CLSID *), 0x0058CAA0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Load(IStream *), 0x0058C4D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Save(IStream *, BOOL), 0x0058C520);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayClass::OverlayClass(OverlayTypeClass *, CellStruct &, HousesType), 0x0058B460);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayClass::OverlayClass(OverlayTypeClass *, Cell &, HousesType), 0x0058B460);
 OverlayClass::OverlayClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D4F9C; *((unsigned long *)this+4) = (unsigned long)0x006D4F80; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(OverlayClass::~OverlayClass(), 0x0058B550);
 DEFINE_IMPLEMENTATION(RTTIType OverlayClass::Kind_Of() const, 0x0058CAE0);
@@ -3679,7 +3679,7 @@ DEFINE_IMPLEMENTATION(void TiberiumClass::Spread(), 0x006455C0);
 // 00645A30
 // 00645BA0
 // 00645C30
-DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Spread_Cell(CellStruct &), 0x00645C70);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Spread_Cell(Cell &), 0x00645C70);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_AI(), 0x00645DC0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_Init_Clear(), 0x00645E80);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Grow(), 0x00645FD0);
@@ -3687,7 +3687,7 @@ DEFINE_IMPLEMENTATION(void TiberiumClass::Grow(), 0x00645FD0);
 // 006463D0
 // 00646510
 // 00646680
-DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Growth_Cell(CellStruct &), 0x00646710);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Growth_Cell(Cell &), 0x00646710);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Init_Cells(), 0x006453C0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Init(), 0x00646840);
 
@@ -3706,7 +3706,7 @@ DEFINE_IMPLEMENTATION(int BulletClass::Size_Of(bool) const, 0x00447440);
 DEFINE_IMPLEMENTATION(void BulletClass::AI(), 0x004446F0);
 DEFINE_IMPLEMENTATION(LayerType BulletClass::In_Which_Layer() const, 0x004462B0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const BulletClass::Class_Of() const, 0x004474B0);
-DEFINE_IMPLEMENTATION(CellStruct *BulletClass::Occupy_List(bool) const, 0x00444670);
+DEFINE_IMPLEMENTATION(Cell *BulletClass::Occupy_List(bool) const, 0x00444670);
 DEFINE_IMPLEMENTATION(void BulletClass::Draw_It(Point2D &, Rect &) const, 0x00445C00);
 DEFINE_IMPLEMENTATION(bool BulletClass::Mark(MarkType), 0x004446D0);
 DEFINE_IMPLEMENTATION(int BulletClass::Shape_Number() const, 0x00445B70);
@@ -3742,7 +3742,7 @@ DEFINE_IMPLEMENTATION(int UnitClass::Size_Of(bool) const, 0x0065B5B0);
 DEFINE_IMPLEMENTATION(void UnitClass::Compute_CRC(WWCRCEngine &) const, 0x00659760);
 DEFINE_IMPLEMENTATION(void UnitClass::AI(), 0x0064E020);
 DEFINE_IMPLEMENTATION(ActionType UnitClass::What_Action(const ObjectClass *, bool), 0x006564A0);
-DEFINE_IMPLEMENTATION(ActionType UnitClass::What_Action(CellStruct &, bool, bool) const, 0x00655F90);
+DEFINE_IMPLEMENTATION(ActionType UnitClass::What_Action(Cell &, bool, bool) const, 0x00655F90);
 DEFINE_IMPLEMENTATION(bool UnitClass::entry_80() const, 0x0065B2D0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const UnitClass::Class_Of() const, 0x00657190);
 DEFINE_IMPLEMENTATION(const char *UnitClass::Full_Name() const, 0x0065B620);
@@ -3754,7 +3754,7 @@ DEFINE_IMPLEMENTATION(void UnitClass::Clear_Occupy_Bit(Coordinate &), 0x00659360
 DEFINE_IMPLEMENTATION(bool UnitClass::Render(Rect &, bool, bool), 0x00651EC0);
 DEFINE_IMPLEMENTATION(void UnitClass::Draw_It(Point2D &, Rect &) const, 0x00653A70);
 DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x006503A0);
-DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, CellStruct &, ObjectClass *), 0x00650330);
+DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, Cell &, ObjectClass *), 0x00650330);
 DEFINE_IMPLEMENTATION(ResultType UnitClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0064FA70);
 DEFINE_IMPLEMENTATION(void UnitClass::Scatter(Coordinate &, bool, bool), 0x00658D80);
 DEFINE_IMPLEMENTATION(void UnitClass::Per_Cell_Process(PCPType), 0x006511B0);
@@ -3775,7 +3775,7 @@ DEFINE_IMPLEMENTATION(DirStruct UnitClass::Turret_Facing() const, 0x0065B630);
 DEFINE_IMPLEMENTATION(double UnitClass::Tiberium_Load() const, 0x006571A0);
 DEFINE_IMPLEMENTATION(double UnitClass::Weed_Load() const, 0x00659900);
 DEFINE_IMPLEMENTATION(int UnitClass::Pip_Count() const, 0x00656BD0);
-DEFINE_IMPLEMENTATION(FacingType UnitClass::Desired_Load_Dir(const ObjectClass *, CellStruct &) const, 0x006568E0);
+DEFINE_IMPLEMENTATION(FacingType UnitClass::Desired_Load_Dir(const ObjectClass *, Cell &) const, 0x006568E0);
 DEFINE_IMPLEMENTATION(DirStruct UnitClass::Fire_Direction() const, 0x00656DC0);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const UnitClass::Crew_Type() const, 0x00656D10);
 DEFINE_IMPLEMENTATION(bool UnitClass::entry_2A4() const, 0x0065B590);
@@ -3787,7 +3787,7 @@ DEFINE_IMPLEMENTATION(bool UnitClass::Captured(HouseClass *), 0x0065B280);
 DEFINE_IMPLEMENTATION(void UnitClass::Assign_Destination(const TARGET, bool) const, 0x00657520);
 DEFINE_IMPLEMENTATION(bool UnitClass::Enter_Idle_Mode(bool, bool) const, 0x006503C0);
 DEFINE_IMPLEMENTATION(bool UnitClass::entry_370(), 0x0064E880);
-DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(CellStruct &, bool), 0x006572B0);
+DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(Cell &, bool), 0x006572B0);
 DEFINE_IMPLEMENTATION(void UnitClass::Approach_Target(), 0x006571E0);
 DEFINE_IMPLEMENTATION(void UnitClass::entry_3C0(int, int, int, int, int, int, int, int), 0x00652330);
 DEFINE_IMPLEMENTATION(void UnitClass::entry_3C4(int, int, int, int, int, int, int, int), 0x00653090);
@@ -3838,7 +3838,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TerrainClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Load(IStream *), 0x00640650);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Save(IStream *, BOOL), 0x006407D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(), 0x0063F710);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(TerrainTypeClass *classof, CellStruct &pos), 0x0063F500);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(TerrainTypeClass *classof, Cell &pos), 0x0063F500);
 TerrainClass::TerrainClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D828C; *((unsigned long *)this+4) = (unsigned long)0x006D8270; }
 DEFINE_IMPLEMENTATION_DECONSTRUCTOR(TerrainClass::~TerrainClass(), 0x0063F170);
 DEFINE_IMPLEMENTATION(void TerrainClass::Detach(TARGET, bool), 0x00640880);
@@ -3929,16 +3929,16 @@ DEFINE_IMPLEMENTATION(void TagClass::Detach(TARGET, bool), 0x0061EAC0);
 DEFINE_IMPLEMENTATION(RTTIType TagClass::Kind_Of() const, 0x0061ED30);
 DEFINE_IMPLEMENTATION(int TagClass::Size_Of(bool) const, 0x0061ED20);
 DEFINE_IMPLEMENTATION(void TagClass::Compute_CRC(WWCRCEngine &) const, 0x0061EB90);
-DEFINE_IMPLEMENTATION(bool TagClass::Spring(TEventType, ObjectClass *, CellStruct, bool, ObjectClass *), 0x0061E880);
+DEFINE_IMPLEMENTATION(bool TagClass::Spring(TEventType, ObjectClass *, Cell, bool, ObjectClass *), 0x0061E880);
 // 0061E750
 // 0061E7B0
-DEFINE_IMPLEMENTATION(CellStruct TagClass::Get_Cell() const, 0x0061E810);
+DEFINE_IMPLEMENTATION(Cell TagClass::Get_Cell() const, 0x0061E810);
 // 0061E820
 // 0061E830
 // 0061E840
 // 0061E850
 // 0061E860
-DEFINE_IMPLEMENTATION(void TagClass::Set_Cell(CellStruct), 0x0061EA10);
+DEFINE_IMPLEMENTATION(void TagClass::Set_Cell(Cell), 0x0061EA10);
 // 0061EA20
 // 0061EA50
 // 0061EA60
@@ -3949,7 +3949,7 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 // 0061ECB0
 // 0061ECE0
 
-DEFINE_IMPLEMENTATION(CellStruct ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
+DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
 DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
 DEFINE_IMPLEMENTATION(Coordinate *ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
@@ -4010,7 +4010,7 @@ DEFINE_IMPLEMENTATION(bool WaveClass::Unlimbo(Coordinate &, DirType), 0x00670D80
 DEFINE_IMPLEMENTATION(void WaveClass::Draw_It(Point2D &, Rect &) const, 0x00670EA0);
 DEFINE_IMPLEMENTATION(void WaveClass::Sonic_AI(), 0x00671BB0);
 DEFINE_IMPLEMENTATION(void WaveClass::Laser_AI(), 0x00671C20);
-DEFINE_IMPLEMENTATION(void WaveClass::func_6709C0(CellStruct &), 0x006709C0);
+DEFINE_IMPLEMENTATION(void WaveClass::func_6709C0(Cell &), 0x006709C0);
 DEFINE_IMPLEMENTATION(void WaveClass::Sonic_Draw_It(Point2D &, Rect &) const, 0x00670F10);
 DEFINE_IMPLEMENTATION(void WaveClass::Laser_Draw_It(Point2D &, Rect &) const, 0x006715F0);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670370(int, int, int, int), 0x00670370);
@@ -4064,7 +4064,7 @@ DEFINE_IMPLEMENTATION(RTTIType ParticleClass::Kind_Of() const, 0x005A5000);
 DEFINE_IMPLEMENTATION(int ParticleClass::Size_Of(bool) const, 0x005A4FF0);
 DEFINE_IMPLEMENTATION(LayerType ParticleClass::In_Which_Layer() const, 0x005A4E00);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const ParticleClass::Class_Of() const, 0x005A5010);
-DEFINE_IMPLEMENTATION(CellStruct *ParticleClass::Occupy_List(bool) const, 0x005A4DA0);
+DEFINE_IMPLEMENTATION(Cell *ParticleClass::Occupy_List(bool) const, 0x005A4DA0);
 DEFINE_IMPLEMENTATION(void ParticleClass::Draw_It(Point2D &, Rect &) const, 0x005A45C0);
 DEFINE_IMPLEMENTATION(bool ParticleClass::Mark(MarkType), 0x005A4D80);
 DEFINE_IMPLEMENTATION(int ParticleClass::Shape_Number() const, 0x005A4EB0);
@@ -4414,13 +4414,13 @@ const Coordinate AdjacentCoord[FACING_COUNT] = { // 0x007611A8
     Coordinate(-256, -256, 0),  // NORTH WEST
 };
 
-const CellStruct AdjacentCell[FACING_COUNT] = { // 0x00761148
-    CellStruct(0,  -1),  // NORTH
-    CellStruct(1,  -1),  // NORTH EAST
-    CellStruct(1,  0),   // EAST
-    CellStruct(1,  1),   // SOUTH EAST
-    CellStruct(0,  1),   // SOUTH
-    CellStruct(-1, 1),   // SOUTH WEST
-    CellStruct(-1, 0),   // WEST
-    CellStruct(-1, -1),  // NORTH WEST
+const Cell AdjacentCell[FACING_COUNT] = { // 0x00761148
+    Cell(0,  -1),  // NORTH
+    Cell(1,  -1),  // NORTH EAST
+    Cell(1,  0),   // EAST
+    Cell(1,  1),   // SOUTH EAST
+    Cell(0,  1),   // SOUTH
+    Cell(-1, 1),   // SOUTH WEST
+    Cell(-1, 0),   // WEST
+    Cell(-1, -1),  // NORTH WEST
 };

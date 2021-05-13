@@ -121,7 +121,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         IFACEMETHOD_(LONG, Power_Drain)();
         IFACEMETHOD_(LONG, Category_Quantity)(CategoryType category);
         IFACEMETHOD_(LONG, Category_Power)(CategoryType category);
-        IFACEMETHOD_(CellStruct, Base_Center)();
+        IFACEMETHOD_(Cell, Base_Center)();
         IFACEMETHOD_(LONG, Fire_Sale)();
         IFACEMETHOD_(LONG, All_To_Hunt)();
         
@@ -130,7 +130,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
          */
         IFACEMETHOD_(LONG, Apparent_Category_Quantity)(CategoryType category);
         IFACEMETHOD_(LONG, Apparent_Category_Power)(CategoryType category);
-        IFACEMETHOD_(CellStruct, Apparent_Base_Center)();
+        IFACEMETHOD_(Cell, Apparent_Base_Center)();
         IFACEMETHOD_(bool, Is_Powered)();
 
         /**
@@ -181,15 +181,15 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         ProdFailType Suspend_Production(RTTIType type);
         ProdFailType Abandon_Production(RTTIType type, int a1);
         bool Special_Weapon_AI(SpecialWeaponType id);
-        bool Place_Special_Blast(SpecialWeaponType id, CellStruct &cell);
-        bool Place_Object(RTTIType type, CellStruct &cell);
+        bool Place_Special_Blast(SpecialWeaponType id, Cell &cell);
+        bool Place_Object(RTTIType type, Cell &cell);
         void Just_Built(TechnoClass *techno); 
         bool Manual_Place(BuildingClass *builder, BuildingClass *object);
         void Clobber_All();
         bool Does_Enemy_Building_Exist(BuildingType btype) const;
         const TechnoTypeClass *Suggest_New_Object(RTTIType objecttype, bool kennel = false) const;
         bool Flag_Remove(TARGET target, bool set_home = false);
-        bool Flag_Attach(CellStruct &cell, bool set_home = false);
+        bool Flag_Attach(Cell &cell, bool set_home = false);
         bool Flag_Attach(UnitClass *object, bool set_home = false);
         void MPlayer_Defeated();
         void Blowup_All();
@@ -199,7 +199,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004BFFB0
         void Init_Data(ColorSchemeType color, HousesType house, int credits);
         float Power_Fraction() const;
-        void Sell_Wall(CellStruct &cell, bool quiet = true);
+        void Sell_Wall(Cell &cell, bool quiet = true);
         const BuildingTypeClass * Suggest_New_Building() const;
         BuildingClass * Find_Building(BuildingType type, ZoneType zone = ZONE_NONE) const;
         Coordinate Find_Build_Location(BuildingClass *building) const;
@@ -221,9 +221,9 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Active_Add(const TechnoClass *techno);
         ZoneType Which_Zone(Coordinate &coord) const;
         ZoneType Which_Zone(const ObjectClass * object) const;
-        ZoneType Which_Zone(CellStruct &cell) const;
-        CellStruct Zone_Cell(ZoneType zone) const;
-        CellStruct Where_To_Go(const FootClass *object) const;
+        ZoneType Which_Zone(Cell &cell) const;
+        Cell Zone_Cell(ZoneType zone) const;
+        Cell Where_To_Go(const FootClass *object) const;
         TARGET Find_Juicy_Target(Coordinate &coord) const;
         FactoryClass *Fetch_Factory(RTTIType rtti) const;
         void Set_Factory(RTTIType rtti, FactoryClass * factory);
@@ -236,8 +236,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Adjust_Power(int adjust);
         void Adjust_Drain(int adjust);
         void Update_Spied_Power_Plants();
-        CellStruct Find_Cell_In_Zone(const TechnoClass * techno, ZoneType zone) const;
-        CellStruct Random_Cell_In_Zone(ZoneType zone) const;
+        Cell Find_Cell_In_Zone(const TechnoClass * techno, ZoneType zone) const;
+        Cell Random_Cell_In_Zone(ZoneType zone) const;
         void Make_Ally(TechnoClass *techno);
         void Make_Enemy(TechnoClass *techno);
         // 004C3FC0
@@ -400,7 +400,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         FactoryClass *UnitFactory;
         FactoryClass *BuildingFactory;
         AbstractClass *FlagLocation;
-        CellStruct FlagHome;
+        Cell FlagHome;
         unsigned UnitsKilled[20];
         unsigned UnitsLost;
         unsigned BuildingsKilled[20];
@@ -456,8 +456,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         BaseClass Base;
         bool field_56C;
         bool field_56D;
-        CellStruct field_56E;
-        CellStruct NukeDest;
+        Cell field_56E;
+        Cell NukeDest;
         unsigned Allies;
         CDTimerClass<FrameTimerClass> DamageTime;
         CDTimerClass<FrameTimerClass> TeamTime;

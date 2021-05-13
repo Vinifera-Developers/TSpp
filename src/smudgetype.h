@@ -67,16 +67,16 @@ SmudgeTypeClass : public ObjectTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
+        virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 
         /**
          *  SmudgeTypeClass
          */
-		virtual void Draw_It(Point2D &xy, Rect &a2, int index, int a4, CellStruct &cell) const;
+		virtual void Draw_It(Point2D &xy, Rect &a2, int index, int a4, Cell &cell) const;
 
-        bool Can_Place_Here(CellStruct &cell, bool a3);
-        void Place(CellStruct &cell);
+        bool Can_Place_Here(Cell &cell, bool a3);
+        void Place(Cell &cell);
 
         static bool Create_Scorch(Coordinate &coord, int width, int height, bool a4);
         static bool Create_Crater(Coordinate &coord, int width, int height, bool a4);

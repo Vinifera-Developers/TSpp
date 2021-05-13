@@ -71,7 +71,7 @@ VoxelAnimClass : public ObjectClass
         virtual LayerType In_Which_Layer() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
-        virtual CellStruct *Occupy_List(bool placement = false) const override;
+        virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
 		void Make_Invisible() { IsInvisible = true; }

@@ -79,16 +79,16 @@ BuildingTypeClass : public TechnoTypeClass
         virtual int Max_Pips() const override;
         virtual Point3D Pixel_Dimensions() const override;
         virtual Point3D Lepton_Dimensions() const override;
-        virtual bool Create_And_Place(CellStruct &cell, HouseClass *house = nullptr) const override;
+        virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual int Cost_Of(HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
-        virtual CellStruct *Occupy_List(bool placement = false) const override;
+        virtual Cell *Occupy_List(bool placement = false) const override;
         virtual ShapeFileStruct *const Get_Image_Data() const override;
         
         /**
          *  TechnoTypeClass
          */
-        virtual bool Legal_Placement(CellStruct &pos, HouseClass *house = nullptr) const override;
+        virtual bool Legal_Placement(Cell &pos, HouseClass *house = nullptr) const override;
         virtual int Raw_Cost() const override;
 
         /**
@@ -98,7 +98,7 @@ BuildingTypeClass : public TechnoTypeClass
 
         int Width() const;
         int Height(bool bib = false) const;
-        int Flush_For_Placement(CellStruct &cell, HouseClass *house) const;
+        int Flush_For_Placement(Cell &cell, HouseClass *house) const;
 
         void Init_Anim(BStateType state, int start, int count, int rate) const;
 
@@ -115,7 +115,7 @@ BuildingTypeClass : public TechnoTypeClass
 
     public:
         BuildingType Type;
-        CellStruct * OccupyList;
+        Cell * OccupyList;
         ShapeFileStruct * BuildupData;
         TPoint3D<int> HalfDamageSmokeLocation1;
         TPoint3D<int> HalfDamageSmokeLocation2;
@@ -136,7 +136,7 @@ BuildingTypeClass : public TechnoTypeClass
         int Adjacent;
         RTTIType ToBuild;
         Coordinate ExitCoordinate;
-        CellStruct * ExitList;
+        Cell * ExitList;
         DirType StartFace;
         int Power;
         int Drain;

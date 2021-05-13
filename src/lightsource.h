@@ -63,7 +63,7 @@ LightSourceClass : public AbstractClass
                 short RedTint;
                 short GreenTint;
                 short BlueTint;
-                CellStruct Cell;
+                Cell Cell;
         };
 
     public:

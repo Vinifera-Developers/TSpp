@@ -29,10 +29,9 @@
 
 #include "always.h"
 #include "ihouse.h"
+#include "tibsun_defines.h"
 #include <unknwn.h>
 
-
-struct CellStruct;
 
 enum CategoryType;
 
@@ -67,7 +66,7 @@ DECLARE_INTERFACE_IID_(IPublicHouse, IUnknown, "CAACF210-86E3-11D1-B706-00A024DD
     /**
      *  Center location of base.
      */
-    STDMETHOD_(CellStruct, Apparent_Base_Center)() PURE;
+    STDMETHOD_(Cell, Apparent_Base_Center)() PURE;
 
     /**
      *  Is base visibly powered?

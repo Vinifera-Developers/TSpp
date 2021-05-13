@@ -35,7 +35,6 @@
 
 
 class Point2D;
-struct CellStruct;
 struct DirStruct;
 
 enum MoveType;
@@ -75,7 +74,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Determine if specific cell can be entered.
      */
-    STDMETHOD_(MoveType, Can_Enter_Cell)(CellStruct cell) PURE;
+    STDMETHOD_(MoveType, Can_Enter_Cell)(Cell cell) PURE;
 
     /**
      *  Should object cast a shadow?

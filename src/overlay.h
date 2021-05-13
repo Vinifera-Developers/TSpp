@@ -51,7 +51,7 @@ OverlayClass : public ObjectClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        OverlayClass(OverlayTypeClass *classof = nullptr, CellStruct &pos = CellStruct(-1,-1), HousesType house = HOUSE_NONE);
+        OverlayClass(OverlayTypeClass *classof = nullptr, Cell &pos = Cell(-1,-1), HousesType house = HOUSE_NONE);
         OverlayClass(const NoInitClass &noinit);
         virtual ~OverlayClass();
 

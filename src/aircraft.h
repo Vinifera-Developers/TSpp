@@ -86,7 +86,7 @@ AircraftClass : public FootClass, public IFlyControl
          *  ObjectClass
          */
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual LayerType In_Which_Layer() const override;
         virtual bool entry_80() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
@@ -96,7 +96,7 @@ AircraftClass : public FootClass, public IFlyControl
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Look(bool incremental = false, bool a2 = false) override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
@@ -121,7 +121,7 @@ AircraftClass : public FootClass, public IFlyControl
          *  TechnoClass
          */
         virtual DirStruct Turret_Facing() const override;
-        virtual FacingType Desired_Load_Dir(const ObjectClass *object, CellStruct &cell) const override;
+        virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
         virtual DirStruct Fire_Direction() const override;
         virtual void Player_Assign_Mission(MissionType order, TARGET target = nullptr, TARGET destination = nullptr) override;
         virtual void Reduce_Ammunition() const override;
@@ -142,7 +142,7 @@ AircraftClass : public FootClass, public IFlyControl
         DirType Pose_Dir() const;
         CellClass *New_LZ(CellClass *oldlz);
         CellClass *Good_Fire_Location(TARGET target) const;
-        bool Cell_Seems_Ok(CellStruct &cell, bool strict) const;
+        bool Cell_Seems_Ok(Cell &cell, bool strict) const;
         CellClass *Good_LZ();
         // 0040EFB0
 

@@ -40,18 +40,18 @@ class CrateClass
 		~CrateClass();
 
 		void Init();
-		bool Create_Crate(CellStruct &cell);
-		bool Is_Here(CellStruct &cell) const;
+		bool Create_Crate(Cell &cell);
+		bool Is_Here(Cell &cell) const;
 		bool Remove_It();
 
 		bool Is_Expired() const;
 		bool Is_Valid() const;
 		void Make_Invalid();
 
-		static bool Put_Crate(CellStruct &cell);
-		static bool Get_Crate(CellStruct &cell);
+		static bool Put_Crate(Cell &cell);
+		static bool Get_Crate(Cell &cell);
 
 	private:
 		CDTimerClass<FrameTimerClass> Timer;
-		CellStruct Cell;
+		Cell Location;
 };

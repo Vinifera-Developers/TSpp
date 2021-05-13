@@ -50,13 +50,13 @@ class EventClass
 		EventClass(unsigned int house_id, SpecialClass data);
 		EventClass(unsigned int house_id, EventType type, TargetClass target);
 		EventClass(unsigned int house_id, EventType type);
-		EventClass(unsigned int house_id, EventType type, CellStruct *cell);
+		EventClass(unsigned int house_id, EventType type, Cell *cell);
 		EventClass(unsigned int house_id, EventType type, TargetClass src, TargetClass dest);
 		EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target = TARGET_NONE, TargetClass destination = TARGET_NONE);
 		EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
 		EventClass(unsigned int house_id, EventType type, RTTIType object, int id);
-		EventClass(unsigned int house_id, EventType type, RTTIType object, CellStruct *cell);
-		EventClass(unsigned int house_id, EventType type, int id, CellStruct *cell);
+		EventClass(unsigned int house_id, EventType type, RTTIType object, Cell *cell);
+		EventClass(unsigned int house_id, EventType type, int id, Cell *cell);
 		EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
 		EventClass(unsigned int house_id, void *ptr, unsigned long size);
 
@@ -78,7 +78,7 @@ class EventClass
 			} Options;
 
 			struct {
-				xCellStruct Cell;
+				xCell Cell;
 			} SellCell;
 
 			struct {

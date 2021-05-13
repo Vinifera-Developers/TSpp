@@ -216,7 +216,7 @@ CellClass : public AbstractClass
         static int Spot_Index(Coordinate &coord);
 
     public:
-        CellStruct Pos;
+        Cell Pos;
         DynamicVectorClass<FoggedObjectClass *> *field_18;
         int field_1C;
         int field_20;

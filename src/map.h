@@ -44,7 +44,7 @@ class MapClass : public GScreenClass
         /**
          *  IGameMap
          */
-        IFACEMETHOD_(BOOL, Is_Visible)(CellStruct cell);
+        IFACEMETHOD_(BOOL, Is_Visible)(Cell cell);
 
     public:
         MapClass();
@@ -69,8 +69,8 @@ class MapClass : public GScreenClass
         virtual void Set_Map_Dimensions(Rect &rect, bool a2 = true, int level = 1, bool a4 = false);
         virtual void entry_70(Rect &rect);
 
-        CellClass & operator [] (const CellStruct &cell);
-        const CellClass & operator [] (const CellStruct &cell) const;
+        CellClass & operator [] (const Cell &cell);
+        const CellClass & operator [] (const Cell &cell) const;
         CellClass & operator [] (const Coordinate &coord);
         const CellClass & operator [] (const Coordinate &coord) const;
 
@@ -91,11 +91,11 @@ class MapClass : public GScreenClass
         // 0050F2C0
         // 00510900
         // 00510A20
-        void Sight_From(CellStruct &cell, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
+        void Sight_From(Cell &cell, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
         // 00510FB0
         // 00511000
-        void Place_Down(CellStruct &cell, ObjectClass *object);
-        void Pick_Up(CellStruct &cell, ObjectClass *object);
+        void Place_Down(Cell &cell, ObjectClass *object);
+        void Pick_Up(Cell &cell, ObjectClass *object);
         long Overpass();
         // 00511570
         // 00511E80
@@ -112,10 +112,10 @@ class MapClass : public GScreenClass
         // 00513FC0
         // 005140C0
         // 005141E0
-        int Cell_Region(CellStruct &cell);
-        int Cell_Threat(CellStruct &cell, HouseClass *house);
+        int Cell_Region(Cell &cell);
+        int Cell_Threat(Cell &cell, HouseClass *house);
         bool Place_Random_Crate();
-        bool Remove_Crate(CellStruct &cell);
+        bool Remove_Crate(Cell &cell);
         int Validate();
         ObjectClass *Close_Object(Coordinate &coord) const;
         // 00514AF0
@@ -133,9 +133,9 @@ class MapClass : public GScreenClass
         // 00515F90
         // 00516060
         // 005160F0
-        CellStruct Nearby_Location(CellStruct &cell, SpeedType speed, int zone, MZoneType check, bool check_flagged, int a6 = 0, int a7 = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, CellStruct a12 = CellStruct(0,0)) const;
+        Cell Nearby_Location(Cell &cell, SpeedType speed, int zone, MZoneType check, bool check_flagged, int a6 = 0, int a7 = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, Cell a12 = Cell(0,0)) const;
         // 00516BE0
-        bool Base_Region(CellStruct &cell, HousesType &house, ZoneType &zone) const;
+        bool Base_Region(Cell &cell, HousesType &house, ZoneType &zone) const;
         // 00516DA0
         // 00516F90
         // 00517150
@@ -164,14 +164,14 @@ class MapClass : public GScreenClass
         // 0051CCD0
         // 0051D100
         // 0051DE80
-        const CellStruct Pick_Random_Location();
+        const Cell Pick_Random_Location();
         void Shroud_The_Map();
         void Reveal_The_Map();
         // 0051E130
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         // 0051E2B0
-        bool In_Radar(CellStruct &cell, bool a2 = true) const;
+        bool In_Radar(Cell &cell, bool a2 = true) const;
         bool In_Radar(CellClass &cell, bool a2 = true) const;
         bool In_Radar(Coordinate &coord) const;
         // 0051E560
@@ -277,8 +277,8 @@ class MapClass : public GScreenClass
         int field_6C;
         int field_70[3];
         DynamicVectorClass<SubzoneTrackingStruct> SubzoneTracking[3];
-        DynamicVectorClass<CellStruct> field_C4;
-        DynamicVectorClass<CellStruct> field_DC;
+        DynamicVectorClass<Cell> field_C4;
+        DynamicVectorClass<Cell> field_DC;
         Rect MapSize;
         Rect MapLocalSize;
         int NextX;                  // Iterator next x
@@ -293,7 +293,7 @@ class MapClass : public GScreenClass
         int MapCellHeight;
         long TotalValue;
         int field_140;
-        CellStruct field_144;
+        Cell field_144;
         int field_148;
         DynamicVectorClass<CrackedIceStruct> field_14C;
         VectorClass<CellClass *> Array;
@@ -302,7 +302,7 @@ class MapClass : public GScreenClass
         int	Size;
         CrateClass Crates[256];
         char Redraws;
-        DynamicVectorClass<CellStruct> CellTags;
+        DynamicVectorClass<Cell> CellTags;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

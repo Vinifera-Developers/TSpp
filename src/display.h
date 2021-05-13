@@ -59,33 +59,33 @@ class DisplayClass : public MapClass
         virtual const char *Help_Text(int text);
         virtual void entry_84();
         virtual void Abort_Drag_Select();
-        virtual bool Map_Cell(CellStruct &cell, HouseClass *house);
-        virtual bool entry_90(CellStruct &cell, HouseClass *house);
-        virtual bool entry_94(CellStruct &cell, HouseClass *house);
+        virtual bool Map_Cell(Cell &cell, HouseClass *house);
+        virtual bool entry_90(Cell &cell, HouseClass *house);
+        virtual bool entry_94(Cell &cell, HouseClass *house);
         virtual MouseType Get_Mouse_Shape() const = 0;
         virtual bool Scroll_Map(DirType facing, int &distance, bool really = true);
         virtual void Set_View_Dimensions(Rect &rect);
         virtual void Put_Place_Back(TechnoClass *techno);
         virtual void Mouse_Right_Press(Point2D &xy = Point2D());
         virtual void Mouse_Left_Press(Point2D &xy);
-        virtual void Mouse_Left_Up(CellStruct &cell, bool shadow, ObjectClass *object, ActionType action, bool wsmall = false);
+        virtual void Mouse_Left_Up(Cell &cell, bool shadow, ObjectClass *object, ActionType action, bool wsmall = false);
         virtual void Mouse_Left_Held(Point2D &xy);
-        virtual void Mouse_Left_Release(Point2D &xy, CellStruct &cell, ObjectClass *object, ActionType action, bool wsmall = false);
+        virtual void Mouse_Left_Release(Point2D &xy, Cell &cell, ObjectClass *object, ActionType action, bool wsmall = false);
         virtual void Mouse_Right_Up(Point2D &xy = Point2D());
 
-        void Set_Cursor_Shape(CellStruct const *list);
-        bool Passes_Proximity_Check(const ObjectTypeClass *object, HousesType house, const CellStruct *list, CellStruct &trycell);
-        bool Passes_Shroud_Check(const ObjectTypeClass *object, HousesType house, const CellStruct *list, CellStruct &trycell);
-        CellStruct Set_Cursor_Pos(CellStruct &pos = CellStruct(-1,-1));
-        wDimensionStruct Get_Occupy_Dimensions(CellStruct const *list) const;
-        void Cursor_Mark(CellStruct &pos, bool on);
+        void Set_Cursor_Shape(Cell const *list);
+        bool Passes_Proximity_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
+        bool Passes_Shroud_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
+        Cell Set_Cursor_Pos(Cell &pos = Cell(-1,-1));
+        wDimensionStruct Get_Occupy_Dimensions(Cell const *list) const;
+        void Cursor_Mark(Cell &pos, bool on);
         void Submit(ObjectClass const *object);
         void Remove(ObjectClass const *object);
-        ObjectClass *Cell_Object(CellStruct &cell, Point2D &xy = Point2D());
+        ObjectClass *Cell_Object(Cell &cell, Point2D &xy = Point2D());
         ObjectClass *Next_Object(ObjectClass *object) const;
         ObjectClass *Prev_Object(ObjectClass *object) const;
-        CellStruct Calculated_Cell(SourceType dir, CellStruct &waypoint = CellStruct(-1,-1), CellStruct &cell = CellStruct(-1,-1), SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
-        bool Good_Reinforcement_Cell(CellStruct &outcell, CellStruct &incell, SpeedType loco, int zone, MZoneType mzone) const;
+        Cell Calculated_Cell(SourceType dir, Cell &waypoint = Cell(-1,-1), Cell &cell = Cell(-1,-1), SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
+        bool Good_Reinforcement_Cell(Cell &outcell, Cell &incell, SpeedType loco, int zone, MZoneType mzone) const;
         // 00479150
         void Compute_Start_Pos();
         void Sell_Mode_Control(int control);
@@ -96,8 +96,8 @@ class DisplayClass : public MapClass
         bool Is_Spot_Free(Coordinate &coord, bool a2 = false) const;
         void Encroach_Shadow();
         void Encroach_Fog();
-        void Fog_Cell(CellStruct &cell);
-        void Shroud_Cell(CellStruct &cell);
+        void Fog_Cell(Cell &cell);
+        void Shroud_Cell(Cell &cell);
         void Write_INI(CCINIClass &ini);
         // 0047A790
         // 0047A900
@@ -115,9 +115,9 @@ class DisplayClass : public MapClass
         void Follow_This(ObjectClass *object);
 
     public:
-        CellStruct ZoneCell;
-        CellStruct ZoneOffset;
-        CellStruct *CursorSize;
+        Cell ZoneCell;
+        Cell ZoneOffset;
+        Cell *CursorSize;
         bool IsProximityCheck;
         bool IsShroudCheck;
         bool IsFollowingObject;

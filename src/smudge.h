@@ -68,7 +68,7 @@ SmudgeClass : public ObjectClass
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
 
-        void Disown(CellStruct &cell);
+        void Disown(Cell &cell);
 
         static void Read_INI(CCINIClass &ini);
         static void Write_INI(CCINIClass &ini);

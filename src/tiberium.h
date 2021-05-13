@@ -44,7 +44,7 @@ TiberiumClass : public AbstractTypeClass
     public:
         struct TiberiumCellHeader
         {
-            CellStruct Data;
+            Cell Data;
             float Key;
         };
 
@@ -89,7 +89,7 @@ TiberiumClass : public AbstractTypeClass
         // 00645A30
         // 00645BA0
         // 00645C30
-        void Add_Spread_Cell(CellStruct &cell);
+        void Add_Spread_Cell(Cell &cell);
 
         void Growth_AI();
         void Growth_Init_Clear();
@@ -98,7 +98,7 @@ TiberiumClass : public AbstractTypeClass
         // 006463D0
         // 00646510
         // 00646680
-        void Add_Growth_Cell(CellStruct &cell);
+        void Add_Growth_Cell(Cell &cell);
 
         static void Init_Cells();
         static void Init();

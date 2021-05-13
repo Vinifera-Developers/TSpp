@@ -38,14 +38,14 @@ class TeamClass;
 
 
 typedef struct PathType {
-	CellStruct Start;           // Starting cell number.
+	Cell Start;           // Starting cell number.
 	int Cost;                   // Accumulated terrain cost.
 	int Length;                 // Command string length.
 	FacingType *Command;        // Pointer to command string.
     int field_10;
 	unsigned long *Overlap;     // Pointer to overlap list
-	CellStruct LastOverlap;     // stores position of last overlap
-	CellStruct LastFixup;       // stores position of last overlap
+	Cell LastOverlap;     // stores position of last overlap
+	Cell LastFixup;       // stores position of last overlap
 } PathType;
 
 
@@ -83,7 +83,7 @@ class FootClass : public TechnoClass
          *  ObjectClass
          */
         virtual VisualType Visual_Character(bool flag = false, const HouseClass *house = nullptr) override;
-        virtual ActionType What_Action(CellStruct &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
         virtual LayerType In_Which_Layer() const override;
         virtual bool Can_Demolish() const override;
@@ -96,7 +96,7 @@ class FootClass : public TechnoClass
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, CellStruct &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual void Per_Cell_Process(PCPType why) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
@@ -162,7 +162,7 @@ class FootClass : public TechnoClass
         virtual void entry_398();
         virtual void entry_39C(int a1);
         virtual int Offload_Tiberium_Bail();
-        virtual void Overrun_Square(CellStruct &cell, bool threaten);
+        virtual void Overrun_Square(Cell &cell, bool threaten);
         virtual int Current_Speed();
         virtual void Approach_Target();
         virtual void Fixup_Path(PathType *path);
@@ -171,7 +171,7 @@ class FootClass : public TechnoClass
         virtual bool entry_3BC(FootClass *foot);
 
         int Rescue_Mission(TARGET tarcom);
-        CellStruct Adjust_Dest(CellStruct &cell);
+        Cell Adjust_Dest(Cell &cell);
         void Handle_Navigation_List();
         void Queue_Navigation_List(TARGET target);
         void Clear_Navigation_List();
@@ -181,27 +181,27 @@ class FootClass : public TechnoClass
         // 004A6370
         // 004A6DE0
         // 004A6F40
-        bool Tiberium_Check(CellStruct &center);
+        bool Tiberium_Check(Cell &center);
         bool Goto_Tiberium(int rad, bool a2 = false);
-        CellStruct Search_For_Tiberium(int rad, bool a2 = false);
-        CellStruct Search_For_Tiberium_Weighted(int rad);
-        CellStruct Search_For_Weed(int rad);
-        bool Weed_Check(CellStruct &center, int x, int y);
+        Cell Search_For_Tiberium(int rad, bool a2 = false);
+        Cell Search_For_Tiberium_Weighted(int rad);
+        Cell Search_For_Weed(int rad);
+        bool Weed_Check(Cell &center, int x, int y);
         bool Goto_Weed(int rad);
         // 004A8800
 
-        bool Basic_Path(CellStruct &cell, int a2, int a3);
-        PathType *Find_Path(CellStruct &dest, int *a2, int maxlen, int a4, int a5, int a6);
-        CellStruct Safety_Point(CellStruct &src, CellStruct &dst, int start, int max);
+        bool Basic_Path(Cell &cell, int a2, int a3);
+        PathType *Find_Path(Cell &dest, int *a2, int maxlen, int a4, int a5, int a6);
+        Cell Safety_Point(Cell &src, Cell &dst, int start, int max);
 
     public:
         int field_220;
-        CellStruct field_224;
-        CellStruct field_228;
+        Cell field_224;
+        Cell field_228;
         double field_230;
         int CurrentWalkingFrame;
-        CellStruct field_23C;
-        CellStruct field_240;
+        Cell field_23C;
+        Cell field_240;
         Coordinate field_244;
         double Speed;
         double SpeedBias;

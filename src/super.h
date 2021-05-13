@@ -33,7 +33,6 @@
 #include "tibsun_defines.h"
 
 
-struct CellStruct;
 class HouseClass;
 class SuperWeaponTypeClass;
 
@@ -81,7 +80,7 @@ SuperClass : public AbstractClass
 		bool Recharge(bool player = false);
 		void Impatient_Click() const;
 		int Anim_Stage() const;
-		bool Discharged(bool player, CellStruct *cell);
+		bool Discharged(bool player, Cell *cell);
 		const char *Ready_String() const;
 		bool Is_Ready() const;
 		void Set_Readiness(bool ready) { IsReady = ready; }
@@ -108,7 +107,7 @@ SuperClass : public AbstractClass
 			}
 		}*/
 
-		void Place(CellStruct *cell, bool player = false);
+		void Place(Cell *cell, bool player = false);
 
 	public:
 		SuperWeaponTypeClass *Class;
