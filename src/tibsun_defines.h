@@ -2746,8 +2746,8 @@ struct ScoutStruct
 typedef struct DirStruct : public fixed
 {
     private:
-        static inline FacingType Dir_To_Facing(DirType facing) { return (FacingType)(((unsigned char)((int)facing+0x10)&0xFF)>>5); }
-        static inline DirType Facing_To_Dir(FacingType facing) { return (DirType)((int)facing<<5); }
+        static inline DirType Facing_To_Dir(FacingType facing) { return (DirType)((int)facing << 5); }
+        static inline FacingType Dir_To_Facing(DirType facing) { return (FacingType)(((unsigned char)((int)facing + 0x10) & 0xFF) >> 5); }
 
     public:
         explicit DirStruct() : fixed(0) {}
@@ -2759,7 +2759,7 @@ typedef struct DirStruct : public fixed
         operator int () const { return fixed::Get_Raw(); }
 
         operator DirType() const { return (DirType)((((Get_Raw() >> 7) + 1) >> 1) & 255); }
-        operator FacingType() const { return Dir_To_Facing((DirType)(Get_Raw() & 255)); }
+        operator FacingType() const { return (FacingType)((((Get_Raw() >> 12) + 1) >> 1) & 7); }
 
         bool func_5589F0(const DirStruct &a, const DirStruct &b);
         bool func_558A20(const DirStruct &a, const DirStruct &b);

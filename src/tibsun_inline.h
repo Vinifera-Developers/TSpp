@@ -38,51 +38,54 @@ extern const Cell AdjacentCell[FACING_COUNT];
 extern const Coordinate AdjacentCoord[FACING_COUNT];
 
 
-inline DirType Desired_Facing8(int x1, int y1, int x2, int y2)
+inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
 {
-	return (DirType)(int)((WWMath::Atan2(y1 - y2, x2 - x1) - WWMATH_PI/2) * -10430.06004058427);
+    DirStruct dir;
+	unsigned short value = (int)((WWMath::Atan2(y2 - y1, x2 - x1) - DEG_TO_RAD(-(360.0 / (USHRT_MAX - 1)))));
+    dir.Set_Raw(value);
+    return dir;
 }
 
 
-inline DirType Desired_Facing8(const Point2D &point1, const Point2D &point2)
+inline DirStruct Desired_Facing(const Point2D &point1, const Point2D &point2)
 {
-	return Desired_Facing8(point1.X, point1.Y, point2.X, point2.Y);
-}
-
-
-inline DirType Desired_Facing256(int x1, int y1, int x2, int y2)
-{
-	return (DirType)(int)((WWMath::Atan2(y1 - y2, x2 - x1) - WWMATH_PI/2) * -10430.06004058427);
+	return Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
 }
 
 
 inline DirType Desired_Facing256(const Point2D &point1, const Point2D &point2)
 {
-	return Desired_Facing256(point1.X, point1.Y, point2.X, point2.Y);
+	return (DirType)Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
+}
+
+
+inline FacingType Desired_Facing8(const Point2D &point1, const Point2D &point2)
+{
+	return (FacingType)Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
 }
 
 
 inline DirType Direction256(const Coordinate &coord1, const Coordinate &coord2)
 {
-	return Desired_Facing256(coord1.X, coord1.Y, coord2.X, coord2.Y);
+	return (DirType)Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y);
 }
 
 
-inline DirType Direction(const Coordinate &coord1, const Coordinate &coord2)
+inline FacingType Direction8(const Coordinate &coord1, const Coordinate &coord2)
 {
-	return Desired_Facing256(coord1.X, coord1.Y, coord2.X, coord2.Y);
+	return (FacingType)Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y);
 }
 
 
-inline DirType Direction8(const Coordinate &coord1, const Coordinate &coord2)
+inline DirType Direction256(const Cell &cell1, const Cell &cell2)
 {
-	return Desired_Facing8(coord1.X, coord1.Y, coord2.X, coord2.Y);
+	return (DirType)Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y);
 }
 
 
-inline DirType Direction(const Cell &cell1, const Cell &cell2)
+inline FacingType Direction8(const Cell &cell1, const Cell &cell2)
 {
-	return Desired_Facing8(cell1.X, cell1.Y, cell2.X, cell2.Y);
+	return (FacingType)Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y);
 }
 
 
