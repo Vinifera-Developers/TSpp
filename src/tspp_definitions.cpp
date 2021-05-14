@@ -4154,6 +4154,7 @@ DEFINE_IMPLEMENTATION(int Wstring::Next_Line(int, Wstring &), 0x006A4240);
  */
 DEFINE_IMPLEMENTATION(void Call_Back(), 0x00462C60);
 DEFINE_IMPLEMENTATION(void Load_Keyboard_Hotkeys(), 0x004E7050);
+DEFINE_IMPLEMENTATION(bool Parse_Command_Line(int, char *[]), 0x004E3460);
 
 
 /**

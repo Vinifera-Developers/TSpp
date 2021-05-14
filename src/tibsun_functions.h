@@ -30,3 +30,4 @@
 
 void Call_Back();
 void Load_Keyboard_Hotkeys();
+bool Parse_Command_Line(int argc, char *argv[]);
