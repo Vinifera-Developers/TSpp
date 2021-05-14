@@ -126,6 +126,25 @@ inline int Distance(const Cell &cell1, const Cell &cell2)
 }
 
 
+inline Coordinate Lerp(const Coordinate &coord1, const Coordinate &coord2, float t)
+{
+    Coordinate coord;
+    coord.X = ((double)coord1.X * (1.0f - (double)t)) + ((double)coord2.X * t);
+    coord.Y = ((double)coord1.Y * (1.0f - (double)t)) + ((double)coord2.Y * t);
+    coord.Z = ((double)coord1.Z * (1.0f - (double)t)) + ((double)coord2.Z * t);
+    return coord;
+}
+
+
+inline Cell Lerp(const Cell &cell1, const Cell &cell2, float t)
+{
+    Cell cell;
+    cell.X = ((double)cell1.X * (1.0f - (double)t)) + ((double)cell2.X * t);
+    cell.Y = ((double)cell1.Y * (1.0f - (double)t)) + ((double)cell2.Y * t);
+    return cell;
+}
+
+
 inline Coordinate Coord_Add(const Coordinate &coord1, const Coordinate &coord2)
 {
     Coordinate coord;
