@@ -204,6 +204,7 @@
 #include "radarevent.h"
 #include "teleportlocomotion.h"
 #include "tclassfactory.h"
+#include "walklocomotion.h"
 #include "tibsun_functions.h"
 
 
@@ -4202,6 +4203,38 @@ TeleportLocomotionClass::TeleportLocomotionClass(const NoInitClass &noinit) : Lo
 TeleportLocomotionClass::~TeleportLocomotionClass() {}
 DEFINE_IMPLEMENTATION(int TeleportLocomotionClass::Size_Of(bool) const, 0x0063EEF0);
 DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Is_Stationary() const, 0x0063ED40);
+
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WalkLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x0066E670);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE WalkLocomotionClass::AddRef(), 0x0066E9A0);
+DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE WalkLocomotionClass::Release(), 0x0066E9B0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WalkLocomotionClass::GetClassID(CLSID *), 0x0066E4C0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WalkLocomotionClass::Load(IStream *), 0x0066E500);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WalkLocomotionClass::Save(IStream *, BOOL), 0x0066E580);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving(), 0x0066CB00);
+DEFINE_IMPLEMENTATION(Coordinate WalkLocomotionClass::Destination(), 0x0066CB70);
+DEFINE_IMPLEMENTATION(Coordinate WalkLocomotionClass::Head_To_Coord(), 0x0066CBD0);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Process(), 0x0066CC40);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Move_To(Coordinate), 0x0066CC70);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Stop_Moving(), 0x0066CD30);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Do_Turn(DirStruct), 0x0066CD80);
+DEFINE_IMPLEMENTATION(LayerType WalkLocomotionClass::In_Which_Layer(), 0x0066E660);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Force_Immediate_Destination(Coordinate), 0x0066CDB0);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving_Now(), 0x0066CB10);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Mark_All_Occupation_Bits(int), 0x0066E8A0);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving_Here(Coordinate), 0x0066E8F0);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Really_Moving_Now(), 0x0066E990);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Stop_Movement_Animation(), 0x0066E9E0);
+DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::Begin_Piggyback(ILocomotion *), 0x0066E6D0);
+DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::End_Piggyback(ILocomotion **), 0x0066E720);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Ok_To_End(), 0x0066E760);
+DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::Piggyback_CLSID(CLSID *), 0x0066E790);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Piggybacking(), 0x0066E9C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(WalkLocomotionClass::WalkLocomotionClass(), 0x0066CA60);
+WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D96C8; *((unsigned long *)this+4) = (unsigned long)0x006D9600; *((unsigned long *)this+4) = (unsigned long)0x006D95DC; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(WalkLocomotionClass::~WalkLocomotionClass(), 0x0066CAD0);
+DEFINE_IMPLEMENTATION(int WalkLocomotionClass::Size_Of(bool) const, 0x0066E9F0);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Internal_Process(bool), 0x0066CE10);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::func_66E170(Coordinate &), 0x0066E170);
 
 
 /**
