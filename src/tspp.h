@@ -134,7 +134,7 @@
  *  make the jump to the address, otherwise the stack will be smashed.
  */
 #ifndef NDEBUG
-#define DECONSTRUCTOR_EPILOG \
+#define DESTRUCTOR_EPILOG \
 	_asm { pop edi } \
 	_asm { pop esi } \
 	_asm { pop ebx } \
@@ -142,7 +142,7 @@
 	_asm { pop ebp }
 #else
 // RelWithDebInfo produces the same epilog as Debug.
-#define DECONSTRUCTOR_EPILOG \
+#define DESTRUCTOR_EPILOG \
 	_asm { pop edi } \
 	_asm { pop esi } \
 	_asm { pop ebx } \
@@ -150,18 +150,18 @@
 	_asm { pop ebp }
 
 /*
-#define DECONSTRUCTOR_EPILOG \
+#define DESTRUCTOR_EPILOG \
 	_asm { pop ecx } \
 	_asm { mov esp, ebp } \
 	_asm { pop ebp }
 */
 #endif
 
-#define DEFINE_IMPLEMENTATION_DECONSTRUCTOR(prototype, address, ...) \
+#define DEFINE_IMPLEMENTATION_DESTRUCTOR(prototype, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
     { \
-        DECONSTRUCTOR_EPILOG; \
+        DESTRUCTOR_EPILOG; \
         _asm { mov eax, address } \
         _asm { jmp eax } \
         _asm { _emit 0xCC } /* Align the jump */ \

@@ -106,10 +106,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         /**
          *  Fetch the raw pointer to the linked object, casted to FootClass.
          */
-        //inline FootClass *Linked_To()
-        //{
-        //    return dynamic_cast<FootClass *>(LinkedTo);
-        //}
+        FootClass *Linked_To() const;
 
     public:
         LocomotionClass();
