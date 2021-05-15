@@ -333,3 +333,5 @@ extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
+
+extern const TheaterDataType *Theaters; 

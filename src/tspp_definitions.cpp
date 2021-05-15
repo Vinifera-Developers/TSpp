@@ -4398,6 +4398,8 @@ IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<Key
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
 
+const TheaterDataType *Theaters = Make_Pointer<const TheaterDataType>(0x006CA930);
+
 long &LParam = Make_Global<long>(0x007E47D8); // Additional information for RadioClass::Transmit_Message.
 
 
