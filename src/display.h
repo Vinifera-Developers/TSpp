@@ -63,7 +63,7 @@ class DisplayClass : public MapClass
         virtual bool entry_90(Cell &cell, HouseClass *house);
         virtual bool entry_94(Cell &cell, HouseClass *house);
         virtual MouseType Get_Mouse_Shape() const = 0;
-        virtual bool Scroll_Map(DirType facing, int &distance, bool really = true);
+        virtual bool Scroll_Map(FacingType facing, int &distance, bool really = true);
         virtual void Set_View_Dimensions(Rect &rect);
         virtual void Put_Place_Back(TechnoClass *techno);
         virtual void Mouse_Right_Press(Point2D &xy = Point2D());

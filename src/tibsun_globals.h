@@ -129,6 +129,7 @@ class CampaignClass;
 class WaveClass;
 class ParticleClass;
 class ParticleSystemClass;
+class IsometricTileClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -326,6 +327,7 @@ extern DynamicVectorClass<CampaignClass *> &Campaigns;
 extern DynamicVectorClass<WaveClass *> &Waves;
 extern DynamicVectorClass<ParticleClass *> &Particles;
 extern DynamicVectorClass<ParticleSystemClass *> &ParticleSystems;
+extern DynamicVectorClass<IsometricTileClass *> &IsoTiles;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

@@ -200,6 +200,7 @@
 #include "particle.h"
 #include "particlesys.h"
 #include "wstring.h"
+#include "isotile.h"
 #include "tibsun_functions.h"
 
 
@@ -1586,7 +1587,7 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Abort_Drag_Select(), 0x0047C070);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(Cell &, HouseClass *), 0x00476AB0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::entry_90(Cell &, HouseClass *), 0x00476EB0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::entry_94(Cell &, HouseClass *), 0x00477130);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Scroll_Map(DirType, int &, bool), 0x00476A60);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Scroll_Map(FacingType, int &, bool), 0x00476A60);
 DEFINE_IMPLEMENTATION(void DisplayClass::Set_View_Dimensions(Rect &), 0x00475DC0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Put_Place_Back(TechnoClass *), 0x00402AF0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Mouse_Right_Press(Point2D &), 0x00477D20);
@@ -4148,6 +4149,20 @@ DEFINE_IMPLEMENTATION(bool Wstring::Trim_To_Char(char), 0x006A3FD0);
 DEFINE_IMPLEMENTATION(int Wstring::Token(int, char *, Wstring &), 0x006A40A0);
 DEFINE_IMPLEMENTATION(int Wstring::Next_Line(int, Wstring &), 0x006A4240);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE IsometricTileClass::GetClassID(CLSID *), 0x004F2370);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileClass::Load(IStream *), 0x004F2260);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileClass::Save(IStream *, BOOL), 0x004F22B0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileClass::IsometricTileClass(IsometricTileType, Cell &), 0x004F2070);
+IsometricTileClass::IsometricTileClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D2DE0; *((unsigned long *)this+4) = (unsigned long)0x006D2DC4; }
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(IsometricTileClass::~IsometricTileClass(), 0x004F2160);
+DEFINE_IMPLEMENTATION(RTTIType IsometricTileClass::Kind_Of() const, 0x004F2360);
+DEFINE_IMPLEMENTATION(int IsometricTileClass::Size_Of(bool) const, 0x004F2350);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const IsometricTileClass::Class_Of() const, 0x004F23B0);
+DEFINE_IMPLEMENTATION(bool IsometricTileClass::Limbo(), 0x004F2300);
+DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(Coordinate &, DirType), 0x004F22D0);
+DEFINE_IMPLEMENTATION(void IsometricTileClass::Draw_It(Point2D &, Rect &) const, 0x004F23C0);
+DEFINE_IMPLEMENTATION(bool IsometricTileClass::Mark(MarkType), 0x004F1C50);
+
 
 /**
  *  Various global functions
@@ -4390,6 +4405,7 @@ DynamicVectorClass<CampaignClass *> &Campaigns = Make_Global<DynamicVectorClass<
 DynamicVectorClass<WaveClass *> &Waves = Make_Global<DynamicVectorClass<WaveClass *>>(0x007E47E8);
 DynamicVectorClass<ParticleClass *> &Particles = Make_Global<DynamicVectorClass<ParticleClass *>>(0x007E22E0);
 DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<DynamicVectorClass<ParticleSystemClass *>>(0x007E1540);
+DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorClass<IsometricTileClass *>>(0x007482A0);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
