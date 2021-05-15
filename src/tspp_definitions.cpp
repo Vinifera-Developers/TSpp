@@ -202,6 +202,7 @@
 #include "wstring.h"
 #include "isotile.h"
 #include "radarevent.h"
+#include "teleportlocomotion.h"
 #include "tibsun_functions.h"
 
 
@@ -4186,6 +4187,20 @@ DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D *), 0x005C1CB0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Clear_All(), 0x005C2B30);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Save(IStream *), 0x005C2830);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Load(IStream *), 0x005C28A0);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeleportLocomotionClass::GetClassID(CLSID *), 0x0063EE70);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeleportLocomotionClass::Load(IStream *), 0x0063EEB0);
+DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Is_Moving(), 0x0063ED00);
+DEFINE_IMPLEMENTATION(Coordinate TeleportLocomotionClass::Destination(), 0x0063ED50);
+DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Process(), 0x0063EE10);
+DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Move_To(Coordinate), 0x0063EDC0);
+DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Stop_Moving(), 0x0063EDE0);
+DEFINE_IMPLEMENTATION(LayerType TeleportLocomotionClass::In_Which_Layer(), 0x0063EEE0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeleportLocomotionClass::TeleportLocomotionClass(), 0x0063ECC0);
+TeleportLocomotionClass::TeleportLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8228; *((unsigned long *)this+4) = (unsigned long)0x006D8164; }
+TeleportLocomotionClass::~TeleportLocomotionClass() {}
+DEFINE_IMPLEMENTATION(int TeleportLocomotionClass::Size_Of(bool) const, 0x0063EEF0);
+DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Is_Stationary() const, 0x0063ED40);
 
 
 /**
