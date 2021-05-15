@@ -333,6 +333,8 @@ extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
+extern DynamicVectorClass<ULONG> &ClassFactories;
+
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;

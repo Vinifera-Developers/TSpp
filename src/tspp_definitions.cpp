@@ -203,6 +203,7 @@
 #include "isotile.h"
 #include "radarevent.h"
 #include "teleportlocomotion.h"
+#include "tclassfactory.h"
 #include "tibsun_functions.h"
 
 
@@ -4450,6 +4451,8 @@ DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorCl
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
+DynamicVectorClass<ULONG> &ClassFactories = Make_Global<DynamicVectorClass<ULONG>>(0x0080C9E0);
+
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
@@ -4484,3 +4487,12 @@ const Cell AdjacentCell[FACING_COUNT] = { // 0x00761148
     Cell(-1, 0),   // WEST
     Cell(-1, -1),  // NORTH WEST
 };
+
+
+/**
+ *  Instances for testing implementations (should be static!).
+ */
+static TClassFactory<UnitClass> UnitCOMFactory;
+static TClassFactory<BuildingClass> BuildingCOMFactory;
+static TClassFactory<InfantryClass> InfantryCOMFactory;
+static TClassFactory<AircraftClass> AircraftCOMFactory;
