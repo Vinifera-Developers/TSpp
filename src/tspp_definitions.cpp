@@ -201,6 +201,7 @@
 #include "particlesys.h"
 #include "wstring.h"
 #include "isotile.h"
+#include "radarevent.h"
 #include "tibsun_functions.h"
 
 
@@ -4163,6 +4164,29 @@ DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(Coordinate &, DirType), 0
 DEFINE_IMPLEMENTATION(void IsometricTileClass::Draw_It(Point2D &, Rect &) const, 0x004F23C0);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Mark(MarkType), 0x004F1C50);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarEventClass::RadarEventClass(RadarEventType, CellStruct), 0x005C1CE0);
+DEFINE_IMPLEMENTATION_DECONSTRUCTOR(RadarEventClass::~RadarEventClass(), 0x005C1E40);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Process(), 0x005C1EC0);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Draw(), 0x005C2120);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Plot(), 0x005C25A0);
+DEFINE_IMPLEMENTATION(int RadarEventClass::Get_Visibility_Duration(), 0x005C2AD0);
+DEFINE_IMPLEMENTATION(int RadarEventClass::Get_Duration(), 0x005C2AF0);
+DEFINE_IMPLEMENTATION(int RadarEventClass::Get_Supression_Distance(), 0x005C2B10);
+DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Max_Color(), 0x005C29B0);
+DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Min_Color(), 0x005C2A40);
+DEFINE_IMPLEMENTATION(RadarDrawStruct RadarEventClass::Get_Draw_Data() const, 0x005C2790);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Create_Event(RadarEventType, CellStruct), 0x005C1BC0);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Is_Combat_Event(RadarEventType), 0x005C1CC0);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Process_Events(), 0x005C1E90);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Draw_Events(), 0x005C20D0);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Remove_Finished(), 0x005C2400);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, int, CellStruct), 0x005C24B0);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Any_Active(), 0x005C2590);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D *), 0x005C1CB0);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Clear_All(), 0x005C2B30);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Save(IStream *), 0x005C2830);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Load(IStream *), 0x005C28A0);
+
 
 /**
  *  Various global functions
@@ -4336,6 +4360,7 @@ int &IonStorm_StaticLoopCounter = Make_Global<int>(0x007F50F0);
 int &IonStorm_StartFrame = Make_Global<int>(0x006FF280);
 int &IonStorm_Duration = Make_Global<int>(0x006FF284);
 ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
+Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
 
 
 /**
@@ -4406,6 +4431,7 @@ DynamicVectorClass<WaveClass *> &Waves = Make_Global<DynamicVectorClass<WaveClas
 DynamicVectorClass<ParticleClass *> &Particles = Make_Global<DynamicVectorClass<ParticleClass *>>(0x007E22E0);
 DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<DynamicVectorClass<ParticleSystemClass *>>(0x007E1540);
 DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorClass<IsometricTileClass *>>(0x007482A0);
+DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorClass<RadarEventClass *>>(0x0080A110);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

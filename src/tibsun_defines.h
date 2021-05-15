@@ -1693,6 +1693,20 @@ typedef enum ArmorType
     ARMOR_FIRST = 0
 } ArmorType;
 
+typedef enum RadarEventType
+{
+    RADAREVENT_COMBAT,
+    RADAREVENT_NONCOMBAT,
+    RADAREVENT_DROPZONE,
+    RADAREVENT_BASE_ATTACKED,
+    RADAREVENT_HARVESTER_ATTACKED,
+    RADAREVENT_ENEMY_SENSED,
+
+    RADAREVENT_COUNT,
+
+    RADAREVENT_NONE = -1
+} RadarEventType;
+
 typedef enum MissionType
 {
     MISSION_SLEEP,          // Do nothing whatsoever.
