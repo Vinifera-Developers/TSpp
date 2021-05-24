@@ -639,10 +639,10 @@ DEFINE_IMPLEMENTATION(const INIClass::INISection * INIClass::Find_Section(const 
 DEFINE_IMPLEMENTATION(const INIClass::INIEntry * INIClass::Find_Entry(const char *, const char *) const, 0x004DC770);
 
 CCINIClass::CCINIClass() : INIClass(), IsDigestPresent(false) { *((unsigned long *)this) = (unsigned long)0x006CA8BC; }
-CCINIClass::CCINIClass(FileClass &file, bool load_comments) : INIClass(file, load_comments), IsDigestPresent(false) { *((unsigned long *)this) = (unsigned long)0x006CA8BC; }
+CCINIClass::CCINIClass(FileClass &file, bool widthdigest, bool load_comments) : INIClass(file, load_comments), IsDigestPresent(widthdigest) { *((unsigned long *)this) = (unsigned long)0x006CA8BC; }
 CCINIClass::~CCINIClass() {}
-DEFINE_IMPLEMENTATION(bool CCINIClass::Load(FileClass &, bool), 0x00449F30);
-DEFINE_IMPLEMENTATION(int CCINIClass::Load(Straw &, bool), 0x0044A060);
+DEFINE_IMPLEMENTATION(bool CCINIClass::Load(FileClass &, bool, bool), 0x00449F30);
+DEFINE_IMPLEMENTATION(int CCINIClass::Load(Straw &, bool, bool), 0x0044A060);
 DEFINE_IMPLEMENTATION(int CCINIClass::Save(FileClass &, bool) const, 0x0044A170);
 DEFINE_IMPLEMENTATION(int CCINIClass::Save(Pipe &, bool) const, 0x0044A280);
 DEFINE_IMPLEMENTATION(LEPTON CCINIClass::Get_Lepton(const char *, const char *, const LEPTON), 0x0044A360);

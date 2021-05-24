@@ -44,11 +44,11 @@ class CCINIClass : public INIClass
 {
     public:
         CCINIClass();
-        CCINIClass(FileClass &file, bool load_comments = false);
+        CCINIClass(FileClass &file, bool withdigest = false, bool load_comments = false);
         virtual ~CCINIClass();
 
-        bool Load(FileClass & file, bool withdigest);
-        int Load(Straw & file, bool withdigest);
+        bool Load(FileClass & file, bool withdigest, bool load_comments = false);
+        int Load(Straw & file, bool withdigest, bool load_comments = false);
         int Save(FileClass & file, bool withdigest) const;
         int Save(Pipe & pipe, bool withdigest) const;
 
