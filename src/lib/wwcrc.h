@@ -57,6 +57,8 @@ class WWCRCEngine
         void operator()(const char *string);
         long operator()(const void *buffer, int length);
 
+        long CRC_Value() const { return CRC; }
+
         /**
          *  Calculates standard CRC32 value.
          */
