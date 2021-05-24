@@ -145,7 +145,7 @@ class CCINIClass : public INIClass
         bool Put_TechnoType_List(const char *section, const char *entry, const TypeList<TechnoTypeClass *> value);
 
         TypeList<SideType> Get_SideType_List(const char *section, const char *entry, const TypeList<SideType> defvalue);
-        TypeList<HousesType> Get_HousesType_List(const char *section, const char *entry, const TypeList<HousesType> defvalue);
+        bool Put_HousesType_List(const char *section, const char *entry, const TypeList<HousesType> value);
         
         xTargetClass Get_Target(const char *section, const char *entry, const xTargetClass &defvalue);
         bool Put_Target(const char *section, const char *entry, xTargetClass &value);
