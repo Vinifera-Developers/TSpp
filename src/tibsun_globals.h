@@ -131,6 +131,7 @@ class ParticleClass;
 class ParticleSystemClass;
 class IsometricTileClass;
 class RadarEventClass;
+class InfantryClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -330,6 +331,7 @@ extern DynamicVectorClass<ParticleClass *> &Particles;
 extern DynamicVectorClass<ParticleSystemClass *> &ParticleSystems;
 extern DynamicVectorClass<IsometricTileClass *> &IsoTiles;
 extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
+extern DynamicVectorClass<InfantryClass *> &Infantry;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

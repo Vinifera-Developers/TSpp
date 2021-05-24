@@ -4535,6 +4535,7 @@ DynamicVectorClass<ParticleClass *> &Particles = Make_Global<DynamicVectorClass<
 DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<DynamicVectorClass<ParticleSystemClass *>>(0x007E1540);
 DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorClass<IsometricTileClass *>>(0x007482A0);
 DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorClass<RadarEventClass *>>(0x0080A110);
+DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
