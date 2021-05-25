@@ -447,8 +447,8 @@ XSurface::XSurface(int width, int height, int bpp) : Surface(width, height), Loc
 DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Rect &, Rect &, Surface &, Rect &, Rect &, bool, bool), 0x006A82B0);
 DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Rect &, Surface &, Rect &, bool, bool), 0x006A8150);
 DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Surface &, bool, bool), 0x006A80B0);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect &, unsigned), 0x006A7610);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect &, Rect &, unsigned), 0x006A75E0);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect &, unsigned), 0x006A75E0);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect &, Rect &, unsigned), 0x006A7610);
 DEFINE_IMPLEMENTATION(bool XSurface::Fill(unsigned), 0x006A8070);
 DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect_Trans(Rect &, const RGBClass &, unsigned), 0x006A7900);
 DEFINE_IMPLEMENTATION(bool XSurface::Draw_Ellipse(Point2D, int, int, Rect, unsigned), 0x006A7910);
@@ -4297,6 +4297,15 @@ DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Incoming(Cell), 0x00481E50);
 DEFINE_IMPLEMENTATION(void Call_Back(), 0x00462C60);
 DEFINE_IMPLEMENTATION(void Load_Keyboard_Hotkeys(), 0x004E7050);
 DEFINE_IMPLEMENTATION(bool Parse_Command_Line(int, char *[]), 0x004E3460);
+DEFINE_IMPLEMENTATION(int Create_Main_Window(HINSTANCE, int, int, int), 0x00686190);
+DEFINE_IMPLEMENTATION(void Prep_Direct_Draw(), 0x00472AD0);
+DEFINE_IMPLEMENTATION(bool Set_Video_Mode(HWND, int, int, int), 0x00472DF0);
+DEFINE_IMPLEMENTATION(void Reset_Video_Mode(), 0x00472FF0);
+DEFINE_IMPLEMENTATION(bool Allocate_Surfaces(Rect *, Rect *, Rect *, Rect *, bool), 0x004E7310);
+DEFINE_IMPLEMENTATION(void Wait_Blit(), 0x00473330);
+DEFINE_IMPLEMENTATION(void Set_DD_Palette(void *), 0x00473280);
+DEFINE_IMPLEMENTATION(LRESULT CALLBACK Main_Window_Procedure(HWND, UINT, WPARAM, LPARAM), 0x00685BC0);
+DEFINE_IMPLEMENTATION(bool func_6A83E0(Rect &, const Rect &, Rect &, const Rect &), 0x006A83E0);
 
 
 /**
@@ -4427,6 +4436,7 @@ MFCC *&SideCDMix = Make_Global<MFCC *>(0x0074A12C);
 bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
 bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
 int &NewINIFormat = Make_Global<int>(0x007E491C);
+bool &GameInFocus = Make_Global<bool>(0x007E4920);
 
 
 /**

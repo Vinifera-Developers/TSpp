@@ -264,6 +264,7 @@ extern MFCC *&SideCDMix;
 extern bool &Cheat_Pengo;
 extern bool &Cheat_TheTeam;
 extern int &NewINIFormat;
+extern bool &GameInFocus;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

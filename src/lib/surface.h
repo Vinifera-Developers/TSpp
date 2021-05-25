@@ -80,7 +80,7 @@ class Surface
         bool Clear() { return Fill(TBLACK); }
         bool Clear(Rect &area) { return Fill_Rect(area, TBLACK); }
 
-    protected:
+    public:
         int Width;
         int Height;
 };

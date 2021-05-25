@@ -101,7 +101,7 @@ class DSurface : public XSurface
         LPDIRECTDRAWSURFACE VideoSurfacePtr;
         LPDDSURFACEDESC VideoSurfaceDescription;
 
-    protected:
+    public:
         static unsigned &RedLeft;
         static unsigned &RedRight;
         static unsigned &GreenLeft;
@@ -111,7 +111,6 @@ class DSurface : public XSurface
 
         static int &RGBPixelFormat;
 
-    public:
         static bool &AllowStretchBlits;
         static bool &AllowHardwareBlitFills;
 

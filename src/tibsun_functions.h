@@ -31,3 +31,13 @@
 void Call_Back();
 void Load_Keyboard_Hotkeys();
 bool Parse_Command_Line(int argc, char *argv[]);
+int Create_Main_Window(HINSTANCE hInstance, int command_show, int width, int height);
+void Prep_Direct_Draw();
+bool Set_Video_Mode(HWND hWnd, int w, int h, int bits_per_pixel);
+void Reset_Video_Mode();
+bool Allocate_Surfaces(Rect *common_rect, Rect *composite_rect, Rect *tile_rect, Rect *sidebar_rect, bool alloc_hidden_surf = false);
+void Wait_Blit();
+void Set_DD_Palette(void *rpalette);
+LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+
+bool func_6A83E0(Rect &torect, const Rect &toarea, Rect &fromrect, const Rect &fromarea);

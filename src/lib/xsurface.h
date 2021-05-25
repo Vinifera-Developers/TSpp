@@ -69,7 +69,7 @@ class XSurface : public Surface
 
         void Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
 
-    protected:
+    public:
         int LockLevel;
         int BytesPerPixel;
 };
