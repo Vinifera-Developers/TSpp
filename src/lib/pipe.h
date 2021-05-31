@@ -39,10 +39,10 @@ class Pipe
         Pipe();
         virtual ~Pipe();
 
-        virtual int Flush() = 0;
-        virtual int End() = 0;
-        virtual void Put_To(Pipe *pipe) = 0;
-        virtual int Put(const void *source, int slen) = 0;
+        virtual int Flush();
+        virtual int End();
+        virtual void Put_To(Pipe *pipe);
+        virtual int Put(const void *source, int slen);
 
         inline void Put_To(Pipe &pipe) { Put_To(&pipe); }
 

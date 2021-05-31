@@ -39,8 +39,8 @@ class Straw
         Straw();
         virtual ~Straw();
 
-        virtual void Get_From(Straw *pipe) = 0;
-        virtual int Get(void *buffer, int slen) = 0;
+        virtual void Get_From(Straw *pipe);
+        virtual int Get(void *buffer, int slen);
 
         inline void Get_From(Straw &pipe) { Get_From(&pipe); }
 

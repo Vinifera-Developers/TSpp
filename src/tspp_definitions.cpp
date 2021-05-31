@@ -222,13 +222,17 @@
 /**
  *  Function definitions
  */
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Pipe::Pipe(), 0x);
 Pipe::Pipe() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC84; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(Pipe::~Pipe(), 0x005A9430);
+DEFINE_IMPLEMENTATION(int Pipe::Flush(), 0x005A94E0);
+DEFINE_IMPLEMENTATION(int Pipe::End(), 0x0044CFF0);
+DEFINE_IMPLEMENTATION(void Pipe::Put_To(Pipe *), 0x005A9470);
+DEFINE_IMPLEMENTATION(int Pipe::Put(const void *, int), 0x005A94C0);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Straw::Straw(), 0x);
 Straw::Straw() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this) = (unsigned long)0x006CDC5C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(Straw::~Straw(), 0x0060AFC0);
+DEFINE_IMPLEMENTATION(void Straw::Get_From(Straw *), 0x0060B000);
+DEFINE_IMPLEMENTATION(int Straw::Get(void *, int), 0x0060B050);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(), 0x);
 RawFileClass::RawFileClass() : Rights(FILE_ACCESS_READ), BiasStart(0), BiasLength(-1), Handle(INVALID_HANDLE_VALUE), Filename(nullptr), Date(0), Time(0), Allocated(false) { *((unsigned long *)this) = (unsigned long)0x006D5E34; }
