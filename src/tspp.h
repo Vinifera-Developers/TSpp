@@ -36,8 +36,6 @@
  * 
  *  In;
  *    - DLL Builds: This will define a jump back to the binary implementation.
- *    - Standalone: This will create an empty stub function, use the variadic argument
- *                  of these macros to define the return type or value if required.
  * 
  *  Example;
  *    DEFINE_IMPLEMENTATION(void Func(void *Arg1, void *Arg2), 0x12345678);
@@ -52,8 +50,6 @@
     { \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 #define DEFINE_IMPLEMENTATION_INLINE(prototype, address, ...) \
@@ -62,8 +58,6 @@
     { \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 #define DEFINE_IMPLEMENTATION_UNWIND(prototype, address, ...) \
@@ -72,8 +66,6 @@
     { \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 
@@ -109,11 +101,11 @@
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
     { \
-        CONSTRUCTOR_EPILOG; \
+        _asm { mov ecx, this } \
+	    _asm { mov esp, ebp } \
+	    _asm { pop ebp } \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 // For classes with a base class that has no default constructor available.
@@ -121,11 +113,11 @@
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype : base(NoInitClass()) \
     { \
-        CONSTRUCTOR_EPILOG; \
+        _asm { mov ecx, this } \
+	    _asm { mov esp, ebp } \
+	    _asm { pop ebp } \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 
@@ -164,8 +156,6 @@
         DESTRUCTOR_EPILOG; \
         _asm { mov eax, address } \
         _asm { jmp eax } \
-        _asm { _emit 0xCC } /* Align the jump */ \
-        _asm { _emit 0xCC } \
     }
 
 

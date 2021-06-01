@@ -206,6 +206,7 @@
 #include "tclassfactory.h"
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
+#include "cd.h"
 #include "tibsun_functions.h"
 
 
@@ -3200,7 +3201,7 @@ DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Strafe(), 0x0040EEE0);
 DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Locked(), 0x0040EF30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AircraftClass::AircraftClass(AircraftTypeClass *, HouseClass *), FootClass, 0x004085D0);
 AircraftClass::AircraftClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CADF8; *((unsigned long *)this+4) = (unsigned long)0x006CADDC; *((unsigned long *)this+0x350) = (unsigned long)0x006CADB8; }
-DEFINE_IMPLEMENTATION(AircraftClass::~AircraftClass(), 0x0040DB20);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(AircraftClass::~AircraftClass(), 0x0040DB20);
 DEFINE_IMPLEMENTATION(void AircraftClass::Init(), 0x00408820);
 DEFINE_IMPLEMENTATION(void AircraftClass::Detach(TARGET, bool), 0x0040EDA0);
 DEFINE_IMPLEMENTATION(RTTIType AircraftClass::Kind_Of() const, 0x0040F430);
@@ -3385,7 +3386,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Save(IStream *, BOOL)
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(), 0x00414170);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(const AnimTypeClass *, Coordinate &, unsigned, unsigned, unsigned, unsigned), 0x00413AE0);
 AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+4) = (unsigned long)0x006CB92C; }
-DEFINE_IMPLEMENTATION(AnimClass::~AnimClass(), 0x004142B0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(AnimClass::~AnimClass(), 0x004142B0);
 DEFINE_IMPLEMENTATION(void AnimClass::Detach(TARGET, bool), 0x00416390);
 DEFINE_IMPLEMENTATION(RTTIType AnimClass::Kind_Of() const, 0x00417540);
 DEFINE_IMPLEMENTATION(int AnimClass::Size_Of(bool) const, 0x004174F0);
@@ -3935,7 +3936,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Load(IStream *), 0x006
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Save(IStream *, BOOL), 0x0061EC40);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TagClass::TagClass(TagTypeClass *), 0x0061E330);
 TagClass::TagClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7850; *((unsigned long *)this+4) = (unsigned long)0x006D7834; }
-DEFINE_IMPLEMENTATION(TagClass::~TagClass(), 0x0061E4A0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(TagClass::~TagClass(), 0x0061E4A0);
 DEFINE_IMPLEMENTATION(void TagClass::Detach(TARGET, bool), 0x0061EAC0);
 DEFINE_IMPLEMENTATION(RTTIType TagClass::Kind_Of() const, 0x0061ED30);
 DEFINE_IMPLEMENTATION(int TagClass::Size_Of(bool) const, 0x0061ED20);
@@ -4294,6 +4295,15 @@ DEFINE_IMPLEMENTATION(Coordinate DriveLocomotionClass::Smooth_Turn(Coordinate &,
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Incoming(Cell), 0x00481E50);
 // 00481EE0
 
+CD::CD() {}
+DEFINE_IMPLEMENTATION(bool CD::Is_Available(int), 0x0044E7A0);
+DEFINE_IMPLEMENTATION(bool CD::Insert_Disk(int), 0x0044E7C0);
+DEFINE_IMPLEMENTATION(bool CD::Init_Swap(int), 0x0044E970);
+DEFINE_IMPLEMENTATION(bool CD::Force_Available(int), 0x004756B0);
+DEFINE_IMPLEMENTATION(void CD::Get_Volume_Index(int), 0x0044E770);
+DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(int), 0x0044E780);
+DEFINE_IMPLEMENTATION(int CD::Get_CD_Index(int, int), 0x004754A0);
+
 
 /**
  *  Various global functions
@@ -4478,6 +4488,8 @@ int &IonStorm_StartFrame = Make_Global<int>(0x006FF280);
 int &IonStorm_Duration = Make_Global<int>(0x006FF284);
 ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
+bool &CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
+int &CD::RequiredCD = Make_Global<int>(0x006F5558);
 
 
 /**
