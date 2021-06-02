@@ -70,9 +70,9 @@ class LoadOptionsClass
         virtual bool Delete_File(const char *filename);
         virtual bool Read_File(void *a1, void *a2);
 
-        void Load_Dialog();
-        void Save_Dialog(const char *description);
-        void Delete_Dialog();
+        bool Load_Dialog();
+        bool Save_Dialog(const char *description);
+        bool Delete_Dialog();
 
         void Pick_Filename(char *buffer);
         void Clear_List();

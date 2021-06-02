@@ -207,6 +207,7 @@
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
 #include "cd.h"
+#include "vqa.h"
 #include "tibsun_functions.h"
 
 
@@ -2173,9 +2174,9 @@ DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_File(const char *), 0x00505980
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_File(const char *, const char *), 0x005059D0);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_File(const char *), 0x00505A20);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_File(void *, void *), 0x00505A40);
-DEFINE_IMPLEMENTATION(void LoadOptionsClass::Load_Dialog(), 0x00504860);
-DEFINE_IMPLEMENTATION(void LoadOptionsClass::Save_Dialog(const char *), 0x00504880);
-DEFINE_IMPLEMENTATION(void LoadOptionsClass::Delete_Dialog(), 0x005048A0);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_Dialog(), 0x00504860);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_Dialog(const char *), 0x00504880);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_Dialog(), 0x005048A0);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Pick_Filename(char *), 0x00505270);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Clear_List(), 0x005052F0);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Fill_List(HWND), 0x00505320);
@@ -4303,6 +4304,14 @@ DEFINE_IMPLEMENTATION(bool CD::Force_Available(int), 0x004756B0);
 DEFINE_IMPLEMENTATION(void CD::Get_Volume_Index(int), 0x0044E770);
 DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(int), 0x0044E780);
 DEFINE_IMPLEMENTATION(int CD::Get_CD_Index(int, int), 0x004754A0);
+
+DEFINE_IMPLEMENTATION(void VQA_Init_Option(), 0x0066C720);
+DEFINE_IMPLEMENTATION(void VQA_Set_Option(VQAOptionType), 0x0066C760);
+DEFINE_IMPLEMENTATION(void VQA_Clear_Option(VQAOptionType), 0x0066C780);
+DEFINE_IMPLEMENTATION(bool VQA_Get_Option(VQAOptionType), 0x0066C7A0);
+DEFINE_IMPLEMENTATION(bool VQA_Flip_Option(VQAOptionType), 0x0066C7C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(VQAClass::VQAClass(const char *, int, int, int, int, int, int), 0x0066B290);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(VQAClass::~VQAClass(), 0x0066B540);
 
 
 /**
