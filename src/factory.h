@@ -95,7 +95,7 @@ FactoryClass : public AbstractClass, public StageClass
         static void Recalculate_Times(HouseClass *house);
         static FactoryClass *Find_By_Owner_And_Product(const HouseClass *house, const TechnoTypeClass *item);
 
-    private:
+    public:
         DynamicVectorClass<const TechnoTypeClass *> QueuedObjects;
         TechnoClass *Object;
         bool IsDifferent;

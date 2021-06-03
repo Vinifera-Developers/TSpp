@@ -1413,9 +1413,9 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, void *, u
 DEFINE_IMPLEMENTATION(void EventClass::Execute(), 0x00494280);
 
 WWMessageBox::WWMessageBox(int caption) { Caption = caption; }
-DEFINE_IMPLEMENTATION(int WWMessageBox::Process(const char *, const char *, const char *, const char *, bool), 0x005727F0);
-DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, bool), 0x00572B20);
-DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, bool), 0x00572B70);
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(const char *, int, const char *, const char *, const char *, bool), 0x005727F0);
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, int, bool), 0x00572B20);
+DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, int, bool), 0x00572B70);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(Coordinate, int), 0x0058DFD0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(SpotlightClass::~SpotlightClass(), 0x0058E050);

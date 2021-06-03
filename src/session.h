@@ -33,6 +33,7 @@
 #include "msglist.h"
 #include "special.h"
 #include "ccfile.h"
+#include <Unknwn.h>
 
 
 class MultiMission;

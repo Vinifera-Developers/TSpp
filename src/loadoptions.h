@@ -30,6 +30,7 @@
 #include "always.h"
 #include "vector.h"
 #include "tibsun_defines.h"
+#include "session.h"
 
 
 class FileEntryClass
