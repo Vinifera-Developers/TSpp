@@ -167,7 +167,7 @@ class MapClass : public GScreenClass
         const Cell Pick_Random_Location();
         void Shroud_The_Map();
         void Reveal_The_Map();
-        // 0051E130
+        int Get_Cell_Height(Coordinate &coord) const;
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         // 0051E2B0

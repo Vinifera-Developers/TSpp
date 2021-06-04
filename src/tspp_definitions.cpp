@@ -1518,6 +1518,7 @@ DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(Cell &, HousesType &, ZoneType 
 DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
+DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Height(Coordinate &) const, 0x0051E130);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &, bool) const, 0x0051E380);
@@ -3385,7 +3386,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Load(IStream *), 0x004164B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Save(IStream *, BOOL), 0x00416510);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(), 0x00414170);
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(const AnimTypeClass *, Coordinate &, unsigned, unsigned, unsigned, unsigned), 0x00413AE0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(const AnimTypeClass *, Coordinate &, unsigned, unsigned, unsigned, int), 0x00413AE0);
 AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+4) = (unsigned long)0x006CB92C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(AnimClass::~AnimClass(), 0x004142B0);
 DEFINE_IMPLEMENTATION(void AnimClass::Detach(TARGET, bool), 0x00416390);

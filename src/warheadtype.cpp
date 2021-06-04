@@ -32,15 +32,15 @@
 
 const WarheadTypeClass &WarheadTypeClass::As_Reference(WarheadType type)
 {
-    TSPP_ASSERT(type != INFANTRY_NONE && type < WarheadTypes.Count());
+    TSPP_ASSERT(type != WARHEAD_NONE && type < WarheadTypes.Count());
     return *WarheadTypes[type];
 }
 
 
 const WarheadTypeClass *WarheadTypeClass::As_Pointer(WarheadType type)
 {
-    TSPP_ASSERT(type != INFANTRY_NONE && type < WarheadTypes.Count());
-    return type != INFANTRY_NONE && type < WarheadTypes.Count() ? WarheadTypes[type] : nullptr;
+    TSPP_ASSERT(type != WARHEAD_NONE && type < WarheadTypes.Count());
+    return type != WARHEAD_NONE && type < WarheadTypes.Count() ? WarheadTypes[type] : nullptr;
 }
 
 

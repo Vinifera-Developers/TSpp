@@ -54,7 +54,7 @@ AnimClass : public ObjectClass, public StageClass
 
 	public:
 		AnimClass();
-		AnimClass(const AnimTypeClass *classof, Coordinate &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, unsigned zadjust = 0);
+		AnimClass(const AnimTypeClass *classof, Coordinate &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, int zadjust = 0);
         AnimClass(const NoInitClass &noinit);
 		virtual ~AnimClass();
 
