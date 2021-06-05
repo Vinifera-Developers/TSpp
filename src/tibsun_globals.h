@@ -221,6 +221,7 @@ extern Rect &ScreenRect;
 extern unsigned &Seed;
 extern unsigned &CustomSeed;
 extern bool &UserInputLocked;
+extern int &ScenarioInit;
 extern PaletteClass &BlackPalette;
 extern PaletteClass &WaypointPalette;
 extern PaletteClass &CCPalette;
@@ -265,6 +266,7 @@ extern bool &Cheat_Pengo;
 extern bool &Cheat_TheTeam;
 extern int &NewINIFormat;
 extern bool &GameInFocus;
+extern ParticleSystemClass *&GasCloudSys;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
@@ -335,6 +337,17 @@ extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
 extern DynamicVectorClass<InfantryClass *> &Infantry;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
+
+extern DynamicVectorClass<TARGET> &vec_80F5E0;
+extern DynamicVectorClass<TARGET> &vec_80F4C0;
+extern DynamicVectorClass<TARGET> &vec_80F588;
+extern DynamicVectorClass<TARGET> &vec_80F558;
+extern DynamicVectorClass<TARGET> &vec_80F4E0;
+extern DynamicVectorClass<TARGET> &vec_80F620;
+extern DynamicVectorClass<TARGET> &vec_80F528;
+extern DynamicVectorClass<TARGET> &vec_80F570;
+extern DynamicVectorClass<TARGET> &vec_80F4F8;
+extern DynamicVectorClass<TARGET> &vec_80F600;
 
 extern DynamicVectorClass<ULONG> &ClassFactories;
 

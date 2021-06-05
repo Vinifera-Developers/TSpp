@@ -65,6 +65,7 @@ class TechnoTypeClass;
 class ObjectTypeClass;
 class TechnoClass;
 class TeamTypeClass;
+class BuildingTypeClass;
 
 
 class DECLSPEC_UUID("D9D4A910-87C6-11D1-B707-00A024DDAFD1")

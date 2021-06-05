@@ -4418,6 +4418,7 @@ Rect &ScreenRect = Make_Global<Rect>(0x0074C260);
 unsigned &Seed = Make_Global<unsigned>(0x007E4934);
 unsigned &CustomSeed = Make_Global<unsigned>(0x007E4938);
 bool &UserInputLocked = Make_Global<bool>(0x007E493C);
+int &ScenarioInit = Make_Global<int>(0x007E4394);
 PaletteClass &BlackPalette = Make_Global<PaletteClass>(0x0074A138);
 PaletteClass &WaypointPalette = Make_Global<PaletteClass>(0x0074A438);
 PaletteClass &CCPalette = Make_Global<PaletteClass>(0x0074A738);
@@ -4462,6 +4463,7 @@ bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
 bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
 int &NewINIFormat = Make_Global<int>(0x007E491C);
 bool &GameInFocus = Make_Global<bool>(0x007E4920);
+extern ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
 
 
 /**
@@ -4575,6 +4577,17 @@ DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorCl
 DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
+
+DynamicVectorClass<TARGET> &vec_80F5E0 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F5E0);
+DynamicVectorClass<TARGET> &vec_80F4C0 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F4C0);
+DynamicVectorClass<TARGET> &vec_80F588 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F588);
+DynamicVectorClass<TARGET> &vec_80F558 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F558);
+DynamicVectorClass<TARGET> &vec_80F4E0 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F4E0);
+DynamicVectorClass<TARGET> &vec_80F620 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F620);
+DynamicVectorClass<TARGET> &vec_80F528 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F528);
+DynamicVectorClass<TARGET> &vec_80F570 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F570);
+DynamicVectorClass<TARGET> &vec_80F4F8 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F4F8);
+DynamicVectorClass<TARGET> &vec_80F600 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F600);
 
 DynamicVectorClass<ULONG> &ClassFactories = Make_Global<DynamicVectorClass<ULONG>>(0x0080C9E0);
 
