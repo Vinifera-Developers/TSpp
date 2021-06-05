@@ -182,7 +182,7 @@ extern WWFontClass *&Font8Ptr;
 extern WWFontClass *&GradFont6Ptr;
 extern WinsockInterfaceClass *&PacketTransport;
 extern Tactical *&TacticalMap;
-extern LogicClass *&Logic;
+extern LogicClass &Logic;
 extern MouseClass &Map;
 extern DirectSoundAudioClass &Audio;
 extern ThemeClass &Theme;

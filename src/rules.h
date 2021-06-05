@@ -81,6 +81,8 @@ class RulesClass
         void Save(IStream *pStm);
         void Load(IStream *pStm);
 
+        void Detach(TARGET target, bool all = true);
+
         static int Get_Art_Unique_ID();
         static int Get_AI_Unique_ID();
         static void Load_Art_INI();
