@@ -69,6 +69,7 @@ bool Is_Target_Building(TARGET a);
 bool Is_Target_Aircraft(TARGET a);
 bool Is_Target_Animation(TARGET a);
 bool Is_Target_Object(TARGET a);
+bool Is_Target_TypeClass(TARGET a);
 
 
 class xTargetClass

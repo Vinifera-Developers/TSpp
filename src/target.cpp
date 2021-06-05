@@ -133,6 +133,12 @@ bool Is_Target_Object(TARGET a)
 }
 
 
+bool Is_Target_TypeClass(TARGET a)
+{
+	return dynamic_cast<AbstractTypeClass *>(a);
+}
+
+
 bool xTargetClass::Is_Legal(bool check_active)
 {
 	if (RTTI == RTTI_NONE) {
