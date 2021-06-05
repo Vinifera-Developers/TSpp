@@ -1,3 +1,30 @@
+/*******************************************************************************
+/*                     O P E N  S O U R C E  --  T S + +                      **
+/*******************************************************************************
+ *
+ *  @project       TS++
+ *
+ *  @file          BASE.H
+ *
+ *  @authors       CCHyper
+ *
+ *  @brief         Pre-built base nodes for AI houses.
+ *
+ *  @license       TS++ is free software: you can redistribute it and/or
+ *                 modify it under the terms of the GNU General Public License
+ *                 as published by the Free Software Foundation, either version
+ *                 3 of the License, or (at your option) any later version.
+ *
+ *                 TS++ is distributed in the hope that it will be
+ *                 useful, but WITHOUT ANY WARRANTY; without even the implied
+ *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ *                 PURPOSE. See the GNU General Public License for more details.
+ *
+ *                 You should have received a copy of the GNU General Public
+ *                 License along with this program.
+ *                 If not, see <http://www.gnu.org/licenses/>.
+ *
+ ******************************************************************************/
 #pragma once
 
 #include "vector.h"
@@ -14,14 +41,14 @@ class BuildingClass;
 class BaseNodeClass
 {
 	public:
-		BaseNodeClass() : Type(BUILDING_NONE), Cell(-1, -1) {}
-		BaseNodeClass(BuildingType building, Cell cell) : Type(building), Cell(cell) {}
-		bool operator == (const BaseNodeClass & node) const { return Type == node.Type && Cell == node.Cell; }
-		bool operator != (const BaseNodeClass & node) const { return Type != node.Type && Cell != node.Cell; }
+		BaseNodeClass() : Type(BUILDING_NONE), Where(-1, -1) {}
+		BaseNodeClass(BuildingType building, Cell cell) : Type(building), Where(cell) {}
+		bool operator == (const BaseNodeClass & node) const { return Type == node.Type && Where == node.Where; }
+		bool operator != (const BaseNodeClass & node) const { return Type != node.Type && Where != node.Where; }
 		bool operator > (const BaseNodeClass & node) const { return true; }
 
 		BuildingType Type;
-		Cell Cell;
+		Cell Where;
 };
 
 

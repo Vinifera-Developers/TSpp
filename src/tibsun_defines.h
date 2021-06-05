@@ -36,6 +36,7 @@
 class AbstractClass;
 class HouseClass;
 class NoInitClass;
+class WeaponTypeClass;
 
 
 /**
@@ -2393,6 +2394,15 @@ typedef struct VariableFlagStruct {
     char Name[40];
     unsigned char Value;
 } VariableFlagStruct;
+
+
+typedef struct WeaponInfoStruct
+{
+    WeaponTypeClass *Weapon;
+    Point3D FLH;
+    int BarrelLength;
+    int BarrelThickness;
+} WeaponInfoStruct;
 
 
 #pragma pack(1)
