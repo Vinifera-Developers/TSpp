@@ -28,7 +28,9 @@
 #include "tibsun_util.h"
 #include "tibsun_globals.h"
 #include "tibsun_inline.h"
+#include "msgbox.h"
 #include "tactical.h"
+#include "language.h"
 #include "wwmouse.h"
 
 
@@ -79,4 +81,17 @@ Coordinate Get_Coord_Under_Mouse()
     }
 
     return mouse_coord;
+}
+
+
+/**
+ *  Displays a simple message box, returns true on "Yes" being clicked.
+ * 
+ *  @author: CCHyper
+ */
+bool Simple_YesNo_WWMessageBox(const char *msg)
+{
+    const char *btn1 = Text_String(TXT_YES);
+    const char *btn2 = Text_String(TXT_NO);
+    return WWMessageBox().Process(msg, 0, btn1, btn2) == 0; // 0 == button 1
 }
