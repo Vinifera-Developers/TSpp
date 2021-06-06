@@ -57,8 +57,8 @@ class MovieClass
 		int field_18;
 		int field_1C;
 		int field_20;
-		Rect field_24;
-		Rect field_34;
+		Rect VideoRect;
+		Rect StretchRect;
 		bool field_44;
 		bool field_45;
 };

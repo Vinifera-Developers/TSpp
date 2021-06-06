@@ -27,6 +27,11 @@
  ******************************************************************************/
 #pragma once
 
+#include "always.h"
+
+
+class Rect;
+
 
 void Call_Back();
 void Load_Keyboard_Hotkeys();

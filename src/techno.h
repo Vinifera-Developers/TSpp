@@ -232,7 +232,6 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 006391B0
         // 00639810
         // 00639BB0
-        // 00639C30
         // 00639C60
         // 00639EF0
         // 00639F80
@@ -256,6 +255,8 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 	        int z_xoff = 0,
 	        int z_yoff = 0,
             ShapeFlagsType flags = SHAPE_NORMAL) const;
+
+        static void Reset_Action_Line_Timer();
 
     public:
         SideType ActLike;
