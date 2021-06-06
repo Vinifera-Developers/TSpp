@@ -4331,6 +4331,7 @@ DEFINE_IMPLEMENTATION(void Wait_Blit(), 0x00473330);
 DEFINE_IMPLEMENTATION(void Set_DD_Palette(void *), 0x00473280);
 DEFINE_IMPLEMENTATION(LRESULT CALLBACK Main_Window_Procedure(HWND, UINT, WPARAM, LPARAM), 0x00685BC0);
 DEFINE_IMPLEMENTATION(bool func_6A83E0(Rect &, const Rect &, Rect &, const Rect &), 0x006A83E0);
+DEFINE_IMPLEMENTATION(void Unselect_All(), 0x00463180);
 
 
 /**
@@ -4419,6 +4420,7 @@ unsigned &Seed = Make_Global<unsigned>(0x007E4934);
 unsigned &CustomSeed = Make_Global<unsigned>(0x007E4938);
 bool &UserInputLocked = Make_Global<bool>(0x007E493C);
 int &ScenarioInit = Make_Global<int>(0x007E4394);
+bool &AllowVoice = Make_Global<bool>(0x006FB624);
 PaletteClass &BlackPalette = Make_Global<PaletteClass>(0x0074A138);
 PaletteClass &WaypointPalette = Make_Global<PaletteClass>(0x0074A438);
 PaletteClass &CCPalette = Make_Global<PaletteClass>(0x0074A738);

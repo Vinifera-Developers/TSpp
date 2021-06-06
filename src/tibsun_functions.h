@@ -41,3 +41,5 @@ void Set_DD_Palette(void *rpalette);
 LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
 bool func_6A83E0(Rect &torect, const Rect &toarea, Rect &fromrect, const Rect &fromarea);
+
+void Unselect_All();

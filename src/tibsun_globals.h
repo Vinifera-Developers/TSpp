@@ -222,6 +222,7 @@ extern unsigned &Seed;
 extern unsigned &CustomSeed;
 extern bool &UserInputLocked;
 extern int &ScenarioInit;
+extern bool &AllowVoice;
 extern PaletteClass &BlackPalette;
 extern PaletteClass &WaypointPalette;
 extern PaletteClass &CCPalette;
