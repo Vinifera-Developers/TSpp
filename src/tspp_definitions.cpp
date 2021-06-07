@@ -208,6 +208,7 @@
 #include "drivelocomotion.h"
 #include "cd.h"
 #include "vqa.h"
+#include "progressscreen.h"
 #include "tibsun_functions.h"
 
 
@@ -4316,6 +4317,20 @@ DEFINE_IMPLEMENTATION(bool VQA_Flip_Option(VQAOptionType), 0x0066C7C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VQAClass::VQAClass(const char *, int, int, int, int, int, int), 0x0066B290);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(VQAClass::~VQAClass(), 0x0066B540);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ProgressScreenClass::ProgressScreenClass(), 0x005AD890);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(ProgressScreenClass::~ProgressScreenClass(), 0x005AD8C0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Init(double, int, bool), 0x005AD8D0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Reset(), 0x005AD990);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Draw_Graphics(const ShapeFileStruct *, const char *, const char *, int, int), 0x005AD9A0);
+DEFINE_IMPLEMENTATION(double ProgressScreenClass::Get_Total_Progress(), 0x005ADCB0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Draw_Bars_And_Text(int, int), 0x005ADCE0);
+DEFINE_IMPLEMENTATION(Rect ProgressScreenClass::Get_Bar_Dimensions(), 0x005ADFF0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Update_Progress(int, double, int, int), 0x005AE050);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Add_Progress(int, double, int, int), 0x005AE0A0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Init_Dialog(), 0x005AE0F0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Destroy_Dialog(), 0x005AE130);
+DEFINE_IMPLEMENTATION(LRESULT CALLBACK ProgressScreenClass::Dialog_Proc(HWND, UINT, WPARAM, LPARAM), 0x005AE150);
+
 
 /**
  *  Various global functions
@@ -4466,7 +4481,8 @@ bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
 bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
 int &NewINIFormat = Make_Global<int>(0x007E491C);
 bool &GameInFocus = Make_Global<bool>(0x007E4920);
-extern ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
+ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
+ProgressScreenClass &ProgressScreen = Make_Global<ProgressScreenClass>(0x00809730);
 
 
 /**

@@ -138,6 +138,7 @@ class Rect;
 class PaletteClass;
 class PKey;
 class CCINIClass;
+class ProgressScreenClass;
 class SystemTimerClass;
 
 enum KeyNumType;
@@ -268,6 +269,7 @@ extern bool &Cheat_TheTeam;
 extern int &NewINIFormat;
 extern bool &GameInFocus;
 extern ParticleSystemClass *&GasCloudSys;
+extern ProgressScreenClass &ProgressScreen;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

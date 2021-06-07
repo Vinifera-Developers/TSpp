@@ -42,16 +42,16 @@ function(SetupProjectFilters REMOVE_FOLDER)
 #			set(group "root")
 			
 		# Group resources into "Resource Files"
-		elseif(("${arg_file}" MATCHES ".*\\res"
-		    OR "${arg_file}" MATCHES ".*\\resource"
-		    OR "${arg_file}" MATCHES ".*\\resources")
-		  AND ("${arg_file}" MATCHES ".*\\.h"
-			OR "${arg_file}" MATCHES ".*\\.ico"
-			OR "${arg_file}" MATCHES ".*\\.cur"
-			OR "${arg_file}" MATCHES ".*\\.rc"))
-			set(group "Resource Files")
-#			message(STATUS "Added Resource: ${arg_file}")
-			
+#		elseif(("${arg_file}" MATCHES ".*\\res"
+#		    OR "${arg_file}" MATCHES ".*\\resource"
+#		    OR "${arg_file}" MATCHES ".*\\resources")
+#		  AND ("${arg_file}" MATCHES ".*\\.h"
+#			OR "${arg_file}" MATCHES ".*\\.ico"
+#			OR "${arg_file}" MATCHES ".*\\.cur"
+#			OR "${arg_file}" MATCHES ".*\\.rc"))
+#			set(group "Resource Files")
+##			message(STATUS "Added Resource: ${arg_file}")
+#			
 		# Group .c and .cpp into "Source Files"
 		elseif("${arg_file}" MATCHES ".*\\.c"
 			OR "${arg_file}" MATCHES ".*\\.cpp"
