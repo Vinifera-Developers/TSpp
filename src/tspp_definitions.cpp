@@ -209,6 +209,7 @@
 #include "cd.h"
 #include "vqa.h"
 #include "progressscreen.h"
+#include "endgame.h"
 #include "tibsun_functions.h"
 
 
@@ -4331,6 +4332,13 @@ DEFINE_IMPLEMENTATION(void ProgressScreenClass::Init_Dialog(), 0x005AE0F0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Destroy_Dialog(), 0x005AE130);
 DEFINE_IMPLEMENTATION(LRESULT CALLBACK ProgressScreenClass::Dialog_Proc(HWND, UINT, WPARAM, LPARAM), 0x005AE150);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(EndGameClass::EndGameClass(), 0x00493860);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(EndGameClass::~EndGameClass(), 0x00493890);
+DEFINE_IMPLEMENTATION(void EndGameClass::Record(), 0x004938A0);
+DEFINE_IMPLEMENTATION(void EndGameClass::Apply(), 0x00493920);
+DEFINE_IMPLEMENTATION(void EndGameClass::Load(IStream *), 0x00493A30);
+DEFINE_IMPLEMENTATION(void EndGameClass::Save(IStream *), 0x00493A50);
+
 
 /**
  *  Various global functions
@@ -4483,6 +4491,7 @@ int &NewINIFormat = Make_Global<int>(0x007E491C);
 bool &GameInFocus = Make_Global<bool>(0x007E4920);
 ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
 ProgressScreenClass &ProgressScreen = Make_Global<ProgressScreenClass>(0x00809730);
+EndGameClass &EndGame = Make_Global<EndGameClass>(0x007A2ED0);
 
 
 /**

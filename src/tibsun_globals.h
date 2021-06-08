@@ -139,6 +139,7 @@ class PaletteClass;
 class PKey;
 class CCINIClass;
 class ProgressScreenClass;
+class EndGameClass;
 class SystemTimerClass;
 
 enum KeyNumType;
@@ -270,6 +271,7 @@ extern int &NewINIFormat;
 extern bool &GameInFocus;
 extern ParticleSystemClass *&GasCloudSys;
 extern ProgressScreenClass &ProgressScreen;
+extern EndGameClass &EndGame;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
