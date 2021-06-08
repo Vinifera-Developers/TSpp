@@ -132,6 +132,7 @@ class ParticleSystemClass;
 class IsometricTileClass;
 class RadarEventClass;
 class InfantryClass;
+class TubeClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -272,6 +273,8 @@ extern bool &GameInFocus;
 extern ParticleSystemClass *&GasCloudSys;
 extern ProgressScreenClass &ProgressScreen;
 extern EndGameClass &EndGame;
+extern bool &bool_007E48FC;
+extern bool &bool_007E4040;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
@@ -340,6 +343,7 @@ extern DynamicVectorClass<ParticleSystemClass *> &ParticleSystems;
 extern DynamicVectorClass<IsometricTileClass *> &IsoTiles;
 extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
 extern DynamicVectorClass<InfantryClass *> &Infantry;
+extern DynamicVectorClass<TubeClass *> &Tubes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

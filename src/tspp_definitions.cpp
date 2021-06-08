@@ -210,6 +210,7 @@
 #include "vqa.h"
 #include "progressscreen.h"
 #include "endgame.h"
+#include "tube.h"
 #include "tibsun_functions.h"
 
 
@@ -4243,7 +4244,7 @@ DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Ok_To_End(), 0x0066E760);
 DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::Piggyback_CLSID(CLSID *), 0x0066E790);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Piggybacking(), 0x0066E9C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WalkLocomotionClass::WalkLocomotionClass(), 0x0066CA60);
-WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D96C8; *((unsigned long *)this+4) = (unsigned long)0x006D9600; *((unsigned long *)this+4) = (unsigned long)0x006D95DC; }
+WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D96C8; *((unsigned long *)this+4) = (unsigned long)0x006D9600; *((unsigned long *)this+8) = (unsigned long)0x006D95DC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(WalkLocomotionClass::~WalkLocomotionClass(), 0x0066CAD0);
 DEFINE_IMPLEMENTATION(int WalkLocomotionClass::Size_Of(bool) const, 0x0066E9F0);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Internal_Process(bool), 0x0066CE10);
@@ -4284,7 +4285,7 @@ DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Ok_To_End(), 0x0047D340);
 DEFINE_IMPLEMENTATION(HRESULT DriveLocomotionClass::Piggyback_CLSID(CLSID *), 0x0047CFE0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Piggybacking(), 0x00482310);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DriveLocomotionClass::DriveLocomotionClass(), 0x0047CF10);
-DriveLocomotionClass::DriveLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CF824; *((unsigned long *)this+4) = (unsigned long)0x006CF75C; *((unsigned long *)this+4) = (unsigned long)0x006CF738; }
+DriveLocomotionClass::DriveLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CF824; *((unsigned long *)this+4) = (unsigned long)0x006CF75C; *((unsigned long *)this+8) = (unsigned long)0x006CF738; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(DriveLocomotionClass::~DriveLocomotionClass(), 0x0047CFB0);
 DEFINE_IMPLEMENTATION(int DriveLocomotionClass::Size_Of(bool) const, 0x00482330);
 // 0047D370
@@ -4338,6 +4339,21 @@ DEFINE_IMPLEMENTATION(void EndGameClass::Record(), 0x004938A0);
 DEFINE_IMPLEMENTATION(void EndGameClass::Apply(), 0x00493920);
 DEFINE_IMPLEMENTATION(void EndGameClass::Load(IStream *), 0x00493A30);
 DEFINE_IMPLEMENTATION(void EndGameClass::Save(IStream *), 0x00493A50);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TubeClass::GetClassID(CLSID *), 0x0064B5B0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TubeClass::Load(IStream *), 0x0064B080);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TubeClass::Save(IStream *, BOOL), 0x0064B0C0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TubeClass::TubeClass(Cell &, FacingType), 0x0064AED0);
+TubeClass::TubeClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8928; *((unsigned long *)this+4) = (unsigned long)0x006D890C; }
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(TubeClass::~TubeClass(), 0x0064AFC0);
+DEFINE_IMPLEMENTATION(RTTIType TubeClass::Kind_Of() const, 0x0064B5A0);
+DEFINE_IMPLEMENTATION(int TubeClass::Size_Of(bool) const, 0x0064B590);
+DEFINE_IMPLEMENTATION(void TubeClass::Compute_CRC(WWCRCEngine &) const, 0x0064B510);
+DEFINE_IMPLEMENTATION(void TubeClass::Add_Direction(FacingType), 0x0064B4B0);
+DEFINE_IMPLEMENTATION(bool TubeClass::Is_Next_Cell(Cell &), 0x0064B0E0);
+DEFINE_IMPLEMENTATION(void TubeClass::Assign_Tubes(), 0x0064B0E0);
+DEFINE_IMPLEMENTATION(void TubeClass::Read_Scenario_INI(CCINIClass &), 0x0064B2A0);
+DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass &), 0x0064B160);
 
 
 /**
@@ -4531,6 +4547,8 @@ ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
 bool &CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
 int &CD::RequiredCD = Make_Global<int>(0x006F5558);
+bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);
+bool &bool_007E4040 = Make_Global<bool>(0x007E4040);
 
 
 /**
@@ -4603,6 +4621,7 @@ DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<Dynamic
 DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorClass<IsometricTileClass *>>(0x007482A0);
 DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorClass<RadarEventClass *>>(0x0080A110);
 DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
+DynamicVectorClass<TubeClass *> &Tubes = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
