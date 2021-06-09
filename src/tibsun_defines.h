@@ -168,7 +168,32 @@ typedef enum DirType
 DEFINE_ENUMERATION_OPERATORS(DirType);
 
 typedef enum MPHType {} MPHType;
-typedef enum CrateType {} CrateType;
+
+typedef enum CrateType
+{
+    CRATE_MONEY,
+    CRATE_UNIT,
+    CRATE_HEAL_BASE,
+    CRATE_CLOAK,
+    CRATE_EXPLOSION,
+    CRATE_NAPALM,
+    CRATE_SQUAD,
+    CRATE_DARKNESS,
+    CRATE_REVEAL,
+    CRATE_ARMOR,
+    CRATE_SPEED,
+    CRATE_FIREPOWER,
+    CRATE_ICBM,
+    CRATE_INVULN,
+    CRATE_VETERAN,
+    CRATE_ION_STORM,
+    CRATE_GAS,
+    CRATE_TIBERIUM,
+    CRATE_POD,
+
+    CRATE_COUNT
+} CrateType;
+DEFINE_ENUMERATION_OPERATORS(CrateType);
 
 typedef enum VocType
 {
