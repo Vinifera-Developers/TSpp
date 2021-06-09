@@ -257,6 +257,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
             ShapeFlagsType flags = SHAPE_NORMAL) const;
 
         static void Reset_Action_Line_Timer();
+        static void Set_Action_Lines(bool set);
 
     public:
         SideType ActLike;
