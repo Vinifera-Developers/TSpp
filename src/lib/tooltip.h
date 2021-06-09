@@ -86,7 +86,7 @@ class ToolTipManager
 
         bool Is_ToolTip_Showing() { return CurrentToolTip != nullptr; }
 
-    protected:
+    public:
         HWND Window;
         bool IsActive;
         Point2D LastMousePos;

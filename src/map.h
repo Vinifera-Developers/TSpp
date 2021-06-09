@@ -133,7 +133,7 @@ class MapClass : public GScreenClass
         // 00515F90
         // 00516060
         // 005160F0
-        Cell Nearby_Location(Cell &cell, SpeedType speed, int zone, MZoneType check, bool check_flagged, int a6 = 0, int a7 = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, Cell a12 = Cell(0,0)) const;
+        Cell Nearby_Location(Cell &cell, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, bool check_flagged = false, int a6 = 1, int a7 = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, Cell &a12 = Cell(0,0)) const;
         // 00516BE0
         bool Base_Region(Cell &cell, HousesType &house, ZoneType &zone) const;
         // 00516DA0
@@ -264,6 +264,8 @@ class MapClass : public GScreenClass
         // 0052D990
         // 0052DBC0
 
+        bool Place_Crate(Cell where);
+
     public:
         void *field_10;
         void *field_14;
@@ -297,9 +299,9 @@ class MapClass : public GScreenClass
         int field_148;
         DynamicVectorClass<CrackedIceStruct> field_14C;
         VectorClass<CellClass *> Array;
-        int	XSize;
-        int	YSize;
-        int	Size;
+        int XSize;
+        int YSize;
+        int Size;
         CrateClass Crates[256];
         char Redraws;
         DynamicVectorClass<Cell> CellTags;

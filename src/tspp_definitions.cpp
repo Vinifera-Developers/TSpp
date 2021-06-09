@@ -1518,7 +1518,7 @@ DEFINE_IMPLEMENTATION(bool MapClass::Place_Random_Crate(), 0x00514500);
 DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(Cell &), 0x005145D0);
 DEFINE_IMPLEMENTATION(int MapClass::MapClass::Validate(), 0x005147E0);
 DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(Coordinate &) const, 0x005147F0);
-DEFINE_IMPLEMENTATION(Cell MapClass::Nearby_Location(Cell &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, Cell) const, 0x005161A0);
+DEFINE_IMPLEMENTATION(Cell MapClass::Nearby_Location(Cell &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, Cell &) const, 0x005161A0);
 DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(Cell &, HousesType &, ZoneType &) const, 0x00516CB0);
 DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
