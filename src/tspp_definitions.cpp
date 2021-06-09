@@ -279,6 +279,7 @@ DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Get(), 0x004FAF80);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Put(unsigned short), 0x004FB0C0);
 DEFINE_IMPLEMENTATION(void WWKeyboardClass::Clear(), 0x004FB4F0);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Down(unsigned short), 0x004FB390);
+DEFINE_IMPLEMENTATION(BOOL WWKeyboardClass::Message_Handler(HWND, UINT, UINT, LONG), 0x004FB560);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(OptionsClass::OptionsClass(), 0x00589960);
 DEFINE_IMPLEMENTATION(void OptionsClass::One_Time(), 0x00589A20);

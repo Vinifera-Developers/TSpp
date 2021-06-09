@@ -619,6 +619,8 @@ class WWKeyboardClass
         void Clear();
         bool Down(unsigned short key);
 
+        BOOL Message_Handler(HWND hWnd, UINT uMsg, UINT wParam, LONG lParam);
+
     public:
         int MouseQX;
         int MouseQY;
