@@ -275,6 +275,7 @@ extern ProgressScreenClass &ProgressScreen;
 extern EndGameClass &EndGame;
 extern bool &bool_007E48FC;
 extern bool &bool_007E4040;
+extern unsigned &FramesPerSecond;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

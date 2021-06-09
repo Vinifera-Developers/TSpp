@@ -40,6 +40,7 @@ class TeamTypeClass;
 class ScriptClass;
 class HouseClass;
 class FootClass;
+class TechnoClass;
 class TagClass;
 
 

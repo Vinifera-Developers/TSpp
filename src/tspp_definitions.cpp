@@ -4510,6 +4510,9 @@ bool &GameInFocus = Make_Global<bool>(0x007E4920);
 ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
 ProgressScreenClass &ProgressScreen = Make_Global<ProgressScreenClass>(0x00809730);
 EndGameClass &EndGame = Make_Global<EndGameClass>(0x007A2ED0);
+bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);
+bool &bool_007E4040 = Make_Global<bool>(0x007E4040);
+unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
 
 
 /**
@@ -4549,8 +4552,6 @@ ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
 bool &CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
 int &CD::RequiredCD = Make_Global<int>(0x006F5558);
-bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);
-bool &bool_007E4040 = Make_Global<bool>(0x007E4040);
 
 
 /**
