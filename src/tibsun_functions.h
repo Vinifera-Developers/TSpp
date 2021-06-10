@@ -48,3 +48,6 @@ LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, L
 bool func_6A83E0(Rect &torect, const Rect &toarea, Rect &fromrect, const Rect &fromarea);
 
 void Unselect_All();
+
+bool Prep_For_Side(SideType side);
+bool Prep_Speech_For_Side(SideType side);
