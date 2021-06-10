@@ -67,6 +67,6 @@ SideClass : public AbstractTypeClass
         static const char *Name_From(SideType type);
         static const SideClass *Find_Or_Make(const char *name);
 
-    protected:
+    public:
         TypeList<HousesType> Houses;
 };

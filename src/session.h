@@ -227,7 +227,7 @@ class SessionClass
         int Locale2;
         bool StoreNick;
         int LastNickSlot;
-        bool field_A8;
+        bool IsGDI;
         int MaxPlayers;
         int NumPlayers;
         unsigned long MaxAhead;

@@ -36,6 +36,7 @@
 #include "special.h"
 
 
+class CCINIClass;
 class CellClass;
 class TechnoTypeClass;
 
@@ -45,6 +46,8 @@ class ScenarioClass
     public:
         ScenarioClass();
         ~ScenarioClass();
+
+        bool Read_Basic(CCINIClass &ini);
 
         Cell Get_Waypoint_Location(int wp) const;
         CellClass *Get_Waypoint_Cell(int wp) const;
@@ -107,7 +110,7 @@ class ScenarioClass
         bool IsMoneyTiberium;
         bool IsTiberiumDeathToVisceroid;
         bool IsIgnoreGlobalAITriggers;
-        bool field_1D91;                    // Is GDI or NOD?
+        bool IsGDI;
         bool IsMultiplayerOnly;
         bool IsRandom;
         bool CratePickedUp;
@@ -134,7 +137,7 @@ class ScenarioClass
         bool field_1E38;                    // Currently reading scenario ini?
         int InitTime;
         AddonType RequiredAddOn;
-        int SpeechSide;
+        SideType SpeechSide;
         unsigned short Stage;
         bool UserInputLocked;
 };
