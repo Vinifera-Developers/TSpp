@@ -60,6 +60,11 @@ struct ToolTipText
 class ToolTipManager
 {
     public:
+        enum {
+            TIMER_ID = 'TTIP', // Timer identifier.
+        };
+
+    public:
         ToolTipManager(HWND hWnd);
         virtual ~ToolTipManager();
 
@@ -85,6 +90,9 @@ class ToolTipManager
         int Get_Count() const;
 
         bool Is_ToolTip_Showing() { return CurrentToolTip != nullptr; }
+
+        ToolTip * Find_From_Pos(Point2D &point);
+        bool Process();
 
     public:
         HWND Window;

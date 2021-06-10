@@ -886,6 +886,8 @@ DEFINE_IMPLEMENTATION(bool ToolTipManager::Find(int id, ToolTip *), 0x00647980);
 DEFINE_IMPLEMENTATION(bool ToolTipManager::Add(const ToolTip *), 0x00647640);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Remove(int), 0x006477F0);
 DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Count() const, 0x00647630);
+DEFINE_IMPLEMENTATION(ToolTip * ToolTipManager::Find_From_Pos(Point2D &), 0x00647AF0);
+DEFINE_IMPLEMENTATION(bool ToolTipManager::Process(), 0x00647B90);
 
 CCToolTip::CCToolTip(HWND hWnd) : ToolTipManager(hWnd), field_15C(false), Style(TPF_MAP) { Set_Timer_Delay(500); *((unsigned long *)this) = (unsigned long)0x006D9E4C; }
 CCToolTip::~CCToolTip() {}
