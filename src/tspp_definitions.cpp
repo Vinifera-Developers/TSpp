@@ -2130,6 +2130,8 @@ DEFINE_IMPLEMENTATION(void HouseClass::Init_Remap_Color(), 0x004CBAA0);
 // 004CBC40
 DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
 DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
+DEFINE_IMPLEMENTATION(void HouseClass::Read_Scenario_INI(CCINIClass &), 0x004C2E40);
+DEFINE_IMPLEMENTATION(void HouseClass::Write_Scenario_INI(CCINIClass &), 0x004C31B0);
 DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeClass(), 0x006439B0);

@@ -229,9 +229,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         FactoryClass *Fetch_Factory(RTTIType rtti) const;
         void Set_Factory(RTTIType rtti, FactoryClass * factory);
         int Factory_Count(RTTIType rtti) const;
-        // 004C2E40
         void Read_INI(CCINIClass &ini);
-        // 004C31B0
         void Write_INI(CCINIClass &ini) const;
         bool Is_Allowed_To_Ally(HouseClass *house) const;
         void Adjust_Power(int adjust);
@@ -304,6 +302,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
 
         static void One_Time();
         static void Computer_Paranoid();
+        static void Read_Scenario_INI(CCINIClass &ini);
+        static void Write_Scenario_INI(CCINIClass &ini);
 
         static HouseClass *As_Pointer(HousesType house);
         static HouseClass &As_Reference(HousesType house) { return *As_Pointer(house); }
