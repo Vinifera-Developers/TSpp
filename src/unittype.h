@@ -103,7 +103,7 @@ UnitTypeClass : public TechnoTypeClass
         bool IsPassive;
         bool IsCrateGoodie;
         bool IsToHarvest;
-        bool IsWeeder;
+        bool IsToVeinHarvest;
         bool IsFireAnim;
         bool IsLockTurret;
         bool IsNoFireWhileMoving;

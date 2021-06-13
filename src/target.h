@@ -71,62 +71,71 @@ bool Is_Target_Animation(TARGET a);
 bool Is_Target_Object(TARGET a);
 bool Is_Target_TypeClass(TARGET a);
 
+InfantryClass *Target_As_Infantry(TARGET a, bool use_dynamic_cast = true);
+BulletClass *Target_As_Bullet(TARGET a, bool use_dynamic_cast = true);
+TerrainClass *Target_As_Terrain(TARGET a, bool use_dynamic_cast = true);
+CellClass *Target_As_Cell(TARGET a, bool use_dynamic_cast = true);
+UnitClass *Target_As_Unit(TARGET a, bool use_dynamic_cast = true);
+BuildingClass *Target_As_Building(TARGET a, bool use_dynamic_cast = true);
+AircraftClass *Target_As_Aircraft(TARGET a, bool use_dynamic_cast = true);
+AnimClass *Target_As_Animation(TARGET a, bool use_dynamic_cast = true);
+
 
 class xTargetClass
 {
-	public:
-		operator RTTIType () const { return RTTIType(RTTI); }
+    public:
+        operator RTTIType () const { return RTTIType(RTTI); }
 
-		bool operator == (xTargetClass &tgt) { return tgt.RTTI == RTTI; }
-		bool operator != (xTargetClass &tgt) { return tgt.RTTI != RTTI; }
+        bool operator == (xTargetClass &tgt) { return tgt.RTTI == RTTI; }
+        bool operator != (xTargetClass &tgt) { return tgt.RTTI != RTTI; }
 
-		int Value() const { return ID; }
-		RTTIType Kind() const { return RTTIType(RTTI); }
+        int Value() const { return ID; }
+        RTTIType Kind() const { return RTTIType(RTTI); }
 
-		void Invalidate() { RTTI = RTTI_NONE; ID = 0; }
-		bool Is_Valid() const { return RTTI != RTTI_NONE; }
+        void Invalidate() { RTTI = RTTI_NONE; ID = 0; }
+        bool Is_Valid() const { return RTTI != RTTI_NONE; }
 
-		int Pack() const;
-		TargetClass Unpack(int target);
+        int Pack() const;
+        TargetClass Unpack(int target);
 
-		bool Is_Legal(bool check_active = false);
+        bool Is_Legal(bool check_active = false);
 
-		AbstractTypeClass *As_TypeClass() const;
-		TagClass *As_Tag() const;
-		TagTypeClass *As_TagType() const;
-		AbstractClass *As_Abstract() const;
-		TechnoClass *As_Techno() const;
-		ObjectClass *As_Object() const;
-		FootClass *As_Foot() const;
-		TriggerClass *As_Trigger() const;
-		HouseClass *As_House() const;
-		TechnoTypeClass *As_TechnoType() const;
-		TriggerTypeClass *As_TriggerType() const;
-		TeamTypeClass *As_TeamType() const;
-		TerrainClass *As_Terrain() const;
-		BulletClass *As_Bullet() const;
-		AnimClass *As_Anim() const;
-		TeamClass *As_Team() const;
-		InfantryClass *As_Infantry() const;
-		UnitClass *As_Unit() const;
-		BuildingClass *As_Building() const;
-		AircraftClass *As_Aircraft() const;
-		CellClass *As_Cell() const;
+        AbstractTypeClass *As_TypeClass() const;
+        TagClass *As_Tag() const;
+        TagTypeClass *As_TagType() const;
+        AbstractClass *As_Abstract() const;
+        TechnoClass *As_Techno() const;
+        ObjectClass *As_Object() const;
+        FootClass *As_Foot() const;
+        TriggerClass *As_Trigger() const;
+        HouseClass *As_House() const;
+        TechnoTypeClass *As_TechnoType() const;
+        TriggerTypeClass *As_TriggerType() const;
+        TeamTypeClass *As_TeamType() const;
+        TerrainClass *As_Terrain() const;
+        BulletClass *As_Bullet() const;
+        AnimClass *As_Anim() const;
+        TeamClass *As_Team() const;
+        InfantryClass *As_Infantry() const;
+        UnitClass *As_Unit() const;
+        BuildingClass *As_Building() const;
+        AircraftClass *As_Aircraft() const;
+        CellClass *As_Cell() const;
 
-		unsigned Pack_Target(TARGET t);
+        unsigned Pack_Target(TARGET t);
 
-	protected:
-		int RTTI;
-		int ID;
+    protected:
+        int RTTI;
+        int ID;
 };
 
 
 class TargetClass : public xTargetClass
 {
-	public:
-		TargetClass() { Invalidate(); }
-		TargetClass(const NoInitClass &noinit) {}
-		TargetClass(Cell &cell);
-		TargetClass(Coordinate &coord);
-		TargetClass(TARGET ptr);
+    public:
+        TargetClass() { Invalidate(); }
+        TargetClass(const NoInitClass &noinit) {}
+        TargetClass(Cell &cell);
+        TargetClass(Coordinate &coord);
+        TargetClass(TARGET ptr);
 };
