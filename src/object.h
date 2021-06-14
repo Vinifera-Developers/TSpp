@@ -152,7 +152,7 @@ class ObjectClass : public AbstractClass
         virtual Cell Get_Cell() const;
         virtual CellClass *Get_Cell_Ptr() const;
         virtual Cell Get_Target_Cell() const;
-        virtual CellClass *Get_Target_Cell_Ptr() const;
+        virtual TARGET Get_Target_Cell_Ptr() const;
         virtual int Get_Height() const;
         virtual void Set_Height(int a1) const;
         virtual int Get_Z_Coord() const;

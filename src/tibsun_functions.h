@@ -51,3 +51,5 @@ void Unselect_All();
 
 bool Prep_For_Side(SideType side);
 bool Prep_Speech_For_Side(SideType side);
+
+void Shake_The_Screen(int shakes);

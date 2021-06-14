@@ -2324,7 +2324,7 @@ DEFINE_IMPLEMENTATION(void ObjectClass::Set_Coord(Coordinate &), 0x005870C0);
 DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Cell() const, 0x0040F230);
 DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Cell_Ptr() const, 0x005870E0);
 DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Target_Cell() const, 0x00587100);
-DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Target_Cell_Ptr() const, 0x00587150);
+DEFINE_IMPLEMENTATION(TARGET ObjectClass::Get_Target_Cell_Ptr() const, 0x00587150);
 DEFINE_IMPLEMENTATION(int ObjectClass::Get_Height() const, 0x00586770);
 DEFINE_IMPLEMENTATION(void ObjectClass::Set_Height(int) const, 0x005867B0);
 DEFINE_IMPLEMENTATION(int ObjectClass::Get_Z_Coord() const, 0x00586760);
@@ -4384,6 +4384,7 @@ DEFINE_IMPLEMENTATION(bool func_6A83E0(Rect &, const Rect &, Rect &, const Rect 
 DEFINE_IMPLEMENTATION(void Unselect_All(), 0x00463180);
 DEFINE_IMPLEMENTATION(bool Prep_For_Side(SideType), 0x004E7EB0);
 DEFINE_IMPLEMENTATION(bool Prep_Speech_For_Side(SideType), 0x004E8460);
+DEFINE_IMPLEMENTATION(void Shake_The_Screen(int), 0x004633B0);
 
 
 /**
