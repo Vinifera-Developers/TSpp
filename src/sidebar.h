@@ -89,6 +89,12 @@ class SidebarClass : public PowerClass
         bool Activate(int control);
         bool Abandon_Production(RTTIType type, FactoryClass *factory);
 
+        bool Is_On_Sidebar(RTTIType type, int id)
+        {
+            int column = Which_Column(type);
+            return Column[column].Is_On_Sidebar(type, id);
+        }
+
         void Redraw_Sidebar() { IsToRedraw = true; Flag_To_Redraw(false); }
 
     public:
@@ -137,6 +143,17 @@ class SidebarClass : public PowerClass
                 // 005F6670
                 // 005F66E0
 
+                bool Is_On_Sidebar(RTTIType type, int id) const
+                {
+                    for (int i = 0; i < BuildableCount; ++i) {
+                        BuildType build = Buildables[i];
+                        if (build.BuildableType == type && build.BuildableID == id) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
             public:
                 int X;
                 int Y;
@@ -158,7 +175,8 @@ class SidebarClass : public PowerClass
                     int BuildableID;
                     RTTIType BuildableType;
                     FactoryClass *Factory;
-                } Buildables[MAX_BUILDABLES];
+                } BuildType;
+                BuildType Buildables[MAX_BUILDABLES];
 
         } Column[COLUMNS];
 

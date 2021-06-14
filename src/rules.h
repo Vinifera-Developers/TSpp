@@ -87,7 +87,7 @@ class RulesClass
         static int Get_AI_Unique_ID();
         static void Load_Art_INI();
 
-    private:         
+    public:         
         bool AudioVisual(CCINIClass &ini);
         bool CrateRules(CCINIClass &ini);
         bool CombatDamage(CCINIClass &ini);
