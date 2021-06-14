@@ -203,7 +203,12 @@ typedef enum VocType
 } VocType;
 DEFINE_ENUMERATION_OPERATORS(VocType);
 
-typedef enum VQType {} VQType;
+typedef enum VQType
+{
+    VQ_NONE = -1,
+
+    VQ_FIRST = 0
+} VQType;
 
 typedef enum ScriptType
 {

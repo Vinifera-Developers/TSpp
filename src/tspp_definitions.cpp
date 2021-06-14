@@ -211,6 +211,7 @@
 #include "progressscreen.h"
 #include "endgame.h"
 #include "tube.h"
+#include "restate.h"
 #include "tibsun_functions.h"
 
 
@@ -4362,6 +4363,8 @@ DEFINE_IMPLEMENTATION(void TubeClass::Assign_Tubes(), 0x0064B0E0);
 DEFINE_IMPLEMENTATION(void TubeClass::Read_Scenario_INI(CCINIClass &), 0x0064B2A0);
 DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass &), 0x0064B160);
 
+DEFINE_IMPLEMENTATION(void Restate_Mission(ScenarioClass *), 0x005C0230);
+
 
 /**
  *  Various global functions
@@ -4647,6 +4650,8 @@ DynamicVectorClass<TARGET> &vec_80F4F8 = Make_Global<DynamicVectorClass<TARGET>>
 DynamicVectorClass<TARGET> &vec_80F600 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F600);
 
 DynamicVectorClass<ULONG> &ClassFactories = Make_Global<DynamicVectorClass<ULONG>>(0x0080C9E0);
+
+DynamicVectorClass<const char *> &Movies = Make_Global<DynamicVectorClass<const char *>>(0x00806DD0);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

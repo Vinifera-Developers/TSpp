@@ -361,6 +361,8 @@ extern DynamicVectorClass<TARGET> &vec_80F600;
 
 extern DynamicVectorClass<ULONG> &ClassFactories;
 
+extern DynamicVectorClass<const char *> &Movies;
+
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;
