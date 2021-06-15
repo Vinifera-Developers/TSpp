@@ -276,6 +276,7 @@ extern EndGameClass &EndGame;
 extern bool &bool_007E48FC;
 extern bool &bool_007E4040;
 extern unsigned &FramesPerSecond;
+extern int &RequiredAddon;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

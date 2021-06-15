@@ -212,6 +212,7 @@
 #include "endgame.h"
 #include "tube.h"
 #include "restate.h"
+#include "addon.h"
 #include "tibsun_functions.h"
 
 
@@ -4365,6 +4366,15 @@ DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass &), 0x0064B1
 
 DEFINE_IMPLEMENTATION(void Restate_Mission(ScenarioClass *), 0x005C0230);
 
+DEFINE_IMPLEMENTATION(bool Addon_Present(), 0x00407050);
+// 00407120
+// 00407150
+// 00407190
+// 004071C0
+DEFINE_IMPLEMENTATION(bool Is_Addon_Set(AddonType), 0x004071F0);
+DEFINE_IMPLEMENTATION(AddonType Get_Required_Addon(), 0x00407200);
+DEFINE_IMPLEMENTATION(void Set_Required_Addon(AddonType), 0x00407210);
+
 
 /**
  *  Various global functions
@@ -4524,6 +4534,7 @@ EndGameClass &EndGame = Make_Global<EndGameClass>(0x007A2ED0);
 bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);
 bool &bool_007E4040 = Make_Global<bool>(0x007E4040);
 unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
+int &RequiredAddon = Make_Global<int>(0x0074C9F8);
 
 
 /**

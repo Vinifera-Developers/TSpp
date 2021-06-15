@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          MSGBOX.H
+ *  @file          ADDON.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Message boxes that use the game ui.
+ *  @brief         Expansion pack / addon utility functions.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,20 +27,15 @@
  ******************************************************************************/
 #pragma once
 
+#include "always.h"
 #include "tibsun_defines.h"
-#include "language.h"
 
 
-class WWMessageBox
-{
-	public:
-		WWMessageBox(int caption = TXT_NONE);
-
-		int Process(const char *msg, int a2, const char *b1txt, const char *b2txt = nullptr, const char *b3txt = nullptr, bool preserve = false);
-		int Process(int msg, int a2, int b1txt = TXT_OK, int b2txt = TXT_NONE, int b3txt = TXT_NONE, bool preserve = false);
-		int Process(char const *msg, int a2, int b1txt = TXT_OK, int b2txt = TXT_NONE, int b3txt = TXT_NONE, bool preserve = false);
-
-	private:
-		int Caption;
-};
-
+bool Addon_Present();
+// 00407120
+// 00407150
+// 00407190
+// 004071C0
+bool Is_Addon_Set(AddonType addon);
+AddonType Get_Required_Addon();
+void Set_Required_Addon(AddonType addon);

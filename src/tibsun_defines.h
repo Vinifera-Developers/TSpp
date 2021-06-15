@@ -102,9 +102,7 @@ class WeaponTypeClass;
 #define TICKS_PER_MINUTE    (TICKS_PER_SECOND * 60)
 #define TICKS_PER_HOUR      (TICKS_PER_MINUTE * 60)
 
-
-#define TXT_NONE    0
-#define TXT_OK      10
+#define SECONDS_TO_MILLISECONDS(x)  (x * 1000)
 
 
 #define TARGET_NONE TargetClass()
