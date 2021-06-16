@@ -242,8 +242,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C3FC0
         // 004C40F0
         // 004C4150
-        // 004C4210
-        // 004C42C0
+        Coordinate *Get_Waypoint_Coord(Cell &coord); // 004C4210
+        bool Place_Waypoint_At(Coordinate &coord, int &index, bool &a3); // 004C42C0
         // 004C4450
         // 004C45D0
         // 004C5320

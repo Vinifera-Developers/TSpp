@@ -83,8 +83,8 @@ class OptionsClass
         KeyNumType KeyForceMove2;
         KeyNumType KeyForceAttack1;
         KeyNumType KeyForceAttack2;
-        KeyNumType KeyForceSelect1;
-        KeyNumType KeyForceSelect2;
+        KeyNumType KeySelect1;
+        KeyNumType KeySelect2;
         KeyNumType KeyQueueMove1;
         KeyNumType KeyQueueMove2;
 };

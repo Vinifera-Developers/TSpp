@@ -2070,8 +2070,8 @@ DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass *), 0x004C3FA0);
 // 004C3FC0
 // 004C40F0
 // 004C4150
-// 004C4210
-// 004C42C0
+DEFINE_IMPLEMENTATION(Coordinate *HouseClass::Get_Waypoint_Coord(Cell &), 0x004C4210);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bool &), 0x004C42C0);
 // 004C4450
 // 004C45D0
 // 004C5320
