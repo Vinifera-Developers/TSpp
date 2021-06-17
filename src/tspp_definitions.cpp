@@ -213,6 +213,7 @@
 #include "tube.h"
 #include "restate.h"
 #include "addon.h"
+#include "levitatelocomotion.h"
 #include "tibsun_functions.h"
 
 
@@ -4374,6 +4375,21 @@ DEFINE_IMPLEMENTATION(bool Addon_Present(), 0x00407050);
 DEFINE_IMPLEMENTATION(bool Is_Addon_Set(AddonType), 0x004071F0);
 DEFINE_IMPLEMENTATION(AddonType Get_Required_Addon(), 0x00407200);
 DEFINE_IMPLEMENTATION(void Set_Required_Addon(AddonType), 0x00407210);
+
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LevitateLocomotionClass::GetClassID(CLSID *), 0x00500D10);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LevitateLocomotionClass::Load(IStream *), 0x00500D50);
+DEFINE_IMPLEMENTATION(HRESULT LevitateLocomotionClass::Link_To_Object(void *), 0x004FDF40);
+DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Is_Moving(), 0x00500C30);
+DEFINE_IMPLEMENTATION(Coordinate LevitateLocomotionClass::Destination(), 0x00500C70);
+DEFINE_IMPLEMENTATION(Coordinate LevitateLocomotionClass::Head_To_Coord(), 0x00500CA0);
+DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Process(), 0x00500990);
+DEFINE_IMPLEMENTATION(LayerType LevitateLocomotionClass::In_Which_Layer(), 0x00500D80);
+DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Is_Moving_Now(), 0x00500C50);
+DEFINE_IMPLEMENTATION(void LevitateLocomotionClass::Mark_All_Occupation_Bits(int), 0x00501060);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(LevitateLocomotionClass::LevitateLocomotionClass(), 0x004FDEE0);
+LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+4) = (unsigned long)0x006D373C; }
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
+DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010B0);
 
 
 /**
