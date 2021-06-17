@@ -31,6 +31,7 @@
 #include "always.h"
 #include "abstract.h"
 #include "vector.h"
+#include "waypoint.h"
 
 
 class WaypointClass;
@@ -64,7 +65,7 @@ WaypointPathClass : public AbstractClass
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        // 00673600
+        Coordinate *Get_Waypoint_Coord(int index) const; // 00673600
         // 00673620
         // 006736D0
         // 00673770

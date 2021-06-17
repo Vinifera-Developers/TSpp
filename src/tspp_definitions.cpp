@@ -3992,7 +3992,7 @@ DEFINE_IMPLEMENTATION_DESTRUCTOR(WaypointPathClass::~WaypointPathClass(), 0x0067
 DEFINE_IMPLEMENTATION(RTTIType WaypointPathClass::Kind_Of() const, 0x00673A80);
 DEFINE_IMPLEMENTATION(int WaypointPathClass::Size_Of(bool) const, 0x00673A70);
 DEFINE_IMPLEMENTATION(void WaypointPathClass::Compute_CRC(WWCRCEngine &) const, 0x00673880);
-// 00673600
+DEFINE_IMPLEMENTATION(Coordinate *WaypointPathClass::Get_Waypoint_Coord(int) const, 0x00673600);
 // 00673620
 // 006736D0
 // 00673770
