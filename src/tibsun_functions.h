@@ -53,3 +53,5 @@ bool Prep_For_Side(SideType side);
 bool Prep_Speech_For_Side(SideType side);
 
 void Shake_The_Screen(int shakes);
+
+long Owner_From_Name(const char *name);
