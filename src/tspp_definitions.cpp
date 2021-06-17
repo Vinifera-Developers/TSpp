@@ -4574,6 +4574,19 @@ ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
 bool &CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
 int &CD::RequiredCD = Make_Global<int>(0x006F5558);
+double &Levitation_Drag = Make_Global<double>(0x007001E8);
+double &Levitation_MaxVelocityWhenHappy = Make_Global<double>(0x007001F0);
+double &Levitation_MaxVelocityWhenFollowing = Make_Global<double>(0x007001F8);
+double &Levitation_MaxVelocityWhenPissedOff = Make_Global<double>(0x00700200);
+double &Levitation_AccelerationProbability = Make_Global<double>(0x00700208);
+int &Levitation_AccelerationDuration = Make_Global<int>(0x00700210);
+double &Levitation_Acceleration = Make_Global<double>(0x00700218);
+double &Levitation_InitialBoost = Make_Global<double>(0x00700220);
+int &Levitation_MaxBlockCount = Make_Global<int>(0x00700228);
+double &Levitation_IntentionalDeacceleration = Make_Global<double>(0x00700230);
+double &Levitation_IntentionalDriftVelocity = Make_Global<double>(0x00700238);
+double &Levitation_ProximityDistance = Make_Global<double>(0x00700240);
+TypeList<VocType> &Levitation_PropulsionSoundEffect = Make_Global<TypeList<VocType>>(0x00804A10);
 
 
 /**

@@ -571,3 +571,21 @@ class RulesClass
 };
 
 void Difficulty_Get(CCINIClass &ini, DifficultyClass &diff, char const *section);
+
+
+/**
+ *  Putting these here as they are loaded in RulesClass.
+ */
+extern double &Levitation_Drag;
+extern double &Levitation_MaxVelocityWhenHappy;
+extern double &Levitation_MaxVelocityWhenFollowing;
+extern double &Levitation_MaxVelocityWhenPissedOff;
+extern double &Levitation_AccelerationProbability;
+extern int &Levitation_AccelerationDuration;
+extern double &Levitation_Acceleration;
+extern double &Levitation_InitialBoost;
+extern int &Levitation_MaxBlockCount;
+extern double &Levitation_IntentionalDeacceleration;
+extern double &Levitation_IntentionalDriftVelocity;
+extern double &Levitation_ProximityDistance;
+extern TypeList<VocType> &Levitation_PropulsionSoundEffect;
