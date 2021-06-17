@@ -45,6 +45,18 @@
 class FileClass;
 
 
+/**
+ *  Define the different type of sound compression available.
+ */
+typedef enum SCompressType
+{
+    SCOMP_NONE = 0,     // No compression -- raw data.
+
+    SCOMP_WESTWOOD = 1, // Special sliding window delta compression.
+    SCOMP_SOS = 99      // SOS frame compression.
+} SCompressType;
+
+
 enum {
     PRIORITY_MIN = 0,
     PRIORITY_MAX = 255,
