@@ -236,7 +236,7 @@ class FootClass : public TechnoClass
         bool field_34A;
         bool field_34B;
         bool field_34C;
-        bool IsDriving;
+        bool field_34D;
         bool field_34E;
         bool field_34F;
 };

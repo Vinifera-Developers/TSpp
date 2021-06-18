@@ -134,7 +134,7 @@ __declspec(align(4)) class fixed
 		static const fixed _3_4;
 		static const fixed _2_3;
 
-	private:
+	public:
 #pragma pack(4) // Ensure union member is padded to 4 byte alignment.
 		union {
 			struct {
