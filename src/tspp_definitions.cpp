@@ -1832,6 +1832,10 @@ DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::sub_48A340(int), 0x0048A340);
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Start_Primary_Sound_Buffer(bool), 0x0048A520);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Stop_Primary_Sound_Buffer(), 0x0048A600);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Sound_Callback(), 0x00489A40);
+DEFINE_IMPLEMENTATION(void __cdecl sosCODECInitStream(_SOS_COMPRESS_INFO *), 0x006B2B40);
+DEFINE_IMPLEMENTATION(void __cdecl sosCODEC2InitStream(_SOS_COMPRESS_INFO_2 *), 0x006B2680);
+DEFINE_IMPLEMENTATION(int __cdecl sosCODECDecompressData(_SOS_COMPRESS_INFO *, int16_t), 0x006B26BC);
+DEFINE_IMPLEMENTATION(int __cdecl sosCODEC2DecompressData(_SOS_COMPRESS_INFO *, int16_t), 0x006B2B62);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(PreviewClass::PreviewClass(), 0x005AC010);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(PreviewClass::~PreviewClass(), 0x005AC020);

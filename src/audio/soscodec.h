@@ -109,3 +109,10 @@ typedef struct _tagCOMPRESS_HEADER
     char szName[16];             // file type, for error checking
 } _SOS_COMPRESS_HEADER;
 #pragma pack(pop)
+
+
+void __cdecl sosCODECInitStream(_SOS_COMPRESS_INFO *sSOSInfo);
+void __cdecl sosCODEC2InitStream(_SOS_COMPRESS_INFO_2 *sSOSInfo);
+
+int __cdecl sosCODECDecompressData(_SOS_COMPRESS_INFO *sSOSInfo, int16_t wBytes);
+int __cdecl sosCODEC2DecompressData(_SOS_COMPRESS_INFO_2 *sSOSInfo, int16_t wBytes);
