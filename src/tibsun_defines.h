@@ -2414,6 +2414,20 @@ typedef enum ShapeFlagsType
 DEFINE_ENUMERATION_OPERATORS(ShapeFlagsType);
 
 
+typedef enum SpecialDialogType
+{
+    SDLG_NONE,
+    SDLG_OPTIONS,
+    SDLG_SURRENDER,
+    SDLG_ABORT,
+    SDLG_KEYBOARD,
+    SDLG_SETTINGS,
+    SDLG_SOUND,
+    SDLG_WOL_OPTIONS,
+    SDLG_SPECIAL,
+} SpecialDialogType;
+
+
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
 

@@ -4416,7 +4416,8 @@ DEFINE_IMPLEMENTATION(bool Prep_For_Side(SideType), 0x004E7EB0);
 DEFINE_IMPLEMENTATION(bool Prep_Speech_For_Side(SideType), 0x004E8460);
 DEFINE_IMPLEMENTATION(void Shake_The_Screen(int), 0x004633B0);
 DEFINE_IMPLEMENTATION(long Owner_From_Name(const char *), 0x00463390);
-DEFINE_IMPLEMENTATION(void Main_Loop(), 0x00508A40);
+DEFINE_IMPLEMENTATION(bool Main_Loop(), 0x00508A40);
+DEFINE_IMPLEMENTATION(void Keyboard_Process(KeyNumType &), 0x005093B0);
 
 
 /**
@@ -4557,6 +4558,8 @@ bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);
 bool &bool_007E4040 = Make_Global<bool>(0x007E4040);
 unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
 int &RequiredAddon = Make_Global<int>(0x0074C9F8);
+bool &GameActive = Make_Global<bool>(0x007E4580);
+SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 
 
 /**
