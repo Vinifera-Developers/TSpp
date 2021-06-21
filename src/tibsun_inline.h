@@ -38,6 +38,46 @@ extern const Cell AdjacentCell[FACING_COUNT];
 extern const Coordinate AdjacentCoord[FACING_COUNT];
 
 
+inline FacingType Dir_Facing(DirType facing)
+{
+    return (FacingType)(((unsigned char)((int)facing + 0x10) & 255) >> 5);
+}
+
+
+inline DirType Facing_Dir(FacingType facing)
+{
+    return (DirType)((int)facing << 5);
+}
+
+
+inline int Dir_To_8(DirStruct &facing)
+{
+	//return (((((facing.Get_Raw() >> 12) + 1) >> 1) + 1) & 7);
+	return ((((facing.Get_Raw() + 4096) >> 13) + 1) % 8);
+}
+
+
+inline int Dir_To_16(DirStruct &facing)
+{
+	//return ((((((facing.Get_Raw() >> 11) + 1) >> 1) & 15) + 2) & 15);
+	return ((((facing.Get_Raw() + 2048) >> 12) + 2) % 16);
+}
+
+
+inline int Dir_To_32(DirStruct &facing)
+{
+	//return ((((((facing.Get_Raw() >> 10) + 1) >> 1) & 31) + 4) & 31);
+	return ((((facing.Get_Raw() + 1024) >> 11) + 4) % 32);
+}
+
+
+inline int Dir_To_64(DirStruct &facing)
+{
+	//return ((((((facing.Get_Raw() >> 9) + 1) >> 1) & 63) + 8) & 63);
+	return ((((facing.Get_Raw() + 512) >> 10) + 8) % 64);
+}
+
+
 inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
 {
     DirStruct dir;
@@ -66,6 +106,14 @@ inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
 }
 
 
+inline double Facing32_Radians(DirStruct &facing)
+{
+    int deg_90 = 8;
+    int facing32 = Dir_To_32(facing)-deg_90;
+    return ((double)facing32 * -DEG_TO_RAD(360.0 / 16.0));
+}
+
+
 inline DirStruct Desired_Facing(const Point2D &point1, const Point2D &point2)
 {
 	return Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
@@ -74,67 +122,43 @@ inline DirStruct Desired_Facing(const Point2D &point1, const Point2D &point2)
 
 inline DirType Desired_Facing256(const Point2D &point1, const Point2D &point2)
 {
-	DirType facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
+	DirType facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir();
     return facing;
 }
 
 
 inline FacingType Desired_Facing8(const Point2D &point1, const Point2D &point2)
 {
-	FacingType facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
+	FacingType facing = Dir_Facing(Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir());
     return facing;
 }
 
 
 inline DirType Direction256(const Coordinate &coord1, const Coordinate &coord2)
 {
-	DirType facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y);
+	DirType facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir();
     return facing;
 }
 
 
 inline FacingType Direction8(const Coordinate &coord1, const Coordinate &coord2)
 {
-	FacingType facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y);
+	FacingType facing = Dir_Facing(Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir());
     return facing;
 }
 
 
 inline DirType Direction256(const Cell &cell1, const Cell &cell2)
 {
-	DirType facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y);
+	DirType facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir();
     return facing;
 }
 
 
 inline FacingType Direction8(const Cell &cell1, const Cell &cell2)
 {
-	FacingType facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y);
+	FacingType facing = Dir_Facing(Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir());
     return facing;
-}
-
-
-inline FacingType Dir_Facing(DirType facing)
-{
-    return (FacingType)(((unsigned char)((int)facing + 0x10) & DIR_MAX) >> 5);
-}
-
-
-inline DirType Facing_Dir(FacingType facing)
-{
-    return (DirType)((int)facing << 5);
-}
-
-
-inline int Lepton_To_Pixel(LEPTON lepton)
-{
-    return (((int)(signed short)lepton * CELL_PIXEL_W) + (CELL_LEPTON_W / 2) - ((lepton < 0) ? (CELL_LEPTON_W - 1) : 0)) / CELL_LEPTON_W;
-}
-
-
-inline LEPTON Pixel_To_Lepton(int pixel)
-{
-    return (LEPTON)(((pixel * CELL_LEPTON_W) + (CELL_PIXEL_W / 2) - ((pixel < 0) ? (CELL_PIXEL_W - 1) : 0)) / CELL_PIXEL_W);
 }
 
 
@@ -151,6 +175,18 @@ inline int Distance(const Cell &cell1, const Cell &cell2)
     Cell cell;
     cell = cell1 - cell2;
     return cell.Length();
+}
+
+
+inline int Lepton_To_Pixel(LEPTON lepton)
+{
+    return (((int)(signed short)lepton * CELL_PIXEL_W) + (CELL_LEPTON_W / 2) - ((lepton < 0) ? (CELL_LEPTON_W - 1) : 0)) / CELL_LEPTON_W;
+}
+
+
+inline LEPTON Pixel_To_Lepton(int pixel)
+{
+    return (LEPTON)(((pixel * CELL_LEPTON_W) + (CELL_PIXEL_W / 2) - ((pixel < 0) ? (CELL_PIXEL_W - 1) : 0)) / CELL_PIXEL_W);
 }
 
 

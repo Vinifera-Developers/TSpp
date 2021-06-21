@@ -2811,53 +2811,17 @@ struct ScoutStruct
 #pragma pack(4)
 typedef struct DirStruct : public fixed
 {
-    private:
-        static inline DirType Facing_To_Dir(FacingType facing) { return (DirType)((int)facing * 32); }
-        static inline FacingType Dir_To_Facing(DirType facing) { return (FacingType)(((unsigned char)((int)facing + 16) % DIR_MAX) / 32); }
-
-        static inline DirType Facing32_To_Dir(int facing) { return (DirType)(((int)facing * 8) % DIR_MAX); }
-
-        DirType Dir() const { return (DirType)(fixed::Data.Composite.Whole); }
-        FacingType Facing() const { return (FacingType)(fixed::Data.Composite.Whole / 32); }
-        int Facing_32() const { return (int)(fixed::Data.Composite.Whole / 8); }
-
     public:
         explicit DirStruct() : fixed(0) {}
         explicit DirStruct(int raw) { Set_Raw(raw); }
-        explicit DirStruct(const DirType dir) { Set(dir); }
-        explicit DirStruct(const FacingType facing) { Set(facing); }
+        explicit DirStruct(const DirType dir) { Set_Dir(dir); }
         explicit DirStruct(const NoInitClass &noinit) {}
 
-        void Set(DirType dir) { fixed::Data.Composite.Fraction = 0U; fixed::Data.Composite.Whole = (unsigned char)(dir % DIR_MAX); }
-        void Set(FacingType facing) { fixed::Data.Composite.Fraction = 0U; fixed::Data.Composite.Whole = (unsigned char)Facing_To_Dir(facing); }
-        void Set(int facing) { fixed::Data.Composite.Fraction = 0U; fixed::Data.Composite.Whole = (unsigned char)Facing32_To_Dir(facing); }
-
-        operator DirType() const { return Dir(); }
-        operator FacingType() const { return Facing(); }
-        operator int () const { return Facing_32(); }
-
-        double As_Radians() const
-        {
-            int deg_90 = 8;
-            int facing = Facing_32()-deg_90;
-            return ((double)facing * -DEG_TO_RAD(360.0 / 16.0));
-        }
+        void Set_Dir(DirType dir) { fixed::Set_Raw(unsigned(dir % DIR_MAX) * 256); }
+        DirType Get_Dir() const { return (DirType)((((fixed::Get_Raw() / (32768/256)) + 1) / 2) & 255); }
 
         bool func_5589F0(const DirStruct &a, const DirStruct &b);
         bool func_558A20(const DirStruct &a, const DirStruct &b);
-
-        int Get_Raw() const { return fixed::Get_Raw(); }
-
-        double As_Raw_Radians() const
-        {
-            int deg_90 = 16383;
-            int facing = fixed::Get_Raw()-deg_90;
-            return ((double)facing * -DEG_TO_RAD(360.0 / (USHRT_MAX - 1)));
-        }
-
-    private:
-        //operator int () const;
-        operator double () const;
 
 } DirStruct;
 #pragma pack()
