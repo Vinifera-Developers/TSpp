@@ -194,6 +194,8 @@ class FootClass : public TechnoClass
         PathType *Find_Path(Cell &dest, int *a2, int maxlen, int a4, int a5, int a6);
         Cell Safety_Point(Cell &src, Cell &dst, int start, int max);
 
+        ILocomotion *Locomotor_Ptr() { return Locomotion; }
+
     public:
         int field_220;
         Cell field_224;
