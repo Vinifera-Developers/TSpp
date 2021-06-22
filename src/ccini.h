@@ -38,6 +38,7 @@ class Straw;
 class Pipe;
 class TechnoTypeClass;
 class xTargetClass;
+class UnitTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -151,6 +152,9 @@ class CCINIClass : public INIClass
         bool Put_Target(const char *section, const char *entry, xTargetClass &value);
 
         int Get_Unique_ID() const;
+
+        const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
+        bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
 
     private:
         void Calculate_Message_Digest();
