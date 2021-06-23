@@ -111,6 +111,10 @@ class TechnoTypeClass : public ObjectTypeClass
         const WeaponControlStruct & Fetch_Weapon_Control(WeaponSlotType slot) const;
         bool In_Range(Coordinate &coord, TARGET target, WeaponTypeClass *weapon);
 
+        static const TechnoTypeClass &As_Reference(const char *name);
+        static const TechnoTypeClass *As_Pointer(const char *name);
+        static const TechnoTypeClass *From_Name(const char *name);
+
     public:
         double CollateralDamageCoefficient;
         int WalkRate;
