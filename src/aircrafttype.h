@@ -80,6 +80,10 @@ AircraftTypeClass : public TechnoTypeClass
         static const char *Name_From(AircraftType type);
         static const AircraftTypeClass *Find_Or_Make(const char *name);
 
+    public:
+        static const void *&LRotorData;
+        static const void *&RRotorData;
+
 	public:
 		AircraftType Type;
 		bool IsCarryall;

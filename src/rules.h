@@ -174,8 +174,8 @@ class RulesClass
         TypeList<int> PrerequisiteBarracks;
         TypeList<int> PrerequisiteRadar;
         TypeList<int> PrerequisiteTech;
-        VocType GateUp;
-        VocType GateDown;
+        VocType GateUpSound;
+        VocType GateDownSound;
         int JumpjetTurnRate;
         int JumpjetSpeed;
         double JumpjetClimb;

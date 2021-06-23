@@ -80,8 +80,6 @@ TiberiumClass : public AbstractTypeClass
          */
         virtual bool Read_INI(CCINIClass &ini) override;
 
-        void Process(CCINIClass &ini);
-
         void Spread_AI();
         void Spread_Init_Clear();
         void Spread();
@@ -99,6 +97,8 @@ TiberiumClass : public AbstractTypeClass
         // 00646510
         // 00646680
         void Add_Growth_Cell(Cell &cell);
+
+        static void Process(CCINIClass &ini);
 
         static void Init_Cells();
         static void Init();

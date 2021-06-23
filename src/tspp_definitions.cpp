@@ -4612,6 +4612,8 @@ double &Levitation_IntentionalDeacceleration = Make_Global<double>(0x00700230);
 double &Levitation_IntentionalDriftVelocity = Make_Global<double>(0x00700238);
 double &Levitation_ProximityDistance = Make_Global<double>(0x00700240);
 TypeList<VocType> &Levitation_PropulsionSoundEffect = Make_Global<TypeList<VocType>>(0x00804A10);
+const void *&AircraftTypeClass::LRotorData = Make_Global<const void *>(0x0074CBDC);
+const void *&AircraftTypeClass::RRotorData = Make_Global<const void *>(0x0074CBE0);
 
 
 /**

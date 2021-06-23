@@ -31,9 +31,16 @@
 #include "tibsun_defines.h"
 
 
+class XSurface;
+class ConvertClass;
+struct ShapeFileStruct;
+class Point2D;
+class Rect;
+
+
 /**
- *  All draw shape calls will route through these functions. It handles all draws for
- *  the C&C engine.	
+ *  All draw shape calls will route through these functions. It handles all
+ *  draws for the C&C engine.	
  */
 void CC_Draw_Shape(
 	XSurface *surface,						// Destination surface to draw the shape to.

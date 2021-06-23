@@ -27,7 +27,23 @@
  *
  ******************************************************************************/
 #include "ccini.h"
+#include "voc.h"
 #include "unittype.h"
+
+
+/**
+ *  Fetch a voc (sound effect) from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+VocType CCINIClass::Get_VocType(const char *section, const char *entry, const VocType defvalue)
+{
+	char buffer[1024];
+
+	INIClass::Get_String(section, entry, VocClass::Name_From(defvalue), buffer, sizeof(buffer));
+
+	return VocClass::From_Name(buffer);
+}
 
 
 /**

@@ -77,7 +77,7 @@ class GScreenClass : public IGameMap
     public:
         static GadgetClass *&Buttons;
 
-    private:
+    public:
         int ScreenX;
         int ScreenY;
         unsigned IsToRedraw:1;

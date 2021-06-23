@@ -2412,6 +2412,7 @@ typedef enum ShapeFlagsType
 
 } ShapeFlagsType;
 DEFINE_ENUMERATION_OPERATORS(ShapeFlagsType);
+DEFINE_ENUMERATION_BITWISE_OPERATORS(ShapeFlagsType);
 
 
 typedef enum SpecialDialogType

@@ -153,6 +153,8 @@ class CCINIClass : public INIClass
 
         int Get_Unique_ID() const;
 
+        VocType Get_VocType(const char *section, const char *entry, const VocType defvalue);
+
         const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
         bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
 
