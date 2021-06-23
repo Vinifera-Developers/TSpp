@@ -90,9 +90,10 @@ const SuperWeaponTypeClass *SuperWeaponTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    SpecialWeaponType type = From_Name(name);
-    if (type != SPECIAL_NONE) {
-        return As_Pointer(type);
+    for (SpecialWeaponType index = SPECIAL_FIRST; index < SuperWeaponTypes.Count(); ++index) {
+        if (!strcasecmp(SuperWeaponTypes[index]->Name(), name)) {
+            return SuperWeaponTypes[index];
+        }
     }
 
     SuperWeaponTypeClass *ptr = new SuperWeaponTypeClass(name);

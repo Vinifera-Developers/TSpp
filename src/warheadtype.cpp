@@ -90,9 +90,10 @@ const WarheadTypeClass *WarheadTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    WarheadType type = From_Name(name);
-    if (type != WARHEAD_NONE) {
-        return As_Pointer(type);
+    for (WarheadType index = WARHEAD_FIRST; index < WarheadTypes.Count(); ++index) {
+        if (!strcasecmp(WarheadTypes[index]->Name(), name)) {
+            return WarheadTypes[index];
+        }
     }
 
     WarheadTypeClass *ptr = new WarheadTypeClass(name);

@@ -159,9 +159,10 @@ const ScriptTypeClass *ScriptTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    ScriptType type = From_Name(name);
-    if (type != SCRIPT_NONE) {
-        return As_Pointer(type);
+    for (ScriptType index = SCRIPT_FIRST; index < ScriptTypes.Count(); ++index) {
+        if (!strcasecmp(ScriptTypes[index]->Name(), name)) {
+            return ScriptTypes[index];
+        }
     }
 
     ScriptTypeClass *ptr = new ScriptTypeClass(name);

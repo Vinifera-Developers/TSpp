@@ -90,9 +90,10 @@ const ParticleTypeClass *ParticleTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    ParticleType type = From_Name(name);
-    if (type != PARTICLE_NONE) {
-        return As_Pointer(type);
+    for (ParticleType index = PARTICLE_FIRST; index < ParticleTypes.Count(); ++index) {
+        if (!strcasecmp(ParticleTypes[index]->Name(), name)) {
+            return ParticleTypes[index];
+        }
     }
 
     ParticleTypeClass *ptr = new ParticleTypeClass(name);

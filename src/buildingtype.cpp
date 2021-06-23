@@ -90,9 +90,10 @@ const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    BuildingType type = From_Name(name);
-    if (type != BUILDING_NONE) {
-        return As_Pointer(type);
+    for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
+        if (!strcasecmp(BuildingTypes[index]->Name(), name)) {
+            return BuildingTypes[index];
+        }
     }
 
     BuildingTypeClass *ptr = new BuildingTypeClass(name);

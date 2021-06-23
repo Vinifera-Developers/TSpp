@@ -90,9 +90,10 @@ const CampaignClass *CampaignClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    CampaignType type = From_Name(name);
-    if (type != CAMPAIGN_NONE) {
-        return As_Pointer(type);
+    for (CampaignType index = CAMPAIGN_FIRST; index < Campaigns.Count(); ++index) {
+        if (!strcasecmp(Campaigns[index]->Name(), name)) {
+            return Campaigns[index];
+        }
     }
 
     CampaignClass *ptr = new CampaignClass(name);

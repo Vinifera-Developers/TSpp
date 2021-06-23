@@ -90,9 +90,10 @@ const InfantryTypeClass *InfantryTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    InfantryType type = From_Name(name);
-    if (type != INFANTRY_NONE) {
-        return As_Pointer(type);
+    for (InfantryType index = INFANTRY_FIRST; index < InfantryTypes.Count(); ++index) {
+        if (!strcasecmp(InfantryTypes[index]->Name(), name)) {
+            return InfantryTypes[index];
+        }
     }
 
     InfantryTypeClass *ptr = new InfantryTypeClass(name);

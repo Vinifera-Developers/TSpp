@@ -93,9 +93,13 @@ const TriggerTypeClass *TriggerTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    TriggerType type = From_Name(name);
-    if (type != TRIGGER_NONE) {
-        return As_Pointer(type);
+    for (TriggerType index = TRIGGER_FIRST; index < TriggerTypes.Count(); ++index) {
+        if (!strcasecmp(TriggerTypes[index]->Name(), name)) {
+            return TriggerTypes[index];
+        }
+        if (!strcasecmp(TriggerTypes[index]->Full_Name(), name)) {
+            return TriggerTypes[index];
+        }
     }
 
     TriggerTypeClass *ptr = new TriggerTypeClass(name);

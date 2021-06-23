@@ -90,9 +90,10 @@ const OverlayTypeClass *OverlayTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    OverlayType type = From_Name(name);
-    if (type != OVERLAY_NONE) {
-        return As_Pointer(type);
+    for (OverlayType index = OVERLAY_FIRST; index < OverlayTypes.Count(); ++index) {
+        if (!strcasecmp(OverlayTypes[index]->Name(), name)) {
+            return OverlayTypes[index];
+        }
     }
 
     OverlayTypeClass *ptr = new OverlayTypeClass(name);

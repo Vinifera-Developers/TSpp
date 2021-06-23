@@ -90,9 +90,10 @@ const WeaponTypeClass *WeaponTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    WeaponType type = From_Name(name);
-    if (type != WEAPON_NONE) {
-        return As_Pointer(type);
+    for (WeaponType index = WEAPON_FIRST; index < WeaponTypes.Count(); ++index) {
+        if (!strcasecmp(WeaponTypes[index]->Name(), name)) {
+            return WeaponTypes[index];
+        }
     }
 
     WeaponTypeClass *ptr = new WeaponTypeClass(name);

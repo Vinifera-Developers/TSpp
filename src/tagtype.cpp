@@ -90,9 +90,10 @@ const TagTypeClass *TagTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    TagType type = From_Name(name);
-    if (type != TAG_NONE) {
-        return As_Pointer(type);
+    for (TagType index = TAG_FIRST; index < TagTypes.Count(); ++index) {
+        if (!strcasecmp(TagTypes[index]->Name(), name)) {
+            return TagTypes[index];
+        }
     }
 
     TagTypeClass *ptr = new TagTypeClass(name);

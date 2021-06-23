@@ -90,9 +90,10 @@ const UnitTypeClass *UnitTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    UnitType type = From_Name(name);
-    if (type != UNIT_NONE) {
-        return As_Pointer(type);
+    for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
+        if (!strcasecmp(UnitTypes[index]->Name(), name)) {
+            return UnitTypes[index];
+        }
     }
 
     UnitTypeClass *ptr = new UnitTypeClass(name);

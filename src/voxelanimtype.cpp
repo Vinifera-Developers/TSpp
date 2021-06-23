@@ -90,9 +90,10 @@ const VoxelAnimTypeClass *VoxelAnimTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    VoxelAnimType type = From_Name(name);
-    if (type != VOXELANIM_NONE) {
-        return As_Pointer(type);
+    for (VoxelAnimType index = VOXELANIM_FIRST; index < VoxelAnimTypes.Count(); ++index) {
+        if (!strcasecmp(VoxelAnimTypes[index]->Name(), name)) {
+            return VoxelAnimTypes[index];
+        }
     }
 
     VoxelAnimTypeClass *ptr = new VoxelAnimTypeClass(name);

@@ -90,9 +90,10 @@ const ParticleSystemTypeClass *ParticleSystemTypeClass::Find_Or_Make(const char 
         return nullptr;
     }
 
-    ParticleSystemType type = From_Name(name);
-    if (type != PARTICLESYS_NONE) {
-        return As_Pointer(type);
+    for (ParticleSystemType index = PARTICLESYS_FIRST; index < ParticleSystemTypes.Count(); ++index) {
+        if (!strcasecmp(ParticleSystemTypes[index]->Name(), name)) {
+            return ParticleSystemTypes[index];
+        }
     }
 
     ParticleSystemTypeClass *ptr = new ParticleSystemTypeClass(name);

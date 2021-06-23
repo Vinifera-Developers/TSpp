@@ -110,9 +110,10 @@ const TaskForceClass *TaskForceClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    TaskForceType type = From_Name(name);
-    if (type != TASKFORCE_NONE) {
-        return As_Pointer(type);
+    for (TaskForceType index = TASKFORCE_FIRST; index < TaskForces.Count(); ++index) {
+        if (!strcasecmp(TaskForces[index]->Full_Name(), name)) {
+            return TaskForces[index];
+        }
     }
 
     TaskForceClass *ptr = new TaskForceClass(name);

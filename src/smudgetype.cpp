@@ -90,9 +90,10 @@ const SmudgeTypeClass *SmudgeTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    SmudgeType type = From_Name(name);
-    if (type != SMUDGE_NONE) {
-        return As_Pointer(type);
+    for (SmudgeType index = SMUDGE_FIRST; index < SmudgeTypes.Count(); ++index) {
+        if (!strcasecmp(SmudgeTypes[index]->Name(), name)) {
+            return SmudgeTypes[index];
+        }
     }
 
     SmudgeTypeClass *ptr = new SmudgeTypeClass(name);

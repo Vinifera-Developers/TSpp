@@ -90,9 +90,10 @@ const AITriggerTypeClass *AITriggerTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    AITriggerType type = From_Name(name);
-    if (type != AITRIGGER_NONE) {
-        return As_Pointer(type);
+    for (AITriggerType index = AITRIGGER_FIRST; index < AITriggerTypes.Count(); ++index) {
+        if (!strcasecmp(AITriggerTypes[index]->Name(), name)) {
+            return AITriggerTypes[index];
+        }
     }
 
     AITriggerTypeClass *ptr = new AITriggerTypeClass(name);

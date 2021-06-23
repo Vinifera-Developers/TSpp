@@ -90,9 +90,10 @@ const TeamTypeClass *TeamTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    TeamType type = From_Name(name);
-    if (type != TEAM_NONE) {
-        return As_Pointer(type);
+    for (TeamType index = TEAM_FIRST; index < TeamTypes.Count(); ++index) {
+        if (!strcasecmp(TeamTypes[index]->Name(), name)) {
+            return TeamTypes[index];
+        }
     }
 
     TeamTypeClass *ptr = new TeamTypeClass(name);

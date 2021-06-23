@@ -90,9 +90,10 @@ const HouseTypeClass *HouseTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    HousesType type = From_Name(name);
-    if (type != HOUSE_NONE) {
-        return As_Pointer(type);
+    for (HousesType index = HOUSE_FIRST; index < HouseTypes.Count(); ++index) {
+        if (!strcasecmp(HouseTypes[index]->Name(), name)) {
+            return HouseTypes[index];
+        }
     }
 
     HouseTypeClass *ptr = new HouseTypeClass(name);

@@ -90,9 +90,10 @@ const BulletTypeClass *BulletTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    BulletType type = From_Name(name);
-    if (type != BULLET_NONE) {
-        return As_Pointer(type);
+    for (BulletType index = BULLET_FIRST; index < BulletTypes.Count(); ++index) {
+        if (!strcasecmp(BulletTypes[index]->Name(), name)) {
+            return BulletTypes[index];
+        }
     }
 
     BulletTypeClass *ptr = new BulletTypeClass(name);

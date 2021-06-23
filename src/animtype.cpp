@@ -90,9 +90,10 @@ const AnimTypeClass *AnimTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    AnimType type = From_Name(name);
-    if (type != ANIM_NONE) {
-        return As_Pointer(type);
+    for (AnimType index = ANIM_FIRST; index < AnimTypes.Count(); ++index) {
+        if (!strcasecmp(AnimTypes[index]->Name(), name)) {
+            return AnimTypes[index];
+        }
     }
 
     AnimTypeClass *ptr = new AnimTypeClass(name);

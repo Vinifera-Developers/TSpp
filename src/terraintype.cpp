@@ -90,9 +90,10 @@ const TerrainTypeClass *TerrainTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    TerrainType type = From_Name(name);
-    if (type != TERRAIN_NONE) {
-        return As_Pointer(type);
+    for (TerrainType index = TERRAIN_FIRST; index < TerrainTypes.Count(); ++index) {
+        if (!strcasecmp(TerrainTypes[index]->Name(), name)) {
+            return TerrainTypes[index];
+        }
     }
 
     TerrainTypeClass *ptr = new TerrainTypeClass(name);

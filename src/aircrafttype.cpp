@@ -90,9 +90,10 @@ const AircraftTypeClass *AircraftTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    AircraftType type = From_Name(name);
-    if (type != AIRCRAFT_NONE) {
-        return As_Pointer(type);
+    for (AircraftType index = AIRCRAFT_FIRST; index < AircraftTypes.Count(); ++index) {
+        if (!strcasecmp(AircraftTypes[index]->Name(), name)) {
+            return AircraftTypes[index];
+        }
     }
 
     AircraftTypeClass *ptr = new AircraftTypeClass(name);

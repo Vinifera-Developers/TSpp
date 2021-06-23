@@ -90,9 +90,10 @@ const SideClass *SideClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    SideType type = From_Name(name);
-    if (type != SIDE_NONE) {
-        return As_Pointer(type);
+    for (SideType index = SIDE_FIRST; index < Sides.Count(); ++index) {
+        if (!strcasecmp(Sides[index]->Name(), name)) {
+            return Sides[index];
+        }
     }
 
     SideClass *ptr = new SideClass(name);
