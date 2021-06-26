@@ -1072,7 +1072,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimTypeClass::GetClassID(CLSI
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Load(IStream *), 0x0065FE70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Save(IStream *, BOOL), 0x0065FF20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimTypeClass::VoxelAnimTypeClass(const char *), 0x0065F3B0);
-VoxelAnimTypeClass::VoxelAnimTypeClass(const NoInitClass &noinit) : ObjectTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9228; *((unsigned long *)this+4) = (unsigned long)0x006D920C; }
+VoxelAnimTypeClass::VoxelAnimTypeClass(const NoInitClass &noinit) : ObjectTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9228; *((unsigned long *)this+1) = (unsigned long)0x006D920C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(VoxelAnimTypeClass::~VoxelAnimTypeClass(), 0x0065F590);
 DEFINE_IMPLEMENTATION(void VoxelAnimTypeClass::Detach(TARGET, bool), 0x0065FF40);
 DEFINE_IMPLEMENTATION(RTTIType VoxelAnimTypeClass::Kind_Of() const, 0x00660040);
@@ -1215,7 +1215,7 @@ DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Ok_To_End(), 0x00483AA0);
 DEFINE_IMPLEMENTATION(HRESULT DropPodLocomotionClass::Piggyback_CLSID(CLSID *), 0x00483B40);
 DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Piggybacking(), 0x00483D10);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropPodLocomotionClass::DropPodLocomotionClass(), 0x004830F0);
-DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+4) = (unsigned long)0x006CFAF4; *((unsigned long *)this+8) = (unsigned long)0x006CFAD4; }
+DropPodLocomotionClass::DropPodLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CFBBC; *((unsigned long *)this+1) = (unsigned long)0x006CFAF4; *((unsigned long *)this+2) = (unsigned long)0x006CFAD4; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(DropPodLocomotionClass::~DropPodLocomotionClass(), 0x00483140);
 DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Size_Of(bool) const, 0x00483D30);
 
@@ -1871,7 +1871,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperClass::Save(IStream *, BOOL
 DEFINE_IMPLEMENTATION(int STDMETHODCALLTYPE SuperClass::What_Am_I(), 0x0060CBA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(), 0x0060B2C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SuperClass::SuperClass(const SuperWeaponTypeClass *, HouseClass *), 0x0060B360);
-SuperClass::SuperClass(const NoInitClass & x) : Control(x) { *((unsigned long *)this) = (unsigned long)0x006D73D8; *((unsigned long *)this+4) = (unsigned long)0x006D73BC; }
+SuperClass::SuperClass(const NoInitClass & x) : Control(x) { *((unsigned long *)this) = (unsigned long)0x006D73D8; *((unsigned long *)this+1) = (unsigned long)0x006D73BC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(SuperClass::~SuperClass(), 0x0060B4C0);
 DEFINE_IMPLEMENTATION(void SuperClass::Detach(TARGET, bool), 0x0060C800);
 DEFINE_IMPLEMENTATION(RTTIType SuperClass::Kind_Of() const, 0x0060CBB0);
@@ -2204,7 +2204,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SideClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Load(IStream *), 0x005F1C10);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Save(IStream *, BOOL), 0x005F1D00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SideClass::SideClass(const char *), 0x005F1A30);
-SideClass::SideClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6730; *((unsigned long *)this+4) = (unsigned long)0x006D6714; }
+SideClass::SideClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6730; *((unsigned long *)this+1) = (unsigned long)0x006D6714; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(SideClass::~SideClass(), 0x005F1AD0);
 DEFINE_IMPLEMENTATION(RTTIType SideClass::Kind_Of() const, 0x005F1D70);
 DEFINE_IMPLEMENTATION(int SideClass::Size_Of(bool) const, 0x005F1D60);
@@ -2214,7 +2214,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ScriptClass::GetClassID(CLSID *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Load(IStream *), 0x005E7A50);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptClass::Save(IStream *, BOOL), 0x005E7AA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptClass::ScriptClass(ScriptTypeClass *), 0x005E7820);
-ScriptClass::ScriptClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D63D0; *((unsigned long *)this+4) = (unsigned long)0x006D63B0; }
+ScriptClass::ScriptClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D63D0; *((unsigned long *)this+1) = (unsigned long)0x006D63B0; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ScriptClass::~ScriptClass(), 0x005E78B0);
 DEFINE_IMPLEMENTATION(RTTIType ScriptClass::Kind_Of() const, 0x005E81B0);
 DEFINE_IMPLEMENTATION(int ScriptClass::Size_Of(bool) const, 0x005E81C0);
@@ -2230,7 +2230,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ScriptTypeClass::GetClassID(CLSID *
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Load(IStream *), 0x005E8130);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Save(IStream *, BOOL), 0x005E8170);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScriptTypeClass::ScriptTypeClass(const char *), 0x005E7AC0);
-ScriptTypeClass::ScriptTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6434; *((unsigned long *)this+4) = (unsigned long)0x006D6438; }
+ScriptTypeClass::ScriptTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D6434; *((unsigned long *)this+1) = (unsigned long)0x006D6438; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ScriptTypeClass::~ScriptTypeClass(), 0x005E7B70);
 DEFINE_IMPLEMENTATION(RTTIType ScriptTypeClass::Kind_Of() const, 0x005E8250);
 DEFINE_IMPLEMENTATION(int ScriptTypeClass::Size_Of(bool) const, 0x005E8260);
@@ -2397,7 +2397,7 @@ DEFINE_IMPLEMENTATION(bool MissionControlClass::Read_INI(CCINIClass &), 0x005595
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE RadioClass::Load(IStream *), 0x005BDAA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadioClass::RadioClass(), 0x005BD850);
-RadioClass::RadioClass(const NoInitClass &noinit) : MissionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D5B80; *((unsigned long *)this+4) = (unsigned long)0x006D5B64; }
+RadioClass::RadioClass(const NoInitClass &noinit) : MissionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D5B80; *((unsigned long *)this+1) = (unsigned long)0x006D5B64; }
 RadioClass::~RadioClass() { Radio = nullptr; }
 DEFINE_IMPLEMENTATION(void RadioClass::Detach(TARGET, bool), 0x005BDA30);
 DEFINE_IMPLEMENTATION(void RadioClass::Compute_CRC(WWCRCEngine &) const, 0x005BDA60);
@@ -2912,7 +2912,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeamTypeClass::GetClassID(CLSID *),
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamTypeClass::Load(IStream *), 0x00628ED0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamTypeClass::Save(IStream *, BOOL), 0x00628EB0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeamTypeClass::TeamTypeClass(const char *), 0x00627D90);
-TeamTypeClass::TeamTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7AE8; *((unsigned long *)this+4) = (unsigned long)0x006D7ACC; }
+TeamTypeClass::TeamTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7AE8; *((unsigned long *)this+1) = (unsigned long)0x006D7ACC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TeamTypeClass::~TeamTypeClass(), 0x00627EE0);
 DEFINE_IMPLEMENTATION(void TeamTypeClass::Detach(TARGET, bool), 0x00628570);
 DEFINE_IMPLEMENTATION(RTTIType TeamTypeClass::Kind_Of() const, 0x00629250);
@@ -2936,7 +2936,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeamClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamClass::Load(IStream *), 0x00625250);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamClass::Save(IStream *, BOOL), 0x00625340);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeamClass::TeamClass(TeamTypeClass *, HouseClass *, void *), 0x00622100);
-TeamClass::TeamClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7A54; *((unsigned long *)this+4) = (unsigned long)0x006D7A38; }
+TeamClass::TeamClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7A54; *((unsigned long *)this+1) = (unsigned long)0x006D7A38; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TeamClass::~TeamClass(), 0x00622420);
 DEFINE_IMPLEMENTATION(void TeamClass::Detach(TARGET, bool), 0x00623FA0);
 DEFINE_IMPLEMENTATION(RTTIType TeamClass::Kind_Of() const, 0x00627A70);
@@ -3054,8 +3054,8 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TEventClass::GetClassID(CLSID *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Load(IStream *), 0x00642DA0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Save(IStream *, BOOL), 0x00642E00);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TEventClass::TEventClass(), 0x006420C0);
-TEventClass::TEventClass(TEventType event) : Event(event) { Data.Value = 0; *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
-TEventClass::TEventClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+4) = (unsigned long)0x006D854C; }
+TEventClass::TEventClass(TEventType event) : Event(event) { Data.Value = 0; *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+1) = (unsigned long)0x006D854C; }
+TEventClass::TEventClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8564; *((unsigned long *)this+1) = (unsigned long)0x006D854C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TEventClass::~TEventClass(), 0x00642210);
 DEFINE_IMPLEMENTATION(void TEventClass::Detach(TARGET, bool), 0x00642CE0);
 DEFINE_IMPLEMENTATION(RTTIType TEventClass::Kind_Of() const, 0x00642EF0);
@@ -3074,7 +3074,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TActionClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Load(IStream *), 0x0061D8A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TActionClass::Save(IStream *, BOOL), 0x0061D910);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TActionClass::TActionClass(), 0x00618B80);
-TActionClass::TActionClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D77C4; *((unsigned long *)this+4) = (unsigned long)0x006D77A8; }
+TActionClass::TActionClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D77C4; *((unsigned long *)this+1) = (unsigned long)0x006D77A8; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TActionClass::~TActionClass(), 0x00618CF0);
 DEFINE_IMPLEMENTATION(void TActionClass::Detach(TARGET, bool), 0x00618DF0);
 DEFINE_IMPLEMENTATION(RTTIType TActionClass::Kind_Of() const, 0x0061DAA0);
@@ -3221,7 +3221,7 @@ DEFINE_IMPLEMENTATION(BOOL AircraftClass::Is_Loaded(), 0x0040EEC0);
 DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Strafe(), 0x0040EEE0);
 DEFINE_IMPLEMENTATION(LONG AircraftClass::Is_Locked(), 0x0040EF30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AircraftClass::AircraftClass(AircraftTypeClass *, HouseClass *), FootClass, 0x004085D0);
-AircraftClass::AircraftClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CADF8; *((unsigned long *)this+4) = (unsigned long)0x006CADDC; *((unsigned long *)this+0x350) = (unsigned long)0x006CADB8; }
+AircraftClass::AircraftClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CADF8; *((unsigned long *)this+1) = (unsigned long)0x006CADDC; *((unsigned char *)this+212) = (unsigned long)0x006CADB8; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(AircraftClass::~AircraftClass(), 0x0040DB20);
 DEFINE_IMPLEMENTATION(void AircraftClass::Init(), 0x00408820);
 DEFINE_IMPLEMENTATION(void AircraftClass::Detach(TARGET, bool), 0x0040EDA0);
@@ -3284,7 +3284,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE InfantryClass::GetClassID(CLSID *),
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryClass::Load(IStream *), 0x004D92F0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryClass::Save(IStream *, BOOL), 0x004D94D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(InfantryClass::InfantryClass(InfantryTypeClass *, HouseClass *), FootClass, 0x004D1FD0);
-InfantryClass::InfantryClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D211C; *((unsigned long *)this+4) = (unsigned long)0x006D2100; }
+InfantryClass::InfantryClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D211C; *((unsigned long *)this+1) = (unsigned long)0x006D2100; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(InfantryClass::~InfantryClass(), 0x004D2240);
 DEFINE_IMPLEMENTATION(void InfantryClass::Init(), 0x004D21F0);
 DEFINE_IMPLEMENTATION(void InfantryClass::Detach(TARGET, bool), 0x004D40C0);
@@ -3406,7 +3406,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Load(IStream *), 0x00
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Save(IStream *, BOOL), 0x00416510);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(), 0x00414170);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AnimClass::AnimClass(const AnimTypeClass *, Coordinate &, unsigned, unsigned, unsigned, int), 0x00413AE0);
-AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+4) = (unsigned long)0x006CB92C; }
+AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+1) = (unsigned long)0x006CB92C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(AnimClass::~AnimClass(), 0x004142B0);
 DEFINE_IMPLEMENTATION(void AnimClass::Detach(TARGET, bool), 0x00416390);
 DEFINE_IMPLEMENTATION(RTTIType AnimClass::Kind_Of() const, 0x00417540);
@@ -3507,7 +3507,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Load(IStream *),
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Save(IStream *, BOOL), 0x0065F000);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimClass::VoxelAnimClass(), 0x0065DE30);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelAnimClass::VoxelAnimClass(const VoxelAnimTypeClass *, Coordinate &, HouseClass *), 0x0065D950);
-VoxelAnimClass::VoxelAnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9050; *((unsigned long *)this+4) = (unsigned long)0x006D9034; }
+VoxelAnimClass::VoxelAnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9050; *((unsigned long *)this+1) = (unsigned long)0x006D9034; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(VoxelAnimClass::~VoxelAnimClass(), 0x0065DF10);
 DEFINE_IMPLEMENTATION(RTTIType VoxelAnimClass::Kind_Of() const, 0x0065F110);
 DEFINE_IMPLEMENTATION(int VoxelAnimClass::Size_Of(bool) const, 0x0065F100);
@@ -3524,7 +3524,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AITriggerTypeClass::GetClassID(CLSI
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AITriggerTypeClass::Load(IStream *), 0x004106A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AITriggerTypeClass::Save(IStream *, BOOL), 0x00410710);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(AITriggerTypeClass::AITriggerTypeClass(const char *), 0x004104E0);
-AITriggerTypeClass::AITriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB308; *((unsigned long *)this+4) = (unsigned long)0x006CB2EC; }
+AITriggerTypeClass::AITriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB308; *((unsigned long *)this+1) = (unsigned long)0x006CB2EC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(AITriggerTypeClass::~AITriggerTypeClass(), 0x004105F0);
 DEFINE_IMPLEMENTATION(RTTIType AITriggerTypeClass::Kind_Of() const, 0x00411BF0);
 DEFINE_IMPLEMENTATION(int AITriggerTypeClass::Size_Of(bool) const, 0x00411C00);
@@ -3549,7 +3549,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TagTypeClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagTypeClass::Load(IStream *), 0x0061F820);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagTypeClass::Save(IStream *, BOOL), 0x0061F870);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TagTypeClass::TagTypeClass(const char *), 0x0061F030);
-TagTypeClass::TagTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D791C; *((unsigned long *)this+4) = (unsigned long)0x006D7900; }
+TagTypeClass::TagTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D791C; *((unsigned long *)this+1) = (unsigned long)0x006D7900; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TagTypeClass::~TagTypeClass(), 0x0061F150);
 DEFINE_IMPLEMENTATION(void TagTypeClass::Detach(TARGET, bool), 0x0061F2D0);
 DEFINE_IMPLEMENTATION(RTTIType TagTypeClass::Kind_Of() const, 0x0061F890);
@@ -3572,7 +3572,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingLightClass::GetClassID(CLSI
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingLightClass::Load(IStream *), 0x00422AC0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BuildingLightClass::Save(IStream *, BOOL), 0x00422B20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BuildingLightClass::BuildingLightClass(TechnoClass *), 0x00421AE0);
-BuildingLightClass::BuildingLightClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CBFE0; *((unsigned long *)this+4) = (unsigned long)0x006CBFC4; }
+BuildingLightClass::BuildingLightClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CBFE0; *((unsigned long *)this+1) = (unsigned long)0x006CBFC4; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(BuildingLightClass::~BuildingLightClass(), 0x00421D70);
 DEFINE_IMPLEMENTATION(void BuildingLightClass::Detach(TARGET, bool), 0x00422B60);
 DEFINE_IMPLEMENTATION(RTTIType BuildingLightClass::Kind_Of() const, 0x00423240);
@@ -3594,7 +3594,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Load(IStream *
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Save(IStream *, BOOL), 0x00501D50);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightSourceClass::LightSourceClass(), 0x00501510);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(LightSourceClass::LightSourceClass(Coordinate, int, int, int, int, int), 0x00501460);
-LightSourceClass::LightSourceClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D38D8; *((unsigned long *)this+4) = (unsigned long)0x006D38BC; }
+LightSourceClass::LightSourceClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D38D8; *((unsigned long *)this+1) = (unsigned long)0x006D38BC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LightSourceClass::~LightSourceClass(), 0x005015B0);
 DEFINE_IMPLEMENTATION(RTTIType LightSourceClass::Kind_Of() const, 0x00501D80);
 DEFINE_IMPLEMENTATION(int LightSourceClass::Size_Of(bool) const, 0x00501D70);
@@ -3632,7 +3632,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Load(IStream *), 0x004975B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Save(IStream *, BOOL), 0x004976F0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(FactoryClass::FactoryClass(), 0x00496C60);
-FactoryClass::FactoryClass(const NoInitClass &x) : AbstractClass(x) { *((unsigned long *)this) = (unsigned long)0x006D0080; *((unsigned long *)this+4) = (unsigned long)0x006D0064; }
+FactoryClass::FactoryClass(const NoInitClass &x) : AbstractClass(x) { *((unsigned long *)this) = (unsigned long)0x006D0080; *((unsigned long *)this+1) = (unsigned long)0x006D0064; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(FactoryClass::~FactoryClass(), 0x00496DA0);
 DEFINE_IMPLEMENTATION(void FactoryClass::Detach(TARGET, bool), 0x004978B0);
 DEFINE_IMPLEMENTATION(RTTIType FactoryClass::Kind_Of() const, 0x00497A70);
@@ -3662,7 +3662,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SmudgeClass::GetClassID(CLSID *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Load(IStream *), 0x005FAE00);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Save(IStream *, BOOL), 0x005FAE50);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(SmudgeClass::SmudgeClass(SmudgeTypeClass *, Coordinate &, HousesType), 0x005FA9E0);
-SmudgeClass::SmudgeClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D69F4; *((unsigned long *)this+4) = (unsigned long)0x006D69D8; }
+SmudgeClass::SmudgeClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D69F4; *((unsigned long *)this+1) = (unsigned long)0x006D69D8; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(SmudgeClass::~SmudgeClass(), 0x005FAAC0);
 DEFINE_IMPLEMENTATION(RTTIType SmudgeClass::Kind_Of() const, 0x005FAE90);
 DEFINE_IMPLEMENTATION(int SmudgeClass::Size_Of(bool) const, 0x005FAE80);
@@ -3677,7 +3677,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE OverlayClass::GetClassID(CLSID *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Load(IStream *), 0x0058C4D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Save(IStream *, BOOL), 0x0058C520);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(OverlayClass::OverlayClass(OverlayTypeClass *, Cell &, HousesType), 0x0058B460);
-OverlayClass::OverlayClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D4F9C; *((unsigned long *)this+4) = (unsigned long)0x006D4F80; }
+OverlayClass::OverlayClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D4F9C; *((unsigned long *)this+1) = (unsigned long)0x006D4F80; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(OverlayClass::~OverlayClass(), 0x0058B550);
 DEFINE_IMPLEMENTATION(RTTIType OverlayClass::Kind_Of() const, 0x0058CAE0);
 DEFINE_IMPLEMENTATION(int OverlayClass::Size_Of(bool) const, 0x0058CA90);
@@ -3696,7 +3696,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::Load(IStream *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::Save(IStream *, BOOL), 0x00645250);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::GetSizeMax(ULARGE_INTEGER *), 0x00645220);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TiberiumClass::TiberiumClass(const char *), 0x00644890);
-TiberiumClass::TiberiumClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D86F0; *((unsigned long *)this+4) = (unsigned long)0x006D86D4; }
+TiberiumClass::TiberiumClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D86F0; *((unsigned long *)this+1) = (unsigned long)0x006D86D4; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TiberiumClass::~TiberiumClass(), 0x00644A30);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Detach(TARGET, bool), 0x006452C0);
 DEFINE_IMPLEMENTATION(RTTIType TiberiumClass::Kind_Of() const, 0x00646860);
@@ -3731,7 +3731,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletClass::Load(IStream *), 0x
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BulletClass::Save(IStream *, BOOL), 0x00447190);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(BulletClass::BulletClass(), 0x004444A0);
 //BulletClass::BulletClass(BulletType id, TARGET target, TechnoClass *payback, int strength, WarheadType warhead, int speed), 0x);
-BulletClass::BulletClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CC88C; *((unsigned long *)this+4) = (unsigned long)0x006CC870; }
+BulletClass::BulletClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CC88C; *((unsigned long *)this+1) = (unsigned long)0x006CC870; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(BulletClass::~BulletClass(), 0x004445E0);
 DEFINE_IMPLEMENTATION(void BulletClass::Detach(TARGET, bool), 0x00445F00);
 DEFINE_IMPLEMENTATION(RTTIType BulletClass::Kind_Of() const, 0x00447450);
@@ -3767,7 +3767,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Load(IStream *), 0x00659580);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Save(IStream *, BOOL), 0x00659740);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(UnitClass::UnitClass(UnitTypeClass *, HouseClass *), FootClass, 0x0064D4B0);
-UnitClass::UnitClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8B6C; *((unsigned long *)this+4) = (unsigned long)0x006D8B50; }
+UnitClass::UnitClass(const NoInitClass &noinit) : FootClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8B6C; *((unsigned long *)this+1) = (unsigned long)0x006D8B50; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(UnitClass::~UnitClass(), 0x0064D7C0);
 DEFINE_IMPLEMENTATION(void UnitClass::Detach(TARGET, bool), 0x00659830);
 DEFINE_IMPLEMENTATION(RTTIType UnitClass::Kind_Of() const, 0x0065B610);
@@ -3872,7 +3872,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Load(IStream *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TerrainClass::Save(IStream *, BOOL), 0x006407D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(), 0x0063F710);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TerrainClass::TerrainClass(TerrainTypeClass *classof, Cell &pos), 0x0063F500);
-TerrainClass::TerrainClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D828C; *((unsigned long *)this+4) = (unsigned long)0x006D8270; }
+TerrainClass::TerrainClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D828C; *((unsigned long *)this+1) = (unsigned long)0x006D8270; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TerrainClass::~TerrainClass(), 0x0063F170);
 DEFINE_IMPLEMENTATION(void TerrainClass::Detach(TARGET, bool), 0x00640880);
 DEFINE_IMPLEMENTATION(RTTIType TerrainClass::Kind_Of() const, 0x00640BD0);
@@ -3902,7 +3902,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TriggerTypeClass::GetClassID(CLSID 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Load(IStream *), 0x0064AAB0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Save(IStream *, BOOL), 0x0064AB20);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerTypeClass::TriggerTypeClass(const char *), 0x00649CA0);
-TriggerTypeClass::TriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D888C; *((unsigned long *)this+4) = (unsigned long)0x006D8870; }
+TriggerTypeClass::TriggerTypeClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D888C; *((unsigned long *)this+1) = (unsigned long)0x006D8870; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TriggerTypeClass::~TriggerTypeClass(), 0x00649DF0);
 DEFINE_IMPLEMENTATION(void TriggerTypeClass::Detach(TARGET, bool), 0x0064A030);
 DEFINE_IMPLEMENTATION(RTTIType TriggerTypeClass::Kind_Of() const, 0x0064AB40);
@@ -3928,7 +3928,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Load(IStream *), 0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerClass::Save(IStream *, BOOL), 0x006498D0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(), 0x00649190);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriggerClass::TriggerClass(TriggerTypeClass *), 0x00649040);
-TriggerClass::TriggerClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D87F0; *((unsigned long *)this+4) = (unsigned long)0x006D87D4; }
+TriggerClass::TriggerClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D87F0; *((unsigned long *)this+1) = (unsigned long)0x006D87D4; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TriggerClass::~TriggerClass(), 0x00649190);
 DEFINE_IMPLEMENTATION(void TriggerClass::Detach(TARGET, bool), 0x006496A0);
 DEFINE_IMPLEMENTATION(RTTIType TriggerClass::Kind_Of() const, 0x00649920);
@@ -3956,7 +3956,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TagClass::GetClassID(CLSID *), 0x00
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Load(IStream *), 0x0061EBE0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Save(IStream *, BOOL), 0x0061EC40);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TagClass::TagClass(TagTypeClass *), 0x0061E330);
-TagClass::TagClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7850; *((unsigned long *)this+4) = (unsigned long)0x006D7834; }
+TagClass::TagClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D7850; *((unsigned long *)this+1) = (unsigned long)0x006D7834; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(TagClass::~TagClass(), 0x0061E4A0);
 DEFINE_IMPLEMENTATION(void TagClass::Detach(TARGET, bool), 0x0061EAC0);
 DEFINE_IMPLEMENTATION(RTTIType TagClass::Kind_Of() const, 0x0061ED30);
@@ -4018,7 +4018,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE CampaignClass::GetClassID(CLSID *),
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CampaignClass::Load(IStream *), 0x00448E60);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CampaignClass::Save(IStream *, BOOL), 0x00448EA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(CampaignClass::CampaignClass(const char *), 0x00448A10);
-CampaignClass::CampaignClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CCBA8; *((unsigned long *)this+4) = (unsigned long)0x006CCB8C; }
+CampaignClass::CampaignClass(const NoInitClass &noinit) : AbstractTypeClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CCBA8; *((unsigned long *)this+1) = (unsigned long)0x006CCB8C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(CampaignClass::~CampaignClass(), 0x00448AD0);
 DEFINE_IMPLEMENTATION(RTTIType CampaignClass::Kind_Of() const, 0x00448ED0);
 DEFINE_IMPLEMENTATION(int CampaignClass::Size_Of(bool) const, 0x00448EC0);
@@ -4031,7 +4031,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Load(IStream *), 0x00
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Save(IStream *, BOOL), 0x00670CA0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaveClass::WaveClass(), 0x006700B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaveClass::WaveClass(Coordinate &, Coordinate &, TARGET, WaveType, TARGET), 0x0066FDE0);
-WaveClass::WaveClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D97C8; *((unsigned long *)this+4) = (unsigned long)0x006D97AC; }
+WaveClass::WaveClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D97C8; *((unsigned long *)this+1) = (unsigned long)0x006D97AC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(WaveClass::~WaveClass(), 0x006702C0);
 DEFINE_IMPLEMENTATION(void WaveClass::Detach(TARGET, bool), 0x00670B10);
 DEFINE_IMPLEMENTATION(RTTIType WaveClass::Kind_Of() const, 0x00672E50);
@@ -4092,7 +4092,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Load(IStream *), 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Save(IStream *, BOOL), 0x005A4E90);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleClass::ParticleClass(), 0x005A3170);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleClass::ParticleClass(ParticleTypeClass *, Coordinate &, Coordinate &, ParticleSystemClass *), 0x005A2C90);
-ParticleClass::ParticleClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D52CC; *((unsigned long *)this+4) = (unsigned long)0x006D52B0; }
+ParticleClass::ParticleClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D52CC; *((unsigned long *)this+1) = (unsigned long)0x006D52B0; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ParticleClass::~ParticleClass(), 0x005A32E0);
 DEFINE_IMPLEMENTATION(RTTIType ParticleClass::Kind_Of() const, 0x005A5000);
 DEFINE_IMPLEMENTATION(int ParticleClass::Size_Of(bool) const, 0x005A4FF0);
@@ -4119,7 +4119,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Load(IStrea
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Save(IStream *, BOOL), 0x005A7730);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemClass::ParticleSystemClass(), 0x005A5580);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(ParticleSystemClass::ParticleSystemClass(ParticleSystemTypeClass *, Coordinate &, TARGET, TARGET, Coordinate &), 0x005A5300);
-ParticleSystemClass::ParticleSystemClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D54B4; *((unsigned long *)this+4) = (unsigned long)0x006D5498; }
+ParticleSystemClass::ParticleSystemClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D54B4; *((unsigned long *)this+1) = (unsigned long)0x006D5498; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ParticleSystemClass::~ParticleSystemClass(), 0x005A56C0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Detach(TARGET, bool), 0x005A7550);
 DEFINE_IMPLEMENTATION(RTTIType ParticleSystemClass::Kind_Of() const, 0x005A78A0);
@@ -4186,7 +4186,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE IsometricTileClass::GetClassID(CLSI
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileClass::Load(IStream *), 0x004F2260);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileClass::Save(IStream *, BOOL), 0x004F22B0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(IsometricTileClass::IsometricTileClass(IsometricTileType, Cell &), 0x004F2070);
-IsometricTileClass::IsometricTileClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D2DE0; *((unsigned long *)this+4) = (unsigned long)0x006D2DC4; }
+IsometricTileClass::IsometricTileClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D2DE0; *((unsigned long *)this+1) = (unsigned long)0x006D2DC4; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(IsometricTileClass::~IsometricTileClass(), 0x004F2160);
 DEFINE_IMPLEMENTATION(RTTIType IsometricTileClass::Kind_Of() const, 0x004F2360);
 DEFINE_IMPLEMENTATION(int IsometricTileClass::Size_Of(bool) const, 0x004F2350);
@@ -4228,7 +4228,7 @@ DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Move_To(Coordinate), 0x0063E
 DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Stop_Moving(), 0x0063EDE0);
 DEFINE_IMPLEMENTATION(LayerType TeleportLocomotionClass::In_Which_Layer(), 0x0063EEE0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeleportLocomotionClass::TeleportLocomotionClass(), 0x0063ECC0);
-TeleportLocomotionClass::TeleportLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8228; *((unsigned long *)this+4) = (unsigned long)0x006D8164; }
+TeleportLocomotionClass::TeleportLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8228; *((unsigned long *)this+1) = (unsigned long)0x006D8164; }
 TeleportLocomotionClass::~TeleportLocomotionClass() {}
 DEFINE_IMPLEMENTATION(int TeleportLocomotionClass::Size_Of(bool) const, 0x0063EEF0);
 DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Is_Stationary() const, 0x0063ED40);
@@ -4259,7 +4259,7 @@ DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Ok_To_End(), 0x0066E760);
 DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::Piggyback_CLSID(CLSID *), 0x0066E790);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Piggybacking(), 0x0066E9C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(WalkLocomotionClass::WalkLocomotionClass(), 0x0066CA60);
-WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D96C8; *((unsigned long *)this+4) = (unsigned long)0x006D9600; *((unsigned long *)this+8) = (unsigned long)0x006D95DC; }
+WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D96C8; *((unsigned long *)this+1) = (unsigned long)0x006D9600; *((unsigned long *)this+2) = (unsigned long)0x006D95DC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(WalkLocomotionClass::~WalkLocomotionClass(), 0x0066CAD0);
 DEFINE_IMPLEMENTATION(int WalkLocomotionClass::Size_Of(bool) const, 0x0066E9F0);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Internal_Process(bool), 0x0066CE10);
@@ -4300,7 +4300,7 @@ DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Ok_To_End(), 0x0047D340);
 DEFINE_IMPLEMENTATION(HRESULT DriveLocomotionClass::Piggyback_CLSID(CLSID *), 0x0047CFE0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Piggybacking(), 0x00482310);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(DriveLocomotionClass::DriveLocomotionClass(), 0x0047CF10);
-DriveLocomotionClass::DriveLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CF824; *((unsigned long *)this+4) = (unsigned long)0x006CF75C; *((unsigned long *)this+8) = (unsigned long)0x006CF738; }
+DriveLocomotionClass::DriveLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CF824; *((unsigned long *)this+1) = (unsigned long)0x006CF75C; *((unsigned long *)this+2) = (unsigned long)0x006CF738; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(DriveLocomotionClass::~DriveLocomotionClass(), 0x0047CFB0);
 DEFINE_IMPLEMENTATION(int DriveLocomotionClass::Size_Of(bool) const, 0x00482330);
 // 0047D370
@@ -4359,7 +4359,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TubeClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TubeClass::Load(IStream *), 0x0064B080);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TubeClass::Save(IStream *, BOOL), 0x0064B0C0);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TubeClass::TubeClass(Cell &, FacingType), 0x0064AED0);
-TubeClass::TubeClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8928; *((unsigned long *)this+4) = (unsigned long)0x006D890C; }
+TubeClass::TubeClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D8928; *((unsigned long *)this+1) = (unsigned long)0x006D890C; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(TubeClass::~TubeClass(), 0x0064AFC0);
 DEFINE_IMPLEMENTATION(RTTIType TubeClass::Kind_Of() const, 0x0064B5A0);
 DEFINE_IMPLEMENTATION(int TubeClass::Size_Of(bool) const, 0x0064B590);
@@ -4392,7 +4392,7 @@ DEFINE_IMPLEMENTATION(LayerType LevitateLocomotionClass::In_Which_Layer(), 0x005
 DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Is_Moving_Now(), 0x00500C50);
 DEFINE_IMPLEMENTATION(void LevitateLocomotionClass::Mark_All_Occupation_Bits(int), 0x00501060);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(LevitateLocomotionClass::LevitateLocomotionClass(), 0x004FDEE0);
-LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+4) = (unsigned long)0x006D373C; }
+LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+1) = (unsigned long)0x006D373C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
 DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010B0);
 
