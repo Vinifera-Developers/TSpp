@@ -214,6 +214,7 @@
 #include "restate.h"
 #include "addon.h"
 #include "levitatelocomotion.h"
+#include "newdel.h"
 #include "tibsun_functions.h"
 
 
@@ -4394,6 +4395,13 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(LevitateLocomotionClass::LevitateLocomotionCla
 LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+4) = (unsigned long)0x006D373C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
 DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010B0);
+
+
+/**
+ *  CRT
+ */
+DEFINE_IMPLEMENTATION(void *operator_new(unsigned int size), 0x006B51D7);
+DEFINE_IMPLEMENTATION(void operator_delete(void *ptr), 0x006B51CC);
 
 
 /**
