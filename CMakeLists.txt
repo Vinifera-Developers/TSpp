@@ -281,6 +281,11 @@ target_compile_options(${PROJECT_NAME} PUBLIC /GS-)
 # Disables buffer security overrun checks.
 target_compile_options(${PROJECT_NAME} PUBLIC /GS-)
 
+# Disable C++ exceptions.
+string(REGEX REPLACE "/EH[a-z]+" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHs-c-")
+add_definitions(-D_HAS_EXCEPTIONS=0)
+
 # Align structures to 4-byte boundaries.
 #		target_compile_options(${PROJECT_NAME} PUBLIC /Zp4)
 
