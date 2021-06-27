@@ -38,6 +38,7 @@ class LightConvertClass : public ConvertClass
 {
     public:
         LightConvertClass(PaletteClass *pal1, PaletteClass *pal2, Surface *surface, int r = -1, int g = -1, int b = -1, bool a8 = false, bool *a9 = nullptr, int a10 = 63);
+        LightConvertClass(const NoInitClass &noinit);
         virtual ~LightConvertClass();
 
         virtual void Adjust(int r, int g, int b, bool a4);

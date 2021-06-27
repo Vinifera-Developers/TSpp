@@ -80,6 +80,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 #enable_language(C)
 enable_language(CXX)
+enable_language(ASM_MASM)
 
 
 ################################################################################
@@ -285,6 +286,9 @@ target_compile_options(${PROJECT_NAME} PUBLIC /GS-)
 string(REGEX REPLACE "/EH[a-z]+" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHs-c-")
 add_definitions(-D_HAS_EXCEPTIONS=0)
+
+# Set assembly flags.
+set(CMAKE_ASM_MASM_FLAGS "/Zm /Cp /safeseh" CACHE INTERNAL "MASM flags")
 
 # Align structures to 4-byte boundaries.
 #		target_compile_options(${PROJECT_NAME} PUBLIC /Zp4)

@@ -305,8 +305,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
 
-        static HouseClass *As_Pointer(HousesType house);
-        static HouseClass &As_Reference(HousesType house) { return *As_Pointer(house); }
+        static HouseClass *As_Pointer(HouseTypeClass *house);
 
     public:
         int ID;
