@@ -292,17 +292,21 @@ add_definitions(-D_HAS_EXCEPTIONS=0)
 # Replaces some function calls with intrinsic or otherwise special forms of the function.
 #		target_compile_options(${PROJECT_NAME} PUBLIC /Oi)
 
-# (Non-debug only) Optimisation. (1) Minimize Size, (2) Maximize Speed.
+# (Optimisation. (1) Minimize Size, (2) Maximize Speed.
 string(REPLACE "/O2" "/O1" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
 string(REPLACE "/O2" "/O1" CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+string(REPLACE "/O2" "/O1" CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
+string(REPLACE "/O2" "/O1" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
 string(REPLACE "/O2" "/O1" CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
 string(REPLACE "/O2" "/O1" CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
 string(REPLACE "/O2" "/O1" CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
 string(REPLACE "/O2" "/O1" CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
 
-# (Non-debug only) Disable frame pointer omission (FPO).
+# Disable frame pointer omission (FPO).
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /Oy")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Oy")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /Oy")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Oy")
 set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO} /Oy")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /Oy")
 set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL} /Oy")
@@ -311,9 +315,9 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Oy")
 # Inline function expansion.
 target_compile_options(${PROJECT_NAME} PUBLIC
 		$<$<CONFIG:Debug>:/Ob0>
-		$<$<CONFIG:Release>:/Ob1>
-		$<$<CONFIG:RelWithDbgInfo>:/Ob1>
-		$<$<CONFIG:MinSizeRel>:/Ob1>)
+		$<$<CONFIG:Release>:/Ob0>
+		$<$<CONFIG:RelWithDbgInfo>:/Ob0>
+		$<$<CONFIG:MinSizeRel>:/Ob0>)
 
 # Build with multiple processes.
 target_compile_options(${PROJECT_NAME} PUBLIC /MP2)
