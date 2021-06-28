@@ -102,7 +102,7 @@ Tactical : public AbstractClass
         // 00612B10
         // 00612B40
         // 00612BE0
-        // 00612C50
+        void Set_Tactical_Position(const Coordinate &coord);
         // 00612D50
         // 00612D70
         // 00612DA0

@@ -1361,6 +1361,7 @@ DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coordinate &, int), 0x006
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);
+DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Position(const Coordinate &), 0x00612C50);
 DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
 DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
@@ -3989,7 +3990,7 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Basic(CCINIClass &), 0x005DFDE0);
 DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
 DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
-DEFINE_IMPLEMENTATION(Coordinate *ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
+DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);
