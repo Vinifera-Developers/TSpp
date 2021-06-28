@@ -133,8 +133,8 @@ class MapClass : public GScreenClass
         // 00515F90
         // 00516060
         // 005160F0
-        Cell Nearby_Location(Cell &cell, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, bool check_flagged = false, int a6 = 1, int a7 = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, Cell &a12 = Cell(0,0)) const;
-        // 00516BE0
+        Cell Nearby_Location(Cell &cell, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, bool check_flagged = false, int width = 1, int height = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, Cell &a12 = Cell(0,0)) const;
+        bool Is_Area_Clear(Cell &cell, int width, int height, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, int a7 = -1, bool a8 = false, bool a9 = false) const;
         bool Base_Region(Cell &cell, HousesType &house, ZoneType &zone) const;
         // 00516DA0
         // 00516F90

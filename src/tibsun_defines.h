@@ -2630,9 +2630,9 @@ struct CellStruct
 
     int32_t As_Cell_Number() const { return X + (Y << 9); }
 
-    int Length() const
+    short Length() const
     {
-        return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
+        return (short)WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
     }
 
     int16_t X; // X component of location.

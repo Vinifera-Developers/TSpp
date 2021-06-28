@@ -170,7 +170,7 @@ inline int Distance(const Coordinate &coord1, const Coordinate &coord2)
 }
 
 
-inline int Distance(const Cell &cell1, const Cell &cell2)
+inline short Distance(const Cell &cell1, const Cell &cell2)
 {
     Cell cell;
     cell = cell1 - cell2;
