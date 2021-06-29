@@ -214,6 +214,7 @@
 #include "restate.h"
 #include "addon.h"
 #include "levitatelocomotion.h"
+#include "newmenu.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4401,6 +4402,10 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(LevitateLocomotionClass::LevitateLocomotionCla
 LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+1) = (unsigned long)0x006D373C; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
 DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010B0);
+
+DEFINE_IMPLEMENTATION(NewMenuClass::NewMenuClass(), 0x0057FBE0);
+DEFINE_IMPLEMENTATION(void NewMenuClass::Blit(), 0x0057FBA0);
+DEFINE_IMPLEMENTATION(NewMenuClass *NewMenuClass::Get(), 0x0057FB40);
 
 
 /**
