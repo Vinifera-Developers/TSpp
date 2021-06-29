@@ -157,7 +157,7 @@ CellClass : public AbstractClass
         // 0045AB10
         // 0045ABA0
         // 0045AC10
-        // 0045AC70
+        int Get_Tiberium_Value() const;
         // 0045ACB0
         // 0045ACD0
         void Detach(TARGET target);
@@ -287,7 +287,7 @@ CellClass : public AbstractClass
         unsigned IsPlot:1;
         unsigned IsCursorHere:1;
         unsigned IsMapped:1;
-		unsigned IsVisible:1;
+        unsigned IsVisible:1;
         unsigned IsFogMapped:1;
         unsigned IsFogVisible:1;
         unsigned IsWaypoint:1;
