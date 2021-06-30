@@ -215,6 +215,7 @@
 #include "addon.h"
 #include "levitatelocomotion.h"
 #include "newmenu.h"
+#include "jumpjetlocomotion.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4406,6 +4407,23 @@ DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010
 DEFINE_IMPLEMENTATION(NewMenuClass::NewMenuClass(), 0x0057FBE0);
 DEFINE_IMPLEMENTATION(void NewMenuClass::Blit(), 0x0057FBA0);
 DEFINE_IMPLEMENTATION(NewMenuClass *NewMenuClass::Get(), 0x0057FB40);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE JumpjetLocomotionClass::GetClassID(CLSID *), 0x004F9CE0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE JumpjetLocomotionClass::Load(IStream *), 0x004F9D20);
+DEFINE_IMPLEMENTATION(bool JumpjetLocomotionClass::Is_Moving(), 0x004F9620);
+DEFINE_IMPLEMENTATION(Coordinate JumpjetLocomotionClass::Destination(), 0x004F9630);
+DEFINE_IMPLEMENTATION(Coordinate JumpjetLocomotionClass::Head_To_Coord(), 0x004FAD00);
+DEFINE_IMPLEMENTATION(bool JumpjetLocomotionClass::Process(), 0x004F9690);
+DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Move_To(Coordinate), 0x004F9890);
+DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Stop_Moving(), 0x004F9AE0);
+DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Do_Turn(DirStruct), 0x004F9CB0);
+DEFINE_IMPLEMENTATION(LayerType JumpjetLocomotionClass::In_Which_Layer(), 0x004F9D50);
+DEFINE_IMPLEMENTATION(bool JumpjetLocomotionClass::Is_Moving_Now(), 0x004FA460);
+DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Mark_All_Occupation_Bits(int), 0x004FAC80);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(JumpjetLocomotionClass::JumpjetLocomotionClass(), 0x004F9590);
+JumpjetLocomotionClass::JumpjetLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3684; *((unsigned long *)this+1) = (unsigned long)0x006D35BC; }
+DEFINE_IMPLEMENTATION_DESTRUCTOR(JumpjetLocomotionClass::~JumpjetLocomotionClass(), 0x004F9600);
+DEFINE_IMPLEMENTATION(int JumpjetLocomotionClass::Size_Of(bool) const, 0x004FAD50);
 
 
 /**
