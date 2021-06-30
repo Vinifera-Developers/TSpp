@@ -33,6 +33,8 @@
 
 
 class Rect;
+class XSurface;
+class PaletteClass;
 
 
 void Call_Back();
@@ -54,3 +56,4 @@ void Shake_The_Screen(int shakes);
 long Owner_From_Name(const char *name);
 bool Main_Loop();
 void Keyboard_Process(KeyNumType &input);
+void Load_Title_Screen(const char *name, XSurface *video_page, PaletteClass *palette);
