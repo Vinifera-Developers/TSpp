@@ -30,6 +30,7 @@
 #include "always.h"
 #include "rect.h"
 #include "fixed.h"
+#include "vector.h"
 #include "wwmath.h"
 
 
@@ -2760,7 +2761,10 @@ struct SubzoneTrackingStruct
     bool operator==(const SubzoneTrackingStruct &src) const { return false; }
     bool operator!=(const SubzoneTrackingStruct &src) const { return true; }
 
-    // TODO
+    DynamicVectorClass<SubzoneConnectionStruct> Connections;
+    short field_18;
+    int field_1C;
+    int field_20;
 };
 
 
@@ -2769,7 +2773,7 @@ struct CrackedIceStruct
     bool operator==(const CrackedIceStruct &src) const { return false; }
     bool operator!=(const CrackedIceStruct &src) const { return true; }
 
-    int field_0; // cell number?
+    Cell Pos;
     int field_4; // cracking frame?
 };
 
