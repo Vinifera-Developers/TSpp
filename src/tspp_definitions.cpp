@@ -216,6 +216,7 @@
 #include "levitatelocomotion.h"
 #include "newmenu.h"
 #include "jumpjetlocomotion.h"
+#include "dict.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4424,6 +4425,10 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(JumpjetLocomotionClass::JumpjetLocomotionClass
 JumpjetLocomotionClass::JumpjetLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3684; *((unsigned long *)this+1) = (unsigned long)0x006D35BC; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(JumpjetLocomotionClass::~JumpjetLocomotionClass(), 0x004F9600);
 DEFINE_IMPLEMENTATION(int JumpjetLocomotionClass::Size_Of(bool) const, 0x004FAD50);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Dictionary::Dictionary(), 0x006B9450);
+DEFINE_IMPLEMENTATION(Dictionary::~Dictionary(), 0x006B9530);
+DEFINE_IMPLEMENTATION(unsigned Dictionary::CRC(Wstring &), 0x006B94E0);
 
 
 /**
