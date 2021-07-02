@@ -217,6 +217,7 @@
 #include "newmenu.h"
 #include "jumpjetlocomotion.h"
 #include "dict.h"
+#include "imagecollection.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4430,6 +4431,16 @@ DEFINE_IMPLEMENTATION(int JumpjetLocomotionClass::Size_Of(bool) const, 0x004FAD5
 DEFINE_IMPLEMENTATION(Dictionary::~Dictionary(), 0x006B9530);
 DEFINE_IMPLEMENTATION(unsigned Dictionary::CRC(Wstring &), 0x006B94E0);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ImageCollectionClass::ImageCollectionClass(), 0x0x006B9450);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(ImageCollectionClass::~ImageCollectionClass(), 0x0x006B9530);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Load_PCX(const char *, int, bool), 0x005FDCC0);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Load_Mono_PCX(const char *), 0x005FE0E0);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Load_Bitmap(const char *, void *, int, int), 0x005FD700);
+DEFINE_IMPLEMENTATION(BSurface *ImageCollectionClass::Get_Image_Surface(const char *, void *), 0x005FE100);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw(Rect &, Surface &, Surface &, int, int), 0x005FE1F0);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw_Trans(Rect &, Surface &, Surface &, unsigned), 0x005FE390);
+DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw_Alpha(Rect &, Surface &, Surface &, Surface &, void *, bool, int, int), 0x005FE490);
+
 
 /**
  *  CRT
@@ -4603,6 +4614,7 @@ unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
 int &RequiredAddon = Make_Global<int>(0x0074C9F8);
 bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
+ImageCollectionClass &ImageCollection = Make_Global<ImageCollectionClass>(0x00809360);
 
 
 /**

@@ -141,6 +141,7 @@ class PKey;
 class CCINIClass;
 class ProgressScreenClass;
 class EndGameClass;
+class ImageCollectionClass;
 class SystemTimerClass;
 
 enum KeyNumType;
@@ -372,3 +373,5 @@ extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 
 extern const TheaterDataType *Theaters; 
+
+extern ImageCollectionClass &ImageCollection;
