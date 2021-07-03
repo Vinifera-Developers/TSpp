@@ -219,6 +219,7 @@
 #include "dict.h"
 #include "imagecollection.h"
 #include "toggle.h"
+#include "textbtn.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4447,6 +4448,17 @@ ToggleClass::~ToggleClass() {}
 DEFINE_IMPLEMENTATION(bool ToggleClass::Action(unsigned, KeyNumType &), 0x00647060);
 DEFINE_IMPLEMENTATION(void ToggleClass::Turn_On(), 0x00647040);
 DEFINE_IMPLEMENTATION(void ToggleClass::Turn_Off(), 0x00647050);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TextButtonClass::TextButtonClass(), 0x00643430);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TextButtonClass::TextButtonClass(unsigned, const char *, TextPrintType, int, int, int, int, bool, bool), 0x006433A0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TextButtonClass::TextButtonClass(unsigned, int, TextPrintType, int, int, int, int, bool, bool), 0x00643460);
+TextButtonClass::~TextButtonClass() {}
+DEFINE_IMPLEMENTATION(bool TextButtonClass::Draw_Me(bool), 0x00643510);
+DEFINE_IMPLEMENTATION(void TextButtonClass::Set_Text(const char *, bool), 0x00643550);
+DEFINE_IMPLEMENTATION(void TextButtonClass::Set_Text(int, bool), 0x006435A0);
+DEFINE_IMPLEMENTATION(void TextButtonClass::Set_Style(TextPrintType), 0x005C1190);
+DEFINE_IMPLEMENTATION(void TextButtonClass::Draw_Background(), 0x006435D0);
+DEFINE_IMPLEMENTATION(void TextButtonClass::Draw_Text(const char *), 0x006436A0);
 
 
 /**
