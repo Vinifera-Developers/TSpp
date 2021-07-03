@@ -218,6 +218,7 @@
 #include "jumpjetlocomotion.h"
 #include "dict.h"
 #include "imagecollection.h"
+#include "toggle.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4440,6 +4441,12 @@ DEFINE_IMPLEMENTATION(BSurface *ImageCollectionClass::Get_Image_Surface(const ch
 DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw(Rect &, Surface &, Surface &, int, int), 0x005FE1F0);
 DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw_Trans(Rect &, Surface &, Surface &, unsigned), 0x005FE390);
 DEFINE_IMPLEMENTATION(bool ImageCollectionClass::Draw_Alpha(Rect &, Surface &, Surface &, Surface &, void *, bool, int, int), 0x005FE490);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ToggleClass::ToggleClass(unsigned, int, int, int, int), 0x00647000);
+ToggleClass::~ToggleClass() {}
+DEFINE_IMPLEMENTATION(bool ToggleClass::Action(unsigned, KeyNumType &), 0x00647060);
+DEFINE_IMPLEMENTATION(void ToggleClass::Turn_On(), 0x00647040);
+DEFINE_IMPLEMENTATION(void ToggleClass::Turn_Off(), 0x00647050);
 
 
 /**
