@@ -133,6 +133,7 @@ class IsometricTileClass;
 class RadarEventClass;
 class InfantryClass;
 class TubeClass;
+class ColorScheme;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -349,6 +350,7 @@ extern DynamicVectorClass<IsometricTileClass *> &IsoTiles;
 extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
 extern DynamicVectorClass<InfantryClass *> &Infantry;
 extern DynamicVectorClass<TubeClass *> &Tubes;
+extern DynamicVectorClass<ColorScheme *> &ColorSchemes;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

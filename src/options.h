@@ -32,6 +32,13 @@
 #include "tibsun_defines.h"
 
 
+typedef enum SidebarSide : unsigned char
+{
+    SIDEBAR_SIDE_LEFT,
+    SIDEBAR_SIDE_RIGHT
+} SidebarSide;
+
+
 class OptionsClass
 {
     public:
@@ -62,7 +69,7 @@ class OptionsClass
         int ScrollRate;
         bool IsAutoScroll;
         int DetailLevel;
-        bool SidebarOnLeft;
+        SidebarSide SidebarOn;
         bool SidebarCameoText;
         bool ActionLines;
         bool ToolTips;

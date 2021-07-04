@@ -4761,6 +4761,7 @@ DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorCl
 DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorClass<RadarEventClass *>>(0x0080A110);
 DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
 DynamicVectorClass<TubeClass *> &Tubes = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
+DynamicVectorClass<ColorScheme *> &ColorSchemes = Make_Global<DynamicVectorClass<ColorScheme *>>(0x0080A2C8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
