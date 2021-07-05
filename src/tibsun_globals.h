@@ -281,6 +281,7 @@ extern unsigned &FramesPerSecond;
 extern int &RequiredAddon;
 extern bool &GameActive;
 extern SpecialDialogType &SpecialDialog;
+extern int &BuildLevel;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

@@ -211,6 +211,23 @@ CellClass : public AbstractClass
         // 0045D560
         // 0045D720
 
+        bool Is_Any_Spot_Free(bool a2 = false) const
+        {
+            bool free = false;
+            for (int spot_index = 0; spot_index < 5; ++spot_index) {
+                if (a2) {
+                    free = (!(AltFlag.Composite & (1 << spot_index)));
+                } else {
+                    free = (!(Flag.Composite & (1 << spot_index)));
+                }
+                if (free) {
+                    return true;
+                }
+            }
+
+            return free;
+        }
+
         LandType Land_Type() const { return Land; }
 
         static int Spot_Index(Coordinate &coord);

@@ -198,7 +198,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool Flag_To_Win(bool a1 = true);
         bool Flag_To_Lose(bool a1 = true);
         // 004BFFB0
-        void Init_Data(ColorSchemeType color, HousesType house, int credits);
+        void Init_Data(PlayerColorType color, HousesType house, int credits);
         float Power_Fraction() const;
         void Sell_Wall(Cell &cell, bool quiet = true);
         const BuildingTypeClass * Suggest_New_Building() const;
@@ -305,7 +305,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
 
-        static HouseClass *As_Pointer(HouseTypeClass *house);
+        static HouseClass *As_Pointer(HousesType house);
 
     public:
         int ID;

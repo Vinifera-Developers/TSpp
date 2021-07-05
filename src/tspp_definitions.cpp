@@ -2042,7 +2042,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Die(), 0x004BFB00);
 DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Win(bool), 0x004BFC50);
 DEFINE_IMPLEMENTATION(bool HouseClass::Flag_To_Lose(bool), 0x004BFE00);
 // 004BFFB0
-DEFINE_IMPLEMENTATION(void HouseClass::Init_Data(ColorSchemeType, HousesType, int), 0x004BFFF0);
+DEFINE_IMPLEMENTATION(void HouseClass::Init_Data(PlayerColorType, HousesType, int), 0x004BFFF0);
 DEFINE_IMPLEMENTATION(float HouseClass::Power_Fraction() const, 0x004C0020);
 DEFINE_IMPLEMENTATION(void HouseClass::Sell_Wall(Cell &, bool), 0x004C0070);
 DEFINE_IMPLEMENTATION(const BuildingTypeClass * HouseClass::Suggest_New_Building() const, 0x004C0220);
@@ -2152,7 +2152,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
 DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
 DEFINE_IMPLEMENTATION(void HouseClass::Read_Scenario_INI(CCINIClass &), 0x004C2E40);
 DEFINE_IMPLEMENTATION(void HouseClass::Write_Scenario_INI(CCINIClass &), 0x004C31B0);
-DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HouseTypeClass *), 0x004C4730);
+DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeClass(), 0x00643D60);
 ThemeClass::~ThemeClass() { Clear(); }
@@ -4633,6 +4633,7 @@ unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
 int &RequiredAddon = Make_Global<int>(0x0074C9F8);
 bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
+int &BuildLevel = Make_Global<int>(0x006FB628);
 ImageCollectionClass &ImageCollection = Make_Global<ImageCollectionClass>(0x00809360);
 
 
