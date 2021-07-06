@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          ADDON.H
+ *  @file          GRAPHICMENU.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Expansion pack / addon utility functions.
+ *  @brief         Graphic menu instance class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,14 +28,23 @@
 #pragma once
 
 #include "always.h"
-#include "tibsun_defines.h"
+#include "msengine.h"
+#include "vector.h"
 
 
-bool Addon_Present();
-bool Addon_407120(int a1);
-bool Addon_407150(int a1);
-void Addon_407190(int a1);
-void Addon_4071C0(int a1);
-bool Is_Addon_Set(AddonType addon);
-AddonType Get_Required_Addon();
-void Set_Required_Addon(AddonType addon);
+class GraphicMenuItem;
+
+
+class GraphicMenu
+{
+    public:
+        GraphicMenu();
+        virtual ~GraphicMenu();
+
+    public:
+        MSEngine Engine;
+        char *Background;
+        char *Theme;
+        int field_54;
+        DynamicVectorClass<GraphicMenuItem *> Items;
+};
