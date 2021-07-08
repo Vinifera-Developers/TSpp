@@ -282,6 +282,12 @@ extern int &RequiredAddon;
 extern bool &GameActive;
 extern SpecialDialogType &SpecialDialog;
 extern int &BuildLevel;
+extern bool &PlayerWins;
+extern bool &PlayerLoses;
+extern bool &PlayerRestarts;
+extern bool &PlayerAborts;
+extern int &NewMaxAheadFrame1;
+extern int &NewMaxAheadFrame2;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

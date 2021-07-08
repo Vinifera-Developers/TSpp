@@ -57,3 +57,5 @@ long Owner_From_Name(const char *name);
 bool Main_Loop();
 void Keyboard_Process(KeyNumType &input);
 void Load_Title_Screen(const char *name, XSurface *video_page, PaletteClass *palette);
+void Init_Random();
+void Init_Campaigns();

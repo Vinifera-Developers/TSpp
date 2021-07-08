@@ -4491,6 +4491,8 @@ DEFINE_IMPLEMENTATION(long Owner_From_Name(const char *), 0x00463390);
 DEFINE_IMPLEMENTATION(bool Main_Loop(), 0x00508A40);
 DEFINE_IMPLEMENTATION(void Keyboard_Process(KeyNumType &), 0x005093B0);
 DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char *, XSurface *, PaletteClass *), 0x00686340);
+DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
+DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 
 
 /**
@@ -4635,6 +4637,12 @@ bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 int &BuildLevel = Make_Global<int>(0x006FB628);
 ImageCollectionClass &ImageCollection = Make_Global<ImageCollectionClass>(0x00809360);
+bool &PlayerWins = Make_Global<bool>(0x007E4870);
+bool &PlayerLoses = Make_Global<bool>(0x007E2281);
+bool &PlayerRestarts = Make_Global<bool>(0x007B3510);
+bool &PlayerAborts = Make_Global<bool>(0x007E2280);
+int &NewMaxAheadFrame1 = Make_Global<int>(0x007E2400);
+int &NewMaxAheadFrame2 = Make_Global<int>(0x007E23E4);
 
 
 /**
