@@ -141,3 +141,6 @@ class ScenarioClass
         unsigned short Stage;
         bool UserInputLocked;
 };
+
+
+bool Start_Scenario(const char *name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);

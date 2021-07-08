@@ -68,7 +68,7 @@ class CDFileClass : public BufferIOFileClass
 
         static void Reset_Raw_Path() { RawPath[0] = '\0'; }
 
-    private:
+    public:
         bool IsDisabled;
 
         typedef struct {
