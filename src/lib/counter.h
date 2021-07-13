@@ -64,5 +64,5 @@ class TCounterClass : CounterClass
 
         int Increment(T index) { return CounterClass::Increment((int)index); }
         int Decrement(T index) { return CounterClass::Decrement((int)index); }
-        int Count_Of(T index) { return CounterClass::Count((int)index); }
+        int Count_Of(T index) { return CounterClass::Count_Of((int)index); }
 };

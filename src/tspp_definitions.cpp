@@ -2101,7 +2101,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bo
 // 004C5770
 // 004C5840
 // 004C5880
-// 004C58B0
+DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const, 0x004C58B0);
 // 004C5920
 // 004C5BB0
 // 004C68E0

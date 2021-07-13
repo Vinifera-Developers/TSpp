@@ -65,7 +65,10 @@ class TechnoTypeClass;
 class ObjectTypeClass;
 class TechnoClass;
 class TeamTypeClass;
+class UnitTypeClass;
 class BuildingTypeClass;
+class AircraftTypeClass;
+class InfantryTypeClass;
 
 
 class DECLSPEC_UUID("D9D4A910-87C6-11D1-B707-00A024DDAFD1")
@@ -255,7 +258,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C5770
         // 004C5840
         // 004C5880
-        // 004C58B0
+        TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
         // 004C5920
         // 004C5BB0
         // 004C68E0
@@ -299,6 +302,26 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004CB9C0
         void Init_Remap_Color();
         // 004CBB30
+
+        UnitTypeClass *Get_First_Ownable(TypeList<UnitTypeClass *> &list) const
+        {
+            return reinterpret_cast<UnitTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        }
+
+        AircraftTypeClass *Get_First_Ownable(TypeList<AircraftTypeClass *> &list) const
+        {
+            return reinterpret_cast<AircraftTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        }
+
+        BuildingTypeClass *Get_First_Ownable(TypeList<BuildingTypeClass *> &list) const
+        {
+            return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        }
+
+        InfantryTypeClass *Get_First_Ownable(TypeList<InfantryTypeClass *> &list) const
+        {
+            return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        }
 
         static void One_Time();
         static void Computer_Paranoid();
