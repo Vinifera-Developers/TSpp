@@ -30,6 +30,7 @@
 #include "tibsun_globals.h"
 #include "voc.h"
 #include "unittype.h"
+#include "buildingtype.h"
 
 
 /**
@@ -117,6 +118,58 @@ TypeList<UnitTypeClass *> CCINIClass::Get_Units(const char *section, const char 
  *  @author: CCHyper
  */
 bool CCINIClass::Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value)
+{
+    char buffer[128] = "";
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]->Name());
+    }
+
+    return INIClass::Put_String(section, entry, buffer);
+}
+
+
+/**
+ *  Fetch a unit list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TypeList<BuildingTypeClass *> CCINIClass::Get_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<BuildingTypeClass *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+
+            for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
+                if (strcasecmp(name, BuildingTypes[index]->Name()) == 0) {
+                    list.Add(BuildingTypes[index]);
+                }
+            }
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a unit list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> value)
 {
     char buffer[128] = "";
 

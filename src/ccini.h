@@ -39,6 +39,7 @@ class Pipe;
 class TechnoTypeClass;
 class xTargetClass;
 class UnitTypeClass;
+class BuildingTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -160,6 +161,9 @@ class CCINIClass : public INIClass
 
         TypeList<UnitTypeClass *> Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue);
         bool Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value);
+
+        TypeList<BuildingTypeClass *> Get_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> defvalue);
+        bool Put_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> value);
 
     private:
         void Calculate_Message_Digest();
