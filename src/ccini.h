@@ -158,6 +158,9 @@ class CCINIClass : public INIClass
         const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
         bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
 
+        TypeList<UnitTypeClass *> Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue);
+        bool Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();

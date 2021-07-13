@@ -27,6 +27,7 @@
  *
  ******************************************************************************/
 #include "ccini.h"
+#include "tibsun_globals.h"
 #include "voc.h"
 #include "unittype.h"
 
@@ -38,11 +39,11 @@
  */
 VocType CCINIClass::Get_VocType(const char *section, const char *entry, const VocType defvalue)
 {
-	char buffer[1024];
+    char buffer[1024];
 
-	INIClass::Get_String(section, entry, VocClass::Name_From(defvalue), buffer, sizeof(buffer));
+    INIClass::Get_String(section, entry, VocClass::Name_From(defvalue), buffer, sizeof(buffer));
 
-	return VocClass::From_Name(buffer);
+    return VocClass::From_Name(buffer);
 }
 
 
@@ -75,4 +76,56 @@ bool CCINIClass::Put_Unit(const char *section, const char *entry, const UnitType
     } else {
         return INIClass::Put_String(section, entry, "<none>");
     }
+}
+
+
+/**
+ *  Fetch a unit list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TypeList<UnitTypeClass *> CCINIClass::Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<UnitTypeClass *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+
+            for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
+                if (strcasecmp(name, UnitTypes[index]->Name()) == 0) {
+                    list.Add(UnitTypes[index]);
+                }
+            }
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a unit list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value)
+{
+    char buffer[128] = "";
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]->Name());
+    }
+
+    return INIClass::Put_String(section, entry, buffer);
 }
