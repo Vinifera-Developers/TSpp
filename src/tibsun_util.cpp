@@ -95,3 +95,40 @@ bool Simple_YesNo_WWMessageBox(const char *msg)
     const char *btn2 = Text_String(TXT_NO);
     return WWMessageBox().Process(msg, 0, btn1, btn2) == 0; // 0 == button 1
 }
+
+
+/**
+ *  Converts a keyboard input number into a facing value.
+ */
+FacingType KN_To_Facing(KeyNumType input)
+{
+	input &= ~(KN_ALT_BIT|KN_SHIFT_BIT|KN_CTRL_BIT);
+
+	switch (input) {
+		case KN_LEFT:
+			return FACING_W;
+
+		case KN_RIGHT:
+			return FACING_E;
+
+		case KN_UP:
+			return FACING_N;
+
+		case KN_DOWN:
+			return FACING_S;
+
+		case KN_UPLEFT:
+			return FACING_NW;
+
+		case KN_UPRIGHT:
+			return FACING_NE;
+
+		case KN_DOWNLEFT:
+			return FACING_SW;
+
+		case KN_DOWNRIGHT:
+			return FACING_SE;
+	}
+
+	return FACING_NONE;
+}

@@ -82,6 +82,9 @@ class WeaponTypeClass;
 #define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
 
+#define	REFRESH_EOL         32767		// This number ends a refresh/occupy offset list.
+#define	REFRESH_SIDEBAR     32766		// This number flags that sidebar needs refreshing.
+
 
 /**
  *  The map is broken down into regions of this specified dimensions.

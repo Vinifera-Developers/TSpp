@@ -28,9 +28,12 @@
 #pragma once
 
 #include "tibsun_defines.h"
+#include "wwkeyboard.h"
 
 
 Cell Get_Cell_Under_Mouse();
 Coordinate Get_Coord_Under_Mouse();
 
 bool Simple_YesNo_WWMessageBox(const char *msg);
+
+FacingType KN_To_Facing(KeyNumType input);

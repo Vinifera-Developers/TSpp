@@ -211,6 +211,8 @@ CellClass : public AbstractClass
         // 0045D560
         // 0045D720
 
+        ObjectClass * Cell_Occupier() const { return OccupierPtr; }
+
         bool Is_Any_Spot_Free(bool a2 = false) const
         {
             bool free = false;

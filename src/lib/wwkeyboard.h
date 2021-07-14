@@ -605,6 +605,7 @@ typedef enum KeyNumType
     KN_BUTTON = WWKEY_BTN_BIT,
 } KeyNumType;
 DEFINE_ENUMERATION_OPERATORS(KeyNumType);
+DEFINE_ENUMERATION_BITWISE_OPERATORS(KeyNumType);
 
 
 class WWKeyboardClass
