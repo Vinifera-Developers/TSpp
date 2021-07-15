@@ -144,6 +144,8 @@ class ProgressScreenClass;
 class EndGameClass;
 class ImageCollectionClass;
 class SystemTimerClass;
+class ABuffer;
+class ZBuffer;
 
 enum KeyNumType;
 
@@ -288,6 +290,8 @@ extern bool &PlayerRestarts;
 extern bool &PlayerAborts;
 extern int &NewMaxAheadFrame1;
 extern int &NewMaxAheadFrame2;
+extern ABuffer *&AlphaBuffer;
+extern ZBuffer *&DepthBuffer;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

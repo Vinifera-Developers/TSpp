@@ -220,6 +220,8 @@
 #include "imagecollection.h"
 #include "toggle.h"
 #include "textbtn.h"
+#include "abuffer.h"
+#include "zbuffer.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4461,6 +4463,26 @@ DEFINE_IMPLEMENTATION(void TextButtonClass::Set_Style(TextPrintType), 0x005C1190
 DEFINE_IMPLEMENTATION(void TextButtonClass::Draw_Background(), 0x006435D0);
 DEFINE_IMPLEMENTATION(void TextButtonClass::Draw_Text(const char *), 0x006436A0);
 
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ABuffer::ABuffer(Rect), 0x00406540);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(ABuffer::~ABuffer(), 0x004066B0);
+DEFINE_IMPLEMENTATION(void ABuffer::Copy_To(BSurface *, int, int, int, int), 0x00406620);
+DEFINE_IMPLEMENTATION(void ABuffer::Set(unsigned int, int, unsigned), 0x004066D0);
+DEFINE_IMPLEMENTATION(void ABuffer::Pan(int, int, unsigned), 0x00406730);
+DEFINE_IMPLEMENTATION(bool ABuffer::Fill(unsigned), 0x00406B30);
+DEFINE_IMPLEMENTATION(bool ABuffer::Fill(unsigned, Rect), 0x00406B70);
+DEFINE_IMPLEMENTATION(void ABuffer::Update(int, int, int, int), 0x00406B90);
+DEFINE_IMPLEMENTATION(unsigned int ABuffer::Get_Buffer_Offset(Point2D), 0x00406D10);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(ZBuffer::ZBuffer(Rect), 0x006A8DD0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(ZBuffer::~ZBuffer(), 0x006A8F40);
+DEFINE_IMPLEMENTATION(void ZBuffer::Copy_To(BSurface *, int, int, int, int), 0x006A8EB0);
+DEFINE_IMPLEMENTATION(void ZBuffer::Set(unsigned int, int, unsigned), 0x006A8F50);
+DEFINE_IMPLEMENTATION(void ZBuffer::Pan(int, int, unsigned), 0x006A8FB0);
+DEFINE_IMPLEMENTATION(bool ZBuffer::Fill(unsigned), 0x006A93B0);
+DEFINE_IMPLEMENTATION(bool ZBuffer::Fill(unsigned, Rect), 0x006A93F0);
+DEFINE_IMPLEMENTATION(void ZBuffer::Update(int, int, int, int), 0x006A9410);
+DEFINE_IMPLEMENTATION(unsigned int ZBuffer::Get_Buffer_Offset(Point2D), 0x006A9590);
+
 
 /**
  *  CRT
@@ -4698,6 +4720,8 @@ double &Levitation_ProximityDistance = Make_Global<double>(0x00700240);
 TypeList<VocType> &Levitation_PropulsionSoundEffect = Make_Global<TypeList<VocType>>(0x00804A10);
 const void *&AircraftTypeClass::LRotorData = Make_Global<const void *>(0x0074CBDC);
 const void *&AircraftTypeClass::RRotorData = Make_Global<const void *>(0x0074CBE0);
+ABuffer *&AlphaBuffer = Make_Global<ABuffer *>(0x007474A8);
+ZBuffer *&DepthBuffer = Make_Global<ZBuffer *>(0x0074C8F4);
 
 
 /**
