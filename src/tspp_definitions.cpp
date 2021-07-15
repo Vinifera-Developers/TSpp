@@ -231,6 +231,7 @@
 #include "list.h"
 #include "colrlist.h"
 #include "cheklist.h"
+#include "edit.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4605,6 +4606,17 @@ DEFINE_IMPLEMENTATION(void CheckListClass::Remove_Item(const char *), 0x0045DC90
 DEFINE_IMPLEMENTATION(void CheckListClass::Set_Selected_Index(int), 0x0045DFF0);
 DEFINE_IMPLEMENTATION(void CheckListClass::Set_Selected_Index(const char *), 0x0045DD00);
 DEFINE_IMPLEMENTATION(void CheckListClass::Draw_Entry(int, int, int, int, bool), 0x0045DE30);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EditClass::EditClass(int, char *, int, TextPrintType, int, int, int, int, EditStyle), 0x00490280);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(EditClass::~EditClass(), 0x00490380);
+DEFINE_IMPLEMENTATION(void EditClass::Set_Focus(), 0x00490830);
+DEFINE_IMPLEMENTATION(bool EditClass::Draw_Me(bool), 0x004903E0);
+DEFINE_IMPLEMENTATION(bool EditClass::Action(unsigned, KeyNumType &), 0x00490460);
+DEFINE_IMPLEMENTATION(void EditClass::Set_Text(const char *, int), 0x004903B0);
+DEFINE_IMPLEMENTATION(const char *EditClass::Get_Text(), 0x00482BB0);
+DEFINE_IMPLEMENTATION(void EditClass::Draw_Background(), 0x00490570);
+DEFINE_IMPLEMENTATION(void EditClass::Draw_Text(const char *), 0x004905B0);
+DEFINE_IMPLEMENTATION(bool EditClass::Handle_Key(KeyASCIIType), 0x004906F0);
 
 
 /**
