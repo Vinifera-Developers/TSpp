@@ -223,6 +223,7 @@
 #include "abuffer.h"
 #include "zbuffer.h"
 #include "gauge.h"
+#include "dial8.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4502,6 +4503,13 @@ TriColorGaugeClass::~TriColorGaugeClass() {}
 DEFINE_IMPLEMENTATION(bool TriColorGaugeClass::Draw_Me(bool), 0x004AB2F0);
 DEFINE_IMPLEMENTATION(int TriColorGaugeClass::Set_Red_Limit(int), 0x004AB290);
 DEFINE_IMPLEMENTATION(int TriColorGaugeClass::Set_Yellow_Limit(int), 0x004AB2C0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Dial8Class::Dial8Class(int, int, int, int, int, DirType), 0x00473F30);
+Dial8Class::~Dial8Class() {}
+DEFINE_IMPLEMENTATION(bool Dial8Class::Draw_Me(bool), 0x00474330);
+DEFINE_IMPLEMENTATION(bool Dial8Class::Action(unsigned, KeyNumType &), 0x004741E0);
+DEFINE_IMPLEMENTATION(DirType Dial8Class::Get_Direction() const, 0x004744D0);
+DEFINE_IMPLEMENTATION(void Dial8Class::Set_Direction(DirType), 0x004744E0);
 
 
 /**
