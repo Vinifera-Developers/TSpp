@@ -228,6 +228,7 @@
 #include "shapebtn.h"
 #include "checkbox.h"
 #include "slider.h"
+#include "list.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4547,6 +4548,37 @@ DEFINE_IMPLEMENTATION(void SliderClass::Set_Thumb_Size(int), 0x005F7D50);
 DEFINE_IMPLEMENTATION(int SliderClass::Bump(bool), 0x005F7F80);
 DEFINE_IMPLEMENTATION(int SliderClass::Step(bool), 0x005F7FC0);
 DEFINE_IMPLEMENTATION(void SliderClass::Recalc_Thumb(), 0x005F7E70);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ListClass::ListClass(int, int, int, int, int, TextPrintType, const void *, const void *), 0x00503280);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ListClass::ListClass(const ListClass &), 0x005033E0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(ListClass::~ListClass(), 0x00503650);
+DEFINE_IMPLEMENTATION(LinkClass &ListClass::Add(LinkClass &), 0x00503E90);
+DEFINE_IMPLEMENTATION(LinkClass &ListClass::Add_Tail(LinkClass &), 0x00503F30);
+DEFINE_IMPLEMENTATION(LinkClass &ListClass::Add_Head(LinkClass &), 0x00503EE0);
+DEFINE_IMPLEMENTATION(GadgetClass *ListClass::Remove(), 0x00503F80);
+DEFINE_IMPLEMENTATION(void ListClass::Flag_To_Redraw(), 0x00504050);
+DEFINE_IMPLEMENTATION(void ListClass::Peer_To_Peer(unsigned, KeyNumType &, ControlClass &), 0x00503B90);
+DEFINE_IMPLEMENTATION(void ListClass::Set_Position(int, int), 0x005035C0);
+DEFINE_IMPLEMENTATION(bool ListClass::Draw_Me(bool), 0x005039A0);
+DEFINE_IMPLEMENTATION(bool ListClass::Action(unsigned, KeyNumType &), 0x005038B0);
+DEFINE_IMPLEMENTATION(int ListClass::Add_Item(const char *), 0x005036F0);
+DEFINE_IMPLEMENTATION(int ListClass::Add_Item(int), 0x00503780);
+DEFINE_IMPLEMENTATION(int ListClass::Add_Scroll_Bar(), 0x00503C60);
+DEFINE_IMPLEMENTATION(void ListClass::Bump(int), 0x00503AA0);
+DEFINE_IMPLEMENTATION(int ListClass::Count() const, 0x0045DFC0);
+DEFINE_IMPLEMENTATION(int ListClass::Current_Index() const, 0x00503B80);
+DEFINE_IMPLEMENTATION(char const *ListClass::Current_Item() const, 0x00503B60);
+DEFINE_IMPLEMENTATION(char const *ListClass::Get_Item(int) const, 0x00503B40);
+DEFINE_IMPLEMENTATION(int ListClass::Step_Selected_Index(int), 0x00504030);
+DEFINE_IMPLEMENTATION(void ListClass::Remove_Item(const char *), 0x00503880);
+DEFINE_IMPLEMENTATION(void ListClass::Remove_Item(int), 0x005037B0);
+DEFINE_IMPLEMENTATION(int ListClass::Remove_Scroll_Bar(), 0x00503D30);
+DEFINE_IMPLEMENTATION(void ListClass::Set_Selected_Index(const char *), 0x00504090);
+DEFINE_IMPLEMENTATION(void ListClass::Set_Selected_Index(int), 0x00503FC0);
+DEFINE_IMPLEMENTATION(void ListClass::Set_Tabs(const int *), 0x00503D90);
+DEFINE_IMPLEMENTATION(int ListClass::Set_View_Index(int), 0x00503BF0);
+DEFINE_IMPLEMENTATION(void ListClass::Step(int), 0x00503AF0);
+DEFINE_IMPLEMENTATION(void ListClass::Draw_Entry(int, int, int, int, bool), 0x00503DA0);
 
 
 /**
