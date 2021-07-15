@@ -222,6 +222,7 @@
 #include "textbtn.h"
 #include "abuffer.h"
 #include "zbuffer.h"
+#include "gauge.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4482,6 +4483,25 @@ DEFINE_IMPLEMENTATION(bool ZBuffer::Fill(unsigned), 0x006A93B0);
 DEFINE_IMPLEMENTATION(bool ZBuffer::Fill(unsigned, Rect), 0x006A93F0);
 DEFINE_IMPLEMENTATION(void ZBuffer::Update(int, int, int, int), 0x006A9410);
 DEFINE_IMPLEMENTATION(unsigned int ZBuffer::Get_Buffer_Offset(Point2D), 0x006A9590);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(GaugeClass::GaugeClass(unsigned, int, int, int, int), 0x004AACB0);
+GaugeClass::~GaugeClass() {}
+DEFINE_IMPLEMENTATION(bool GaugeClass::Draw_Me(bool), 0x004AAE40);
+DEFINE_IMPLEMENTATION(bool GaugeClass::Action(unsigned, KeyNumType &), 0x004AAFE0);
+DEFINE_IMPLEMENTATION(int GaugeClass::Set_Maximum(int), 0x004AAD30);
+DEFINE_IMPLEMENTATION(int GaugeClass::Set_Value(int), 0x004AAD50);
+DEFINE_IMPLEMENTATION(int GaugeClass::Get_Value() const, 0x004AB840);
+DEFINE_IMPLEMENTATION(void GaugeClass::Use_Thumb(int), 0x004AB850);
+DEFINE_IMPLEMENTATION(int GaugeClass::Thumb_Pixels(), 0x004AB860);
+DEFINE_IMPLEMENTATION(void GaugeClass::Draw_Thumb(), 0x004AB140);
+DEFINE_IMPLEMENTATION(int GaugeClass::Pixel_To_Value(int), 0x004AAD80);
+DEFINE_IMPLEMENTATION(int GaugeClass::Value_To_Pixel(int), 0x004AAE00);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TriColorGaugeClass::TriColorGaugeClass(unsigned, int, int, int, int), 0x004AB1F0);
+TriColorGaugeClass::~TriColorGaugeClass() {}
+DEFINE_IMPLEMENTATION(bool TriColorGaugeClass::Draw_Me(bool), 0x004AB2F0);
+DEFINE_IMPLEMENTATION(int TriColorGaugeClass::Set_Red_Limit(int), 0x004AB290);
+DEFINE_IMPLEMENTATION(int TriColorGaugeClass::Set_Yellow_Limit(int), 0x004AB2C0);
 
 
 /**
