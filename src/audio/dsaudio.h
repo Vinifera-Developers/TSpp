@@ -32,7 +32,7 @@
  *  Define the DirectSound interface version.
  */
 #undef DIRECTSOUND_VERSION
-#define DIRECTSOUND_VERSION 0x0700 // Use DirectSound 7.0
+#define DIRECTSOUND_VERSION 0x0600 // Use DirectSound 6.0
 
 
 #include "always.h"

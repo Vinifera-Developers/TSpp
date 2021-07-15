@@ -64,6 +64,22 @@ class DSurface : public XSurface
         virtual bool Draw_Line_entry_90(Rect &area, Point2D &start, Point2D &end, RGBClass &a4, RGBClass &a5, float &a6, float &a7);
         virtual bool Can_Blit() const;
 
+        bool Draw_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color);
+        bool Fill_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color);
+        bool Fill_Triangle_Trans(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, RGBClass &rgb, unsigned opacity);
+
+        bool Draw_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, unsigned color);
+        bool Fill_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, unsigned color);
+        bool Fill_Quad_Trans(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, RGBClass &rgb, unsigned opacity);
+
+        void Draw_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
+        void Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
+        void Fill_Circle_Trans(const Point2D center, unsigned radius, Rect rect, RGBClass &rgb, unsigned opacity);
+        
+        bool Fill_Ellipse(Point2D point, int radius_x, int radius_y, Rect clip, unsigned color);
+        bool Fill_Ellipse_Trans(Point2D point, int radius_x, int radius_y, Rect clip, RGBClass &rgb, unsigned opacity);
+        bool Put_Pixel_Trans(Point2D &point, RGBClass &rgb, unsigned opacity);
+
         void *Get_Buffer_Ptr(int x = 0, int y = 0) { return (unsigned char *)(BufferPtr) + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }
 
         bool In_Video_Ram() const { return InVideoRam; }
