@@ -230,6 +230,7 @@
 #include "slider.h"
 #include "list.h"
 #include "colrlist.h"
+#include "cheklist.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4591,6 +4592,19 @@ DEFINE_IMPLEMENTATION(void ColorListClass::Draw_Entry(int, int, int, int, bool),
 DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(const char *, ColorSchemeType), 0x0045E170);
 DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(int, ColorSchemeType), 0x0045E1D0);
 DEFINE_IMPLEMENTATION(void ColorListClass::Set_Selected_Style(SelectStyleType, ColorSchemeType), 0x0045E2E0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(CheckListClass::CheckListClass(int, int, int, int, int, TextPrintType, const void *, const void *), 0x0045DB90);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(CheckListClass::~CheckListClass(), 0x0045DBE0);
+DEFINE_IMPLEMENTATION(bool CheckListClass::Action(unsigned, KeyNumType &), 0x0045DDB0);
+DEFINE_IMPLEMENTATION(int CheckListClass::Add_Item(int), 0x0045DFD0);
+DEFINE_IMPLEMENTATION(int CheckListClass::Add_Item(const char *), 0x0045DC20);
+DEFINE_IMPLEMENTATION(const char *CheckListClass::Current_Item() const, 0x0045DC60);
+DEFINE_IMPLEMENTATION(const char *CheckListClass::Get_Item(int) const, 0x0045DC70);
+DEFINE_IMPLEMENTATION(void CheckListClass::Remove_Item(int), 0x0045DFE0);
+DEFINE_IMPLEMENTATION(void CheckListClass::Remove_Item(const char *), 0x0045DC90);
+DEFINE_IMPLEMENTATION(void CheckListClass::Set_Selected_Index(int), 0x0045DFF0);
+DEFINE_IMPLEMENTATION(void CheckListClass::Set_Selected_Index(const char *), 0x0045DD00);
+DEFINE_IMPLEMENTATION(void CheckListClass::Draw_Entry(int, int, int, int, bool), 0x0045DE30);
 
 
 /**
