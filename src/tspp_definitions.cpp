@@ -229,6 +229,7 @@
 #include "checkbox.h"
 #include "slider.h"
 #include "list.h"
+#include "colrlist.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4579,6 +4580,17 @@ DEFINE_IMPLEMENTATION(void ListClass::Set_Tabs(const int *), 0x00503D90);
 DEFINE_IMPLEMENTATION(int ListClass::Set_View_Index(int), 0x00503BF0);
 DEFINE_IMPLEMENTATION(void ListClass::Step(int), 0x00503AF0);
 DEFINE_IMPLEMENTATION(void ListClass::Draw_Entry(int, int, int, int, bool), 0x00503DA0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorListClass::ColorListClass(int, int, int, int, int, TextPrintType, const void *, const void *), 0x0045E080);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(ColorListClass::~ColorListClass(), 0x0045E110);
+DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(int), 0x0045E880);
+DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(const char *), 0x0045E860);
+DEFINE_IMPLEMENTATION(void ColorListClass::Remove_Item(int), 0x0045E290);
+DEFINE_IMPLEMENTATION(void ColorListClass::Remove_Item(const char *), 0x0045E230);
+DEFINE_IMPLEMENTATION(void ColorListClass::Draw_Entry(int, int, int, int, bool), 0x0045E300);
+DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(const char *, ColorSchemeType), 0x0045E170);
+DEFINE_IMPLEMENTATION(int ColorListClass::Add_Item(int, ColorSchemeType), 0x0045E1D0);
+DEFINE_IMPLEMENTATION(void ColorListClass::Set_Selected_Style(SelectStyleType, ColorSchemeType), 0x0045E2E0);
 
 
 /**
