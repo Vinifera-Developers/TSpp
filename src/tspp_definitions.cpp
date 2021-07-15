@@ -224,6 +224,7 @@
 #include "zbuffer.h"
 #include "gauge.h"
 #include "dial8.h"
+#include "statbtn.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4510,6 +4511,14 @@ DEFINE_IMPLEMENTATION(bool Dial8Class::Draw_Me(bool), 0x00474330);
 DEFINE_IMPLEMENTATION(bool Dial8Class::Action(unsigned, KeyNumType &), 0x004741E0);
 DEFINE_IMPLEMENTATION(DirType Dial8Class::Get_Direction() const, 0x004744D0);
 DEFINE_IMPLEMENTATION(void Dial8Class::Set_Direction(DirType), 0x004744E0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(StaticButtonClass::StaticButtonClass(), 0x00608EF0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(StaticButtonClass::StaticButtonClass(unsigned, const char *, TextPrintType, int, int, int, int), 0x00608E50);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(StaticButtonClass::~StaticButtonClass(), 0x00608F30);
+DEFINE_IMPLEMENTATION(bool StaticButtonClass::Draw_Me(bool), 0x00608F60);
+DEFINE_IMPLEMENTATION(void StaticButtonClass::Set_Text(const char *, bool), 0x00608FA0);
+DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Background(), 0x00609070);
+DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Text(const char *), 0x00609120);
 
 
 /**
