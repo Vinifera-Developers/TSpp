@@ -226,6 +226,7 @@
 #include "dial8.h"
 #include "statbtn.h"
 #include "shapebtn.h"
+#include "checkbox.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4526,6 +4527,11 @@ DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Text(const char *), 0x0060912
 ShapeButtonClass::~ShapeButtonClass() {}
 DEFINE_IMPLEMENTATION(bool ShapeButtonClass::Draw_Me(bool), 0x005F16A0);
 DEFINE_IMPLEMENTATION(void ShapeButtonClass::Set_Shape(const ShapeFileStruct *, int, int), 0x005F1660);
+
+CheckBoxClass::CheckBoxClass(unsigned id, int x, int y) : ToggleClass(id, x, y, 7, 7) {}
+CheckBoxClass::~CheckBoxClass() {}
+DEFINE_IMPLEMENTATION(bool CheckBoxClass::Draw_Me(bool), 0x0045DA00);
+DEFINE_IMPLEMENTATION(bool CheckBoxClass::Action(unsigned, KeyNumType &), 0x0045DB20);
 
 
 /**
