@@ -227,6 +227,7 @@
 #include "statbtn.h"
 #include "shapebtn.h"
 #include "checkbox.h"
+#include "slider.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4532,6 +4533,20 @@ CheckBoxClass::CheckBoxClass(unsigned id, int x, int y) : ToggleClass(id, x, y, 
 CheckBoxClass::~CheckBoxClass() {}
 DEFINE_IMPLEMENTATION(bool CheckBoxClass::Draw_Me(bool), 0x0045DA00);
 DEFINE_IMPLEMENTATION(bool CheckBoxClass::Action(unsigned, KeyNumType &), 0x0045DB20);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(SliderClass::SliderClass(unsigned, int, int, int, int, bool), 0x005F7AC0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(SliderClass::~SliderClass(), 0x005F7C90);
+DEFINE_IMPLEMENTATION(void SliderClass::Peer_To_Peer(unsigned, KeyNumType &, ControlClass &), 0x005F80E0);
+DEFINE_IMPLEMENTATION(bool SliderClass::Draw_Me(bool), 0x005F8070);
+DEFINE_IMPLEMENTATION(bool SliderClass::Action(unsigned, KeyNumType &), 0x005F7EE0);
+DEFINE_IMPLEMENTATION(int SliderClass::Set_Maximum(int), 0x005F7CD0);
+DEFINE_IMPLEMENTATION(int SliderClass::Set_Value(int), 0x005F7DE0);
+DEFINE_IMPLEMENTATION(int SliderClass::Thumb_Pixels(), 0x005041A0);
+DEFINE_IMPLEMENTATION(void SliderClass::Draw_Thumb(), 0x005F7FF0);
+DEFINE_IMPLEMENTATION(void SliderClass::Set_Thumb_Size(int), 0x005F7D50);
+DEFINE_IMPLEMENTATION(int SliderClass::Bump(bool), 0x005F7F80);
+DEFINE_IMPLEMENTATION(int SliderClass::Step(bool), 0x005F7FC0);
+DEFINE_IMPLEMENTATION(void SliderClass::Recalc_Thumb(), 0x005F7E70);
 
 
 /**
