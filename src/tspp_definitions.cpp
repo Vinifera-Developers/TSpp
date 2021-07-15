@@ -232,6 +232,7 @@
 #include "colrlist.h"
 #include "cheklist.h"
 #include "edit.h"
+#include "drop.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4617,6 +4618,28 @@ DEFINE_IMPLEMENTATION(const char *EditClass::Get_Text(), 0x00482BB0);
 DEFINE_IMPLEMENTATION(void EditClass::Draw_Background(), 0x00490570);
 DEFINE_IMPLEMENTATION(void EditClass::Draw_Text(const char *), 0x004905B0);
 DEFINE_IMPLEMENTATION(bool EditClass::Handle_Key(KeyASCIIType), 0x004906F0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropListClass::DropListClass(int, char *, int, TextPrintType, int, int, int, int, const void *, const void *), 0x00482450);
+DropListClass::~DropListClass() {}
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropListClass & DropListClass::operator = (const DropListClass &), 0x00482860);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(DropListClass::DropListClass(const DropListClass &), 0x00482A10);
+DEFINE_IMPLEMENTATION(DropListClass &DropListClass::Add_Tail(LinkClass &), 0x00482560);
+DEFINE_IMPLEMENTATION(DropListClass &DropListClass::Add_Head(LinkClass &), 0x00482580);
+DEFINE_IMPLEMENTATION(DropListClass &DropListClass::Add(LinkClass &), 0x004825A0);
+DEFINE_IMPLEMENTATION(void DropListClass::Zap(), 0x00482520);
+DEFINE_IMPLEMENTATION(DropListClass *DropListClass::Remove(), 0x004825C0);
+DEFINE_IMPLEMENTATION(void DropListClass::Peer_To_Peer(unsigned, KeyNumType &, ControlClass &), 0x00482710);
+DEFINE_IMPLEMENTATION(void DropListClass::Clear_Focus(), 0x004826F0);
+DEFINE_IMPLEMENTATION(void DropListClass::Set_Position(int, int), 0x00482AF0);
+DEFINE_IMPLEMENTATION(int DropListClass::Add_Item(const char *), 0x004825F0);
+DEFINE_IMPLEMENTATION(const char *DropListClass::Current_Item(), 0x00482630);
+DEFINE_IMPLEMENTATION(int DropListClass::Current_Index(), 0x00482650);
+DEFINE_IMPLEMENTATION(void DropListClass::Set_Selected_Index(int), 0x00482670);
+DEFINE_IMPLEMENTATION(void DropListClass::Set_Selected_Index(const char *), 0x00482B40);
+DEFINE_IMPLEMENTATION(int DropListClass::Count() const, 0x00482BC0);
+DEFINE_IMPLEMENTATION(const char *DropListClass::Get_Item(int) const, 0x00482BE0);
+DEFINE_IMPLEMENTATION(void DropListClass::Expand(), 0x004827E0);
+DEFINE_IMPLEMENTATION(void DropListClass::Collapse(), 0x00482840);
 
 
 /**
