@@ -225,6 +225,7 @@
 #include "gauge.h"
 #include "dial8.h"
 #include "statbtn.h"
+#include "shapebtn.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4519,6 +4520,12 @@ DEFINE_IMPLEMENTATION(bool StaticButtonClass::Draw_Me(bool), 0x00608F60);
 DEFINE_IMPLEMENTATION(void StaticButtonClass::Set_Text(const char *, bool), 0x00608FA0);
 DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Background(), 0x00609070);
 DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Text(const char *), 0x00609120);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ShapeButtonClass::ShapeButtonClass(), 0x005F15A0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ShapeButtonClass::ShapeButtonClass(unsigned, const ShapeFileStruct *, int, int), 0x005F15E0);
+ShapeButtonClass::~ShapeButtonClass() {}
+DEFINE_IMPLEMENTATION(bool ShapeButtonClass::Draw_Me(bool), 0x005F16A0);
+DEFINE_IMPLEMENTATION(void ShapeButtonClass::Set_Shape(const ShapeFileStruct *, int, int), 0x005F1660);
 
 
 /**
