@@ -233,6 +233,7 @@
 #include "cheklist.h"
 #include "edit.h"
 #include "drop.h"
+#include "txtlabel.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4640,6 +4641,11 @@ DEFINE_IMPLEMENTATION(int DropListClass::Count() const, 0x00482BC0);
 DEFINE_IMPLEMENTATION(const char *DropListClass::Get_Item(int) const, 0x00482BE0);
 DEFINE_IMPLEMENTATION(void DropListClass::Expand(), 0x004827E0);
 DEFINE_IMPLEMENTATION(void DropListClass::Collapse(), 0x00482840);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TextLabelClass::TextLabelClass(const char *, int, int, ColorSchemeType, TextPrintType), 0x0064D0C0);
+TextLabelClass::~TextLabelClass() {}
+DEFINE_IMPLEMENTATION(bool TextLabelClass::Draw_Me(bool), 0x0064D120);
+DEFINE_IMPLEMENTATION(void TextLabelClass::Set_Text(const char *), 0x0064D200);
 
 
 /**
