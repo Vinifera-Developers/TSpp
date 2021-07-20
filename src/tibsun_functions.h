@@ -39,6 +39,7 @@ class PaletteClass;
 
 void Call_Back();
 void Load_Keyboard_Hotkeys();
+bool VQA_Movie_Message_Loop();
 bool Parse_Command_Line(int argc, char *argv[]);
 int Create_Main_Window(HINSTANCE hInstance, int command_show, int width, int height);
 void Prep_Direct_Draw();
@@ -59,3 +60,4 @@ void Keyboard_Process(KeyNumType &input);
 void Load_Title_Screen(const char *name, XSurface *video_page, PaletteClass *palette);
 void Init_Random();
 void Init_Campaigns();
+bool Init_Game(int argc, char *argv[]);

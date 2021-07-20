@@ -209,7 +209,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         int Evaluate_Just_Cell(Cell &cell) const;
         // 006313D0
         // 00632730
-        Cell Nearby_Location(const TechnoClass *techno) const;
+        Cell Nearby_Location(const TechnoClass *techno = nullptr) const;
         // 00633F60
         // 00634110
         // 006342C0

@@ -619,6 +619,7 @@ class WWKeyboardClass
         bool Put(unsigned short key);
         void Clear();
         bool Down(unsigned short key);
+        char To_ASCII(unsigned short num);
 
         BOOL Message_Handler(HWND hWnd, UINT uMsg, UINT wParam, LONG lParam);
 

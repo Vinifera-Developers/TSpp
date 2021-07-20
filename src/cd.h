@@ -42,7 +42,7 @@ class CD
 
         bool Force_Available(int disk);
 
-        static void Get_Volume_Index(int disk);
+        static int Get_Volume_Index();
         static void Set_Required_CD(int disk);
 
         static int Get_CD_Index(int cd_drive, int timeout);

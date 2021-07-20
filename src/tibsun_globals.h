@@ -292,6 +292,7 @@ extern int &NewMaxAheadFrame1;
 extern int &NewMaxAheadFrame2;
 extern ABuffer *&AlphaBuffer;
 extern ZBuffer *&DepthBuffer;
+extern bool &ScoresPresent;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

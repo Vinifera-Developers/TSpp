@@ -303,6 +303,7 @@ DEFINE_IMPLEMENTATION(unsigned short WWKeyboardClass::Get(), 0x004FAF80);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Put(unsigned short), 0x004FB0C0);
 DEFINE_IMPLEMENTATION(void WWKeyboardClass::Clear(), 0x004FB4F0);
 DEFINE_IMPLEMENTATION(bool WWKeyboardClass::Down(unsigned short), 0x004FB390);
+DEFINE_IMPLEMENTATION(char WWKeyboardClass::To_ASCII(unsigned short), 0x004FB2E0);
 DEFINE_IMPLEMENTATION(BOOL WWKeyboardClass::Message_Handler(HWND, UINT, UINT, LONG), 0x004FB560);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(OptionsClass::OptionsClass(), 0x00589960);
@@ -4349,7 +4350,7 @@ DEFINE_IMPLEMENTATION(bool CD::Is_Available(int), 0x0044E7A0);
 DEFINE_IMPLEMENTATION(bool CD::Insert_Disk(int), 0x0044E7C0);
 DEFINE_IMPLEMENTATION(bool CD::Init_Swap(int), 0x0044E970);
 DEFINE_IMPLEMENTATION(bool CD::Force_Available(int), 0x004756B0);
-DEFINE_IMPLEMENTATION(void CD::Get_Volume_Index(int), 0x0044E770);
+DEFINE_IMPLEMENTATION(int CD::Get_Volume_Index(), 0x0044E770);
 DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(int), 0x0044E780);
 DEFINE_IMPLEMENTATION(int CD::Get_CD_Index(int, int), 0x004754A0);
 
@@ -4660,6 +4661,7 @@ DEFINE_IMPLEMENTATION(void operator_delete(void *ptr), 0x006B51CC);
  */
 DEFINE_IMPLEMENTATION(void Call_Back(), 0x00462C60);
 DEFINE_IMPLEMENTATION(void Load_Keyboard_Hotkeys(), 0x004E7050);
+DEFINE_IMPLEMENTATION(bool VQA_Movie_Message_Loop(), 0x0066B230);
 DEFINE_IMPLEMENTATION(bool Parse_Command_Line(int, char *[]), 0x004E3460);
 DEFINE_IMPLEMENTATION(int Create_Main_Window(HINSTANCE, int, int, int), 0x00686190);
 DEFINE_IMPLEMENTATION(void Prep_Direct_Draw(), 0x00472AD0);
@@ -4680,6 +4682,7 @@ DEFINE_IMPLEMENTATION(void Keyboard_Process(KeyNumType &), 0x005093B0);
 DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char *, XSurface *, PaletteClass *), 0x00686340);
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
 DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
+DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
 
 
 /**
@@ -4856,7 +4859,7 @@ DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass
 LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
 RadarClass::RTacticalClass &RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
 HWND &WinDialogClass::CurrentWindowHandle = Make_Global<HWND>(0x00864E54);
-char *CDFileClass::RawPath = Make_Global<char *>(0x0076092C);
+char *CDFileClass::RawPath = Make_Pointer<char>(0x0076092C);
 CDFileClass::SearchDriveType *&CDFileClass::First = Make_Global<CDFileClass::SearchDriveType *>(0x00760920);
 int &CDFileClass::CurrentCDDrive = Make_Global<int>(0x00760924);
 int &CDFileClass::LastCDDrive = Make_Global<int>(0x00760928);
@@ -4886,6 +4889,7 @@ const void *&AircraftTypeClass::LRotorData = Make_Global<const void *>(0x0074CBD
 const void *&AircraftTypeClass::RRotorData = Make_Global<const void *>(0x0074CBE0);
 ABuffer *&AlphaBuffer = Make_Global<ABuffer *>(0x007474A8);
 ZBuffer *&DepthBuffer = Make_Global<ZBuffer *>(0x0074C8F4);
+bool &ScoresPresent = Make_Global<bool>(0x007E4818);
 
 
 /**
