@@ -27,7 +27,7 @@
  ******************************************************************************/
 #pragma once
 
-#include "control.h"
+#include "gcntrl.h"
 #include "shapebtn.h"
 #include "slider.h"
 #include "textprint.h"

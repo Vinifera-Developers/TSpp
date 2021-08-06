@@ -180,7 +180,7 @@ class DirectSoundAudioClass
         bool Unlock_Mutex();
 
         int Set_Volume_All(int vol);
-        void Adjust_Volume_All(int vol_percent);
+        int Adjust_Volume_All(int vol_percent);
 
         void Set_Handle_Volume(int handle, int volume);
         void Set_Sample_Volume(const void *sample, int volume);

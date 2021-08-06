@@ -29,7 +29,7 @@
 
 
 #include "power.h"
-#include "control.h"
+#include "gcntrl.h"
 #include "stage.h"
 
 

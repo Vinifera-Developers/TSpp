@@ -112,7 +112,7 @@
 #include "layer.h"
 #include "logic.h"
 #include "gadget.h"
-#include "control.h"
+#include "gcntrl.h"
 #include "display.h"
 #include "credits.h"
 #include "radar.h"
@@ -1851,7 +1851,7 @@ DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Lock_Global_Mutex(), 0x0048914
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Unlock_Global_Mutex(), 0x00489160);
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Lock_Mutex(), 0x00489170);
 DEFINE_IMPLEMENTATION(bool DirectSoundAudioClass::Unlock_Mutex(), 0x00489240);
-DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Adjust_Volume_All(int), 0x00489F20);
+DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::Adjust_Volume_All(int), 0x00489F20);
 DEFINE_IMPLEMENTATION(int DirectSoundAudioClass::Set_Volume_All(int), 0x00489E30);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Set_Handle_Volume(int, int), 0x0048A030);
 DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Set_Sample_Volume(const void *, int), 0x0048A120);

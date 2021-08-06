@@ -27,7 +27,7 @@
  ******************************************************************************/
 #pragma once
 
-#include "control.h"
+#include "gcntrl.h"
 
 
 class Dial8Class : public ControlClass
