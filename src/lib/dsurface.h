@@ -29,6 +29,9 @@
 
 #include "always.h"
 #include "xsurface.h"
+
+
+#define DIRECTDRAW_VERSION 0x0100 // Use DirectDraw 1.0
 #include <ddraw.h>
 
 

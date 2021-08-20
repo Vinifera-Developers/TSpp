@@ -4989,6 +4989,10 @@ QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<Even
 
 const TheaterDataType *Theaters = Make_Pointer<const TheaterDataType>(0x006CA930);
 
+LPDIRECTDRAW &DirectDrawObject = Make_Global<LPDIRECTDRAW>(0x007A1EAC);
+LPDIRECTDRAWCLIPPER &DirectDrawClipper = Make_Global<LPDIRECTDRAWCLIPPER>(0x007A2C84);
+LPDIRECTDRAWSURFACE &DirectDrawPrimarySurface = Make_Global<LPDIRECTDRAWSURFACE>(0x007A1EB8);
+
 long &LParam = Make_Global<long>(0x007E47D8); // Additional information for RadioClass::Transmit_Message.
 
 

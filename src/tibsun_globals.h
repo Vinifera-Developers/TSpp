@@ -34,6 +34,7 @@
 #include "queue.h"
 #include "ttimer.h"
 #include "ccfile.h"
+#include "dsurface.h"
 
 
 /**
@@ -389,3 +390,7 @@ extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 extern const TheaterDataType *Theaters; 
 
 extern ImageCollectionClass &ImageCollection;
+
+extern LPDIRECTDRAW &DirectDrawObject;
+extern LPDIRECTDRAWCLIPPER &DirectDrawClipper;
+extern LPDIRECTDRAWSURFACE &DirectDrawPrimarySurface;
