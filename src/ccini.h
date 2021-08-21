@@ -39,6 +39,7 @@ class Pipe;
 class TechnoTypeClass;
 class xTargetClass;
 class UnitTypeClass;
+class AnimTypeClass;
 class BuildingTypeClass;
 
 
@@ -158,6 +159,9 @@ class CCINIClass : public INIClass
 
         const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
         bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
+
+        const AnimTypeClass *Get_Anim(const char *section, const char *entry, const AnimTypeClass *defvalue);
+        bool Put_Anim(const char *section, const char *entry, const AnimTypeClass *value);
 
         TypeList<UnitTypeClass *> Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue);
         bool Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value);

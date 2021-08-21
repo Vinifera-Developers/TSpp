@@ -32,6 +32,7 @@
 #include "random.h"
 #include "ttimer.h"
 #include "ftimer.h"
+#include "stimer.h"
 #include "typelist.h"
 #include "special.h"
 
@@ -64,7 +65,7 @@ class ScenarioClass
         Random2Class RandomNumber;
         DiffType Difficulty;			        // For human player.
         DiffType CDifficulty;		            // For computer players.
-        TTimerClass<FrameTimerClass> ElapsedTimer;
+        TTimerClass<SystemTimerClass> ElapsedTimer;
         Cell Waypoint[WAYPT_COUNT];
         CDTimerClass<FrameTimerClass> MissionTimer;
         CDTimerClass<FrameTimerClass> ShroudTimer;

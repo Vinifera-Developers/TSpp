@@ -30,6 +30,7 @@
 #include "tibsun_globals.h"
 #include "voc.h"
 #include "unittype.h"
+#include "animtype.h"
 #include "buildingtype.h"
 
 
@@ -71,6 +72,38 @@ const UnitTypeClass *CCINIClass::Get_Unit(const char *section, const char *entry
  *  @author: CCHyper
  */
 bool CCINIClass::Put_Unit(const char *section, const char *entry, const UnitTypeClass *value)
+{
+    if (value) {
+        return INIClass::Put_String(section, entry, value->Name());
+    } else {
+        return INIClass::Put_String(section, entry, "<none>");
+    }
+}
+
+
+/**
+ *  Fetch the anim type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const AnimTypeClass *CCINIClass::Get_Anim(const char *section, const char *entry, const AnimTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return AnimTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the anim type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Anim(const char *section, const char *entry, const AnimTypeClass *value)
 {
     if (value) {
         return INIClass::Put_String(section, entry, value->Name());
