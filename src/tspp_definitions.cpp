@@ -234,6 +234,7 @@
 #include "edit.h"
 #include "drop.h"
 #include "txtlabel.h"
+#include "multiscore.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4647,6 +4648,8 @@ DEFINE_IMPLEMENTATION(void DropListClass::Collapse(), 0x00482840);
 TextLabelClass::~TextLabelClass() {}
 DEFINE_IMPLEMENTATION(bool TextLabelClass::Draw_Me(bool), 0x0064D120);
 DEFINE_IMPLEMENTATION(void TextLabelClass::Set_Text(const char *), 0x0064D200);
+
+DEFINE_IMPLEMENTATION(void MultiScore::Presentation(), 0x00568060);
 
 
 /**
