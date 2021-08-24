@@ -67,7 +67,7 @@ class MessageListClass
 		void Set_Edit_Focus();
 		bool Has_Edit_Focus();
 
-	private:
+	public:
 		TextLabelClass *MessageList;
 		int MessageX;
 		int MessageY;

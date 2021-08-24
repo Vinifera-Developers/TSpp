@@ -69,6 +69,27 @@ class IndexClass
         I Fetch_ID_By_Position(int index);
         void Clear();
 
+        /**
+         *  #NOTE:
+         *  This function is for fetching an element based on the data, rather
+         *  than the id and is not for general/consistent use!
+         */
+        I Fetch_ID_By_Data(const T &data)
+        {
+            if (Archive) {
+                if (Archive->Data == data) {
+                    return Archive->ID;
+                }
+            }
+            for (int i = 0; i < IndexCount; ++i) {
+                const NodeElement *node = &IndexTable[i];
+                if (node->Data == data) {
+                    return node->ID;
+                }
+            }
+            return I(-1);
+        }
+
     private:
         bool Increase_Table_Size(int amount);
         bool Is_Archive_Same(const I &id) const;
