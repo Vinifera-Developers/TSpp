@@ -56,6 +56,15 @@ class UnitTrackerClass
 		void To_Network_Format();
 		void To_PC_Format();
 
+		int Get_Total_Of_All()
+		{
+			int total = 0;
+			for (int i = 0; i < UnitCount; ++i) {
+				total += UnitTotals[i];
+			}
+			return total;
+		}
+
 	private:
 		long *UnitTotals;
 		int	UnitCount;
