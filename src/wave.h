@@ -90,7 +90,7 @@ WaveClass : public ObjectClass
         static void func_670580(); // recalc tables?
         static void func_6704B0(int a1, int a2); // do wave beam colouring? (inlined in above function perhaps?)
 
-    private:
+    public:
         TARGET xTarget;
         WaveType Type;
         Coordinate field_54;

@@ -235,6 +235,7 @@
 #include "drop.h"
 #include "txtlabel.h"
 #include "multiscore.h"
+#include "ownrdraw.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4650,6 +4651,12 @@ DEFINE_IMPLEMENTATION(bool TextLabelClass::Draw_Me(bool), 0x0064D120);
 DEFINE_IMPLEMENTATION(void TextLabelClass::Set_Text(const char *), 0x0064D200);
 
 DEFINE_IMPLEMENTATION(void MultiScore::Presentation(), 0x00568060);
+
+
+/**
+ *  Owner draw
+ */
+DEFINE_IMPLEMENTATION(void OwnerDraw::Load_Graphics(), 0x0059CC40);
 
 
 /**
