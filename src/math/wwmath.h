@@ -492,4 +492,19 @@ inline bool Is_Valid_Float(float x)
     return true;
 }
 
+inline int Signum(int val)
+{
+    return (val > 0) - (val < 0);
+}
+
+inline float Signum(float val)
+{
+    return (val > 0.0f) - (val < 0.0f);
+}
+
+inline double Signum(double val)
+{
+    return (val > 0.0) - (val < 0.0);
+}
+
 }; // WWMath namespace
