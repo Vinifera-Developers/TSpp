@@ -80,7 +80,7 @@ WaveClass : public ObjectClass
         void func_6709C0(Cell &cell); // add cell?
         void Sonic_Draw_It(Point2D &xy, Rect &rect) const; // draw sonic beam?
         void Laser_Draw_It(Point2D &xy, Rect &rect) const; // draw laser beam?
-        void func_670370(int a1, int a2, int a3, int a4); // blend sonic beam?
+        void func_670370(int a1, int a2, int a3, unsigned short *buffer); // blend sonic beam?
         void func_670650(); // default sonic beam colour?
         void func_670840(Coordinate &coord); // sonic beam damage update/ai?
         void func_671C40(); // update cells under sonic beam? or start and end cells?

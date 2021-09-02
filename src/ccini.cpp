@@ -35,6 +35,52 @@
 
 
 /**
+ *  Store a vector3 to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const Vector3 CCINIClass::Get_Vector3(char const *section, char const *entry, const Vector3 defvalue) const
+{
+    char buffer[1024];
+    char defbuff[1024];
+
+    std::snprintf(defbuff, sizeof(defbuff), "%f,%f,%f", defvalue.X, defvalue.Y, defvalue.Z);
+
+    if (Get_String(section, entry, defbuff, buffer, sizeof(buffer)) <= 0) {
+        return defvalue;
+    }
+
+    float x = defvalue.X;
+    float y = defvalue.Y;
+    float z = defvalue.Z;
+
+    /**
+     *  Read formatted data from the buffer.
+     */
+    if (sscanf(buffer, "%f,%f,%f", &x, &y, &z) == 3) {
+        return Vector3(x, y, z);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Fetch a vector3 from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Vector3(char const *section, char const *entry, const Vector3 value)
+{
+    char buffer[1024];
+
+    std::snprintf(buffer, sizeof(buffer), "%lf,%lf,%lf", value.X, value.Y, value.Z);
+
+    return Put_String(section, entry, buffer);
+}
+
+
+/**
  *  Fetch a voc (sound effect) from the INI database.
  * 
  *  @author: CCHyper

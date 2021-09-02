@@ -30,6 +30,7 @@
 
 #include "ini.h"
 #include "typelist.h"
+#include "vector3.h"
 #include "tibsun_defines.h"
 
 
@@ -154,6 +155,9 @@ class CCINIClass : public INIClass
         bool Put_Target(const char *section, const char *entry, xTargetClass &value);
 
         int Get_Unique_ID() const;
+
+        const Vector3 Get_Vector3(char const *section, char const *entry, const Vector3 defvalue) const;
+        bool Put_Vector3(char const *section, char const *entry, const Vector3 value);
 
         VocType Get_VocType(const char *section, const char *entry, const VocType defvalue);
 

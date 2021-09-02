@@ -4077,7 +4077,7 @@ DEFINE_IMPLEMENTATION(void WaveClass::Laser_AI(), 0x00671C20);
 DEFINE_IMPLEMENTATION(void WaveClass::func_6709C0(Cell &), 0x006709C0);
 DEFINE_IMPLEMENTATION(void WaveClass::Sonic_Draw_It(Point2D &, Rect &) const, 0x00670F10);
 DEFINE_IMPLEMENTATION(void WaveClass::Laser_Draw_It(Point2D &, Rect &) const, 0x006715F0);
-DEFINE_IMPLEMENTATION(void WaveClass::func_670370(int, int, int, int), 0x00670370);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670370(int, int, int, unsigned short *), 0x00670370);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670650(), 0x00670650);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670840(Coordinate &), 0x00670840);
 DEFINE_IMPLEMENTATION(void WaveClass::func_671C40(), 0x00671C40);
