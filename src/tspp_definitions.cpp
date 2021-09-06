@@ -237,6 +237,7 @@
 #include "multiscore.h"
 #include "laserdraw.h"
 #include "ownrdraw.h"
+#include "clipline.h"
 #include "vector3.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
@@ -1380,7 +1381,7 @@ DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coordinate &) const, 0x0060F150);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Cell &) const, 0x0060F270);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coordinate &) const, 0x0060F350);
-DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int) const, 0x0060F3C0);
+DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int), 0x0060F3C0);
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D &) const, 0x0060F4B0);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::func_60F740(const Point2D &) const, 0x0060F740);
@@ -4704,6 +4705,8 @@ DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char *, XSurface *, PaletteCl
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
 DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
+
+DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
 
 
 /**

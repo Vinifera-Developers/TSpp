@@ -77,7 +77,7 @@ Tactical : public AbstractClass
         Point2D func_60F150(const Coordinate &coord) const; // Coord to Pixel (without validation)?
         Point2D func_60F270(const Cell &cell) const; // Cell to pixel (without validation)?
         Point2D func_60F350(const Coordinate &coord) const;
-        int func_60F3C0(int a1) const;
+        static int func_60F3C0(int a1);
         bool Coord_To_Pixel(const Coordinate &coord, Point2D &pixel) const;
         Coordinate Pixel_To_Coord(const Point2D &pixel) const;
         Coordinate func_60F740(const Point2D &pixel) const;
