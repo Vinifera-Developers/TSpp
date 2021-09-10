@@ -234,7 +234,7 @@ class ArrayHelper2D
  * 
  *  @author: OmniBlade
  */
-#define ARRAY_DEC(type, var, size) ArrayHelper<type, size> &var
+#define ARRAY_DEC(type, var, size) extern ArrayHelper<type, size> &var
 #define ARRAY_DEF(address, type, var, size) ArrayHelper<type, size> &var = Make_Global<ArrayHelper<type, size>>(address);
-#define ARRAY2D_DEC(type, var, x, y) ArrayHelper2D<type, x, y> &var
+#define ARRAY2D_DEC(type, var, x, y) extern ArrayHelper2D<type, x, y> &var
 #define ARRAY2D_DEF(address, type, var, x, y) ArrayHelper2D<type, x, y> &var = Make_Global<ArrayHelper2D<type, x, y>>(address);

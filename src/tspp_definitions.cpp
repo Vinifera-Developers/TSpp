@@ -236,6 +236,7 @@
 #include "txtlabel.h"
 #include "multiscore.h"
 #include "ownrdraw.h"
+#include "vector3.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4082,7 +4083,7 @@ DEFINE_IMPLEMENTATION(void WaveClass::func_670650(), 0x00670650);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670840(Coordinate &), 0x00670840);
 DEFINE_IMPLEMENTATION(void WaveClass::func_671C40(), 0x00671C40);
 DEFINE_IMPLEMENTATION(void WaveClass::func_672AA0(), 0x00672AA0);
-DEFINE_IMPLEMENTATION(void WaveClass::func_672160(), 0x00672160);
+DEFINE_IMPLEMENTATION(void WaveClass::func_672160(Coordinate &, Coordinate &), 0x00672160);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670580(), 0x00670580);
 DEFINE_IMPLEMENTATION(void WaveClass::func_6704B0(int, int), 0x6704B0);
 
@@ -5039,3 +5040,12 @@ static TClassFactory<UnitClass> UnitCOMFactory;
 static TClassFactory<BuildingClass> BuildingCOMFactory;
 static TClassFactory<InfantryClass> InfantryCOMFactory;
 static TClassFactory<AircraftClass> AircraftCOMFactory;
+
+
+/**
+ *  Various global arrays.
+ */
+ARRAY_DEF(0x00838248, short, Wave_SonicBeamSineTable, 500);
+ARRAY2D_DEF(0x0083867C, short, Wave_LUT_Pythagoras, 300, 300);
+ARRAY_DEF(0x00838638, int, Wave_LUT_Linear1, 14);
+ARRAY2D_DEF(0x008381A8, Vector3, Wave_SizeVectors, WAVE_COUNT, 4);

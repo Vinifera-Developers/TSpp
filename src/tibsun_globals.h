@@ -28,6 +28,7 @@
 #pragma once
 
 #include "always.h"
+#include "tspp.h"
 #include "tibsun_defines.h"
 #include "vector.h"
 #include "search.h"
@@ -35,6 +36,7 @@
 #include "ttimer.h"
 #include "ccfile.h"
 #include "dsurface.h"
+#include "vector3.h"
 
 
 /**
@@ -394,3 +396,8 @@ extern ImageCollectionClass &ImageCollection;
 extern LPDIRECTDRAW &DirectDrawObject;
 extern LPDIRECTDRAWCLIPPER &DirectDrawClipper;
 extern LPDIRECTDRAWSURFACE &DirectDrawPrimarySurface;
+
+ARRAY_DEC(short, Wave_SonicBeamSineTable, 500);
+ARRAY2D_DEC(short, Wave_LUT_Pythagoras, 300, 300);
+ARRAY_DEC(int, Wave_LUT_Linear1, 14);
+ARRAY2D_DEC(Vector3, Wave_SizeVectors, WAVE_COUNT, 4);

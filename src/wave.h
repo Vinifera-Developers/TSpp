@@ -37,6 +37,20 @@
 class CellClass;
 
 
+typedef struct WavePointStruct1
+{
+    int Count;
+    Point2D *Points;
+} WavePointStruct1;
+
+
+typedef struct WavePointStruct2
+{
+    Point2D Pos;
+    Point2D *Points;
+} WavePointStruct2;
+
+
 class DECLSPEC_UUID("0E272DCD-9C0F-11D1-B709-00A024DDAFD1")
 WaveClass : public ObjectClass
 {
@@ -85,7 +99,7 @@ WaveClass : public ObjectClass
         void func_670840(Coordinate &coord); // sonic beam damage update/ai?
         void func_671C40(); // update cells under sonic beam? or start and end cells?
         void func_672AA0(); // update sonic beam/beam ai?
-        void func_672160();
+        void func_672160(Coordinate &a1, Coordinate &a2);
 
         static void func_670580(); // recalc tables?
         static void func_6704B0(int a1, int a2); // do wave beam colouring? (inlined in above function perhaps?)
@@ -109,16 +123,14 @@ WaveClass : public ObjectClass
         int SonicEC;
         double field_D8; // sonic starting percent
         double field_E0; // sonic ending percent
-        int field_E8;
-        int field_EC;
+        WavePointStruct1 field_E8; // initial sonic points?
         Point2D field_F0; // active wave pixel start
         Point2D field_F8; // active wave pixel end
         Point2D field_100; // active wave pixel end left
         Point2D field_108; // active wave pixel end right
         Point2D field_110; // active wave pixel start left
         Point2D field_118; // active wave pixel start right
-        int field_120;
-        int field_124;
+        WavePointStruct2 field_120; // current active points?
         int field_128;
         int field_12C[FACING_COUNT];
         FacingType field_14C;
