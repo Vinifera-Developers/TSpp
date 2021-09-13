@@ -90,6 +90,8 @@ class ObjectTypeClass : public AbstractTypeClass
 			return Name();
 		}
 
+        void Assign_Theater_Name(char *buffer, TheaterType theater);
+
         static ObjectTypeClass * From_Name(const char *name); 
 
     public:

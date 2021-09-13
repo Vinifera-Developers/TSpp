@@ -137,6 +137,7 @@ class RadarEventClass;
 class InfantryClass;
 class TubeClass;
 class ColorScheme;
+class LaserDrawClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -366,6 +367,7 @@ extern DynamicVectorClass<RadarEventClass *> &RadarEvents;
 extern DynamicVectorClass<InfantryClass *> &Infantry;
 extern DynamicVectorClass<TubeClass *> &Tubes;
 extern DynamicVectorClass<ColorScheme *> &ColorSchemes;
+extern DynamicVectorClass<LaserDrawClass *> &LaserDraws;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

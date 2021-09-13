@@ -235,6 +235,7 @@
 #include "drop.h"
 #include "txtlabel.h"
 #include "multiscore.h"
+#include "laserdraw.h"
 #include "ownrdraw.h"
 #include "vector3.h"
 #include "newdel.h"
@@ -769,6 +770,7 @@ DEFINE_IMPLEMENTATION(Cell * ObjectTypeClass::Occupy_List(bool) const, 0x00587A7
 DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bool, bool, bool, HouseClass *) const, 0x00587B20);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
+DEFINE_IMPLEMENTATION(void ObjectTypeClass::Assign_Theater_Name(char *, TheaterType), 0x00588D00);
 DEFINE_IMPLEMENTATION(ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TechnoTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x0063E170);
@@ -1378,7 +1380,7 @@ DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coordinate &) const, 0x0060F150);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Cell &) const, 0x0060F270);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coordinate &) const, 0x0060F350);
-DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0() const, 0x0060F3C0);
+DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int) const, 0x0060F3C0);
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D &) const, 0x0060F4B0);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::func_60F740(const Point2D &) const, 0x0060F740);
@@ -4653,6 +4655,14 @@ DEFINE_IMPLEMENTATION(void TextLabelClass::Set_Text(const char *), 0x0064D200);
 
 DEFINE_IMPLEMENTATION(void MultiScore::Presentation(), 0x00568060);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LaserDrawClass::LaserDrawClass(Coordinate, Coordinate, int, bool, RGBClass, RGBClass, RGBClass, int, bool, bool, float, float), 0x004FBC80);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LaserDrawClass::~LaserDrawClass(), 0x004FBDC0);
+DEFINE_IMPLEMENTATION(void LaserDrawClass::Draw_It(), 0x004FC050);
+DEFINE_IMPLEMENTATION(void LaserDrawClass::AI(), 0x004FBE90);
+DEFINE_IMPLEMENTATION(void LaserDrawClass::Update_All(), 0x004FBF50);
+DEFINE_IMPLEMENTATION(void LaserDrawClass::Clear_All(), 0x004FBE10);
+DEFINE_IMPLEMENTATION(void LaserDrawClass::Draw_All(), 0x004FC030);
+
 
 /**
  *  Owner draw
@@ -4975,6 +4985,7 @@ DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorCl
 DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
 DynamicVectorClass<TubeClass *> &Tubes = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
 DynamicVectorClass<ColorScheme *> &ColorSchemes = Make_Global<DynamicVectorClass<ColorScheme *>>(0x0080A2C8);
+DynamicVectorClass<LaserDrawClass *> &LaserDraws = Make_Global<DynamicVectorClass<LaserDrawClass *>>(0x00804918);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
