@@ -2403,6 +2403,22 @@ DEFINE_ENUMERATION_OPERATORS(TerrainOccupyType);
 
 
 /**
+ *  Cell passability type.
+ */
+typedef enum PassabilityType
+{
+    PASSABLE_OK,
+    PASSABLE_CRUSH,
+    PASSABLE_WALL,
+    PASSABLE_WATER,
+    PASSABLE_FREE_SPOTS,
+    PASSABLE_NO,
+    PASSABLE_OUTSIDE,
+} PassabilityType;
+DEFINE_ENUMERATION_OPERATORS(PassabilityType);
+
+
+/**
  *  Shape drawing flags.
  */
 typedef enum ShapeFlagsType

@@ -244,7 +244,7 @@ CellClass : public AbstractClass
         TagClass *CellTag;
         OverlayType Overlay;
         SmudgeType Smudge;
-        int field_38;
+        PassabilityType Passability;
         HousesType Owner;
         HousesType InfType;
         HousesType field_44;
