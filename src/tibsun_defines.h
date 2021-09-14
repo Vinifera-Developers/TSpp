@@ -2387,6 +2387,21 @@ typedef enum TileRampType
 } TileRampType;
 DEFINE_ENUMERATION_OPERATORS(TileRampType);
 
+
+/**
+ *  Terrain occupation bits.
+ */
+typedef enum TerrainOccupyType
+{
+    TERRAIN_OCCUPY_NONE = 0,        // Nothing is occupied.
+    TERRAIN_OCCUPY_NE = 1 << 0,     // North East
+    TERRAIN_OCCUPY_SW = 1 << 1,     // South West
+    TERRAIN_OCCUPY_SE = 1 << 2,     // South East
+    TERRAIN_OCCUPY_ALL = (TERRAIN_OCCUPY_NE|TERRAIN_OCCUPY_SW|TERRAIN_OCCUPY_SE),
+} TerrainOccupyType;
+DEFINE_ENUMERATION_OPERATORS(TerrainOccupyType);
+
+
 /**
  *  Shape drawing flags.
  */
