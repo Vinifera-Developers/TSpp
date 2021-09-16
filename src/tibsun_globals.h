@@ -150,6 +150,7 @@ class ImageCollectionClass;
 class SystemTimerClass;
 class ABuffer;
 class ZBuffer;
+struct ShapeFileStruct;
 
 enum KeyNumType;
 
@@ -199,6 +200,7 @@ extern DirectSoundAudioClass &Audio;
 extern ThemeClass &Theme;
 extern HWND &MainWindow;
 extern HINSTANCE &ProgramInstance;
+extern int &ShowCommand;
 extern unsigned &ExceptionReturnBase;
 extern unsigned &ExceptionReturnStack;
 extern unsigned &ExceptionReturnAddress;
@@ -297,6 +299,9 @@ extern int &NewMaxAheadFrame2;
 extern ABuffer *&AlphaBuffer;
 extern ZBuffer *&DepthBuffer;
 extern bool &ScoresPresent;
+extern const ShapeFileStruct *&Cell_ShroudShape;
+extern const ShapeFileStruct *&Cell_FogShape;
+extern const ShapeFileStruct *&Cell_FixupFogShape;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

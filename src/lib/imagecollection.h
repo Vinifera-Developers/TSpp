@@ -53,10 +53,11 @@ class ImageCollectionClass
         ~ImageCollectionClass();
 
         bool Load_PCX(const char *filename, int bpp, bool apply_palette = false);
-        bool Load_Paletted_PCX(const char *filename);
+        bool Load_Paletted_PCX(const char *filename) { return Load_PCX(filename, 2, true); }
+        bool Load_Mono_PCX(const char *filename);
         bool Load_Bitmap(const char *filename, void *bitmap_file, int bitmap_file_size, int bpp);
 
-        bool Exits(const char *filename) { return Get_Image_Surface(filename) != nullptr; }
+        bool File_Loaded(const char *filename) { return Get_Image_Surface(filename) != nullptr; }
 
         BSurface *Get_Image_Surface(const char *filename, void *palette = nullptr);
 

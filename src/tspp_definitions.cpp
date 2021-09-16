@@ -1316,6 +1316,8 @@ DEFINE_IMPLEMENTATION(int CellClass::Size_Of(bool) const, 0x0045D790);
 DEFINE_IMPLEMENTATION(Coordinate CellClass::Center_Coord() const, 0x0045C4E0);
 DEFINE_IMPLEMENTATION(Coordinate CellClass::entry_5C() const, 0x0045C530);
 DEFINE_IMPLEMENTATION(int CellClass::Get_Height(const Coordinate &) const, 0x00450F90);
+DEFINE_IMPLEMENTATION(int CellClass::Preview_Cell_Color(void *, bool), 0x00451900);
+DEFINE_IMPLEMENTATION(void CellClass::Cell_Color(RGBClass &, RGBClass &), 0x00451AF0);
 DEFINE_IMPLEMENTATION(ObjectClass *CellClass::Cell_Find_Object(RTTIType, bool) const, 0x00452110);
 DEFINE_IMPLEMENTATION(ObjectClass *const CellClass::Cell_Object(const Point2D &, bool) const, 0x004521D0);
 DEFINE_IMPLEMENTATION(TechnoClass *const CellClass::Cell_Techno(const Point2D &, bool, TechnoClass *) const, 0x00452020);
@@ -1354,6 +1356,7 @@ DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Germinate(TiberiumClass *) co
 DEFINE_IMPLEMENTATION(int CellClass::Get_Tiberium_Value() const, 0x0045AC70);
 DEFINE_IMPLEMENTATION(void CellClass::Detach(TARGET), 0x0045AD80);
 DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
+DEFINE_IMPLEMENTATION(bool CellClass::Place_Tiberium(TiberiumType, int), 0x0045CDF0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WarheadTypeClass::GetClassID(CLSID *), 0x0066F6B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WarheadTypeClass::Load(IStream *), 0x0066F6F0);
@@ -2140,7 +2143,7 @@ DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<Te
 // 004C8900
 // 004C8920
 // 004C93F0
-// 004C9560
+DEFINE_IMPLEMENTATION(void HouseClass::Update_Radars(), 0x004C9560);
 // 004C96A0
 // 004C96F0
 // 004C9730
@@ -4705,6 +4708,8 @@ DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char *, XSurface *, PaletteCl
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
 DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
+DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
+DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 
 DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
 
@@ -4754,6 +4759,7 @@ DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
 ThemeClass &Theme = Make_Global<ThemeClass>(0x007E2248);
 HWND &MainWindow = Make_Global<HWND>(0x00865040);
 HINSTANCE &ProgramInstance = Make_Global<HINSTANCE>(0x0086500C);
+int &ShowCommand = Make_Global<int>(0x0086503C);
 unsigned &ExceptionReturnBase = Make_Global<unsigned>(0x007B304C);
 unsigned &ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
 unsigned &ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
@@ -4914,6 +4920,9 @@ const void *&AircraftTypeClass::RRotorData = Make_Global<const void *>(0x0074CBE
 ABuffer *&AlphaBuffer = Make_Global<ABuffer *>(0x007474A8);
 ZBuffer *&DepthBuffer = Make_Global<ZBuffer *>(0x0074C8F4);
 bool &ScoresPresent = Make_Global<bool>(0x007E4818);
+const ShapeFileStruct *&Cell_ShroudShape = Make_Global<const ShapeFileStruct *>(0x00760CB4);
+const ShapeFileStruct *&Cell_FogShape = Make_Global<const ShapeFileStruct *>(0x00760CB0);
+const ShapeFileStruct *&Cell_FixupFogShape = Make_Global<const ShapeFileStruct *>(0x00760C88);
 
 
 /**

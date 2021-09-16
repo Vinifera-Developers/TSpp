@@ -276,7 +276,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C8900
         // 004C8920
         // 004C93F0
-        // 004C9560
+        void Update_Radars();
         // 004C96A0
         // 004C96F0
         // 004C9730

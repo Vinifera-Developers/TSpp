@@ -198,7 +198,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_364(bool a1 = false);
 
         WeaponSlotType What_Weapon_Should_I_Use(TARGET target) const;
-        int Combat_Damage(int which) const;
+        int Combat_Damage(int which = -1) const;
         int Time_To_Build() const;
         // 0062BEA0
         // 0062BFE0

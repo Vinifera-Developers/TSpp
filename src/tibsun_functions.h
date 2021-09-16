@@ -61,3 +61,5 @@ void Load_Title_Screen(const char *name, XSurface *video_page, PaletteClass *pal
 void Init_Random();
 void Init_Campaigns();
 bool Init_Game(int argc, char *argv[]);
+void Focus_Loss();
+void Focus_Restore();

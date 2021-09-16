@@ -46,6 +46,7 @@ class FoggedObjectClass;
 class LightConvertClass;
 class TagClass;
 class TiberiumClass;
+class RGBClass;
 
 
 class DECLSPEC_UUID("C1BF99CE-1A8C-11D2-8175-006008055BB5")
@@ -85,8 +86,8 @@ CellClass : public AbstractClass
         virtual Coordinate entry_5C() const override;
 
         int Get_Height(const Coordinate &coord) const;
-        // 00451900
-        // 00451AF0
+        int Preview_Cell_Color(void *a1, bool a2 = false); // 00451900
+        void Cell_Color(RGBClass &a1, RGBClass &a2);// 00451AF0
         ObjectClass *Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
         ObjectClass *const Cell_Object(const Point2D &xy = Point2D(), bool a2 = false) const;
         TechnoClass *const Cell_Techno(const Point2D &xy = Point2D(), bool a2 = false, TechnoClass *a3 = nullptr) const;
@@ -204,20 +205,23 @@ CellClass : public AbstractClass
         // 0045CD90
         // 0045CDB0
         // 0045CDD0
-        // 0045CDF0
+        bool Place_Tiberium(TiberiumType tiberium, int frame);
         // 0045D290
         // 0045D4A0
         // 0045D500
         // 0045D560
         // 0045D720
 
-        ObjectClass * Cell_Occupier() const { return OccupierPtr; }
+        ObjectClass * Cell_Occupier(bool alt = false) const
+        {
+            return alt ? AltOccupierPtr : OccupierPtr;
+        }
 
-        bool Is_Any_Spot_Free(bool a2 = false) const
+        bool Is_Any_Spot_Free(bool alt = false) const
         {
             bool free = false;
             for (int spot_index = 0; spot_index < 5; ++spot_index) {
-                if (a2) {
+                if (alt) {
                     free = (!(AltFlag.Composite & (1 << spot_index)));
                 } else {
                     free = (!(Flag.Composite & (1 << spot_index)));
@@ -236,10 +240,10 @@ CellClass : public AbstractClass
 
     public:
         Cell Pos;
-        DynamicVectorClass<FoggedObjectClass *> *field_18;
-        int field_1C;
-        int field_20;
-        LightConvertClass *field_24;
+        DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
+        int field_1C;                       // on bridge start sections?
+        int field_20;                       // -- no hits
+        LightConvertClass *Drawer;
         IsometricTileType Tile;
         TagClass *CellTag;
         OverlayType Overlay;
@@ -247,23 +251,23 @@ CellClass : public AbstractClass
         PassabilityType Passability;
         HousesType Owner;
         HousesType InfType;
-        HousesType field_44;
-        int field_48;
-        int field_4C;
-        int field_50;
-        Rect field_54;
-        int field_64;
-        int field_68;
-        int field_6C;
+        HousesType AltInfType;
+        int field_48;                       // shadow/shroud flag? Changes as shroud gets mapped
+        int field_4C;                       // -- always "-1"
+        int field_50;                       // -- always "-1"
+        Rect field_54;                      // set on cells that are the center of a bridge.
+        int field_64;                       // -- no hits
+        int field_68;                       // -- no hits     cloaked house flags?
+        unsigned field_6C;                  // foundation clear flags of adj cells (see 0045CA20)
         ObjectClass *OccupierPtr;
-        ObjectClass *field_74;
+        ObjectClass *AltOccupierPtr;
         LandType Land;
-        int field_7C;
-        unsigned short field_80;
-        wRGBStruct field_82;
-        wRGBStruct field_88;
-        short field_8E;
-        unsigned char field_90;
+        unsigned field_7C;                  // intensity?
+        unsigned short field_80;            // ambient or saturation?
+        wRGBStruct field_82;                // tint lowest?
+        wRGBStruct field_88;                // tint highest?
+        short field_8E;                     // -- always "-1"
+        unsigned char Ramp;
         unsigned char IsIceGrowthAllowed;
         unsigned char Height;
         unsigned char Level;
@@ -271,8 +275,8 @@ CellClass : public AbstractClass
         unsigned char field_95;
         unsigned char OverlayData;
         unsigned char SmudgeData;
-        unsigned char field_98;
-        unsigned char field_99;
+        unsigned char field_98;             // shadow flags? Changes as shroud gets mapped
+        unsigned char field_99;             // shadow flags? Changes as shroud gets mapped
         unsigned char field_9A;
 
         union {
