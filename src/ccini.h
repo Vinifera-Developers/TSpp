@@ -173,6 +173,9 @@ class CCINIClass : public INIClass
         TypeList<BuildingTypeClass *> Get_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> defvalue);
         bool Put_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> value);
 
+        LayerType Get_LayerType(const char *section, const char *entry, const LayerType defvalue);
+        bool Put_LayerType(const char *section, const char *entry, LayerType value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();

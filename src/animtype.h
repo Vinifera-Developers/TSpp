@@ -147,7 +147,7 @@ AnimTypeClass : public ObjectTypeClass
         bool IsAnimatedTiberium;
         bool IsAltPalette;
         bool IsNormalized;
-        bool IsSurface;
+        bool IsGroundLayer;
         bool IsFlat;
         bool IsTranslucent;
         bool IsScorcher;

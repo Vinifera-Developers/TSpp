@@ -28,6 +28,7 @@
  ******************************************************************************/
 #include "ccini.h"
 #include "tibsun_globals.h"
+#include "tibsun_functions.h"
 #include "voc.h"
 #include "unittype.h"
 #include "animtype.h"
@@ -260,4 +261,32 @@ bool CCINIClass::Put_Buildings(const char *section, const char *entry, const Typ
     }
 
     return INIClass::Put_String(section, entry, buffer);
+}
+
+
+/**
+ *  Fetch a land identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+LayerType CCINIClass::Get_LayerType(const char *section, const char *entry, const LayerType defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, Name_From_Layer(defvalue), buffer, sizeof(buffer)) > 0) {
+        return Layer_From_Name(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a land identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_LayerType(const char *section, const char *entry, LayerType value)
+{
+    return Put_String(section, entry, Name_From_Layer(value));
 }

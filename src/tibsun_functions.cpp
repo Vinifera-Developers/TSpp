@@ -66,7 +66,7 @@ LayerType Layer_From_Name(const char *name)
  */
 const char *Name_From_Layer(LayerType layer)
 {
-	if (layer < LAYER_COUNT) {
+	if (layer != LAYER_NONE && layer < LAYER_COUNT) {
 		return LayerName[layer];
 	}
 	return "<none>";
