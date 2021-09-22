@@ -280,7 +280,7 @@ extern bool &Cheat_Pengo;
 extern bool &Cheat_TheTeam;
 extern int &NewINIFormat;
 extern bool &GameInFocus;
-extern ParticleSystemClass *&GasCloudSys;
+extern ParticleSystemClass *&MasterParticle;
 extern ProgressScreenClass &ProgressScreen;
 extern EndGameClass &EndGame;
 extern bool &bool_007E48FC;

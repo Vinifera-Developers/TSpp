@@ -33,6 +33,7 @@
 #include "unittype.h"
 #include "animtype.h"
 #include "buildingtype.h"
+#include "particletype.h"
 
 
 /**
@@ -289,4 +290,32 @@ LayerType CCINIClass::Get_LayerType(const char *section, const char *entry, cons
 bool CCINIClass::Put_LayerType(const char *section, const char *entry, LayerType value)
 {
     return Put_String(section, entry, Name_From_Layer(value));
+}
+
+
+/**
+ *  Fetch a particle identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+ParticleType CCINIClass::Get_ParticleType(const char *section, const char *entry, const ParticleType defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, ParticleTypeClass::Name_From(defvalue), buffer, sizeof(buffer)) > 0) {
+        return ParticleTypeClass::From_Name(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a particle identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_ParticleType(const char *section, const char *entry, ParticleType value)
+{
+    return Put_String(section, entry, ParticleTypeClass::Name_From(value));
 }

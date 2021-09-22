@@ -2124,7 +2124,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bo
 // 004C56A0
 // 004C5770
 // 004C5840
-// 004C5880
+DEFINE_IMPLEMENTATION(void HouseClass::Begin_Construction(), 0x04C5880);
 DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const, 0x004C58B0);
 // 004C5920
 // 004C5BB0
@@ -4846,7 +4846,7 @@ bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
 bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
 int &NewINIFormat = Make_Global<int>(0x007E491C);
 bool &GameInFocus = Make_Global<bool>(0x007E4920);
-ParticleSystemClass *&GasCloudSys = Make_Global<ParticleSystemClass *>(0x007E4918);
+ParticleSystemClass *&MasterParticle = Make_Global<ParticleSystemClass *>(0x007E4918);
 ProgressScreenClass &ProgressScreen = Make_Global<ProgressScreenClass>(0x00809730);
 EndGameClass &EndGame = Make_Global<EndGameClass>(0x007A2ED0);
 bool &bool_007E48FC = Make_Global<bool>(0x007E48FC);

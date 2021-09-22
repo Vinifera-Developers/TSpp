@@ -176,6 +176,9 @@ class CCINIClass : public INIClass
         LayerType Get_LayerType(const char *section, const char *entry, const LayerType defvalue);
         bool Put_LayerType(const char *section, const char *entry, LayerType value);
 
+        ParticleType Get_ParticleType(const char *section, const char *entry, const ParticleType defvalue);
+        bool Put_ParticleType(const char *section, const char *entry, ParticleType value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();

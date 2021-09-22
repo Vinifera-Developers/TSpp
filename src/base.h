@@ -90,7 +90,7 @@ class BaseClass
 		int PercentBuilt;
 		DynamicVectorClass<Cell> field_20;
 		DynamicVectorClass<Cell> field_38;
-		int field_50;
+		Cell field_50;
 		Rect field_54;
 		int field_64;
 		int field_68;

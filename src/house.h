@@ -257,7 +257,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C56A0
         // 004C5770
         // 004C5840
-        // 004C5880
+        void Begin_Construction(); // 004C5880
         TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
         // 004C5920
         // 004C5BB0
