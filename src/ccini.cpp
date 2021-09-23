@@ -370,3 +370,45 @@ bool CCINIClass::Put_VocType_List(const char *section, const char *entry, const 
 
     return INIClass::Put_String(section, entry, buffer);
 }
+
+
+/**
+ *  Fetch the techno type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const TechnoTypeClass *CCINIClass::Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        if (!strcasecmp(buffer, "<none>") || !strcasecmp(buffer, "none")) {
+            return nullptr;
+        }
+
+        for (int index = 0; index < TechnoTypes.Count(); ++index) {
+            if (!strcasecmp(TechnoTypes[index]->Name(), buffer)) {
+                return TechnoTypes[index];
+            }
+        }
+
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the techno type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value)
+{
+    if (value) {
+        return INIClass::Put_String(section, entry, value->Name());
+    } else {
+        return INIClass::Put_String(section, entry, "<none>");
+    }
+}
