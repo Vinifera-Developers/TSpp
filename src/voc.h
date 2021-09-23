@@ -51,10 +51,10 @@ class VocClass
         static int Play(VocType voc, Coordinate &coord);
         // 00664EC0
         // 00665080
-        // 006651C0
+        static VocType VocType_From_Voc(VocClass *voc);
         static VocType From_Name(const char *name);
-        static VocType From_Name_INI(const char *name);
-        static const char *Name_From(VocType type);
+        static VocClass *Voc_From_Name(const char *name);
+        static const char *INI_Name_From(VocType type);
 
     public:
         char Filename[256];

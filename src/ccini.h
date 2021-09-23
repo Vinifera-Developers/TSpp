@@ -149,7 +149,7 @@ class CCINIClass : public INIClass
         bool Put_TechnoType_List(const char *section, const char *entry, const TypeList<TechnoTypeClass *> value);
 
         TypeList<SideType> Get_SideType_List(const char *section, const char *entry, const TypeList<SideType> defvalue);
-        bool Put_HousesType_List(const char *section, const char *entry, const TypeList<HousesType> value);
+        bool Put_HousesType_List(const char *section, const char *entry, const TypeList<SideType> value);
         
         xTargetClass Get_Target(const char *section, const char *entry, const xTargetClass &defvalue);
         bool Put_Target(const char *section, const char *entry, xTargetClass &value);
@@ -178,6 +178,11 @@ class CCINIClass : public INIClass
 
         ParticleType Get_ParticleType(const char *section, const char *entry, const ParticleType defvalue);
         bool Put_ParticleType(const char *section, const char *entry, ParticleType value);
+
+        //static TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
+
+        TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
+        bool Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value);
 
     private:
         void Calculate_Message_Digest();

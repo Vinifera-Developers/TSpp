@@ -746,7 +746,8 @@ DEFINE_IMPLEMENTATION_UNWIND(TypeList<int> CCINIClass::Get_Integer_List(const ch
 DEFINE_IMPLEMENTATION_UNWIND(TypeList<TechnoTypeClass*> CCINIClass::Get_TechnoType_List(const char *, const char *, const TypeList<TechnoTypeClass *>), 0x0044BF90);
 DEFINE_IMPLEMENTATION_UNWIND(bool CCINIClass::Put_TechnoType_List(const char *, const char *, const TypeList<TechnoTypeClass *>), 0x0044C190);
 DEFINE_IMPLEMENTATION_UNWIND(TypeList<SideType> CCINIClass::Get_SideType_List(const char *, const char *, const TypeList<SideType>), 0x0044C260);
-DEFINE_IMPLEMENTATION_UNWIND(bool CCINIClass::Put_HousesType_List(const char *, const char *, const TypeList<HousesType>), 0x0044C4C0);
+DEFINE_IMPLEMENTATION_UNWIND(bool CCINIClass::Put_HousesType_List(const char *, const char *, const TypeList<SideType>), 0x0044C4C0);
+//DEFINE_IMPLEMENTATION_UNWIND(TypeList<VocType> CCINIClass::Get_VocType_List(const char *, const char *, const TypeList<VocType>), 0x004DB290);
 DEFINE_IMPLEMENTATION(xTargetClass CCINIClass::Get_Target(const char *, const char *, const xTargetClass &), 0x0044C950);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Target(const char *, const char *, xTargetClass &), 0x0044CA50);
 DEFINE_IMPLEMENTATION(int CCINIClass::Get_Unique_ID() const, 0x0044C820);
@@ -3401,10 +3402,10 @@ DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, float), 0x00664C60);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, Coordinate &), 0x00664D10);
 // 00664EC0
 // 00665080
-// 006651C0
+DEFINE_IMPLEMENTATION(VocType VocClass::VocType_From_Voc(VocClass *), 0x006651C0);
 DEFINE_IMPLEMENTATION(VocType VocClass::From_Name(const char *), 0x00665100);
-DEFINE_IMPLEMENTATION(VocType VocClass::From_Name_INI(const char *), 0x00665140);
-DEFINE_IMPLEMENTATION(const char *VocClass::Name_From(VocType), 0x006651A0);
+DEFINE_IMPLEMENTATION(VocClass *VocClass::Voc_From_Name(const char *), 0x00665140);
+DEFINE_IMPLEMENTATION(const char *VocClass::INI_Name_From(VocType), 0x006651A0);
 
 DEFINE_IMPLEMENTATION(void IonStorm_Init_Clear(), 0x004EC760);
 DEFINE_IMPLEMENTATION(HRESULT IonStorm_Save(IStream *), 0x004EC780);

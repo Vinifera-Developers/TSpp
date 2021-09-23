@@ -91,7 +91,7 @@ VocType CCINIClass::Get_VocType(const char *section, const char *entry, const Vo
 {
     char buffer[1024];
 
-    INIClass::Get_String(section, entry, VocClass::Name_From(defvalue), buffer, sizeof(buffer));
+    INIClass::Get_String(section, entry, VocClass::INI_Name_From(defvalue), buffer, sizeof(buffer));
 
     return VocClass::From_Name(buffer);
 }
@@ -200,7 +200,7 @@ TypeList<UnitTypeClass *> CCINIClass::Get_Units(const char *section, const char 
  */
 bool CCINIClass::Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value)
 {
-    char buffer[128] = "";
+    char buffer[1024] = { '\0' };
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -252,7 +252,7 @@ TypeList<BuildingTypeClass *> CCINIClass::Get_Buildings(const char *section, con
  */
 bool CCINIClass::Put_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> value)
 {
-    char buffer[128] = "";
+    char buffer[1024] = { '\0' };
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -318,4 +318,55 @@ ParticleType CCINIClass::Get_ParticleType(const char *section, const char *entry
 bool CCINIClass::Put_ParticleType(const char *section, const char *entry, ParticleType value)
 {
     return Put_String(section, entry, ParticleTypeClass::Name_From(value));
+}
+
+
+/**
+ *  Fetch a unit list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TypeList<VocType> CCINIClass::Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<VocType> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+
+            VocClass *voc = VocClass::Voc_From_Name(name);
+            if (voc) {
+                list.Add(VocClass::VocType_From_Voc(voc));
+            }
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a unit list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value)
+{
+    char buffer[1024] = { '\0' };
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, VocClass::INI_Name_From(value[index]));
+    }
+
+    return INIClass::Put_String(section, entry, buffer);
 }
