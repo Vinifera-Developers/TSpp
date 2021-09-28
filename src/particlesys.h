@@ -33,6 +33,7 @@
 
 
 class ParticleClass;
+class ParticleTypeClass;
 class ParticleSystemTypeClass;
 
 

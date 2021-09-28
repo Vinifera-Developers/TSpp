@@ -133,6 +133,18 @@ bool Is_Target_Object(TARGET a)
 }
 
 
+bool Is_Target_Foot(TARGET a)
+{
+    return dynamic_cast<FootClass *>(a);
+}
+
+
+bool Is_Target_Techno(TARGET a)
+{
+    return dynamic_cast<TechnoClass *>(a);
+}
+
+
 bool Is_Target_TypeClass(TARGET a)
 {
     return dynamic_cast<AbstractTypeClass *>(a);
@@ -214,6 +226,33 @@ AnimClass *Target_As_Animation(TARGET a, bool use_dynamic_cast)
         return dynamic_cast<AnimClass *>(a);
     } else {
         return a->What_Am_I() == RTTI_ANIM ? reinterpret_cast<AnimClass *>(a) : nullptr;
+    }
+}
+
+
+TechnoClass *Target_As_Techno(TARGET a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<TechnoClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_UNIT
+            || a->What_Am_I() == RTTI_AIRCRAFT
+            || a->What_Am_I() == RTTI_INFANTRY
+            || a->What_Am_I() == RTTI_BUILDING)
+            ? reinterpret_cast<TechnoClass *>(a) : nullptr;
+    }
+}
+
+
+FootClass *Target_As_Foot(TARGET a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<FootClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_UNIT
+            || a->What_Am_I() == RTTI_AIRCRAFT
+            || a->What_Am_I() == RTTI_INFANTRY)
+            ? reinterpret_cast<FootClass *>(a) : nullptr;
     }
 }
 
