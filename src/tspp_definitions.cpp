@@ -3723,7 +3723,7 @@ DEFINE_IMPLEMENTATION(void OverlayClass::Draw_It(Point2D &, Rect &) const, 0x005
 DEFINE_IMPLEMENTATION(void OverlayClass::Placement_Draw_It(Point2D &, Rect &) const, 0x0058C540);
 DEFINE_IMPLEMENTATION(bool OverlayClass::Mark(MarkType), 0x0058B5E0);
 // 0058C850
-// 0058C8B0
+DEFINE_IMPLEMENTATION(TiberiumType OverlayClass::To_TiberiumType(OverlayType), 0x0058C8B0);
 // 0058C980
 DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass &), 0x0058BE30);
 DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass &), 0x0058C280);

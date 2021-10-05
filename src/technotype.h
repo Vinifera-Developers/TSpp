@@ -195,7 +195,7 @@ class TechnoTypeClass : public ObjectTypeClass
         bool DamageSparks;
         bool TargetLaser;
         bool IsImmuneToVeins;
-        bool TiberiumHeal;
+        bool IsTiberiumHeal;
         bool CloakStop;
         bool IsTrain;
         bool IsDropship;

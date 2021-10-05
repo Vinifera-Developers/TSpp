@@ -70,7 +70,7 @@ OverlayClass : public ObjectClass
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
 
         // 0058C850
-        // 0058C8B0
+        static TiberiumType To_TiberiumType(OverlayType overlay);
         // 0058C980
 
         static void Read_INI(CCINIClass &ini);

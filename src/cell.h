@@ -238,6 +238,8 @@ CellClass : public AbstractClass
 
         static int Spot_Index(Coordinate &coord);
 
+        bool Spread_Tiberium(TiberiumType tiberium, bool forced = false);
+
     public:
         Cell Pos;
         DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
