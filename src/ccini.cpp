@@ -34,6 +34,7 @@
 #include "animtype.h"
 #include "buildingtype.h"
 #include "particletype.h"
+#include "tiberium.h"
 
 
 /**
@@ -91,9 +92,11 @@ VocType CCINIClass::Get_VocType(const char *section, const char *entry, const Vo
 {
     char buffer[1024];
 
-    INIClass::Get_String(section, entry, VocClass::INI_Name_From(defvalue), buffer, sizeof(buffer));
+    if (INIClass::Get_String(section, entry, VocClass::INI_Name_From(defvalue), buffer, sizeof(buffer)) > 0) {
+        return VocClass::From_Name(buffer);
+    }
 
-    return VocClass::From_Name(buffer);
+    return defvalue;
 }
 
 
@@ -411,4 +414,32 @@ bool CCINIClass::Put_Techno(const char *section, const char *entry, const Techno
     } else {
         return INIClass::Put_String(section, entry, "<none>");
     }
+}
+
+
+/**
+ *  Store a tiberium identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_TiberiumType(const char *section, const char *entry, TiberiumType value)
+{
+    return Put_String(section, entry, TiberiumClass::Name_From(value));
+}
+
+
+/**
+ *  Fetch a tiberium identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TiberiumType CCINIClass::Get_TiberiumType(const char *section, const char *entry, const TiberiumType defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, TiberiumClass::Name_From(defvalue), buffer, sizeof(buffer)) > 0) {
+        return TiberiumClass::From_Name(buffer);
+    }
+
+    return defvalue;
 }

@@ -179,6 +179,9 @@ class CCINIClass : public INIClass
         ParticleType Get_ParticleType(const char *section, const char *entry, const ParticleType defvalue);
         bool Put_ParticleType(const char *section, const char *entry, ParticleType value);
 
+        TiberiumType Get_TiberiumType(const char *section, const char *entry, const TiberiumType defvalue);
+        bool Put_TiberiumType(const char *section, const char *entry, TiberiumType value);
+
         //static TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
 
         TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
