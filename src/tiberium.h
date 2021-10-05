@@ -103,6 +103,13 @@ TiberiumClass : public AbstractTypeClass
         static void Init_Cells();
         static void Init();
 
+        static const TiberiumClass &As_Reference(TiberiumType type);
+        static const TiberiumClass *As_Pointer(TiberiumType type);
+        static const TiberiumClass &As_Reference(const char *name);
+        static const TiberiumClass *As_Pointer(const char *name);
+        static TiberiumType From_Name(const char *name);
+        static const char *Name_From(TiberiumType type);
+
     public:
         TiberiumType Type;
         int SpreadCells;
