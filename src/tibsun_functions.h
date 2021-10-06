@@ -35,6 +35,7 @@
 class Rect;
 class XSurface;
 class PaletteClass;
+class ObjectClass;
 
 
 void Call_Back();
@@ -51,6 +52,7 @@ void Set_DD_Palette(void *rpalette);
 LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 bool func_6A83E0(Rect &torect, const Rect &toarea, Rect &fromrect, const Rect &fromarea);
 void Unselect_All();
+void Unselect_All_Except(ObjectClass *object);
 bool Prep_For_Side(SideType side);
 bool Prep_Speech_For_Side(SideType side);
 void Shake_The_Screen(int shakes);

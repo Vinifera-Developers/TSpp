@@ -26,6 +26,9 @@
  *
  ******************************************************************************/
 #include "tibsun_functions.h"
+#include "tibsun_globals.h"
+#include "object.h"
+#include "objecttype.h"
 
 
 /***************************************************************************
@@ -70,4 +73,79 @@ const char *Name_From_Layer(LayerType layer)
 		return LayerName[layer];
 	}
 	return "<none>";
+}
+
+
+/**
+ *  Causes all selected objects to become unselected except the object specified.
+ * 
+ *  @author: CCHyper
+ */
+void Unselect_All_Except(ObjectClass *object)
+{
+	int index = 0;
+	while (index < CurrentObjects.Count()) {
+
+		if (CurrentObjects[index] == object) {
+			++index;
+			continue;
+		}
+
+		int count_before = CurrentObjects.Count();
+		CurrentObjects[index]->Unselect();
+
+		if (count_before <= CurrentObjects.Count()) {
+			CurrentObjects.Delete(CurrentObjects[index]);
+		}
+	}
+}
+
+
+/**
+ *  Causes all selected objects to become unselected except the objecttype specified.
+ * 
+ *  @author: CCHyper
+ */
+void Unselect_All_Except(ObjectTypeClass *objecttype)
+{
+	int index = 0;
+	while (index < CurrentObjects.Count()) {
+
+		if (CurrentObjects[index]->Class_Of() == objecttype) {
+			++index;
+			continue;
+		}
+
+		int count_before = CurrentObjects.Count();
+		CurrentObjects[index]->Unselect();
+
+		if (count_before <= CurrentObjects.Count()) {
+			CurrentObjects.Delete(CurrentObjects[index]);
+		}
+	}
+}
+
+
+/**
+ *  Causes all selected objects to become unselected except the object type specified.
+ * 
+ *  @author: CCHyper
+ */
+void Unselect_All_Except(RTTIType rtti)
+{
+	int index = 0;
+	while (index < CurrentObjects.Count()) {
+
+		if (CurrentObjects[index]->What_Am_I() == rtti) {
+			++index;
+			continue;
+		}
+
+		int count_before = CurrentObjects.Count();
+		CurrentObjects[index]->Unselect();
+
+		if (count_before <= CurrentObjects.Count()) {
+			CurrentObjects.Delete(CurrentObjects[index]);
+		}
+	}
 }
