@@ -2343,6 +2343,15 @@ typedef enum TActionType
     TACTION_FIRST = 0
 } TActionType;
 
+typedef enum TActionFormatType
+{
+    TACTION_FORMAT_WP,              // Waypoint (Uses TActionClass::Data)
+    TACTION_FORMAT_TEAM_WP,         // Team and Waypoint
+    TACTION_FORMAT_TRIGGER_WP,      // Trigger and Waypoint
+    TACTION_FORMAT_TAG_WP,          // Tag and Waypoint
+    TACTION_FORMAT_TEAM_NUMBER,     // Team and Number
+} TActionParamType;
+
 typedef enum ProdFailType {
     PROD_OK,        // Production request successful.
     PROD_LIMIT,     // Failed with production capacity limit reached.
