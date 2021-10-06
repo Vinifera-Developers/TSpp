@@ -103,6 +103,10 @@ class INIClass
         bool Put_String(const char *section, const char *entry, const char *string);
 
         int Get_Int(const char *section, const char *entry, int defvalue = 0) const;
+        inline int Get_Int_Clamp(const char *section, const char *entry, int lo, int hi, int defvalue = 0) const
+        {
+            return std::clamp(Get_Int(section, entry, defvalue), lo, hi);
+        }
         bool Put_Int(const char *section, const char *entry, int number, int format = 0);
         
         int Get_Hex(const char *section, const char *entry, int defvalue = 0) const;
