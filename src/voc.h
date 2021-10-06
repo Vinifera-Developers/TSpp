@@ -28,6 +28,8 @@
 #pragma once
 
 #include "tibsun_defines.h"
+#include "tibsun_globals.h"
+#include "dsaudio.h"
 
 
 class CCINIClass;
@@ -43,6 +45,11 @@ class VocClass
 
         bool Can_Play() const;
 
+        bool Is_Playing() const
+        {
+            return Audio.Is_Sample_Playing(FilePtr);
+        }
+
         int Play(float volume, int a2);
         int Play(float volume);
 
@@ -55,6 +62,11 @@ class VocClass
         static VocType From_Name(const char *name);
         static VocClass *Voc_From_Name(const char *name);
         static const char *INI_Name_From(VocType type);
+
+        static const VocClass *As_Pointer(VocType type)
+        {
+            return type != VOC_NONE && type < Vocs.Count() ? Vocs[type] : nullptr;
+        }
 
     public:
         char Filename[256];
@@ -79,4 +91,17 @@ inline int Sound_Effect(VocType voc, float volume = 1.0f)
 inline void Sound_Effect(VocType voc, Coordinate &coord)
 {
     VocClass::Play(voc, coord);
+}
+
+
+/**
+ *  Query if the sound effect is currently playing.
+ */
+inline bool Is_Sound_Effect_Playing(VocType type)
+{
+    const VocClass *voc = VocClass::As_Pointer(type);
+    if (voc) {
+        return voc->Is_Playing();
+    }
+    return false;
 }
