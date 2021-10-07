@@ -178,6 +178,33 @@ inline short Distance(const Cell &cell1, const Cell &cell2)
 }
 
 
+inline void Move_Point(Point2D &point, DirType dir, int distance)
+{
+    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+
+    point.Y -= (WWMath::Sin(radians) * distance);
+    point.X += (WWMath::Cos(radians) * distance);
+}
+
+
+inline void Move_Coord(Coordinate &coord, DirType dir, int distance)
+{
+    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+
+    coord.Y -= (WWMath::Sin(radians) * distance);
+    coord.X += (WWMath::Cos(radians) * distance);
+}
+
+
+inline void Move_Cell(Cell &cell, DirType dir, int distance)
+{
+    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+
+    cell.Y -= (WWMath::Sin(radians) * distance);
+    cell.X += (WWMath::Cos(radians) * distance);
+}
+
+
 inline int Lepton_To_Pixel(LEPTON lepton)
 {
     return (((int)(signed short)lepton * CELL_PIXEL_W) + (CELL_LEPTON_W / 2) - ((lepton < 0) ? (CELL_LEPTON_W - 1) : 0)) / CELL_LEPTON_W;
