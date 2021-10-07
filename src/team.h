@@ -194,3 +194,7 @@ TeamClass : public AbstractClass
 		bool Succeeded;
 		unsigned char Quantity[MAX_TEAM_CLASSCOUNT];
 };
+
+
+bool Is_It_Breathing(const FootClass *object);
+bool Is_It_Playing(const FootClass *object);
