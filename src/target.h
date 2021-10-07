@@ -56,6 +56,8 @@ class CellClass;
 
 bool Target_Legal(TARGET target, bool check_active = false);
 
+TARGET As_Target(AbstractClass *a);
+
 bool Is_Target_Team(TARGET a);
 bool Is_Target_TeamType(TARGET a);
 bool Is_Target_Trigger(TARGET a);

@@ -55,6 +55,12 @@ bool Target_Legal(TARGET target, bool check_active)
 }
 
 
+TARGET As_Target(AbstractClass *a)
+{
+    return reinterpret_cast<TARGET>(a);
+}
+
+
 bool Is_Target_Team(TARGET a)
 {
     return dynamic_cast<TeamClass *>(a);
