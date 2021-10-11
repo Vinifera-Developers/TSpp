@@ -42,6 +42,7 @@ class xTargetClass;
 class UnitTypeClass;
 class AnimTypeClass;
 class BuildingTypeClass;
+class WeaponTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -189,6 +190,9 @@ class CCINIClass : public INIClass
 
         const TechnoTypeClass *Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue);
         bool Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value);
+
+        const WeaponTypeClass *Get_Weapon(const char *section, const char *entry, const WeaponTypeClass *defvalue);
+        bool Put_Weapon(const char *section, const char *entry, const WeaponTypeClass *value);
 
     private:
         void Calculate_Message_Digest();

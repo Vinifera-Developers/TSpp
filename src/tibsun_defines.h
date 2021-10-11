@@ -31,6 +31,7 @@
 #include "rect.h"
 #include "fixed.h"
 #include "vector.h"
+#include "tpoint.h"
 #include "wwmath.h"
 
 
@@ -2497,8 +2498,17 @@ typedef struct VariableFlagStruct {
 
 typedef struct WeaponInfoStruct
 {
-    WeaponTypeClass *Weapon;
-    Point3D FLH;
+    WeaponInfoStruct() : Weapon(nullptr), FireFLH(), BarrelLength(0), BarrelThickness(0) {}
+    WeaponInfoStruct(const WeaponInfoStruct &that) :
+        Weapon(that.Weapon),
+        FireFLH(that.FireFLH),
+        BarrelLength(that.BarrelLength),
+        BarrelThickness(that.BarrelThickness)
+    {
+    }
+
+    const WeaponTypeClass *Weapon;
+    TPoint3D<int> FireFLH;
     int BarrelLength;
     int BarrelThickness;
 } WeaponInfoStruct;

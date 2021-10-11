@@ -45,24 +45,6 @@ class WeaponTypeClass;
 #define WEAPON_SLOT_COUNT 3
 
 
-typedef struct WeaponControlStruct
-{
-    WeaponControlStruct() : Weapon(nullptr), FireFLH(), BarrelLength(0), BarrelThickness(0) {}
-    WeaponControlStruct(const WeaponControlStruct &that) :
-        Weapon(that.Weapon),
-        FireFLH(that.FireFLH),
-        BarrelLength(that.BarrelLength),
-        BarrelThickness(that.BarrelThickness)
-    {
-    }
-
-    WeaponTypeClass *Weapon;
-    TPoint3D<int> FireFLH;
-    int BarrelLength;
-    int BarrelThickness;
-} WeaponControlStruct;
-
-
 class TechnoTypeClass : public ObjectTypeClass
 {
     public:
@@ -108,7 +90,7 @@ class TechnoTypeClass : public ObjectTypeClass
 		virtual int Flight_Level() const;
 
 		bool Is_Two_Shooter() const;
-        const WeaponControlStruct & Fetch_Weapon_Control(WeaponSlotType slot) const;
+        const WeaponInfoStruct & Fetch_Weapon_Info(WeaponSlotType slot) const;
         bool In_Range(Coordinate &coord, TARGET target, WeaponTypeClass *weapon);
 
         static const TechnoTypeClass &As_Reference(const char *name);
@@ -188,7 +170,7 @@ class TechnoTypeClass : public ObjectTypeClass
         int ShadowIndex;
         int Storage;
         bool TurretNotExportedOnGround;
-        WeaponControlStruct Weapons[WEAPON_SLOT_COUNT];
+        WeaponInfoStruct Weapons[WEAPON_SLOT_COUNT];
         bool IsTypeImmune;
         bool MoveToShroud;
         bool IsTrainable;

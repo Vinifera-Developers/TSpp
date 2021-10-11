@@ -795,7 +795,7 @@ DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Cost() const, 0x0063B920);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Step() const, 0x0063B970);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Flight_Level() const, 0x0063E700);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Is_Two_Shooter() const, 0x0063B980);
-DEFINE_IMPLEMENTATION(const WeaponControlStruct & TechnoTypeClass::Fetch_Weapon_Control(WeaponSlotType) const, 0x0063E6B0);
+DEFINE_IMPLEMENTATION(const WeaponInfoStruct & TechnoTypeClass::Fetch_Weapon_Info(WeaponSlotType) const, 0x0063E6B0);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::In_Range(Coordinate &, TARGET, WeaponTypeClass *), 0x0063D4C0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::QueryInterface(REFIID, LPVOID *), 0x0060DC60);
@@ -2660,6 +2660,7 @@ DEFINE_IMPLEMENTATION(char *strtrim(char *), 0x0064AC10);
 DEFINE_IMPLEMENTATION(void WinDialogClass::End_Dialog(HWND), 0x005A0700);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Dialog_Move(HWND, WPARAM, LPARAM, UINT), 0x00685300);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window_Within(HWND, HWND), 0x00685600);
+DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window(HWND), 0x006855E0);
 
 DEFINE_IMPLEMENTATION(void Fatal(const char *, ...), 0x004F91D0);
 DEFINE_IMPLEMENTATION(void Emergency_Exit(int), 0x00602480);

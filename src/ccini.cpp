@@ -35,6 +35,7 @@
 #include "buildingtype.h"
 #include "particletype.h"
 #include "tiberium.h"
+#include "weapontype.h"
 
 
 /**
@@ -442,4 +443,36 @@ TiberiumType CCINIClass::Get_TiberiumType(const char *section, const char *entry
     }
 
     return defvalue;
+}
+
+
+/**
+ *  Fetch the weapon type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const WeaponTypeClass *CCINIClass::Get_Weapon(const char *section, const char *entry, const WeaponTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return WeaponTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the weapon type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Weapon(const char *section, const char *entry, const WeaponTypeClass *value)
+{
+    if (value) {
+        return INIClass::Put_String(section, entry, value->Name());
+    } else {
+        return INIClass::Put_String(section, entry, "<none>");
+    }
 }
