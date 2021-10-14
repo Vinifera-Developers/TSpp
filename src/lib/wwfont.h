@@ -112,11 +112,14 @@ class WWFontClass
 			return Info_Block_Ptr()->MaxHeight;
 		}
 
+		int Get_X_Spacing() const { return XSpacing; }
+		int Get_Y_Spacing() const { return YSpacing; }
+
 	private:
 		WWFontFileStruct * Font_Ptr() const { return reinterpret_cast<WWFontFileStruct *>(FontPtr); }
 		WWFontInfoBlock * Info_Block_Ptr() const { return (WWFontInfoBlock *)(reinterpret_cast<unsigned char *>(FontPtr) + FontPtr->Header.InfoBlockOffset); }
 
-	private:
+	public:
 		bool field_4;
 		int field_8;
 		int XSpacing;

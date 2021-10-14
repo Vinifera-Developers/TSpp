@@ -79,9 +79,18 @@ class VocClass
 /**
  *  General purpose sound player.
  */
-inline int Sound_Effect(VocType voc, float volume = 1.0f)
+inline int Play_Sound_Effect(VocType voc, float volume = 1.0f)
 {
     return VocClass::Play(voc, volume);
+}
+
+
+/**
+ *  General purpose sound player with variation.
+ */
+inline int Sound_Effect(VocType voc, int a2 = 0, float volume = 1.0f)
+{
+    return VocClass::Play(voc, a2, volume);
 }
 
 

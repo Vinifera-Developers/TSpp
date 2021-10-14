@@ -78,5 +78,5 @@ class MouseClass : public ScrollClass
 			int X, Y;				// Hotspot X and Y offset.
 		} MouseStruct;
 
-		static MouseStruct MouseControl[MOUSE_COUNT];
+		static MouseStruct *MouseControl;
 };

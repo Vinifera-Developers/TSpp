@@ -201,7 +201,7 @@ class FootClass : public TechnoClass
         Cell field_224;
         Cell field_228;
         double field_230;
-        int CurrentWalkingFrame;
+        int TotalFramesWalked;
         Cell field_23C;
         Cell field_240;
         Coordinate field_244;

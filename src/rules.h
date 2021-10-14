@@ -78,6 +78,11 @@ class RulesClass
         void Process(CCINIClass &ini);
         void Initialize(CCINIClass &ini);
 
+        void Addition(CCINIClass &ini)
+        {
+            Process(ini);
+        }
+
         void Save(IStream *pStm);
         void Load(IStream *pStm);
 

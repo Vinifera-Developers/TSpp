@@ -4377,7 +4377,7 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(ProgressScreenClass::ProgressScreenClass(), 0x
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ProgressScreenClass::~ProgressScreenClass(), 0x005AD8C0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Init(double, int, bool), 0x005AD8D0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Reset(), 0x005AD990);
-DEFINE_IMPLEMENTATION(void ProgressScreenClass::Draw_Graphics(const ShapeFileStruct *, const char *, const char *, int, int), 0x005AD9A0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Draw_Graphics(const char *, const char *, const char *, int, int), 0x005AD9A0);
 DEFINE_IMPLEMENTATION(double ProgressScreenClass::Get_Total_Progress(), 0x005ADCB0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Draw_Bars_And_Text(int, int), 0x005ADCE0);
 DEFINE_IMPLEMENTATION(Rect ProgressScreenClass::Get_Bar_Dimensions(), 0x005ADFF0);
@@ -4925,6 +4925,7 @@ bool &ScoresPresent = Make_Global<bool>(0x007E4818);
 const ShapeFileStruct *&Cell_ShroudShape = Make_Global<const ShapeFileStruct *>(0x00760CB4);
 const ShapeFileStruct *&Cell_FogShape = Make_Global<const ShapeFileStruct *>(0x00760CB0);
 const ShapeFileStruct *&Cell_FixupFogShape = Make_Global<const ShapeFileStruct *>(0x00760C88);
+MouseClass::MouseStruct *MouseClass::MouseControl = Make_Pointer<MouseStruct>(0x00703070);
 
 
 /**
@@ -5074,3 +5075,5 @@ ARRAY_DEF(0x00838248, short, Wave_SonicBeamSineTable, 500);
 ARRAY2D_DEF(0x0083867C, short, Wave_LUT_Pythagoras, 300, 300);
 ARRAY_DEF(0x00838638, int, Wave_LUT_Linear1, 14);
 ARRAY2D_DEF(0x008381A8, Vector3, Wave_SizeVectors, WAVE_COUNT, 4);
+
+ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);

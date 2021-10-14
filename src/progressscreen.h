@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "tibsun_defines.h"
+#include "tspp.h"
 
 
 class Rect;
@@ -41,11 +42,11 @@ class ProgressScreenClass
 		ProgressScreenClass();
 		~ProgressScreenClass();
 
-		void Init(double start_progress, int player_count, bool do_dialog);
+		void Init(double start_progress, int player_count, bool do_dialog = false);
 		void Reset();
-		void Draw_Graphics(const ShapeFileStruct *progress_bar_shape, const char *background_image, const char *string, int text_xpos, int text_ypos);
+		void Draw_Graphics(const char *progress_bar_shape, const char *background_image, const char *string, int text_xpos, int text_ypos);
 		double Get_Total_Progress();
-		void Draw_Bars_And_Text(int xpos, int ypos);
+		void Draw_Bars_And_Text(int xpos = -1, int ypos = -1);
 		Rect Get_Bar_Dimensions();
 		void Update_Progress(int player_index, double value, int xpos, int ypos);
 		void Add_Progress(int player_index, double value, int xpos, int ypos);
@@ -68,3 +69,12 @@ class ProgressScreenClass
 		int YPos;
 		int field_64;
 };
+
+
+typedef struct ProgressTextStruct
+{
+	int Progress;
+	int TextID;
+} ProgressTextStruct;
+
+ARRAY_DEC(ProgressTextStruct, ProgressText, 8);

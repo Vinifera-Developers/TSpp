@@ -306,8 +306,12 @@ DEFINE_ENUMERATION_OPERATORS(InfantryType);
 
 typedef enum HousesType
 {
-    HOUSE_NONE = -1,
+    HOUSE_GDI,
+    HOUSE_NOD,
+    HOUSE_NEUTRAL,
+    HOUSE_SPECIAL,
 
+    HOUSE_NONE = -1,
     HOUSE_FIRST = 0
 } HousesType;
 DEFINE_ENUMERATION_OPERATORS(HousesType);
@@ -473,8 +477,12 @@ DEFINE_ENUMERATION_OPERATORS(ZoneType);
 
 typedef enum SideType
 {
-    SIDE_NONE = -1,
+    SIDE_GDI,
+    SIDE_NOD,
+    SIDE_CIVILIAN,
+    SIDE_MUTANT,
 
+    SIDE_NONE = -1,
     SIDE_FIRST = 0
 } SideType;
 DEFINE_ENUMERATION_OPERATORS(SideType);

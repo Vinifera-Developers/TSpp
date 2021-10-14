@@ -98,7 +98,8 @@ class TechnoTypeClass : public ObjectTypeClass
         static const TechnoTypeClass *From_Name(const char *name);
 
     public:
-        double CollateralDamageCoefficient;
+        float CollateralDamageCoefficient;
+        float field_128;
         int WalkRate;
         AbilitiesStruct VeteranAbilities;
         AbilitiesStruct EliteAbilities;
