@@ -377,6 +377,52 @@ bool CCINIClass::Put_VocType_List(const char *section, const char *entry, const 
 
 
 /**
+ *  Fetch a string list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TypeList<const char *> CCINIClass::Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<const char *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(name);
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a string list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_String_List(const char *section, const char *entry, const TypeList<const char *> value)
+{
+    char buffer[1024] = { '\0' };
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]);
+    }
+
+    return INIClass::Put_String(section, entry, buffer);
+}
+
+
+/**
  *  Fetch the techno type identifier from the INI database.
  * 
  *  @author: CCHyper

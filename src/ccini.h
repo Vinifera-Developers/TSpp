@@ -188,6 +188,9 @@ class CCINIClass : public INIClass
         TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
         bool Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value);
 
+        TypeList<const char *> Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue);
+        bool Put_String_List(const char *section, const char *entry, const TypeList<const char *> value);
+
         const TechnoTypeClass *Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue);
         bool Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value);
 
