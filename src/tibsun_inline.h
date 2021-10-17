@@ -422,6 +422,18 @@ inline bool Percent_Chance(int percent)
 }
 
 
+inline bool Probability_Of(double probability)
+{
+    return ((std::abs(Scen->RandomNumber()) % 1000000) / 1000000.0) < probability;
+}
+
+
+inline bool Probability_Of2(double probability)
+{
+    return (((Scen->RandomNumber(0, INT_MAX-1) / (double)(INT_MAX-1))) < probability);
+}
+
+
 template<typename T>
 inline T Sim_Random_Pick(T a, T b)
 {

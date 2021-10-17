@@ -90,6 +90,7 @@ WarheadTypeClass : public AbstractTypeClass
         int LimpetFactor;
         ParticleSystemTypeClass *Particle;
         bool IsWallDestroyer;
+        bool IsWebby;
         bool IsWoodDestroyer;
         bool IsTiberiumDestroyer;
         bool IsOrganic;

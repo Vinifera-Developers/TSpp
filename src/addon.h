@@ -33,7 +33,7 @@
 
 bool Addon_Present();
 bool Addon_407120(int a1);
-bool Addon_407150(int a1);
+bool Addon_Enabled(int a1);
 void Addon_407190(int a1);
 void Addon_4071C0(int a1);
 bool Is_Addon_Set(AddonType addon);
