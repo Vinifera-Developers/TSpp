@@ -43,6 +43,7 @@ class UnitTypeClass;
 class AnimTypeClass;
 class BuildingTypeClass;
 class WeaponTypeClass;
+class WarheadTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -196,6 +197,9 @@ class CCINIClass : public INIClass
 
         const WeaponTypeClass *Get_Weapon(const char *section, const char *entry, const WeaponTypeClass *defvalue);
         bool Put_Weapon(const char *section, const char *entry, const WeaponTypeClass *value);
+
+        const WarheadTypeClass *Get_Warhead(const char *section, const char *entry, const WarheadTypeClass *defvalue);
+        bool Put_Warhead(const char *section, const char *entry, const WarheadTypeClass *value);
 
     private:
         void Calculate_Message_Digest();
