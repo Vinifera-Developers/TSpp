@@ -238,6 +238,7 @@
 #include "laserdraw.h"
 #include "ownrdraw.h"
 #include "clipline.h"
+#include "winfont.h"
 #include "vector3.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
@@ -4714,6 +4715,8 @@ DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
 DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 
 DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
+
+DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842E0);
 
 
 /**
