@@ -46,6 +46,7 @@ class TeamTypeClass;
 class TerrainClass;
 class BulletClass;
 class AnimClass;
+class IsometricTileClass;
 class TeamClass;
 class InfantryClass;
 class UnitClass;
@@ -70,6 +71,7 @@ bool Is_Target_Unit(TARGET a);
 bool Is_Target_Building(TARGET a);
 bool Is_Target_Aircraft(TARGET a);
 bool Is_Target_Animation(TARGET a);
+bool Is_Target_IsoTile(TARGET a);
 bool Is_Target_Object(TARGET a);
 bool Is_Target_Foot(TARGET a);
 bool Is_Target_Techno(TARGET a);
@@ -83,8 +85,10 @@ UnitClass *Target_As_Unit(TARGET a, bool use_dynamic_cast = true);
 BuildingClass *Target_As_Building(TARGET a, bool use_dynamic_cast = true);
 AircraftClass *Target_As_Aircraft(TARGET a, bool use_dynamic_cast = true);
 AnimClass *Target_As_Animation(TARGET a, bool use_dynamic_cast = true);
+IsometricTileClass *Target_As_IsoTile(TARGET a, bool use_dynamic_cast = true);
 TechnoClass *Target_As_Techno(TARGET a, bool use_dynamic_cast = true);
 FootClass *Target_As_Foot(TARGET a, bool use_dynamic_cast = true);
+ObjectClass *Target_As_Object(TARGET a, bool use_dynamic_cast = true);
 
 
 class xTargetClass

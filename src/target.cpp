@@ -41,6 +41,7 @@
 #include "aircraft.h"
 #include "anim.h"
 #include "object.h"
+#include "isotile.h"
 
 
 bool Target_Legal(TARGET target, bool check_active)
@@ -130,6 +131,12 @@ bool Is_Target_Aircraft(TARGET a)
 bool Is_Target_Animation(TARGET a)
 {
     return dynamic_cast<AnimClass *>(a);
+}
+
+
+bool Is_Target_IsoTile(TARGET a)
+{
+    return dynamic_cast<IsometricTileClass *>(a);
 }
 
 
@@ -235,6 +242,15 @@ AnimClass *Target_As_Animation(TARGET a, bool use_dynamic_cast)
     }
 }
 
+IsometricTileClass *Target_As_IsoTile(TARGET a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<IsometricTileClass *>(a);
+    } else {
+        return a->What_Am_I() == RTTI_ISOTILE ? reinterpret_cast<IsometricTileClass *>(a) : nullptr;
+    }
+}
+
 
 TechnoClass *Target_As_Techno(TARGET a, bool use_dynamic_cast)
 {
@@ -258,6 +274,32 @@ FootClass *Target_As_Foot(TARGET a, bool use_dynamic_cast)
         return (a->What_Am_I() == RTTI_UNIT
             || a->What_Am_I() == RTTI_AIRCRAFT
             || a->What_Am_I() == RTTI_INFANTRY)
+            ? reinterpret_cast<FootClass *>(a) : nullptr;
+    }
+}
+
+
+ObjectClass *Target_As_Object(TARGET a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<ObjectClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_ANIM
+            || a->What_Am_I() == RTTI_LIGHTSOURCE
+            || a->What_Am_I() == RTTI_BULLET
+            || a->What_Am_I() == RTTI_ISOTILE
+            || a->What_Am_I() == RTTI_OVERLAY
+            || a->What_Am_I() == RTTI_PARTICLE
+            || a->What_Am_I() == RTTI_PARTICLESYSTEM
+            || a->What_Am_I() == RTTI_SMUDGE
+            || a->What_Am_I() == RTTI_TERRAIN
+            || a->What_Am_I() == RTTI_VOXELANIM
+            || a->What_Am_I() == RTTI_VEINHOLEMONSTER
+            || a->What_Am_I() == RTTI_WAVE
+            || a->What_Am_I() == RTTI_UNIT
+            || a->What_Am_I() == RTTI_AIRCRAFT
+            || a->What_Am_I() == RTTI_INFANTRY
+            || a->What_Am_I() == RTTI_BUILDING)
             ? reinterpret_cast<FootClass *>(a) : nullptr;
     }
 }
