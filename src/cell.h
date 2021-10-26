@@ -30,6 +30,7 @@
 #include "abstract.h"
 #include "vector.h"
 #include "tibsun_defines.h"
+#include "tibsun_globals.h"
 
 
 class NoInitClass;
@@ -159,7 +160,7 @@ CellClass : public AbstractClass
         // 0045ABA0
         // 0045AC10
         int Get_Tiberium_Value() const;
-        // 0045ACB0
+        bool Is_Tile_Water() const { return Tile >= WaterSet && Tile < (WaterSet+14); } // 0045ACB0
         // 0045ACD0
         void Detach(TARGET target);
         // 0045AE90
@@ -169,28 +170,33 @@ CellClass : public AbstractClass
         // 0045B0D0
         // 0045B200
         // 0045B760
-        // 0045BFF0
-        // 0045C010
-        // 0045C040
-        // 0045C220
-        // 0045C240
-        // 0045C2C0
-        // 0045C2F0
-        // 0045C310
-        // 0045C330
-        // 0045C370
-        // 0045C390
-        // 0045C3B0
-        // 0045C3D0
-        // 0045C3F0
-        // 0045C410
-        // 0045C430
-        // 0045C450
-        // 0045C470
+        bool Is_Tile_Clear() const { return Tile == ISOTILE_NONE || Tile == ISOTILE_CLEAR; } // 0045BFF0
+        bool Is_Tile_Ramp() const { return (Tile >= RampBase && Tile < (RampBase+20)) || (Tile >= RampSmooth && Tile < (RampSmooth+12)); } // 0045C010
+        //bool Is_() const { return ; } // 0045C040     <- cliffset, water cliffs, waterfall, bridges, destroyable cliffs
+        bool Is_Tile_Shore() const { return Tile >= ShorePieces && Tile < (ShorePieces+42); } // 0045C220
+        //bool Is_() const { return ; } // 0045C240     <- shore and waterfalls
+        //bool Is_() const { return ; } // 0045C2C0     <- swamp and water LAT
+        bool Is_Tile_Misc_Pavement() const { return Tile >= MiscPaveTile && Tile < (MiscPaveTile+14); } // 0045C2F0
+        bool Is_Tile_Pavement() const { return Tile >= PaveTile && Tile < (PaveTile+16); } // 0045C310
+        bool Is_Tile_Dirt_Road() const // 0045C330
+        {
+            return Tile >= DirtRoadJunction && Tile < (DirtRoadJunction+11)
+                || Tile >= DirtRoadCurve && Tile < (DirtRoadCurve+24)
+                || Tile >= DirtRoadStraight && Tile < (DirtRoadStraight+66);
+        }
+        bool Is_Tile_Paved_Road() const { return Tile >= PavedRoads && Tile < (PavedRoads+15); } // 0045C370
+        bool Is_Tile_Paved_Road_End() const { return Tile >= PavedRoadEnds && Tile < (PavedRoadEnds+4); } // 0045C390
+        bool Is_Tile_Paved_Road_Slope() const { return Tile >= PavedRoadSlopes && Tile < (PavedRoadSlopes+4); } // 0045C3B0
+        bool Is_Tile_Paved_Road_Median() const { return Tile >= Medians && Tile < (Medians+14); } // 0045C3D0
+        //bool Is_() const { return ; } // 0045C3F0     <- ice1 and ice2 sets
+        bool Is_Tile_Bridge() const { return Tile >= BridgeSet && Tile < (BridgeSet+16); } // 0045C410
+        bool Is_Tile_Train_Bridge() const { return Tile >= TrainBridgeSet && Tile < (TrainBridgeSet+16); } // 0045C430
+        //bool Is_() const { return ; } // 0045C450     <- clear to sand LAT
+        // 0045C470      <- clear to green LAT
+        bool Is_Tile_Destroyable_Cliff() const { return Tile >= DestroyableCliff && Tile < (DestroyableCliff+1); } // 0045C5A0
         // 0045C490
         // 0045C4E0
         // 0045C530
-        // 0045C5A0
         // 0045C5C0
         // 0045C700
         // 0045C880
@@ -240,11 +246,18 @@ CellClass : public AbstractClass
 
         bool Spread_Tiberium(TiberiumType tiberium, bool forced = false);
 
+        bool Is_Tile_Ice_Shore() const { return Tile >= IceShoreSet && Tile < (IceShoreSet+48); }
+        bool Is_Tile_Dirt_Road_Slope() const { return Tile >= DirtRoadSlopes && Tile < (DirtRoadSlopes+8); }
+        bool Is_Tile_Black() const { return Tile == BlackTile; }
+
+        bool Is_Overlay_Low_Bridge() const { return Overlay >= OverlayType(74) && Overlay <= OverlayType(99); }
+        bool Is_Overlay_Train_Tracks() const { return Overlay >= OverlayType(39) && Overlay <= OverlayType(54); }
+
     public:
         Cell Pos;
         DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
         int field_1C;                       // on bridge start sections?
-        int field_20;                       // -- no hits
+        int field_20;
         LightConvertClass *Drawer;
         IsometricTileType Tile;
         TagClass *CellTag;

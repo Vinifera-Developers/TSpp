@@ -245,6 +245,8 @@ typedef enum AddonType
 {
     ADDON_NONE,
     ADDON_FIRESTORM,
+
+    ADDON_ANY = -1,
 } AddonType;
 
 typedef enum CampaignType
@@ -392,7 +394,7 @@ typedef enum IsometricTileType
 {
     ISOTILE_CLEAR = 0,
 
-    ISOTILE_NONE = -1,
+    ISOTILE_NONE = 0xFFFF, // -1
 
     ISOTILE_FIRST = 0
 } IsometricTileType;

@@ -34,7 +34,7 @@
 
 class SwizzleManagerClass : public ISwizzle
 {
-    private:
+    public:
         struct SwizzlePointerStruct
         {
             SwizzlePointerStruct() : ID(0), Pointer(nullptr) {}
