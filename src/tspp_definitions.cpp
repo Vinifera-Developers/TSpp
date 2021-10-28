@@ -4720,6 +4720,13 @@ DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842
 
 
 /**
+ *  Various values calculated at runtime init.
+ */
+int &CellHeight = Make_Global<int>(0x007481A0);
+int &BridgeCellHeight = Make_Global<int>(0x0074819C);
+
+
+/**
  *  Global definitions
  */
 WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);

@@ -156,6 +156,13 @@ enum KeyNumType;
 
 
 /**
+ *  Various values calculated at runtime init.
+ */
+extern int &CellHeight;				// The height of one cell.
+extern int &BridgeCellHeight;		// The height of a bridge in cell height units.
+
+
+/**
  *  Global externs (should be defined in tspp_defintions.cpp).
  */
 extern WWKeyboardClass *&WWKeyboard;

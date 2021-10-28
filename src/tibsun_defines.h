@@ -40,6 +40,9 @@ class HouseClass;
 class NoInitClass;
 class WeaponTypeClass;
 
+extern int &CellHeight;
+extern int &BridgeCellHeight;
+
 
 /**
  *  This header contains all the game enums, structs and primitive types.
@@ -85,6 +88,13 @@ class WeaponTypeClass;
 
 #define	REFRESH_EOL         32767		// This number ends a refresh/occupy offset list.
 #define	REFRESH_SIDEBAR     32766		// This number flags that sidebar needs refreshing.
+
+
+// Returns the height of 'X' cells.
+#define CELL_HEIGHT(x)	(CellHeight*int(x))
+
+// The height of a bride in "cell height units".
+#define BRIDGE_HEIGHT	BridgeCellHeight
 
 
 /**
