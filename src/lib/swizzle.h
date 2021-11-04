@@ -75,7 +75,9 @@ class SwizzleManagerClass : public ISwizzle
         SwizzleManagerClass();
         ~SwizzleManagerClass();
 
-    private:
+        void Process_Tables();
+
+    public:
         DynamicVectorClass<SwizzlePointerStruct> RequestTable;
         DynamicVectorClass<SwizzlePointerStruct> PointerTable;
 };
