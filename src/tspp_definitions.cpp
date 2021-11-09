@@ -5087,4 +5087,7 @@ ARRAY2D_DEF(0x0083867C, short, Wave_LUT_Pythagoras, 300, 300);
 ARRAY_DEF(0x00838638, int, Wave_LUT_Linear1, 14);
 ARRAY2D_DEF(0x008381A8, Vector3, Wave_SizeVectors, WAVE_COUNT, 4);
 
+ARRAY_DEF(0x0075F2A0, Cell *, BuildingOccupys, 24);
+ARRAY_DEF(0x0075FAE8, Cell *, BuildingExits, 30);
+
 ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);

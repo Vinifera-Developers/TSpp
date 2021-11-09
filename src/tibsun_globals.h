@@ -415,3 +415,6 @@ ARRAY_DEC(short, Wave_SonicBeamSineTable, 500);
 ARRAY2D_DEC(short, Wave_LUT_Pythagoras, 300, 300);
 ARRAY_DEC(int, Wave_LUT_Linear1, 14);
 ARRAY2D_DEC(Vector3, Wave_SizeVectors, WAVE_COUNT, 4);
+
+ARRAY_DEC(Cell *, BuildingOccupys, 24);
+ARRAY_DEC(Cell *, BuildingExits, 30);

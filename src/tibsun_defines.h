@@ -438,7 +438,36 @@ typedef enum BStateType
     BSTATE_NONE = -1
 } BStateType;
 
-typedef enum BSizeType {} BSizeType;
+typedef enum BSizeType
+{
+    BSIZE_11,
+    BSIZE_21,
+    BSIZE_12,
+    BSIZE_22,
+    BSIZE_23,
+    BSIZE_32,
+    BSIZE_33,
+    BSIZE_35,
+    BSIZE_42,
+    BSIZE_33_REF,
+    BSIZE_13,
+    BSIZE_31,
+    BSIZE_43,
+    BSIZE_14,
+    BSIZE_15,
+    BSIZE_26,
+    BSIZE_25,
+    BSIZE_53,
+    BSIZE_44,
+    BSIZE_34,
+    BSIZE_64,
+    BSIZE_00,
+
+    BSIZE_COUNT,
+
+    BSIZE_NONE = -1,
+} BSizeType;
+DEFINE_ENUMERATION_OPERATORS(BSizeType);
 
 typedef enum MZoneType
 {
