@@ -31,6 +31,9 @@
 #include "tibsun_defines.h"
 
 
+class AnimTypeClass;
+
+
 class DECLSPEC_UUID("5AF2CE79-0634-11D2-ACA4-006008055BB5")
 OverlayTypeClass : public ObjectTypeClass
 {
@@ -93,7 +96,7 @@ OverlayTypeClass : public ObjectTypeClass
     public:
 		OverlayType Type;
 		LandType Land;
-        AnimType CellAnim;
+        AnimTypeClass *CellAnim;
 		int DamageLevels;
 		int DamagePoints;
 		bool IsWall;

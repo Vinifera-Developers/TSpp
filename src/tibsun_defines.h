@@ -2944,3 +2944,17 @@ typedef struct DirStruct : public fixed
 
 } DirStruct;
 #pragma pack()
+
+
+/**
+ *  Wrappers for the swizzle manager for providing debug information.
+ */
+#ifndef NDEBUG
+#define REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle(pointer/*, __FILE__, __LINE__*/);
+#define FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID(pointer, id/*, __FILE__, __LINE__*/);
+#define HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, pointer/*, __FILE__, __LINE__*/);
+#else
+#define REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle(pointer);
+#define FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID(pointer, id);
+#define HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, pointer);
+#endif
