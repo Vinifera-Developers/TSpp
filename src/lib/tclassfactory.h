@@ -36,16 +36,16 @@
 /**
  *  Register a class-object with OLE.
  */
-#define REGISTER_CLASS(_class, _clsid) \
+#define REGISTER_CLASS(_class) \
     { \
         DWORD dwRegister = 0; \
         TClassFactory<_class> *ptr = new TClassFactory<_class>(); \
-        HRESULT hr = CoRegisterClassObject(_clsid, ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
+        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
         if (FAILED(hr)) \
         { \
             std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError()); \
         } else { \
-            std::printf(#_class "factory registered.\n"); \
+            std::printf(#_class " factory registered.\n"); \
         } \
         ClassFactories.Add(dwRegister); \
     }
@@ -54,16 +54,16 @@
 /**
  *  Register a class-object with OLE (pre-created factory).
  */
-#define REGISTER_FACT_CLASS(_class, _fact, _clsid) \
+#define REGISTER_FACT_CLASS(_class, _fact) \
     { \
         DWORD dwRegister = 0; \
         IClassFactory *ptr = _fact; \
-        HRESULT hr = CoRegisterClassObject(_clsid, ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
+        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
         if (FAILED(hr)) \
         { \
             std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError()); \
         } else { \
-            std::printf(#_class "factory registered.\n"); \
+            std::printf(#_class " factory registered.\n"); \
         } \
         ClassFactories.Add(dwRegister); \
     }

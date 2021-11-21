@@ -1199,6 +1199,7 @@ DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Number(), 0x00483CC0);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Track_Index(), 0x00483CD0);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Speed_Accum(), 0x00483CE0);
 FootClass *LocomotionClass::Linked_To() const { return dynamic_cast<FootClass *>(LinkedTo); }
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LocomotionClass::Locomotion_Load(IStream *), 0x005065F0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(WinsockInterfaceClass::WinsockInterfaceClass(), 0x006A0EB0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(WinsockInterfaceClass::~WinsockInterfaceClass(), 0x006A0F60);
@@ -4237,7 +4238,7 @@ DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(Coordinate &, DirType), 0
 DEFINE_IMPLEMENTATION(void IsometricTileClass::Draw_It(Point2D &, Rect &) const, 0x004F23C0);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Mark(MarkType), 0x004F1C50);
 
-DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarEventClass::RadarEventClass(RadarEventType, CellStruct), 0x005C1CE0);
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarEventClass::RadarEventClass(RadarEventType, Cell), 0x005C1CE0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(RadarEventClass::~RadarEventClass(), 0x005C1E40);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Process(), 0x005C1EC0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Draw(), 0x005C2120);
@@ -4248,12 +4249,12 @@ DEFINE_IMPLEMENTATION(int RadarEventClass::Get_Supression_Distance(), 0x005C2B10
 DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Max_Color(), 0x005C29B0);
 DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Min_Color(), 0x005C2A40);
 DEFINE_IMPLEMENTATION(RadarDrawStruct RadarEventClass::Get_Draw_Data() const, 0x005C2790);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Create_Event(RadarEventType, CellStruct), 0x005C1BC0);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Create_Event(RadarEventType, Cell), 0x005C1BC0);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Is_Combat_Event(RadarEventType), 0x005C1CC0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Process_Events(), 0x005C1E90);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Draw_Events(), 0x005C20D0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Remove_Finished(), 0x005C2400);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, int, CellStruct), 0x005C24B0);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, int, Cell), 0x005C24B0);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Any_Active(), 0x005C2590);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D *), 0x005C1CB0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Clear_All(), 0x005C2B30);
