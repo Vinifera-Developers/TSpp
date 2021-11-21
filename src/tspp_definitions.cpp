@@ -4857,6 +4857,297 @@ DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842
 
 
 /**
+ *  Outputs the address and mangled name to the debug output window for scalar destructors.
+ */
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x00406E00, "XSurface");
+    // WorldDominationTour::Voices::Anim	WorldDominationTour::Voices::Anim: MSAnim;
+    // WorldDominationTour::ValueGameOption<unsigned short>	WorldDominationTour::ValueGameOption<unsigned short>: WorldDominationTour::GameOption;
+    // WorldDominationTour::ValueGameOption<unsigned char>	WorldDominationTour::ValueGameOption<unsigned char>: WorldDominationTour::GameOption;
+    // WorldDominationTour::Selection	WorldDominationTour::Selection: MSEngine;
+    // WorldDominationTour::RangedGameOptionT<char>	WorldDominationTour::RangedGameOptionT<char>: WorldDominationTour::RangedGameOption, WorldDominationTour::GameOption;
+    // WorldDominationTour::RangedGameOption	WorldDominationTour::RangedGameOption: WorldDominationTour::GameOption;
+    // WorldDominationTour::NumberOfPlayersGameOption	WorldDominationTour::NumberOfPlayersGameOption: WorldDominationTour::GameOption;
+    // WorldDominationTour::MapSizeGameOption	WorldDominationTour::MapSizeGameOption: WorldDominationTour::GameOption;
+OUTPUT_IDA_SCALAR_DTOR_NAMESPACE_NAME(0x006776B0, "WorldDominationTour", "Map");
+    // WorldDominationTour::GameOption	WorldDominationTour::GameOption: 
+    // WorldDominationTour::FlagGameOption	WorldDominationTour::FlagGameOption: WorldDominationTour::GameOption;
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x006A1860, "WinsockInterfaceClass");
+    // WinModemClass	WinModemClass: 
+    // WeaponTypeClass	WeaponTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // WaypointPathClass	WaypointPathClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // WaypointCommandClass	WaypointCommandClass: CommandClass;
+    // WaveClass	WaveClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // WarheadTypeClass	WarheadTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // WalkLocomotionClass	struct IPiggyback: struct IUnknown;
+    // WalkLocomotionClass	struct ILocomotion: struct IUnknown, struct IPiggyback, struct IUnknown;
+    // WalkLocomotionClass	WalkLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown, struct IPiggyback, struct IUnknown;
+    // WWMouseClass	WWMouseClass: Mouse;
+    // WWFontClass	WWFontClass: FontClass;
+    // VoxelAnimTypeClass	VoxelAnimTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // VoxelAnimClass	VoxelAnimClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, BounceClass;
+    // View4CommandClass	View4CommandClass: CommandClass;
+    // View3CommandClass	View3CommandClass: CommandClass;
+    // View2CommandClass	View2CommandClass: CommandClass;
+    // View1CommandClass	View1CommandClass: CommandClass;
+    // VersionClass	VersionClass: 
+    // VeinholeMonsterClass	VeinholeMonsterClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // UnitTypeClass	UnitTypeClass: TechnoTypeClass, ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // UnitClass	UnitClass: FootClass, TechnoClass, RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass;
+    // UDPInterfaceClass	UDPInterfaceClass: WinsockInterfaceClass;
+    // TunnelLocomotionClass	struct ILocomotion: struct IUnknown;
+    // TunnelLocomotionClass	TunnelLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // TubeClass	TubeClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TriggerTypeClass	TriggerTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TriggerClass	TriggerClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TriColorGaugeClass	TriColorGaugeClass: GaugeClass, ControlClass, GadgetClass, LinkClass;
+    // ToolTipManager	ToolTipManager: 
+    // ToggleSellCommandClass	ToggleSellCommandClass: CommandClass;
+    // ToggleRepairCommandClass	ToggleRepairCommandClass: CommandClass;
+    // ToggleRadarCommandClass	ToggleRadarCommandClass: CommandClass;
+    // TogglePowerCommandClass	TogglePowerCommandClass: CommandClass;
+    // ToggleClass	ToggleClass: ControlClass, GadgetClass, LinkClass;
+    // TiberiumClass	TiberiumClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TiberianSunClassFactory	TiberianSunClassFactory: struct IClassFactory, struct IUnknown;
+    // TextLabelClass	TextLabelClass: GadgetClass, LinkClass;
+    // TextButtonClass	TextButtonClass: ToggleClass, ControlClass, GadgetClass, LinkClass;
+    // TerrainTypeClass	TerrainTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TerrainClass	TerrainClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, StageClass;
+    // TeleportLocomotionClass	struct ILocomotion: struct IUnknown;
+    // TeleportLocomotionClass	TeleportLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // TechnoTypeClass	TechnoTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TechnoClass	TechnoClass: RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass;
+    // TeamTypeClass	TeamTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TeamClass	TeamClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TaskForceClass	TaskForceClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TagTypeClass	TagTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TagClass	TagClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // Tactical	Tactical: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TabClass	TabClass: SidebarClass, PowerClass, RadarClass, DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // TEventClass	TEventClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // TActionClass	TActionClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // SwizzleManagerClass	SwizzleManagerClass: struct ISwizzle, struct IUnknown;
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x00406E30, "Surface");
+    // SuperWeaponTypeClass	SuperWeaponTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // SuperClass	SuperClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x0047C1E0, "Straw");
+    // StopCommandClass	StopCommandClass: CommandClass;
+    // StaticButtonClass	StaticButtonClass: GadgetClass, LinkClass;
+    // SmudgeTypeClass	SmudgeTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // SmudgeClass	SmudgeClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // SliderClass	SliderClass: GaugeClass, ControlClass, GadgetClass, LinkClass;
+    // SidebarUpCommandClass	SidebarUpCommandClass: CommandClass;
+    // SidebarPageUpCommandClass	SidebarPageUpCommandClass: CommandClass;
+    // SidebarPageDownCommandClass	SidebarPageDownCommandClass: CommandClass;
+    // SidebarDownCommandClass	SidebarDownCommandClass: CommandClass;
+    // SidebarClass::StripClass::SelectClass	SidebarClass::StripClass::SelectClass: ControlClass, GadgetClass, LinkClass;
+    // SidebarClass::SBGadgetClass	SidebarClass::SBGadgetClass: GadgetClass, LinkClass;
+    // SidebarClass	SidebarClass: PowerClass, RadarClass, DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // SideClass	SideClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ShapeButtonClass	ShapeButtonClass: ToggleClass, ControlClass, GadgetClass, LinkClass;
+    // SetView4CommandClass	SetView4CommandClass: CommandClass;
+    // SetView3CommandClass	SetView3CommandClass: CommandClass;
+    // SetView2CommandClass	SetView2CommandClass: CommandClass;
+    // SetView1CommandClass	SetView1CommandClass: CommandClass;
+    // SelectViewCommandClass	SelectViewCommandClass: CommandClass;
+    // SelectTeamCommandClass	SelectTeamCommandClass: CommandClass;
+    // SelectSameTypeCommandClass	SelectSameTypeCommandClass: CommandClass;
+    // ScrollWCommandClass	ScrollWCommandClass: CommandClass;
+    // ScrollSCommandClass	ScrollSCommandClass: CommandClass;
+    // ScrollNCommandClass	ScrollNCommandClass: CommandClass;
+    // ScrollECommandClass	ScrollECommandClass: CommandClass;
+    // ScrollClass	ScrollClass: TabClass, SidebarClass, PowerClass, RadarClass, DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // ScriptTypeClass	ScriptTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ScriptClass	ScriptClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ScreenCaptureCommandClass	ScreenCaptureCommandClass: CommandClass;
+    // ScoreTimeClass	ScoreTimeClass: ScoreAnimClass;
+    // ScorePrintClass	ScorePrintClass: ScoreAnimClass;
+    // ScoreFullFontClass	ScoreFullFontClass: ScoreFontClass;
+    // ScoreFontClass	ScoreFontClass: 
+    // ScoreBigFontClass	ScoreBigFontClass: ScoreFontClass;
+    // ScoreAnimClass	ScoreAnimClass: 
+    // ScatterCommandClass	ScatterCommandClass: CommandClass;
+    // SHAStraw	SHAStraw: Straw;
+    // SHAPipe	SHAPipe: Pipe;
+    // RestateMission	RestateMission: MSEngine;
+    // RawFileClass	RawFileClass: FileClass;
+    // RandomStraw	RandomStraw: Straw;
+    // RadioClass	RadioClass: MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // RadarClass::RTacticalClass	RadarClass::RTacticalClass: GadgetClass, LinkClass;
+    // RadarClass	RadarClass: DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // RSidebarUpCommandClass	RSidebarUpCommandClass: CommandClass;
+    // RSidebarPageUpCommandClass	RSidebarPageUpCommandClass: CommandClass;
+    // RSidebarPageDownCommandClass	RSidebarPageDownCommandClass: CommandClass;
+    // RSidebarDownCommandClass	RSidebarDownCommandClass: CommandClass;
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x0046D0B0, "RLEBlitter");
+    // RAMFileClass	RAMFileClass: FileClass;
+    // PrevObjectCommandClass	PrevObjectCommandClass: CommandClass;
+    // PowerClass	PowerClass: RadarClass, DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x0047C230, "Pipe");
+    // ParticleTypeClass	ParticleTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ParticleSystemTypeClass	ParticleSystemTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ParticleSystemClass	ParticleSystemClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ParticleClass	ParticleClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // PageUserCommandClass	PageUserCommandClass: CommandClass;
+    // PKStraw	PKStraw: Straw;
+    // PKPipe	PKPipe: Pipe;
+    // OverlayTypeClass	OverlayTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // OverlayClass	OverlayClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // OptionsCommandClass	OptionsCommandClass: CommandClass;
+    // ObjectTypeClass	ObjectTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // ObjectClass	ObjectClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // NullModemConnClass	NullModemConnClass: ConnectionClass;
+    // NullModemClass	NullModemClass: ConnManClass;
+    // Node<INIClass::INISection *>	Node<INIClass::INISection *>: GenericNode;
+    // NextObjectCommandClass	NextObjectCommandClass: CommandClass;
+    // NeuronClass	NeuronClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // MyButton	MyButton: TextButtonClass, ToggleClass, ControlClass, GadgetClass, LinkClass;
+    // MultiScore	MultiScore: MSEngine;
+    // MouseClass	MouseClass: ScrollClass, TabClass, SidebarClass, PowerClass, RadarClass, DisplayClass, MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // Mouse	Mouse: 
+    // MixFileClass	MixFileClass: Node<MixFileClass *>, GenericNode;
+    // MissionClass	MissionClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // MechLocomotionClass	struct ILocomotion: struct IUnknown;
+    // MechLocomotionClass	MechLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // MapSelect	MapSelect: MSEngine;
+    // MapSeedClass	MapSeedClass: LoadOptionsClass;
+    // MapClass	MapClass: GScreenClass, struct IGameMap, struct IUnknown;
+    // MSWordAnim	MSWordAnim: MSPrintAnim, MSAnim;
+    // MSVersionTextAnim	MSVersionTextAnim: MSAnim;
+    // MSVQAnim	MSVQAnim: MSAnim;
+    // MSShapeAnim	MSShapeAnim: MSAnim;
+    // MSPrintAnim	MSPrintAnim: MSAnim;
+    // MSPCXAnim	MSPCXAnim: MSAnim;
+    // MSOverlayAnim	MSOverlayAnim: MSFadeAnim, MSShapeAnim, MSAnim;
+    // MSFont	MSFont: 
+    // MSFadeAnim	MSFadeAnim: MSShapeAnim, MSAnim;
+    // MSEngine	MSEngine: 
+    // MSButtonAnim	MSButtonAnim: MSAnim;
+    // MSAnim	MSAnim: 
+    // LogicClass	LogicClass: LayerClass, DynamicVectorClass<ObjectClass *>, VectorClass<ObjectClass *>;
+    // LocomotionClass	LocomotionClass: struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // LoadOptionsClass	LoadOptionsClass: 
+    // ListClass	ListClass: ControlClass, GadgetClass, LinkClass;
+    // List<MixFileClass *>	List<MixFileClass *>: GenericList;
+    // List<INIClass::INISection *>	List<INIClass::INISection *>: GenericList;
+    // List<INIClass::INIEntry *>	List<INIClass::INIEntry *>: GenericList;
+    // LinkClass	LinkClass: 
+    // LightSourceClass	LightSourceClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // LightConvertClass	LightConvertClass: ConvertClass;
+    // LevitateLocomotionClass	LevitateLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // LayerClass	LayerClass: DynamicVectorClass<ObjectClass *>, VectorClass<ObjectClass *>;
+    // LZOStraw	LZOStraw: Straw;
+    // LZOPipe	LZOPipe: Pipe;
+    // LSidebarUpCommandClass	LSidebarUpCommandClass: CommandClass;
+    // LSidebarPageUpCommandClass	LSidebarPageUpCommandClass: CommandClass;
+    // LSidebarPageDownCommandClass	LSidebarPageDownCommandClass: CommandClass;
+    // LSidebarDownCommandClass	LSidebarDownCommandClass: CommandClass;
+    // LCWStraw	LCWStraw: Straw;
+    // LCWPipe	LCWPipe: Pipe;
+    // JumpjetLocomotionClass	JumpjetLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // IsometricTileTypeClass	IsometricTileTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // IsometricTileClass	IsometricTileClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // InfantryTypeClass	InfantryTypeClass: TechnoTypeClass, ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // InfantryClass	InfantryClass: FootClass, TechnoClass, RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass;
+    // IPXManagerClass	IPXManagerClass: ConnManClass;
+    // IPXInterfaceClass	IPXInterfaceClass: WinsockInterfaceClass;
+    // IPXGlobalConnClass	IPXGlobalConnClass: IPXConnClass, ConnectionClass;
+    // IPXConnClass	IPXConnClass: ConnectionClass;
+    // INIClass::INISection	struct INIClass::INISection: Node<INIClass::INISection *>, GenericNode;
+    // INIClass::INIEntry	struct INIClass::INIEntry: Node<INIClass::INIEntry *>, GenericNode;
+    // INIClass	INIClass: 
+    // HoverLocomotionClass	HoverLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // HouseTypeClass	HouseTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // HouseClass	HouseClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, struct IHouse, struct IUnknown, struct IPublicHouse, struct IUnknown, struct IConnectionPointContainer, struct IUnknown;
+    // GuardCommandClass	GuardCommandClass: CommandClass;
+    // GraphicMenuVersionText	GraphicMenuVersionText: GraphicMenuItem;
+    // GraphicMenuShortcutItem	GraphicMenuShortcutItem: GraphicMenuItem;
+    // GraphicMenuItem	GraphicMenuItem: 
+    // GraphicMenuImageItem	GraphicMenuImageItem: GraphicMenuItem;
+    // GraphicMenu	GraphicMenu: 
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x00403C70, "GenericNode");
+OUTPUT_IDA_SCALAR_DTOR_NAME(0x00403CC0, "GenericList");
+    // GaugeClass	GaugeClass: ControlClass, GadgetClass, LinkClass;
+    // GadgetClass	GadgetClass: LinkClass;
+    // GScreenClass	GScreenClass: struct IGameMap, struct IUnknown;
+    // FootClass	FootClass: TechnoClass, RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass;
+    // FontClass	FontClass: 
+    // FollowCommandClass	FollowCommandClass: CommandClass;
+    // FoggedObjectClass	FoggedObjectClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // FlyLocomotionClass	struct ILocomotion: struct IUnknown;
+    // FlyLocomotionClass	FlyLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown;
+    // FileStraw	FileStraw: Straw;
+    // FilePipe	FilePipe: Pipe;
+    // FileClass	FileClass: 
+    // FactoryClass	FactoryClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, StageClass;
+    // EditClass	EditClass: ControlClass, GadgetClass, LinkClass;
+    // EMPulseClass	EMPulseClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // DropPodLocomotionClass	DropPodLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown, struct IPiggyback, struct IUnknown;
+    // DropListClass	DropListClass: EditClass, ControlClass, GadgetClass, LinkClass;
+    // DriveLocomotionClass	DriveLocomotionClass: LocomotionClass, struct IPersistStream, struct IPersist, struct IUnknown, struct ILocomotion, struct IUnknown, struct IPiggyback, struct IUnknown;
+    // DisplayClass::TacticalClass	DisplayClass::TacticalClass: GadgetClass, LinkClass;
+    // DisplayClass	DisplayClass: MapClass, GScreenClass, struct IGameMap, struct IUnknown;
+    // Dial8Class	Dial8Class: ControlClass, GadgetClass, LinkClass;
+    // DeployCommandClass	DeployCommandClass: CommandClass;
+    // DeleteWaypointCommandClass	DeleteWaypointCommandClass: CommandClass;
+    // DSurface	DSurface: XSurface, Surface;
+    // CreateTeamCommandClass	CreateTeamCommandClass: CommandClass;
+    // CounterClass	CounterClass: VectorClass<int>;
+    // ConvertClass	ConvertClass: 
+    // ControlClass	ControlClass: GadgetClass, LinkClass;
+    // ConnectionPointClass	ConnectionPointClass: struct IConnectionPoint, struct IUnknown;
+    // ConnectionClass	ConnectionClass: 
+    // ConnManClass	ConnManClass: 
+    // CommandClass	CommandClass: 
+    // CommBufferClass	CommBufferClass: 
+    // ColorListClass	ColorListClass: ListClass, ControlClass, GadgetClass, LinkClass;
+    // CheckListClass	CheckListClass: ListClass, ControlClass, GadgetClass, LinkClass;
+    // CenterViewCommandClass	CenterViewCommandClass: CommandClass;
+    // CenterTeamCommandClass	CenterTeamCommandClass: CommandClass;
+    // CenterREventCommandClass	CenterREventCommandClass: CommandClass;
+    // CenterBaseCommandClass	CenterBaseCommandClass: CommandClass;
+    // CellClass	CellClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // CarryoverClass	CarryoverClass: LinkClass;
+    // CampaignClass	CampaignClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // CacheStraw	CacheStraw: Straw;
+    // CStreamClass	CStreamClass: struct IStream, struct ISequentialStream, struct IUnknown, struct ILinkStream, struct IUnknown;
+    // CDFileClass	CDFileClass: BufferIOFileClass, RawFileClass, FileClass;
+    // CD	CD: DiskSwap;
+    // CChatEventSink	CChatEventSink: ATL::CComObjectRootEx<ATL::CComMultiThreadModel>, ATL::CComObjectRootBase, struct WOL::IChatEvent, struct IUnknown;
+    // CCToolTip	CCToolTip: ToolTipManager;
+    // CCINIClass	CCINIClass: INIClass;
+    // CCFileClass	CCFileClass: CDFileClass, BufferIOFileClass, RawFileClass, FileClass;
+    // BulletTypeClass	BulletTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // BulletClass	BulletClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // BuildingTypeClass	BuildingTypeClass: TechnoTypeClass, ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // BuildingLightClass	BuildingLightClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // BuildingClass	BuildingClass: TechnoClass, RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass;
+    // BufferStraw	BufferStraw: Straw;
+    // BufferPipe	BufferPipe: Pipe;
+    // BufferIOFileClass	BufferIOFileClass: RawFileClass, FileClass;
+    // BrainClass	BrainClass: 
+    // BlowStraw	BlowStraw: Straw;
+    // BlowPipe	BlowPipe: Pipe;
+    // Blitter	Blitter: 
+    // BaseClass	BaseClass: 
+    // Base64Straw	Base64Straw: Straw;
+    // Base64Pipe	Base64Pipe: Pipe;
+    // BSurface	BSurface: XSurface, Surface;
+    // ApplicationClass	ApplicationClass: struct IApplication, struct IUnknown;
+    // Animate	Animate: 
+    // AnimTypeClass	AnimTypeClass: ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // AnimFile	AnimFile: Animate;
+    // AnimClass	AnimClass: ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, StageClass;
+    // AlphaShapeClass	AlphaShapeClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // AllianceCommandClass	AllianceCommandClass: CommandClass;
+    // AircraftTypeClass	AircraftTypeClass: TechnoTypeClass, ObjectTypeClass, AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // AircraftClass	AircraftClass: FootClass, TechnoClass, RadioClass, MissionClass, ObjectClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown, FlasherClass, StageClass, struct IFlyControl, struct IUnknown;
+    // AddTeamCommandClass	AddTeamCommandClass: CommandClass;
+    // AbstractTypeClass	AbstractTypeClass: AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // AbstractClass	AbstractClass: struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+    // AITriggerTypeClass	AITriggerTypeClass: AbstractTypeClass, AbstractClass, struct IPersistStream, struct IPersist, struct IUnknown, struct IRTTITypeInfo, struct IUnknown;
+
+
+/**
  *  Various values calculated at runtime init.
  */
 int &CellHeight = Make_Global<int>(0x007481A0);

@@ -34,10 +34,23 @@
 /**
  *  Outputs the address and mangled name to the debug output window.
  */
+#define OUTPUT_IDA_NAMES
 #ifdef OUTPUT_IDA_NAMES
 #define OUTPUT_IDA_NAME(address, name) __pragma(message("    MakeName(" #address ", " "\"" name "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_NAME(address, name) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@@UAEPAXI@Z" "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_NAMESPACE_NAME(address, namespace_name, name) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@@UAEPAXI@Z" "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_NAMESPACE_NESTED_NAME(address, namespace_name, nested_name, name) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@@UAEPAXI@Z" "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_NAME(address, name, _typename) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@V" _typename "@@@@UAEPAXI@Z" "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_PTR_STRUCT_NAME(address, name, _typename) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@PAU" _typename "@@@@UAEPAXI@Z" "\"" ");"))
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_PTR_CLASS_NAME(address, name, _typename) __pragma(message("    MakeName(" #address ", " "\"" "??_G" name "@PAU" _typename "@@@@UAEPAXI@Z" "\"" ");"))
 #else
-#define OUTPUT_IDA_NAME(address, name) 
+#define OUTPUT_IDA_NAME(address, name)
+#define OUTPUT_IDA_SCALAR_DTOR_NAME(address, name)
+#define OUTPUT_IDA_SCALAR_DTOR_NAMESPACE_NAME(address, namespace_name, name)
+#define OUTPUT_IDA_SCALAR_DTOR_NAMESPACE_NESTED_NAME(address, namespace_name, nested_name, name)
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_NAME(address, name)
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_PTR_STRUCT_NAME(address, name)
+#define OUTPUT_IDA_SCALAR_DTOR_TEMPLATE_PTR_CLASS_NAME(address, name)
 #endif
 
 
