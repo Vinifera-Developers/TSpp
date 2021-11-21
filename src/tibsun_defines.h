@@ -2727,21 +2727,21 @@ struct IsoTileFileStruct
 #pragma pack()
 
 
-struct CellStruct
+struct Cell
 {
-    CellStruct(int16_t x = 0, int16_t y = 0) : X(x), Y(y) {}
-    CellStruct(const CellStruct &that) : X(that.X), Y(that.Y) {}
+    Cell(int16_t x = 0, int16_t y = 0) : X(x), Y(y) {}
+    Cell(const Cell &that) : X(that.X), Y(that.Y) {}
 
     operator bool () const { return X != 0 || Y != 0 /*&& As_Cell_Number() < MAP_CELL_TOTAL*/; }
 
-    bool operator==(const CellStruct &that) const { return X == that.X && Y == that.Y; }
-    bool operator!=(const CellStruct &that) const { return X != that.X && Y != that.Y; }
+    bool operator==(const Cell &that) const { return X == that.X && Y == that.Y; }
+    bool operator!=(const Cell &that) const { return X != that.X && Y != that.Y; }
 
-    CellStruct operator+(const CellStruct &that) const { return CellStruct(X + that.X, Y + that.Y); }
-    CellStruct &operator+=(const CellStruct &that) { X += that.X; Y += that.Y; return *this; }
+    Cell operator+(const Cell &that) const { return Cell(X + that.X, Y + that.Y); }
+    Cell &operator+=(const Cell &that) { X += that.X; Y += that.Y; return *this; }
 
-    CellStruct operator-(const CellStruct &that) const { return CellStruct(X - that.X, Y - that.Y); }
-    CellStruct &operator-=(const CellStruct &that) { X -= that.X; Y -= that.Y; return *this; }
+    Cell operator-(const Cell &that) const { return Cell(X - that.X, Y - that.Y); }
+    Cell &operator-=(const Cell &that) { X -= that.X; Y -= that.Y; return *this; }
 
     int32_t As_Cell_Number() const { return X + (Y << 9); }
 
@@ -2755,24 +2755,21 @@ struct CellStruct
 };
 
 
-using Cell = CellStruct;
-
-
-struct CoordStruct
+struct Coordinate
 {
-    CoordStruct(int32_t x = 0, int32_t y = 0, int32_t z = 0) : X(x), Y(y), Z(z) {}
-    CoordStruct(const CoordStruct &that) : X(that.X), Y(that.Y), Z(that.Z) {}
+    Coordinate(int32_t x = 0, int32_t y = 0, int32_t z = 0) : X(x), Y(y), Z(z) {}
+    Coordinate(const Coordinate &that) : X(that.X), Y(that.Y), Z(that.Z) {}
 
     operator bool () const { return X != 0 || Y != 0 || Z != 0; }
 
-    bool operator==(const CoordStruct &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
-    bool operator!=(const CoordStruct &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+    bool operator==(const Coordinate &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
+    bool operator!=(const Coordinate &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
 
-    CoordStruct operator+(const CoordStruct &that) const { return CoordStruct(X + that.X, Y + that.Y, Z + that.Z); }
-    CoordStruct &operator+=(const CoordStruct &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
+    Coordinate operator+(const Coordinate &that) const { return Coordinate(X + that.X, Y + that.Y, Z + that.Z); }
+    Coordinate &operator+=(const Coordinate &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
 
-    CoordStruct operator-(const CoordStruct &that) const { return CoordStruct(X - that.X, Y - that.Y, Z - that.Z); }
-    CoordStruct &operator-=(const CoordStruct &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
+    Coordinate operator-(const Coordinate &that) const { return Coordinate(X - that.X, Y - that.Y, Z - that.Z); }
+    Coordinate &operator-=(const Coordinate &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
 
     int Length() const
     {
@@ -2783,9 +2780,6 @@ struct CoordStruct
     int32_t Y; // Y coordinate of the location.
     int32_t Z; // Z coordinate of the location.
 };
-
-
-using Coordinate = CoordStruct;
 
 
 struct xCell

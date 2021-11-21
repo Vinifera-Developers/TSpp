@@ -43,7 +43,7 @@ typedef struct RadarDrawStruct
 class RadarEventClass
 {
     public:
-        RadarEventClass(RadarEventType event, CellStruct cell);
+        RadarEventClass(RadarEventType event, Cell cell);
         ~RadarEventClass();
 
         void Process();
@@ -56,12 +56,12 @@ class RadarEventClass
         RGBClass Get_Min_Color();
         RadarDrawStruct Get_Draw_Data() const;
 
-        static bool Create_Event(RadarEventType event, CellStruct cell);
+        static bool Create_Event(RadarEventType event, Cell cell);
         static bool Is_Combat_Event(RadarEventType event);
         static void Process_Events();
         static void Draw_Events();
         static void Remove_Finished();
-        static bool Suppression_Check(RadarEventType type, int a2, CellStruct cell);
+        static bool Suppression_Check(RadarEventType type, int a2, Cell cell);
         static bool Any_Active();
 
         static void Plot_Point(Point2D *point);
