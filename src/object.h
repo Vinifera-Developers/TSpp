@@ -123,8 +123,8 @@ class ObjectClass : public AbstractClass
         virtual Rect entry_118() const;
         virtual void entry_11C() const;
         virtual void Mark_For_Redraw();
-        virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3);
-        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target);
+        virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false);
+        virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false);
         virtual void Clicked_As_Target(int count = 7);
         virtual bool Select();
         virtual void Unselect();

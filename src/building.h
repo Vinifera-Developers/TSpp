@@ -106,8 +106,8 @@ BuildingClass : public TechnoClass
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual Rect entry_118() const override;
         virtual void entry_11C() const override;
-        virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3) override;
-        virtual bool Active_Click_With(ActionType action, Cell &cell, ObjectClass *target) override;
+        virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
+        virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false) override;
         virtual void Clicked_As_Target(int frames) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
