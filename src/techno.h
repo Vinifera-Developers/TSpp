@@ -49,6 +49,9 @@ class BuildingTypeClass;
 class WeaponTypeClass;
 
 
+/*******************************************************************************
+ *	This is the common data between building and units.
+ */
 class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
     public:
@@ -263,25 +266,93 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         SideType ActLike;
         CargoClass Cargo;
         VeterancyClass Veterancy;
+
+        /**
+         *  This is the firepower and armor modifiers for this techno object. Normally,
+         *  these values are fixed at 0x0100, but they can be modified by certain
+         *  crate powerups.
+         */
         double ArmorBias;
         double FirepowerBias;
+
+        /**
+         *  Idle animations (if any are supported by the object type) are
+         *  regulated by this timer. When the timer expires an idle animation
+         *  occurs. Then the timer is reinitialized to some random (bounded) setting.
+         */
         CDTimerClass<FrameTimerClass> IdleTimer;
+
         CDTimerClass<FrameTimerClass> RadarFlashTimer;
         Point2D RadarPos;
+
+        /**
+         *  This is a list of bits of which houses are spying on this building,
+         *  if in fact this is a building.
+         */
 		unsigned SpiedBy;
+
+        /**
+         *  If this object is part of a pseudo-team that the player is managing,
+         *  then this will be set to the team number (0 - 9). If it is not part
+         *  of any pseudo-team, then the number will be -1.
+         */
         unsigned int Group;
+
+        /**
+         *  For units in area guard mode, this is the recorded home position.
+         *  The guarding unit will try to stay near this location in the course
+         *  of it's maneuvers. This is also used to record a pending transport
+         *  for those passengers that are waiting for the transport to become
+         *  available. It is also used by harvesters so that they know where to
+         *  head back to after unloading.
+         */
         TARGET ArchiveTarget;
+
+        /**
+         *  This is the house that the unit belongs to.
+         */
         HouseClass *House;
+
+        /**
+         *  This records the current cloak state for this vehicle.
+         */
 		CloakType Cloak;
 		StageClass CloakingDevice;
 		CDTimerClass<FrameTimerClass> CloakDelay;
+
         float field_118;
+
+        /**
+         *  (Targeting Computer)
+         *  This is the target value for the item that this vehicle should ATTACK.
+         *  If this is a vehicle with a turret, then it may differ from its
+         *  movement destination.
+         */
         TARGET TarCom;
         TARGET SuspendedTarCom;
+
         float PitchAngle;
+
+        /**
+         *  This is the arming countdown. It represents the time necessary
+         *  to reload the weapon.
+         */
 		CDTimerClass<FrameTimerClass> Arm;
+
+        /**
+         *  The number of shot this object can fire before running out of ammo.
+         *  If this value is zero, then firing is not allowed. If -1, then there
+         *  is no ammunition limit.
+         */
 		int Ammo;
+
+        /**
+         *  This is the amount of money spent to produce this object. This value
+         *  really only comes into play for the case of buildings that have
+         *  special "free" objects available when purchased at the more expensive rate.
+         */
         int PurchasePrice;
+
         ParticleSystemClass *ParticleSystems[5];
         WaveClass *Wave;
         float AngleRotatedSideways;
@@ -292,26 +363,113 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         StorageClass Storage;
         DoorClass Door;
         FacingClass BarrelFacing;
+
+        /**
+         *  This is the visible facing for the unit or building.
+         */
 		FacingClass PrimaryFacing;
+
+        /**
+         *  This is the facing of the turret. It can be, and usually is,
+         *  rotated independently of the body it is attached to.
+         */
         FacingClass SecondaryFacing;
+
         int CurrentBurstIndex;
         CDTimerClass<FrameTimerClass> TargetingLaserTimer;
         unsigned short SoundRandomSeed;
         short SinkingYOffset;
         bool IsSinking;
         bool IsNeedingRescue;
+
+        /**
+         *  If this techno object has detected that it has outlived its purpose,
+         *  then this flag will be true. Such object will either be sold or
+         *  sacrificed at the first opportunity.
+         */
 		bool IsUseless;
+
+        /**
+         *  This flag will be true if the object has been damaged with malice.
+         *  Damage received due to friendly fire or wear and tear does not count.
+         *  The computer is not allowed to sell a building unless it has been
+         *  damaged with malice.
+         */
         bool IsTickedOff;
+
+        /**
+         *  If this object has inherited the ability to cloak, then this bit will
+         *  be set to true.
+         */
         bool IsCloakable;
+
+        /**
+         *  If this object is designated as special then this flag will be true. For
+         *  buildings, this means that it is the primary factory. For units, it means
+         *  that the unit is the team leader.
+         */
         bool IsLeader;
+
+        /**
+         *  Certain units are flagged as "loaners".  These units are typically
+         *  transports that are created solely for the purpose of delivering
+         *  reinforcements.  Such "loaner" units are not owned by the player
+         *  and thus cannot be directly controlled.  These units will leave the
+         *  game as soon as they have fulfilled their purpose.
+         */
         bool IsALoaner;
+
+        /**
+         *  Once a unit enters the map, then this flag is set. This flag is used
+         *  to make sure that a unit doesn't leave the map once it enters the map.
+         */
         bool IsLocked;
+
+        /**
+         *  Buildings and units with turrets usually have a recoil animation when
+         *  they fire. If this flag is true, then the next rendering of the object
+         *  will be in the "recoil state". The flag will then be cleared pending
+         *  the next firing event.
+         */
         bool IsInRecoilState;
+
+        /**
+         *  If this unit is "loosely attached" to another unit it is given special
+         *  processing. A unit is in such a condition when it is in the process of
+         *  unloading from a transport type object. During the unloading process
+         *  the transport object must stay still until the unit is free and clear.
+         *  At that time it radios the transport object and the "tether" is broken -
+         *  freeing both the unit and the transport object.
+         */
         bool IsTethered;
+
+        /**
+         *  Is this object owned by the player?  If not, then it is owned by the
+         *  computer or remote opponent. This flag facilitates the many logic
+         *  differences when dealing with player's or computer's units or buildings.
+         */
         bool IsOwnedByPlayer;
+
+        /**
+         *  The more sophisticated game objects must keep track of whether they
+         *  are discovered or not. This is because the state of discovery can
+         *  often control how the object behaves. In addition, this fact is used
+         *  in radar and user I/O processing.
+         */
         bool IsDiscoveredByPlayer;
+
+        /**
+         *  This is used to control the computer recognizing this object.
+         */
         bool IsDiscoveredByComputer;
+
+        /**
+         *  Some game objects can be of the "lemon" variety. This means that they
+         *  take damage even when everything is ok. This adds a little variety to
+         *  the game.
+         */
         bool IsALemon;
+
         unsigned char field_202;
         unsigned char field_203;
         unsigned char field_204;

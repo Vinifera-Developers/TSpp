@@ -45,6 +45,13 @@ class TechnoTypeClass;
 class WarheadTypeClass;
 
 
+/*******************************************************************************
+ *	Every game object (that can exist on the map) is ultimately derived from
+ *  this object class. It holds the common information between all objects.
+ *  This is primarily the object unique ID number and its location in the world.
+ *  All common operations between game objects are represented by virtual
+ *  functions in this class.
+ */
 class ObjectClass : public AbstractClass
 {
     public:
@@ -75,6 +82,10 @@ class ObjectClass : public AbstractClass
         /**
          *  ObjectClass
          */
+
+        /**
+         *  Query functions.
+         */
         virtual bool Is_Players_Army() const;
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr);
         virtual void *const Get_Image_Data() const;
@@ -91,14 +102,21 @@ class ObjectClass : public AbstractClass
         virtual bool Can_Demolish() const;
         virtual bool Can_Player_Fire() const;
         virtual bool Can_Player_Move() const; 
+
+        /**
+         *  Coordinate inquiry functions. These are used for both display and
+         *  combat purposes.
+         */
         virtual Coordinate Target_Coord() const;
         virtual Coordinate Docking_Coord() const;
         virtual Coordinate Render_Coord() const;
         virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual Coordinate Exit_Coord() const;
         virtual int Sort_Y() const;
+
         virtual bool entry_BC();
         virtual bool entry_C0() const;
+
         virtual bool Limbo();
         virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N);
         virtual void Detach_All(bool all = false);
@@ -108,6 +126,11 @@ class ObjectClass : public AbstractClass
         virtual void Set_Occupy_Bit(Coordinate &coord);
         virtual void Clear_Occupy_Bit(Coordinate &coord);
         virtual void entry_E4();
+
+        /**
+         *  Display and rendering support functionality. Supports imagery and how
+         *  object interacts with the map and thus indirectly controls rendering.
+         */
         virtual void Do_Shimmer();
         virtual ExitType Exit_Object(const TechnoClass *object);
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false);
@@ -119,15 +142,24 @@ class ObjectClass : public AbstractClass
         virtual void Hidden();
         virtual void Look(bool incremental = false, bool a2 = false);
         virtual bool Mark(MarkType mark = MARK_CHANGE);
+
         virtual Rect entry_114() const;
         virtual Rect entry_118() const;
         virtual void entry_11C() const;
         virtual void Mark_For_Redraw();
+
+        /**
+         *  User I/O.
+         */
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false);
         virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false);
         virtual void Clicked_As_Target(int count = 7);
         virtual bool Select();
         virtual void Unselect();
+
+        /**
+         *  Combat related.
+         */
         virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual int Weapon_Range(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false);
@@ -137,14 +169,24 @@ class ObjectClass : public AbstractClass
         virtual int Value() const;
         virtual MissionType Get_Mission() const;
         virtual void Assign_Mission(MissionType order);
+
+        /**
+         *  AI.
+         */
         virtual void Per_Cell_Process(PCPType why);
         virtual BuildingClass *const Who_Can_Build_Me(bool intheory = false, bool legal = false) const;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param);
         virtual bool Revealed(const HouseClass *house = nullptr);
         virtual void Repair(int control);
         virtual void Sell_Back(int control);
+
         virtual void entry_174(int a1, int a2);
+
+        /**
+         *  Scenario and debug support.
+         */
         virtual void Move(FacingType facing);
+
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false);
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual Coordinate Get_Coord() const;
@@ -179,27 +221,104 @@ class ObjectClass : public AbstractClass
 
         const char *Name() const;
 
+        /**
+         *  Reduces attached animation durations.
+         */
         static void Shorten_Attached_Anims();
+
+		/**
+		 *  Object selection control.
+		 */
+        static void Init() { CurrentObjects.Clear(); }
 
     public:
         int field_14;
         int field_18;
         int Riser;
+
+        /**
+         *  Several objects could exist in the same cell list. This is a pointer
+         *  to the next object in the cell list. The objects in this list are
+         *  not in any significant order.
+         */
         ObjectClass *Next;
+
         TagClass *Tag;
+
+        /**
+         *  This is the current strength of this object.
+         */
         int Strength;
+
+		/**
+		 *  The object can be in one of two states -- placed down on the map, or not.
+         *  If the object is placed down on the map, then this flag will be true.
+		 */
         bool IsDown;
+
+        /**
+         *  This is a support flag that is only used while building a list of
+         *  objects to be damaged by a proximity affect (explosion). When this
+         *  flag is set, this object will not be added to the list of units to
+         *  damage. When damage is applied to the object, this flag is cleared
+         *  again. This process ensures that an object is never subject
+         *  to "double jeopardy".
+         */
         bool IsToDamage;
+
+        /**
+         *  Is this object flagged to be displayed during the next rendering
+         *  process?  This flag could be set by many different circumstances.
+         *  It is automatically cleared when the object is rerendered.
+         */
         bool IsToDisplay;
+
+        /**
+         *  An object in the game may be valid yet held in a state of "limbo".
+         *  Units are in such a state if they are being transported or are
+         *  otherwise "inside" another unit. They can also be in limbo if they
+         *  have been created but are being held until the proper time for delivery.
+         */
         bool IsInLimbo;
+
+        /**
+         *  When an object is "selected" it is given a floating bar graph or
+         *  other graphic imagery to display this fact. When the player performs
+         *  I/O, the actions may have a direct bearing on the actions of the
+         *  currently selected object. For quick checking purposes, if this
+         *  object is the one that is "selected", this flag will be true.
+         */
         bool IsSelected;
+
+        /**
+         *  If an animation is attached to this object, then this flag will be true.
+         */
         bool IsAnimAttached;
+
         bool IsOnBridge;
+
+        /**
+         *  If this object should process falling logic, then this flag will be true. Such
+         *  objects might be ballistic projectiles, grenades, or parachuters.
+         */
         bool IsFalling;
+
         bool IsToExplode;
+
+        /**
+         *  The actual object ram-space is located in arrays in the data segment.
+         *  This flag is used to indicate which objects are free to be reused and
+         *  which are currently in use by the game.
+         */
         bool IsActive;
+
         LayerType Layer;
         bool IsSubmittedToLayer;
+
+        /**
+         *  The coordinate location of the unit. For vehicles, this is the center
+         *  point. For buildings, it is the upper left corner.
+         */
         Coordinate Coord;
 
     private:

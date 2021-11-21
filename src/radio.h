@@ -33,6 +33,12 @@
 extern long &LParam;
 
 
+/*******************************************************************************
+ *	Radio contact is controlled by this class. It handles the mundane chore
+ *	of keeping the radio contact alive as well as broadcasting messages
+ *	to the receiving radio. Radio contact is primarily used when one object
+ *	is in "command" of another.
+ */
 class RadioClass : public MissionClass
 {
     public:
@@ -69,6 +75,17 @@ class RadioClass : public MissionClass
 		void Radio_Off() { Radio = nullptr; }
 
 	private:
+
+		/**
+		 *  This is a record of the last message received by this receiver.
+		 */
 		RadioMessageType Old[3];
+
+		/**
+		 *  This is the object that radio communication has been established
+		 *  with. Although is is only a one-way reference, it is required that
+		 *  the receiving radio is also tuned to the object that contains this
+		 *  radio set.
+		 */
 		RadioClass *Radio;
 };

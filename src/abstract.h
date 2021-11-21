@@ -38,6 +38,10 @@ class HouseClass;
 class WWCRCEngine;
 
 
+/*******************************************************************************
+ *	This class is the base class for all game objects that have an existence on
+ *  the battlefield.
+ */
 class AbstractClass : public IPersistStream, public IRTTITypeInfo
 {
     public:
@@ -79,27 +83,55 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         virtual ~AbstractClass();
 
         virtual void Init();
+
+        /**
+         *  Object entry and exit from the game system.
+         */
         virtual void Detach(TARGET target, bool all = true);
+
         virtual RTTIType Kind_Of() const = 0;
         virtual int Size_Of(bool firestorm = false) const = 0;
         virtual int entry_34() const;
         virtual void Compute_CRC(WWCRCEngine &crc) const;
+
+        /**
+         *  Query functions.
+         */
         virtual int Owner() const;
         virtual HouseClass *Owning_House() const;
         virtual int Get_Heap_ID() const;
         virtual bool Is_Inactive() const;
+
+        /**
+         *  Coordinate query support functions.
+         */
         virtual Coordinate Center_Coord() const;
         virtual Coordinate entry_50() const;
+
         virtual bool On_Ground() const;
         virtual bool In_Air() const;
         virtual Coordinate entry_5C() const;
+
+        /**
+         *  AI.
+         */
         virtual void AI();
 
         bool Is_Dirty() const { return Dirty; }
 
     protected:
+
+        /**
+         *  This specifies the unique ID number associated with this object.
+         */
         int ID;
+
+        /**
+         *  The ID number happens to match the index into the object heap
+         *  appropriate for this object type.
+         */
         int HeapID;
+
         bool Dirty;
 
     private:
