@@ -32,7 +32,7 @@
  *  Define the DirectSound interface version.
  */
 #undef DIRECTSOUND_VERSION
-#define DIRECTSOUND_VERSION 0x0600 // Use DirectSound 6.0
+#define DIRECTSOUND_VERSION 0x1000 // TibSun uses an older version, but we only use pointers here.
 
 
 #include "always.h"

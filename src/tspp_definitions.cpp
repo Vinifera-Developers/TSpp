@@ -1876,7 +1876,7 @@ DEFINE_IMPLEMENTATION(void DirectSoundAudioClass::Sound_Callback(), 0x00489A40);
 DEFINE_IMPLEMENTATION(void __cdecl sosCODECInitStream(_SOS_COMPRESS_INFO *), 0x006B2B40);
 DEFINE_IMPLEMENTATION(void __cdecl sosCODEC2InitStream(_SOS_COMPRESS_INFO_2 *), 0x006B2680);
 DEFINE_IMPLEMENTATION(int __cdecl sosCODECDecompressData(_SOS_COMPRESS_INFO *, int16_t), 0x006B26BC);
-DEFINE_IMPLEMENTATION(int __cdecl sosCODEC2DecompressData(_SOS_COMPRESS_INFO *, int16_t), 0x006B2B62);
+DEFINE_IMPLEMENTATION(int __cdecl sosCODEC2DecompressData(_SOS_COMPRESS_INFO_2 *, int16_t), 0x006B2B62);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(PreviewClass::PreviewClass(), 0x005AC010);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(PreviewClass::~PreviewClass(), 0x005AC020);
@@ -5096,6 +5096,7 @@ DynamicVectorClass<TARGET> &vec_80F600 = Make_Global<DynamicVectorClass<TARGET>>
 DynamicVectorClass<ULONG> &ClassFactories = Make_Global<DynamicVectorClass<ULONG>>(0x0080C9E0);
 
 DynamicVectorClass<const char *> &Movies = Make_Global<DynamicVectorClass<const char *>>(0x00806DD0);
+MovieClass *&CurrentMovie = Make_Global<MovieClass *>(0x00806E1C);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
 

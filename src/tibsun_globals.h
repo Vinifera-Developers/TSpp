@@ -150,6 +150,7 @@ class ImageCollectionClass;
 class SystemTimerClass;
 class ABuffer;
 class ZBuffer;
+class MovieClass;
 struct ShapeFileStruct;
 
 enum KeyNumType;
@@ -397,6 +398,7 @@ extern DynamicVectorClass<TARGET> &vec_80F600;
 extern DynamicVectorClass<ULONG> &ClassFactories;
 
 extern DynamicVectorClass<const char *> &Movies;
+extern MovieClass *&CurrentMovie;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 

@@ -71,7 +71,7 @@ class VocClass
     public:
         char Filename[256];
         int Priority;
-        int Volume;
+        float Volume;
         void *FilePtr;
 };
 
