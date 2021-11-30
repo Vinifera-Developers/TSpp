@@ -32,11 +32,15 @@
 #include "tibsun_defines.h"
 
 
+class FileClass;
 class Rect;
 class XSurface;
 class PaletteClass;
 class ObjectClass;
 
+
+void *Load_Alloc_Data(char const *name, int flags = 0 /* MEM_NORMAL */);
+void *Load_Alloc_Data(FileClass &file);
 
 void Call_Back();
 void Load_Keyboard_Hotkeys();

@@ -31,6 +31,7 @@
 #include <always.h>
 #include "special.h"
 #include "target.h"
+#include "house.h"
 #include "tibsun_defines.h"
 
 
@@ -59,6 +60,25 @@ class EventClass
 		EventClass(unsigned int house_id, EventType type, int id, Cell *cell);
 		EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
 		EventClass(unsigned int house_id, void *ptr, unsigned long size);
+
+		EventClass(EventType type, unsigned long hi, unsigned long lo)
+		{
+			ID = PlayerPtr->ID;
+			Type = type;
+			Frame = ::Frame;
+			Data.LongLong.Hi = hi;
+			Data.LongLong.Lo = lo;
+		}
+
+		EventClass(EventType type, unsigned long hi, unsigned long lo, unsigned long extra)
+		{
+			ID = PlayerPtr->ID;
+			Type = type;
+			Frame = ::Frame;
+			Data.LongLongExtra.Hi = hi;
+			Data.LongLongExtra.Lo = lo;
+			Data.LongLongExtra.Extra = extra;
+		}
 
 		int operator==(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
 		int operator!=(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
@@ -159,6 +179,17 @@ class EventClass
 			struct {
 				unsigned short AverageTicks;
 			} ProcessTime;
+
+			struct { // For 64-bit integers.
+				unsigned long Hi;
+				unsigned long Lo;
+			} LongLong;
+
+			struct { // For 64-bit integers with additional 32-bit value.
+				unsigned long Hi;
+				unsigned long Lo;
+				unsigned long Extra;
+			} LongLongExtra;
 
 		} Data;
 #pragma pack()

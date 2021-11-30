@@ -29,6 +29,7 @@
 #include "tibsun_globals.h"
 #include "object.h"
 #include "objecttype.h"
+#include "ccfile.h"
 
 
 /***************************************************************************
@@ -148,4 +149,35 @@ void Unselect_All_Except(RTTIType rtti)
 			CurrentObjects.Delete(CurrentObjects[index]);
 		}
 	}
+}
+
+
+/**
+ *  Loads and allocates buffer for a file.
+ * 
+ *  @author: 10/17/1994 JLB
+ */
+void *Load_Alloc_Data(char const *name, int flags)
+{
+	CCFileClass file(name);
+	return Load_Alloc_Data(file);
+}
+
+
+/**
+ *  Allocates a buffer and loads the file into it.
+ * 
+ *  @author: 10/17/1994 JLB
+ */
+void *Load_Alloc_Data(FileClass &file)
+{
+	void *ptr = 0;
+	long size = file.Size();
+
+	ptr = new char [size];
+	if (ptr) {
+		file.Read(ptr, size);
+	}
+
+	return ptr;
 }
