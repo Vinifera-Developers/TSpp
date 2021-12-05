@@ -96,6 +96,8 @@ UnitTypeClass : public TechnoTypeClass
         static const char *Name_From(UnitType type);
         static const UnitTypeClass *Find_Or_Make(const char *name);
 
+        static void One_Time();
+
     public:
 		UnitType Type;
         LandType MovementRestrictedTo;

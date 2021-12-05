@@ -116,7 +116,7 @@ UnitClass : public FootClass
         virtual bool entry_2A4() const override;
         virtual int Get_Max_Speed() const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;

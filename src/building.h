@@ -151,7 +151,7 @@ BuildingClass : public TechnoClass
         virtual bool entry_2B8(int *a1) const override;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual void Assign_Target(TARGET target) const;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;

@@ -53,7 +53,7 @@ class ParticleSystemClass : public ObjectClass
 
     public:
         ParticleSystemClass();
-        ParticleSystemClass(ParticleSystemTypeClass *classof, Coordinate &a2, TARGET a3 = nullptr, TARGET a4 = nullptr, Coordinate &a5 = Coordinate(0,0,0));
+        ParticleSystemClass(const ParticleSystemTypeClass *classof, Coordinate &a2, TARGET a3 = nullptr, TARGET a4 = nullptr, Coordinate &a5 = Coordinate(0,0,0));
         ParticleSystemClass(const NoInitClass &noinit);
         virtual ~ParticleSystemClass();
         

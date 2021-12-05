@@ -1054,6 +1054,7 @@ DEFINE_IMPLEMENTATION(bool UnitTypeClass::Create_And_Place(Cell &, HouseClass *)
 DEFINE_IMPLEMENTATION(ObjectClass* const UnitTypeClass::Create_One_Of(HouseClass *) const, 0x0065BD00);
 DEFINE_IMPLEMENTATION(int UnitTypeClass::Repair_Step() const, 0x0065C420);
 DEFINE_IMPLEMENTATION(const TPoint3D<int> UnitTypeClass::Turret_Adjust(DirType, TPoint3D<int> &) const, 0x0065BDB0);
+DEFINE_IMPLEMENTATION(void UnitTypeClass::One_Time(), 0x0065BB80);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE InfantryTypeClass::GetClassID(CLSID *), 0x004DB000);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryTypeClass::Load(IStream *), 0x004DAE20);
@@ -2582,7 +2583,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Target_Something_Nearby(Coordinate &, Th
 DEFINE_IMPLEMENTATION(void TechnoClass::Stun(), 0x0062FD20);
 DEFINE_IMPLEMENTATION(bool TechnoClass::In_Range_Of(const ObjectClass *, WeaponSlotType) const, 0x0062CD20);
 DEFINE_IMPLEMENTATION(FireErrorType TechnoClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x0062F980);
-DEFINE_IMPLEMENTATION(int TechnoClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0062DC80);
+DEFINE_IMPLEMENTATION(TARGET TechnoClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0062DC80);
 DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Target(TARGET) const, 0x0062FD70);
 DEFINE_IMPLEMENTATION(const BulletClass *TechnoClass::Fire_At(TARGET, WeaponSlotType) const, 0x00630350);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Captured(HouseClass *), 0x006324D0);
@@ -2724,7 +2725,7 @@ DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Leave_Map() const, 0x004A556
 DEFINE_IMPLEMENTATION(void FootClass::entry_2C8() const, 0x004A8B80);
 DEFINE_IMPLEMENTATION(void FootClass::Stun(), 0x004A1E00);
 DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) const, 0x004A4D60);
-DEFINE_IMPLEMENTATION(int FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
+DEFINE_IMPLEMENTATION(TARGET FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
 DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x004A5B50);
@@ -2854,7 +2855,7 @@ DEFINE_IMPLEMENTATION(InfantryTypeClass *const BuildingClass::Crew_Type() const,
 DEFINE_IMPLEMENTATION(bool BuildingClass::entry_2B8(int *) const, 0x0043AC70);
 DEFINE_IMPLEMENTATION(void BuildingClass::Death_Announcement(const TechnoClass *) const, 0x00433420);
 DEFINE_IMPLEMENTATION(FireErrorType BuildingClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x0042F400);
-DEFINE_IMPLEMENTATION(int BuildingClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0042E0E0);
+DEFINE_IMPLEMENTATION(TARGET BuildingClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0042E0E0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Assign_Target(TARGET) const, 0x0042C570);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Captured(HouseClass *), 0x0042F660);
 DEFINE_IMPLEMENTATION(WeaponInfoStruct *const BuildingClass::Get_Weapon(WeaponSlotType) const, 0x00436C10);
@@ -3357,7 +3358,7 @@ DEFINE_IMPLEMENTATION(Coordinate InfantryClass::entry_28C(WeaponSlotType) const,
 DEFINE_IMPLEMENTATION(bool InfantryClass::entry_2A4() const, 0x004D5B90);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Renovator() const, 0x004D9D20);
 DEFINE_IMPLEMENTATION(FireErrorType InfantryClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x004D5AA0);
-DEFINE_IMPLEMENTATION(int InfantryClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004D6D10);
+DEFINE_IMPLEMENTATION(TARGET InfantryClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004D6D10);
 DEFINE_IMPLEMENTATION(void InfantryClass::Assign_Target(TARGET) const, 0x004D4770);
 DEFINE_IMPLEMENTATION(const BulletClass *InfantryClass::Fire_At(TARGET, WeaponSlotType) const, 0x004D6B50);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Ready_To_Random_Animate() const, 0x004D9110);
@@ -3855,7 +3856,7 @@ DEFINE_IMPLEMENTATION(InfantryTypeClass *const UnitClass::Crew_Type() const, 0x0
 DEFINE_IMPLEMENTATION(bool UnitClass::entry_2A4() const, 0x0065B590);
 DEFINE_IMPLEMENTATION(int UnitClass::Get_Max_Speed() const, 0x00659940);
 DEFINE_IMPLEMENTATION(FireErrorType UnitClass::Can_Fire(const TechnoClass *, WeaponSlotType) const, 0x00656E10);
-DEFINE_IMPLEMENTATION(int UnitClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x00658520);
+DEFINE_IMPLEMENTATION(TARGET UnitClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x00658520);
 DEFINE_IMPLEMENTATION(const BulletClass *UnitClass::Fire_At(TARGET, WeaponSlotType) const, 0x00657070);
 DEFINE_IMPLEMENTATION(bool UnitClass::Captured(HouseClass *), 0x0065B280);
 DEFINE_IMPLEMENTATION(void UnitClass::Assign_Destination(const TARGET, bool) const, 0x00657520);
@@ -4160,7 +4161,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleSystemClass::GetClassID(CLS
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Load(IStream *), 0x005A75E0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Save(IStream *, BOOL), 0x005A7730);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(), ObjectClass, 0x005A5580);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(ParticleSystemTypeClass *, Coordinate &, TARGET, TARGET, Coordinate &), ObjectClass, 0x005A5300);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(const ParticleSystemTypeClass *, Coordinate &, TARGET, TARGET, Coordinate &), ObjectClass, 0x005A5300);
 ParticleSystemClass::ParticleSystemClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D54B4; *((unsigned long *)this+1) = (unsigned long)0x006D5498; }
 DEFINE_IMPLEMENTATION_DESTRUCTOR(ParticleSystemClass::~ParticleSystemClass(), 0x005A56C0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Detach(TARGET, bool), 0x005A7550);

@@ -37,6 +37,7 @@
 #include "tiberium.h"
 #include "weapontype.h"
 #include "warheadtype.h"
+#include "particlesystype.h"
 
 
 /**
@@ -486,7 +487,7 @@ bool CCINIClass::Put_Weapon(const char *section, const char *entry, const Weapon
  */
 const WarheadTypeClass *CCINIClass::Get_Warhead(const char *section, const char *entry, const WarheadTypeClass *defvalue)
 {
-    return nullptr;    char buffer[1024];
+    char buffer[1024];
 
     if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
         return WarheadTypeClass::Find_Or_Make(buffer);
@@ -502,6 +503,38 @@ const WarheadTypeClass *CCINIClass::Get_Warhead(const char *section, const char 
  *  @author: CCHyper
  */
 bool CCINIClass::Put_Warhead(const char *section, const char *entry, const WarheadTypeClass *value)
+{
+    if (value) {
+        return INIClass::Put_String(section, entry, value->Name());
+    } else {
+        return INIClass::Put_String(section, entry, "<none>");
+    }
+}
+
+
+/**
+ *  Fetch the particle system type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const ParticleSystemTypeClass *CCINIClass::Get_ParticleSystem(const char *section, const char* entry, const ParticleSystemTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return ParticleSystemTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the particle system type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value)
 {
     if (value) {
         return INIClass::Put_String(section, entry, value->Name());

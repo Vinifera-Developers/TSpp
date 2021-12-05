@@ -167,7 +167,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool In_Range_Of(const ObjectClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const = 0;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
+        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
         virtual void Assign_Target(TARGET target) const;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual bool Captured(HouseClass *house = nullptr);
@@ -282,7 +282,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 		CDTimerClass<FrameTimerClass> Arm;
 		int Ammo;
         int PurchasePrice;
-        ParticleSystemClass *ParticleSystems[5];
+        ParticleSystemClass *ParticleSystems[ATTACHED_PARTICLE_COUNT];
         WaveClass *Wave;
         float AngleRotatedSideways;
         float AngleRotatedForwards;

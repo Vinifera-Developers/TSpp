@@ -303,6 +303,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Init_Remap_Color();
         // 004CBB30
 
+        bool Is_Player() const { return this == PlayerPtr; }
+
         UnitTypeClass *Get_First_Ownable(TypeList<UnitTypeClass *> &list) const
         {
             return reinterpret_cast<UnitTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));

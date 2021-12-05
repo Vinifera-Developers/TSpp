@@ -135,7 +135,7 @@ class FootClass : public TechnoClass
         virtual void entry_2C8() const override;
         virtual void Stun() override;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
-        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual void entry_324() const override;
         virtual void entry_328(int a1, int a2, int a3, IndexClass<int, int> *a4, Rect *a5, int a6, int a7, int a8, int a9) const override;

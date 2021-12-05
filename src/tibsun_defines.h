@@ -580,7 +580,20 @@ typedef enum SpotlightBehaviorType
     BEHAVIOR_FOLLOW
 } SpotlightBehaviorType;
 
-typedef enum SourceType {} SourceType;
+typedef enum SourceType
+{
+    SOURCE_NORTH,   // From north edge.
+    SOURCE_EAST,    // From east edge.
+    SOURCE_SOUTH,   // From south edge.
+    SOURCE_WEST,    // From west edge.
+    SOURCE_AIR,	    // Dropped by air (someplace).
+    
+    SOURCE_COUNT,
+
+    SOURCE_NONE = -1,       // No defined source (error condition).
+    SOURCE_FIRST = 0
+} SourceType;
+DEFINE_ENUMERATION_OPERATORS(SourceType);
 
 typedef enum SmudgeType
 {
@@ -589,6 +602,20 @@ typedef enum SmudgeType
     SMUDGE_FIRST = 0
 } SmudgeType;
 DEFINE_ENUMERATION_OPERATORS(SmudgeType);
+
+typedef enum AttachedParticleType
+{
+    ATTACHED_PARTICLE_FIRE,
+    ATTACHED_PARTICLE_SPARK,
+    ATTACHED_PARTICLE_NATURAL,
+    ATTACHED_PARTICLE_DAMAGE,
+    ATTACHED_PARTICLE_RAILGUN,
+
+    ATTACHED_PARTICLE_COUNT,
+
+    ATTACHED_PARTICLE_FIRST = 0
+} AttachedParticleType;
+DEFINE_ENUMERATION_OPERATORS(AttachedParticleType);
 
 typedef enum ParticleBehaviourType
 {
@@ -825,6 +852,7 @@ typedef enum DoType
     DO_NOTHING = -1,		// Not performing any choreographed sequence.
     DO_FIRST = 0
 } DoType;
+DEFINE_ENUMERATION_OPERATORS(DoType);
 
 typedef enum FearType
 {
@@ -866,6 +894,7 @@ typedef enum SpeedType
     SPEED_NONE = -1,
     SPEED_FIRST = 0
 } SpeedType;
+DEFINE_ENUMERATION_OPERATORS(SpeedType);
 
 typedef enum PrerequisiteType {} PrerequisiteType;
 
@@ -1037,6 +1066,7 @@ typedef enum ActionType
 
     ACTION_FIRST = 0
 } ActionType;
+DEFINE_ENUMERATION_OPERATORS(ActionType);
 
 typedef enum VoxType
 {
@@ -1711,6 +1741,7 @@ typedef enum QuarryType
     QUARRY_COUNT,
     QUARRY_FIRST = 0
 } QuarryType;
+DEFINE_ENUMERATION_OPERATORS(QuarryType);
 
 typedef enum FireErrorType
 {
@@ -1732,6 +1763,7 @@ typedef enum FireErrorType
     FIRE_NONE = -1,
     FIRE_FIRST = 0
 } FireErrorType;
+DEFINE_ENUMERATION_OPERATORS(FireErrorType);
 
 typedef enum ZGradientType
 {
@@ -1745,6 +1777,7 @@ typedef enum ZGradientType
     ZGRAD_NONE = -1,
     ZGRAD_FIRST = 0
 } ZGradientType;
+DEFINE_ENUMERATION_OPERATORS(ZGradientType);
 
 typedef enum VisualType
 {
@@ -1760,6 +1793,7 @@ typedef enum VisualType
     VISUAL_NONE = -1,
     VISUAL_FIRST = 0
 } VisualType;
+DEFINE_ENUMERATION_OPERATORS(VisualType);
 
 typedef enum MoveType
 {
@@ -1774,6 +1808,7 @@ typedef enum MoveType
 
     MOVE_COUNT
 } MoveType;
+DEFINE_ENUMERATION_OPERATORS(MoveType);
 
 typedef enum ArmorType
 {
@@ -1787,6 +1822,7 @@ typedef enum ArmorType
 
     ARMOR_FIRST = 0
 } ArmorType;
+DEFINE_ENUMERATION_OPERATORS(ArmorType);
 
 typedef enum RadarEventType
 {
@@ -1801,6 +1837,7 @@ typedef enum RadarEventType
 
     RADAREVENT_NONE = -1
 } RadarEventType;
+DEFINE_ENUMERATION_OPERATORS(RadarEventType);
 
 typedef enum MissionType
 {
@@ -1848,6 +1885,7 @@ typedef enum WeaponSlotType
     WEAPON_SLOT_NONE = -1,
     WEAPON_SLOT_FIRST = 0,
 } WeaponSlotType;
+DEFINE_ENUMERATION_OPERATORS(WeaponSlotType);
 
 typedef enum TiberiumType
 {
@@ -2067,6 +2105,7 @@ typedef enum EventType : unsigned char // We need this so the enum only takes up
 
     LAST_EVENT,
 } EventType;
+DEFINE_ENUMERATION_OPERATORS(EventType);
 
 typedef enum MouseType
 {
@@ -2139,6 +2178,7 @@ typedef enum MouseType
 
     MOUSE_COUNT
 } MouseType;
+DEFINE_ENUMERATION_OPERATORS(MouseType);
 
 typedef enum SplitGroupType
 {
@@ -2201,6 +2241,7 @@ typedef enum NeedType
     NEED_ANIM,              // Anim type.
     NEED_TALK_BUBBLE,       // Unit talk bubble type.
 } NeedType;
+DEFINE_ENUMERATION_OPERATORS(NeedType);
 
 typedef enum AttachType
 {
@@ -2212,6 +2253,8 @@ typedef enum AttachType
     ATTACH_GENERAL = 1 << 5,    // General purpose trigger attached to game state.
     ATTACH_TEAM = 1 << 6        // Trigger applies to team object.
 } AttachType;
+DEFINE_ENUMERATION_OPERATORS(AttachType);
+DEFINE_ENUMERATION_BITWISE_OPERATORS(AttachType);
 
 typedef enum TEventType
 {
@@ -2277,6 +2320,7 @@ typedef enum TEventType
 
     TEVENT_FIRST = 0
 } TEventType;
+DEFINE_ENUMERATION_OPERATORS(TEventType);
 
 typedef enum TActionType
 {
@@ -2392,6 +2436,7 @@ typedef enum TActionType
 
     TACTION_FIRST = 0
 } TActionType;
+DEFINE_ENUMERATION_OPERATORS(TActionType);
 
 typedef enum TActionFormatType
 {
@@ -2750,6 +2795,13 @@ struct Cell
         return (short)WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
     }
 
+    const char *As_String() const
+    {
+        static char _buffer[8+8];
+        std::snprintf(_buffer, sizeof(_buffer), "%d,%d", X, Y);
+        return _buffer;
+    }
+
     int16_t X; // X component of location.
     int16_t Y; // Y component of location.
 };
@@ -2774,6 +2826,13 @@ struct Coordinate
     int Length() const
     {
         return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
+    }
+
+    const char *As_String() const
+    {
+        static char _buffer[8+8+8];
+        std::snprintf(_buffer, sizeof(_buffer), "%d,%d,%d", X, Y, Z);
+        return _buffer;
     }
 
     int32_t X; // X coordinate of the location.

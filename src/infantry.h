@@ -100,7 +100,7 @@ InfantryClass : public FootClass
         virtual bool entry_2A4() const override;
         virtual bool Is_Renovator() const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual int Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual void Assign_Target(TARGET target) const override;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Is_Ready_To_Random_Animate() const override;

@@ -44,6 +44,7 @@ class AnimTypeClass;
 class BuildingTypeClass;
 class WeaponTypeClass;
 class WarheadTypeClass;
+class ParticleSystemTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -200,6 +201,9 @@ class CCINIClass : public INIClass
 
         const WarheadTypeClass *Get_Warhead(const char *section, const char *entry, const WarheadTypeClass *defvalue);
         bool Put_Warhead(const char *section, const char *entry, const WarheadTypeClass *value);
+
+        const ParticleSystemTypeClass *Get_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *defvalue);
+        bool Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value);
 
     private:
         void Calculate_Message_Digest();
