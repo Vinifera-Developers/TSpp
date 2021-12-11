@@ -34,6 +34,8 @@
 #include "wwkeyboard.h"
 #include "options.h"
 #include "buff.h"
+#include "buffstraw.h"
+#include "buffpipe.h"
 #include "special.h"
 #include "ramfile.h"
 #include "bfiofile.h"
@@ -336,6 +338,10 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(Buffer::Buffer(const Buffer &), 0x00425D20);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(Buffer::~Buffer(), 0x00425D80);
 DEFINE_IMPLEMENTATION(Buffer& Buffer::operator=(const Buffer &), 0x00425D40);
 DEFINE_IMPLEMENTATION(void Buffer::Reset(), 0x00425DB0);
+
+DEFINE_IMPLEMENTATION(int BufferPipe::Put(const void *, int), 0x006A6990);
+
+DEFINE_IMPLEMENTATION(int BufferStraw::Get(void *, int), 0x006A6AA0);
 
 DEFINE_IMPLEMENTATION(void SpecialClass::Init(), 0x005FCAA0);
 DEFINE_IMPLEMENTATION(void SpecialClass::Read_INI(CCINIClass &), 0x005FCC60);
