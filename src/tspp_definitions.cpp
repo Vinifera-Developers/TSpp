@@ -119,6 +119,8 @@
 #include "map.h"
 #include "layer.h"
 #include "logic.h"
+#include "lcwpipe.h"
+#include "lcwstraw.h"
 #include "gadget.h"
 #include "gcntrl.h"
 #include "display.h"
@@ -1631,6 +1633,15 @@ DEFINE_IMPLEMENTATION(void LogicClass::AI(), 0x00506AB0);
 DEFINE_IMPLEMENTATION(void LogicClass::func_507210(), 0x00507210);
 DEFINE_IMPLEMENTATION(void LogicClass::Remove(ObjectClass *const), 0x00507630);
 DEFINE_IMPLEMENTATION(void LogicClass::func_507470(), 0x00507470);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LCWPipe::LCWPipe(LCWPipe::CompControl, int), 0x004FD3B0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LCWPipe::~LCWPipe(), 0x004FD420);
+DEFINE_IMPLEMENTATION(int LCWPipe::Flush(), 0x004FD690);
+DEFINE_IMPLEMENTATION(int LCWPipe::Put(const void *, int), 0x004FD460);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LCWStraw::LCWStraw(LCWStraw::CompControl, int), 0x004FD7A0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LCWStraw::~LCWStraw(), 0x004FD810);
+DEFINE_IMPLEMENTATION(int LCWStraw::Get(void *, int), 0x004FD850);
 
 GadgetClass::GadgetClass() : X(0), Y(0), Width(0), Height(0), IsToRepaint(false), IsSticky(false), IsDisabled(false), Flags(0) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(int, int, int, int, unsigned, bool), 0x004A9BF0);
