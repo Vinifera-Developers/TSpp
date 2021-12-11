@@ -43,6 +43,8 @@
 #include "ccfile.h"
 #include "wwmouse.h"
 #include "wwcrc.h"
+#include "crcstraw.h"
+#include "crcpipe.h"
 #include "xsurface.h"
 #include "bsurface.h"
 #include "dsurface.h"
@@ -483,6 +485,12 @@ DEFINE_IMPLEMENTATION(void WWCRCEngine::operator()(char), 0x00470CC0);
 DEFINE_IMPLEMENTATION(void WWCRCEngine::operator()(const char *), 0x00470E60);
 DEFINE_IMPLEMENTATION(long WWCRCEngine::operator()(const void *, int), 0x00470E90);
 DEFINE_IMPLEMENTATION(long WWCRCEngine::Value() const, 0x00471060);
+
+DEFINE_IMPLEMENTATION(int CRCStraw::Get(void *, int), 0x00471160);
+DEFINE_IMPLEMENTATION(long CRCStraw::Result() const, 0x004711A0);
+
+DEFINE_IMPLEMENTATION(int CRCPipe::Put(const void *, int), 0x004710E0);
+DEFINE_IMPLEMENTATION(long CRCPipe::Result() const, 0x00471110);
 
 XSurface::XSurface() : Surface(), LockLevel(0), BytesPerPixel(0) { *((unsigned long *)this) = (unsigned long)0x006CAC04; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(XSurface::XSurface(int, int), 0x0047CCA0);
