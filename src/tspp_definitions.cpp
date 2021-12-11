@@ -29,6 +29,8 @@
 
 #include "pipe.h"
 #include "straw.h"
+#include "filepipe.h"
+#include "filestraw.h"
 #include "rawfile.h"
 #include "mixfile.h"
 #include "wwkeyboard.h"
@@ -273,6 +275,17 @@ Straw::Straw() : ChainTo(nullptr), ChainFrom(nullptr) { *((unsigned long *)this)
 DEFINE_IMPLEMENTATION_DESTRUCTOR(Straw::~Straw(), 0x0060AFC0);
 DEFINE_IMPLEMENTATION(void Straw::Get_From(Straw *), 0x0060B000);
 DEFINE_IMPLEMENTATION(int Straw::Get(void *, int), 0x0060B050);
+
+FilePipe::FilePipe(FileClass *file) : File(file), HasOpened(false) {}
+FilePipe::FilePipe(FileClass &file) : File(&file), HasOpened(false) {}
+FilePipe::~FilePipe() {}
+DEFINE_IMPLEMENTATION(int FilePipe::Put(const void *, int), 0x006A6A50);
+DEFINE_IMPLEMENTATION(int FilePipe::End(), 0x006A6A20);
+
+FileStraw::FileStraw(FileClass *file) : File(file), HasOpened(false) {}
+FileStraw::FileStraw(FileClass &file) : File(&file), HasOpened(false) {}
+FileStraw::~FileStraw() {}
+DEFINE_IMPLEMENTATION(int FileStraw::Get(void *, int), 0x006A6B00);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RawFileClass::RawFileClass(), 0x);
 RawFileClass::RawFileClass() : Rights(FILE_ACCESS_READ), BiasStart(0), BiasLength(-1), Handle(INVALID_HANDLE_VALUE), Filename(nullptr), Date(0), Time(0), Allocated(false) { *((unsigned long *)this) = (unsigned long)0x006D5E34; }
