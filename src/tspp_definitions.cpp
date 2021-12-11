@@ -105,6 +105,8 @@
 #include "fuse.h"
 #include "overlaytype.h"
 #include "base.h"
+#include "b64pipe.h"
+#include "b64straw.h"
 #include "event.h"
 #include "queue.h"
 #include "msgbox.h"
@@ -1459,6 +1461,11 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const OverlayTypeClass::Get_Image_Data() 
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Draw_It(Point2D &, Rect &, int) const, 0x0058D310);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Init(TheaterType), 0x0058D3A0);
 DEFINE_IMPLEMENTATION(RGBStruct OverlayTypeClass::Get_Radar_Color(int), 0x0058D9D0);
+
+DEFINE_IMPLEMENTATION(int Base64Pipe::Flush(), 0x0041ECF0);
+DEFINE_IMPLEMENTATION(int Base64Pipe::Put(const void *, int), 0x0041EB60);
+
+DEFINE_IMPLEMENTATION(int Base64Straw::Get(void *, int), 0x0041ED40);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Load(IStream *), 0x0041FB90);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Save(IStream *, BOOL), 0x0041FDB0);
