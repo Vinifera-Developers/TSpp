@@ -200,6 +200,7 @@
 #include "ftimer.h"
 #include "wave.h"
 #include "cstream.h"
+#include "cstraw.h"
 #include "multimiss.h"
 #include "particle.h"
 #include "particlesys.h"
@@ -4133,6 +4134,8 @@ DEFINE_IMPLEMENTATION_CONSTRUCTOR(CStreamClass::CStreamClass(), 0x004717C0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(CStreamClass::~CStreamClass(), 0x00471820);
 DEFINE_IMPLEMENTATION(HRESULT CStreamClass::Compress(void *, ULONG), 0x00471FC0);
 DEFINE_IMPLEMENTATION(HRESULT CStreamClass::Compress(), 0x00472080);
+
+DEFINE_IMPLEMENTATION(int CacheStraw::Get(void *, int), 0x00471720);
 
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MultiMission::MultiMission(INIClass &, const char *), 0x005EF000);
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(MultiMission::MultiMission(const char *, const char *, const char *, bool), 0x005EF3C0);
