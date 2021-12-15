@@ -121,6 +121,8 @@
 #include "logic.h"
 #include "lcwpipe.h"
 #include "lcwstraw.h"
+#include "lzopipe.h"
+#include "lzostraw.h"
 #include "gadget.h"
 #include "gcntrl.h"
 #include "display.h"
@@ -1643,6 +1645,15 @@ DEFINE_IMPLEMENTATION(int LCWPipe::Put(const void *, int), 0x004FD460);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(LCWStraw::LCWStraw(LCWStraw::CompControl, int), 0x004FD7A0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LCWStraw::~LCWStraw(), 0x004FD810);
 DEFINE_IMPLEMENTATION(int LCWStraw::Get(void *, int), 0x004FD850);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LZOPipe::LZOPipe(LZOPipe::CompControl, int), 0x00507DF0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LZOPipe::~LZOPipe(), 0x00507E50);
+DEFINE_IMPLEMENTATION(int LZOPipe::Flush(), 0x00508120);
+DEFINE_IMPLEMENTATION(int LZOPipe::Put(const void *, int), 0x00507E90);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LZOStraw::LZOStraw(LZOStraw::CompControl, int), 0x00508260);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(LZOStraw::~LZOStraw(), 0x005082C0);
+DEFINE_IMPLEMENTATION(int LZOStraw::Get(void *, int), 0x00508300);
 
 DEFINE_IMPLEMENTATION(int lzo1x_1_compress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x005076D0);
 DEFINE_IMPLEMENTATION(int lzo1x_decompress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x00507C20);
