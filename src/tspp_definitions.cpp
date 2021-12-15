@@ -151,6 +151,7 @@
 #include "wspipx.h"
 #include "wspudp.h"
 #include "loadoptions.h"
+#include "sha.h"
 #include "side.h"
 #include "script.h"
 #include "scripttype.h"
@@ -2301,6 +2302,12 @@ DEFINE_IMPLEMENTATION(void LoadOptionsClass::Pick_Filename(char *), 0x00505270);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Clear_List(), 0x005052F0);
 DEFINE_IMPLEMENTATION(void LoadOptionsClass::Fill_List(HWND), 0x00505320);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_Save_Files(), 0x00505840);
+
+DEFINE_IMPLEMENTATION_CONSTRUCTOR(SHAEngine::SHAEngine(), 0x0055A400);
+DEFINE_IMPLEMENTATION(int SHAEngine::Result(void *) const, 0x005F1290);
+DEFINE_IMPLEMENTATION(void SHAEngine::Hash(void const *, long), 0x005F1210);
+DEFINE_IMPLEMENTATION(void SHAEngine::Process_Block(void const *, SHADigest &) const, 0x005F13E0);
+DEFINE_IMPLEMENTATION(void SHAEngine::Process_Partial(void const * &, long &), 0x005F1170);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SideClass::GetClassID(CLSID *), 0x005F1BD0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Load(IStream *), 0x005F1C10);
