@@ -152,6 +152,8 @@
 #include "wspudp.h"
 #include "loadoptions.h"
 #include "sha.h"
+#include "shapipe.h"
+#include "shastraw.h"
 #include "side.h"
 #include "script.h"
 #include "scripttype.h"
@@ -2308,6 +2310,16 @@ DEFINE_IMPLEMENTATION(int SHAEngine::Result(void *) const, 0x005F1290);
 DEFINE_IMPLEMENTATION(void SHAEngine::Hash(void const *, long), 0x005F1210);
 DEFINE_IMPLEMENTATION(void SHAEngine::Process_Block(void const *, SHADigest &) const, 0x005F13E0);
 DEFINE_IMPLEMENTATION(void SHAEngine::Process_Partial(void const * &, long &), 0x005F1170);
+
+SHAStraw::SHAStraw(bool bypass_sha) : BypassSHA(bypass_sha), SHA() {}
+SHAStraw::~SHAStraw() {}
+DEFINE_IMPLEMENTATION(int SHAStraw::Get(void *, int), 0x005F17B0);
+DEFINE_IMPLEMENTATION(int SHAStraw::Result(void *) const, 0x005F17F0);
+
+SHAPipe::SHAPipe() : SHA() {}
+SHAPipe::~SHAPipe() {}
+DEFINE_IMPLEMENTATION(int SHAPipe::Put(const void *, int), 0x005F1770);
+DEFINE_IMPLEMENTATION(int SHAPipe::Result(void *) const, 0x005F17A0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SideClass::GetClassID(CLSID *), 0x005F1BD0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SideClass::Load(IStream *), 0x005F1C10);
