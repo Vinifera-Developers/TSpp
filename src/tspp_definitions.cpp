@@ -135,6 +135,7 @@
 #include "drawshape.h"
 #include "base64.h"
 #include "lcw.h"
+#include "lzo.h"
 #include "fetchres.h"
 #include "dsaudio.h"
 #include "preview.h"
@@ -1642,6 +1643,9 @@ DEFINE_IMPLEMENTATION(int LCWPipe::Put(const void *, int), 0x004FD460);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(LCWStraw::LCWStraw(LCWStraw::CompControl, int), 0x004FD7A0);
 DEFINE_IMPLEMENTATION_DESTRUCTOR(LCWStraw::~LCWStraw(), 0x004FD810);
 DEFINE_IMPLEMENTATION(int LCWStraw::Get(void *, int), 0x004FD850);
+
+DEFINE_IMPLEMENTATION(int lzo1x_1_compress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x005076D0);
+DEFINE_IMPLEMENTATION(int lzo1x_decompress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x00507C20);
 
 GadgetClass::GadgetClass() : X(0), Y(0), Width(0), Height(0), IsToRepaint(false), IsSticky(false), IsDisabled(false), Flags(0) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
 DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(int, int, int, int, unsigned, bool), 0x004A9BF0);
