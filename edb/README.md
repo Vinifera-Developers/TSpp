@@ -1,0 +1,1 @@
+Contains the plain text database for known common exception addresses and a helpful description.

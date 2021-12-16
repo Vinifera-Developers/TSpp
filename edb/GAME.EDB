@@ -1,0 +1,18 @@
+;==============================================================================
+; Tiberian Sun Exception Database.
+;==============================================================================
+;
+;  This file contains all the know exceptions and their cause. Each line must
+;  be in the format of;
+;
+;    "Address,CanContinue,Ignore,Description".
+;
+;  NOTE: This file must end with a blank line!
+;
+;  Address     = The EIP of the exception.
+;  CanContinue = Can the game continue after this exception (1 = true, 0 = false)?
+;  Ignore      = Should the game silently continue after this exception (1 = true, 0 = false)?
+;  Description = Description of the exception, max 1024 characters.
+;
+0x004C1678,0,0,The AI attempted to produce a Harvester but HarvesterUnit= has an invalid or non-existant UnitType defined.
+0x004BAF10,0,0,The AI attempted to produce a Harvester but HarvesterUnit= has an invalid or non-existant UnitType defined.
