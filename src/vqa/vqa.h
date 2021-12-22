@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          TIBSUN_GLOBALS.H
+ *  @file          VQA.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Main header file which contains all the games globals.
+ *  @brief         VQA playback class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -31,9 +31,43 @@
 
 
 struct VQAConfig { char pad[0x88]; };
+struct VQAHandle { char pad[0x7DC]; };
 
 
-typedef enum VQAOptionType {
+typedef enum VQAErrorType
+{
+    VQAERR_NOERROR = 0,
+
+    VQAERR_NONE = -(1),
+    VQAERR_EOF = -(2),
+    VQAERR_OPEN = -(3),
+    VQAERR_READ = -(4),
+    VQAERR_WRITE = -(5),
+    VQAERR_SEEK = -(6),
+    VQAERR_NOTVQA = -(7),
+    VQAERR_NOMEM = -(8),
+    VQAERR_NOBUFFER = -(9),
+    VQAERR_NOT_TIME = -(10),
+    VQAERR_SLEEPING = -(11),
+    VQAERR_VIDEO = -(12),
+    VQAERR_AUDIO = -(13),
+    VQAERR_PAUSED = -(14),
+    VQAERR_NOTIMER = -(15),
+    VQAERR_NORATE = -(16),
+    VQAERR_NOCONFIG = -(17),
+    VQAERR_NOAUDSIZ = -(18),
+    VQAERR_AUDSYNC = -(19),
+    VQAERR_BADBLOCK = -(20),
+    VQAERR_NOAHANDL = -(21),
+    VQAERR_SKIPDRAW = -(22),
+    VQAERR_SETLOOP = -(23),
+    VQAERR_SETBUFFR = -(24),
+    VQAERR_FORCEDRW = -(25),
+} VQAErrorType;
+
+
+typedef enum VQAOptionType
+{
     OPTION_USE_MIX_HANDLER,
     OPTION_1,
     OPTION_2,
@@ -49,17 +83,10 @@ typedef enum VQAOptionType {
     OPTION_12,
     OPTION_13,
     OPTION_14,
-    OPTION_15,
+    OPTION_NO_STRETCH,
     OPTION_16,
     OPTION_17,
 } VQAOptionType;
-
-
-void VQA_Init_Option();
-void VQA_Set_Option(VQAOptionType option);
-void VQA_Clear_Option(VQAOptionType option);
-bool VQA_Get_Option(VQAOptionType option);
-bool VQA_Flip_Option(VQAOptionType option);
 
 
 class VQAClass
@@ -67,6 +94,31 @@ class VQAClass
     public:
         VQAClass(const char *filename, int flags, int framecount, int lockfunc, int unlockfunc, int frame_rate, int draw_rate);
         ~VQAClass();
+
+        void func_66B780(void *a1);
+        void func_66B7B0();
+        bool Open();
+        int func_66B830();
+        void Set_Volume(int volume);
+        bool Play(int a1, int a2);
+        bool func_66B8A0(int start_frame, int end_frame, int a3);
+        void Seek_To_Frame(int frame);
+        bool func_66B920();
+        int func_66B960(int frame, bool a2);
+        void func_66BBC0(int frame);
+        bool Advance_Frame(bool &a1);
+        void Pause();
+        void Resume();
+        void Close();
+        void func_66BE60();
+        int func_66BE70() const;
+        bool Set_Draw_Buffer(void *buffer, int width, int height, int xpos, int ypos);
+        void func_66BEF0(int a1);
+        void func_66BF00(int a1, int a2);
+        int Get_Width() const;
+        int Get_Height() const;
+        void Lock_Surface();
+        void Unlock_Surface();
 
     public:
         CCFileClass File;
@@ -97,3 +149,9 @@ class VQAClass
         bool field_544;
         bool field_545;
 };
+
+void VQA_Init_Option();
+void VQA_Set_Option(VQAOptionType option);
+void VQA_Clear_Option(VQAOptionType option);
+bool VQA_Get_Option(VQAOptionType option);
+bool VQA_Flip_Option(VQAOptionType option);
