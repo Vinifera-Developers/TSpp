@@ -220,3 +220,6 @@ class DirectSoundAudioClass
         LPWAVEFORMATEX PrimaryBuffFormat;
         LPDSBUFFERDESC PrimaryBufferDesc;
 };
+
+
+int Convert_HMI_To_Direct_Sound_Volume(int vol);
