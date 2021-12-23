@@ -409,6 +409,16 @@ inline float Floorf(float val)
     return std::floorf(val);
 }
 
+inline float Round(float val)
+{
+    return std::roundf(val);
+}
+
+inline double Round(double val)
+{
+    return std::round(val);
+}
+
 inline bool Fast_Is_Float_Positive(const float &val)
 {
     return ((*reinterpret_cast<uint32_t const *>(&val)) & 0x80000000) == 0;
