@@ -419,6 +419,24 @@ inline double Round(double val)
     return std::round(val);
 }
 
+template<typename T>
+T Round_Ceil_Multiple(T value, T multiple)
+{
+    if (multiple == 0) {
+        return value;
+    }
+    return static_cast<T>(WWMath::Ceil(double(value)/double(multiple))*double(multiple));
+}
+
+template<typename T>
+T Round_Floor_Multiple(T value, T multiple)
+{
+    if (multiple == 0) {
+        return value;
+    }
+    return static_cast<T>(WWMath::Floor(double(value)/double(multiple))*double(multiple));
+}
+
 inline bool Fast_Is_Float_Positive(const float &val)
 {
     return ((*reinterpret_cast<uint32_t const *>(&val)) & 0x80000000) == 0;
