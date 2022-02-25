@@ -36,6 +36,213 @@
 class NoInitClass;
 
 
+/**
+ *  Forward-declaration of DynamicVectorClass.
+ */
+template<typename T>
+class DynamicVectorClass;
+
+
+/*******************************************************************************
+ *  @class   VectorCursor
+ *
+ *  @brief   An iterator for DynamicVectorClass (similar to std::iterator).
+ */
+template<typename T, class V /*= DynamicVectorClass<T>*/>
+class VectorCursor
+{
+    public:
+        VectorCursor(V *vector, int pos = 0);
+        VectorCursor(const V *vector, int pos = 0);
+        virtual ~VectorCursor();
+
+        VectorCursor &operator=(const VectorCursor &that);
+
+        bool operator==(const VectorCursor &that) const;
+        bool operator!=(const VectorCursor &that) const;
+        
+        T &operator*() { return *Get_Element(); }
+        const T &operator*() const { return *Get_Element(); }
+
+        T *operator->() { return Get_Element(); }
+        const T *operator->() const { return Get_Element(); }
+
+        operator bool() { return Can_Loop(); }
+
+        VectorCursor &operator++() { Next(); return *this; }
+        VectorCursor &operator--() { Prev(); return *this; }
+
+        VectorCursor operator++(int) { VectorCursor tmp; tmp.Next(); return tmp; }
+        VectorCursor operator--(int) { VectorCursor tmp; tmp.Prev(); return tmp; }
+
+    protected:
+        T *Get_Element();
+        const T *Get_Element() const;
+
+        const V &Get_Vector() const { return *VectorPtr; }
+        int Get_Position() const { return Position; }
+
+        virtual bool Can_Loop() const;
+
+        virtual void Next() { ++Position; }
+        virtual void Prev() { --Position; }
+
+        bool Next_Match(T *that_elem);
+        bool Next_Match(const T *that_elem);
+        void Next_Valid();
+
+    protected:
+        const V *VectorPtr;
+        int Position;
+};
+
+
+template<typename T, class V>
+VectorCursor<T, V>::VectorCursor(V *vector, int pos) :
+    VectorPtr(vector),
+    Position(pos)
+{
+}
+
+
+template<typename T, class V>
+VectorCursor<T, V>::VectorCursor(const V *vector, int pos) :
+    VectorPtr(vector),
+    Position(pos)
+{
+}
+
+
+template<typename T, class V>
+VectorCursor<T, V>::~VectorCursor()
+{
+}
+
+
+template<typename T, class V>
+VectorCursor<T, V> &VectorCursor<T, V>::operator=(const VectorCursor<T, V> &that)
+{
+    if (this != &that) {
+        VectorPtr = that.VectorPtr;
+        Position = that.Position;
+    }
+    return *this;
+}
+
+
+template<typename T, class V>
+bool VectorCursor<T, V>::operator==(const VectorCursor<T, V> &that) const
+{
+    return VectorPtr == that.VectorPtr
+        && Position == that.Position;
+}
+
+
+template<typename T, class V>
+bool VectorCursor<T, V>::operator!=(const VectorCursor<T, V> &that) const
+{
+    return VectorPtr != that.VectorPtr
+        && Position != that.Position;
+}
+
+
+template<typename T, class V>
+T *VectorCursor<T, V>::Get_Element()
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    if (!VectorCursor::Can_Loop()) {
+        return nullptr;
+    }
+
+    if (!VectorPtr) {
+        return false;
+    }
+
+    return &const_cast<T &>((*VectorPtr)[Position]);
+}
+
+
+template<typename T, class V>
+const T *VectorCursor<T, V>::Get_Element() const
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    if (!VectorCursor::Can_Loop()) {
+        return nullptr;
+    }
+
+    if (!VectorPtr) {
+        return false;
+    }
+
+    return &(*VectorPtr)[Position];
+}
+
+
+template<typename T, class V>
+bool VectorCursor<T, V>::Can_Loop() const
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    if (!VectorPtr) {
+        return false;
+    }
+
+    return Position < VectorPtr->Count();
+}
+
+
+template<typename T, class V>
+bool VectorCursor<T, V>::Next_Match(T *that_elem)
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    while (Can_Loop()) {
+        const T *elem = &(*VectorPtr)[Position];
+        if (elem == that_elem) {
+            break;
+        }
+        Next();
+    }
+}
+
+
+template<typename T, class V>
+bool VectorCursor<T, V>::Next_Match(const T *that_elem)
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    while (Can_Loop()) {
+        const T *elem = &(*VectorPtr)[Position];
+        if (elem == that_elem) {
+            break;
+        }
+        Next();
+    }
+}
+
+
+template<typename T, class V>
+void VectorCursor<T, V>::Next_Valid()
+{
+    TSPP_ASSERT(VectorPtr != nullptr);
+
+    while (Can_Loop()) {
+        const T *v3 = &(*VectorPtr)[Position];
+        if (v3 != nullptr) {
+            break;
+        }
+        Next();
+    }
+}
+
+
+/*******************************************************************************
+ *  @class   VectorClass
+ *
+ *  @brief   A general purpose vector class.
+ */
 template<typename T>
 class VectorClass
 {
@@ -164,7 +371,7 @@ bool VectorClass<T>::operator==(const VectorClass<T> &that) const
 
 
 template<typename T>
-inline int VectorClass<T>::ID(const T *ptr)
+int VectorClass<T>::ID(const T *ptr)
 {
     if (!IsValid) {
         return 0;
@@ -248,6 +455,12 @@ bool VectorClass<T>::Resize(int newsize, const T *array)
 }
 
 
+/*******************************************************************************
+ *  @class   DynamicVectorClass
+ *
+ *  @brief   This derivative vector class adds the concept of adding and
+ *           deleting objects (similar to std::vector).
+ */
 template<typename T>
 class DynamicVectorClass : public VectorClass<T>
 {
@@ -293,6 +506,9 @@ class DynamicVectorClass : public VectorClass<T>
         int Set_Growth_Step(int step) { return GrowthStep = step; }
 
         int Growth_Step() { return GrowthStep; }
+
+        typedef VectorCursor<T, DynamicVectorClass<T>> Iterator;
+        typedef const VectorCursor<T, DynamicVectorClass<T>> ConstIterator;
 
     protected:
 		int ActiveCount;
@@ -530,6 +746,12 @@ bool Pointer_Vector_Remove(const T *ptr, VectorClass<T *> &vec)
 }
 
 
+/*******************************************************************************
+ *  @class   SimpleVecClass
+ *
+ *  @brief   A "VectorClass" that is designed specifically to work with data
+ *           types that are "memcopy-able". 
+ */
 template<class T>
 class SimpleVecClass
 {
@@ -636,6 +858,14 @@ bool SimpleVecClass<T>::Uninitialised_Grow(int newsize)
 }
 
 
+/*******************************************************************************
+ *  @class    SimpleDynVecClass
+ *
+ *  @brief    A "DynamicVectorClass" that is designed specifically to work with
+ *            data types that can legally be mem-copied.
+ * 
+ *  @warning  Do not use this template if your call requires a destructor.
+ */
 template<class T>
 class SimpleDynVecClass : public SimpleVecClass<T>
 {
@@ -660,7 +890,7 @@ class SimpleDynVecClass : public SimpleVecClass<T>
             return Vector[index];
         }
 
-        int Count() const { return (ActiveCount); }
+        int Count() const { return ActiveCount; }
 
         bool Add(const T &object, int new_size_hint = 0);
         T *Add_Multiple(int number_to_add);
@@ -669,6 +899,9 @@ class SimpleDynVecClass : public SimpleVecClass<T>
         bool Delete(const T &object, bool allow_shrink = true);
         bool Delete_Range(int start, int count, bool allow_shrink = true);
         void Delete_All(bool allow_shrink = true);
+
+        typedef VectorCursor<T, SimpleDynVecClass<T>> Iterator;
+        typedef const VectorCursor<T, SimpleDynVecClass<T>> ConstIterator;
 
     protected:
         bool Grow(int new_size_hint);
