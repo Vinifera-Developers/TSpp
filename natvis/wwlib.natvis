@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    This will make GitHub and some editors recognize this code as XML: 
+    vim: syntax=xml
+-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+	
+	<!-- Wstring -->
+    <Type Name="Wstring">
+		<DisplayString Condition="Buffer == 0">Null</DisplayString>
+        <DisplayString>{Buffer,s8}</DisplayString>
+		<StringView>Buffer,s8</StringView>
+    </Type>
+	
+	<!-- Point2D<T> -->
+    <Type Name="Point2D">
+		<DisplayString Condition="X == 0 &amp;&amp; Y == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {(int)X}, Y = {(int)Y} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+		</Expand>
+    </Type>
+	
+	<!-- Point3D<T> -->
+    <Type Name="Point3D">
+		<DisplayString Condition="X == 0 &amp;&amp; Y == 0 &amp;&amp; Z == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {(int)X}, Y = {(int)Y}, Z = {(int)Z} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+			<Item Name="[Z]">Z</Item>
+		</Expand>
+    </Type>
+	
+	<!-- Rect -->
+    <Type Name="Rect">
+		<DisplayString Condition="Width == 0 &amp;&amp; Height == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {(int)X}, Y = {(int)Y}, W = {(int)Width}, H = {(int)Height} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+			<Item Name="[W]">Width</Item>
+			<Item Name="[H]">Height</Item>
+		</Expand>
+    </Type>
+
+	<!-- TPoint2D<T> -->
+    <Type Name="Point2D&lt;*&gt;">
+		<DisplayString Condition="X == 0 &amp;&amp; Y == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {($T)X}, Y = {($T)Y} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+		</Expand>
+    </Type>
+	
+	<!-- TPoint3D<T> -->
+    <Type Name="TPoint3D&lt;*&gt;">
+		<DisplayString Condition="X == 0 &amp;&amp; Y == 0 &amp;&amp; Z == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {($T)X}, Y = {($T)Y}, Z = {($T)Z} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+			<Item Name="[Z]">Z</Item>
+		</Expand>
+    </Type>
+	
+	<!-- TRect<T> -->
+    <Type Name="TRect&lt;*&gt;">
+		<DisplayString Condition="Width == 0 &amp;&amp; Height == 0">Zero</DisplayString>
+        <DisplayString>{{ X = {($T)X}, Y = {($T)Y}, W = {($T)Width}, H = {($T)Height} }}</DisplayString>
+		<Expand>
+			<Item Name="[X]">X</Item>
+			<Item Name="[Y]">Y</Item>
+			<Item Name="[W]">Width</Item>
+			<Item Name="[H]">Height</Item>
+		</Expand>
+    </Type>
+
+	<!-- VectorClass<T> -->
+    <Type Name="VectorClass&lt;*&gt;">
+        <DisplayString>{{ length={(int)VectorMax} }}</DisplayString>
+		<Expand>
+			<Item Name="[VectorMax]">length</Item>
+			<Item Name="[Vector]">"$T"</Item>
+			<ArrayItems>
+				<Size>length</Size>
+				<ValuePointer>($T*)(this)</ValuePointer>
+			</ArrayItems>
+		</Expand>
+    </Type>
+
+	<!-- DynamicVectorClass<T> -->
+     <Type Name="DynamicVectorClass&lt;*&gt;">
+		<DisplayString Condition="ActiveCount == 0">Empty</DisplayString>
+        <DisplayString>{{ count={(int)ActiveCount} }}</DisplayString>
+		<Expand>
+			<Item Name="[base]">(VectorClass&lt;$T&gt;)this</Item>
+			<Item Name="[ActiveCount]">count</Item>
+			<Item Name="[Vector]">"$T"</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>($T*)(this)</ValuePointer>
+			</ArrayItems>
+		</Expand>
+    </Type>
+
+	<!-- TypeList<T> -->
+     <Type Name="TypeList&lt;*&gt;">
+        <DisplayString>{{  }}</DisplayString>
+		<Expand>
+			<Item Name="[base]">(DynamicVectorClass&lt;$T&gt;)this</Item>
+			<Item Name="[field_18]">field_18</Item>
+			<ArrayItems>
+				<Size>count</Size>
+				<ValuePointer>($T*)(this)</ValuePointer>
+			</ArrayItems>
+		</Expand>
+    </Type>
+
+	<!-- IndexClass<I, T> -->
+     <Type Name="IndexClass&lt;*,*&gt;" Inheritable="false">
+        <DisplayString>{{ count={(int)IndexCount}, size={(int)IndexSize}, table={($T*)IndexTable} }}</DisplayString>
+    </Type>
+
+	<!-- PriorityQueueClass<T> -->
+     <Type Name="PriorityQueueClass&lt;*&gt;" Inheritable="false">
+        <DisplayString>{{ heap_size={(int)HeapSize}, capacity={(int)Capacity}, heap={($T*)Heap} }}</DisplayString>
+    </Type>
+	
+	<!-- GenericNode -->
+	<Type Name="GenericNode">
+		<DisplayString Condition="NextNode == 0 &amp;&amp; PrevNode == 0">Invalid</DisplayString>
+		<DisplayString>{{ next={NextNode}, prev={PrevNode} }}</DisplayString>
+		<Expand>
+			<Item Name="[Next]">NextNode</Item>
+			<Item Name="[Prev]">PrevNode</Item>
+		</Expand>
+	</Type>
+
+	<!-- GenericList -->
+	<Type Name="GenericList">
+		<DisplayString>{{  }}</DisplayString>
+	</Type>
+	
+	<!-- List<T> -->
+	
+	<!-- Node<T> -->
+	
+	<!-- DataNode<T> -->
+	
+	<!-- SmartPtr<T> -->
+	<Type Name="SmartPtr&lt;*&gt;">
+		<DisplayString>{{ ptr={*Pointer} }}</DisplayString>
+		<Expand>
+			<Item Name="[Ptr]">($T*)Pointer</Item>
+		</Expand>
+	</Type>
+
+</AutoVisualizer> 

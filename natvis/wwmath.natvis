@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    This will make GitHub and some editors recognize this code as XML: 
+    vim: syntax=xml
+-->
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+	<!-- Vector2 -->
+    <Type Name="Vector2">
+        <DisplayString>{{ X = {X}, Y = {Y} }}</DisplayString>
+    </Type>
+
+	<!-- Vector3 -->
+    <Type Name="Vector3">
+        <DisplayString>{{ X = {X}, Y = {Y}, Z = {Z} }}</DisplayString>
+    </Type>
+	
+	<!-- Vector4 -->
+    <Type Name="Vector4">
+        <DisplayString>{{ X = {X}, Y = {Y}, Z = {Z}, W = {W} }}</DisplayString>
+    </Type>
+	
+	<!-- Quaternion -->
+    <Type Name="Quaternion">
+        <DisplayString>{{ X = {X}, Y = {Y}, Z = {Z}, W = {W} }}</DisplayString>
+    </Type>
+	
+	<!-- Matrix3D -->
+    <Type Name="Matrix3D">
+        <DisplayString>{{  }}</DisplayString>
+    </Type>
+
+</AutoVisualizer> 

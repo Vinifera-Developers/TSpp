@@ -325,3 +325,16 @@ target_compile_options(${PROJECT_NAME} PUBLIC
 
 # Build with multiple processes.
 target_compile_options(${PROJECT_NAME} PUBLIC /MP2)
+
+
+################################################################################
+# Add any native visualizations for custom types.
+################################################################################
+
+# add natvis file(s) to the library so it will automatically be loaded into Visual Studio.
+add_library(${PROJECT_NAME} INTERFACE
+	natvis/wwlib.natvis
+)
+	
+# Filter the natvis files manually.
+SetCustomProjectFilters("Natvis" natvis/wwlib.natvis)
