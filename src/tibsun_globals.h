@@ -37,6 +37,7 @@
 #include "ccfile.h"
 #include "dsurface.h"
 #include "vector3.h"
+#include "worlddom.h"
 
 
 /**
@@ -491,3 +492,9 @@ extern IsometricTileType &BridgeTopLeft1;
 extern IsometricTileType &RoughTile;
 extern IsometricTileType &DestroyableCliff;
 extern IsometricTileType &BlackTile;
+
+
+/**
+ *  World Domination Tour
+ */
+extern DynamicVectorClass<WorldDominationTour::GameOption *> wdt_vec_1;

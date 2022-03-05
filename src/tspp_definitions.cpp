@@ -257,6 +257,7 @@
 #include "clipline.h"
 #include "winfont.h"
 #include "vector3.h"
+#include "worlddom.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
 
@@ -4824,10 +4825,19 @@ DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
 DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
 DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
+DEFINE_IMPLEMENTATION(bool Is_Firestorm_Enabled(), 0x0069FAB0);
 
 DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
 
 DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842E0);
+
+
+/**
+ *  World Domination Tour
+ */
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(WorldDominationTour::Map::Map(), 0x006774B0);
+DEFINE_IMPLEMENTATION_DESTRUCTOR(WorldDominationTour::Map::Map(), 0x006774F0);
+DEFINE_IMPLEMENTATION(WorldDominationTour::Map::Read_INI(), 0x00677590);
 
 
 /**

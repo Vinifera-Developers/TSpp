@@ -211,8 +211,8 @@ class SessionClass
 
     public:
         GameType Type;                       // The type of session being played.
-        bool field_4;
-        void * field_8;
+        bool IsWDTSession;
+        int CurrentWDTTerritory;
         int CommProtocol;                    // CommProtocolType
         GameOptionsType Options;
         unsigned long UniqueID;

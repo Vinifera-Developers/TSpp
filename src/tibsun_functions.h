@@ -69,6 +69,7 @@ void Init_Campaigns();
 bool Init_Game(int argc, char *argv[]);
 void Focus_Loss();
 void Focus_Restore();
+bool Is_Firestorm_Enabled();
 
 LayerType Layer_From_Name(const char *name);
 const char *Name_From_Layer(LayerType layer);
