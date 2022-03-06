@@ -510,6 +510,21 @@ class DynamicVectorClass : public VectorClass<T>
         typedef VectorCursor<T, DynamicVectorClass<T>> Iterator;
         typedef const VectorCursor<T, DynamicVectorClass<T>> ConstIterator;
 
+        /**
+         *  Adds support for C++ 11 range-based for loops using VectorCursor.
+         */
+        Iterator begin() { return Iterator(this, 0); }
+        Iterator end() { return Iterator(this, ActiveCount); }
+
+        Iterator begin() const { return Iterator(this, 0); }
+        Iterator end() const { return Iterator(this, ActiveCount); }
+
+        ConstIterator cbegin() { return ConstIterator(this, 0); }
+        ConstIterator cend() { return ConstIterator(this, ActiveCount); }
+
+        ConstIterator cbegin() const { return ConstIterator(this, 0); }
+        ConstIterator cend() const { return ConstIterator(this, ActiveCount); }
+
     protected:
 		int ActiveCount;
 		int GrowthStep;
@@ -902,6 +917,21 @@ class SimpleDynVecClass : public SimpleVecClass<T>
 
         typedef VectorCursor<T, SimpleDynVecClass<T>> Iterator;
         typedef const VectorCursor<T, SimpleDynVecClass<T>> ConstIterator;
+
+        /**
+         *  Adds support for C++ 11 range-based for loops using VectorCursor.
+         */
+        Iterator begin() { return Iterator(this, 0); }
+        Iterator end() { return Iterator(this, ActiveCount); }
+
+        Iterator begin() const { return Iterator(this, 0); }
+        Iterator end() const { return Iterator(this, ActiveCount); }
+
+        ConstIterator cbegin() { return ConstIterator(this, 0); }
+        ConstIterator cend() { return ConstIterator(this, ActiveCount); }
+
+        ConstIterator cbegin() const { return ConstIterator(this, 0); }
+        ConstIterator cend() const { return ConstIterator(this, ActiveCount); }
 
     protected:
         bool Grow(int new_size_hint);
