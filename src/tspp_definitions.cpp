@@ -253,6 +253,8 @@
 #include "txtlabel.h"
 #include "multiscore.h"
 #include "laserdraw.h"
+#include "packet.h"
+#include "field.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "winfont.h"
@@ -4777,6 +4779,33 @@ DEFINE_IMPLEMENTATION(void LaserDrawClass::AI(), 0x004FBE90);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Update_All(), 0x004FBF50);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Clear_All(), 0x004FBE10);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Draw_All(), 0x004FC030);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(PacketClass::PacketClass(char *), 0x005A22E0);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(PacketClass::~PacketClass(), 0x005A22A0);
+DEFINE_IMPLEMENTATION(void PacketClass::Add_Field(FieldClass *), 0x005A22D0);
+DEFINE_IMPLEMENTATION(FieldClass *PacketClass::Find_Field(char *), 0x005A2510);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, char &), 0x005A2550);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, unsigned char &), 0x005A25A0);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, short &), 0x005A25F0);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, unsigned short &), 0x005A2640);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, long &), 0x005A2690);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, char *), 0x005A26E0);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, unsigned long &), 0x005A2750);
+DEFINE_IMPLEMENTATION(bool PacketClass::Get_Field(char *, void *, int &), 0x005A27A0);
+DEFINE_IMPLEMENTATION(char *PacketClass::Create_Comms_Packet(int &), 0x005A23F0);
+
+FieldClass::FieldClass() : ID(), DataType(0), Size(0), Data(nullptr), Next(nullptr) {}
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, char), 0x00498890);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, unsigned char), 0x004988F0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, short), 0x00498950);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, unsigned short), 0x004989B0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, long), 0x00498A10);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, unsigned long), 0x00498A70);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, char *), 0x00498AD0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FieldClass::FieldClass(char *, void *, int), 0x00498B40);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(FieldClass::~FieldClass(), 0x00498BA0);
+DEFINE_IMPLEMENTATION(void FieldClass::Host_To_Net(), 0x00498BC0);
+DEFINE_IMPLEMENTATION(void FieldClass::Net_To_Host(), 0x00498C30);
 
 
 /**
