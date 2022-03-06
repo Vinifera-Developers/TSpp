@@ -294,6 +294,8 @@ class DynamicVectorClass : public VectorClass<T>
 
         int Growth_Step() { return GrowthStep; }
 
+        int Calculate_Growth(int new_size);
+
     protected:
 		int ActiveCount;
 		int GrowthStep;
@@ -474,6 +476,33 @@ void DynamicVectorClass<T>::Delete_All()
     int len = VectorMax;
     Clear();
     Resize(len);
+}
+
+
+/**
+ *  Given old and new_size, calculate geometric a new growth.
+ * 
+ *  @author: secsome
+ */
+template<typename T>
+int DynamicVectorClass<T>::Calculate_Growth(int new_size)
+{
+    int old = VectorMax;
+
+    int geometric = old + old / 2;
+
+    if (geometric < new_size) {
+
+        /**
+         *  Geometric growth would be insufficient.
+         */
+        return new_size;
+    }
+    
+    /**
+     *  Geometric growth is sufficient.
+     */
+    return geometric;
 }
 
 
