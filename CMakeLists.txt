@@ -38,6 +38,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows" AND MSVC)
 	set(MSVC_INCREMENTAL_DEFAULT OFF)
 endif()
 
+# Set available project configurations.
+SET(CMAKE_CONFIGURATION_TYPES "Debug;RelWithDebInfo" CACHE STRING "Configs" FORCE)
+
 # Declare the project.
 project(TSpp VERSION 1.00 LANGUAGES CXX)
 
@@ -62,8 +65,8 @@ endif()
 # Default to a Release build.
 get_property(IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 if (NOT IS_MULTI_CONFIG AND NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
-    message(STATUS "Setting build type default to Release")
+    set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build, options are: Debug RelWithDebInfo." FORCE)
+    message(STATUS "Setting build type default to RelWithDebInfo")
 endif()
 
 
