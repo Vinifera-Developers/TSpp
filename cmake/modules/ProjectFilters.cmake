@@ -55,9 +55,10 @@ function(SetupProjectFilters REMOVE_FOLDER)
 		# Group .c and .cpp into "Source Files"
 		elseif("${arg_file}" MATCHES ".*\\.c"
 			OR "${arg_file}" MATCHES ".*\\.cpp"
-			OR "${arg_file}" MATCHES ".*\\.cxx")
+			OR "${arg_file}" MATCHES ".*\\.cxx"
+			OR "${arg_file}" MATCHES ".*\\.asm")
 			set(group "Source Files${group}")
-#			message(STATUS "Added Source: ${arg_file}")
+#			message(STATUS "Added Source: ${arg_file} to ${group}")
 			
 		# Group .h and .hpp into "Header Files"
 		elseif("${arg_file}" MATCHES ".*\\.h"
@@ -65,7 +66,7 @@ function(SetupProjectFilters REMOVE_FOLDER)
 			OR "${arg_file}" MATCHES ".*\\.hpp")
 			set(group "Source Files${group}")
 #    		set(group "Header Files${group}") # We want headers and sources to be in the same tree.
-#			message(STATUS "Added Header: ${arg_file}")
+#			message(STATUS "Added Header: ${arg_file} to ${group}")
 		
 		endif()
 
