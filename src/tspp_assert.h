@@ -27,35 +27,107 @@
  ******************************************************************************/
 #pragma once
 
+
+#ifndef NDEBUG
+
 #include "always.h"
+#include "fatal.h"
 #include <cassert>
 
+extern bool TSPP_IgnoreAllAsserts;
+extern bool TSPP_SilentAsserts;
+extern bool TSPP_ExitOnAssert;
 
-extern void (*TSPP_Assertion_Handler_Ptr)(const char *expr, const char *file, int line, const char *msg);
+enum TSPPAssertType {
+    TSPP_ASSERT_NORMAL,
+    TSPP_ASSERT_FATAL,
+};
 
-void TSPP_Install_Assertion_Handler(void (*handler_ptr)(const char *, const char *, int, const char *));
+extern void (*TSPP_Assertion_Handler_Ptr)(TSPPAssertType type, const char *expr, const char *file, int line, const char *function, volatile bool *ignore, volatile bool *allow_break, volatile bool *exit, const char *msg, ...);
 
+void TSPP_Install_Assertion_Handler(void (*handler_ptr)(TSPPAssertType, const char *, const char *, int, const char *, volatile bool *, volatile bool *, volatile bool *, const char *, ...));
 
-/**
- *  Standard assert macro.
- */
-#define TSPP_ASSERT(expr) \
-	{ \
-		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
-			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, nullptr); \
-		} \
-	}
+#define TSPP_ASSERT(exp) \
+    do { \
+        if (TSPP_Assertion_Handler_Ptr && !TSPP_IgnoreAllAsserts) { \
+            static volatile bool _ignore_assert = false; \
+            static volatile bool _break = false; \
+            static volatile bool _exit = false; \
+            if (!_ignore_assert) { \
+                if (!(exp)) { \
+                    TSPP_Assertion_Handler_Ptr(TSPP_ASSERT_NORMAL, #exp, __FILE__, __LINE__, __FUNCTION__, &_ignore_assert, &_break, &_exit, nullptr); \
+                    if (_break) { \
+                        __debugbreak(); \
+                    } \
+                    if (_exit || TSPP_ExitOnAssert) { \
+                        Emergency_Exit(EXIT_FAILURE); \
+                    } \
+                } \
+            } \
+        } \
+    } while (false)
 
+#define TSPP_ASSERT_PRINT(exp, msg, ...) \
+    do { \
+        if (TSPP_Assertion_Handler_Ptr && !TSPP_IgnoreAllAsserts) { \
+            static volatile bool _ignore_assert = false; \
+            static volatile bool _break = false; \
+            static volatile bool _exit = false; \
+            if (!_ignore_assert) { \
+                if (!(exp)) { \
+                    TSPP_Assertion_Handler_Ptr(TSPP_ASSERT_PRINT, #exp, __FILE__, __LINE__, __FUNCTION__, &_ignore_assert, &_break, &_exit, msg, ##__VA_ARGS__); \
+                    if (_break) { \
+                        __debugbreak(); \
+                    } \
+                    if (_exit || TSPP_ExitOnAssert) { \
+                        Emergency_Exit(EXIT_FAILURE); \
+                    } \
+                } \
+            } \
+        } \
+    } while (false)
 
-/**
- *  Assert macro with optional message to display.
- * 
- *  #NOTE: (if no custom handler is installed, then just the
- *         expression is passed onto the regular C assert.)
- */
-#define TSPP_ASSERT_PRINT(expr, msg) \
-	{ \
-		if (TSPP_Assertion_Handler_Ptr && !(expr)) { \
-			TSPP_Assertion_Handler_Ptr(#expr, __FILE__, __LINE__, msg); \
-		} \
-	}
+#define TSPP_ASSERT_FATAL(exp, ...) \
+    do { \
+        if (TSPP_Assertion_Handler_Ptr && !TSPP_IgnoreAllAsserts) { \
+            static volatile bool _ignore_assert = false; \
+            static volatile bool _break = false; \
+            static volatile bool _exit = false; \
+            if (!_ignore_assert) { \
+                if (!(exp)) { \
+                    TSPP_Assertion_Handler_Ptr(TSPP_ASSERT_FATAL, #exp, __FILE__, __LINE__, __FUNCTION__, &_ignore_assert, &_break, &_exit, nullptr, ##__VA_ARGS__); \
+                    if (_break) { \
+                        __debugbreak(); \
+                    } \
+                    Emergency_Exit(EXIT_FAILURE); \
+                } \
+            } \
+        } \
+    } while (false)
+
+#define  TSPP_ASSERT_FATAL_PRINT(exp, msg, ...) \
+    do { \
+        if (TSPP_Assertion_Handler_Ptr && !TSPP_IgnoreAllAsserts) { \
+            static volatile bool _ignore_assert = false; \
+            static volatile bool _break = false; \
+            static volatile bool _exit = false; \
+            if (!_ignore_assert) { \
+                if (!(exp)) { \
+                    TSPP_Assertion_Handler_Ptr(TSPP_ASSERT_FATAL, #exp, __FILE__, __LINE__, __FUNCTION__, &_ignore_assert, &_break, &_exit, msg, ##__VA_ARGS__); \
+                    if (_break) { \
+                        __debugbreak(); \
+                    } \
+                    Emergency_Exit(EXIT_FAILURE); \
+                } \
+            } \
+        } \
+    } while (false)
+
+#else
+
+#define TSPP_ASSERT(x) ((void)0)
+#define TSPP_ASSERT_PRINT(exp, msg, ...) ((void)0)
+#define TSPP_ASSERT_FATAL(exp, ...) ((void)0)
+#define TSPP_ASSERT_FATAL_PRINT(exp, msg, ...) ((void)0)
+
+#endif
