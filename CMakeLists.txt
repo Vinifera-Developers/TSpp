@@ -135,7 +135,7 @@ message(STATUS "Fetching the repository git information.")
 # find_package(Git) # Removed, GitWatcher does this quietly.
 
 # The following two defines are automatically picked up by GitWatcher.
-set(GIT_PRE_CONFIGURE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp_gitinfo.cpp.in")
+set(GIT_PRE_CONFIGURE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp/tspp_gitinfo.cpp.in")
 set(GIT_POST_CONFIGURE_FILE "${CMAKE_CURRENT_BINARY_DIR}/generated/tspp_gitinfo.cpp")
 set(GIT_STATE_FILE "${CMAKE_CURRENT_BINARY_DIR}/tspp-git-state-hash")
 set(GIT_WORKING_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
@@ -148,14 +148,12 @@ GitWatcher_SetupInitial()  # Running the script function again forces the file t
 ################################################################################
 # Setup project IDE filters.
 ################################################################################
-if(MSVC OR CMAKE_GENERATOR STREQUAL "Xcode")
-	message(STATUS "Setting up project file filters.")
-	include(ProjectFilters)
-	SetupProjectFilters("TS++" ${COMMON_HEADERS} ${COMMON_SOURCES})
-	
-	# Filter the configured git version source file manually.
-	SetCustomProjectFilters("Generated Files" ${GIT_POST_CONFIGURE_FILE})
-endif()
+message(STATUS "Setting up project file filters.")
+include(ProjectFilters)
+SetupProjectFilters("TS++" ${COMMON_HEADERS} ${COMMON_SOURCES})
+
+# Filter the configured git version source file manually.
+SetCustomProjectFilters("Generated Files" ${GIT_POST_CONFIGURE_FILE})
 
 
 ################################################################################
