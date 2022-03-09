@@ -27,12 +27,10 @@
  ******************************************************************************/
 #pragma once
 
-
-#ifndef NDEBUG
-
 #include "always.h"
 #include "fatal.h"
 #include <cassert>
+
 
 extern bool TSPP_IgnoreAllAsserts;
 extern bool TSPP_SilentAsserts;
@@ -122,12 +120,3 @@ void TSPP_Install_Assertion_Handler(void (*handler_ptr)(TSPPAssertType, const ch
             } \
         } \
     } while (false)
-
-#else
-
-#define TSPP_ASSERT(x) ((void)0)
-#define TSPP_ASSERT_PRINT(exp, msg, ...) ((void)0)
-#define TSPP_ASSERT_FATAL(exp, ...) ((void)0)
-#define TSPP_ASSERT_FATAL_PRINT(exp, msg, ...) ((void)0)
-
-#endif

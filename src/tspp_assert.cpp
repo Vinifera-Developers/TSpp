@@ -28,8 +28,6 @@
 #include "tspp_assert.h"
 
 
-#ifndef NDEBUG
-
 /**
  *  Ignore all assertions, even under DEBUG builds.
  */
@@ -60,5 +58,3 @@ void TSPP_Install_Assertion_Handler(void (*handler_ptr)(TSPPAssertType, const ch
 {
 	TSPP_Assertion_Handler_Ptr = handler_ptr;
 }
-
-#endif
