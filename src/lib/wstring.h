@@ -6,9 +6,12 @@
  *
  *  @file          WSTRING.H
  *
- *  @authors       tomsons26, CCHyper
+ *  @author        Neijwiert
  *
- *  @brief         Simple string container.
+ *  @contributors  CCHyper
+ *
+ *  @brief         A base implementation for dealing with strings without
+ *                 directly interacting with c-style character arrays.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,116 +31,245 @@
 #pragma once
 
 #include "always.h"
-#include <ostream> // for std::ostream
+#include "tspp_assert.h"
+#include <ostream>
 
 
 class Wstring
 {
+    friend Wstring operator+(const Wstring &lhs, const char *rhs);
+    friend Wstring operator+(const char *lhs, const Wstring &rhs);
+    friend Wstring operator+(const Wstring &lhs, char *rhs);
+    friend Wstring operator+(char *lhs, const Wstring &rhs);
+    friend Wstring operator+(const Wstring &lhs, const Wstring &rhs);
+
     public:
         Wstring();
+        Wstring(char c);
         Wstring(const char *string);
-        Wstring(const Wstring &string);
+        Wstring(const Wstring &that);
+        Wstring(Wstring &&that) noexcept;
         ~Wstring();
 
-        char operator[](int index);
-
-        const Wstring &operator=(const char *string);
-        const Wstring &operator=(const Wstring &string);
-
-        Wstring operator+(const char *string) const;
-        Wstring operator+(const Wstring &string_src) const;
-
+        Wstring &operator=(const Wstring &that);
+        Wstring &operator=(Wstring &&that) noexcept;
+        Wstring &operator=(char c);
+        Wstring &operator=(const char *string);
+        Wstring &operator+=(char c);
         Wstring &operator+=(const char *string);
-        Wstring &operator+=(const Wstring &string_src);
+        Wstring &operator+=(const Wstring &that);
 
-        bool operator>(const char *string) const { return Compare(string) > 0; }
-        bool operator>(const Wstring &string_src) const { return Compare(string_src) > 0; }
-        bool operator>=(const char *string) const { return Compare(string) >= 0; }
-        bool operator>=(const Wstring &string_src) const { return Compare(string_src) >= 0; }
+        inline bool operator==(const char *string) const;
+        inline bool operator==(const Wstring &that) const;
+        inline bool operator!=(const char *string) const;
+        inline bool operator!=(const Wstring &that) const;
+        inline bool operator>(const char *string) const;
+        inline bool operator>(const Wstring &that) const;
+        inline bool operator>=(const char *string) const;
+        inline bool operator>=(const Wstring &that) const;
+        inline bool operator<(const char *string) const;
+        inline bool operator<(const Wstring &that) const;
+        inline bool operator<=(const char *string) const;
+        inline bool operator<=(const Wstring &that) const;
 
-        bool operator<(const char *string) const { return Compare(string) < 0; }
-        bool operator<(const Wstring &string_src) const { return Compare(string_src) < 0; }
-        bool operator<=(const char *string) const { return Compare(string) <= 0; }
-        bool operator<=(const Wstring &string_src) const { return Compare(string_src) <= 0; }
+        const char &operator[](int index) const
+        {
+            return Get_Char(index);
+        }
 
-        bool operator==(const char *) const;
-        bool operator==(const Wstring &) const;
-        bool operator!=(const char *) const;
-        bool operator!=(const Wstring &) const;
-
-        char *Peek_Buffer();
-        int Get_Length() const;
         void Release_Buffer();
-        bool Is_Empty() const { return Buffer == nullptr || Buffer[0] == '\0' || Get_Length() <= 0; }
-        Wstring To_Lower() const;
-        Wstring To_Upper() const;
-        bool Replace_Char(char to_set, unsigned index);
-        bool Replace(unsigned length, const char *string);
-        bool Resize(unsigned new_length);
-        int Token(int index, char *string_delim, Wstring &out);
-        int Next_Line(int index, Wstring &out);
-        bool Remove_Character(const char char_to_find);
-        void Remove_Spaces();
-        bool Trim_To_Char(char string_delim);
-        bool Trim_Range(int start, int end);
-        bool func_7B54D0(const char *appendstr, unsigned len);
+        char *Peek_Buffer();
+        const char *Peek_Buffer() const;
+        void Get_Buffer(char *string, int length) const;
+        int Get_Length() const;
+        bool Is_Empty() const;
+        bool Is_Not_Empty() const;
+        bool Resize(int new_length);
         void Reserve(int length);
-        void Merge_Strings(char *string, int count);
-        bool Concat(const char *string);
-        bool Concat(unsigned size, const char *string);
-        bool Concat(const Wstring &string);
-        bool func_6A39E0(char a1, unsigned a2);
-        bool func_6A3B20(const char *substr, const char *a2);
+        void To_Lower();
+        Wstring As_Lower() const;
+        void To_Upper();
+        Wstring As_Upper() const;
+        int Compare(const char *string) const;
+        int Compare(const Wstring &that) const;
+        int Compare_No_Case(const char *string) const;
+        int Compare_No_Case(const Wstring &that) const;
+        bool Contains(const char *delimiters) const;
+        bool Contains(const Wstring &delimiters) const;
+        bool Set(char c);
         bool Set(const char *string);
-        inline int Compare(const char *string) const { return std::strcmp(Buffer, string); }
-        inline int Compare(const Wstring &string) const { return std::strcmp(Buffer, string.Buffer); }
-        inline int Compare_No_Case(const char *string) const { return strcmpi(Buffer, string); }
-        inline int Compare_No_Case(const Wstring &string) const { return strcmpi(Buffer, string.Buffer); }
+        bool Set(const Wstring &that);
+        bool Set(Wstring &&that) noexcept;
+        bool Set(int length, const char *string);
+        bool Set(int length, const Wstring &that);
+        char Get_Char(int index);
+        const char Get_Char(int index) const;
+        bool Set_Char(char c, int index);
+        bool Concat(const char *string);
+        bool Concat(int length, const char *string);
+        bool Concat(const Wstring &that);
+        bool Concat(int length, const Wstring &that);
+        bool Concat(char c);
+        bool Remove_Character(char c);
+        void Remove_Whitespace();
+        int Split(int start_index, const char *delimiters, Wstring &split_string) const;
+        int Split(int start_index, const Wstring &delimiters, Wstring &split_string) const;
+        int Next_Line(int start_index, Wstring &line) const;
+        bool Trim_To_Char(char c);
+        bool Trim_Range(int start_index, int length);
+        void Trim_To_First_Difference(const char *delimiters);
+        void Trim_To_First_Difference(const Wstring &delimiters);
+        void Trim_After_First_Difference(const char *delimiters);
+        void Trim_After_First_Difference(const Wstring &delimiters);
+        int As_Integer() const;
+        bool Insert(char c, int index);
+        bool Insert(const char *string, int index);
+        bool Insert(const Wstring &that, int index);
+        bool Replace(const char *str_to_replace, const char *replacement_str);
+        bool Replace(const Wstring &str_to_replace, const Wstring &replacement_str);
 
-    public:
+        static Wstring Number_To_String(int value);
+        static Wstring Number_To_String(int value, int leading_zeros);
+
+    private:
+        bool Internal_Set(int length, const char *string);
+        bool Internal_Insert(const char *string, int index, int length);
+        bool Internal_Concat(int length, const char *string);
+
+        static bool Combine_Strings(const char *lhs, int lhs_length, const char *rhs, int rhs_length, char *&result);
+
+    protected:
         char *Buffer;
+
+    private:
+        static const char NullChar;
+        static const char *EmptyString;
 };
 
 
-inline bool operator==(const Wstring &left, const Wstring &right) { return left.Compare(right) == 0; }
-inline bool operator==(const Wstring &left, const char *right) { return left.Compare(right) == 0; }
-inline bool operator==(const char *left, const Wstring &right) { return right.Compare(left) == 0; }
-
-inline bool operator!=(const Wstring &left, const Wstring &right) { return left.Compare(right) != 0; }
-inline bool operator!=(const Wstring &left, const char *right) { return left.Compare(right) != 0; }
-inline bool operator!=(const char *left, const Wstring &right) { return right.Compare(left) != 0; }
-
-inline bool operator<(const Wstring &left, const Wstring &right) { return left.Compare(right) < 0; }
-inline bool operator<(const Wstring &left, const char *right) { return left.Compare(right) < 0; }
-inline bool operator<(const char *left, const Wstring &right) { return right.Compare(left) > 0; }
-
-inline bool operator>(const Wstring &left, const Wstring &right) { return left.Compare(right) > 0; }
-inline bool operator>(const Wstring &left, const char *right) { return left.Compare(right) < 0; }
-inline bool operator>(const char *left, const Wstring &right) { return right.Compare(left) > 0; }
-
-inline std::ofstream & operator<<(std::ofstream &stream, const Wstring &right)
+bool Wstring::operator==(const char *string) const
 {
-    return stream << right.Buffer;
+    return Compare(string) == 0;
 }
 
-inline Wstring operator + (const Wstring &string1, const Wstring &string2)
+
+bool Wstring::operator==(const Wstring &that) const
 {
-    Wstring tmp(string1);
-    tmp += string2;
-    return tmp;
+    return Compare(that) == 0;
 }
 
-inline Wstring operator + (const char *string1, const Wstring &string2)
+
+bool Wstring::operator!=(const char *string) const
 {
-    Wstring tmp(string1);
-    tmp += string2;
-    return tmp;
+    return Compare(string) != 0;
 }
 
-inline Wstring operator + (const Wstring &string1, const char *string2)
+
+bool Wstring::operator!=(const Wstring &that) const
 {
-    Wstring tmp1(string1);
-    Wstring tmp2(string2);
-    tmp1 += tmp2;
-    return tmp1;
+    return Compare(that) != 0;
+}
+
+
+bool Wstring::operator>(const char *string) const
+{
+    return Compare(string) > 0;
+}
+
+
+bool Wstring::operator>(const Wstring &that) const
+{
+    return Compare(that) > 0;
+}
+
+
+bool Wstring::operator>=(const char *string) const
+{
+    return Compare(string) >= 0;
+}
+
+
+bool Wstring::operator>=(const Wstring &that) const
+{
+    return Compare(that) >= 0;
+}
+
+
+bool Wstring::operator<(const char *string) const
+{
+    return Compare(string) < 0;
+}
+
+
+bool Wstring::operator<(const Wstring &that) const
+{
+    return Compare(that) < 0;
+}
+
+
+bool Wstring::operator<=(const char *string) const
+{
+    return Compare(string) <= 0;
+}
+
+
+bool Wstring::operator<=(const Wstring &that) const
+{
+    return Compare(that) <= 0;
+}
+
+
+inline Wstring operator+(const Wstring &lhs, const char *rhs)
+{
+    char *new_string = nullptr;
+    bool result = Wstring::Combine_Strings(lhs.Buffer, lhs.Get_Length(), rhs, rhs == nullptr ? 0 : std::strlen(rhs), new_string);
+    TSPP_ASSERT(result);
+
+    return Wstring(new_string);
+}
+
+
+inline Wstring operator+(const char *lhs, const Wstring &rhs)
+{
+    char *new_string = nullptr;
+    bool result = Wstring::Combine_Strings(lhs, lhs == nullptr ? 0 : std::strlen(lhs), rhs.Buffer, rhs.Get_Length(), new_string);
+    TSPP_ASSERT(result);
+
+    return Wstring(new_string);
+}
+
+
+inline Wstring operator+(const Wstring &lhs, char *rhs)
+{
+    char *new_string = nullptr;
+    bool result = Wstring::Combine_Strings(lhs.Buffer, lhs.Get_Length(), rhs, 1, new_string);
+    TSPP_ASSERT(result);
+
+    return Wstring(new_string);
+}
+
+
+inline Wstring operator+(char *lhs, const Wstring &rhs)
+{
+    char *new_string = nullptr;
+    bool result = Wstring::Combine_Strings(lhs, 1, rhs.Buffer, rhs.Get_Length(), new_string);
+    TSPP_ASSERT(result);
+
+    return Wstring(new_string);
+}
+
+
+inline Wstring operator+(const Wstring &lhs, const Wstring &rhs)
+{
+    char *new_string = nullptr;
+    bool result = Wstring::Combine_Strings(lhs.Buffer, lhs.Get_Length(), rhs.Buffer, rhs.Get_Length(), new_string);
+    TSPP_ASSERT(result);
+
+    return Wstring(new_string);
+}
+
+
+inline std::ostream &operator<<(std::ostream &stream, const Wstring &that)
+{
+    return stream << that.Peek_Buffer();
 }
