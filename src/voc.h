@@ -29,6 +29,7 @@
 
 #include "tibsun_defines.h"
 #include "tibsun_globals.h"
+#include "tspp_audio_intercept.h"
 #include "dsaudio.h"
 
 
@@ -47,7 +48,7 @@ class VocClass
 
         bool Is_Playing() const
         {
-            return Audio.Is_Sample_Playing(FilePtr);
+            return TSPP_Is_Sample_Playing(FilePtr);
         }
 
         int Play(float volume, int a2);

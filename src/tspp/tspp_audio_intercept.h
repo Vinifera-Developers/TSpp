@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          VOX.H
+ *  @file          TSPP_AUDIO_INTERCEPT.H
  *
  *  @authors       CCHyper
  *
- *  @brief         EVA speech.
+ *  @brief         Installable functions for overriding audio calls in TS++.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,25 +27,13 @@
  ******************************************************************************/
 #pragma once
 
-#include "ttimer.h"
-#include "stimer.h"
-#include "tibsun_defines.h"
-#include "tspp.h"
+#include "always.h"
+#include "dsaudio.h"
 
 
-void Speak(VoxType voice, bool a2 = false);
-void Speak_AI();
-void Stop_Speaking();
-bool Is_Speaking();
-void Set_Speech_Volume(int vol);
+extern int (*TSPP_Play_Sample_Function_Ptr)(const void *sample, int priority, int volume);
+extern bool (*TSPP_Is_Sample_Playing_Function_Ptr)(const void *sample);
 
 
-extern int &SpeechVolume;
-extern bool &IsSpeechAllowed;
-
-extern CDTimerClass<SystemTimerClass> &SpeakTimer;
-
-ARRAY_DEC(void *, SpeechBuffer, 2);
-ARRAY_DEC(VoxType, SpeechRecord, 2);
-extern VoxType &SpeakQueue;
-extern VoxType &CurrentVoice;
+int TSPP_Play_Sample(const void *sample, int priority = PRIORITY_MAX, int volume = VOLUME_MAX);
+bool TSPP_Is_Sample_Playing(const void *sample);
