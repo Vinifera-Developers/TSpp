@@ -177,6 +177,9 @@ class ObjectClass : public AbstractClass
 		
         bool Has_Class() const { return Class_Of() != nullptr; }
 
+        TechnoClass *As_Techno();
+        FootClass *As_Foot();
+
         const char *Name() const;
 
         static void Shorten_Attached_Anims();
