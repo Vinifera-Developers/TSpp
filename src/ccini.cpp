@@ -168,6 +168,59 @@ bool CCINIClass::Put_Anim(const char *section, const char *entry, const AnimType
 
 
 /**
+ *  Fetch a anim list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+TypeList<AnimTypeClass *> CCINIClass::Get_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<AnimTypeClass *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+
+            for (AnimType index = ANIM_FIRST; index < AnimTypes.Count(); ++index) {
+                AnimTypeClass *ptr = const_cast<AnimTypeClass *>(AnimTypeClass::Find_Or_Make(name));
+                if (ptr) {
+                    list.Add(ptr);
+                }
+            }
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a anim list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> value)
+{
+    char buffer[1024] = { '\0' };
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]->Name());
+    }
+
+    return INIClass::Put_String(section, entry, buffer);
+}
+
+
+/**
  *  Fetch a unit list from the INI database.
  * 
  *  @author: CCHyper
@@ -184,8 +237,9 @@ TypeList<UnitTypeClass *> CCINIClass::Get_Units(const char *section, const char 
         while (name) {
 
             for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
-                if (strcasecmp(name, UnitTypes[index]->Name()) == 0) {
-                    list.Add(UnitTypes[index]);
+                UnitTypeClass *ptr = const_cast<UnitTypeClass *>(UnitTypeClass::Find_Or_Make(name));
+                if (ptr) {
+                    list.Add(ptr);
                 }
             }
 
@@ -220,7 +274,7 @@ bool CCINIClass::Put_Units(const char *section, const char *entry, const TypeLis
 
 
 /**
- *  Fetch a unit list from the INI database.
+ *  Fetch a building list from the INI database.
  * 
  *  @author: CCHyper
  */
@@ -236,8 +290,9 @@ TypeList<BuildingTypeClass *> CCINIClass::Get_Buildings(const char *section, con
         while (name) {
 
             for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
-                if (strcasecmp(name, BuildingTypes[index]->Name()) == 0) {
-                    list.Add(BuildingTypes[index]);
+                BuildingTypeClass *ptr = const_cast<BuildingTypeClass *>(BuildingTypeClass::Find_Or_Make(name));
+                if (ptr) {
+                    list.Add(ptr);
                 }
             }
 
@@ -252,7 +307,7 @@ TypeList<BuildingTypeClass *> CCINIClass::Get_Buildings(const char *section, con
 
 
 /**
- *  Store a unit list to the INI database.
+ *  Store a building list to the INI database.
  * 
  *  @author: CCHyper
  */

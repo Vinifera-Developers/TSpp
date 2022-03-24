@@ -170,6 +170,9 @@ class CCINIClass : public INIClass
         const AnimTypeClass *Get_Anim(const char *section, const char *entry, const AnimTypeClass *defvalue);
         bool Put_Anim(const char *section, const char *entry, const AnimTypeClass *value);
 
+        TypeList<AnimTypeClass *> Get_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> defvalue);
+        bool Put_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> value);
+
         TypeList<UnitTypeClass *> Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue);
         bool Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value);
 

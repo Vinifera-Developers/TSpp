@@ -141,7 +141,7 @@
 
 
 /**
- *  For deconstructor jumps, we need to adjust the stack before we
+ *  For destructor jumps, we need to adjust the stack before we
  *  make the jump to the address, otherwise the stack will be smashed.
  */
 #ifndef NDEBUG

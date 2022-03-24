@@ -62,7 +62,7 @@ PCXButtonClass::PCXButtonClass(unsigned id, const char *image_fname, int x, int 
 
 
 /**
- *  Default deconstructor for a pcx image button.
+ *  Default destructor for a pcx image button.
  * 
  *  @author: CCHyper
  */
