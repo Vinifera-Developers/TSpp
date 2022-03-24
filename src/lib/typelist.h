@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "vector.h"
+#include "tspp_assert.h"
 #include <unknwn.h>
 
 
@@ -52,6 +53,9 @@ class TypeList : public DynamicVectorClass<T>
             return (*this);
         }
 
+        bool Save(IStream *pStm);
+        bool Load(IStream *pStm);
+
     protected:
         int field_18;
 };
@@ -70,4 +74,48 @@ TypeList<T>::TypeList(const TypeList<T> &that) :
     DynamicVectorClass<T>(that),
     field_18(that.field_18)
 {
+}
+
+
+/**
+ *  Saves all active objects to the data stream.
+ * 
+ *  @author: CCHyper
+ */
+template<class T>
+bool TypeList<T>::Save(IStream *pStm)
+{
+    ASSERT(pStm != nullptr);
+
+    int count = Count();
+    pStm->Write(&count, sizeof(count), nullptr);
+
+    for (int index = 0; index < count; ++index) {
+        pStm->Write(&(*this)[index], sizeof(T), nullptr);
+    }
+
+    return true;
+}
+
+
+/**
+ *  Saves all active objects from the data stream.
+ * 
+ *  @author: CCHyper
+ */
+template<class T>
+bool TypeList<T>::Load(IStream *pStm)
+{
+    ASSERT(pStm != nullptr);
+
+    int count = 0;
+    pStm->Read(&count, sizeof(count), nullptr);
+
+    for (int index = 0; index < count; ++index) {
+        T *object = nullptr;
+        pStm->Read(object, sizeof(T), nullptr);
+        Add(*object);
+    }
+
+    return true;
 }
