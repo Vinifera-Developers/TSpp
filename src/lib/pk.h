@@ -6,7 +6,9 @@
  *
  *  @file          PK.H
  *
- *  @authors       CCHyper
+ *  @author        Joe L. Bostic (see notes below)
+ *
+ *  @contributors  CCHyper
  *
  *  @brief         Public Key Cryptography.
  *
@@ -24,10 +26,16 @@
  *                 License along with this program.
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
+ *  @note          This file contains heavily modified code from the source code
+ *                 released by Electronic Arts for the C&C Remastered Collection
+ *                 under the GPL3 license. Source:
+ *                 https://github.com/ElectronicArts/CnC_Remastered_Collection
+ *
  ******************************************************************************/
 #pragma once
 
 #include "always.h"
+#include "int.h"
 
 
 class Straw;
@@ -36,10 +44,28 @@ class Straw;
 class PKey
 {
     public:
-        PKey() : Modulus(), Exponent(), BitPrecision(0) { std::memset(Modulus, 0, 256); std::memset(Exponent, 0, 256); }
+        PKey();
+        PKey(void const * exponent, void const * modulus);
+
+        int Encrypt(void const * source, int slen, void * dest) const;
+        int Decrypt(void const * source, int slen, void * dest) const;
+
+        int Plain_Block_Size() const;
+        int Crypt_Block_Size() const;
+        int Block_Count(int plaintext_length) const;
+
+        int Encode_Modulus(void * buffer) const;
+        int Encode_Exponent(void * buffer) const;
+
+        void Decode_Modulus(void * buffer);
+        void Decode_Exponent(void * buffer);
+
+        static long Fast_Exponent();
+
+        static void Generate(Straw & random, int bits, PKey & fastkey, PKey & slowkey);
 
     private:
-        char Modulus[256];         // BigInt
-        char Exponent[256];        // BigInt
+        BigInt Modulus;
+        BigInt Exponent;
         int BitPrecision;
 };

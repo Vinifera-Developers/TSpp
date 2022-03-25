@@ -139,6 +139,7 @@
 #include "base64.h"
 #include "lcw.h"
 #include "lzo.h"
+#include "pk.h"
 #include "fetchres.h"
 #include "dsaudio.h"
 #include "preview.h"
@@ -1717,6 +1718,20 @@ DEFINE_IMPLEMENTATION(int LZOStraw::Get(void *, int), 0x00508300);
 
 DEFINE_IMPLEMENTATION(int lzo1x_1_compress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x005076D0);
 DEFINE_IMPLEMENTATION(int lzo1x_decompress(const lzo_bytep, lzo_uint, lzo_bytep, lzo_uintp, lzo_voidp), 0x00507C20);
+
+PKey::PKey() : Modulus(0), Exponent(0), BitPrecision(0) {}
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(PKey::PKey(void const *, void const *), 0x005A94F0);
+DEFINE_IMPLEMENTATION(int PKey::Encrypt(void const *, int, void *) const, 0x005A9CD0);
+DEFINE_IMPLEMENTATION(int PKey::Decrypt(void const *, int, void *) const, 0x005A9E00);
+int PKey::Plain_Block_Size() const { return (BitPrecision-1) / 8; }
+int PKey::Crypt_Block_Size() const { return Plain_Block_Size() + 1;}
+int PKey::Block_Count(int plaintext_length) const { return (((plaintext_length - 1) / Plain_Block_Size()) + 1); }
+DEFINE_IMPLEMENTATION(int PKey::Encode_Modulus(void *) const, 0x005A9550);
+DEFINE_IMPLEMENTATION(int PKey::Encode_Exponent(void *) const, 0x005A9570);
+DEFINE_IMPLEMENTATION(void PKey::Decode_Modulus(void *), 0x005A9590);
+DEFINE_IMPLEMENTATION(void PKey::Decode_Exponent(void *), 0x005A95C0);
+long PKey::Fast_Exponent() { return 65537L; }
+DEFINE_IMPLEMENTATION(void PKey::Generate(Straw &, int, PKey &, PKey &), 0x005A95E0);
 
 GadgetClass::GadgetClass() : X(0), Y(0), Width(0), Height(0), IsToRepaint(false), IsSticky(false), IsDisabled(false), Flags(0) { *((unsigned long *)this) = (unsigned long)0x006D07F4; }
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(GadgetClass::GadgetClass(int, int, int, int, unsigned, bool), 0x004A9BF0);
