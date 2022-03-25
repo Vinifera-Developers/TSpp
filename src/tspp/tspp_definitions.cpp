@@ -99,6 +99,7 @@
 #include "droppodlocomotion.h"
 #include "quat.h"
 #include "matrix3d.h"
+#include "xmp.h"
 #include "cell.h"
 #include "warheadtype.h"
 #include "tactical.h"
@@ -1347,6 +1348,61 @@ DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_1(Vector3 &, Vector3 &, float), 0x0
 DEFINE_IMPLEMENTATION(void Matrix3D::Look_At_2(Vector3 &, Vector3 &, float), 0x00555820);
 DEFINE_IMPLEMENTATION(Matrix3D operator*(const Matrix3D &, const Matrix3D &), 0x00555A90);
 DEFINE_IMPLEMENTATION(Matrix3D func_555D30(Matrix3D &), 0x00555D30);
+
+DEFINE_IMPLEMENTATION(int _XMP_Byte_Precision(unsigned long), 0x00564DA0);
+DEFINE_IMPLEMENTATION(void xmp_memrev(char *, size_t), 0x00567420);
+DEFINE_IMPLEMENTATION(int __cdecl xmp_pfunc(const void *, const void *), 0x00567440);
+DEFINE_IMPLEMENTATION(int XMP_Significance(const xmp_digit *, int), 0x00565140);
+DEFINE_IMPLEMENTATION(void XMP_Inc(xmp_digit *, int), 0x00565160);
+DEFINE_IMPLEMENTATION(void XMP_Dec(xmp_digit *, int), 0x00565180);
+DEFINE_IMPLEMENTATION(void XMP_Neg(xmp_digit *, int), 0x005651A0);
+DEFINE_IMPLEMENTATION(void XMP_Abs(xmp_digit *, int), 0x005651D0);
+DEFINE_IMPLEMENTATION(void XMP_Shift_Right_Bits(xmp_digit *, int, int), 0x00565210);
+DEFINE_IMPLEMENTATION(void XMP_Shift_Left_Bits(xmp_digit *, int, int), 0x00565350);
+DEFINE_IMPLEMENTATION(bool XMP_Rotate_Left(xmp_digit *, bool, int), 0x00565490);
+DEFINE_IMPLEMENTATION(void XMP_Not(xmp_digit * xmp_digit_ptr, int), 0x005654D0);
+DEFINE_IMPLEMENTATION(void XMP_Init(xmp_digit *, xmp_digit, int), 0x005654F0);
+DEFINE_IMPLEMENTATION(unsigned XMP_Count_Bits(const xmp_digit *, int), 0x00565510);
+DEFINE_IMPLEMENTATION(int XMP_Count_Bytes(const xmp_digit *, int), 0x00565550);
+DEFINE_IMPLEMENTATION(void XMP_Move(xmp_digit *, xmp_digit const *, int), 0x00565570);
+DEFINE_IMPLEMENTATION(int XMP_Compare(const xmp_digit *, const xmp_digit *, int), 0x00565590);
+DEFINE_IMPLEMENTATION(bool XMP_Add(xmp_digit *, const xmp_digit *, const xmp_digit *, bool, int), 0x005655E0);
+DEFINE_IMPLEMENTATION(bool XMP_Add_Int(xmp_digit *, const xmp_digit *, xmp_digit, bool, int), 0x00565650);
+DEFINE_IMPLEMENTATION(bool XMP_Sub(xmp_digit *, const xmp_digit *, const xmp_digit *, bool, int), 0x005656B0);
+DEFINE_IMPLEMENTATION(bool XMP_Sub_Int(xmp_digit *, const xmp_digit *, xmp_digit16, bool, int), 0x00565710);
+DEFINE_IMPLEMENTATION(int XMP_Unsigned_Mult(xmp_digit *, const xmp_digit *, const xmp_digit *, int), 0x00565770);
+DEFINE_IMPLEMENTATION(int XMP_Unsigned_Mult_Int(xmp_digit *, const xmp_digit *, xmp_signeddigit16, int), 0x00565940);
+DEFINE_IMPLEMENTATION(int XMP_Signed_Mult_Int(xmp_digit *, const xmp_digit *, xmp_signeddigit16, int), 0x00565980);
+DEFINE_IMPLEMENTATION(int XMP_Signed_Mult(xmp_digit *, const xmp_digit *, const xmp_digit *, int), 0x00565B90);
+DEFINE_IMPLEMENTATION(xmp_digit16 XMP_Unsigned_Div_Int(xmp_digit *, xmp_digit const *, xmp_digit16, int), 0x00565D90);
+DEFINE_IMPLEMENTATION(int XMP_Unsigned_Div(xmp_digit *, xmp_digit *, xmp_digit const *, xmp_digit const *, int), 0x00565EC0);
+DEFINE_IMPLEMENTATION(void XMP_Signed_Div(xmp_digit *, xmp_digit *, xmp_digit const *, xmp_digit const *, int), 0x005660D0);
+DEFINE_IMPLEMENTATION(int XMP_Reciprocal(xmp_digit *, const xmp_digit *, int), 0x00566540);
+DEFINE_IMPLEMENTATION(void XMP_Decode_ASCII(char const *, xmp_digit *, int), 0x00566750);
+//DEFINE_IMPLEMENTATION(void xmp_single_mul(xmp_digit16 *, xmp_digit16 *, xmp_digit16, int), 0x);
+DEFINE_IMPLEMENTATION(void XMP_Double_Mul(xmp_digit *, const xmp_digit *, const xmp_digit *, int), 0x005669B0);
+//DEFINE_IMPLEMENTATION(int xmp_stage_modulus(const xmp_digit *, int), 0x);
+DEFINE_IMPLEMENTATION(int XMP_Mod_Mult(xmp_digit *, const xmp_digit *, const xmp_digit *, int), 0x00566C50);
+DEFINE_IMPLEMENTATION(void XMP_Mod_Mult_Clear(int), 0x00566F70);
+DEFINE_IMPLEMENTATION(xmp_digit16 xmp_quo_digit(xmp_digit16 *), 0x00567020);
+DEFINE_IMPLEMENTATION(int xmp_exponent_mod(xmp_digit *, const xmp_digit *, const xmp_digit *, const xmp_digit *, int), 0x005670B0);
+DEFINE_IMPLEMENTATION(bool XMP_Is_Small_Prime(const xmp_digit * candidate, int), 0x00567460);
+DEFINE_IMPLEMENTATION(bool XMP_Small_Divisors_Test(const xmp_digit * candidate, int), 0x005674E0);
+DEFINE_IMPLEMENTATION(bool XMP_Fermat_Test(const xmp_digit * candidate_prime, unsigned, int), 0x00567530);
+DEFINE_IMPLEMENTATION(void XMP_Inverse_A_Mod_B(xmp_digit *, xmp_digit const *, xmp_digit const *, int), 0x005662F0);
+DEFINE_IMPLEMENTATION(void XMP_Signed_Decode(xmp_digit *, const unsigned char *, int, int), 0x005650B0);
+DEFINE_IMPLEMENTATION(void XMP_Unsigned_Decode(xmp_digit *, const unsigned char *, int, int), 0x00565100);
+DEFINE_IMPLEMENTATION(unsigned XMP_Encode(unsigned char *, xmp_digit const *, int), 0x00565040);
+DEFINE_IMPLEMENTATION(unsigned XMP_Encode_Bounded(unsigned char *, unsigned, xmp_digit const *, int), 0x00564FA0);
+DEFINE_IMPLEMENTATION(void XMP_Randomize(xmp_digit *, Straw &, int, int), 0x00567980);
+DEFINE_IMPLEMENTATION(void XMP_Randomize_Bounded(xmp_digit *, Straw &, xmp_digit const *, xmp_digit const *, int), 0x005679F0);
+DEFINE_IMPLEMENTATION(bool XMP_Is_Prime(xmp_digit const *, int), 0x00567BD0);
+DEFINE_IMPLEMENTATION(bool XMP_Rabin_Miller_Test(Straw &, xmp_digit const *, int, int), 0x00567660);
+DEFINE_IMPLEMENTATION(int XMP_DER_Length_Encode(unsigned long, unsigned char *), 0x00564DE0);
+DEFINE_IMPLEMENTATION(int XMP_DER_Encode(xmp_digit const *, unsigned char *, int), 0x00564E60);
+DEFINE_IMPLEMENTATION(void XMP_DER_Decode(xmp_digit *, unsigned char const *, int), 0x00564F20);
+DEFINE_IMPLEMENTATION(xmp_digit16 *XMP_Fetch_Prime_Table(), 0x00564D80);
+DEFINE_IMPLEMENTATION(int XMP_Prime_Table_Size(), 0x00564D90);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE CellClass::GetClassID(CLSID *), 0x0045AE50);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE CellClass::Load(IStream *), 0x004597E0);
