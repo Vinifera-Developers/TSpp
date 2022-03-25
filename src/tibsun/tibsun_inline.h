@@ -178,6 +178,20 @@ inline short Distance(const Cell &cell1, const Cell &cell2)
 }
 
 
+inline bool Is_Distance_Within_Range(const Coordinate &coord1, const Coordinate &coord2, int min, int max)
+{
+    int dist = Distance(coord1, coord2);
+    return dist >= min && dist <= max;
+}
+
+
+inline bool Is_Distance_Within_Range(const Cell &cell1, const Cell &cell2, int min, int max)
+{
+    int dist = Distance(cell1, cell2);
+    return dist >= min && dist <= max;
+}
+
+
 inline void Move_Point(Point2D &point, DirType dir, int distance)
 {
     double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
