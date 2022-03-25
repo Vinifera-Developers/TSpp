@@ -4,7 +4,7 @@
  *
  *  @project       TS++
  *
- *  @file          PCXIMAGES.H
+ *  @file          SPRITECOLLECTION.H
  *
  *  @authors       CCHyper, tomsons26
  *
@@ -46,11 +46,11 @@ class BSurface;
                                           | (255 >> DSurface::BlueRight << DSurface::BlueLeft)
 
 
-class ImageCollectionClass
+class SpriteCollectionClass
 {
     public:
-        ImageCollectionClass();
-        ~ImageCollectionClass();
+        SpriteCollectionClass();
+        ~SpriteCollectionClass();
 
         bool Load_PCX(const char *filename, int bpp, bool apply_palette = false);
         bool Load_Paletted_PCX(const char *filename) { return Load_PCX(filename, 2, true); }

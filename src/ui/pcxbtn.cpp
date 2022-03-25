@@ -29,7 +29,7 @@
 #include "tibsun_defines.h"
 #include "tibsun_globals.h"
 #include "language.h"
-#include "imagecollection.h"
+#include "spritecollection.h"
 #include "filepcx.h"
 #include "dsurface.h"
 #include "bsurface.h"
@@ -98,7 +98,7 @@ bool PCXButtonClass::Draw_Me(bool forced)
     image_rect.Width = ImageSurface->Get_Width();
     image_rect.Height = ImageSurface->Get_Height();
 
-    ImageCollection.Draw(image_rect, *HiddenSurface, *ImageSurface);
+    SpriteCollection.Draw(image_rect, *HiddenSurface, *ImageSurface);
 
     return true;
 }
@@ -129,11 +129,11 @@ bool PCXButtonClass::Load_Image(const char *filename)
 
     switch (pcxhdr.BitsPixelPlane) {
         case 8:
-            loaded = ImageCollection.Load_Paletted_PCX(lowerstr.Peek_Buffer());
+            loaded = SpriteCollection.Load_Paletted_PCX(lowerstr.Peek_Buffer());
             break;
 
         case 16:
-            loaded = ImageCollection.Load_PCX(lowerstr.Peek_Buffer(), 2);
+            loaded = SpriteCollection.Load_PCX(lowerstr.Peek_Buffer(), 2);
             break;
 
         default:
@@ -145,7 +145,7 @@ bool PCXButtonClass::Load_Image(const char *filename)
         /**
          *  Fetch the pointer to the loaded images graphical surface.
          */
-        ImageSurface = ImageCollection.Get_Image_Surface(lowerstr.Peek_Buffer());
+        ImageSurface = SpriteCollection.Get_Image_Surface(lowerstr.Peek_Buffer());
     }
 
     return true;

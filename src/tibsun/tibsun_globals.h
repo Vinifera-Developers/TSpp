@@ -146,7 +146,7 @@ class PKey;
 class CCINIClass;
 class ProgressScreenClass;
 class EndGameClass;
-class ImageCollectionClass;
+class SpriteCollectionClass;
 class SystemTimerClass;
 class ABuffer;
 class ZBuffer;
@@ -407,7 +407,7 @@ extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 
 extern const TheaterDataType *Theaters; 
 
-extern ImageCollectionClass &ImageCollection;
+extern SpriteCollectionClass &SpriteCollection;
 
 extern LPDIRECTDRAW &DirectDrawObject;
 extern LPDIRECTDRAWCLIPPER &DirectDrawClipper;
