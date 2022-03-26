@@ -33,6 +33,7 @@
 #include "trect.h"
 #include "tpoint.h"
 #include "pk.h"
+#include "wstring.h"
 #include <objbase.h>
 
 
@@ -85,28 +86,17 @@ class INIClass
         bool Clear(const char *section = nullptr, const char *entry = nullptr);
 
         bool Is_Loaded() const { return !SectionList.Is_Empty(); }
-        bool Is_Present(const char *section, const char *entry = nullptr) const
-        {
-            if (entry == nullptr) return Find_Section(section) != nullptr;
-            return Find_Entry(section, entry) != nullptr;
-        }
+        bool Is_Present(const char *section, const char *entry = nullptr) const;
 
         int Entry_Count(const char *section) const;
         const char *Get_Entry(const char *section, int index) const;
 
         int Get_String(const char *section, const char *entry, const char *defvalue, char *buffer, int length) const;
-        inline int Get_String(const char *section, const char *entry, char *buffer, int length) const
-        {
-            static const char *_null_char = "";
-            return Get_String(section, entry, "", buffer, length);
-        }
+        int Get_String(const char *section, const char *entry, char *buffer, int length) const;
         bool Put_String(const char *section, const char *entry, const char *string);
 
         int Get_Int(const char *section, const char *entry, int defvalue = 0) const;
-        inline int Get_Int_Clamp(const char *section, const char *entry, int lo, int hi, int defvalue = 0) const
-        {
-            return std::clamp(Get_Int(section, entry, defvalue), lo, hi);
-        }
+        int Get_Int_Clamp(const char *section, const char *entry, int lo, int hi, int defvalue = 0) const;
         bool Put_Int(const char *section, const char *entry, int number, int format = 0);
         
         int Get_Hex(const char *section, const char *entry, int defvalue = 0) const;
@@ -115,24 +105,12 @@ class INIClass
         bool Get_Bool(const char *section, const char *entry, bool defvalue = false) const;
         bool Put_Bool(const char *section, const char *entry, bool value);
 
-        inline float Get_Float(const char *section, const char *entry, float defvalue = 0.0) const
-        {
-            return Get_Double(section, entry, defvalue);
-        }
-        inline float Get_Float_Clamp(const char *section, const char *entry, float lo, float hi, float defvalue = 0.0f) const
-        {
-            return std::clamp(Get_Float(section, entry, defvalue), lo, hi);
-        }
-        inline bool Put_Float(const char *section, const char *entry, float value)
-        {
-            return Put_Double(section, entry, value);
-        }
+        float Get_Float(const char *section, const char *entry, float defvalue = 0.0) const;
+        float Get_Float_Clamp(const char *section, const char *entry, float lo, float hi, float defvalue = 0.0f) const;
+        bool Put_Float(const char *section, const char *entry, float value);
 
         double Get_Double(const char *section, const char *entry, double defvalue = 0.0) const;
-        inline double Get_Double_Clamp(const char *section, const char *entry, double lo, double hi, double defvalue = 0.0) const
-        {
-            return std::clamp(Get_Double(section, entry, defvalue), lo, hi);
-        }
+        double Get_Double_Clamp(const char *section, const char *entry, double lo, double hi, double defvalue = 0.0) const;
         bool Put_Double(const char *section, const char *entry, double value);
 
         int Get_TextBlock(const char *section, char *buffer, int length) const;
