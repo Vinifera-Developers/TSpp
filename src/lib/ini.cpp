@@ -26,6 +26,8 @@
  *
  ******************************************************************************/
 #include "ini.h"
+#include "wstring.h"
+#include <sstream>
 #include <algorithm>
 
 
@@ -38,8 +40,9 @@ bool INIClass::Is_Present(const char *section, const char *entry) const
 {
     if (!entry) {
         return Find_Section(section) != nullptr;
-    }
+    } else {
     return Find_Entry(section, entry) != nullptr;
+    }
 }
 
 
@@ -107,4 +110,224 @@ bool INIClass::Put_Float(const char *section, const char *entry, float value)
 double INIClass::Get_Double_Clamp(const char *section, const char *entry, double lo, double hi, double defvalue) const
 {
     return std::clamp(Get_Double(section, entry, defvalue), lo, hi);
+}
+
+
+/**
+ *  The following are implementations of the Wstring variations.
+ * 
+ *  @author: CCHyper, Neijwiert
+ */
+
+
+int INIClass::Entry_Count(const Wstring &section) const
+{
+    return Entry_Count(section.Peek_Buffer());
+}
+
+
+Wstring INIClass::Get_Entry(const Wstring &section, int index) const
+{
+    return Wstring(Get_Entry(section.Peek_Buffer(), index));
+}
+
+
+int INIClass::Get_String(const Wstring &section, const Wstring &entry, const Wstring &defvalue, Wstring &buffer) const
+{
+    char buff[INI_MAX_LINE_LENGTH];
+
+    int len = Get_String(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue.Peek_Buffer(), buff, INI_MAX_LINE_LENGTH);
+    if (len == 0) {
+        buff[0] = '\0';
+    }
+
+    buffer = buff;
+
+    return len;
+}
+
+
+int INIClass::Get_String(const Wstring &section, const Wstring &entry, Wstring &buffer) const
+{
+    char buff[INI_MAX_LINE_LENGTH];
+
+    int len = Get_String(section.Peek_Buffer(), entry.Peek_Buffer(), "", buff, INI_MAX_LINE_LENGTH);
+    if (len == 0) {
+        buff[0] = '\0';
+    }
+
+    buffer = buff;
+
+    return len;
+}
+
+
+bool INIClass::Put_String(const Wstring &section, const Wstring &entry, const Wstring &string)
+{
+    return Put_String(section.Peek_Buffer(), entry.Peek_Buffer(), string.Peek_Buffer());
+}
+
+
+int INIClass::Get_Int(const Wstring &section, const Wstring &entry, int defvalue) const
+{
+    return Get_Int(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Int(const Wstring &section, const Wstring &entry, int number, IntegerFormatMode format)
+{
+    return Put_Int(section.Peek_Buffer(), entry.Peek_Buffer(), number, format);
+}
+
+
+int INIClass::Get_Hex(const Wstring &section, const Wstring &entry, int defvalue) const
+{
+    return Get_Hex(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Hex(const Wstring &section, const Wstring &entry, int number)
+{
+    return Put_Hex(section.Peek_Buffer(), entry.Peek_Buffer(), number);
+}
+
+
+bool INIClass::Get_Bool(const Wstring &section, const Wstring &entry, bool defvalue) const
+{
+    return Get_Bool(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Bool(const Wstring &section, const Wstring &entry, bool value)
+{
+    return Put_Bool(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+float INIClass::Get_Float(const Wstring &section, const Wstring &entry, float defvalue) const
+{
+    return Get_Float(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+float INIClass::Get_Float_Clamp(const Wstring &section, const Wstring &entry, float lo, float hi, float defvalue) const
+{
+    return Get_Float_Clamp(section.Peek_Buffer(), entry.Peek_Buffer(), lo, hi, defvalue);
+}
+
+
+bool INIClass::Put_Float(const Wstring &section, const Wstring &entry, float value)
+{
+    return Put_Float(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+double INIClass::Get_Double(const Wstring &section, const Wstring &entry, double defvalue) const
+{
+    return Get_Double(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+double INIClass::Get_Double_Clamp(const Wstring &section, const Wstring &entry, double lo, double hi, double defvalue) const
+{
+    return Get_Double_Clamp(section.Peek_Buffer(), entry.Peek_Buffer(), lo, hi, defvalue);
+}
+
+
+bool INIClass::Put_Double(const Wstring &section, const Wstring &entry, double value)
+{
+    return Put_Double(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+int INIClass::Get_TextBlock(const Wstring &section, Wstring &buffer) const
+{
+    std::ostringstream oss;
+
+    int elen = Entry_Count(section);
+    int total = 0;
+    for (int index = 0; index < elen; index++) {
+
+        if (index > 0) {
+            oss << ' ';
+            total++;
+        }
+
+        char buff[INI_MAX_LINE_LENGTH];
+        Get_String(section.Peek_Buffer(), Get_Entry(section.Peek_Buffer(), index), buff, INI_MAX_LINE_LENGTH);
+
+        int partial = strlen(buff);
+        total += partial;
+        oss << buff;
+    }
+
+    const std::string block = oss.str();
+    buffer = block.c_str();
+    return total;
+}
+
+
+bool INIClass::Put_TextBlock(const Wstring &section, const Wstring &text)
+{
+    return Put_TextBlock(section.Peek_Buffer(), text.Peek_Buffer());
+}
+
+
+int INIClass::Get_UUBlock(const Wstring &section, void *buffer, int length) const
+{
+    return Get_UUBlock(section.Peek_Buffer(), buffer, length);
+}
+
+
+bool INIClass::Put_UUBlock(const Wstring &section, const void *block, int length)
+{
+    return Put_UUBlock(section.Peek_Buffer(), block, length);
+}
+
+
+TRect<int> INIClass::Get_Rect(const Wstring &section, const Wstring &entry, const TRect<int> &defvalue) const
+{
+    return Get_Rect(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Rect(const Wstring &section, const Wstring &entry, const TRect<int> &value)
+{
+    return Put_Rect(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+const TPoint2D<int> INIClass::Get_Point(const Wstring &section, const Wstring &entry, const TPoint2D<int> &defvalue) const
+{
+    return Get_Point(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Point(const Wstring &section, const Wstring &entry, const TPoint2D<int> &value)
+{
+    return Put_Point(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+const TPoint3D<int> INIClass::Get_Point(const Wstring &section, const Wstring &entry, const TPoint3D<int> &defvalue) const
+{
+    return Get_Point(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_Point(const Wstring &section, const Wstring &entry, const TPoint3D<int> &value)
+{
+    return Put_Point(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+const CLSID INIClass::Get_UUID(const Wstring &section, const Wstring &entry, const CLSID defvalue) const
+{
+    return Get_UUID(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
+}
+
+
+bool INIClass::Put_UUID(const Wstring &section, const Wstring &entry, const CLSID value)
+{
+    return Put_UUID(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
