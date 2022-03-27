@@ -53,6 +53,8 @@ class CDFileClass : public BufferIOFileClass
 
         void Searching(int on) { IsDisabled = !on; }
 
+        static const char *Get_Search_Path(int index);
+
         static bool Is_There_Search_Drives() { return First != nullptr; }
         static int Set_Search_Drives(char * pathlist);
         static void Add_Search_Drive(char *path);
