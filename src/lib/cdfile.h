@@ -54,6 +54,7 @@ class CDFileClass : public BufferIOFileClass
         void Searching(int on) { IsDisabled = !on; }
 
         static const char *Get_Search_Path(int index);
+        static int Search_Drive_Count();
 
         static bool Is_There_Search_Drives() { return First != nullptr; }
         static int Set_Search_Drives(char * pathlist);

@@ -58,3 +58,22 @@ const char *CDFileClass::Get_Search_Path(int index)
 
     return nullptr;
 }
+
+
+/**
+ *  Fetch the number of search paths defined.
+ * 
+ *  @author: CCHyper
+ */
+int CDFileClass::Search_Drive_Count()
+{
+    int count = 0;
+
+    SearchDriveType * srch = First;
+    while (srch) {
+        ++count;
+        srch = (SearchDriveType *)srch->Next;
+    }
+
+    return count;
+}
