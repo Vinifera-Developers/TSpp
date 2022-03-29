@@ -65,6 +65,7 @@ class RawFileClass : public FileClass
 
     protected:
         int Transfer_Block_Size() { return (int)((unsigned)UINT_MAX)-16L; }
+        const char *Get_Safe_File_Name() const { return (Filename != nullptr && Filename[0] != '\0') ? Filename : "<unknown>"; }
 
         off_t Raw_Seek(off_t offset, FileSeekType whence = FILE_SEEK_CURRENT);
 
