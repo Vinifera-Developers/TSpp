@@ -95,7 +95,7 @@ CellClass : public AbstractClass
         UnitClass *const Cell_Unit(bool a2 = false) const;
         AircraftClass *const Cell_Aircraft(bool a2 = false) const;
         InfantryClass *const Cell_Infantry(bool a2 = false) const;
-        BuildingClass *const Cell_Building(bool a2 = false) const;
+        BuildingClass *const Cell_Building() const;
         TerrainClass *const Cell_Terrain(bool a2 = false) const;
         bool Is_Clear_To_Build(SpeedType loco, const BuildingTypeClass *buildtype = nullptr, const HouseClass *house = nullptr);
         // 004526A0

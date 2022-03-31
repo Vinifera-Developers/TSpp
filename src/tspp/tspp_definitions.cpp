@@ -1425,7 +1425,7 @@ DEFINE_IMPLEMENTATION(TechnoClass *const CellClass::Cell_Techno(const Point2D &,
 DEFINE_IMPLEMENTATION(UnitClass *const CellClass::Cell_Unit(bool) const, 0x00454AC0);
 DEFINE_IMPLEMENTATION(AircraftClass *const CellClass::Cell_Aircraft(bool) const, 0x00454B00);
 DEFINE_IMPLEMENTATION(InfantryClass *const CellClass::Cell_Infantry(bool) const, 0x00454B40);
-DEFINE_IMPLEMENTATION(BuildingClass *const CellClass::Cell_Building(bool) const, 0x00452160);
+DEFINE_IMPLEMENTATION(BuildingClass *const CellClass::Cell_Building() const, 0x00452160);
 DEFINE_IMPLEMENTATION(TerrainClass *const CellClass::Cell_Terrain(bool) const, 0x00452190);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Build(SpeedType, const BuildingTypeClass *, const HouseClass *), 0x00452250);
 DEFINE_IMPLEMENTATION(void CellClass::Recalc_Attributes(int), 0x00453240);
