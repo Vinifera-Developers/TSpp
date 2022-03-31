@@ -38,6 +38,7 @@
 #include "weapontype.h"
 #include "warheadtype.h"
 #include "particlesystype.h"
+#include "mission.h"
 
 
 /**
@@ -624,4 +625,32 @@ FacingType CCINIClass::Get_FacingType(const char *section, const char *entry, co
 bool CCINIClass::Put_FacingType(const char *section, const char *entry, FacingType value)
 {
     return Put_String(section, entry, Name_From_Facing(value));
+}
+
+
+/**
+ *  Fetch a mission identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+MissionType CCINIClass::Get_MissionType(const char *section, const char *entry, const MissionType defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, MissionClass::Mission_Name(defvalue), buffer, sizeof(buffer)) > 0) {
+        return MissionClass::Mission_From_Name(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a mission identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_MissionType(const char *section, const char *entry, MissionType value)
+{
+    return Put_String(section, entry, MissionClass::Mission_Name(value));
 }

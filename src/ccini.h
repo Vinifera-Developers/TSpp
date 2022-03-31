@@ -211,6 +211,9 @@ class CCINIClass : public INIClass
         FacingType Get_FacingType(const char *section, const char *entry, const FacingType defvalue);
         bool Put_FacingType(const char *section, const char *entry, FacingType value);
 
+        FacingType Get_MissionType(const char *section, const char *entry, const FacingType defvalue);
+        bool Put_MissionType(const char *section, const char *entry, FacingType value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();
