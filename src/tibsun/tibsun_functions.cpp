@@ -45,6 +45,22 @@ static const char * const LayerName[LAYER_COUNT] =
 };
 
 
+/***************************************************************************
+**	These are the ASCII names for the basic unit facing types.
+*/
+static const char * const FacingName[FACING_COUNT] =
+{
+	"north",
+	"north-east",
+	"east",
+	"south-east",
+	"south",
+	"south-west",
+	"west",
+	"north-west"
+};
+
+
 /**
  *  Converts ASCII name into LandType.
  * 
@@ -72,6 +88,38 @@ const char *Name_From_Layer(LayerType layer)
 {
 	if (layer != LAYER_NONE && layer < LAYER_COUNT) {
 		return LayerName[layer];
+	}
+	return "<none>";
+}
+
+
+/**
+ *  Converts ASCII name into FacingType.
+ * 
+ *  @author: CCHyper
+ */
+FacingType Facing_From_Name(const char *name)
+{
+	if (name) {
+		for (FacingType facing = FACING_FIRST; facing < FACING_COUNT; ++facing) {
+			if (stricmp(FacingName[facing], name) == 0) {
+				return facing;
+			}
+		}
+	}
+	return FACING_NONE;
+}
+
+
+/**
+ *  Retrieves the name for the given FacingType.
+ * 
+ *  @author: CCHyper
+ */
+const char *Name_From_Facing(FacingType facing)
+{
+	if (facing != FACING_NONE && facing < FACING_COUNT) {
+		return FacingName[facing];
 	}
 	return "<none>";
 }
