@@ -128,9 +128,9 @@ const UnitTypeClass *CCINIClass::Get_Unit(const char *section, const char *entry
 bool CCINIClass::Put_Unit(const char *section, const char *entry, const UnitTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
 }
 
@@ -160,9 +160,9 @@ const AnimTypeClass *CCINIClass::Get_Anim(const char *section, const char *entry
 bool CCINIClass::Put_Anim(const char *section, const char *entry, const AnimTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
 }
 
@@ -216,7 +216,7 @@ bool CCINIClass::Put_Anims(const char *section, const char *entry, const TypeLis
         std::strcat(buffer, value[index]->Name());
     }
 
-    return INIClass::Put_String(section, entry, buffer);
+    return Put_String(section, entry, buffer);
 }
 
 
@@ -269,7 +269,7 @@ bool CCINIClass::Put_Units(const char *section, const char *entry, const TypeLis
         std::strcat(buffer, value[index]->Name());
     }
 
-    return INIClass::Put_String(section, entry, buffer);
+    return Put_String(section, entry, buffer);
 }
 
 
@@ -322,7 +322,7 @@ bool CCINIClass::Put_Buildings(const char *section, const char *entry, const Typ
         std::strcat(buffer, value[index]->Name());
     }
 
-    return INIClass::Put_String(section, entry, buffer);
+    return Put_String(section, entry, buffer);
 }
 
 
@@ -429,7 +429,7 @@ bool CCINIClass::Put_VocType_List(const char *section, const char *entry, const 
         std::strcat(buffer, VocClass::INI_Name_From(value[index]));
     }
 
-    return INIClass::Put_String(section, entry, buffer);
+    return Put_String(section, entry, buffer);
 }
 
 
@@ -468,9 +468,9 @@ const TechnoTypeClass *CCINIClass::Get_Techno(const char *section, const char *e
 bool CCINIClass::Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
 }
 
@@ -528,9 +528,9 @@ const WeaponTypeClass *CCINIClass::Get_Weapon(const char *section, const char *e
 bool CCINIClass::Put_Weapon(const char *section, const char *entry, const WeaponTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
 }
 
@@ -560,9 +560,9 @@ const WarheadTypeClass *CCINIClass::Get_Warhead(const char *section, const char 
 bool CCINIClass::Put_Warhead(const char *section, const char *entry, const WarheadTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
 }
 
@@ -592,8 +592,36 @@ const ParticleSystemTypeClass *CCINIClass::Get_ParticleSystem(const char *sectio
 bool CCINIClass::Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value)
 {
     if (value) {
-        return INIClass::Put_String(section, entry, value->Name());
+        return Put_String(section, entry, value->Name());
     } else {
-        return INIClass::Put_String(section, entry, "<none>");
+        return Put_String(section, entry, "<none>");
     }
+}
+
+
+/**
+ *  Fetch a facing identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+FacingType CCINIClass::Get_FacingType(const char *section, const char *entry, const FacingType defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, Name_From_Facing(defvalue), buffer, sizeof(buffer)) > 0) {
+        return Facing_From_Name(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a facing identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_FacingType(const char *section, const char *entry, FacingType value)
+{
+    return Put_String(section, entry, Name_From_Facing(value));
 }

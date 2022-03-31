@@ -208,6 +208,9 @@ class CCINIClass : public INIClass
         const ParticleSystemTypeClass *Get_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *defvalue);
         bool Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value);
 
+        FacingType Get_FacingType(const char *section, const char *entry, const FacingType defvalue);
+        bool Put_FacingType(const char *section, const char *entry, FacingType value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();
