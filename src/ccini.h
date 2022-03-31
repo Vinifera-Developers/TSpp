@@ -45,6 +45,7 @@ class BuildingTypeClass;
 class WeaponTypeClass;
 class WarheadTypeClass;
 class ParticleSystemTypeClass;
+class InfantryTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -211,8 +212,11 @@ class CCINIClass : public INIClass
         FacingType Get_FacingType(const char *section, const char *entry, const FacingType defvalue);
         bool Put_FacingType(const char *section, const char *entry, FacingType value);
 
-        FacingType Get_MissionType(const char *section, const char *entry, const FacingType defvalue);
-        bool Put_MissionType(const char *section, const char *entry, FacingType value);
+        MissionType Get_MissionType(const char *section, const char *entry, const MissionType defvalue);
+        bool Put_MissionType(const char *section, const char *entry, MissionType value);
+
+        const InfantryTypeClass *Get_Infantry(const char *section, const char *entry, const InfantryTypeClass *defvalue);
+        bool Put_Infantry(const char *section, const char *entry, const InfantryTypeClass *value);
 
     private:
         void Calculate_Message_Digest();

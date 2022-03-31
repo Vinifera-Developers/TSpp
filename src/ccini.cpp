@@ -38,6 +38,7 @@
 #include "weapontype.h"
 #include "warheadtype.h"
 #include "particlesystype.h"
+#include "infantrytype.h"
 #include "mission.h"
 
 
@@ -653,4 +654,36 @@ MissionType CCINIClass::Get_MissionType(const char *section, const char *entry, 
 bool CCINIClass::Put_MissionType(const char *section, const char *entry, MissionType value)
 {
     return Put_String(section, entry, MissionClass::Mission_Name(value));
+}
+
+
+/**
+ *  Fetch the infantry type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const InfantryTypeClass *CCINIClass::Get_Infantry(const char *section, const char *entry, const InfantryTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return InfantryTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the infantry type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Infantry(const char *section, const char *entry, const InfantryTypeClass *value)
+{
+    if (value) {
+        return Put_String(section, entry, value->Name());
+    } else {
+        return Put_String(section, entry, "<none>");
+    }
 }
