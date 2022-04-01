@@ -3002,12 +3002,49 @@ typedef struct DirStruct : public fixed
 /**
  *  Wrappers for the swizzle manager for providing debug information.
  */
+#define SWIZZLE_RESET(func) SwizzleManager.SwizzleManagerClass::Reset();
 #ifndef NDEBUG
-#define REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle(pointer/*, __FILE__, __LINE__*/);
-#define FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID(pointer, id/*, __FILE__, __LINE__*/);
-#define HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, pointer/*, __FILE__, __LINE__*/);
+#define SWIZZLE_REQUEST_POINTER_REMAP(pointer) \
+            { \
+                SwizzleManagerClass::DebugFile = __FILE__; \
+                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
+                SwizzleManagerClass::DebugLine = __LINE__; \
+                SwizzleManager.SwizzleManagerClass::Swizzle((void **)&pointer); \
+            }
+
+#define SWIZZLE_REQUEST_POINTER_REMAP_LIST(var, vector) \
+            { \
+                SwizzleManagerClass::DebugFile = __FILE__; \
+                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
+                SwizzleManagerClass::DebugLine = __LINE__; \
+                for (int i = 0; i < vector.Count(); ++i) { \
+                    SwizzleManager.SwizzleManagerClass::Swizzle((void **)&vector[i]); \
+                } \
+            }
+
+#define SWIZZLE_FETCH_POINTER_ID(pointer, id) \
+            { \
+                SwizzleManagerClass::DebugFile = __FILE__; \
+                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
+                SwizzleManagerClass::DebugLine = __LINE__; \
+                SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id); \
+            }
+
+#define SWIZZLE_HERE_I_AM(id, pointer) \
+            { \
+                SwizzleManagerClass::DebugFile = __FILE__; \
+                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
+                SwizzleManagerClass::DebugLine = __LINE__; \
+                SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer); \
+            }
 #else
-#define REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle(pointer);
-#define FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID(pointer, id);
-#define HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, pointer);
+#define SWIZZLE_REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle((void **)&pointer);
+#define SWIZZLE_REQUEST_POINTER_REMAP_LIST(var, vector) \
+            { \
+                for (int i = 0; i < vector.Count(); ++i) { \
+                    SwizzleManager.SwizzleManagerClass::Swizzle((void **)&vector[i]); \
+                } \
+            }
+#define SWIZZLE_FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id);
+#define SWIZZLE_HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer);
 #endif

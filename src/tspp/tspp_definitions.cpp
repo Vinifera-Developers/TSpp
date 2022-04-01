@@ -5370,3 +5370,13 @@ ARRAY_DEF(0x0075F2A0, Cell *, BuildingOccupys, 24);
 ARRAY_DEF(0x0075FAE8, Cell *, BuildingExits, 30);
 
 ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);
+
+
+#ifndef NDEBUG
+/**
+ *  Swizzle Manager debug globals.
+ */
+char * SwizzleManagerClass::DebugFile;
+char * SwizzleManagerClass::DebugFunction;
+int SwizzleManagerClass::DebugLine;
+#endif

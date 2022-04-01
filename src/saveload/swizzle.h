@@ -80,4 +80,14 @@ class SwizzleManagerClass : public ISwizzle
     public:
         DynamicVectorClass<SwizzlePointerStruct> RequestTable;
         DynamicVectorClass<SwizzlePointerStruct> PointerTable;
+        
+#ifndef NDEBUG
+    public:
+        /**
+         *  These globals allow for save/load call site analysis in debug builds.
+         */
+        static char * DebugFile;
+        static char * DebugFunction;
+        static int DebugLine;
+#endif
 };
