@@ -30,12 +30,14 @@
 #include "always.h"
 #include "tibsun_defines.h"
 
+extern int &InstalledMode;
+extern int &EnabledMode;
 
 bool Addon_Present();
-bool Addon_407120(int a1);
-bool Addon_Enabled(int a1);
-void Addon_407190(int a1);
-void Addon_4071C0(int a1);
+bool Addon_Installed(AddonType addon);
+bool Addon_Enabled(AddonType addon);
+void Addon_407190(AddonType addon);
+void Addon_4071C0(AddonType addon);
 bool Is_Addon_Set(AddonType addon);
 AddonType Get_Required_Addon();
 void Set_Required_Addon(AddonType addon);

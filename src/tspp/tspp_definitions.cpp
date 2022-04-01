@@ -4596,10 +4596,10 @@ DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass &), 0x0064B1
 DEFINE_IMPLEMENTATION(void Restate_Mission(ScenarioClass *), 0x005C0230);
 
 DEFINE_IMPLEMENTATION(bool Addon_Present(), 0x00407050);
-DEFINE_IMPLEMENTATION(bool Addon_407120(int), 0x00407120);
-DEFINE_IMPLEMENTATION(bool Addon_Enabled(int), 0x00407150);
-DEFINE_IMPLEMENTATION(void Addon_407190(int), 0x00407190);
-DEFINE_IMPLEMENTATION(void Addon_4071C0(int), 0x004071C0);
+DEFINE_IMPLEMENTATION(bool Addon_Installed(AddonType), 0x00407120);
+DEFINE_IMPLEMENTATION(bool Addon_Enabled(AddonType), 0x00407150);
+DEFINE_IMPLEMENTATION(void Addon_407190(AddonType), 0x00407190);
+DEFINE_IMPLEMENTATION(void Addon_4071C0(AddonType), 0x004071C0);
 DEFINE_IMPLEMENTATION(bool Is_Addon_Set(AddonType), 0x004071F0);
 DEFINE_IMPLEMENTATION(AddonType Get_Required_Addon(), 0x00407200);
 DEFINE_IMPLEMENTATION(void Set_Required_Addon(AddonType), 0x00407210);
@@ -5318,6 +5318,9 @@ LPDIRECTDRAWCLIPPER &DirectDrawClipper = Make_Global<LPDIRECTDRAWCLIPPER>(0x007A
 LPDIRECTDRAWSURFACE &DirectDrawPrimarySurface = Make_Global<LPDIRECTDRAWSURFACE>(0x007A1EB8);
 
 long &LParam = Make_Global<long>(0x007E47D8); // Additional information for RadioClass::Transmit_Message.
+
+int &InstalledMode = Make_Global<int>(0x006F2638);
+int &EnabledMode = Make_Global<int>(0x006F263C);
 
 
 /**
