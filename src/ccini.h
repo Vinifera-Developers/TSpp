@@ -218,6 +218,12 @@ class CCINIClass : public INIClass
         const InfantryTypeClass *Get_Infantry(const char *section, const char *entry, const InfantryTypeClass *defvalue);
         bool Put_Infantry(const char *section, const char *entry, const InfantryTypeClass *value);
 
+        template<class T>
+        TypeList<T *> Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap);
+
+        template<class T>
+        bool Put_TypeList(const char *section, const char *entry, const TypeList<T *> value);
+
     private:
         void Calculate_Message_Digest();
         void Invalidate_Message_Digest();
@@ -226,3 +232,58 @@ class CCINIClass : public INIClass
         bool IsDigestPresent;
         unsigned char Digest[20];
 };
+
+
+/**
+ *  Fetch a type list from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+template<class T>
+TypeList<T *> CCINIClass::Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<T> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+
+            for (int index = 0; index < heap.Count(); ++index) {
+                T * ptr = const_cast<T *>(T::Find_Or_Make(name));
+                if (ptr) {
+                    list.Add(ptr);
+                }
+            }
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store a type list to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+template<class T>
+bool CCINIClass::Put_TypeList(const char *section, const char *entry, const TypeList<T *> value)
+{
+    char buffer[1024] = { '\0' };
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]->Name());
+    }
+
+    return Put_String(section, entry, buffer);
+}
