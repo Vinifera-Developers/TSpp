@@ -257,6 +257,7 @@
 #include "laserdraw.h"
 #include "packet.h"
 #include "field.h"
+#include "brain.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "winfont.h"
@@ -4879,6 +4880,17 @@ FieldClass::FieldClass() : ID(), DataType(0), Size(0), Data(nullptr), Next(nullp
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(FieldClass::~FieldClass(), 0x00498BA0);
 DEFINE_IMPLEMENTATION(void FieldClass::Host_To_Net(), 0x00498BC0);
 DEFINE_IMPLEMENTATION(void FieldClass::Net_To_Host(), 0x00498C30);
+
+BrainClass::BrainClass() : Neurons(), field_1C(nullptr), Max(0) {}
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(BrainClass::~BrainClass(), 0x00425540);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(NeuronClass::NeuronClass(), 0x004252B0);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(NeuronClass::~NeuronClass(), 0x00425390);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE NeuronClass::GetClassID(CLSID *), 0x00425440);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE NeuronClass::Load(IStream *), 0x00425480);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE NeuronClass::Save(IStream *, BOOL), 0x004254F0);
+DEFINE_IMPLEMENTATION(RTTIType NeuronClass::Kind_Of() const, 0x004258E0);
+DEFINE_IMPLEMENTATION(int NeuronClass::Size_Of(bool) const, 0x004258F0);
+DEFINE_IMPLEMENTATION(void NeuronClass::Compute_CRC(WWCRCEngine &) const, 0x00425510);
 
 
 /**
