@@ -258,6 +258,7 @@
 #include "packet.h"
 #include "field.h"
 #include "brain.h"
+#include "alphashape.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "winfont.h"
@@ -4891,6 +4892,18 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE NeuronClass::Save(IStream *, BOO
 DEFINE_IMPLEMENTATION(RTTIType NeuronClass::Kind_Of() const, 0x004258E0);
 DEFINE_IMPLEMENTATION(int NeuronClass::Size_Of(bool) const, 0x004258F0);
 DEFINE_IMPLEMENTATION(void NeuronClass::Compute_CRC(WWCRCEngine &) const, 0x00425510);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AlphaShapeClass::GetClassID(CLSID *), 0x00412950);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AlphaShapeClass::Load(IStream *), 0x004129F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AlphaShapeClass::Save(IStream *, BOOL), 0x00412A40);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(AlphaShapeClass::AlphaShapeClass(), 0x00412720);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(AlphaShapeClass::AlphaShapeClass(TARGET, int, int), 0x004125A0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(AlphaShapeClass::AlphaShapeClass(NoInitClass &), 0x00412880);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(AlphaShapeClass::~AlphaShapeClass(), 0x004128A0);
+DEFINE_IMPLEMENTATION(void AlphaShapeClass::Detach(TARGET, bool), 0x00412A70);
+DEFINE_IMPLEMENTATION(RTTIType AlphaShapeClass::Kind_Of() const, 0x00412990);
+DEFINE_IMPLEMENTATION(int AlphaShapeClass::Size_Of(bool) const, 0x004129A0);
+DEFINE_IMPLEMENTATION(void AlphaShapeClass::Compute_CRC(WWCRCEngine &) const, 0x004129B0);
 
 
 /**
