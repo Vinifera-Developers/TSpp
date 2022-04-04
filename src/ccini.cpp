@@ -185,11 +185,9 @@ TypeList<AnimTypeClass *> CCINIClass::Get_Anims(const char *section, const char 
         char *name = std::strtok(buffer, ",");
         while (name) {
 
-            for (AnimType index = ANIM_FIRST; index < AnimTypes.Count(); ++index) {
-                AnimTypeClass *ptr = const_cast<AnimTypeClass *>(AnimTypeClass::Find_Or_Make(name));
-                if (ptr) {
-                    list.Add(ptr);
-                }
+            AnimTypeClass *ptr = const_cast<AnimTypeClass *>(AnimTypeClass::Find_Or_Make(name));
+            if (ptr) {
+                list.Add(ptr);
             }
 
             name = std::strtok(nullptr, ",");
@@ -238,11 +236,9 @@ TypeList<UnitTypeClass *> CCINIClass::Get_Units(const char *section, const char 
         char *name = std::strtok(buffer, ",");
         while (name) {
 
-            for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
-                UnitTypeClass *ptr = const_cast<UnitTypeClass *>(UnitTypeClass::Find_Or_Make(name));
-                if (ptr) {
-                    list.Add(ptr);
-                }
+            UnitTypeClass *ptr = const_cast<UnitTypeClass *>(UnitTypeClass::Find_Or_Make(name));
+            if (ptr) {
+                list.Add(ptr);
             }
 
             name = std::strtok(nullptr, ",");
@@ -291,11 +287,9 @@ TypeList<BuildingTypeClass *> CCINIClass::Get_Buildings(const char *section, con
         char *name = std::strtok(buffer, ",");
         while (name) {
 
-            for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
-                BuildingTypeClass *ptr = const_cast<BuildingTypeClass *>(BuildingTypeClass::Find_Or_Make(name));
-                if (ptr) {
-                    list.Add(ptr);
-                }
+            BuildingTypeClass *ptr = const_cast<BuildingTypeClass *>(BuildingTypeClass::Find_Or_Make(name));
+            if (ptr) {
+                list.Add(ptr);
             }
 
             name = std::strtok(nullptr, ",");
