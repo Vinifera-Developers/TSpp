@@ -261,6 +261,9 @@ class DynamicVectorClass : public VectorClass<T>
         DynamicVectorClass(const DynamicVectorClass &that);
         virtual ~DynamicVectorClass() {}
 
+        T &operator[](int index);
+        const T &operator[](int index) const;
+
         bool operator==(const DynamicVectorClass &src) { return false; }
         bool operator!=(const DynamicVectorClass &src) { return true; }
 
@@ -316,6 +319,22 @@ DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T> &that) :
     ActiveCount(0)
 {
     *this = that;
+}
+
+
+template<typename T>
+T &DynamicVectorClass<T>::operator[](int index)
+{
+    TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    return Vector[index];
+}
+
+
+template<typename T>
+const T &DynamicVectorClass<T>::operator[](int index) const
+{
+    TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    return Vector[index];
 }
 
 
