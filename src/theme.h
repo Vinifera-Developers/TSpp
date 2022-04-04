@@ -74,6 +74,7 @@ class ThemeClass
 			ThemeControl();
 			~ThemeControl();
 
+			bool Read_INI(CCINIClass &ini);
 			bool Fill_In(CCINIClass &ini);
 
 			char Name[256];

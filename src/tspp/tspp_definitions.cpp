@@ -2343,6 +2343,7 @@ DEFINE_IMPLEMENTATION(const char *ThemeClass::Theme_File_Name(ThemeType), 0x0064
 DEFINE_IMPLEMENTATION(void ThemeClass::Scan(), 0x00643C70);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeControl::ThemeControl(), 0x006439B0);
 ThemeClass::ThemeControl::~ThemeControl() {}
+DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Read_INI(CCINIClass &), 0x006439F0);
 DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Fill_In(CCINIClass &), 0x00643AC0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXInterfaceClass::IPXInterfaceClass(), 0x006A02F0);
