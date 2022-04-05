@@ -76,6 +76,7 @@ class ConvertClass
         }
 
 	    static ConvertClass *Create_Drawer(const char *pal_filename, PaletteClass *pal, XSurface *surface);
+	    static ConvertClass *Create_Drawer(const char *pal_filename);
 
     protected:
         int BytesPerPixel;
