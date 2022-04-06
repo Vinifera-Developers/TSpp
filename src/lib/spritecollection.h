@@ -68,3 +68,6 @@ class SpriteCollectionClass
     public:
         Dictionary ImageDictionary;
 };
+
+
+BSurface *Get_PCX_Image_Surface(const char *filename);
