@@ -121,8 +121,8 @@ class ObjectTypeClass : public AbstractTypeClass
 		bool IsFootprint;
         bool IsVoxel;
         bool IsNewTheater;
-        bool HasRadialIndicator;
-        bool IgnoresFirestorm;
+        bool IsHasRadialIndicator;
+        bool IsIgnoresFirestorm;
         IndexClass<int, int> field_D4;
         IndexClass<int, int> field_E8;
         IndexClass<int, int> field_FC;

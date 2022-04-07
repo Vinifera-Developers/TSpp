@@ -1503,6 +1503,7 @@ DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers_Flags(), 0x006177A0);
+DEFINE_IMPLEMENTATION(void Tactical::Draw_Radial_Indicators() const, 0x00617FA0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FuseClass::FuseClass(), 0x004A99F0);
 FuseClass::FuseClass(const NoInitClass &) {}
@@ -2497,7 +2498,7 @@ DEFINE_IMPLEMENTATION(void ObjectClass::Look(bool, bool), 0x00584FE0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Mark(MarkType), 0x00586400);
 DEFINE_IMPLEMENTATION(Rect ObjectClass::entry_114() const, 0x005853B0);
 DEFINE_IMPLEMENTATION(Rect ObjectClass::entry_118() const, 0x00585510);
-DEFINE_IMPLEMENTATION(void ObjectClass::entry_11C() const, 0x0040F200);
+DEFINE_IMPLEMENTATION(void ObjectClass::Draw_Radial_Indicator() const, 0x0040F200);
 DEFINE_IMPLEMENTATION(void ObjectClass::Mark_For_Redraw(), 0x00585A30);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x00584FF0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, Cell &, bool), 0x00585000);
@@ -2973,7 +2974,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Draw_It(Point2D &, Rect &) const, 0x00
 DEFINE_IMPLEMENTATION(void BuildingClass::Placement_Draw_It(Point2D &, Rect &) const, 0x00427390);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Mark(MarkType), 0x00429370);
 DEFINE_IMPLEMENTATION(Rect BuildingClass::entry_118() const, 0x00439B90);
-DEFINE_IMPLEMENTATION(void BuildingClass::entry_11C() const, 0x0043A6F0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Draw_Radial_Indicator() const, 0x0043A6F0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0042C210);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Active_Click_With(ActionType, Cell &, bool), 0x0042C0B0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Clicked_As_Target(int), 0x0043AB00);

@@ -158,7 +158,7 @@ Tactical : public AbstractClass
         void Debug_Draw_Occupiers_Flags(); // 006177A0
         // 00617CD0
         // 00617EE0
-        // 00617FA0
+        void Draw_Radial_Indicators() const; // 00617FA0
         
         static Point2D func_60F0F0(int x, int y);
         static int func_60F450(int a1);

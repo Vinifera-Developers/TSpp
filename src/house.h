@@ -41,6 +41,7 @@
 #include "ftimer.h"
 #include "typelist.h"
 #include "dropship.h"
+#include "rgb.h"
 #include "tibsun_defines.h"
 #include <ocidl.h> // for IConnectionPointContainer.
 
@@ -477,7 +478,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         DropshipLoadoutClass DropshipLoadouts[DROPSHIP_LOADOUT_MAX];
         int field_4EC;
         bool field_4F0;
-        RGBStruct RemapColorRGB;
+        RGBClass RemapColorRGB;
         BaseClass Base;
         bool field_56C;
         bool field_56D;

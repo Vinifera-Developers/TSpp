@@ -121,7 +121,7 @@ class ObjectClass : public AbstractClass
         virtual bool Mark(MarkType mark = MARK_CHANGE);
         virtual Rect entry_114() const;
         virtual Rect entry_118() const;
-        virtual void entry_11C() const;
+        virtual void Draw_Radial_Indicator() const;
         virtual void Mark_For_Redraw();
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false);
         virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false);

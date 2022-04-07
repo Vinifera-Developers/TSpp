@@ -175,8 +175,8 @@ BuildingTypeClass : public TechnoTypeClass
         TPoint2D<int> ZShapePointMove;
         TRect<int> field_7F0;
         short ExtraLight;
-        bool CanTogglePower;
-        bool HasSpotlight;
+        bool IsCanTogglePower;
+        bool IsHasSpotlight;
         bool IsTemple;
         bool IsPlug;
         bool IsHoverPad;
@@ -187,14 +187,14 @@ BuildingTypeClass : public TechnoTypeClass
         bool IsPowered;
         bool IsUnsellable;
         bool IsRadar;
-        bool HasChargeAnim;
-        bool SiloDamage;
+        bool IsHasChargeAnim;
+        bool IsSiloDamage;
         bool CanUnitRepair;
         bool CanUnitReload;
         bool IsFlat;
         bool IsDockUnload;
         bool IsRecoilless;
-        bool HasStupidGuardMode;
+        bool IsHasStupidGuardMode;
         bool IsBridgeRepairHut;
         bool IsGate;
         bool IsSAM;
@@ -241,7 +241,7 @@ BuildingTypeClass : public TechnoTypeClass
         bool IsDamagedDoor;
         bool IsInvisibleInGame;
         bool IsTerrainPalette;
-        bool CanPlaceAnywhere;
+        bool IsCanPlaceAnywhere;
         bool IsExtraDamageStage;
         bool CanAIBuildThis;
         bool IsBaseDefense;

@@ -299,7 +299,7 @@ bool DSurface::Put_Pixel_Trans(Point2D &point, RGBClass &rgb, unsigned opacity)
     unsigned int green_max = (unsigned int)(255 >> GreenRight) << GreenLeft;
     unsigned int blue_max = (unsigned int)(255 >> BlueRight) << BlueLeft;
 
-    unsigned short color = RGBA_To_Pixel(rgb.Red, rgb.Green, rgb.Blue);
+    unsigned short color = RGB_To_Pixel(rgb.Red, rgb.Green, rgb.Blue);
 
     unsigned rscaled = scale * (color & red_max);
     unsigned gscaled = scale * (color & green_max);

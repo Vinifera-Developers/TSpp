@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "xsurface.h"
+#include "rgb.h"
 
 
 #define DIRECTDRAW_VERSION 0x0100 // Use DirectDraw 1.0
@@ -88,14 +89,21 @@ class DSurface : public XSurface
 
         static DSurface *Create_Primary(DSurface **backbuffer_surface = nullptr);
 
-        static unsigned RGBA_To_Pixel(unsigned r, unsigned g, unsigned b)
+        static unsigned RGB_To_Pixel(unsigned r, unsigned g, unsigned b)
         {
             return (unsigned((b >> BlueRight) << BlueLeft)
                   | unsigned((r >> RedRight) << RedLeft)
                   | unsigned((g >> GreenRight) << GreenLeft));
         }
 
-        static void Pixel_To_RGBA(unsigned pixel, unsigned *red, unsigned *green, unsigned *blue)
+        static unsigned RGB_To_Pixel(RGBClass &rgb)
+        {
+            return (unsigned((rgb.Red >> BlueRight) << BlueLeft)
+                  | unsigned((rgb.Green >> RedRight) << RedLeft)
+                  | unsigned((rgb.Blue >> GreenRight) << GreenLeft));
+        }
+
+        static void Pixel_To_RGB(unsigned pixel, unsigned *red, unsigned *green, unsigned *blue)
         {
             *red = ((pixel >> RedLeft) << RedRight);
             *green = ((pixel >> GreenLeft) << GreenRight);

@@ -105,7 +105,7 @@ BuildingClass : public TechnoClass
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual Rect entry_118() const override;
-        virtual void entry_11C() const override;
+        virtual void Draw_Radial_Indicator() const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
         virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false) override;
         virtual void Clicked_As_Target(int frames) override;
