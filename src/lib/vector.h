@@ -849,3 +849,210 @@ int SimpleDynVecClass<T>::Find_Index(const T &object)
     }
     return -1;
 }
+
+
+/**
+ *  A fixed-size array of vectors.
+ */
+template<class T, int COUNT>
+class VectorArrayClass
+{
+    public:
+	    static const int CollectionCount = COUNT;
+
+    public:
+	    VectorArrayClass() : ActiveContext(0) {}
+	    virtual ~VectorArrayClass() {}
+
+	    T & operator[](unsigned index)
+	    {
+            TSPP_ASSERT(index < Count(ActiveContext));
+		    return Collection[ActiveContext][index];
+	    }
+
+	    T const & operator[](unsigned index) const
+	    {
+            TSPP_ASSERT(index < Count(ActiveContext));
+		    return Collection[ActiveContext][index];
+	    }
+
+	    VectorClass<T> & Raw()
+	    {
+		    return Collection[ActiveContext];
+	    }
+
+	    VectorClass<T> & Raw(int context)
+	    {
+		    return Collection[context];
+	    }
+
+	    void Set_Active_Context(int active)
+        {
+		    ActiveContext = active;
+	    }
+
+	    int Active_Context_Length() const
+	    {
+		    return Collection[ActiveContext].Length();
+	    }
+
+	    void Clear_All()
+	    {
+		    for (int i = 0; i < CollectionCount; ++i) {
+			    Collection[i].Clear()
+		    }
+	    }
+
+	    void Clear()
+	    {
+		    Collection[ActiveContext].Clear();
+	    }
+
+	    void Clear(int context)
+	    {
+		    Collection[context].Clear();
+	    }
+
+	    int Length(int context) const
+	    {
+		    return Collection[context].Length();
+	    }
+
+    private:
+	    VectorClass<T> Collection[COUNT];
+	    int ActiveContext;
+};
+
+
+/**
+ *  A fixed-size array of dynamic vectors.
+ */
+template<class T, int COUNT, int FIRST = 0, int DEFAULT = FIRST>
+class DynamicVectorArrayClass
+{
+    public:
+	    static const int CollectionCount = COUNT;
+
+    public:
+	    DynamicVectorArrayClass() : ActiveContext(DEFAULT) {}
+	    virtual ~DynamicVectorArrayClass() {}
+
+	    T & operator[](unsigned index)
+	    {
+            TSPP_ASSERT(index < Count(ActiveContext));
+		    return Collection[ActiveContext][index];
+	    }
+
+	    T const & operator[](unsigned index) const
+	    {
+            TSPP_ASSERT(index < Count(ActiveContext));
+		    return Collection[ActiveContext][index];
+	    }
+
+	    DynamicVectorClass<T> & Raw()
+	    {
+		    return Collection[ActiveContext];
+	    }
+
+	    DynamicVectorClass<T> & Raw(int context)
+	    {
+		    return Collection[context];
+	    }
+
+	    void Set_Active_Context(int active)
+        {
+		    ActiveContext = active;
+	    }
+
+	    int Active_Context_Count() const
+	    {
+		    return Count(ActiveContext);
+	    }
+
+	    int Add_To_Active(T const & object)
+	    {
+		    return Add(ActiveContext, object);
+	    }
+
+	    int Add_To_Active_Head(T const & object)
+	    {
+		    return Add_Head(ActiveContext, object);
+	    }
+
+	    int Delete_From_Active(T const & object)
+	    {
+		    return Delete(ActiveContext, object);
+	    }
+
+	    int Delete_From_Active(int index)
+	    {
+		    return Delete(ActiveContext, index);
+	    }
+
+	    int Delete_All(T const & object)
+	    {
+		    int count = 0;
+		    for (int i = FIRST; i < CollectionCount; ++i) {
+			    count += Delete(i, object);
+		    }
+		    return count;
+	    }
+
+	    int Delete_All_Except(T const & object, int except)
+	    {
+		    int count = 0;
+		    for (int i = FIRST; i < CollectionCount; ++i) {
+			    if (except != i) {
+				    count += Delete(i, object);
+			    }
+		    }
+		    return count;
+	    }
+
+	    void Clear_All()
+	    {
+		    for (int i = FIRST; i < CollectionCount; ++i) {
+		        Collection[i].Clear();
+		    }
+	    }
+
+	    void Clear()
+	    {
+		    Clear(Active);
+	    }
+
+	    void Clear(int context)
+	    {
+		    Collection[context].Clear();
+	    }
+
+	    int Count(int context) const
+	    {
+		    return Collection[context].Count();
+	    }
+
+	    int Add(int context, T const & object)
+	    {
+		    return Collection[context].Add(object);
+	    }
+
+	    int Add_Head(int context, T const & object)
+	    {
+		    return Collection[context].Add(object);
+	    }
+
+	    int Delete(int context, T const & object)
+	    {
+		    return Collection[context].Delete(object);
+	    }
+
+	    int Delete(int context, int index)
+	    {
+		    return Collection[context].Delete(index);
+	    }
+
+    private:
+	    DynamicVectorClass<T> Collection[COUNT];
+	    int ActiveContext;
+	    int ActiveContextCount;
+};
