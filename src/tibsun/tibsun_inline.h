@@ -36,6 +36,9 @@
 
 extern const Cell AdjacentCell[FACING_COUNT];
 extern const Coordinate AdjacentCoord[FACING_COUNT];
+extern unsigned char const Facing8[256];
+extern unsigned char const Facing16[256];
+extern unsigned char const Facing32[256];
 
 
 inline FacingType Dir_Facing(DirType facing)
@@ -47,6 +50,24 @@ inline FacingType Dir_Facing(DirType facing)
 inline DirType Facing_Dir(FacingType facing)
 {
     return (DirType)((int)facing << 5);
+}
+
+
+inline FacingType Dir_To_8(DirType facing)
+{
+    return (FacingType)Facing8[facing];
+}
+
+
+inline FacingType Dir_To_16(DirType facing)
+{
+    return (FacingType)Facing16[facing];
+}
+
+
+inline FacingType Dir_To_32(DirType facing)
+{
+    return (FacingType)Facing32[facing];
 }
 
 
@@ -75,6 +96,12 @@ inline int Dir_To_64(DirStruct &facing)
 {
 	//return ((((((facing.Get_Raw() >> 9) + 1) >> 1) & 63) + 8) & 63);
 	return ((((facing.Get_Raw() + 512) >> 10) + 8) % 64);
+}
+
+
+inline DirType Dir_Snap(DirType facing)
+{
+    return Facing_Dir(Dir_To_8(facing));
 }
 
 

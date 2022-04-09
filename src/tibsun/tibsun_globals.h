@@ -185,7 +185,7 @@ extern SessionClass &Session;
 extern SwizzleManagerClass &SwizzleManager;
 extern ConvertClass *&CameoDrawer;
 extern ConvertClass *&ObjectDrawer;
-extern ConvertClass *&VoxelDrawer;
+extern ConvertClass *&OverlayDrawer;
 extern ConvertClass *&TiberiumDrawer;
 extern ConvertClass *&AnimDrawer;
 extern ConvertClass *&NormalDrawer;
