@@ -80,6 +80,8 @@ IsometricTileTypeClass : public ObjectTypeClass
     public:
         IsoTileFileStruct *const Get_Tile_Data() const { return (IsoTileFileStruct *)IsometricTileTypeClass::Get_Image_Data(); }
 
+        void Load_Image_Data();
+
         static const IsometricTileTypeClass &As_Reference(IsometricTileType type);
         static const IsometricTileTypeClass *As_Pointer(IsometricTileType type);
         static const IsometricTileTypeClass &As_Reference(const char *name);

@@ -945,6 +945,7 @@ DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(Cell &, Hous
 DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(HouseClass *) const, 0x004F8410);
 DEFINE_IMPLEMENTATION(Cell *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
 DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
+DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Load_Image_Data(), 0x004F5940);
 
 CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2AF4; }
 CommandClass::~CommandClass() {}
