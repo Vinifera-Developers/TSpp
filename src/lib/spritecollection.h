@@ -71,3 +71,4 @@ class SpriteCollectionClass
 
 
 BSurface *Get_PCX_Image_Surface(const char *filename);
+BSurface *Get_BMP_Image_Surface(const char *filename);

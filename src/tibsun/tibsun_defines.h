@@ -204,7 +204,9 @@ typedef enum CrateType
     CRATE_TIBERIUM,
     CRATE_POD,
 
-    CRATE_COUNT
+    CRATE_COUNT,
+
+    CRATE_NONE = -1,
 } CrateType;
 DEFINE_ENUMERATION_OPERATORS(CrateType);
 

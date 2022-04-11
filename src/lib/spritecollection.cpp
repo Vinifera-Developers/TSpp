@@ -29,6 +29,8 @@
 #include "tibsun_globals.h"
 #include "filepcx.h"
 #include "ccfile.h"
+#include "wstring.h"
+#include "bsurface.h"
 //#include "tspp_debug.h"
 
 
@@ -54,47 +56,101 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
 
     BSurface *surface = nullptr;
 
-    char buff[12+4];
-    std::snprintf(buff, sizeof(buff), "%s.PCX", filename);
+    Wstring fname = filename;
+    fname += ".PCX";
 
-    CCFileClass pcxfile(buff);
-    if (pcxfile.Is_Available()) {
+    /**
+     *  Image collection requires lowercase filename.
+     */
+    fname.To_Lower();
 
-        /**
-         *  Image collection requires lowercase filename.
-         */
-        strlwr(buff);
+    CCFileClass pcxfile(fname.Peek_Buffer());
+    if (!pcxfile.Is_Available()) {
+        return nullptr;
+    }
 
-        PCX_HEADER pcxhdr;
-        pcxfile.Read(&pcxhdr, sizeof(pcxhdr));
+    PCX_HEADER pcxhdr;
+    pcxfile.Read(&pcxhdr, sizeof(pcxhdr));
 
-        bool loaded = false;
+    /**
+     *  We only support 8-bit PCX images.
+     */
+    if (pcxhdr.BitsPixelPlane != 8) {
+        //TSPP_DEBUG_ERROR("File \"%s\" is an unsupported PCX format!\n", buff);
+        return false;
+    }
 
-        /**
-         *  We only support 8-bit PCX images.
-         */
-        if (pcxhdr.BitsPixelPlane != 8) {
-            //TSPP_DEBUG_WARNING("File \"%s\" is an unsupported PCX format!\n", buff);
+    /**
+     *  Load the PCX image.
+     */
+    bool loaded = SpriteCollection.File_Loaded(fname.Peek_Buffer());
+    if (!loaded) {
 
         /**
          *  PCX is paletted.
          */
-        } else if (pcxhdr.NumberOfPlanes == 1) {
-            loaded = SpriteCollection.Load_Paletted_PCX(buff);
+         if (pcxhdr.NumberOfPlanes == 1) {
+            loaded = SpriteCollection.Load_Paletted_PCX(fname.Peek_Buffer());
 
         } else {
-            loaded = SpriteCollection.Load_PCX(buff, 1);
-        }
-
-        /**
-         *  Was the PCX file loaded successfully? Return a pointer to the loaded image surface.
-         */
-        if (loaded) {
-            surface = SpriteCollection.Get_Image_Surface(buff);
-        } else {
-            //TSPP_DEBUG_WARNING("Failed to load PCX \"%s\"!\n", buff);
+            loaded = SpriteCollection.Load_PCX(fname.Peek_Buffer(), 1);
         }
     }
+
+    if (!loaded) {
+        //TSPP_DEBUG_WARNING("Failed to load PCX \"%s\"!\n", fname.Peek_Buffer());
+        return false;
+    }
+
+    /**
+     *  Was the PCX file loaded successfully? Return a pointer to the loaded image surface.
+     */
+    if (loaded) {
+        BSurface *tmp = SpriteCollection.Get_Image_Surface(fname.Peek_Buffer());
+        surface = new BSurface();
+        surface->Copy_From(*tmp);
+    }
+
+    return surface;
+}
+
+
+/**
+ *  Fetch a BMP image surface from the specified filename if it exists.
+ *  
+ *  @return      NULL if the BMP file was not found.
+ * 
+ *  @warning     The input filename must not contain an extension!
+ * 
+ *  @author: CCHyper
+ */
+BSurface *Get_BMP_Image_Surface(const char *filename)
+{
+    if (!filename || !std::strlen(filename)) {
+        return nullptr;
+    }
+
+    if (std::strstr(filename, ".BMP")) {
+        //TSPP_DEBUG_WARNING("invalid filename passed to Get_BMP_Image_Surface()!\n");
+        return nullptr;
+    }
+
+    Wstring fname = filename;
+    fname += ".BMP";
+
+    /**
+     *  Image collection requires lowercase filename.
+     */
+    fname.To_Lower();
+
+    CCFileClass bmpfile(fname.Peek_Buffer());
+    if (!bmpfile.Is_Available()) {
+        return nullptr;
+    }
+
+    BSurface *surface = nullptr;
+
+    // TODO
 
     return surface;
 }
