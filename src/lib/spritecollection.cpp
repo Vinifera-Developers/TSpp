@@ -107,7 +107,7 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
      */
     if (loaded) {
         BSurface *tmp = SpriteCollection.Get_Image_Surface(fname.Peek_Buffer());
-        surface = new BSurface();
+        surface = new BSurface(tmp->Get_Width(), tmp->Get_Height(), tmp->Get_Bytes_Per_Pixel());
         surface->Copy_From(*tmp);
     }
 
