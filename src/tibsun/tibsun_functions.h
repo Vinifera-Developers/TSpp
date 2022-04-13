@@ -75,3 +75,6 @@ const char *Name_From_Layer(LayerType layer);
 FacingType Facing_From_Name(const char *name);
 const char *Name_From_Facing(FacingType facing);
 const char *Name_From_RadioMessage(RadioMessageType msg);
+
+const char *Name_From_RTTI(RTTIType rtti);
+RTTIType RTTI_From_Name(const char *name);

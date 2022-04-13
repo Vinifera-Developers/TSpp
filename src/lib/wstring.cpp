@@ -29,6 +29,7 @@
  *
  ***************************************************************************** */
 #include "wstring.h"
+#include <cctype>
 
 
 static const char SpaceChar = ' ';
