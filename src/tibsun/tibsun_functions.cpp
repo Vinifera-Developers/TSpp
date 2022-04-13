@@ -33,6 +33,49 @@
 
 
 /***************************************************************************
+**	These are the text representations of the radio messages that can be transmitted.
+*/
+static const char * const RadioMessages[RADIO_COUNT] =
+{
+    "static (no message)",
+    "Roger.",
+    "Come in.",
+    "Over and out.",
+    "Requesting transport.",
+    "Attach to transport.",
+    "I've got a delivery for you.",
+    "I'm performing load/unload maneuver. Be careful.",
+    "I'm clear.",
+    "You are clear to unload. Driving away now.",
+    "Am unable to comply.",
+    "I'm starting construction now... act busy.",
+    "I've finished construction. You are free.",
+    "We bumped, redraw yourself please.",
+    "I'm trying to load up now.",
+    "May I become a passenger?",
+    "Are you ready to receive shipment?",
+    "Are you trying to become a passenger?",
+    "Move to location X.",
+    "Do you need to move?",
+    "All right already. Now what?",
+    "I'm a passenger now.",
+    "Backup into refinery now.",
+    "Run away!",
+    "Tether established.",
+    "Tether broken.",
+    "Repair one step.",
+    "Are you prepared to fight?",
+    "Attack this target please.",
+    "Reload one step.",
+    "Circumstances prevent success.",
+    "All done with the request.",
+    "Do you need service depot work?",
+    "Are you sitting on service depot?",
+    "Gimme a ride!"
+};
+
+
+/***************************************************************************
 **	These are the ASCII names for the cell land types.
 */
 static const char * const LayerName[LAYER_COUNT] =
@@ -122,6 +165,20 @@ const char *Name_From_Facing(FacingType facing)
 		return FacingName[facing];
 	}
 	return "<none>";
+}
+
+
+/**
+ *  Retrieves the name for the given RadioMessageType.
+ * 
+ *  @author: CCHyper
+ */
+const char *Name_From_RadioMessage(RadioMessageType msg)
+{
+	if (msg >= RADIO_STATIC && msg < RADIO_COUNT) {
+		return RadioMessages[msg];
+	}
+	return "<unknown>";
 }
 
 

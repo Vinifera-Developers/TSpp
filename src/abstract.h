@@ -97,7 +97,7 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
 
         bool Is_Dirty() const { return Dirty; }
 
-    protected:
+    public:
         int ID;
         int HeapID;
         bool Dirty;
