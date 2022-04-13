@@ -226,6 +226,7 @@
 #include "tclassfactory.h"
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
+#include "flylocomotion.h"
 #include "cd.h"
 #include "vqa.h"
 #include "progressscreen.h"
@@ -4524,6 +4525,34 @@ DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Start_Of_Move(bool *, bool, boo
 DEFINE_IMPLEMENTATION(Coordinate DriveLocomotionClass::Smooth_Turn(Coordinate &, DirType &), 0x00481DD0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Incoming(Cell), 0x00481E50);
 // 00481EE0
+
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
+DEFINE_IMPLEMENTATION(ULONG FlyLocomotionClass::AddRef(), 0x00506480);
+DEFINE_IMPLEMENTATION(ULONG FlyLocomotionClass::Release(), 0x005064A0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::GetClassID(CLSID *), 0x0049CD20);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::Load(IStream *), 0x0049CD60);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Moving(), 0x00499550);
+DEFINE_IMPLEMENTATION(Coordinate FlyLocomotionClass::Destination(), 0x004995A0);
+DEFINE_IMPLEMENTATION(Matrix3D FlyLocomotionClass::Draw_Matrix(int *), 0x0049C640);
+DEFINE_IMPLEMENTATION(Matrix3D FlyLocomotionClass::Shadow_Matrix(int *), 0x0049CBB0);
+DEFINE_IMPLEMENTATION(Point2D FlyLocomotionClass::Draw_Point(), 0x0049C9E0);
+DEFINE_IMPLEMENTATION(Point2D FlyLocomotionClass::Shadow_Point(), 0x0049CAF0);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Process(), 0x00499600);
+DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Move_To(Coordinate), 0x004997C0);
+DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Stop_Moving(), 0x00499AB0);
+DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Do_Turn(DirStruct), 0x0049CCB0);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Power_Off(), 0x0049CDC0);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Powered(), 0x0049CE30);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Ion_Sensitive(), 0x0049CE40);
+DEFINE_IMPLEMENTATION(LayerType FlyLocomotionClass::In_Which_Layer(), 0x0049CD90);
+DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Moving_Now(), 0x00499580);
+DEFINE_IMPLEMENTATION(int FlyLocomotionClass::Apparent_Speed(), 0x0049CEC0);
+DEFINE_IMPLEMENTATION(int FlyLocomotionClass::Get_Status(), 0x0049CEF0);
+DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Acquire_Hunter_Seeker_Target(), 0x0049CF20);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FlyLocomotionClass::FlyLocomotionClass(), 0x004994B0);
+FlyLocomotionClass::FlyLocomotionClass(const NoInitClass &) {}
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(FlyLocomotionClass::~FlyLocomotionClass(), 0x00499530);
+DEFINE_IMPLEMENTATION(int FlyLocomotionClass::Size_Of(bool) const, 0x0049D3B0);
 
 CD::CD() {}
 DEFINE_IMPLEMENTATION(bool CD::Is_Available(int), 0x0044E7A0);

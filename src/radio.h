@@ -68,7 +68,7 @@ class RadioClass : public MissionClass
 		TechnoClass *Contact_With_Whom() { return reinterpret_cast<TechnoClass *>(Radio); }
 		void Radio_Off() { Radio = nullptr; }
 
-	private:
+	public:
 		RadioMessageType Old[3];
 		RadioClass *Radio;
 };
