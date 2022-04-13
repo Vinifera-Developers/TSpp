@@ -52,6 +52,7 @@
 #include "xsurface.h"
 #include "bsurface.h"
 #include "dsurface.h"
+#include "drawbuff.h"
 #include "abstract.h"
 #include "abstracttype.h"
 #include "random.h"
@@ -589,6 +590,10 @@ DEFINE_IMPLEMENTATION(int DSurface::Get_Pitch() const, 0x0048B360);
 DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_90(Rect &, Point2D &, Point2D &, RGBClass &, RGBClass &, float &, float &), 0x0048E4B0);
 DEFINE_IMPLEMENTATION(bool DSurface::Can_Blit() const, 0x0048B4B0);
 DEFINE_IMPLEMENTATION(DSurface *DSurface::Create_Primary(DSurface **), 0x0048AD60);
+
+DEFINE_IMPLEMENTATION(long Surface_Size_Of_Region(XSurface &, int, int), 0x00423330);
+DEFINE_IMPLEMENTATION(bool Surface_To_Buffer(XSurface &, Rect &, Buffer &), 0x00423350);
+DEFINE_IMPLEMENTATION(bool Buffer_To_Surface(XSurface &, Rect &, Buffer &), 0x00423410);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID *), 0x00405BF0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
