@@ -69,6 +69,8 @@ class XSurface : public Surface
 
         void Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
 
+        bool Copy_From_Alpha(Surface &fromsurface, Surface &alphasurface, int x_offset = 0, int y_offset = 0);
+
     public:
         int LockLevel;
         int BytesPerPixel;
