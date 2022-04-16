@@ -70,6 +70,8 @@ class XSurface : public Surface
         void Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
 
         bool Copy_From_Alpha(Surface &fromsurface, Surface &alphasurface, int x_offset = 0, int y_offset = 0);
+        bool Copy_From_Spritesheet(Surface &fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
+        bool Copy_From_Spritesheet_Alpha(Surface &fromsurface, Surface &alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
 
     public:
         int LockLevel;
