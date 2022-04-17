@@ -33,8 +33,16 @@
 class XSurface;
 class Rect;
 class Buffer;
+class Blitter;
+class RLEBlitter;
 
 
 long Surface_Size_Of_Region(XSurface &surface, int w, int h);
 bool Surface_To_Buffer(XSurface &surface, Rect &rect, Buffer &src);
 bool Buffer_To_Surface(XSurface &surface, Rect &rect, Buffer &src);
+
+bool Copy_To_Surface(XSurface &tosurface, Rect &torect, XSurface &fromsurface, Rect &fromrect, Blitter &blitter, int z_val = 0, ZGradientType z_gradient = ZGRAD_GROUND, int alpha_level = 1000, int warp_val = 0);
+bool Copy_To_Surface(XSurface &tosurface, Rect &toarea, Rect &torect, XSurface &fromsurface, Rect &fromarea, Rect &fromrect, Blitter &blitter, int z_val = 0, ZGradientType z_gradient = ZGRAD_GROUND, int alpha_level = 1000, int warp_val = 0);
+
+bool Copy_To_Surface_RLE(XSurface &tosurface, Rect &torect, XSurface &fromsurface, Rect &fromrect, RLEBlitter &blitter, int z_val = 0, ZGradientType z_gradient = ZGRAD_GROUND, int alpha_level = 1000, int warp_val = 0);
+bool Copy_To_Surface_RLE(XSurface &tosurface, Rect &toarea, Rect &torect, XSurface &fromsurface, Rect &fromarea, Rect &fromrect, RLEBlitter &blitter, int z_val = 0, ZGradientType z_gradient = ZGRAD_GROUND, int alpha_level = 1000, int warp_val = 0, XSurface *z_shape_surface = nullptr, int z_xoff = 0, int z_yoff = 0);

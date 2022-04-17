@@ -595,6 +595,10 @@ DEFINE_IMPLEMENTATION(DSurface *DSurface::Create_Primary(DSurface **), 0x0048AD6
 DEFINE_IMPLEMENTATION(long Surface_Size_Of_Region(XSurface &, int, int), 0x00423330);
 DEFINE_IMPLEMENTATION(bool Surface_To_Buffer(XSurface &, Rect &, Buffer &), 0x00423350);
 DEFINE_IMPLEMENTATION(bool Buffer_To_Surface(XSurface &, Rect &, Buffer &), 0x00423410);
+DEFINE_IMPLEMENTATION(bool Copy_To_Surface(XSurface &, Rect &, XSurface &, Rect &, Blitter &, int, ZGradientType, int, int), 0x004234D0);
+DEFINE_IMPLEMENTATION(bool Copy_To_Surface(XSurface &, Rect &, Rect &, XSurface &, Rect &, Rect &, Blitter &, int, ZGradientType, int, int), 0x00423530);
+DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface &, Rect &, XSurface &, Rect &, RLEBlitter &, int, ZGradientType, int, int), 0x00423A50);
+DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface &, Rect &, Rect &, XSurface &, Rect &, Rect &, RLEBlitter &, int, ZGradientType, int, int, XSurface *, int, int), 0x00423AB0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID *), 0x00405BF0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
@@ -1984,7 +1988,7 @@ DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char *, ThemeType), 0x005
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 
-DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, const ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, int, int, ShapeFileStruct *, int, int, int), 0x0047C780);
+DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, const ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, ZGradientType, int, ShapeFileStruct *, int, int, int), 0x0047C780);
 
 DEFINE_IMPLEMENTATION(int Base64_Encode(const void *, int, void *, int), 0x004208B0);
 DEFINE_IMPLEMENTATION(int Base64_Decode(const void *, int, void *, int), 0x004209D0);

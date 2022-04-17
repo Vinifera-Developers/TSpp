@@ -51,8 +51,8 @@ void CC_Draw_Shape(
 	Rect *rect,								// The clipping rect/window to use.
 	ShapeFlagsType flags = SHAPE_NORMAL,	// The custom draw shape flags. This controls how the data is drawn to the surface.
 	int a8 = 0,
-	int a9 = 0,								// looks like its the z adjustment value.
-	int a10 = 0,
+	int z_val = 0,							// looks like its the z adjustment value.
+	ZGradientType z_gradient = ZGRAD_GROUND,
 	int a11 = 1000,							// some sort of color intensity 0 - 2000 (def 1000)
 	ShapeFileStruct *z_shape = nullptr,
 	int z_framenum = 0,						// The shape number within the z shape that will be drawn.

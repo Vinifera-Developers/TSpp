@@ -33,10 +33,10 @@
 #include "always.h"
 
 
-int __fastcall LCW_Compress(void const * source, void * dest, int length);
+int LCW_Compress(void const * source, void * dest, int length);
 
 /**
  *  #NOTE:
  *  The 3rd argument is dummy and it exists to provide backward compatibility.
  */
-int __fastcall LCW_Uncompress(void const * source, void * dest, unsigned long length = 0);
+int LCW_Uncompress(void const * source, void * dest, unsigned long length = 0);
