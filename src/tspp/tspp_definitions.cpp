@@ -600,6 +600,11 @@ DEFINE_IMPLEMENTATION(bool Copy_To_Surface(XSurface &, Rect &, Rect &, XSurface 
 DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface &, Rect &, XSurface &, Rect &, RLEBlitter &, int, ZGradientType, int, int), 0x00423A50);
 DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface &, Rect &, Rect &, XSurface &, Rect &, Rect &, RLEBlitter &, int, ZGradientType, int, int, XSurface *, int, int), 0x00423AB0);
 
+DEFINE_IMPLEMENTATION(void __cdecl Brighten_555(unsigned char *, unsigned short *, int, int, int, int), 0x006C857A);
+DEFINE_IMPLEMENTATION(void __cdecl Brighten_556(unsigned char *, unsigned short *, int, int, int, int), 0x006C8657);
+DEFINE_IMPLEMENTATION(void __cdecl Brighten_565(unsigned char *, unsigned short *, int, int, int, int), 0x006C8734);
+DEFINE_IMPLEMENTATION(void __cdecl Brighten_655(unsigned char *, unsigned short *, int, int, int, int), 0x006C8811);
+
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID *), 0x00405BF0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::Release(), 0x00405CA0);
