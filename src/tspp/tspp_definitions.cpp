@@ -53,6 +53,7 @@
 #include "bsurface.h"
 #include "dsurface.h"
 #include "drawbuff.h"
+#include "blitblit.h"
 #include "abstract.h"
 #include "abstracttype.h"
 #include "random.h"
@@ -604,6 +605,23 @@ DEFINE_IMPLEMENTATION(void __cdecl Brighten_555(unsigned char *, unsigned short 
 DEFINE_IMPLEMENTATION(void __cdecl Brighten_556(unsigned char *, unsigned short *, int, int, int, int), 0x006C8657);
 DEFINE_IMPLEMENTATION(void __cdecl Brighten_565(unsigned char *, unsigned short *, int, int, int, int), 0x006C8734);
 DEFINE_IMPLEMENTATION(void __cdecl Brighten_655(unsigned char *, unsigned short *, int, int, int, int), 0x006C8811);
+
+template <> BlitPlain<unsigned char>::BlitPlain() : Blitter() {}
+template <> BlitPlain<unsigned char>::~BlitPlain() {}
+DEFINE_IMPLEMENTATION(void BlitPlain<unsigned char>::entry_4(void *, void *, unsigned, unsigned short, int *, int *, int, int), 0x006A8CB0);
+DEFINE_IMPLEMENTATION(void BlitPlain<unsigned char>::entry_8(void *, void *, unsigned, unsigned short, int *, int *, int), 0x006A8CE0);
+template <> BlitPlain<unsigned short>::BlitPlain() : Blitter() {}
+template <> BlitPlain<unsigned short>::~BlitPlain() {}
+DEFINE_IMPLEMENTATION(void BlitPlain<unsigned short>::entry_4(void *, void *, unsigned, unsigned short, int *, int *, int, int), 0x006A8D00);
+DEFINE_IMPLEMENTATION(void BlitPlain<unsigned short>::entry_8(void *, void *, unsigned, unsigned short, int *, int *, int), 0x006A8D30);
+template <> BlitTrans<unsigned char>::BlitTrans() : Blitter() {}
+template <> BlitTrans<unsigned char>::~BlitTrans() {}
+DEFINE_IMPLEMENTATION(void BlitTrans<unsigned char>::entry_4(void *, void *, unsigned, unsigned short, int *, int *, int, int), 0x006A8BD0);
+DEFINE_IMPLEMENTATION(void BlitTrans<unsigned char>::entry_8(void *, void *, unsigned, unsigned short, int *, int *, int), 0x006A8C80);
+template <> BlitTrans<unsigned short>::BlitTrans() : Blitter() {}
+template <> BlitTrans<unsigned short>::~BlitTrans() {}
+DEFINE_IMPLEMENTATION(void BlitTrans<unsigned short>::entry_4(void *, void *, unsigned, unsigned short, int *, int *, int, int), 0x006A8D50);
+DEFINE_IMPLEMENTATION(void BlitTrans<unsigned short>::entry_8(void *, void *, unsigned, unsigned short, int *, int *, int), 0x006A8D80);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID *), 0x00405BF0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
