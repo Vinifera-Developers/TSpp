@@ -142,6 +142,8 @@ class FileClass
         virtual bool Set_Date_Time(LONG date_time) = 0;
         virtual void Error(FileErrorType error, bool can_retry = false, const char *filename = nullptr) = 0;
 
+        off_t Tell() { return Seek(0, FILE_SEEK_CURRENT); }
+
     protected:
         static const char *File_Error_To_String(FileErrorType error);
 };

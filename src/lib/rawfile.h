@@ -59,8 +59,6 @@ class RawFileClass : public FileClass
 
         void Bias(off_t start, int length = -1);
 
-        off_t Tell() { return RawFileClass::Seek(0, FILE_SEEK_CURRENT); }
-
         HANDLE Get_File_Handle() { return Handle; }
 
     protected:
