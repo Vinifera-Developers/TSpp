@@ -64,6 +64,8 @@ long Owner_From_Name(const char *name);
 bool Main_Loop();
 void Keyboard_Process(KeyNumType &input);
 void Load_Title_Screen(const char *name, XSurface *video_page, PaletteClass *palette);
+ThemeType Get_Intro_Theme();
+ThemeType Get_Maps_Theme();
 void Init_Random();
 void Init_Campaigns();
 bool Init_Game(int argc, char *argv[]);

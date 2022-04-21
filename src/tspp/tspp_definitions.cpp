@@ -5007,6 +5007,8 @@ DEFINE_IMPLEMENTATION(long Owner_From_Name(const char *), 0x00463390);
 DEFINE_IMPLEMENTATION(bool Main_Loop(), 0x00508A40);
 DEFINE_IMPLEMENTATION(void Keyboard_Process(KeyNumType &), 0x005093B0);
 DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char *, XSurface *, PaletteClass *), 0x00686340);
+DEFINE_IMPLEMENTATION(ThemeType Get_Intro_Theme(), 0x004E86F0);
+DEFINE_IMPLEMENTATION(ThemeType Get_Maps_Theme(), 0x004E8730);
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
 DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
