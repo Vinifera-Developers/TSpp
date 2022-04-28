@@ -311,6 +311,8 @@ extern const ShapeFileStruct *&Cell_ShroudShape;
 extern const ShapeFileStruct *&Cell_FogShape;
 extern const ShapeFileStruct *&Cell_FixupFogShape;
 
+extern bool &_Select_Game_fade;
+
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;
 extern DynamicVectorClass<TechnoTypeClass *> &TechnoTypes;

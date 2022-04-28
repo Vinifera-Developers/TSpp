@@ -5014,6 +5014,7 @@ DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char *[]), 0x004DFB70);
 DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
 DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
+DEFINE_IMPLEMENTATION(bool Select_Game(bool), 0x004E1DE0);
 
 DEFINE_IMPLEMENTATION(const char *Name_From_RTTI(RTTIType), 0x00403500);
 DEFINE_IMPLEMENTATION(RTTIType RTTI_From_Name(const char *), 0x00403530);
@@ -5415,6 +5416,8 @@ long &LParam = Make_Global<long>(0x007E47D8); // Additional information for Radi
 
 int &InstalledMode = Make_Global<int>(0x006F2638);
 int &EnabledMode = Make_Global<int>(0x006F263C);
+
+bool &_Select_Game_fade = Make_Global<bool>(0x006F688C);
 
 
 /**
