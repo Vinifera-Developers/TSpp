@@ -185,8 +185,8 @@ class ObjectClass : public AbstractClass
         static void Shorten_Attached_Anims();
 
     public:
-        int field_14;
-        int field_18;
+        Cell field_14;
+        Cell field_18;
         int Riser;
         ObjectClass *Next;
         TagClass *Tag;

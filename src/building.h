@@ -175,6 +175,8 @@ BuildingClass : public TechnoClass
         virtual bool Toggle_Primary();
         virtual unsigned entry_380();
 
+        operator BuildingType () const;
+
         // 00428810
         // 00429070
         // 00429100

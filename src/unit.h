@@ -136,6 +136,8 @@ UnitClass : public FootClass
         virtual void entry_3C4(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
         virtual void entry_3C8(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9);
 
+        operator UnitType () const;
+
         void Tunnel_AI();
         void Rotation_AI();
         bool Edge_Of_World_AI();

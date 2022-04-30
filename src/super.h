@@ -70,6 +70,8 @@ SuperClass : public AbstractClass
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool firestorm = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
+		
+		operator SpecialWeaponType () const;
 
 		bool AI(bool player = false);
 

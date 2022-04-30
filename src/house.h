@@ -159,6 +159,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         virtual int Get_Heap_ID() const override;
         virtual void AI() override;
 
+        operator HousesType () const;
+
         // 004BAED0
         float Tiberium_Fraction() const;
         DiffType Assign_Handicap(DiffType handicap);
