@@ -39,6 +39,7 @@
 #include "warheadtype.h"
 #include "particlesystype.h"
 #include "infantrytype.h"
+#include "overlaytype.h"
 #include "mission.h"
 
 
@@ -586,6 +587,38 @@ const ParticleSystemTypeClass *CCINIClass::Get_ParticleSystem(const char *sectio
  *  @author: CCHyper
  */
 bool CCINIClass::Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value)
+{
+    if (value) {
+        return Put_String(section, entry, value->Name());
+    } else {
+        return Put_String(section, entry, "<none>");
+    }
+}
+
+
+/**
+ *  Fetch the overlay type identifier from the INI database.
+ * 
+ *  @author: CCHyper
+ */
+const OverlayTypeClass *CCINIClass::Get_Overlay(const char *section, const char* entry, const OverlayTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return OverlayTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the overlay type identifier to the INI database.
+ * 
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Overlay(const char *section, const char *entry, const OverlayTypeClass *value)
 {
     if (value) {
         return Put_String(section, entry, value->Name());

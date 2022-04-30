@@ -30,6 +30,7 @@
 #include "map.h"
 #include "gadget.h"
 #include "rect.h"
+#include "tspp.h"
 
 
 class ObjectClass;
@@ -153,5 +154,5 @@ class DisplayClass : public MapClass
 
     public:
         static TacticalClass &TacButton;
-        static LayerClass *Layer;
+        static ARRAY_MEMBER_DEC(LayerClass, Layer, LAYER_COUNT);
 };

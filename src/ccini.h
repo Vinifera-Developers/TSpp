@@ -46,6 +46,7 @@ class WeaponTypeClass;
 class WarheadTypeClass;
 class ParticleSystemTypeClass;
 class InfantryTypeClass;
+class OverlayTypeClass;
 
 
 class CCINIClass : public INIClass
@@ -208,6 +209,9 @@ class CCINIClass : public INIClass
 
         const ParticleSystemTypeClass *Get_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *defvalue);
         bool Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value);
+
+        const OverlayTypeClass *Get_Overlay(const char *section, const char *entry, const OverlayTypeClass *defvalue);
+        bool Put_Overlay(const char *section, const char *entry, const OverlayTypeClass *value);
 
         FacingType Get_FacingType(const char *section, const char *entry, const FacingType defvalue);
         bool Put_FacingType(const char *section, const char *entry, FacingType value);

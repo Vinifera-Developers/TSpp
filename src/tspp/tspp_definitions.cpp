@@ -5203,7 +5203,7 @@ GadgetClass *&GadgetClass::LastList = Make_Global<GadgetClass *>(0x007B338C);
 GadgetClass *&GadgetClass::Focused = Make_Global<GadgetClass *>(0x007B3390);
 char *&GadgetClass::GadgetColorScheme = Make_Global<char *>(0x006FB4FC);
 DisplayClass::TacticalClass &DisplayClass::TacButton = Make_Global<TacticalClass>(0x007A2268);
-LayerClass *DisplayClass::Layer = Make_Global<LayerClass *>(0x007A1FA0);
+ARRAY_DEF(0x007A1FA0, LayerClass, DisplayClass::Layer, LAYER_COUNT);
 RadarClass::RTacticalClass &RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
 HWND &WinDialogClass::CurrentWindowHandle = Make_Global<HWND>(0x00864E54);
 char *CDFileClass::RawPath = Make_Pointer<char>(0x0076092C);

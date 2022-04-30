@@ -163,8 +163,8 @@ class RulesClass
         int VeinDamage;
         int MaximumQueuedObjects;
         int AircraftFogReveal;
-        OverlayTypeClass *WoodCrateImg;
-        OverlayTypeClass *CrateImg;
+        OverlayTypeClass *WoodCrateImage;
+        OverlayTypeClass *SteelCrateImage;
         TypeList<AnimTypeClass *> DropPod;
         TypeList<AnimTypeClass *> DeadBodies;
         TypeList<AnimTypeClass *> MetallicDebris;

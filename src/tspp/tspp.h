@@ -211,6 +211,7 @@ __forceinline T *Make_Pointer(const uintptr_t address)
  * 
  *  @author: OmniBlade, duncanspumpkin
  */
+#define ARRAY_MEMBER_DEC(type, var, size) type(&var)[size];
 #define ARRAY_DEC(type, var, size) extern type(&var)[size];
 #define ARRAY_DEF(address, type, var, size) type(&var)[size] = Make_Global<type[size]>(address);
 #define ARRAY2D_DEC(type, var, x, y) extern type(&var)[x][y];

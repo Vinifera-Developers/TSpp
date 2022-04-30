@@ -363,8 +363,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool IsToWin;
         bool IsToLose;
         bool IsCivEvacuated;
-        bool field_D0;
-        bool field_D1;
+        bool IsFirestormActive;
+        bool IsThreatRatingNodeActive;
         bool IsRecalcNeeded;
         int field_D4;
         int Clan;
