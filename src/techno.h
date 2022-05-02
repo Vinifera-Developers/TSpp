@@ -226,7 +226,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         int Anti_Air() const;
         int Anti_Armor() const;
         int Anti_Infantry() const;
-        // 00638AF0
+        Coordinate func_638AF0() const;
         // 00638C70
         // 00639130
         // 006391B0

@@ -92,8 +92,8 @@ class MapClass : public GScreenClass
         // 00510900
         // 00510A20
         void Sight_From(Cell &cell, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
-        // 00510FB0
-        // 00511000
+        bool In_Radar(Cell &cell) const;
+        bool In_Radar(Coordinate &coord) const;
         void Place_Down(Cell &cell, ObjectClass *object);
         void Pick_Up(Cell &cell, ObjectClass *object);
         long Overpass();
@@ -171,9 +171,9 @@ class MapClass : public GScreenClass
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         // 0051E2B0
-        bool In_Radar(Cell &cell, bool a2 = true) const;
-        bool In_Radar(CellClass &cell, bool a2 = true) const;
-        bool In_Radar(Coordinate &coord) const;
+        //bool In_Radar(Cell &cell, bool a2 = true) const;      // Not In_Radar...
+        //bool In_Radar(CellClass &cell, bool a2 = true) const;
+        //bool In_Radar(Coordinate &coord) const;
         // 0051E560
         // 0051E630
         // 0051E770

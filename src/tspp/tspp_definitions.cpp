@@ -1693,6 +1693,8 @@ DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) con
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coordinate &), 0x0050F210);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coordinate &) const, 0x0050F210);
 DEFINE_IMPLEMENTATION(void MapClass::Sight_From(Cell &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &) const, 0x00510FB0);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x00511000);
 DEFINE_IMPLEMENTATION(void MapClass::Place_Down(Cell &, ObjectClass *), 0x00511070);
 DEFINE_IMPLEMENTATION(void MapClass::Pick_Up(Cell &, ObjectClass *), 0x005111B0);
 DEFINE_IMPLEMENTATION(long MapClass::Overpass(), 0x005112F0);
@@ -1711,9 +1713,9 @@ DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
 DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Height(Coordinate &) const, 0x0051E130);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &, bool) const, 0x0051E380);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x0051E510);
+//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &, bool) const, 0x0051E380);
+//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
+//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x0051E510);
 
 LayerClass::LayerClass() : DynamicVectorClass() { *((unsigned long *)this) = (unsigned long)0x006CDAE0; }
 LayerClass::~LayerClass() {}
@@ -2834,7 +2836,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Allowed_To_Retaliate(const TechnoClas
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Air() const, 0x006380F0);
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Armor() const, 0x00638170);
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Infantry() const, 0x00638240);
-// 00638AF0);
+DEFINE_IMPLEMENTATION(Coordinate TechnoClass::func_638AF0() const, 0x00638AF0);
 // 00638C70);
 // 00639130);
 // 006391B0);
