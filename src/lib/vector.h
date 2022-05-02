@@ -285,6 +285,7 @@ class DynamicVectorClass : public VectorClass<T>
         bool Insert(int index, const T &object);
 
         const T &Fetch_Head() const { return (*this)[0]; }
+        const T &Fetch_Tail() const { return (*this)[ActiveCount-1]; }
 
         void Reset_Active() { ActiveCount = 0; }
         void Set_Active(int count) { ActiveCount = count; }
