@@ -182,7 +182,7 @@ BuildingClass : public TechnoClass
         // 00429100
         int Shape_Number() const;
         void Drop_Debris(TARGET source);
-        // 0042C340
+        void Assign_Rally_Point(Cell &cell);
         void Begin_Mode(BStateType bstate);
         // 0042FF70
         // 004305C0

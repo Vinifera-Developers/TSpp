@@ -3074,7 +3074,7 @@ DEFINE_IMPLEMENTATION(unsigned BuildingClass::entry_380(), 0x00436780);
 // 00429100
 DEFINE_IMPLEMENTATION(int BuildingClass::Shape_Number() const, 0x00429220);
 DEFINE_IMPLEMENTATION(void BuildingClass::Drop_Debris(TARGET), 0x0042BC60);
-// 0042C340
+DEFINE_IMPLEMENTATION(void BuildingClass::Assign_Rally_Point(Cell &), 0x0042C340);
 DEFINE_IMPLEMENTATION(void BuildingClass::Begin_Mode(BStateType), 0x042F020);
 // 0042FF70
 // 004305C0
