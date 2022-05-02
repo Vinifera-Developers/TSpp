@@ -34,6 +34,7 @@
 #include "search.h"
 #include "queue.h"
 #include "ttimer.h"
+#include "ftimer.h"
 #include "ccfile.h"
 #include "dsurface.h"
 #include "vector3.h"
@@ -312,6 +313,8 @@ extern const ShapeFileStruct *&Cell_FogShape;
 extern const ShapeFileStruct *&Cell_FixupFogShape;
 
 extern bool &_Select_Game_fade;
+
+extern CDTimerClass<FrameTimerClass> &ActionLineTimer;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
 extern DynamicVectorClass<ObjectTypeClass *> &ObjectTypes;

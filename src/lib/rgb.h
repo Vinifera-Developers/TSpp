@@ -52,8 +52,9 @@ class RGBClass
         void Adjust(int adjust, const RGBClass &that);
         int Difference(const RGBClass &that) const;
 
-        RGBClass *Adjust_Brightness(RGBClass &color, float adjust);
-        RGBClass *Lerp(RGBClass &color, RGBClass &input_rgb_2, float adjust);
+        RGBClass Adjust_Brightness(RGBClass &color, float adjust);
+        RGBClass Lerp(RGBClass &left, RGBClass &right, float adjust);
+        static RGBClass Interpolate(RGBClass &from, RGBClass &towards, float adjust);
 
         enum {
             MAX_VALUE = 255

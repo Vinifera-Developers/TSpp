@@ -927,8 +927,8 @@ RGBClass::RGBClass(unsigned char red, unsigned char green, unsigned char blue) :
 DEFINE_IMPLEMENTATION(RGBClass::operator HSVClass () const, 0x005C32E0);
 DEFINE_IMPLEMENTATION(void RGBClass::Adjust(int, const RGBClass &), 0x005C3200);
 DEFINE_IMPLEMENTATION(int RGBClass::Difference(const RGBClass &) const, 0x005C3290);
-DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Adjust_Brightness(RGBClass &, float), 0x005C30D0);
-DEFINE_IMPLEMENTATION(RGBClass *RGBClass::Lerp(RGBClass &, RGBClass &, float), 0x005C2F60);
+DEFINE_IMPLEMENTATION(RGBClass RGBClass::Adjust_Brightness(RGBClass &, float), 0x005C30D0);
+DEFINE_IMPLEMENTATION(RGBClass RGBClass::Lerp(RGBClass &, RGBClass &, float), 0x005C2F60);
 
 HSVClass::HSVClass() : Hue(0), Saturation(0), Value(0) {}
 HSVClass::HSVClass(const HSVStruct &that) : Hue(that.H), Saturation(that.S), Value(that.V) {}
@@ -5429,6 +5429,8 @@ int &InstalledMode = Make_Global<int>(0x006F2638);
 int &EnabledMode = Make_Global<int>(0x006F263C);
 
 bool &_Select_Game_fade = Make_Global<bool>(0x006F688C);
+
+CDTimerClass<FrameTimerClass> &ActionLineTimer = Make_Global<CDTimerClass<FrameTimerClass>>(0x0080EAE8);
 
 
 /**
