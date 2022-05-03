@@ -2312,7 +2312,7 @@ DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<Te
 // 004C5BB0
 // 004C68E0
 // 004C6930
-// 004C6A10
+DEFINE_IMPLEMENTATION(Cell HouseClass::Find_Build_Location(BuildingTypeClass *, int (__fastcall *)(int, Cell &, int, int), int) const, 0x004C6A10);
 // 004C7300
 // 004C7310
 // 004C7320

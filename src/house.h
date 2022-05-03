@@ -266,7 +266,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C5BB0
         // 004C68E0
         // 004C6930
-        // 004C6A10
+        Cell Find_Build_Location(BuildingTypeClass *building, int (__fastcall *callback)(int, Cell &, int, int), int a3 = -1) const;
         // 004C7300
         // 004C7310
         // 004C7320
@@ -339,7 +339,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         int ID;
         HouseTypeClass *Class;
         DynamicVectorClass<TagClass *> field_28;
-        DynamicVectorClass<BuildingClass *> field_40;
+        DynamicVectorClass<BuildingClass *> ConstructionYards;
         DiffType Difficulty;
         double FirepowerBias;
         double GroundspeedBias;
