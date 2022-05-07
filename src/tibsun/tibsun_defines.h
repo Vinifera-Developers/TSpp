@@ -2586,6 +2586,12 @@ typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
 
 
+typedef struct GroundType {
+    float Cost[SPEED_COUNT];
+    bool Build;
+} GroundType;
+
+
 typedef struct VariableFlagStruct {
     char Name[40];
     unsigned char Value;

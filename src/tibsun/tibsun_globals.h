@@ -426,6 +426,8 @@ ARRAY2D_DEC(Vector3, Wave_SizeVectors, WAVE_COUNT, 4);
 ARRAY_DEC(Cell *, BuildingOccupys, 24);
 ARRAY_DEC(Cell *, BuildingExits, 30);
 
+ARRAY_DEC(GroundType, Ground, LAND_COUNT);
+
 
 /**
  *  Isometric tile set types.

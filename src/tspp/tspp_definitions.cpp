@@ -5516,6 +5516,8 @@ ARRAY_DEF(0x0075FAE8, Cell *, BuildingExits, 30);
 
 ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);
 
+ARRAY_DEF(0x00760E90, GroundType, Ground, LAND_COUNT);
+
 
 #ifndef NDEBUG
 /**
