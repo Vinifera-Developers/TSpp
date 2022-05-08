@@ -427,6 +427,7 @@ ARRAY_DEC(Cell *, BuildingOccupys, 24);
 ARRAY_DEC(Cell *, BuildingExits, 30);
 
 ARRAY_DEC(GroundType, Ground, LAND_COUNT);
+ARRAY_DEC(const char * const, ActionName, ACTION_COUNT);
 
 
 /**

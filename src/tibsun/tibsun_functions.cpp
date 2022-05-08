@@ -105,6 +105,38 @@ static const char * const FacingName[FACING_COUNT] =
 
 
 /**
+ *  Converts ASCII name into ActionType.
+ * 
+ *  @author: CCHyper
+ */
+ActionType Action_From_Name(const char *name)
+{
+	if (name) {
+		for (ActionType action = ACTION_FIRST; action < ACTION_COUNT; ++action) {
+			if (stricmp(ActionName[action], name) == 0) {
+				return action;
+			}
+		}
+	}
+	return ACTION_NONE;
+}
+
+
+/**
+ *  Retrieves the name for the given ActionType.
+ * 
+ *  @author: CCHyper
+ */
+const char *Name_From_Action(ActionType action)
+{
+	if (action != LAYER_NONE && action < ACTION_COUNT) {
+		return ActionName[action];
+	}
+	return "<none>";
+}
+
+
+/**
  *  Converts ASCII name into LandType.
  * 
  *  @author: CCHyper

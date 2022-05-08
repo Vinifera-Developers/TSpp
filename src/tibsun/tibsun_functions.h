@@ -73,6 +73,8 @@ void Focus_Loss();
 void Focus_Restore();
 bool Select_Game(bool fade);
 
+ActionType Action_From_Name(const char *name);
+const char *Name_From_Action(ActionType action);
 LayerType Layer_From_Name(const char *name);
 const char *Name_From_Layer(LayerType layer);
 FacingType Facing_From_Name(const char *name);
