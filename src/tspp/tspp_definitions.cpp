@@ -225,6 +225,7 @@
 #include "radarevent.h"
 #include "teleportlocomotion.h"
 #include "tclassfactory.h"
+#include "hashtable.h"
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
 #include "flylocomotion.h"

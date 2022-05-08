@@ -36,6 +36,7 @@
 
 
 class AbstractClass;
+class TechnoClass;
 class HouseClass;
 class NoInitClass;
 class WeaponTypeClass;
@@ -2584,6 +2585,7 @@ typedef enum SpecialDialogType
 
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
+typedef unsigned int CELL;
 
 
 typedef struct GroundType {
@@ -2910,29 +2912,50 @@ typedef struct DoInfoStruct
 class ZoneConnectionClass
 {
     public:
-        bool operator==(const ZoneConnectionClass &src) const { return false; }
-        bool operator!=(const ZoneConnectionClass &src) const { return true; }
+        ZoneConnectionClass() : field_0(0,0), field_4(0,0), field_8(false), field_C(-1) {}
+        ~ZoneConnectionClass() {}
+
+        bool operator==(const ZoneConnectionClass &that) const
+        {
+            return field_0 == that.field_0 && field_4 == that.field_4;
+        }
+        bool operator!=(const ZoneConnectionClass &that) const
+        {
+            return field_0 != that.field_0 && field_4 != that.field_4;
+        }
 
     public:
         Cell field_0;
         Cell field_4;
         bool field_8;
-        int field_A;
+        int field_C;
 };
 
 
 struct SubzoneConnectionStruct
 {
-    bool operator==(const SubzoneConnectionStruct &src) const { return false; }
-    bool operator!=(const SubzoneConnectionStruct &src) const { return true; }
+    SubzoneConnectionStruct() : field_0(0), field_4(0) {}
+    ~SubzoneConnectionStruct() {}
 
+    bool operator==(const SubzoneConnectionStruct &that) const
+    {
+        return field_0 == that.field_0;
+    }
+    bool operator!=(const SubzoneConnectionStruct &that) const
+    {
+        return field_0 != that.field_0;
+    }
+
+    int field_0;
     int field_4;
-    int field_8;
 };
 
 
 struct SubzoneTrackingStruct
 {
+    SubzoneTrackingStruct() : Connections(), field_18(0), field_1C(0), field_20(0) {}
+    ~SubzoneTrackingStruct() {}
+
     bool operator==(const SubzoneTrackingStruct &src) const { return false; }
     bool operator!=(const SubzoneTrackingStruct &src) const { return true; }
 
@@ -2943,18 +2966,55 @@ struct SubzoneTrackingStruct
 };
 
 
+struct RadarTrackingStruct
+{
+    RadarTrackingStruct() : Object(nullptr), X(0), Y(0) {}
+    ~RadarTrackingStruct() {}
+
+    bool operator==(const RadarTrackingStruct &that) const
+    {
+        return (Object == that.Object && X == that.X && Y == that.Y);
+    }
+    bool operator!=(const RadarTrackingStruct &that) const
+    {
+        return (Object != that.Object && X != that.X && Y != that.Y);
+    }
+
+    TechnoClass *Object;
+    int X;
+    int Y;
+};
+
+inline unsigned int Hash_Radar_Tracking_Struct(RadarTrackingStruct const & obj)
+{
+    return obj.X + 251 * obj.Y;
+}
+
+
 struct CrackedIceStruct
 {
-    bool operator==(const CrackedIceStruct &src) const { return false; }
-    bool operator!=(const CrackedIceStruct &src) const { return true; }
+    CrackedIceStruct() : Where(0,0), field_4(0) {}
+    ~CrackedIceStruct() {}
 
-    Cell Pos;
+    bool operator==(const CrackedIceStruct &that) const
+    {
+        return (Where == that.Where && field_4 == that.field_4);
+    }
+    bool operator!=(const CrackedIceStruct &that) const
+    {
+        return (Where != that.Where && field_4 != that.field_4);
+    }
+
+    Cell Where;
     int field_4; // cracking frame?
 };
 
 
 struct AngerStruct
 {
+    AngerStruct() : Whom(nullptr), Level(0) {}
+    ~AngerStruct() {}
+
     bool operator==(const AngerStruct &that) const
     {
         return (Whom == that.Whom && Level == that.Level);
@@ -2971,6 +3031,9 @@ struct AngerStruct
 
 struct ScoutStruct
 {
+    ScoutStruct() : Whom(nullptr), HasScouted(false) {}
+    ~ScoutStruct() {}
+
     bool operator==(const ScoutStruct &that) const
     {
         return (Whom == that.Whom && HasScouted == that.HasScouted);

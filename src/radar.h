@@ -33,6 +33,7 @@
 #include "point.h"
 #include "ttimer.h"
 #include "stimer.h"
+#include "hashtable.h"
 
 
 class DSurface;
@@ -133,7 +134,7 @@ class RadarClass : public DisplayClass
         int field_1254;
         int field_1258;
         int field_125C;
-        int field_1260;
+        HashTableClass<RadarTrackingStruct, TechnoClass *> *field_1260;
         DynamicVectorClass<Point2D> field_1264;
         int field_127C;
         DynamicVectorClass<Point2D> field_1280[22];

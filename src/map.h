@@ -38,6 +38,9 @@ class NoInitClass;
 class AbstractClass;
 
 
+int HashTableFunction(const char *a1);
+
+
 class MapClass : public GScreenClass
 {
     public:
