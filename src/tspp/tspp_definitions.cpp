@@ -225,6 +225,7 @@
 #include "radarevent.h"
 #include "teleportlocomotion.h"
 #include "tclassfactory.h"
+#include "heap.h"
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
 #include "flylocomotion.h"
@@ -5501,6 +5502,7 @@ static TClassFactory<UnitClass> UnitCOMFactory;
 static TClassFactory<BuildingClass> BuildingCOMFactory;
 static TClassFactory<InfantryClass> InfantryCOMFactory;
 static TClassFactory<AircraftClass> AircraftCOMFactory;
+static FixedHeapClass<Wstring, 256> TestHeap;
 
 
 /**
