@@ -37,15 +37,16 @@
 class TeamClass;
 
 
-typedef struct PathType {
-	Cell Start;           // Starting cell number.
-	int Cost;                   // Accumulated terrain cost.
-	int Length;                 // Command string length.
-	FacingType *Command;        // Pointer to command string.
+typedef struct PathType
+{
+    Cell Start;                 // Starting cell number.
+    int Cost;                   // Accumulated terrain cost.
+    int Length;                 // Command string length.
+    FacingType *Command;        // Pointer to command string.
     int field_10;
-	unsigned long *Overlap;     // Pointer to overlap list
-	Cell LastOverlap;     // stores position of last overlap
-	Cell LastFixup;       // stores position of last overlap
+    unsigned long *Overlap;     // Pointer to overlap list
+    Cell LastOverlap;           // stores position of last overlap
+    Cell LastFixup;             // stores position of last overlap
 } PathType;
 
 
@@ -190,8 +191,8 @@ class FootClass : public TechnoClass
         bool Goto_Weed(int rad);
         // 004A8800
 
-        bool Basic_Path(Cell &cell, int a2, int a3);
-        PathType *Find_Path(Cell &dest, int *a2, int maxlen, int a4, int a5, int a6);
+        bool Basic_Path(Cell cell, int path_index, int blockage);
+        PathType *Find_Path(Cell &dest, FacingType *final_moves, int maxlen, int a4, int path_index, int blockage);
         Cell Safety_Point(Cell &src, Cell &dst, int start, int max);
 
         ILocomotion *Locomotor_Ptr() { return Locomotion; }

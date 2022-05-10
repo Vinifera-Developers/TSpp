@@ -38,6 +38,7 @@
 #include "ccfile.h"
 #include "dsurface.h"
 #include "vector3.h"
+#include "astarpath.h"
 
 
 /**
@@ -411,6 +412,8 @@ extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 
 extern const TheaterDataType *Theaters; 
+
+extern AStarPathFinderClass &AStarPathFinder;
 
 extern SpriteCollectionClass &SpriteCollection;
 

@@ -1570,6 +1570,36 @@ DEFINE_IMPLEMENTATION(int Base64Pipe::Put(const void *, int), 0x0041EB60);
 
 DEFINE_IMPLEMENTATION(int Base64Straw::Get(void *, int), 0x0041ED40);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(AStarPathFinderClass::AStarPathFinderClass(), 0x0041B4C0);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(AStarPathFinderClass::~AStarPathFinderClass(), 0x0041B6F0);
+// 0041A570
+DEFINE_IMPLEMENTATION(float AStarPathFinderClass::Get_Movement_Cost(CellClass **, CellClass **, bool, MoveType, FootClass *), 0x0041A620);
+DEFINE_IMPLEMENTATION(PathType * AStarPathFinderClass::Find_Path_Regular(Cell *, Cell *, FootClass *, FacingType *, int, bool), 0x0041A880);
+// 0041B250
+// 0041B3A0
+// 0041B480
+// 0041B830
+DEFINE_IMPLEMENTATION(PathType * AStarPathFinderClass::Build_Final_Path(WorkingPathNode *nodes, FacingType *moves), 0x0041B880);
+// 0041B9F0
+// 0041BAE0
+// 0041BE60
+// 0041BFA0
+// 0041BFD0
+// 0041BFF0
+DEFINE_IMPLEMENTATION(int AStarPathFinderClass::Fixup_Path(FootClass *, FacingType *, int *, int, int, Cell *), 0x0041C200);
+DEFINE_IMPLEMENTATION(void AStarPathFinderClass::Optimize_Final_Path(PathType *, FootClass *), 0x0041C5D0);
+DEFINE_IMPLEMENTATION(void AStarPathFinderClass::Adjacent_Cell(FacingType *, int, int, int *, Cell *), 0x0041CA80);
+// 0041CC00
+// 0041CFA0
+DEFINE_IMPLEMENTATION(bool AStarPathFinderClass::Find_Path_Hierarchical(Cell *, Cell *, MZoneType, FootClass *), 0x0041D070);
+DEFINE_IMPLEMENTATION(PathType * AStarPathFinderClass::Find_Path(Cell *, Cell *, FootClass *, FacingType *, int, MZoneType, bool), 0x0041D6E0);
+// 0041DAA0
+// 0041DC80
+// 0041DCE0
+// 0041DD50
+// 0041DF40
+// 0041E260
+
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Load(IStream *), 0x0041FB90);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE BaseClass::Save(IStream *, BOOL), 0x0041FDB0);
 DEFINE_IMPLEMENTATION(void BaseClass::Compute_CRC(WWCRCEngine &) const, 0x0041FEB0);
@@ -2967,8 +2997,8 @@ DEFINE_IMPLEMENTATION(Cell FootClass::Search_For_Weed(int), 0x004A7F40);
 DEFINE_IMPLEMENTATION(bool FootClass::Weed_Check(Cell &, int, int), 0x004A80A0);
 DEFINE_IMPLEMENTATION(bool FootClass::Goto_Weed(int), 0x004A8230);
 // 004A8800
-DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(Cell &, int, int), 0x004A0730);
-DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(Cell &, int *, int, int, int, int), 0x00498EF0);
+DEFINE_IMPLEMENTATION(bool FootClass::Basic_Path(Cell, int, int), 0x004A0730);
+DEFINE_IMPLEMENTATION(PathType *FootClass::Find_Path(Cell &, FacingType *, int, int, int, int), 0x00498EF0);
 DEFINE_IMPLEMENTATION(Cell FootClass::Safety_Point(Cell &, Cell &, int, int), 0x00498F90);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE BuildingClass::GetClassID(CLSID *), 0x0043B950);
@@ -5420,6 +5450,8 @@ QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
 
 const TheaterDataType *Theaters = Make_Pointer<const TheaterDataType>(0x006CA930);
+
+AStarPathFinderClass &AStarPathFinder = Make_Global<AStarPathFinderClass>(0x007474B8);
 
 LPDIRECTDRAW &DirectDrawObject = Make_Global<LPDIRECTDRAW>(0x007A1EAC);
 LPDIRECTDRAWCLIPPER &DirectDrawClipper = Make_Global<LPDIRECTDRAWCLIPPER>(0x007A2C84);
