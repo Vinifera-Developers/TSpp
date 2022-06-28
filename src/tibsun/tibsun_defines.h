@@ -2582,6 +2582,19 @@ typedef enum SpecialDialogType
 } SpecialDialogType;
 
 
+typedef enum DMonoType
+{
+	DMONO_OBJECT,
+	DMONO_HOUSE,
+	DMONO_STRESS,
+	DMONO_EVENTS,
+
+	DMONO_COUNT,
+
+	DMONO_FIRST = 0
+} DMonoType;
+
+
 typedef unsigned long LEPTON;
 typedef AbstractClass * TARGET;
 
