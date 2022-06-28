@@ -57,3 +57,27 @@ int TextFileClass::Write_Line(char *string)
 
     return -1;
 }
+
+
+int TextFileClass::Write_Line_Format(char *format, ...)
+{
+    TSPP_ASSERT(format != nullptr);
+    
+    char buffer[MAX_LINE_LENGTH];
+
+    va_list args;
+    va_start(args, format);
+
+    std::vsnprintf(buffer, sizeof(buffer), format, args);
+    
+    va_end(args);
+
+    int len = std::strlen(buffer);
+
+    int total = RawFileClass::Write(buffer, len);
+    if (total == len) {
+        return total;
+    }
+
+    return -1;
+}

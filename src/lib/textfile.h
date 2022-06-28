@@ -45,4 +45,5 @@ class TextFileClass : public RawFileClass
 
         int Read_Line(char *string, bool &last_line);
         int Write_Line(char *string);
+        int Write_Line_Format(char *string, ...);
 };
