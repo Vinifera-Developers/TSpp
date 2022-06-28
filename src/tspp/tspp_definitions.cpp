@@ -136,6 +136,7 @@
 #include "tab.h"
 #include "scroll.h"
 #include "mouse.h"
+#include "mono.h"
 #include "playmovie.h"
 #include "drawshape.h"
 #include "base64.h"
@@ -2033,6 +2034,23 @@ DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame(MouseType, bool) const, 0x
 DEFINE_IMPLEMENTATION(Point2D MouseClass::Get_Mouse_Hotspot(MouseType) const, 0x00562310);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Start_Frame(MouseType) const, 0x00563220);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame_Count(MouseType) const, 0x00563240);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(MonoClass::MonoClass(), 0x00561720);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(MonoClass::~MonoClass(), 0x00561760);
+DEFINE_IMPLEMENTATION(void MonoClass::Pan(int), 0x00561790);
+DEFINE_IMPLEMENTATION(void MonoClass::Sub_Window(int, int, int, int), 0x005617C0);
+DEFINE_IMPLEMENTATION(void MonoClass::Set_Cursor(int, int), 0x00561820);
+DEFINE_IMPLEMENTATION(void MonoClass::Clear(), 0x00561870);
+DEFINE_IMPLEMENTATION(void MonoClass::Fill_Attrib(int, int, int, int, MonoClass::MonoAttribute), 0x005618B0);
+DEFINE_IMPLEMENTATION(void MonoClass::Scroll(int), 0x00561910);
+DEFINE_IMPLEMENTATION(void MonoClass::Printf(char const *, ...), 0x00561940);
+DEFINE_IMPLEMENTATION(void MonoClass::Printf(int, ...), 0x005619C0);
+DEFINE_IMPLEMENTATION(void MonoClass::Print(char const *), 0x00561A40);
+DEFINE_IMPLEMENTATION(void MonoClass::Set_Default_Attribute(MonoClass::MonoAttribute), 0x00561A80);
+DEFINE_IMPLEMENTATION(void MonoClass::Text_Print(char const *, int, int, MonoClass::MonoAttribute), 0x00561AB0);
+DEFINE_IMPLEMENTATION(void MonoClass::Text_Print(int, int, int, MonoClass::MonoAttribute), 0x00561B50);
+DEFINE_IMPLEMENTATION(void MonoClass::Print(int), 0x00561C00);
+DEFINE_IMPLEMENTATION(void MonoClass::View(), 0x00561C50);
 
 DEFINE_IMPLEMENTATION(void Play_Movie(const char *, ThemeType, bool, bool, bool), 0x00563670);
 DEFINE_IMPLEMENTATION(void Play_Movie(VQType, ThemeType, bool, bool), 0x005639A0);
@@ -5281,6 +5299,8 @@ const ShapeFileStruct *&Cell_ShroudShape = Make_Global<const ShapeFileStruct *>(
 const ShapeFileStruct *&Cell_FogShape = Make_Global<const ShapeFileStruct *>(0x00760CB0);
 const ShapeFileStruct *&Cell_FixupFogShape = Make_Global<const ShapeFileStruct *>(0x00760C88);
 MouseClass::MouseStruct *MouseClass::MouseControl = Make_Pointer<MouseStruct>(0x00703070);
+MonoClass *&MonoClass::Current = Make_Global<MonoClass *>(0x00806C50);
+bool &MonoClass::Enabled = Make_Global<bool>(0x00806C54);
 IsometricTileType &WaterSet = Make_Global<IsometricTileType>(0x007F59A0);
 IsometricTileType &WaterfallEast = Make_Global<IsometricTileType>(0x007F59A4);
 IsometricTileType &ClearToBlueMoldLAT = Make_Global<IsometricTileType>(0x007F59A8);
@@ -5462,6 +5482,8 @@ int &EnabledMode = Make_Global<int>(0x006F263C);
 
 bool &_Select_Game_fade = Make_Global<bool>(0x006F688C);
 
+MonoClass *&ScrollingScreen = Make_Global<MonoClass *>(0x0074A130);
+
 CDTimerClass<FrameTimerClass> &ActionLineTimer = Make_Global<CDTimerClass<FrameTimerClass>>(0x0080EAE8);
 
 
@@ -5550,6 +5572,8 @@ ARRAY_DEF(0x00760E90, GroundType, Ground, LAND_COUNT);
 ARRAY_DEF(0x006CCC70, const char * const, ActionName, ACTION_COUNT);
 
 ARRAY_DEF(0x00809A28, unsigned long, CRC, 256);
+
+ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 
 
 #ifndef NDEBUG

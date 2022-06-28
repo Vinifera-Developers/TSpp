@@ -38,6 +38,7 @@
 #include "ccfile.h"
 #include "dsurface.h"
 #include "vector3.h"
+#include "mono.h"
 
 
 /**
@@ -314,6 +315,8 @@ extern const ShapeFileStruct *&Cell_FixupFogShape;
 
 extern bool &_Select_Game_fade;
 
+extern MonoClass *&ScrollingScreen;
+
 extern CDTimerClass<FrameTimerClass> &ActionLineTimer;
 
 extern DynamicVectorClass<AbstractTypeClass *> &AbstractTypes;
@@ -433,6 +436,8 @@ ARRAY_DEC(GroundType, Ground, LAND_COUNT);
 ARRAY_DEC(const char * const, ActionName, ACTION_COUNT);
 
 ARRAY_DEC(unsigned long, CRC, 256);
+
+ARRAY_DEC(MonoClass, MonoArray, DMONO_COUNT);
 
 
 /**
