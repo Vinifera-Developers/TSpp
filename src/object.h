@@ -61,6 +61,8 @@ class ObjectClass : public AbstractClass
         bool operator < (const ObjectClass & object) const;
         bool operator > (const ObjectClass & object) const;
 
+        inline operator int () const;
+
         /**
          *  AbstractClass
          */

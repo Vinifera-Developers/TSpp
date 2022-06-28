@@ -26,6 +26,7 @@
  *
  ******************************************************************************/
 #include "object.h"
+#include "objecttype.h"
 
 
 /**
@@ -63,4 +64,17 @@ FootClass *ObjectClass::As_Foot()
         default:
             return nullptr;
     };
+}
+
+
+/**
+ *  This operator will automatically convert from a class object into the enumerated value.
+ * 
+ *  #NOTE: This is ONLY implemented for backwards compatability with legacy code!
+ * 
+ *  @author: CCHyper
+ */
+ObjectClass::operator int () const
+{
+    return Class_Of()->Get_Heap_ID();
 }
