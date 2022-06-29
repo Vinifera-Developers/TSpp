@@ -1876,6 +1876,33 @@ void CreditClass::Update(bool, bool) {}
 DEFINE_IMPLEMENTATION(void CreditClass::Graphic_Logic(bool), 0x00471460);
 DEFINE_IMPLEMENTATION(void CreditClass::AI(bool), 0x004715F0);
 
+DEFINE_IMPLEMENTATION(bool Queue_Mission(MissionType, TargetClass &, TargetClass, TargetClass &), 0x005B0FC0);
+DEFINE_IMPLEMENTATION(bool Queue_Mission(MissionType, TargetClass &, TargetClass, TargetClass &, SpeedType, MPHType), 0x005B1050);
+DEFINE_IMPLEMENTATION(bool Queue_Options(), 0x005B10F0);
+DEFINE_IMPLEMENTATION(bool Queue_PageUser(), 0x005B1180);
+DEFINE_IMPLEMENTATION(bool Queue_Exit(), 0x005B1210);
+DEFINE_IMPLEMENTATION(void Queue_AI(), 0x005B1280);
+DEFINE_IMPLEMENTATION(void Queue_AI_Multiplayer(), 0x005B15B0);
+DEFINE_IMPLEMENTATION(void Wait_To_Exit(), 0x005B1F60);
+DEFINE_IMPLEMENTATION(RetcodeType Wait_For_Players(int, ConnManClass *, int, int, int, char *, unsigned short, FrameStatsStruct *), 0x005B2320);
+DEFINE_IMPLEMENTATION(unsigned short Send_Packets(ConnManClass *, char *, int, int, unsigned short), 0x005B3240);
+DEFINE_IMPLEMENTATION(void Send_FrameSync(ConnManClass *, unsigned short), 0x005B3550);
+DEFINE_IMPLEMENTATION(RetcodeType Process_Receive_Packet(ConnManClass *, char *, int, int, FrameStatsStruct *, CDTimerClass<SystemTimerClass> *), 0x005B3600);
+DEFINE_IMPLEMENTATION(RetcodeType Process_Serial_Packet(char *, int), 0x005B38E0);
+DEFINE_IMPLEMENTATION(void Kick_Player_Now(ConnManClass *, int, FrameStatsStruct *, bool), 0x005B4290);
+DEFINE_IMPLEMENTATION(void Propose_Kick_Player(HWND, int), 0x005B3C20);
+DEFINE_IMPLEMENTATION(int Handle_Timeout(ConnManClass *, FrameStatsStruct *), 0x005B4470);
+DEFINE_IMPLEMENTATION(int Add_Compressed_Events(void *, int , int, int, int, int &), 0x005B4530);
+DEFINE_IMPLEMENTATION(int Extract_Compressed_Events(void *, int), 0x005B4A40);
+DEFINE_IMPLEMENTATION(int Execute_DoList(int, HousesType, ConnManClass *, CDTimerClass<FrameTimerClass> *, FrameStatsStruct *), 0x005B4D70);
+DEFINE_IMPLEMENTATION(void Clean_DoList(ConnManClass *), 0x005B5410);
+DEFINE_IMPLEMENTATION(void Queue_Record(), 0x005B5470);
+DEFINE_IMPLEMENTATION(void Compute_Game_CRC(), 0x005B5550);
+DEFINE_IMPLEMENTATION(void Add_CRC(unsigned long *, unsigned long), 0x005B58D0);
+DEFINE_IMPLEMENTATION(void Print_CRCs(EventClass *), 0x005B58F0);
+DEFINE_IMPLEMENTATION(void Dump_Packet_Too_Late_Stuff(EventClass *), 0x005B8470);
+DEFINE_IMPLEMENTATION(void Check_Mirror(), 0x005B84F0);
+
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarClass::RadarClass(), 0x005B8830);
 RadarClass::RadarClass(const NoInitClass &) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(RadarClass::~RadarClass(), 0x005B8AC0);
@@ -5419,6 +5446,9 @@ IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<Key
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
 
+unsigned long &GameCRC = Make_Global<unsigned long>(0x00809894);
+int &IsMono = Make_Global<int>(0x00809E28);
+
 const TheaterDataType *Theaters = Make_Pointer<const TheaterDataType>(0x006CA930);
 
 LPDIRECTDRAW &DirectDrawObject = Make_Global<LPDIRECTDRAW>(0x007A1EAC);
@@ -5518,6 +5548,8 @@ ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);
 
 ARRAY_DEF(0x00760E90, GroundType, Ground, LAND_COUNT);
 ARRAY_DEF(0x006CCC70, const char * const, ActionName, ACTION_COUNT);
+
+ARRAY_DEF(0x00809A28, unsigned long, CRC, 256);
 
 
 #ifndef NDEBUG

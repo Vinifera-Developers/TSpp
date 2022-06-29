@@ -410,6 +410,9 @@ extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 
+extern unsigned long &GameCRC;
+extern int &IsMono;
+
 extern const TheaterDataType *Theaters; 
 
 extern SpriteCollectionClass &SpriteCollection;
@@ -428,6 +431,8 @@ ARRAY_DEC(Cell *, BuildingExits, 30);
 
 ARRAY_DEC(GroundType, Ground, LAND_COUNT);
 ARRAY_DEC(const char * const, ActionName, ACTION_COUNT);
+
+ARRAY_DEC(unsigned long, CRC, 256);
 
 
 /**
