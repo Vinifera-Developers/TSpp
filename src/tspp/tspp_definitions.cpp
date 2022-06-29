@@ -137,6 +137,7 @@
 #include "scroll.h"
 #include "mouse.h"
 #include "mono.h"
+#include "sendfile.h"
 #include "playmovie.h"
 #include "drawshape.h"
 #include "base64.h"
@@ -2034,6 +2035,11 @@ DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame(MouseType, bool) const, 0x
 DEFINE_IMPLEMENTATION(Point2D MouseClass::Get_Mouse_Hotspot(MouseType) const, 0x00562310);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Start_Frame(MouseType) const, 0x00563220);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame_Count(MouseType) const, 0x00563240);
+
+DEFINE_IMPLEMENTATION(bool Get_Scenario_File_From_Host(char *, int, bool), 0x005E9CE0);
+DEFINE_IMPLEMENTATION(bool Receive_Remote_File(const char *, unsigned int, int, bool), 0x005EA220);
+DEFINE_IMPLEMENTATION(bool Send_Remote_File(const char *, int, bool, bool), 0x005EA6B0);
+DEFINE_IMPLEMENTATION(bool Find_Local_Scenario(const char *, unsigned int, char *, bool, bool), 0x005EAFE0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MonoClass::MonoClass(), 0x00561720);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(MonoClass::~MonoClass(), 0x00561760);
