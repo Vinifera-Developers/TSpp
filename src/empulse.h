@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          LASERDRAW.H
+ *  @file          EMPULSE.H
  *
  *  @author        CCHyper, tomsons26
  *
- *  @brief         Graphical laser drawing.
+ *  @brief         EM Pulse state class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,37 +28,43 @@
 #pragma once
 
 #include "always.h"
-#include "stage.h"
-#include "rgb.h"
-#include "tibsun_defines.h"
+#include "abstract.h"
 
 
-class LaserDrawClass
+class DECLSPEC_UUID("B825CB22-200E-11D2-9FA9-0060089AD458")
+EMPulseClass : public AbstractClass
 {
     public:
-        LaserDrawClass(Coordinate source, Coordinate target, int z_adjust, bool a9, RGBClass inner, RGBClass outer, RGBClass outer_spread, int duration, bool blinks = false, bool fades = true, float start_int = 0.5f, float end_int = 1.0f);
-        ~LaserDrawClass();
+        /**
+         *  IPersist
+         */
+        IFACEMETHOD(GetClassID)(CLSID *pClassID);
 
-        void Draw_It();
-        void AI();
-
-        static void Update_All();
-        static void Clear_All();
-        static void Draw_All();
+        /**
+         *  IPersistStream
+         */
+        IFACEMETHOD(Load)(IStream *pStm);
+        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        StageClass DrawStage;
-        Coordinate Source;
-        Coordinate Target;
-        int ZAdjust;
-        bool field_34;
-        RGBClass InnerColor;
-        RGBClass OuterColor;
-        RGBClass OuterSpreadColor;
+        EMPulseClass(Coordinate sourc);
+        EMPulseClass();
+        EMPulseClass(const NoInitClass &noinit);
+        virtual ~EMPulseClass();
+
+        /**
+         *  AbstractClass
+         */
+        virtual RTTIType Kind_Of() const override;
+        virtual int Size_Of(bool firestorm = false) const override;
+        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+
+        static void Init_Clear();
+        static void Update_All();
+
+    public:
+        Cell Center;
+        int Spread;
+        int CreationFrame;
         int Duration;
-        bool Blinks;
-        bool BlinkState;
-        bool FadeOut;
-        float StartIntensity;
-        float EndIntensity;
 };

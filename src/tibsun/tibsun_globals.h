@@ -140,6 +140,7 @@ class InfantryClass;
 class TubeClass;
 class ColorScheme;
 class LaserDrawClass;
+class EMPulseClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -389,6 +390,7 @@ extern DynamicVectorClass<InfantryClass *> &Infantry;
 extern DynamicVectorClass<TubeClass *> &Tubes;
 extern DynamicVectorClass<ColorScheme *> &ColorSchemes;
 extern DynamicVectorClass<LaserDrawClass *> &LaserDraws;
+extern DynamicVectorClass<EMPulseClass *> &EmPulses;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

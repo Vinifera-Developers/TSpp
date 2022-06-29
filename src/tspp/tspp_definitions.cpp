@@ -260,6 +260,7 @@
 #include "txtlabel.h"
 #include "multiscore.h"
 #include "laserdraw.h"
+#include "empulse.h"
 #include "packet.h"
 #include "field.h"
 #include "brain.h"
@@ -1611,7 +1612,7 @@ DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, int
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(Coordinate, int), 0x0058DFD0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(SpotlightClass::~SpotlightClass(), 0x0058E050);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Remove_If_Large(), 0x0058E0A0);
-DEFINE_IMPLEMENTATION(void SpotlightClass::AI(), 0x0058E110);
+DEFINE_IMPLEMENTATION(void SpotlightClass::Update_All(), 0x0058E110);
 DEFINE_IMPLEMENTATION(void SpotlightClass::One_Time(), 0x0058E1A0);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Clear_All(), 0x0058E580);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Draw_It(), 0x0058E5D0);
@@ -4983,6 +4984,19 @@ DEFINE_IMPLEMENTATION(void LaserDrawClass::Update_All(), 0x004FBF50);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Clear_All(), 0x004FBE10);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Draw_All(), 0x004FC030);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EMPulseClass::EMPulseClass(x), 0x004926B0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EMPulseClass::EMPulseClass(), 0x00492760);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(EMPulseClass::EMPulseClass(const NoInitClass &), 0x00492790);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(EMPulseClass::~EMPulseClass(), 0x004927B0);
+DEFINE_IMPLEMENTATION(void EMPulseClass::Init_Clear(), 0x00492830);
+DEFINE_IMPLEMENTATION(void EMPulseClass::Update_All(), 0x00492860);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE EMPulseClass::GetClassID(CLSID *), 0x00493100);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EMPulseClass::Load(IStream *), 0x00493140);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE EMPulseClass::Save(IStream *, BOOL), 0x00493180);
+DEFINE_IMPLEMENTATION(RTTIType EMPulseClass::Kind_Of() const, 0x004931B0);
+DEFINE_IMPLEMENTATION(int EMPulseClass::Size_Of(bool) const, 0x004931A0);
+DEFINE_IMPLEMENTATION(void EMPulseClass::Compute_CRC(WWCRCEngine &) const, 0x004930B0);
+
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PacketClass::PacketClass(char *), 0x005A22E0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(PacketClass::~PacketClass(), 0x005A22A0);
 DEFINE_IMPLEMENTATION(void PacketClass::Add_Field(FieldClass *), 0x005A22D0);
@@ -5448,6 +5462,7 @@ DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<I
 DynamicVectorClass<TubeClass *> &Tubes = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
 DynamicVectorClass<ColorScheme *> &ColorSchemes = Make_Global<DynamicVectorClass<ColorScheme *>>(0x0080A2C8);
 DynamicVectorClass<LaserDrawClass *> &LaserDraws = Make_Global<DynamicVectorClass<LaserDrawClass *>>(0x00804918);
+DynamicVectorClass<EMPulseClass *> &EmPulses = Make_Global<DynamicVectorClass<EMPulseClass *>>(0x007A2E68);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

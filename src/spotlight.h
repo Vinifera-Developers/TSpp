@@ -39,7 +39,7 @@ class SpotlightClass
 		void Remove_If_Large();
 		void Draw_It();
 
-		static void AI();
+		static void Update_All();
 		static void One_Time();
 		static void Clear_All();
 		static void Draw_All();
