@@ -461,4 +461,9 @@ ASM_DEFINE_IMPLEMENTATION ??0FlyLocomotionClass@@QAE@XZ 004994B0h
 ASM_DEFINE_IMPLEMENTATION ??1FlyLocomotionClass@@UAE@XZ 00499530h
 
 
+;
+;  Templated function instances.
+;
+ASM_DEFINE_IMPLEMENTATION ?Add@?$QueueClass@VEventClass@@$0EA@@@QAEHABVEventClass@@@Z 005B8500h ; int QueueClass<class EventClass, 64>::Add(EventClass const &)
+
 end
