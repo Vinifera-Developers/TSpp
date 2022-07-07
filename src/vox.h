@@ -49,3 +49,6 @@ ARRAY_DEC(void *, SpeechBuffer, 2);
 ARRAY_DEC(VoxType, SpeechRecord, 2);
 extern VoxType &SpeakQueue;
 extern VoxType &CurrentVoice;
+
+ARRAY_DEC(char const *, Speech, VOX_COUNT);
+
