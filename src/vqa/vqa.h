@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "dsaudio.h"
+#include "ccfile.h"
 
 
 class VQAClass;

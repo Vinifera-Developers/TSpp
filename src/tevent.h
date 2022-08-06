@@ -86,6 +86,8 @@ TEventClass : public AbstractClass
         void Read_INI();
         void Build_INI_Entry(char *buffer) const;
 
+        const char *Name() const;
+
         static NeedType Needs(TEventType event);
         static AttachType Attaches_To(TEventType event);
 

@@ -92,6 +92,8 @@ FactoryClass : public AbstractClass, public StageClass
         HouseClass *Get_House() { return House; }
         int Queued_Object_Count() { return QueuedObjects.Count(); }
 
+        const char *Name() const;
+
         static void Recalculate_Times(HouseClass *house);
         static FactoryClass *Find_By_Owner_And_Product(const HouseClass *house, const TechnoTypeClass *item);
 

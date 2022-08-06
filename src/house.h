@@ -42,6 +42,7 @@
 #include "typelist.h"
 #include "dropship.h"
 #include "rgb.h"
+#include "tibsun_globals.h"
 #include "tibsun_defines.h"
 #include <ocidl.h> // for IConnectionPointContainer.
 

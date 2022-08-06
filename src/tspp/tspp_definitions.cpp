@@ -2159,6 +2159,7 @@ DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
 DEFINE_IMPLEMENTATION(void SuperClass::Place(Cell *, bool), 0x0060BF70);
 SuperClass::operator SpecialWeaponType () const { return Class->Type; }
+char const * SuperClass::Name() const { return Class->Name(); }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SuperWeaponTypeClass::GetClassID(CLSID *), 0x0060D100);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SuperWeaponTypeClass::Load(IStream *), 0x0060D140);
@@ -2512,6 +2513,7 @@ DEFINE_IMPLEMENTATION(bool ScriptClass::Stop_Script(), 0x005E79C0);
 DEFINE_IMPLEMENTATION(bool ScriptClass::Set_Line(int), 0x005E79D0);
 DEFINE_IMPLEMENTATION(bool ScriptClass::Next_Mission(), 0x005E79E0);
 DEFINE_IMPLEMENTATION(bool ScriptClass::Has_Missions_Remaining() const, 0x005E7A00);
+const char *ScriptClass::Name() const { return Class->Name(); }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ScriptTypeClass::GetClassID(CLSID *), 0x005E80F0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ScriptTypeClass::Load(IStream *), 0x005E8130);
@@ -3309,6 +3311,7 @@ DEFINE_IMPLEMENTATION(void TeamClass::Flash_For(int), 0x00627910);
 DEFINE_IMPLEMENTATION(bool TeamClass::func_6277A0(), 0x006277A0);
 DEFINE_IMPLEMENTATION(void TeamClass::func_627800(DynamicVectorClass<const TechnoTypeClass *> &), 0x00627800);
 // 00627A20
+const char *TeamClass::Name() const { return Class->Name(); }
 DEFINE_IMPLEMENTATION(void TeamClass::func_6271F0(BuildingTypeClass *, HouseClass *, FootClass *, int, bool), 0x006271F0);
 DEFINE_IMPLEMENTATION(void TeamClass::Suspend_Teams(int, const HouseClass *), 0x00625070);
 
@@ -4277,6 +4280,7 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 // 0061EC80
 // 0061ECB0
 // 0061ECE0
+const char *TagClass::Name() const { return Class->Name(); }
 
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Basic(CCINIClass &), 0x005DFDE0);
 DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);

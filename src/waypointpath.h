@@ -73,6 +73,8 @@ WaypointPathClass : public AbstractClass
         // 00673820
         // 00673860
 
+        const char *Name() const;
+
     public:
         int field_14; // 0x14
         DynamicVectorClass<WaypointClass> Waypoints;

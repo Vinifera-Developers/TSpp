@@ -85,6 +85,8 @@ TagClass : public AbstractClass
         // 0061ECE0
 
         TagTypeClass *const Class_Of() const { return Class; }
+        
+        const char *Name() const;
 
     public:
         TagTypeClass *Class;

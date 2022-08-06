@@ -68,6 +68,8 @@ ScriptClass : public AbstractClass
         bool Set_Line(int line);
         bool Next_Mission();
         bool Has_Missions_Remaining() const;
+        
+        const char *Name() const;
 
 	public:
         ScriptTypeClass *Class;

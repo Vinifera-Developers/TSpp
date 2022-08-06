@@ -156,6 +156,8 @@ TeamClass : public AbstractClass
 		void func_627800(DynamicVectorClass<const TechnoTypeClass *> &vec);
 		bool func_627A20();
 
+		const char *Name() const;
+
 		static void func_6271F0(BuildingTypeClass *a1, HouseClass *a2, FootClass *a3, int a4, bool a5);
 		static void Suspend_Teams(int priority, const HouseClass *house);
 

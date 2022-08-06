@@ -111,6 +111,8 @@ SuperClass : public AbstractClass
 
 		void Place(Cell *cell, bool player = false);
 
+        char const * Name() const;
+
 	public:
 		SuperWeaponTypeClass *Class;
 		HouseClass *House;

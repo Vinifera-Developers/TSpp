@@ -66,6 +66,8 @@ TubeClass : public AbstractClass
         void Add_Direction(FacingType dir);
         bool Is_Next_Cell(Cell &cell);
 
+        const char *Name() const;
+
         static void Assign_Tubes();
 
         static void Read_Scenario_INI(CCINIClass &ini);

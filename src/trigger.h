@@ -86,6 +86,8 @@ TriggerClass : public AbstractClass
         void Disable();
 
         TriggerTypeClass *const Class_Of() const { return Class; }
+        
+        const char *Name() const;
 
     public:
         TriggerTypeClass *Class;

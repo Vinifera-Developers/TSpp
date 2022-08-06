@@ -95,6 +95,8 @@ LightSourceClass : public AbstractClass
         void Disable(bool update = false);
         void Process();
 
+        const char *Name() const;
+
         static void Init_Clear();
         // 00501950
 

@@ -180,6 +180,8 @@ TActionClass : public AbstractClass
         bool TAction_Chemical_Missile_Strike(HouseClass *house, ObjectClass *object, TriggerClass *trigger, Cell &cell);
         bool TAction_Toggle_Train_Cargo(HouseClass *house, ObjectClass *object, TriggerClass *trigger, Cell &cell);
 
+        const char *Name() const;
+
         static NeedType Needs(TActionType action);
         static AttachType Attaches_To(TActionType action);
 
