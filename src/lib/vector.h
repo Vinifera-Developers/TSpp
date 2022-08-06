@@ -326,7 +326,7 @@ DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T> &that) :
 template<typename T>
 T &DynamicVectorClass<T>::operator[](int index)
 {
-    TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    //TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
     return Vector[index];
 }
 
@@ -334,7 +334,7 @@ T &DynamicVectorClass<T>::operator[](int index)
 template<typename T>
 const T &DynamicVectorClass<T>::operator[](int index) const
 {
-    TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    //TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
     return Vector[index];
 }
 
