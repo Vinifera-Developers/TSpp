@@ -5173,6 +5173,7 @@ bool &IsSpeechAllowed = Make_Global<bool>(0x0071261C);
 CDTimerClass<SystemTimerClass> &SpeakTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0080FC90);
 ARRAY_DEF(0x0080FC9C, void *, SpeechBuffer, 2);
 ARRAY_DEF(0x0080FC88, VoxType, SpeechRecord, 2);
+ARRAY_DEF(0x00711D14, char const *, Speech, VOX_COUNT);
 VoxType &SpeakQueue = Make_Global<VoxType>(0x00712610);
 VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
 Rect &SidebarRect = Make_Global<Rect>(0x0074C240);
