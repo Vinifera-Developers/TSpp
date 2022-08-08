@@ -41,12 +41,12 @@ DECLARE_INTERFACE_IID_(IRTTITypeInfo, IUnknown, "170DAC82-12E4-11D2-8175-0060080
     /**
      *  Fetch the RTTI type ID number.
      */
-    STDMETHOD_(int, What_Am_I)() PURE;
+    STDMETHOD_(int, What_Am_I)() const PURE;
 
     /**
      *  Fetch unique ID number for this RTTI typed object.
      */
-    STDMETHOD_(int, Fetch_ID)() PURE;
+    STDMETHOD_(int, Fetch_ID)() const PURE;
 
     /**
      *  Create unique ID number for this RTTI typed object.

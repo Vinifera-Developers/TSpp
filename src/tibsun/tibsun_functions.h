@@ -37,6 +37,7 @@ class Rect;
 class XSurface;
 class PaletteClass;
 class ObjectClass;
+class AbstractClass;
 
 
 void *Load_Alloc_Data(char const *name, int flags = 0 /* MEM_NORMAL */);
@@ -83,3 +84,8 @@ const char *Name_From_RadioMessage(RadioMessageType msg);
 
 const char *Name_From_RTTI(RTTIType rtti);
 RTTIType RTTI_From_Name(const char *name);
+
+bool Is_Object(const AbstractClass *a, bool use_dynamic_cast = false);
+bool Is_Foot(const AbstractClass *a, bool use_dynamic_cast = false);
+bool Is_Techno(const AbstractClass *a, bool use_dynamic_cast = false);
+bool Is_TypeClass(const AbstractClass *a, bool use_dynamic_cast = false);

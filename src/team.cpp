@@ -60,7 +60,7 @@ bool Is_It_Playing(const FootClass *object)
 		return false;
 	}
 
-	if (!object->IsInitiated && object->Kind_Of() != RTTI_AIRCRAFT) {
+	if (!object->IsInitiated && object->What_Am_I() != RTTI_AIRCRAFT) {
 		return false;
 	}
 

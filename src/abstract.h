@@ -69,8 +69,8 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         /**
          *  IRTTITypeInfo.
          */
-        IFACEMETHOD_(int, What_Am_I)();
-        IFACEMETHOD_(int, Fetch_ID)();
+        IFACEMETHOD_(int, What_Am_I)() const;
+        IFACEMETHOD_(int, Fetch_ID)() const;
         IFACEMETHOD_(VOID, Create_ID)();
 
     public:

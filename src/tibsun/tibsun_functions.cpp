@@ -29,6 +29,9 @@
 #include "tibsun_globals.h"
 #include "object.h"
 #include "objecttype.h"
+#include "techno.h"
+#include "foot.h"
+#include "abstracttype.h"
 #include "ccfile.h"
 
 
@@ -80,11 +83,11 @@ static const char * const RadioMessages[RADIO_COUNT] =
 */
 static const char * const LayerName[LAYER_COUNT] =
 {
-	"Underground",
-	"Surface",
-	"Ground",
-	"Air",
-	"Top"
+    "Underground",
+    "Surface",
+    "Ground",
+    "Air",
+    "Top"
 };
 
 
@@ -93,14 +96,14 @@ static const char * const LayerName[LAYER_COUNT] =
 */
 static const char * const FacingName[FACING_COUNT] =
 {
-	"north",
-	"north-east",
-	"east",
-	"south-east",
-	"south",
-	"south-west",
-	"west",
-	"north-west"
+    "north",
+    "north-east",
+    "east",
+    "south-east",
+    "south",
+    "south-west",
+    "west",
+    "north-west"
 };
 
 
@@ -111,14 +114,14 @@ static const char * const FacingName[FACING_COUNT] =
  */
 ActionType Action_From_Name(const char *name)
 {
-	if (name) {
-		for (ActionType action = ACTION_FIRST; action < ACTION_COUNT; ++action) {
-			if (stricmp(ActionName[action], name) == 0) {
-				return action;
-			}
-		}
-	}
-	return ACTION_NONE;
+    if (name) {
+        for (ActionType action = ACTION_FIRST; action < ACTION_COUNT; ++action) {
+            if (stricmp(ActionName[action], name) == 0) {
+                return action;
+            }
+        }
+    }
+    return ACTION_NONE;
 }
 
 
@@ -129,10 +132,10 @@ ActionType Action_From_Name(const char *name)
  */
 const char *Name_From_Action(ActionType action)
 {
-	if (action != LAYER_NONE && action < ACTION_COUNT) {
-		return ActionName[action];
-	}
-	return "<none>";
+    if (action != LAYER_NONE && action < ACTION_COUNT) {
+        return ActionName[action];
+    }
+    return "<none>";
 }
 
 
@@ -143,14 +146,14 @@ const char *Name_From_Action(ActionType action)
  */
 LayerType Layer_From_Name(const char *name)
 {
-	if (name) {
-		for (LayerType layer = LAYER_FIRST; layer < LAYER_COUNT; ++layer) {
-			if (stricmp(LayerName[layer], name) == 0) {
-				return layer;
-			}
-		}
-	}
-	return LAYER_NONE;
+    if (name) {
+        for (LayerType layer = LAYER_FIRST; layer < LAYER_COUNT; ++layer) {
+            if (stricmp(LayerName[layer], name) == 0) {
+                return layer;
+            }
+        }
+    }
+    return LAYER_NONE;
 }
 
 
@@ -161,10 +164,10 @@ LayerType Layer_From_Name(const char *name)
  */
 const char *Name_From_Layer(LayerType layer)
 {
-	if (layer != LAYER_NONE && layer < LAYER_COUNT) {
-		return LayerName[layer];
-	}
-	return "<none>";
+    if (layer != LAYER_NONE && layer < LAYER_COUNT) {
+        return LayerName[layer];
+    }
+    return "<none>";
 }
 
 
@@ -175,14 +178,14 @@ const char *Name_From_Layer(LayerType layer)
  */
 FacingType Facing_From_Name(const char *name)
 {
-	if (name) {
-		for (FacingType facing = FACING_FIRST; facing < FACING_COUNT; ++facing) {
-			if (stricmp(FacingName[facing], name) == 0) {
-				return facing;
-			}
-		}
-	}
-	return FACING_NONE;
+    if (name) {
+        for (FacingType facing = FACING_FIRST; facing < FACING_COUNT; ++facing) {
+            if (stricmp(FacingName[facing], name) == 0) {
+                return facing;
+            }
+        }
+    }
+    return FACING_NONE;
 }
 
 
@@ -193,10 +196,10 @@ FacingType Facing_From_Name(const char *name)
  */
 const char *Name_From_Facing(FacingType facing)
 {
-	if (facing != FACING_NONE && facing < FACING_COUNT) {
-		return FacingName[facing];
-	}
-	return "<none>";
+    if (facing != FACING_NONE && facing < FACING_COUNT) {
+        return FacingName[facing];
+    }
+    return "<none>";
 }
 
 
@@ -207,10 +210,10 @@ const char *Name_From_Facing(FacingType facing)
  */
 const char *Name_From_RadioMessage(RadioMessageType msg)
 {
-	if (msg >= RADIO_STATIC && msg < RADIO_COUNT) {
-		return RadioMessages[msg];
-	}
-	return "<unknown>";
+    if (msg >= RADIO_STATIC && msg < RADIO_COUNT) {
+        return RadioMessages[msg];
+    }
+    return "<unknown>";
 }
 
 
@@ -221,21 +224,21 @@ const char *Name_From_RadioMessage(RadioMessageType msg)
  */
 void Unselect_All_Except(ObjectClass *object)
 {
-	int index = 0;
-	while (index < CurrentObjects.Count()) {
+    int index = 0;
+    while (index < CurrentObjects.Count()) {
 
-		if (CurrentObjects[index] == object) {
-			++index;
-			continue;
-		}
+        if (CurrentObjects[index] == object) {
+            ++index;
+            continue;
+        }
 
-		int count_before = CurrentObjects.Count();
-		CurrentObjects[index]->Unselect();
+        int count_before = CurrentObjects.Count();
+        CurrentObjects[index]->Unselect();
 
-		if (count_before <= CurrentObjects.Count()) {
-			CurrentObjects.Delete(CurrentObjects[index]);
-		}
-	}
+        if (count_before <= CurrentObjects.Count()) {
+            CurrentObjects.Delete(CurrentObjects[index]);
+        }
+    }
 }
 
 
@@ -246,21 +249,21 @@ void Unselect_All_Except(ObjectClass *object)
  */
 void Unselect_All_Except(ObjectTypeClass *objecttype)
 {
-	int index = 0;
-	while (index < CurrentObjects.Count()) {
+    int index = 0;
+    while (index < CurrentObjects.Count()) {
 
-		if (CurrentObjects[index]->Class_Of() == objecttype) {
-			++index;
-			continue;
-		}
+        if (CurrentObjects[index]->Class_Of() == objecttype) {
+            ++index;
+            continue;
+        }
 
-		int count_before = CurrentObjects.Count();
-		CurrentObjects[index]->Unselect();
+        int count_before = CurrentObjects.Count();
+        CurrentObjects[index]->Unselect();
 
-		if (count_before <= CurrentObjects.Count()) {
-			CurrentObjects.Delete(CurrentObjects[index]);
-		}
-	}
+        if (count_before <= CurrentObjects.Count()) {
+            CurrentObjects.Delete(CurrentObjects[index]);
+        }
+    }
 }
 
 
@@ -271,21 +274,21 @@ void Unselect_All_Except(ObjectTypeClass *objecttype)
  */
 void Unselect_All_Except(RTTIType rtti)
 {
-	int index = 0;
-	while (index < CurrentObjects.Count()) {
+    int index = 0;
+    while (index < CurrentObjects.Count()) {
 
-		if (CurrentObjects[index]->What_Am_I() == rtti) {
-			++index;
-			continue;
-		}
+        if (CurrentObjects[index]->What_Am_I() == rtti) {
+            ++index;
+            continue;
+        }
 
-		int count_before = CurrentObjects.Count();
-		CurrentObjects[index]->Unselect();
+        int count_before = CurrentObjects.Count();
+        CurrentObjects[index]->Unselect();
 
-		if (count_before <= CurrentObjects.Count()) {
-			CurrentObjects.Delete(CurrentObjects[index]);
-		}
-	}
+        if (count_before <= CurrentObjects.Count()) {
+            CurrentObjects.Delete(CurrentObjects[index]);
+        }
+    }
 }
 
 
@@ -296,8 +299,8 @@ void Unselect_All_Except(RTTIType rtti)
  */
 void *Load_Alloc_Data(char const *name, int flags)
 {
-	CCFileClass file(name);
-	return Load_Alloc_Data(file);
+    CCFileClass file(name);
+    return Load_Alloc_Data(file);
 }
 
 
@@ -308,13 +311,98 @@ void *Load_Alloc_Data(char const *name, int flags)
  */
 void *Load_Alloc_Data(FileClass &file)
 {
-	void *ptr = 0;
-	long size = file.Size();
+    void *ptr = 0;
+    long size = file.Size();
 
-	ptr = new char [size];
-	if (ptr) {
-		file.Read(ptr, size);
-	}
+    ptr = new char [size];
+    if (ptr) {
+        file.Read(ptr, size);
+    }
 
-	return ptr;
+    return ptr;
+}
+
+
+bool Is_Object(const AbstractClass *a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<const ObjectClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_UNIT
+             || a->What_Am_I() == RTTI_AIRCRAFT
+             || a->What_Am_I() == RTTI_INFANTRY
+             || a->What_Am_I() == RTTI_BUILDING
+             || a->What_Am_I() == RTTI_ANIM
+             || a->What_Am_I() == RTTI_LIGHT
+             || a->What_Am_I() == RTTI_BULLET
+             || a->What_Am_I() == RTTI_ISOTILE
+             || a->What_Am_I() == RTTI_PARTICLE
+             || a->What_Am_I() == RTTI_PARTICLESYSTEM
+             || a->What_Am_I() == RTTI_SMUDGE
+             || a->What_Am_I() == RTTI_TERRAIN
+             || a->What_Am_I() == RTTI_VOXELANIM
+             || a->What_Am_I() == RTTI_VEINHOLEMONSTER
+             || a->What_Am_I() == RTTI_WAVE);
+    }
+}
+
+
+bool Is_Techno(const AbstractClass *a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<const TechnoClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_UNIT
+             || a->What_Am_I() == RTTI_AIRCRAFT
+             || a->What_Am_I() == RTTI_INFANTRY
+             || a->What_Am_I() == RTTI_BUILDING);
+    }
+}
+
+
+bool Is_Foot(const AbstractClass *a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<const FootClass *>(a);
+    } else {
+        return (a->What_Am_I() == RTTI_UNIT
+             || a->What_Am_I() == RTTI_AIRCRAFT
+             || a->What_Am_I() == RTTI_INFANTRY);
+    }
+}
+
+
+bool Is_TypeClass(const AbstractClass *a, bool use_dynamic_cast)
+{
+    if (use_dynamic_cast) {
+        return dynamic_cast<const AbstractTypeClass *>(a);
+    } else {
+        RTTIType rtti = (RTTIType)a->What_Am_I();
+        return (rtti == RTTI_UNITTYPE
+             || rtti == RTTI_AIRCRAFTTYPE
+             || rtti == RTTI_INFANTRYTYPE
+             || rtti == RTTI_BUILDINGTYPE
+             || rtti == RTTI_ANIMTYPE
+             || rtti == RTTI_AITRIGGERTYPE
+             || rtti == RTTI_BULLETTYPE
+             || rtti == RTTI_CAMPAIGN
+             || rtti == RTTI_SIDE
+             || rtti == RTTI_HOUSETYPE
+             || rtti == RTTI_ISOTILETYPE
+             || rtti == RTTI_OVERLAYTYPE
+             || rtti == RTTI_SMUDGETYPE
+             || rtti == RTTI_PARTICLETYPE
+             || rtti == RTTI_PARTICLESYSTEMTYPE
+             || rtti == RTTI_SCRIPTTYPE
+             || rtti == RTTI_SUPERWEAPONTYPE
+             || rtti == RTTI_TAGTYPE
+             || rtti == RTTI_TASKFORCE
+             || rtti == RTTI_TEAMTYPE
+             || rtti == RTTI_TERRAINTYPE
+             || rtti == RTTI_TIBERIUM
+             || rtti == RTTI_TRIGGERTYPE
+             || rtti == RTTI_VOXELANIMTYPE
+             || rtti == RTTI_WARHEADTYPE
+             || rtti == RTTI_WEAPONTYPE);
+    }
 }
