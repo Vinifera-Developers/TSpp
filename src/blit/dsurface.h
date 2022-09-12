@@ -79,6 +79,7 @@ class DSurface : public XSurface
         
         bool Fill_Ellipse(Point2D point, int radius_x, int radius_y, Rect clip, unsigned color);
         bool Fill_Ellipse_Trans(Point2D point, int radius_x, int radius_y, Rect clip, RGBClass &rgb, unsigned opacity);
+
         bool Put_Pixel_Trans(Point2D &point, RGBClass &rgb, unsigned opacity);
 
         void *Get_Buffer_Ptr(int x = 0, int y = 0) { return (unsigned char *)(BufferPtr) + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }

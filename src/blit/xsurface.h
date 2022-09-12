@@ -73,6 +73,8 @@ class XSurface : public Surface
         bool Copy_From_Spritesheet(Surface &fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
         bool Copy_From_Spritesheet_Alpha(Surface &fromsurface, Surface &alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
 
+        void Gaussian_Blur_Rect(Rect rect, float blur_size);
+
     public:
         int LockLevel;
         int BytesPerPixel;
