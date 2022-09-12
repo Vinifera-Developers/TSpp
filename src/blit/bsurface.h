@@ -42,10 +42,9 @@ class BSurface : public XSurface
         virtual int Get_Bytes_Per_Pixel() const override;
         virtual int Get_Pitch() const override;
 
-    protected:
         void *Get_Buffer_Ptr() const { return BufferPtr.Get_Buffer(); }
         void *Get_Buffer_Ptr(int x, int y) { return (unsigned char *)BufferPtr.Get_Buffer() + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }
 
-    protected:
+    public:
         Buffer BufferPtr;
 };
