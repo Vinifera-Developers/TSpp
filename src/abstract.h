@@ -99,7 +99,7 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
 
     public:
         int ID;
-        int HeapID;
+        int RefCount;
         bool Dirty;
 
     private:

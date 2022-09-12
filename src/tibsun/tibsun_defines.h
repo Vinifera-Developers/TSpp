@@ -3051,7 +3051,7 @@ typedef struct DirStruct : public fixed
                 SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id); \
             }
 
-#define SWIZZLE_HERE_I_AM(id, pointer) \
+#define SWIZZLE_REGISTER_POINTER(id, pointer) \
             { \
                 SwizzleManagerClass::DebugFile = __FILE__; \
                 SwizzleManagerClass::DebugFunction = __FUNCTION__; \
@@ -3067,5 +3067,5 @@ typedef struct DirStruct : public fixed
                 } \
             }
 #define SWIZZLE_FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id);
-#define SWIZZLE_HERE_I_AM(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer);
+#define SWIZZLE_REGISTER_POINTER(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer);
 #endif

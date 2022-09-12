@@ -105,9 +105,9 @@ class DSurface : public XSurface
 
         static void Pixel_To_RGB(unsigned pixel, unsigned *red, unsigned *green, unsigned *blue)
         {
-            *red = ((pixel >> RedLeft) << RedRight);
-            *green = ((pixel >> GreenLeft) << GreenRight);
-            *blue = ((pixel >> BlueLeft) << BlueRight);
+            *red = (unsigned char)(pixel >> RedLeft << RedRight);
+            *green = (unsigned char)(pixel >> GreenLeft << GreenRight);
+            *blue = (unsigned char)(pixel >> BlueLeft << BlueRight);
         }
 
         static int Get_RGB_Pixel_Format() { return RGBPixelFormat; }
