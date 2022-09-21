@@ -131,7 +131,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         bool IsDriving;
         bool IsRocking;
         bool IsUnlocked;
-        IPiggybackPtr *Piggybacker;
+        ILocomotionPtr Piggybacker;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

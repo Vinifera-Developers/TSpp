@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          DROPPODLOCOMOTION.H
+ *  @file          TUNNELLOCOMOTION.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Drop pod locomotion class.
+ *  @brief         Tunnel locomotion class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,11 +28,12 @@
 #pragma once
 
 #include "locomotion.h"
-#include "ipiggyback.h"
+#include "ttimer.h"
+#include "ftimer.h"
 
 
-class DECLSPEC_UUID("3DC0B295-6546-11D3-80B0-00902792494C")
-LevitateLocomotionClass : public LocomotionClass
+class DECLSPEC_UUID("4A582743-9839-11D1-B709-00A024DDAFD1")
+TunnelLocomotionClass : public LocomotionClass
 {
     public:
         /**
@@ -48,19 +49,27 @@ LevitateLocomotionClass : public LocomotionClass
         /**
          *  ILocomotion
          */
-        IFACEMETHOD(Link_To_Object)(void *object);
         IFACEMETHOD_(bool, Is_Moving)();
         IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(MoveType, Can_Enter_Cell)(Cell cell);
+        IFACEMETHOD_(bool, Is_To_Have_Shadow)();
+        IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
+        IFACEMETHOD_(VisualType, Visual_Character)(bool flag);
+        IFACEMETHOD_(int, Z_Adjust)();
+        IFACEMETHOD_(ZGradientType, Z_Gradient)();
         IFACEMETHOD_(bool, Process)();
+        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Stop_Moving)();
+        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();
-        IFACEMETHOD_(void, Mark_All_Occupation_Bits)(int mark);
+        IFACEMETHOD_(FireErrorType, Can_Fire)();
+        IFACEMETHOD_(bool, Is_Surfacing)();
 
     public:
-        LevitateLocomotionClass();
-        LevitateLocomotionClass(const NoInitClass &noinit);
-        virtual ~LevitateLocomotionClass();
+        TunnelLocomotionClass();
+        TunnelLocomotionClass(const NoInitClass &noinit);
+        virtual ~TunnelLocomotionClass();
 
         /**
          *  LocomotionClass
@@ -68,20 +77,26 @@ LevitateLocomotionClass : public LocomotionClass
         virtual int Size_Of(bool firestorm = false) const override;
 
     public:
-        int field_14; // State?
-        double field_18; // CurrentVelocity?
-        double field_20; // DeltaX?
-        double field_28; // DeltaY?
-        double field_30; // AccelerationDurationCosinus?
-        double field_38; // AccelerationDurationNegSinus?
-        int field_40; // AccelerationDuration?
-        int field_44; // BlocksCounter?
-        double field_48; // CurrentSpeed?
-        double field_50; // Dampen?
-        double field_58;
+
+        typedef enum ProcessStateType
+        {
+            IDLE,
+            PRE_DIG_IN,
+            DIGGING_IN,
+            DUG_IN,
+            DIGGING,
+            PRE_DIG_OUT,
+            DIGGING_OUT,
+            DUG_OUT
+        } ProcessStateType;
+
+        ProcessStateType CurrentState;
+        Coordinate DestinationCoord;
+        RateTimerClass<FrameTimerClass> DigTimer;
+        bool IsMoving;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.
-        LevitateLocomotionClass(const LevitateLocomotionClass &);
-        LevitateLocomotionClass &operator=(const LevitateLocomotionClass &);
+        TunnelLocomotionClass(const TunnelLocomotionClass &);
+        TunnelLocomotionClass &operator=(const TunnelLocomotionClass &);
 };
