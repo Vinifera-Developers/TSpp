@@ -132,9 +132,9 @@ UnitClass : public FootClass
         /**
          *  UnitClass
          */
-        virtual void entry_3C0(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
-        virtual void entry_3C4(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
-        virtual void entry_3C8(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9);
+        virtual void Unit_Draw_Voxel(Point2D xyoff, Rect rect, int intensity);
+        virtual void Unit_Draw_Shape(Point2D xyoff, Rect rect, int intensity);
+        virtual void Unit_Blit_Voxel(Surface &surface, Point2D xyoff, Rect rect, int alpha, int tint);
 
         operator UnitType () const;
 

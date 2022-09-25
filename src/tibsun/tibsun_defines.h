@@ -123,6 +123,12 @@ extern int &BridgeCellHeight;
 #define TARGET_NONE TargetClass()
 
 
+/**
+ *  Type definitions.
+ */
+typedef IndexClass<int, DataStruct> VoxelIndex;
+
+
 typedef enum WaypointEnum
 {
     WAYPT_HOME = 98,    // Home-cell for this scenario
@@ -2791,6 +2797,13 @@ struct IsoTileFileStruct
         IsoTileImageStruct Tiles;
 };
 #pragma pack()
+
+
+typedef struct VoxelObject
+{
+    VoxelLibClass *Voxel;
+    MotLibClass *Motion;
+} VoxelObject;
 
 
 struct Cell

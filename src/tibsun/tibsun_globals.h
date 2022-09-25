@@ -420,6 +420,8 @@ extern const TheaterDataType *Theaters;
 
 extern SpriteCollectionClass &SpriteCollection;
 
+extern StaticBufferClass &StaticBuffer;
+
 extern LPDIRECTDRAW &DirectDrawObject;
 extern LPDIRECTDRAWCLIPPER &DirectDrawClipper;
 extern LPDIRECTDRAWSURFACE &DirectDrawPrimarySurface;

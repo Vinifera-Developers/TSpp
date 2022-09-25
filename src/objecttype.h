@@ -29,6 +29,7 @@
 
 #include "abstracttype.h"
 #include "search.h"
+#include "staticbuffer.h"
 
 
 class ObjectClass;
@@ -100,12 +101,9 @@ class ObjectTypeClass : public AbstractTypeClass
         unsigned int MaxStrength;
         const ShapeFileStruct *Image;
         const ShapeFileStruct *AlphaImage;
-        VoxelLibClass *BodyVoxel;
-        MotLibClass *BodyMotion;
-        VoxelLibClass *TurretVoxel;
-        MotLibClass *TurretMotion;
-        VoxelLibClass *BarrelVoxel;
-        MotLibClass *BarrelMotion;
+        VoxelObject Voxel;
+        VoxelObject AuxVoxel;
+        VoxelObject AuxVoxel2;
         unsigned int MaxDimension;
         VocType CrushSound;
         char GraphicName[25];
@@ -123,8 +121,8 @@ class ObjectTypeClass : public AbstractTypeClass
         bool IsNewTheater;
         bool IsHasRadialIndicator;
         bool IsIgnoresFirestorm;
-        IndexClass<int, int> field_D4;
-        IndexClass<int, int> field_E8;
-        IndexClass<int, int> field_FC;
-        IndexClass<int, int> field_110;
+        VoxelIndex VoxelIndex;
+        VoxelIndex AuxVoxelIndex;
+        VoxelIndex ShadowVoxelIndex;
+        VoxelIndex AuxVoxel2Index;
 };

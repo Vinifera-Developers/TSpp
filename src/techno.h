@@ -180,7 +180,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_31C() const;
         virtual void entry_320() const;
         virtual void entry_324() const;
-        virtual void entry_328(int a1, int a2, int a3, IndexClass<int, int> *a4, Rect *a5, int a6, int a7, int a8, int a9) const;
+        virtual void Draw_Voxel(VoxelObject &voxeldata, unsigned int frame, int key, VoxelIndex &index, Rect &rect, Point2D &point, Matrix3D &matrix, int color, int flags) const;
         virtual void entry_32C(Point2D &point, Rect &rect) const;
         virtual void entry_330(Point2D &point, Rect &rect, bool a2) const;
         virtual void Draw_Pips(Point2D &point1, Point2D &point2, Rect &rect) const;
@@ -215,7 +215,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 006342C0
         // 00634450
         // 00634690
-        // 00635860
+        void Draw_Voxel_Shadow(VoxelObject &voxeldata); // 00635860
         // 00635B00
         // 00635E20
         // 00635FA0

@@ -2844,7 +2844,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Cloaking_AI(bool) const, 0x0062F150);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_31C() const, 0x00638790);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_320() const, 0x0062AF80);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_324() const, 0x0043B920);
-DEFINE_IMPLEMENTATION(void TechnoClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x006354E0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject &, unsigned int, int, VoxelIndex &, Rect &, Point2D &, Matrix3D &, int, int) const, 0x006354E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D &, Rect &) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D &, Rect &, bool) const, 0x0062C450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(Point2D &, Point2D &, Rect &) const, 0x00637540);
@@ -2976,7 +2976,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) co
 DEFINE_IMPLEMENTATION(TARGET FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
-DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelObject &, unsigned int, int, VoxelIndex &, Rect &, Point2D &, Matrix3D &, int, int), 0x004A5B50);
 DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const TARGET, bool) const, 0x004A49F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool) const, 0x004A3AA0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
@@ -4119,9 +4119,9 @@ DEFINE_IMPLEMENTATION(bool UnitClass::Enter_Idle_Mode(bool, bool) const, 0x00650
 DEFINE_IMPLEMENTATION(bool UnitClass::entry_370(), 0x0064E880);
 DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(Cell &, bool), 0x006572B0);
 DEFINE_IMPLEMENTATION(void UnitClass::Approach_Target(), 0x006571E0);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C0(int, int, int, int, int, int, int, int), 0x00652330);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C4(int, int, int, int, int, int, int, int), 0x00653090);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C8(int, int, int, int, int, int, int, int, int), 0x00651F50);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Voxel(Point2D, Rect, int), 0x00652330);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Shape(Point2D, Rect, int), 0x00653090);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Blit_Voxel(Surface &, Point2D, Rect, int, int), 0x00651F50);
 DEFINE_IMPLEMENTATION(void UnitClass::Tunnel_AI(), 0x0064D9D0);
 DEFINE_IMPLEMENTATION(void UnitClass::Rotation_AI(), 0x0064E560);
 DEFINE_IMPLEMENTATION(bool UnitClass::Edge_Of_World_AI(), 0x0064E6F0);
@@ -5037,6 +5037,11 @@ DEFINE_IMPLEMENTATION(RTTIType AlphaShapeClass::Kind_Of() const, 0x00412990);
 DEFINE_IMPLEMENTATION(int AlphaShapeClass::Size_Of(bool) const, 0x004129A0);
 DEFINE_IMPLEMENTATION(void AlphaShapeClass::Compute_CRC(WWCRCEngine &) const, 0x004129B0);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(StaticBufferClass::StaticBufferClass(), 0x0060A880);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(StaticBufferClass::~StaticBufferClass(), 0x0060A8A0);
+DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, AreaStruct &), 0x0060A8B0);
+DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, Rect &, unsigned short, unsigned short), 0x0060A9E0);
+
 
 /**
  *  Owner draw
@@ -5243,6 +5248,7 @@ bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 int &BuildLevel = Make_Global<int>(0x006FB628);
 SpriteCollectionClass &SpriteCollection = Make_Global<SpriteCollectionClass>(0x00809360);
+StaticBufferClass &StaticBuffer = Make_Global<StaticBufferClass>(0x0074C728);
 bool &PlayerWins = Make_Global<bool>(0x007E4870);
 bool &PlayerLoses = Make_Global<bool>(0x007E2281);
 bool &PlayerRestarts = Make_Global<bool>(0x007B3510);
