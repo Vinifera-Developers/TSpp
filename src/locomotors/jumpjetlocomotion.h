@@ -72,15 +72,25 @@ JumpjetLocomotionClass : public LocomotionClass
         virtual int Size_Of(bool firestorm = false) const override;
 
     public:
+
+        typedef enum ProcessStateType
+        {
+            GROUNDED,
+            ASCENDING,
+            HOVERING,
+            CRUISING,
+            DESCENDING,
+        } ProcessStateType;
+
         Coordinate HeadToCoord;
         bool IsMoving;
-        int field_24;
+        ProcessStateType CurrentState;
         FacingClass Facing;
-        double field_40;
-        double field_48;
-        int field_50;
-        double field_58;
-        bool field_60;
+        double CurrentSpeed;
+        double TargetSpeed;
+        int FlightLevel;
+        double CurrentWobble;
+        bool IsLanding;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

@@ -30,7 +30,7 @@
 #include "locomotion.h"
 
 
-class DECLSPEC_UUID("4A582743-9839-11D1-B709-00A024DDAFD1")
+class DECLSPEC_UUID("4A582747-9839-11D1-B709-00A024DDAFD1")
 TeleportLocomotionClass : public LocomotionClass
 {
     public:

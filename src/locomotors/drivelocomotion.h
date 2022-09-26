@@ -31,6 +31,7 @@
 #include "ipiggyback.h"
 #include "ttimer.h"
 #include "ftimer.h"
+#include "tibsun_defines.h"
 
 
 class DECLSPEC_UUID("4A582741-9839-11D1-B709-00A024DDAFD1")
@@ -116,9 +117,9 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         // 00481EE0
 
     public:
-        int field_18; // current slope/ramp?
-        int field_1C; // previous slope/ramp?
-        CDRateTimerClass<FrameTimerClass> field_20;
+		TileRampType CurrentRamp;
+        TileRampType PreviousRamp;
+        CDRateTimerClass<FrameTimerClass> RampTransitionTimer;
         Coordinate DestinationCoord;
         Coordinate HeadToCoord;
         int SpeedAccum;
@@ -131,7 +132,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         bool IsDriving;
         bool IsRocking;
         bool IsUnlocked;
-        IPiggybackPtr *Piggybacker;
+        ILocomotionPtr Piggybacker;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

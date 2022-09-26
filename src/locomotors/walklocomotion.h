@@ -99,7 +99,7 @@ WalkLocomotionClass : public LocomotionClass, public IPiggyback
         bool IsMoving;
         bool field_31; // flagged when "processing" walking.
         bool IsReallyMoving;
-        IPiggybackPtr Piggybacker;
+        ILocomotionPtr Piggybacker;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.
