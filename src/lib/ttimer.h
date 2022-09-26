@@ -125,7 +125,7 @@ class TTimerClass : public BasicTimerClass<T>
         void Start();
         bool Is_Active() const;
 
-    private:
+    protected:
         unsigned long Accumulated;
 };
 
@@ -348,157 +348,76 @@ inline bool CDTimerClass<T>::Is_Active() const
  *  towards zero at the rate specified.
  */
 template<class T>
-class RateTimerClass : public BasicTimerClass<T>
+class CDRateTimerClass : public CDTimerClass<T>
 {
     using BasicTimerClass<T>::Started;
     using BasicTimerClass<T>::Timer;
 
     public:
-        RateTimerClass(unsigned long set = 0);
-        RateTimerClass(const NoInitClass & x);
-        ~RateTimerClass() {}
+        CDRateTimerClass(unsigned long set = 0, unsigned long rate = 0);
+        CDRateTimerClass(const NoInitClass & x);
+        ~CDRateTimerClass() {}
 
-        RateTimerClass & operator=(const RateTimerClass &that);
-        RateTimerClass & operator=(unsigned long set);
+        CDRateTimerClass & operator=(const CDRateTimerClass &that);
+        CDRateTimerClass & operator=(unsigned long set);
 
         unsigned long Value() const;
 
-        operator unsigned long() const;
-        unsigned long operator () () const;
-
-        void Stop();
-        void Start();
-        bool Is_Active() const;
-        bool Expired() const { return Value() == 0; }
         float Percent_Expired() const;
 
-        unsigned long Rate() const { return TimerRate; }
+        unsigned long Get_Rate() const { return Rate; }
 
     protected:
-        unsigned long DelayTime;
-        unsigned long TimerRate;
+        unsigned long Rate;
 };
 
 
 template<class T>
-inline RateTimerClass<T>::RateTimerClass(const NoInitClass &x) :
-    BasicTimerClass<T>(x)
+inline CDRateTimerClass<T>::CDRateTimerClass(const NoInitClass &x) :
+    CDTimerClass<T>(x)
 {
 }
 
 
 template<class T>
-inline RateTimerClass<T>::RateTimerClass(unsigned long set) :
-    BasicTimerClass<T>(0),
-    DelayTime(set),
-    TimerRate(set)
+inline CDRateTimerClass<T>::CDRateTimerClass(unsigned long set, unsigned long rate) :
+    CDTimerClass<T>(set),
+    Rate(rate)
 {
 }
 
 
 template<typename T>
-RateTimerClass<T> &RateTimerClass<T>::operator=(const RateTimerClass<T> &that)
+CDRateTimerClass<T> &CDRateTimerClass<T>::operator=(const CDRateTimerClass<T> &that)
 {
-    BasicTimerClass<T>::operator=(that);
-    DelayTime = that.DelayTime;
-    TimerRate = that.TimerRate;
+    CDTimerClass<T>::operator=(that);
+    Rate = that.Rate;
     return *this;
 }
 
 
 template<typename T>
-RateTimerClass<T> &RateTimerClass<T>::operator=(unsigned long set)
+CDRateTimerClass<T> &CDRateTimerClass<T>::operator=(unsigned long set)
 {
-    BasicTimerClass<T>::operator=(set);
-    DelayTime = set;
-    TimerRate = set;
+    CDTimerClass<T>::operator=(set);
+    Rate = set;
     return *this;
 }
 
 
 template<class T>
-inline unsigned long RateTimerClass<T>::Value() const
+inline unsigned long CDRateTimerClass<T>::Value() const
 {
-    unsigned long rate = TimerRate;
-    unsigned long remain = DelayTime;
-    if (Started != 0xFFFFFFFFU) {
-        unsigned long value = BasicTimerClass<T>::Value();
-        if (value < remain) {
-            return (rate - (remain - (value - Started))) / rate;
-        } else {
-            return 0;
-        }
-    }
-    return (rate - remain / rate);
+    return Rate - CDTimerClass<T>::Value();
 }
 
 
 template<class T>
-inline RateTimerClass<T>::operator unsigned long() const
+inline float CDRateTimerClass<T>::Percent_Expired() const
 {
-    unsigned long rate = TimerRate;
-    unsigned long remain = DelayTime;
-    if (Started != 0xFFFFFFFFU) {
-        unsigned long value = BasicTimerClass<T>::Value();
-        if (value < remain) {
-            return (rate - (remain - (value - Started))) / rate;
-        } else {
-            return 0;
-        }
-    }
-    return (rate - remain / rate);
-}
-
-
-template<class T>
-inline unsigned long RateTimerClass<T>::operator () () const
-{
-    unsigned long rate = TimerRate;
-    unsigned long remain = DelayTime;
-    if (Started != 0xFFFFFFFFU) {
-        unsigned long value = BasicTimerClass<T>::Value();
-        if (value < remain) {
-            return (rate - (remain - (value - Started))) / rate;
-        } else {
-            return 0;
-        }
-    }
-    return (rate - remain / rate);
-}
-
-
-template<class T>
-inline float RateTimerClass<T>::Percent_Expired() const
-{
-    unsigned long rate = TimerRate;
+    unsigned long rate = Rate;
     if (!rate) {
-        return 1.0;
+        return 1.0f;
     }
-    return (float)(rate - Value()) / (float)rate;
-}
-
-
-template<class T>
-void RateTimerClass<T>::Stop()
-{
-    if (Started != 0xFFFFFFFFU) {
-        DelayTime = *this;
-        Started = 0xFFFFFFFFU;
-    }
-}
-
-
-template<class T>
-void RateTimerClass<T>::Start()
-{
-    if (Started == 0xFFFFFFFFU) {
-        Started = Timer();
-    }
-}
-
-
-template<class T>
-inline bool RateTimerClass<T>::Is_Active() const
-{
-    return Started != 0xFFFFFFFFU;
+    return (float)Value() / (float)rate;
 }

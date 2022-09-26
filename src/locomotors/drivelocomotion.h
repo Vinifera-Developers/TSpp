@@ -118,7 +118,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
     public:
         int field_18; // current slope/ramp?
         int field_1C; // previous slope/ramp?
-        RateTimerClass<FrameTimerClass> field_20;
+        CDRateTimerClass<FrameTimerClass> field_20;
         Coordinate DestinationCoord;
         Coordinate HeadToCoord;
         int SpeedAccum;

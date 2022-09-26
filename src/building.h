@@ -272,7 +272,7 @@ BuildingClass : public TechnoClass
         int field_298; // special weapon index?
         int field_29C; // maybe BAnimType? turret anim loaded or played?.
         BuildingLightClass *BuildingLight;
-        RateTimerClass<FrameTimerClass> GateTimer;
+        CDRateTimerClass<FrameTimerClass> GateTimer;
         LightSourceClass *LightSource;
         int LaserFenceFrame;
         int FirestormWallFrame; // Current frame of the firestorm wall animation.

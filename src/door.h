@@ -53,7 +53,7 @@ class DoorClass
 
     public:
         double Rate;
-        RateTimerClass<FrameTimerClass> Timer;
+        CDRateTimerClass<FrameTimerClass> Timer;
         bool field_18; // in transition?
         unsigned char field_19; // 0 == close, 1 == open.
 };

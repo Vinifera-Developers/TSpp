@@ -230,6 +230,8 @@
 #include "walklocomotion.h"
 #include "drivelocomotion.h"
 #include "flylocomotion.h"
+#include "mechlocomotion.h"
+#include "hoverlocomotion.h"
 #include "cd.h"
 #include "vqa.h"
 #include "progressscreen.h"
@@ -4648,6 +4650,49 @@ DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Acquire_Hunter_Seeker_Target(), 0
 FlyLocomotionClass::FlyLocomotionClass(const NoInitClass &) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(FlyLocomotionClass::~FlyLocomotionClass(), 0x00499530);
 DEFINE_IMPLEMENTATION(int FlyLocomotionClass::Size_Of(bool) const, 0x0049D3B0);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE MechLocomotionClass::GetClassID(CLSID *), 0x005579F0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE MechLocomotionClass::Load(IStream *), 0x00557A30);
+DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving(), 0x005560C0);
+DEFINE_IMPLEMENTATION(Coordinate MechLocomotionClass::Destination(), 0x005560D0);
+DEFINE_IMPLEMENTATION(Coordinate MechLocomotionClass::Head_To_Coord(), 0x00556130);
+DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Process(), 0x005561A0);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Move_To(Coordinate), 0x005561C0);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Stop_Moving(), 0x00556240);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Do_Turn(DirStruct), 0x00556290);
+DEFINE_IMPLEMENTATION(LayerType MechLocomotionClass::In_Which_Layer(), 0x00557A60);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Force_Immediate_Destination(Coordinate), 0x005562C0);
+DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving_Now(), 0x00557A70);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Mark_All_Occupation_Bits(int), 0x00557AE0);
+DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving_Here(Coordinate), 0x00557B60);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(MechLocomotionClass::MechLocomotionClass(), 0x00556040);
+MechLocomotionClass::MechLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D43EC; *((unsigned long *)this+1) = (unsigned long)0x006D4324; }
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(MechLocomotionClass::~MechLocomotionClass(), 0x005560A0);
+DEFINE_IMPLEMENTATION(int MechLocomotionClass::Size_Of(bool) const, 0x00557C00);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HoverLocomotionClass::GetClassID(CLSID *), 0x004D1860);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HoverLocomotionClass::Load(IStream *), 0x004D18A0);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving(), 0x004CF510);
+DEFINE_IMPLEMENTATION(Coordinate HoverLocomotionClass::Destination(), 0x004CF590);
+DEFINE_IMPLEMENTATION(Coordinate HoverLocomotionClass::Head_To_Coord(), 0x004CF5F0);
+DEFINE_IMPLEMENTATION(Matrix3D HoverLocomotionClass::Draw_Matrix(int *), 0x004CEC00);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Process(), 0x004CED20);
+DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Move_To(Coordinate), 0x004CF660);
+DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Stop_Moving(), 0x004D0B70);
+DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Do_Turn(DirStruct), 0x004D0BC0);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Power_Off(), 0x004D1410);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Powered(), 0x004D1480);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Ion_Sensitive(), 0x004D14B0);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Push(DirStruct), 0x004D1600);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Shove(DirStruct), 0x004D17B0);
+DEFINE_IMPLEMENTATION(LayerType HoverLocomotionClass::In_Which_Layer(), 0x004D18F0);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving_Now(), 0x004CF560);
+DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Mark_All_Occupation_Bits(int), 0x004D19B0);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving_Here(Coordinate), 0x004D1A30);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(HoverLocomotionClass::HoverLocomotionClass(), 0x004CE8F0);
+HoverLocomotionClass::HoverLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D1EEC; *((unsigned long *)this+1) = (unsigned long)0x006D1F24; }
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(HoverLocomotionClass::~HoverLocomotionClass(), 0x004CE9D0);
+DEFINE_IMPLEMENTATION(int HoverLocomotionClass::Size_Of(bool) const, 0x004D1AD0);
 
 CD::CD() {}
 DEFINE_IMPLEMENTATION(bool CD::Is_Available(int), 0x0044E7A0);
