@@ -137,7 +137,7 @@ inline double Facing32_Radians(DirStruct &facing)
 {
     int deg_90 = 8;
     int facing32 = Dir_To_32(facing)-deg_90;
-    return ((double)facing32 * -DEG_TO_RAD(360.0 / 16.0));
+    return ((double)facing32 * -DEG_TO_RAD(360)/(UINT16_MAX - 1));
 }
 
 
@@ -221,7 +221,7 @@ inline bool Is_Distance_Within_Range(const Cell &cell1, const Cell &cell2, int m
 
 inline void Move_Point(Point2D &point, DirType dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
     point.Y -= (WWMath::Sin(radians) * distance);
     point.X += (WWMath::Cos(radians) * distance);
@@ -230,7 +230,7 @@ inline void Move_Point(Point2D &point, DirType dir, int distance)
 
 inline void Move_Coord(Coordinate &coord, DirType dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
     coord.Y -= (WWMath::Sin(radians) * distance);
     coord.X += (WWMath::Cos(radians) * distance);
@@ -239,7 +239,7 @@ inline void Move_Coord(Coordinate &coord, DirType dir, int distance)
 
 inline void Move_Cell(Cell &cell, DirType dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -0.00009587672516830327;
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
     cell.Y -= (WWMath::Sin(radians) * distance);
     cell.X += (WWMath::Cos(radians) * distance);
