@@ -112,6 +112,7 @@ extern int &BridgeCellHeight;
  */
 #define TIMER_SECOND        60
 #define TIMER_MINUTE        (TIMER_SECOND * 60)
+#define TIMER_HOUR          (TIMER_MINUTE * 60)
 
 #define TICKS_PER_SECOND    15
 #define TICKS_PER_MINUTE    (TICKS_PER_SECOND * 60)

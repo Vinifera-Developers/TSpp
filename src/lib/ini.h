@@ -168,6 +168,15 @@ class INIClass
         bool Put_Point(const char *section, const char *entry, const TPoint3D<double> &value);
         bool Put_Point(const Wstring &section, const Wstring &entry, const TPoint3D<double> &value);
 
+        unsigned Get_Time(const char *section, const char *entry, unsigned defvalue = 0) const;
+        bool Put_Time(const char *section, const char *entry, unsigned value);
+
+        unsigned Get_Degree(const char *section, const char *entry, unsigned defvalue = 0) const;
+        bool Put_Degree(const char *section, const char *entry, unsigned value);
+
+        float Get_Angle(const char *section, const char *entry, float defvalue = 0.0f) const;
+        bool Put_Angle(const char *section, const char *entry, float value);
+
         const CLSID Get_UUID(const char *section, const char *entry, const CLSID defvalue) const;
         const CLSID Get_UUID(const Wstring &section, const Wstring &entry, const CLSID defvalue) const;
         bool Put_UUID(const char *section, const char *entry, const CLSID value);

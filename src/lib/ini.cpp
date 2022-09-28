@@ -27,8 +27,20 @@
  ******************************************************************************/
 #include "ini.h"
 #include "wstring.h"
+#include "wwmath.h"
+#include "tspp_assert.h"
 #include <sstream>
 #include <algorithm>
+
+
+/**
+ *  These defines control precision format of floating and double point values.
+ *  This only effects output from the ini database, not input.
+ *  
+ *  Currently: #.###, leading zeros are trimmed.
+ */
+#define FLOAT_FORMAT "%.3g" // "%.3f"
+#define DOUBLE_FORMAT "%.3lg" // "%.3lf"
 
 
 /**
@@ -41,7 +53,7 @@ bool INIClass::Is_Present(const char *section, const char *entry) const
     if (!entry) {
         return Find_Section(section) != nullptr;
     } else {
-    return Find_Entry(section, entry) != nullptr;
+        return Find_Entry(section, entry) != nullptr;
     }
 }
 
@@ -318,6 +330,89 @@ const TPoint3D<int> INIClass::Get_Point(const Wstring &section, const Wstring &e
 bool INIClass::Put_Point(const Wstring &section, const Wstring &entry, const TPoint3D<int> &value)
 {
     return Put_Point(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+unsigned INIClass::Get_Time(const char *section, const char *entry, unsigned defvalue) const
+{
+    TSPP_ASSERT(section != nullptr);
+    TSPP_ASSERT(entry != nullptr);
+
+    if (section == nullptr || entry == nullptr) {
+        return defvalue;
+    }
+
+    const INIEntry *entryptr = Find_Entry(section, entry);
+    if (entryptr == nullptr || entryptr->Value == nullptr) {
+        return defvalue;
+    }
+
+    unsigned int h = ((defvalue / 60) / 60) / 60;
+    unsigned int m = ((defvalue / 60) / 60) % 60;
+    unsigned int s = (defvalue / 60) % 60;
+
+    if (std::sscanf(entryptr->Value, "%02d:%02d:%02d", &h, &m, &s) == 3) {
+        return (60 * ((s + 60) * (m + (60 * h))));
+    }
+
+    return defvalue;
+}
+
+
+bool INIClass::Put_Time(const char *section, const char *entry, unsigned value)
+{
+    char buffer[INI_MAX_LINE_LENGTH];
+
+    unsigned int h = ((value / 60) / 60) / 60;
+    unsigned int m = ((value / 60) / 60) % 60;
+    unsigned int s = (value / 60) % 60;
+
+    std::snprintf(buffer, sizeof(buffer), "%02d:%02d:%02d", h, m, s);
+
+    return Put_String(section, entry, buffer);
+}
+
+
+unsigned INIClass::Get_Degree(const char *section, const char *entry, unsigned defvalue) const
+{
+    char buffer[INI_MAX_LINE_LENGTH];
+
+    if (Get_String(section, entry, buffer, sizeof(buffer)) > 0) {
+        return (std::strtol(buffer, nullptr, 10) * 256) / 360;
+    }
+
+    return defvalue;
+}
+
+
+bool INIClass::Put_Degree(const char *section, const char *entry, unsigned value)
+{
+    char buffer[INI_MAX_LINE_LENGTH];
+
+    std::snprintf(buffer, sizeof(buffer), "%d", 360 * value / 256);
+
+    return Put_String(section, entry, buffer);
+}
+
+
+float INIClass::Get_Angle(const char *section, const char *entry, float defvalue) const
+{
+    float value = Get_Float(section, entry, defvalue);
+    if (value != -1.0f) {
+        return DEG_TO_RADF(value);
+    }
+
+    return defvalue;
+}
+
+
+bool INIClass::Put_Angle(const char *section, const char *entry, float value)
+{
+    char buffer[INI_MAX_LINE_LENGTH];
+
+    std::snprintf(buffer, sizeof(buffer), FLOAT_FORMAT, (value != -1.0f ? RAD_TO_DEGF(value) : 0.0f));
+
+    return Put_String(section, entry, buffer);
 }
 
 
