@@ -50,6 +50,10 @@ class ScenarioClass
 
         bool Read_INI(CCINIClass &ini);
         bool Write_INI(CCINIClass &ini);
+        
+        bool Read_Global_INI(CCINIClass &ini);
+        bool Read_Local_INI(CCINIClass &ini);
+        bool Write_Local_INI(CCINIClass &ini);
 
         Cell Get_Waypoint_Location(int wp) const;
         CellClass *Get_Waypoint_Cell(int wp) const;

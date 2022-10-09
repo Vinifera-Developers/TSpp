@@ -4286,6 +4286,9 @@ const char *TagClass::Name() const { return Class->Name(); }
 
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_INI(CCINIClass &), 0x005DFDE0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_INI(CCINIClass &), 0x005E0950);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Global_INI(CCINIClass &), 0x005DF930);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Local_INI(CCINIClass &), 0x005DFBD0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_Local_INI(CCINIClass &), 0x005DFD10);
 DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
 DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
 DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
