@@ -52,6 +52,7 @@ void Prep_Direct_Draw();
 bool Set_Video_Mode(HWND hWnd, int w, int h, int bits_per_pixel);
 void Reset_Video_Mode();
 bool Allocate_Surfaces(Rect *common_rect, Rect *composite_rect, Rect *tile_rect, Rect *sidebar_rect, bool alloc_hidden_surf = false);
+void Free_Heaps();
 void Wait_Blit();
 void Set_DD_Palette(void *rpalette);
 LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
