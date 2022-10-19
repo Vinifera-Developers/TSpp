@@ -16,3 +16,4 @@
 ;
 0x004C1678,0,0,The AI attempted to produce a Harvester but HarvesterUnit= has an invalid or non-existant UnitType defined.
 0x004BAF10,0,0,The AI attempted to produce a Harvester but HarvesterUnit= has an invalid or non-existant UnitType defined.
+0x004D2BC6,0,0,An InfantryType is missing Sequence= from its ART.INI image section.
