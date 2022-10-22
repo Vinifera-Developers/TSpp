@@ -38,6 +38,7 @@ class XSurface;
 class PaletteClass;
 class ObjectClass;
 class AbstractClass;
+class TechnoTypeClass;
 
 
 void *Load_Alloc_Data(char const *name, int flags = 0 /* MEM_NORMAL */);
@@ -58,6 +59,7 @@ void Set_DD_Palette(void *rpalette);
 LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 bool func_6A83E0(Rect &torect, const Rect &toarea, Rect &fromrect, const Rect &fromarea);
 void Unselect_All();
+const TechnoTypeClass * Fetch_Techno_Type(RTTIType type, int id);
 void Unselect_All_Except(ObjectClass *object);
 bool Prep_For_Side(SideType side);
 bool Prep_Speech_For_Side(SideType side);

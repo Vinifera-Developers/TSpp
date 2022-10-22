@@ -5118,6 +5118,7 @@ DEFINE_IMPLEMENTATION(void Set_DD_Palette(void *), 0x00473280);
 DEFINE_IMPLEMENTATION(LRESULT CALLBACK Main_Window_Procedure(HWND, UINT, WPARAM, LPARAM), 0x00685BC0);
 DEFINE_IMPLEMENTATION(bool func_6A83E0(Rect &, const Rect &, Rect &, const Rect &), 0x006A83E0);
 DEFINE_IMPLEMENTATION(void Unselect_All(), 0x00463180);
+DEFINE_IMPLEMENTATION(const TechnoTypeClass * Fetch_Techno_Type(RTTIType, int), 0x004631B0);
 DEFINE_IMPLEMENTATION(bool Prep_For_Side(SideType), 0x004E7EB0);
 DEFINE_IMPLEMENTATION(bool Prep_Speech_For_Side(SideType), 0x004E8460);
 DEFINE_IMPLEMENTATION(void Shake_The_Screen(int), 0x004633B0);
