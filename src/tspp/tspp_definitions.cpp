@@ -2465,7 +2465,7 @@ DEFINE_IMPLEMENTATION(unsigned char * UDPInterfaceClass::Get_Local_Address(int) 
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_File(const char *), 0x00505980);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_File(const char *, const char *), 0x005059D0);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_File(const char *), 0x00505A20);
-DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_File(void *, void *), 0x00505A40);
+DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Read_File(FileEntryClass *, WIN32_FIND_DATA *), 0x00505A40);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Load_Dialog(), 0x00504860);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Save_Dialog(const char *), 0x00504880);
 DEFINE_IMPLEMENTATION(bool LoadOptionsClass::Delete_Dialog(), 0x005048A0);

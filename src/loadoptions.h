@@ -69,7 +69,7 @@ class LoadOptionsClass
         virtual bool Load_File(const char *filename);
         virtual bool Save_File(const char *filename, const char *description);
         virtual bool Delete_File(const char *filename);
-        virtual bool Read_File(void *a1, void *a2);
+        virtual bool Read_File(FileEntryClass *file, WIN32_FIND_DATA *filename);
 
         bool Load_Dialog();
         bool Save_Dialog(const char *description);
