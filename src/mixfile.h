@@ -48,7 +48,14 @@ class MixFileClass : public Node<MixFileClass *>
         static bool Cache(const char *filename, Buffer const * buffer = nullptr);
 
         static bool Offset(const char *filename, void ** realptr = nullptr, MixFileClass ** mixfile = nullptr, long * offset = nullptr, long * size = nullptr);
+
         static const void * Retrieve(const char *filename);
+
+        template<typename T>
+        static const T * RetrieveT(const char *filename)
+        {
+            return (const T *)Retrieve(filename);
+        }
 
         static bool Offset_Within(const char *filename, const char *mix_filename, void **realptr, long *offset = nullptr, long *size = nullptr)
         {
