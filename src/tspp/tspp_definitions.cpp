@@ -4284,6 +4284,8 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 // 0061ECE0
 const char *TagClass::Name() const { return Class->Name(); }
 
+DEFINE_IMPLEMENTATION(void ScenarioClass::Save(LPSTREAM), 0x005DF3C0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Load(LPSTREAM), 0x005DF500);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_INI(CCINIClass &), 0x005DFDE0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_INI(CCINIClass &), 0x005E0950);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Global_INI(CCINIClass &), 0x005DF930);
@@ -4294,6 +4296,13 @@ DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x
 DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
 DEFINE_IMPLEMENTATION(bool Start_Scenario(const char *, bool, CampaignType), 0x005DB170);
+DEFINE_IMPLEMENTATION(void Clear_Scenario(), 0x005DC510);
+DEFINE_IMPLEMENTATION(void Do_Win(), 0x005DC8D0);
+DEFINE_IMPLEMENTATION(void Do_Lose(), 0x005DCC20);
+DEFINE_IMPLEMENTATION(void Do_Restart(), 0x005DCE60);
+DEFINE_IMPLEMENTATION(void Do_Abort(), 0x005DCF70);
+DEFINE_IMPLEMENTATION(void Remove_AI_Players(), 0x005DD290);
+DEFINE_IMPLEMENTATION(void Assign_Houses(), 0x005DE210);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Load(IStream *), 0x006738F0);

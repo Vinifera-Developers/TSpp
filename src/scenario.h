@@ -48,6 +48,9 @@ class ScenarioClass
         ScenarioClass();
         ~ScenarioClass();
 
+        void Save(LPSTREAM pStm);
+        void Load(LPSTREAM pStm);
+
         bool Read_INI(CCINIClass &ini);
         bool Write_INI(CCINIClass &ini);
         
@@ -150,3 +153,10 @@ class ScenarioClass
 
 
 bool Start_Scenario(const char *name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);
+void Clear_Scenario();
+void Do_Win();
+void Do_Lose();
+void Do_Restart();
+void Do_Abort();
+void Remove_AI_Players();
+void Assign_Houses();
