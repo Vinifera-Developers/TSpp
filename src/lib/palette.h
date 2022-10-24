@@ -40,8 +40,10 @@ class PaletteClass
         };
 
     public:
-        PaletteClass(const RGBClass &rgb = RGBClass(0,0,0));
+        PaletteClass();
+        PaletteClass(const RGBClass &rgb);
         PaletteClass(const PaletteClass &that);
+        PaletteClass(const char *filename);
         ~PaletteClass();
 
 		operator const unsigned char * () const { return (const unsigned char *)&Palette[0]; }
