@@ -5074,6 +5074,23 @@ FieldClass::FieldClass() : ID(), DataType(0), Size(0), Data(nullptr), Next(nullp
 DEFINE_IMPLEMENTATION(void FieldClass::Host_To_Net(), 0x00498BC0);
 DEFINE_IMPLEMENTATION(void FieldClass::Net_To_Host(), 0x00498C30);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXAddressClass::IPXAddressClass(), 0x004EF040);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXAddressClass::IPXAddressClass(NetNumType, NetNodeType), 0x004EF070);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXAddressClass::IPXAddressClass(IPXHeaderType *), 0x004EF0A0);
+IPXAddressClass::~IPXAddressClass() {}
+DEFINE_IMPLEMENTATION(void IPXAddressClass::Set_Address(NetNumType, NetNodeType), 0x004EF0D0);
+DEFINE_IMPLEMENTATION(void IPXAddressClass::Set_Address(IPXHeaderType *), 0x004EF0F0);
+DEFINE_IMPLEMENTATION(void IPXAddressClass::Get_Address(NetNumType, NetNodeType) const, 0x004EF150);
+DEFINE_IMPLEMENTATION(void IPXAddressClass::Get_Address(IPXHeaderType *) const, 0x004EF170);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::Is_Broadcast() const, 0x004EF190);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator == (IPXAddressClass &) const, 0x004EF1D0);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator != (IPXAddressClass &) const, 0x004EF250);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator > (IPXAddressClass &) const, 0x004EF2D0);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator < (IPXAddressClass &) const, 0x004EF300);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator >= (IPXAddressClass &) const, 0x004EF330);
+DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator <= (IPXAddressClass &) const, 0x004EF360);
+DEFINE_IMPLEMENTATION(const char *IPXAddressClass::As_String() const, 0x004EF390);
+
 BrainClass::BrainClass() : Neurons(), field_1C(nullptr), Max(0) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(BrainClass::~BrainClass(), 0x00425540);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(NeuronClass::NeuronClass(), 0x004252B0);

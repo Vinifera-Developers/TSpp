@@ -31,13 +31,16 @@
 #include <cstdio>
 
 
+//#define OUTPUT_MANGLED_NAMES 1
+
+
 /**
  *  Outputs the address and mangled name to the debug output window.
  */
-#ifdef OUTPUT_IDA_NAMES
-#define OUTPUT_IDA_NAME(address, name) __pragma(message("    MakeName(" #address ", " "\"" name "\"" ");"))
+#ifdef OUTPUT_MANGLED_NAMES
+#define OUTPUT_MANGLED_NAME(address, name) __pragma(message("    MakeName(" #address ", " "\"" name "\"" ");"))
 #else
-#define OUTPUT_IDA_NAME(address, name) 
+#define OUTPUT_MANGLED_NAME(address, name) 
 #endif
 
 
@@ -58,7 +61,7 @@
     /*[[ noreturn ]]*/ __declspec(noinline) __declspec(naked) \
     prototype \
     { \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
@@ -67,7 +70,7 @@
     /*[[ noreturn ]]*/ inline __declspec(naked) \
     prototype \
     { \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
@@ -76,7 +79,7 @@
     /*[[ noreturn ]]*/ \
     prototype \
     { \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
@@ -115,7 +118,7 @@
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
     { \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         _asm { mov ecx, this } \
 	    _asm { mov esp, ebp } \
 	    _asm { pop ebp } \
@@ -130,7 +133,7 @@
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype : base(NoInitClass()) \
     { \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         _asm { mov ecx, this } \
 	    _asm { mov esp, ebp } \
 	    _asm { pop ebp } \
@@ -174,7 +177,7 @@
     prototype \
     { \
         __pragma(message(__FUNCDNAME__)) \
-        OUTPUT_IDA_NAME(address, __FUNCDNAME__) \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
         DESTRUCTOR_EPILOG; \
         _asm { mov eax, address } \
         _asm { jmp eax } \

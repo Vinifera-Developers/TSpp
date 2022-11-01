@@ -33,6 +33,7 @@
 #include "msglist.h"
 #include "special.h"
 #include "ccfile.h"
+#include "ipxaddr.h"
 #include <Unknwn.h>
 
 
@@ -68,18 +69,6 @@ typedef enum GameEnum
     GAME_SKIRMISH,        // 1 plr vs. AI's
     GAME_WDT,            // World domination tour game
 } GameType;
-
-
-class IPXAddressClass
-{
-    public:
-        IPXAddressClass() {}
-        ~IPXAddressClass() {}
-
-    public:
-        unsigned char NetworkNumber[4];
-        unsigned char NodeAddress[6];
-};
 
 
 #pragma pack(1)
