@@ -5648,6 +5648,9 @@ ARRAY_DEF(0x00809A28, unsigned long, CRC, 256);
 
 ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 
+ARRAY_DEF(0x006F9A74, unsigned char, EventLength, LAST_EVENT);
+ARRAY_DEF(0x006F9A98, const char *, EventNames, LAST_EVENT);
+
 
 #ifndef NDEBUG
 /**

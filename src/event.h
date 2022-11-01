@@ -35,15 +35,12 @@
 #include "tibsun_defines.h"
 
 
-/*
-**	This event class is used to contain all external game events (things that the player can
-**	do at any time) so that these events can be transported between linked computers. This
-**	encapsulation is required in order to ensure that each event affects all computers at the
-**	same time (same game frame).
-**	
-**	NOTE: If you add or remove an event type, you must also update the globals
-**	EventLength[] and EventNames[].
-*/
+/**
+ *	This event class is used to contain all external game events (things that the player can
+ *	do at any time) so that these events can be transported between linked computers. This
+ *	encapsulation is required in order to ensure that each event affects all computers at the
+ *	same time (same game frame).
+ */
 class EventClass
 {
 	public:
@@ -84,6 +81,9 @@ class EventClass
 		int operator!=(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
 
 		void Execute();
+
+		static const char *Event_Name(EventType event);
+		static unsigned char Event_Length(EventType event);
 
 #pragma pack(1) // We need this so bools/bits are not aligned.
 	public:
