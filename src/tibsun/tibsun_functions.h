@@ -81,6 +81,8 @@ ActionType Action_From_Name(const char *name);
 const char *Name_From_Action(ActionType action);
 LayerType Layer_From_Name(const char *name);
 const char *Name_From_Layer(LayerType layer);
+LandType Land_From_Name(const char *name);
+const char *Name_From_Land(LandType land);
 FacingType Facing_From_Name(const char *name);
 const char *Name_From_Facing(FacingType facing);
 const char *Name_From_RadioMessage(RadioMessageType msg);

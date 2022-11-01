@@ -81,6 +81,26 @@ static const char * const RadioMessages[RADIO_COUNT] =
 /***************************************************************************
 **	These are the ASCII names for the cell land types.
 */
+static const char * const LandName[LAND_COUNT] =
+{
+    "Clear",
+    "Road",
+    "Water",
+    "Rock",
+    "Wall",
+    "Tiberium",
+    "Beach",
+    "Rough",
+    "Ice",
+    "Railroad",
+    "Tunnel",
+    "Weeds",
+};
+
+
+/***************************************************************************
+**	These are the ASCII names for the display drawing layer types.
+*/
 static const char * const LayerName[LAYER_COUNT] =
 {
     "Underground",
@@ -198,6 +218,38 @@ const char *Name_From_Facing(FacingType facing)
 {
     if (facing != FACING_NONE && facing < FACING_COUNT) {
         return FacingName[facing];
+    }
+    return "<none>";
+}
+
+
+/**
+*  Converts ASCII name into LandType.
+* 
+*  @author: CCHyper
+*/
+LandType Land_From_Name(const char *name)
+{
+    if (name) {
+        for (LandType land = LAND_FIRST; land < LAND_COUNT; ++land) {
+            if (stricmp(LandName[land], name) == 0) {
+                return land;
+            }
+        }
+    }
+    return LAND_NONE;
+}
+
+
+/**
+*  Retrieves the name for the given LandType.
+* 
+*  @author: CCHyper
+*/
+const char *Name_From_Land(LandType land)
+{
+    if (land != LAND_NONE && land < LAND_COUNT) {
+        return LandName[land];
     }
     return "<none>";
 }

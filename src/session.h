@@ -139,7 +139,7 @@ typedef struct MPStatsType
     int Resends;
     int Lost;
     int PercentLost;
-    int MaxAvgRroundTrip;
+    int MaxAvgRoundTrip;
     int FrameSyncStalls;
     int CommandCountStalls;
     IPXAddressClass Address;
