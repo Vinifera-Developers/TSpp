@@ -113,7 +113,6 @@
 */
 #endif
 
-#if 0
 #define DEFINE_IMPLEMENTATION_CONSTRUCTOR(prototype, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
@@ -125,9 +124,7 @@
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
-#endif
 
-#if 0
 // For classes with a base class that has no default constructor available.
 #define DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(prototype, base, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
@@ -140,7 +137,6 @@
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
-#endif
 
 
 /**
@@ -171,7 +167,6 @@
 */
 #endif
 
-#if 0
 #define DEFINE_IMPLEMENTATION_DESTRUCTOR(prototype, address, ...) \
     /*[[ noreturn ]]*/ __declspec(noinline) \
     prototype \
@@ -182,7 +177,6 @@
         _asm { mov eax, address } \
         _asm { jmp eax } \
     }
-#endif
 
 
 /**

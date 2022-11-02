@@ -290,8 +290,8 @@ CellClass : public AbstractClass
         unsigned char field_95;
         unsigned char OverlayData;
         unsigned char SmudgeData;
-        unsigned char field_98;             // shadow flags? Changes as shroud gets mapped
-        unsigned char field_99;             // shadow flags? Changes as shroud gets mapped
+        char field_98;             // shadow flags? Changes as shroud gets mapped
+        char field_99;             // shadow flags? Changes as shroud gets mapped
         unsigned char field_9A;
 
         union {
@@ -333,7 +333,7 @@ CellClass : public AbstractClass
 
         unsigned IsFlagged:1;
         unsigned IsToShroud:1;
-        unsigned Bit2_4:1;
+        unsigned IsToFog:1;
         unsigned Bit2_8:1;              // is the starting point of a bridge connection? (from start to end?)
         unsigned Bit2_16:1;             // is covered by bridge overlay?
         unsigned Bit2_32:1;             // is covered by bridge overlay? also
