@@ -80,7 +80,33 @@ IsometricTileTypeClass : public ObjectTypeClass
     public:
         IsoTileFileStruct *const Get_Tile_Data() const { return (IsoTileFileStruct *)IsometricTileTypeClass::Get_Image_Data(); }
 
+        // 004F34B0
+        // 004F34F0
         void Load_Image_Data();
+        // 004F36B0
+        // 004F36E0
+        // 004F3720
+        // 004F3880
+        // 004F3890
+        // 004F39E0
+        // 004F56D0
+        // 004F5940
+        // 004F5A20
+        // 004F5A60
+        // 004F5AC0
+        // 004F5B00
+        // 004F5B40
+        // 004F5CB0
+        // 004F6630
+        // 004F8160
+        // 004F8330
+        // 004F8390
+        // 004F8460
+        // 004F8740
+        // 004F8770
+        // 004F87B0
+        // 004F8A40
+        // 004F8A70
 
         static const IsometricTileTypeClass &As_Reference(IsometricTileType type);
         static const IsometricTileTypeClass *As_Pointer(IsometricTileType type);
@@ -91,13 +117,13 @@ IsometricTileTypeClass : public ObjectTypeClass
 
     public:
         IsometricTileType Type;
-        int MarbleMadness;
-        int NonMarbleMadness;
+        IsometricTileType MarbleMadness;
+        IsometricTileType NonMarbleMadness;
         int field_130;
         DynamicVectorClass<unsigned short *> field_134;
         IsometricTileTypeClass *NextTileTypeInSet;
-        int ToSnowTheater;
-        int ToTemperateTheater;
+        IsometricTileType ToSnowTheater;
+        IsometricTileType ToTemperateTheater;
         AnimType Anim;
         int XOffset;
         int YOffset;

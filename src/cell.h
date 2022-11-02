@@ -127,7 +127,7 @@ CellClass : public AbstractClass
         bool Is_Spot_Free(int spot_index, bool a2 = false) const;
         Coordinate Closest_Free_Spot(Coordinate &coord, bool a2 = false, bool a3 = false) const;
         // 00457600
-        // 00457650
+        int Clear_Icon(IsometricTileType tile, int tile_sequence_count);
         void Incoming(Coordinate &threat = Coordinate(), bool forced = false, bool no_kidding = false, bool a4 = false);
         CellClass &Adjacent_Cell(FacingType facing) const;
         void Adjust_Threat(HousesType house, int threat_value);
@@ -256,7 +256,7 @@ CellClass : public AbstractClass
     public:
         Cell Pos;
         DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
-        int field_1C;                       // on bridge start sections?
+        CellClass *field_1C;
         int field_20;
         LightConvertClass *Drawer;
         IsometricTileType Tile;
@@ -282,11 +282,11 @@ CellClass : public AbstractClass
         wRGBStruct field_82;                // tint lowest?
         wRGBStruct field_88;                // tint highest?
         short field_8E;                     // -- always "-1"
-        unsigned char Ramp;
+        unsigned char field_90;
         unsigned char IsIceGrowthAllowed;
-        unsigned char Height;
+        unsigned char SubTile;
         unsigned char Level;
-        unsigned char field_94;
+        unsigned char Ramp;
         unsigned char field_95;
         unsigned char OverlayData;
         unsigned char SmudgeData;
@@ -349,8 +349,8 @@ CellClass : public AbstractClass
         unsigned Bit3_64:1;             // Toggled by A* pathfinding code.
         unsigned Bit3_128:1;
 
-        unsigned Bit4_1:1;              // Has horizontal tag?
-        unsigned Bit4_2:1;              // Has vertical tag?
+        unsigned IsHorizontalLine:1;
+        unsigned IsVerticalLine:1;
         unsigned Bit4_4:1;              // Completely shrouded? Visually unclear?
 
     private:

@@ -42,13 +42,6 @@ class DECLSPEC_UUID("C53DD373-151E-11D2-8175-006008055BB5")
 TiberiumClass : public AbstractTypeClass
 {
     public:
-        struct TiberiumCellHeader
-        {
-            Cell Data;
-            float Key;
-        };
-
-    public:
         /**
          *  IPersist
          */
@@ -125,13 +118,13 @@ TiberiumClass : public AbstractTypeClass
         int NumImages;
         int NumSlopeFacings;
         int SpreadCount;
-        PriorityQueueClass<TiberiumCellHeader> *SpreadHeaps;
+        PriorityQueueClass<Cell, float> *SpreadCellQueue;
         bool *SpreadState;
-        TiberiumCellHeader *SpreadCellData;
+        PriorityQueueClassNode<Cell, float> *SpreadCellNodes;
         CDTimerClass<FrameTimerClass> SpreadTimer;
         int GrowthCount;
-        PriorityQueueClass<TiberiumCellHeader> *GrowthHeaps;
+        PriorityQueueClass<Cell, float> *GrowthCellQueue;
         bool *GrowthState;
-        TiberiumCellHeader *GrowthCellData;
+        PriorityQueueClassNode<Cell, float> *GrowthCellNodes;
         CDTimerClass<FrameTimerClass> GrowthTimer;
 };

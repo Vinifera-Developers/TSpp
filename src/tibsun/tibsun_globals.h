@@ -143,6 +143,7 @@ class LaserDrawClass;
 class EMPulseClass;
 class AlphaShapeClass;
 class FoggedObjectClass;
+class VeinholeMonsterClass;
 class EventClass;
 class MouseClass;
 class Rect;
@@ -395,6 +396,7 @@ extern DynamicVectorClass<LaserDrawClass *> &LaserDraws;
 extern DynamicVectorClass<EMPulseClass *> &Empulses;
 extern DynamicVectorClass<AlphaShapeClass *> &AlphaShapes;
 extern DynamicVectorClass<FoggedObjectClass *> &FoggedObjects;
+extern DynamicVectorClass<VeinholeMonsterClass *> &VeinholeMonsters;
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

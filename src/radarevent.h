@@ -68,8 +68,8 @@ class RadarEventClass
 
         static void Clear_All();
 
-        static bool Save(IStream *pStm);
-        static bool Load(IStream *pStm);
+        static bool Save_All(IStream *pStm);
+        static bool Load_All(IStream *pStm);
 
     public:
         RadarEventType Type;

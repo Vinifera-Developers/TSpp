@@ -2695,7 +2695,8 @@ struct ShapeFileFrameStruct
     int16_t FrameYPos;
     int16_t FrameWidth;
     int16_t FrameHeight;
-    int32_t Flags; 
+    uint32_t Flag1:1;
+    uint32_t IsRLE:1;
     RGBStruct Color;
     uint8_t field_F[5];
     int32_t FrameOffset;
@@ -2713,9 +2714,9 @@ struct ShapeFileStruct
     public:
         operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
 
-        ShapeFileFrameStruct *Get_Frame_Data(int index)
+        ShapeFileFrameStruct *Get_Frame_Data(int frame)
         {
-            return &(&FrameData)[index * sizeof(ShapeFileFrameStruct)];
+            return frame < Get_Frame_Count() ? &(&FrameData)[frame * sizeof(ShapeFileFrameStruct)] : nullptr;
         }
 
         int Get_Width() const { return Header.Width; }
@@ -2757,13 +2758,14 @@ struct IsoTileImageStruct
     int32_t ExtraYPos;
     int32_t ExtraWidth;
     int32_t ExtraHeight;
-    int32_t Flags; 
+    uint32_t IsHasExtraData:1;
+    uint32_t IsHasZData:1;
+    uint32_t IsRandomised:1;
     uint8_t Height; 
     uint8_t TileType; 
     uint8_t RampType; 
     RGBStruct LowColor;
     RGBStruct HighColor;
-    uint8_t field_31[3];
 };
 #pragma pack()
 
@@ -2774,22 +2776,42 @@ struct IsoTileFileStruct
     public:
         operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
 
-        IsoTileImageStruct *Get_Tiles_Data(int index)
+        IsoTileImageStruct *Get_Tile_Image_Data(int tile_index) const
         {
-            return &(&Tiles)[index * sizeof(IsoTileImageStruct)];
+            return tile_index < Get_Tile_Count() ? Tiles[tile_index % (Header.Width * Header.Height)] : nullptr;
         }
 
         int Get_Width() const { return Header.Width; }
         int Get_Height() const { return Header.Height; }
+        int Get_Image_Width() const { return Header.ImageWidth; }
+        int Get_Image_Height() const { return Header.ImageHeight; }
+
+        int Get_Tile_Count() const
+        {
+            return Header.Width * Header.Height;
+        }
+
+        int Get_Highest_Height() const
+        {
+            int height = 0;
+            for (int index = 0; index < Get_Tile_Count(); ++index) {
+                IsoTileImageStruct *tile = Get_Tile_Image_Data(index);
+                if (tile) {
+                    if (tile->Height > height)
+                        height = tile->Height;
+                }
+            }
+            return height;
+        }
 
     private:
         IsoTileHeaderStruct Header;
 
         /**
-         *  This is an instance of the first frame in the iso tile file, use Get_Frame_Data
+         *  This is an instance of the first frame in the iso tile file, use Get_Tile_Image_Data
          *  to get the image information, do not access this directly!
          */
-        IsoTileImageStruct Tiles;
+        IsoTileImageStruct *Tiles[1];
 };
 #pragma pack()
 

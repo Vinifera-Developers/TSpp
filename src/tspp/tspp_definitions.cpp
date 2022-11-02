@@ -267,6 +267,7 @@
 #include "field.h"
 #include "brain.h"
 #include "alphashape.h"
+#include "veinholemonster.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "winfont.h"
@@ -1484,6 +1485,7 @@ DEFINE_IMPLEMENTATION(int CellClass::Reduce_Wall(int), 0x00456E90);
 DEFINE_IMPLEMENTATION(int CellClass::Spot_Index(Coordinate &), 0x00457280);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Spot_Free(int, bool) const, 0x00457310);
 DEFINE_IMPLEMENTATION(Coordinate CellClass::Closest_Free_Spot(Coordinate &, bool, bool) const, 0x00457360);
+DEFINE_IMPLEMENTATION(int CellClass::Clear_Icon(IsometricTileType, int), 0x00457650);
 DEFINE_IMPLEMENTATION(void CellClass::Incoming(Coordinate &, bool, bool, bool), 0x004577D0);
 DEFINE_IMPLEMENTATION(CellClass &CellClass::Adjacent_Cell(FacingType) const, 0x00457970);
 DEFINE_IMPLEMENTATION(void CellClass::Adjust_Threat(HousesType, int), 0x004579D0);
@@ -4540,8 +4542,8 @@ DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, in
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Any_Active(), 0x005C2590);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D *), 0x005C1CB0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Clear_All(), 0x005C2B30);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Save(IStream *), 0x005C2830);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Load(IStream *), 0x005C28A0);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Save_All(IStream *), 0x005C2830);
+DEFINE_IMPLEMENTATION(bool RadarEventClass::Load_All(IStream *), 0x005C28A0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeleportLocomotionClass::GetClassID(CLSID *), 0x0063EE70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeleportLocomotionClass::Load(IStream *), 0x0063EEB0);
@@ -5130,6 +5132,23 @@ DEFINE_IMPLEMENTATION(RTTIType AlphaShapeClass::Kind_Of() const, 0x00412990);
 DEFINE_IMPLEMENTATION(int AlphaShapeClass::Size_Of(bool) const, 0x004129A0);
 DEFINE_IMPLEMENTATION(void AlphaShapeClass::Compute_CRC(WWCRCEngine &) const, 0x004129B0);
 
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VeinholeMonsterClass::GetClassID(CLSID *), 0x006636E0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VeinholeMonsterClass::Save(IStream *, BOOL), 0x00663390);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(VeinholeMonsterClass::VeinholeMonsterClass(Cell), 0x00660C00);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(VeinholeMonsterClass::VeinholeMonsterClass(NoInitClass &), 0x00660A90);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(VeinholeMonsterClass::~VeinholeMonsterClass(), 0x00661000);
+DEFINE_IMPLEMENTATION(RTTIType VeinholeMonsterClass::Kind_Of() const, 0x00663720);
+DEFINE_IMPLEMENTATION(int VeinholeMonsterClass::Size_Of(bool) const, 0x00663730);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::AI(), 0x00661420);
+DEFINE_IMPLEMENTATION(LayerType VeinholeMonsterClass::In_Which_Layer() const, 0x00663740);
+DEFINE_IMPLEMENTATION(ObjectTypeClass *const VeinholeMonsterClass::Class_Of() const, 0x006633B0);
+DEFINE_IMPLEMENTATION(ResultType VeinholeMonsterClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x00661B80);
+DEFINE_IMPLEMENTATION(bool VeinholeMonsterClass::Load_All(IStream *), 0x00662F20);
+DEFINE_IMPLEMENTATION(bool VeinholeMonsterClass::Save_All(IStream *), 0x00663210);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Init_Clear(), 0x00661D00);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Draw_All(), 0x006619D0);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Update_All(), 0x006613C0);
+
 
 /**
  *  Owner draw
@@ -5551,6 +5570,7 @@ DynamicVectorClass<LaserDrawClass *> &LaserDraws = Make_Global<DynamicVectorClas
 DynamicVectorClass<EMPulseClass *> &Empulses = Make_Global<DynamicVectorClass<EMPulseClass *>>(0x007A2E68);
 DynamicVectorClass<AlphaShapeClass *> &AlphaShapes = Make_Global<DynamicVectorClass<AlphaShapeClass *>>(0x0074CCE0);
 DynamicVectorClass<FoggedObjectClass *> &FoggedObjects = Make_Global<DynamicVectorClass<FoggedObjectClass *>>(0x007B3238);
+DynamicVectorClass<VeinholeMonsterClass *> &VeinholeMonsters = Make_Global<DynamicVectorClass<VeinholeMonsterClass *>>(0x0080FBA8);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 
