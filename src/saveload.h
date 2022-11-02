@@ -35,6 +35,9 @@
 bool Save_Game(const char *file_name, const char *descr, bool bargraph = false);
 bool Load_Game(const char *file_name);
 
+HRESULT Save_Misc_Values(IStream *pStm);
+HRESULT Load_Misc_Values(IStream *pStm);
+
 
 template<class T>
 HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)

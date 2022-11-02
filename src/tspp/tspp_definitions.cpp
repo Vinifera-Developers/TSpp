@@ -1184,6 +1184,8 @@ DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate *, LEPTON, int, Tec
 
 DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);
 DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
+DEFINE_IMPLEMENTATION(HRESULT Save_Misc_Values(IStream *), 0x005D7910);
+DEFINE_IMPLEMENTATION(HRESULT Load_Misc_Values(IStream *), 0x005D7AF0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimTypeClass::GetClassID(CLSID *), 0x0065FE30);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Load(IStream *), 0x0065FE70);
@@ -5529,7 +5531,7 @@ DynamicVectorClass<ParticleSystemClass *> &ParticleSystems = Make_Global<Dynamic
 DynamicVectorClass<IsometricTileClass *> &IsoTiles = Make_Global<DynamicVectorClass<IsometricTileClass *>>(0x007482A0);
 DynamicVectorClass<RadarEventClass *> &RadarEvents = Make_Global<DynamicVectorClass<RadarEventClass *>>(0x0080A110);
 DynamicVectorClass<InfantryClass *> &Infantry = Make_Global<DynamicVectorClass<InfantryClass *>>(0x007E2300);
-DynamicVectorClass<TubeClass *> &Tubes = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
+DynamicVectorClass<TubeClass *> &Tunnels = Make_Global<DynamicVectorClass<TubeClass *>>(0x007B3488);
 DynamicVectorClass<ColorScheme *> &ColorSchemes = Make_Global<DynamicVectorClass<ColorScheme *>>(0x0080A2C8);
 DynamicVectorClass<LaserDrawClass *> &LaserDraws = Make_Global<DynamicVectorClass<LaserDrawClass *>>(0x00804918);
 

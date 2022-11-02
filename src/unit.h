@@ -4,7 +4,7 @@
  *
  *  @project       TS++
  *
- *  @file          BUILDING.H
+ *  @file          UNIT.H
  *
  *  @authors       CCHyper, tomsons26
  *
