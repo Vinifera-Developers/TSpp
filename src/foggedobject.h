@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          ALPHASHAPE.H
+ *  @file          FOGGEDOBJECT.H
  *
  *  @authors       CCHyper
  *
- *  @brief         Alpha shape object class.
+ *  @brief         Fogged (Fog of War) object class.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,12 +28,26 @@
 #pragma once
 
 #include "abstract.h"
-#include "rect.h"
+#include "tibsun_defines.h"
 
 
-class DECLSPEC_UUID("623C7584-74E7-11D2-B8F5-006008C809ED")
-AlphaShapeClass : public AbstractClass
+class ObjectTypeClass;
+class BuildingClass;
+class TerrainClass;
+
+
+class DECLSPEC_UUID("1C470B0E-69D7-11D2-B8F2-006008C809ED")
+FoggedObjectClass : public AbstractClass
 {
+    public:
+        typedef struct DrawRecord
+        {
+            ObjectTypeClass *TypeClass;
+            int Frame;
+            int HeightAdjust;
+            int ZAdjust;
+        } DrawRecord;
+
     public:
         /**
          *  IPersist
@@ -47,27 +61,39 @@ AlphaShapeClass : public AbstractClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        AlphaShapeClass();
-        AlphaShapeClass(TARGET target, int width, int height);
-        AlphaShapeClass(NoInitClass &noinit);
-        virtual ~AlphaShapeClass();
+        FoggedObjectClass();
+        FoggedObjectClass(Coordinate &coord, OverlayType overlay, int overlay_data);
+        FoggedObjectClass(Coordinate &coord, SmudgeType smudge, int smudge_data);
+        FoggedObjectClass(const BuildingClass *building, bool to_draw = false);
+        FoggedObjectClass(const TerrainClass *terrain);
+        FoggedObjectClass(NoInitClass &noinit);
+        virtual ~FoggedObjectClass();
 
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
         virtual RTTIType Kind_Of() const override;
         virtual int Size_Of(bool a1 = false) const override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        // 0x00412A90
-        // 0x00412B40
-        // 0x00412F70
-        // 0x004132D0
+        virtual Cell Get_Cell() const;
+
+        Cell *Get_Occupy_List() const;
+        const ObjectTypeClass *Get_Object() const;
+
+        static void Draw_All();
+        static void Update_All();
 
     public:
-        TARGET AttachedTo;
-        Rect Size;
-        ShapeFileStruct *Image;
-        bool field_2C;
+        OverlayType Overlay;
+        HouseClass *Owner;
+        int OverlayData;
+        RTTIType RTTI;
+        Coordinate Coord;
+        Rect BoundingRect;
+        int CellLevel;
+        SmudgeType Smudge;
+        int SmudgeData;
+        DynamicVectorClass<DrawRecord *> Records;
+        bool ToDraw;
 };

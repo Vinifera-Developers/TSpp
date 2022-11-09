@@ -268,6 +268,7 @@
 #include "brain.h"
 #include "alphashape.h"
 #include "veinholemonster.h"
+#include "foggedobject.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "winfont.h"
@@ -4818,7 +4819,7 @@ LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : Lo
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
 DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Size_Of(bool) const, 0x005010B0);
 
-DEFINE_IMPLEMENTATION(NewMenuClass::NewMenuClass(), 0x0057FBE0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(NewMenuClass::NewMenuClass(), 0x0057FBE0);
 DEFINE_IMPLEMENTATION(void NewMenuClass::Blit(), 0x0057FBA0);
 DEFINE_IMPLEMENTATION(NewMenuClass *NewMenuClass::Get(), 0x0057FB40);
 
@@ -5148,6 +5149,24 @@ DEFINE_IMPLEMENTATION(bool VeinholeMonsterClass::Save_All(IStream *), 0x00663210
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Init_Clear(), 0x00661D00);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Draw_All(), 0x006619D0);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Update_All(), 0x006613C0);
+
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FoggedObjectClass::GetClassID(CLSID *), 0x0049F6D0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Load(IStream *), 0x0049F420);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Save(IStream *, BOOL), 0x0049F3B0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(), 0x0049D850);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coordinate &, OverlayType, int), 0x0049D910);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coordinate &, SmudgeType, int), 0x0049DBB0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(const BuildingClass *, bool), 0x0049DE60);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(const TerrainClass *), 0x0049E2C0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(NoInitClass &), 0x0049D810);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(FoggedObjectClass::~FoggedObjectClass(), 0x0049E590);
+DEFINE_IMPLEMENTATION(RTTIType FoggedObjectClass::Kind_Of() const, 0x0049F6B0);
+DEFINE_IMPLEMENTATION(int FoggedObjectClass::Size_Of(bool) const, 0x0049F6C0);
+DEFINE_IMPLEMENTATION(Cell FoggedObjectClass::Get_Cell() const, 0x0049F7D0);
+DEFINE_IMPLEMENTATION(Cell *FoggedObjectClass::Get_Occupy_List() const, 0x0049F690);
+DEFINE_IMPLEMENTATION(const ObjectTypeClass *FoggedObjectClass::Get_Object() const, 0x0049F7C0);
+DEFINE_IMPLEMENTATION(void FoggedObjectClass::Draw_All(), 0x0049E7B0);
+DEFINE_IMPLEMENTATION(void FoggedObjectClass::Update_All(), 0x0049F280);
 
 
 /**
