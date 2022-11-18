@@ -28,6 +28,7 @@
 #include "ini.h"
 #include "wstring.h"
 #include "wwmath.h"
+#include "rawfile.h"
 #include "tspp_assert.h"
 #include <sstream>
 #include <algorithm>
@@ -425,4 +426,77 @@ const CLSID INIClass::Get_UUID(const Wstring &section, const Wstring &entry, con
 bool INIClass::Put_UUID(const Wstring &section, const Wstring &entry, const CLSID value)
 {
     return Put_UUID(section.Peek_Buffer(), entry.Peek_Buffer(), value);
+}
+
+
+/**
+ *  Allows you to explicitly open a ini file.
+ */
+INIClass *Get_INI(const char *filename)
+{
+    RawFileClass file(filename);
+
+    if (file.Is_Available() && file.Open(FILE_ACCESS_READ)) {
+        INIClass *ini = new INIClass(file);
+        TSPP_ASSERT(ini != nullptr);
+        return ini;
+    }
+
+    return nullptr;
+}
+
+INIClass *Get_INI(FileClass &file)
+{
+    if (file.Is_Available() && file.Open(FILE_ACCESS_READ)) {
+        INIClass *ini = new INIClass(file);
+        TSPP_ASSERT(ini != nullptr);
+        return ini;
+    }
+
+    return nullptr;
+}
+
+
+/**
+ *  Save the content of a INI database.
+ */
+bool Save_INI(INIClass *ini, const char *filename)
+{
+    if (filename != nullptr) {
+        return false;
+    }
+
+    // Create a local file instance to save this ini.
+    RawFileClass file(filename);
+
+    // Open the file with ini file with read access and check availability.
+    // If successful, write the ini data to disk.
+    if (file.Is_Available() && file.Open(FILE_ACCESS_WRITE)) {
+        return ini->Save(file);
+    }
+
+    return false;
+}
+
+bool Save_INI(INIClass *ini, FileClass &file)
+{
+    // Open the file with ini file with read access and check availability.
+    // If successful, write the ini data to disk.
+    if (file.Is_Available() && file.Open(FILE_ACCESS_WRITE)) {
+        return ini->Save(file);
+    }
+
+    return false;
+}
+
+
+/**
+ *  Close the ini file and flush all knowledge of it.
+ */
+void Release_INI(INIClass *ini)
+{
+    if (ini != nullptr) {
+        delete ini;
+        ini = nullptr;
+    }
 }

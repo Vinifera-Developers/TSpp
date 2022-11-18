@@ -189,8 +189,17 @@ class INIClass
         const INISection * Find_Section(const char *section) const;
         const INIEntry * Find_Entry(const char *section, const char *entry) const;
 
-    protected:
+    public:
         List<const INISection *> SectionList;
         IndexClass<int, const INISection *> SectionIndex;
         INIComment *LineComments;
 };
+
+
+INIClass *Get_INI(const char *filename);
+INIClass *Get_INI(FileClass &file);
+
+bool Save_INI(INIClass *ini, const char *filename);
+bool Save_INI(INIClass *ini, FileClass &file);
+
+void Release_INI(INIClass *ini);
