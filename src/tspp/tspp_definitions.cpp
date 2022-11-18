@@ -948,7 +948,7 @@ DEFINE_IMPLEMENTATION(int HSVClass::Difference(const HSVClass &) const, 0x004D1C
 PaletteClass::PaletteClass() : Palette() {}
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const RGBClass &), 0x005A2810);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const PaletteClass &), 0x005A2860);
-PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCC::Retrieve(filename), sizeof(this)); }
+PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCC::Retrieve(filename), sizeof(this)); for (int i = 0; i < COLOR_COUNT; ++i) { Palette[i].Red *= 4; Palette[i].Green *= 4; Palette[i].Blue *= 4; } }
 PaletteClass::~PaletteClass() {}
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int), 0x005A28E0);
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int, const PaletteClass &), 0x005A2910);
