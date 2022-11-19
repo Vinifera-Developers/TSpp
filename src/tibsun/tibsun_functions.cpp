@@ -128,6 +128,20 @@ static const char * const FacingName[FACING_COUNT] =
 
 
 /**
+ *  Retrieves the name for the given ArmorType.
+ *
+ *  @author: CCHyper
+ */
+const char *Name_From_Armor(ArmorType armor)
+{
+    if (armor >= ARMOR_NONE && armor < ARMOR_COUNT) {
+        return ArmorName[armor];
+    }
+    return "<none>";
+}
+
+
+/**
  *  Converts ASCII name into ActionType.
  * 
  *  @author: CCHyper

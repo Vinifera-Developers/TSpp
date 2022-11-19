@@ -1518,6 +1518,7 @@ DEFINE_IMPLEMENTATION(RTTIType WarheadTypeClass::Kind_Of() const, 0x0066FA70);
 DEFINE_IMPLEMENTATION(int WarheadTypeClass::Size_Of(bool) const, 0x0066FA50);
 DEFINE_IMPLEMENTATION(void WarheadTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0066F580);
 DEFINE_IMPLEMENTATION(bool WarheadTypeClass::Read_INI(CCINIClass &), 0x0066F060);
+DEFINE_IMPLEMENTATION(float Percent_String_To_Float(const char *), 0x0066ED00);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE Tactical::GetClassID(CLSID *), 0x00617EE0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE Tactical::Load(IStream *), 0x00617F20);
@@ -5224,6 +5225,8 @@ DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A
 
 DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842E0);
 
+DEFINE_IMPLEMENTATION(ArmorType Armor_From_Name(const char *), 0x00681320);
+
 
 /**
  *  Various values calculated at runtime init.
@@ -5728,6 +5731,8 @@ ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 
 ARRAY_DEF(0x006F9A74, unsigned char, EventLength, LAST_EVENT);
 ARRAY_DEF(0x006F9A98, const char *, EventNames, LAST_EVENT);
+
+ARRAY_DEF(0x006CD148, const char * const, ArmorName, ARMOR_COUNT);
 
 
 #ifndef NDEBUG

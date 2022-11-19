@@ -77,6 +77,8 @@ void Focus_Loss();
 void Focus_Restore();
 bool Select_Game(bool fade);
 
+ArmorType Armor_From_Name(const char *name);
+const char *Name_From_Armor(ArmorType armor);
 ActionType Action_From_Name(const char *name);
 const char *Name_From_Action(ActionType action);
 LayerType Layer_From_Name(const char *name);

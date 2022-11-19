@@ -445,6 +445,7 @@ ARRAY_DEC(Cell *, BuildingExits, 30);
 
 ARRAY_DEC(GroundType, Ground, LAND_COUNT);
 ARRAY_DEC(const char * const, ActionName, ACTION_COUNT);
+ARRAY_DEC(const char * const, ArmorName, ARMOR_COUNT);
 
 ARRAY_DEC(unsigned long, CRC, 256);
 
