@@ -222,6 +222,9 @@ class CCINIClass : public INIClass
         const InfantryTypeClass *Get_Infantry(const char *section, const char *entry, const InfantryTypeClass *defvalue);
         bool Put_Infantry(const char *section, const char *entry, const InfantryTypeClass *value);
 
+        const BuildingTypeClass *Get_Building(const char *section, const char *entry, const BuildingTypeClass *defvalue);
+        bool Put_Building(const char *section, const char *entry, const BuildingTypeClass *value);
+
         template<class T>
         TypeList<T *> Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap);
 

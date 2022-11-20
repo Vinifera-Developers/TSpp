@@ -714,3 +714,35 @@ bool CCINIClass::Put_Infantry(const char *section, const char *entry, const Infa
         return Put_String(section, entry, "<none>");
     }
 }
+
+
+/**
+ *  Fetch the infantry type identifier from the INI database.
+ *
+ *  @author: CCHyper
+ */
+const BuildingTypeClass *CCINIClass::Get_Building(const char *section, const char *entry, const BuildingTypeClass *defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return BuildingTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the infantry type identifier to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Building(const char *section, const char *entry, const BuildingTypeClass *value)
+{
+    if (value) {
+        return Put_String(section, entry, value->Name());
+    } else {
+        return Put_String(section, entry, "<none>");
+    }
+}
