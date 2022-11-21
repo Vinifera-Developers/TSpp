@@ -1738,6 +1738,8 @@ DEFINE_IMPLEMENTATION(void LayerClass::One_Time(), 0x00402490);
 DEFINE_IMPLEMENTATION(void LayerClass::Sort(), 0x004FCDF0);
 DEFINE_IMPLEMENTATION(bool LayerClass::Sorted_Add(ObjectClass const *), 0x004FCE50);
 void LayerClass::Remove(ObjectClass *object) { DynamicVectorClass<ObjectClass *>::Delete(object); }
+DEFINE_IMPLEMENTATION(HRESULT LayerClass::Save(IStream *), 0x004FCEE0);
+DEFINE_IMPLEMENTATION(HRESULT LayerClass::Load(IStream *), 0x004FCF50);
 
 LogicClass::LogicClass() : LayerClass() { *((unsigned long *)this) = (unsigned long)0x006CA704; }
 LogicClass::~LogicClass() {}

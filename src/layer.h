@@ -53,4 +53,7 @@ class LayerClass : public DynamicVectorClass<ObjectClass *>
 		void Sort();
 		bool Sorted_Add(ObjectClass const *object);
 		void Remove(ObjectClass *object);
+
+		HRESULT Save(IStream *pStm);
+		HRESULT Load(IStream *pStm);
 };
