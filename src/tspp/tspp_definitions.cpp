@@ -525,11 +525,11 @@ DEFINE_IMPLEMENTATION(void WWMouseClass::Draw_2(XSurface *, bool), 0x006A5B90);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Confine_Pos(int &, int &) const, 0x006A63C0);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Calc_Confining_Rect(), 0x006A51E0);
 
-DEFINE_IMPLEMENTATION(long WWCRCEngine::Calculate_CRC32(void *, int), 0x004710A0);
 DEFINE_IMPLEMENTATION(void WWCRCEngine::operator()(char), 0x00470CC0);
 DEFINE_IMPLEMENTATION(void WWCRCEngine::operator()(const char *), 0x00470E60);
 DEFINE_IMPLEMENTATION(long WWCRCEngine::operator()(const void *, int), 0x00470E90);
-DEFINE_IMPLEMENTATION(long WWCRCEngine::Value() const, 0x00471060);
+DEFINE_IMPLEMENTATION(long WWCRCEngine::CRC_Memory(const void *, int, int), 0x00471060);
+DEFINE_IMPLEMENTATION(long WWCRCEngine::CRC_String(const char *, int), 0x004710A0);
 
 DEFINE_IMPLEMENTATION(int CRCStraw::Get(void *, int), 0x00471160);
 DEFINE_IMPLEMENTATION(long CRCStraw::Result() const, 0x004711A0);

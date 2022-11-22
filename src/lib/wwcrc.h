@@ -43,7 +43,7 @@ class WWCRCEngine
         long operator()() const { return Value(); }
 
         void operator()(char datum);
-        void operator()(bool datum) { (*this)((char)datum); }
+        void operator()(bool datum) { (*this)((char)(datum != false)); }
         void operator()(unsigned char datum) { (*this)((char)datum); }
         void operator()(short datum) { (*this)(&datum, sizeof(short)); }
         void operator()(unsigned short datum) { (*this)(&datum, sizeof(unsigned short)); }
@@ -62,10 +62,16 @@ class WWCRCEngine
         /**
          *  Calculates standard CRC32 value.
          */
-        static long Calculate_CRC32(void *buffer, int length);
+        static long CRC_Memory(const void *buffer, int length, int prev_crc);
+        static long CRC_String(const char *string, int prev_crc);
 
     protected:
         long Value() const;
+
+        bool Buffer_Needs_Data() const
+        {
+            return Index != 0;
+        };
 
     protected:
         long CRC;
