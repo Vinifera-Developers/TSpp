@@ -284,6 +284,9 @@ class DynamicVectorClass : public VectorClass<T>
 
         bool Insert(int index, const T &object);
 
+        bool Is_Present(const T *ptr) const { return const_cast<DynamicVectorClass *>(this)->ID(ptr) != -1; }
+        bool Is_Present(const T &ptr) const { return const_cast<DynamicVectorClass *>(this)->ID(ptr) != -1; }
+
         const T &Fetch_Head() const { return (*this)[0]; }
         const T &Fetch_Tail() const { return (*this)[ActiveCount-1]; }
 
