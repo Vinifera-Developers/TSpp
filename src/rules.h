@@ -91,6 +91,7 @@ class RulesClass
         static int Get_Art_Unique_ID();
         static int Get_AI_Unique_ID();
         static void Load_Art_INI();
+        static void Load_ArtFS_INI();
 
     public:
         bool SpecialWeapons(CCINIClass &ini);
