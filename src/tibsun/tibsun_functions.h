@@ -78,6 +78,8 @@ void Focus_Restore();
 bool Select_Game(bool fade);
 void Init_Theater(TheaterType theater);
 
+Rect Get_Tactical_Rect(bool use_options_size = false);
+
 ArmorType Armor_From_Name(const char *name);
 const char *Name_From_Armor(ArmorType armor);
 ActionType Action_From_Name(const char *name);

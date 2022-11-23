@@ -40,11 +40,12 @@ class InitClass {};
 class SidebarClass : public PowerClass
 {
     public:
-        enum SidebarClassEnums {
+        enum {
             OBJECT_HEIGHT = 51,		// Pixel height of each buildable object.
 		    OBJECT_WIDTH = 64,		// Pixel width of each buildable object.
             COLUMNS = 2,			// Number of side strips on sidebar.
             MAX_BUILDABLES = 75,	// Maximum number of object types in sidebar.
+            SIDE_WIDTH = 168
         };
 
     public:

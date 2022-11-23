@@ -35,6 +35,11 @@
 class TabClass : public SidebarClass
 {
     public:
+        enum {
+            TAB_HEIGHT = 16
+        };
+
+    public:
         TabClass();
         TabClass(const NoInitClass &x);
         ~TabClass();

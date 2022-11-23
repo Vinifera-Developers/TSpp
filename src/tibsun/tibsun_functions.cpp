@@ -33,6 +33,7 @@
 #include "foot.h"
 #include "abstracttype.h"
 #include "ccfile.h"
+#include "iomap.h"
 
 
 /***************************************************************************
@@ -471,4 +472,25 @@ bool Is_TypeClass(const AbstractClass *a, bool use_dynamic_cast)
              || rtti == RTTI_WARHEADTYPE
              || rtti == RTTI_WEAPONTYPE);
     }
+}
+
+
+/**
+ *  Get the tactical area.
+ * 
+ *  @author: CCHyper
+ */
+Rect Get_Tactical_Rect(bool use_options_size)
+{
+    Rect rect;
+
+    int width = use_options_size ? Options.ScreenWidth : ScreenRect.Width;
+    int height = use_options_size ? Options.ScreenHeight : ScreenRect.Height;
+
+    rect.X = (Options.SidebarOn == SIDEBAR_SIDE_LEFT && !Debug_Map) ? SidebarClass::SIDE_WIDTH : 0;
+    rect.Y = TabClass::TAB_HEIGHT;
+    rect.Width = width - SidebarClass::SIDE_WIDTH;
+    rect.Height = height - TabClass::TAB_HEIGHT;
+
+    return rect;
 }
