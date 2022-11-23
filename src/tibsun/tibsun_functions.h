@@ -76,6 +76,7 @@ bool Init_Game(int argc, char *argv[]);
 void Focus_Loss();
 void Focus_Restore();
 bool Select_Game(bool fade);
+void Init_Theater(TheaterType theater);
 
 ArmorType Armor_From_Name(const char *name);
 const char *Name_From_Armor(ArmorType armor);
