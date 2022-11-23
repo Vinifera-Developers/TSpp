@@ -224,7 +224,7 @@ class MapClass : public GScreenClass
         // 005266E0
         // 00526BB0
         // 00526C50
-        // 00527AC0
+        void Clear_SubZones();
         // 00527B00
         // 00528010
         // 005288A0

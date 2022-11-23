@@ -85,7 +85,7 @@ TypeList<T>::TypeList(const TypeList<T> &that) :
 template<class T>
 bool TypeList<T>::Save(IStream *pStm)
 {
-    ASSERT(pStm != nullptr);
+    TSPP_ASSERT(pStm != nullptr);
 
     int count = Count();
     pStm->Write(&count, sizeof(count), nullptr);
@@ -106,7 +106,7 @@ bool TypeList<T>::Save(IStream *pStm)
 template<class T>
 bool TypeList<T>::Load(IStream *pStm)
 {
-    ASSERT(pStm != nullptr);
+    TSPP_ASSERT(pStm != nullptr);
 
     int count = 0;
     pStm->Read(&count, sizeof(count), nullptr);
