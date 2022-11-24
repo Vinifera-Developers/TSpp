@@ -275,6 +275,7 @@
 #include "vector3.h"
 #include "newdel.h"
 #include "tibsun_functions.h"
+#include "wolapi.h"
 
 
 /**
@@ -5737,6 +5738,13 @@ ARRAY_DEF(0x006F9A74, unsigned char, EventLength, LAST_EVENT);
 ARRAY_DEF(0x006F9A98, const char *, EventNames, LAST_EVENT);
 
 ARRAY_DEF(0x006CD148, const char * const, ArmorName, ARMOR_COUNT);
+
+
+/**
+ *  WOLAPI globals.
+ */
+WOL::Tournament &TournamentGameType = Make_Global<WOL::Tournament>(0x00867008);
+unsigned long &GameID = Make_Global<unsigned long>(0x00867014);
 
 
 #ifndef NDEBUG

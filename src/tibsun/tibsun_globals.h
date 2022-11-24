@@ -39,6 +39,7 @@
 #include "dsurface.h"
 #include "vector3.h"
 #include "mono.h"
+#include "wolapi.h"
 
 
 /**
@@ -524,3 +525,6 @@ extern IsometricTileType &BridgeTopLeft1;
 extern IsometricTileType &RoughTile;
 extern IsometricTileType &DestroyableCliff;
 extern IsometricTileType &BlackTile;
+
+extern WOL::Tournament &TournamentGameType;
+extern unsigned long &GameID;
