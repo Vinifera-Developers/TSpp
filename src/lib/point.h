@@ -28,6 +28,7 @@
 #pragma once
 
 #include "always.h"
+#include "tpoint.h"
 
 
 class Rect;
@@ -39,13 +40,21 @@ class Point2D
         Point2D();
         Point2D(int x, int y);
         Point2D(const Point2D &that);
+        Point2D(const TPoint2D<int> &that);
 
         Point2D &operator=(const Point2D &that)
         {
-            if ( this != &that ) {
+            if (this != &that) {
                 X = that.X;
                 Y = that.Y;
             }
+            return *this;
+        }
+
+        Point2D &operator=(const TPoint2D<int> &that)
+        {
+            X = that.X;
+            Y = that.Y;
             return *this;
         }
 
@@ -101,14 +110,23 @@ class Point3D
         Point3D();
         Point3D(int x, int y, int z);
         Point3D(const Point3D &that);
+        Point3D(const TPoint3D<int> &that);
 
         Point3D &operator=(const Point3D &that)
         {
-            if ( this != &that ) {
+            if (this != &that) {
                 X = that.X;
                 Y = that.Y;
                 Z = that.Z;
             }
+            return *this;
+        }
+
+        Point3D &operator=(const TPoint3D<int> &that)
+        {
+            X = that.X;
+            Y = that.Y;
+            Z = that.Z;
             return *this;
         }
 
@@ -169,6 +187,13 @@ inline Point2D::Point2D(const Point2D &that) :
 }
 
 
+inline Point2D::Point2D(const TPoint2D<int> &that) :
+    X(that.X),
+    Y(that.Y)
+{
+}
+
+
 inline Point3D::Point3D() :
 	X(0),
 	Y(0),
@@ -189,5 +214,13 @@ inline Point3D::Point3D(const Point3D &that) :
 	X(that.X),
 	Y(that.Y),
 	Z(that.Z)
+{
+}
+
+
+inline Point3D::Point3D(const TPoint3D<int> &that) :
+    X(that.X),
+    Y(that.Y),
+    Z(that.Z)
 {
 }

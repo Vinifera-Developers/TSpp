@@ -32,6 +32,7 @@
 #include "typelist.h"
 #include "vector3.h"
 #include "tibsun_defines.h"
+#include "wstring.h"
 
 
 class FileClass;
@@ -195,9 +196,6 @@ class CCINIClass : public INIClass
         TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
         bool Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value);
 
-        TypeList<const char *> Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue);
-        bool Put_String_List(const char *section, const char *entry, const TypeList<const char *> value);
-
         const TechnoTypeClass *Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue);
         bool Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value);
 
@@ -224,6 +222,18 @@ class CCINIClass : public INIClass
 
         const BuildingTypeClass *Get_Building(const char *section, const char *entry, const BuildingTypeClass *defvalue);
         bool Put_Building(const char *section, const char *entry, const BuildingTypeClass *value);
+
+        TypeList<const char *> Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue);
+        bool Put_String_List(const char *section, const char *entry, const TypeList<const char *> value);
+
+        DynamicVectorClass<const char *> Get_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue);
+        bool Put_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> value);
+
+        TypeList<Wstring> Get_String_List(const char *section, const char *entry, const TypeList<Wstring> defvalue);
+        bool Put_String_List(const char *section, const char *entry, const TypeList<Wstring> value);
+
+        DynamicVectorClass<Wstring> Get_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue);
+        bool Put_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> value);
 
         template<class T>
         TypeList<T *> Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap);

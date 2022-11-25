@@ -746,3 +746,191 @@ bool CCINIClass::Put_Building(const char *section, const char *entry, const Buil
         return Put_String(section, entry, "<none>");
     }
 }
+
+
+/**
+ *  Fetch the string list from the INI database.
+ *
+ *  @author: CCHyper
+ */
+TypeList<const char *> CCINIClass::Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<const char *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(name);
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the stirng list to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_String_List(const char *section, const char *entry, const TypeList<const char *> value)
+{
+    char buffer[1024] ={'\0'};
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]);
+    }
+
+    return Put_String(section, entry, buffer);
+}
+
+
+/**
+ *  Fetch the string list from the INI database.
+ *
+ *  @author: CCHyper
+ */
+DynamicVectorClass<const char *> CCINIClass::Get_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<const char *> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(name);
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the stirng list to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> value)
+{
+    char buffer[1024] ={'\0'};
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index]);
+    }
+
+    return Put_String(section, entry, buffer);
+}
+
+
+/**
+ *  Fetch the string list from the INI database.
+ *
+ *  @author: CCHyper
+ */
+TypeList<Wstring> CCINIClass::Get_String_List(const char *section, const char *entry, const TypeList<Wstring> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<Wstring> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(name);
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the stirng list to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_String_List(const char *section, const char *entry, const TypeList<Wstring> value)
+{
+    char buffer[1024] ={'\0'};
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index].Peek_Buffer());
+    }
+
+    return Put_String(section, entry, buffer);
+}
+
+
+/**
+ *  Fetch the string list from the INI database.
+ *
+ *  @author: CCHyper
+ */
+DynamicVectorClass<Wstring> CCINIClass::Get_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        TypeList<Wstring> list;
+
+        char *name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(name);
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the stirng list to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> value)
+{
+    char buffer[1024] ={'\0'};
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index].Peek_Buffer());
+    }
+
+    return Put_String(section, entry, buffer);
+}
