@@ -42,6 +42,9 @@ class Pipe;
 class Wstring;
 
 
+#define INI_FAST_LOAD
+
+
 #define INI_MAX_LINE_LENGTH 512
 
 
@@ -55,15 +58,54 @@ class INIClass
             MOTOROLA_HEX_NOTATION = 2,      // Use Motorola's HEX notation (i.e. $10)
         } IntegerFormatMode;
 
+        enum {
+            MAX_LINE_LENGTH = INI_MAX_LINE_LENGTH,
+
+            MAX_BUFFER_SIZE = 4096,
+            MAX_LIST_SIZE = 1000,
+            MAX_ENTRY_LENGTH = 32,
+            MAX_UUBLOCK_LINE_LENGTH = 70,
+            MAX_TEXTBLOCK_LINE_LENGTH = 75
+        };
+
     protected:
         struct INIComment
         {
+            INIComment(char *value = nullptr, INIComment *next = nullptr) : Value(value), Next(next) {}
+            ~INIComment()
+            {
+                std::free(Value);
+                Value = nullptr;
+                delete Next;
+                Next = nullptr;
+            }
+
+            int ID() const { return INIClass::CRC(Value); }
+
             char *Value;
             INIComment *Next;
         };
 
         struct INIEntry : Node<const INIEntry *>
         {
+            INIEntry(char *entry, char *value, INIComment *comments = nullptr, char *commentstring = nullptr, int preindentcursor = 0, int postindentcursor = 0, int commentcursor = 0) :
+                Entry(entry), Value(value), Comments(comments), CommentString(commentstring),
+                PreIndentCursor(preindentcursor), PostIndentCursor(postindentcursor), CommentCursor(commentcursor)
+            {
+            }
+            ~INIEntry()
+            {
+                std::free(Entry);
+                Entry = nullptr;
+                std::free(Value);
+                Value = nullptr;
+                Comments = nullptr;
+                std::free(CommentString);
+                CommentString = nullptr;
+            }
+
+            int Index_ID() const { return INIClass::CRC(Entry); }
+
             char *Entry;
             char *Value;
             INIComment *Comments;
@@ -75,6 +117,19 @@ class INIClass
 
         struct INISection : Node<const INISection *>
         {
+            INISection(char *section = nullptr) : Section(section), EntryList(), EntryIndex(), Comments(nullptr) {}
+            ~INISection()
+            {
+                std::free(Section);
+                Section = nullptr;
+                EntryList.Delete();
+                delete Comments;
+                Comments = nullptr;
+            }
+
+            const INIEntry *Find_Entry(const char *entry) const;
+            int Index_ID() const { return INIClass::CRC(Section); }
+
             char *Section;
             List<INIEntry *> EntryList;
             IndexClass<int, const INIEntry *> EntryIndex;
@@ -83,23 +138,37 @@ class INIClass
 
     public:
         INIClass();
+        INIClass(const char *filename, bool load_comments = false);
         INIClass(FileClass &file, bool load_comments = false);
         virtual ~INIClass();
 
+        bool Load(const char *filename, bool load_comments = false);
         bool Load(FileClass &file, bool load_comments = false);
         bool Load(Straw &straw, bool load_comments = false);
+        int Save(const char *filename, bool save_comments = false) const;
         int Save(FileClass &file, bool save_comments = false) const;
         int Save(Pipe &straw, bool save_comments = false) const;
 
+        const List<const INISection *> &Get_Section_List() { return SectionList; }
+        const IndexClass<int, const INISection *> &Get_Section_Index() { return SectionIndex; }
+
         bool Clear(const char *section = nullptr, const char *entry = nullptr);
+
+        int Size() const;
+        int Line_Count(const char *section) const;
 
         bool Is_Loaded() const { return !SectionList.Is_Empty(); }
         bool Is_Present(const char *section, const char *entry = nullptr) const;
+
+        int Section_Count() const;
+        bool Section_Present(const char *section) const { return Find_Section(section) != nullptr; }
 
         int Entry_Count(const char *section) const;
         int Entry_Count(const Wstring &section) const;
         const char *Get_Entry(const char *section, int index) const;
         Wstring Get_Entry(const Wstring &section, int index) const;
+
+        unsigned Enumerate_Entries(const char *section, const char *entry_prefix, unsigned start_number, unsigned end_number);
 
         int Get_String(const char *section, const char *entry, const char *defvalue, char *buffer, int length) const;
         int Get_String(const char *section, const char *entry, char *buffer, int length) const;
@@ -107,6 +176,10 @@ class INIClass
         int Get_String(const Wstring &section, const Wstring &entry, Wstring &buffer) const;
         bool Put_String(const char *section, const char *entry, const char *string);
         bool Put_String(const Wstring &section, const Wstring &entry, const Wstring &string);
+
+        int Get_Hex_String(const char *section, const char *entry, const wchar_t *defvalue, wchar_t *buffer, int length) const;
+        int Get_Hex_String(const char *section, const char *entry, wchar_t *buffer, int length) const;
+        bool Put_Hex_String(const char *section, const char *entry, const wchar_t *value);
 
         int Get_Int(const char *section, const char *entry, int defvalue = 0) const;
         int Get_Int(const Wstring &section, const Wstring &entry, int defvalue = 0) const;
@@ -168,6 +241,12 @@ class INIClass
         bool Put_Point(const char *section, const char *entry, const TPoint3D<double> &value);
         bool Put_Point(const Wstring &section, const Wstring &entry, const TPoint3D<double> &value);
 
+        int Get_Table_String(const char *section, const char *entry, const char *defvalue = "", char *buffer = nullptr, int bufsize = 0) const;
+        const char *Get_Alloc_String(const char *section, const char *entry, const char *buffer) const;
+        int Get_List_Index(const char *section, const char *entry, int defvalue, char **list) const;
+        int Get_Int_Bitfield(const char *section, const char *entry, int defvalue, char **list) const;
+        const int *Get_Alloc_Int_Array(const char *section, const char *entry, int listend) const;
+
         unsigned Get_Time(const char *section, const char *entry, unsigned defvalue = 0) const;
         bool Put_Time(const char *section, const char *entry, unsigned value);
 
@@ -185,9 +264,34 @@ class INIClass
         PKey Get_PKey(bool fast) const;
         bool Put_PKey(const PKey &key);
 
-    protected:
+        void Clear_Line_Comments()
+        {
+            if (LineComments) {
+                INIComment *comptr = LineComments->Next;
+                while (comptr) {
+                    comptr = LineComments->Next;
+                    delete LineComments;
+                    LineComments = comptr;
+                }
+                LineComments = nullptr;
+            }
+        }
+
+    public:
         const INISection * Find_Section(const char *section) const;
         const INIEntry * Find_Entry(const char *section, const char *entry) const;
+
+        void Initialize();
+        void Shutdown();
+
+        static void Strip_Comments(char *buffer);
+        static char *Extract_Line_Comment(char *buffer, int *pre_indent_cursor, int *entry_indent, int *comment_cursor);
+
+        static bool Line_Contains_Section(const char *buffer);
+        static bool Line_Contains_Entry(const char *buffer);
+
+        static void Duplicate_CRC_Error(const char *function_name, const char *section, const char *entry, uint32_t crc);
+        static int CRC(const char *string);
 
     public:
         List<const INISection *> SectionList;
