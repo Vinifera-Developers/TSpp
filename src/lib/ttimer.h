@@ -364,6 +364,7 @@ class CDRateTimerClass : public CDTimerClass<T>
         unsigned long Value() const;
 
         float Percent_Expired() const;
+        bool Expired() const { return Percent_Expired() == 1.0f; }
 
         unsigned long Get_Rate() const { return Rate; }
 

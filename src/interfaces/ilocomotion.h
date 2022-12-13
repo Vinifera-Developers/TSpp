@@ -194,7 +194,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Force a voxel unit to a given slope. Used in cratering.
      */
-    STDMETHOD_(void, Force_New_Slope)(int ramp) PURE;
+    STDMETHOD_(void, Force_New_Slope)(TileRampType ramp) PURE;
 
     /**
      *  Is it actually moving across the ground this very second?
@@ -234,7 +234,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Lifts all occupation bits associated with the object off the map.
      */
-    STDMETHOD_(void, Mark_All_Occupation_Bits)(int mark) PURE;
+    STDMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark) PURE;
 
     /**
      *  Is this object in the process of moving into this coord.

@@ -72,9 +72,9 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         IFACEMETHOD_(void, Unlimbo)();
         IFACEMETHOD_(void, Force_Track)(int track, Coordinate coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
-        IFACEMETHOD_(void, Force_New_Slope)(int ramp);
+        IFACEMETHOD_(void, Force_New_Slope)(TileRampType ramp);
         IFACEMETHOD_(bool, Is_Moving_Now)();
-        IFACEMETHOD_(void, Mark_All_Occupation_Bits)(int mark);
+        IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
         IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
         IFACEMETHOD_(bool, Will_Jump_Tracks)();
         IFACEMETHOD_(void, Lock)();

@@ -166,7 +166,7 @@ UnitClass : public FootClass
         int FiringSyncDelay;
         CDTimerClass<FrameTimerClass> Reload;
         UnitTypeClass *Class;
-        TechnoClass *FollowingMe;
+        UnitClass *FollowingMe;
         HousesType Flagged;
         bool IsFollowing;
         bool IsDumping;

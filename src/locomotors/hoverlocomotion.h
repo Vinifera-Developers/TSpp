@@ -63,7 +63,7 @@ HoverLocomotionClass : public LocomotionClass
         IFACEMETHOD_(bool, Shove)(DirStruct dir);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();
-        IFACEMETHOD_(void, Mark_All_Occupation_Bits)(int mark);
+        IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
         IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
 
     public:
