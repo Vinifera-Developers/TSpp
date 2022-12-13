@@ -90,6 +90,11 @@ class IndexClass
             return I(-1);
         }
 
+        const NodeElement *Get_Archive() const
+        {
+            return Archive;
+        }
+
     private:
         bool Increase_Table_Size(int amount);
         bool Is_Archive_Same(const I &id) const;
