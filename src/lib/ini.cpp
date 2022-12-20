@@ -60,6 +60,17 @@ bool INIClass::Is_Present(const char *section, const char *entry) const
 
 
 /**
+ *  Checks whether or not a section or entry is present.
+ *
+ *  @author: CCHyper
+ */
+bool INIClass::Is_Present(const Wstring &section, Wstring &entry) const
+{
+    return Is_Present(section.Peek_Buffer(), entry.Get_Length() > 0 ? entry.Peek_Buffer() : nullptr);
+}
+
+
+/**
  *  Fetch the value of a particular entry in a specified section.
  * 
  *  @author: CCHyper

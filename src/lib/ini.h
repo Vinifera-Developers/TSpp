@@ -33,6 +33,7 @@
 #include "trect.h"
 #include "tpoint.h"
 #include "pk.h"
+#include "wstring.h"
 #include <objbase.h>
 
 
@@ -95,6 +96,7 @@ class INIClass
 
         bool Is_Loaded() const { return !SectionList.Is_Empty(); }
         bool Is_Present(const char *section, const char *entry = nullptr) const;
+        bool Is_Present(const Wstring &section, Wstring &entry = Wstring()) const;
 
         int Entry_Count(const char *section) const;
         int Entry_Count(const Wstring &section) const;

@@ -1027,8 +1027,8 @@ typedef enum ActionType
     ACTION_NO_SELL,         // No sell or no repair.
     ACTION_NO_REPAIR,       // No sell or no repair.
     ACTION_SABOTAGE,        // The unit will try to sabotage/destroy the object.
-    ACTION_TOTE,
-    ACTION_PARA_BOMB,       // Parachute bomb strike.
+    ACTION_TOTE,            // Parachute bomb strike.    // Would have been "ACTION_PARA_BOMB", re-purposed for the carryall and renamed to "Tote".
+    ACTION_PARA_INFANTRY,   // Parachute infantry strike.
     ACTION_PARA_SABOTEUR,   // Parachute saboteur strike.
     ACTION_NUKE_BOMB,       // That target object should be blasted.
     ACTION_AIR_STRIKE,      // That target object should be blasted.
@@ -1067,7 +1067,10 @@ typedef enum ActionType
 
     ACTION_COUNT,
 
-    ACTION_FIRST = 0
+    ACTION_FIRST = 0,
+
+    // Added for clarity of potential code.
+    ACTION_PARA_BOMB = ACTION_TOTE
 } ActionType;
 DEFINE_ENUMERATION_OPERATORS(ActionType);
 
