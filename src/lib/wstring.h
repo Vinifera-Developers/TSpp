@@ -96,6 +96,8 @@ class Wstring
         int Compare_No_Case(const Wstring &that) const;
         bool Contains(const char *delimiters) const;
         bool Contains(const Wstring &delimiters) const;
+        bool Contains_String(const char *string) const;
+        bool Contains_String(const Wstring &that) const;
         bool Set(char c);
         bool Set(const char *string);
         bool Set(const Wstring &that);

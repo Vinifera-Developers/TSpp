@@ -385,6 +385,21 @@ bool Wstring::Contains(const Wstring &delimiters) const
 }
 
 
+bool Wstring::Contains_String(const char *string) const
+{
+    if (Buffer == nullptr || string == nullptr || string[0] == NullChar) {
+        return false;
+    }
+    return (std::strstr(Buffer, string) != nullptr);
+}
+
+
+bool Wstring::Contains_String(const Wstring &that) const
+{
+    return Contains(that.Buffer);
+}
+
+
 bool Wstring::Set(char c)
 {
     return Internal_Set(1, &c);
