@@ -421,6 +421,7 @@ extern DynamicVectorClass<const char *> &Movies;
 extern MovieClass *&CurrentMovie;
 
 extern IndexClass<KeyNumType, CommandClass *> &HotkeyIndex;
+extern IndexClass<int, const char *> &TutorialText;
 
 extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;

@@ -5621,6 +5621,7 @@ DynamicVectorClass<const char *> &Movies = Make_Global<DynamicVectorClass<const 
 MovieClass *&CurrentMovie = Make_Global<MovieClass *>(0x00806E1C);
 
 IndexClass<KeyNumType, CommandClass *> &HotkeyIndex = Make_Global<IndexClass<KeyNumType, CommandClass *>>(0x007481C0);
+IndexClass<int, const char *> &TutorialText = Make_Global<IndexClass<int, const char *>>(0x007E2440);
 
 QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass, MAX_EVENTS> >(0x007E15F8);
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
