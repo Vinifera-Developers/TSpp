@@ -3960,7 +3960,7 @@ DEFINE_IMPLEMENTATION(bool FactoryClass::Suspend(bool), 0x004971A0);
 DEFINE_IMPLEMENTATION(int FactoryClass::Completion(), 0x00497460);
 DEFINE_IMPLEMENTATION(TechnoClass *FactoryClass::Get_Object() const, 0x004974A0);
 DEFINE_IMPLEMENTATION(int FactoryClass::Get_Special_Item() const, 0x004974B0);
-// 004978D0
+DEFINE_IMPLEMENTATION(void FactoryClass::Resume_Queue(), 0x004978D0);
 DEFINE_IMPLEMENTATION(bool FactoryClass::Remove_From_Queue(const TechnoTypeClass &), 0x00497940);
 DEFINE_IMPLEMENTATION(bool FactoryClass::Is_Queued(const TechnoTypeClass &), 0x004979D0);
 DEFINE_IMPLEMENTATION(int FactoryClass::Total_Queued(const TechnoTypeClass &), 0x00497990);

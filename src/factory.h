@@ -82,7 +82,7 @@ FactoryClass : public AbstractClass, public StageClass
         int Completion();
         TechnoClass *Get_Object() const;
         int Get_Special_Item() const;
-        // 004978D0
+        void Resume_Queue(); // 004978D0
         bool Remove_From_Queue(const TechnoTypeClass &object);
         bool Is_Queued(const TechnoTypeClass &object);
         int Total_Queued(const TechnoTypeClass &object);
