@@ -97,6 +97,7 @@ class SidebarClass : public PowerClass
         }
 
         void Redraw_Sidebar() { IsToRedraw = true; Flag_To_Redraw(false); }
+        void Redraw_Strip(int column) { IsToRedraw = true; Column[column].Flag_To_Redraw(); }
 
     public:
         class StripClass : public StageClass

@@ -33,7 +33,7 @@
 
 const char *EventClass::Event_Name(EventType event)
 {
-    TSPP_ASSERT(event < LAST_EVENT);
+    TSPP_ASSERT(event < EVENT_COUNT);
 
     return EventNames[event];
 }
@@ -41,7 +41,7 @@ const char *EventClass::Event_Name(EventType event)
 
 unsigned char EventClass::Event_Length(EventType event)
 {
-    TSPP_ASSERT(event < LAST_EVENT);
+    TSPP_ASSERT(event < EVENT_COUNT);
 
     return EventLength[event];
 }

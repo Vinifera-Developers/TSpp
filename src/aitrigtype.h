@@ -113,13 +113,13 @@ AITriggerTypeClass : public AbstractTypeClass
 
         typedef struct ParameterStruct {
             int Number;
-            AITriggerConditionType Condition;
+            AITriggerComparatorType Comparator;
         };
 
         union ParameterUnion {
             ParameterStruct Parameters;
             char Value[32];
-        };
+        } Data;
 
         int SuccessCount;
         int ExecutionCount;

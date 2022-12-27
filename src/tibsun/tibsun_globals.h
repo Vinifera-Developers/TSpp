@@ -453,8 +453,8 @@ ARRAY_DEC(unsigned long, CRC, 256);
 
 ARRAY_DEC(MonoClass, MonoArray, DMONO_COUNT);
 
-ARRAY_DEC(unsigned char, EventLength, LAST_EVENT);
-ARRAY_DEC(const char *, EventNames, LAST_EVENT);
+ARRAY_DEC(unsigned char, EventLength, EVENT_COUNT);
+ARRAY_DEC(const char *, EventNames, EVENT_COUNT);
 
 
 /**

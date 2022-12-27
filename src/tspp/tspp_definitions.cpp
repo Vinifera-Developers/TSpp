@@ -858,7 +858,7 @@ DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bo
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
 DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
 DEFINE_IMPLEMENTATION(void ObjectTypeClass::Assign_Theater_Name(char *, TheaterType), 0x00588D00);
-DEFINE_IMPLEMENTATION(ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
+DEFINE_IMPLEMENTATION(const ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TechnoTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x0063E170);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoTypeClass::Load(IStream *), 0x0063D8F0);
@@ -1600,7 +1600,7 @@ DEFINE_IMPLEMENTATION(int BaseClass::Next_Buildable_Index(BuildingType), 0x0041F
 DEFINE_IMPLEMENTATION(void BaseClass::Read_INI(CCINIClass &, const char *), 0x0041F970);
 DEFINE_IMPLEMENTATION(void BaseClass::Write_INI(const CCINIClass &, const char *), 0x0041FAC0);
 
-EventClass::EventClass() : ID(-1), Type(EMPTY) {}
+EventClass::EventClass() : ID(-1), Type(EVENT_EMPTY) {}
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, SpecialClass), 0x00493CC0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, TargetClass), 0x00493D00);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType), 0x00493DE0);
@@ -5735,8 +5735,8 @@ ARRAY_DEF(0x00809A28, unsigned long, CRC, 256);
 
 ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 
-ARRAY_DEF(0x006F9A74, unsigned char, EventLength, LAST_EVENT);
-ARRAY_DEF(0x006F9A98, const char *, EventNames, LAST_EVENT);
+ARRAY_DEF(0x006F9A74, unsigned char, EventLength, EVENT_COUNT);
+ARRAY_DEF(0x006F9A98, const char *, EventNames, EVENT_COUNT);
 
 ARRAY_DEF(0x006CD148, const char * const, ArmorName, ARMOR_COUNT);
 

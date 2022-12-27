@@ -92,7 +92,8 @@ class ObjectTypeClass : public AbstractTypeClass
 
         void Assign_Theater_Name(char *buffer, TheaterType theater);
 
-        static ObjectTypeClass * From_Name(const char *name); 
+        static const ObjectTypeClass * From_Name(const char *name);
+        static const ObjectTypeClass * As_Pointer(const char *name) { return From_Name(name); }
 
     public:
         RGBStruct RadialColor;
