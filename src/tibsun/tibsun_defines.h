@@ -361,8 +361,14 @@ typedef enum TeamType
 } TeamType;
 DEFINE_ENUMERATION_OPERATORS(TeamType);
 
-typedef enum WaypointType : char
+typedef enum WaypointType
 {
+    WAYPOINT_HOME = 98,       // Home-cell for this scenario.
+    WAYPOINT_REINF = 99,      // cell where reinforcements arrive.
+    WAYPOINT_SPECIAL = 100,   // Used by special airdrop reinforcements.
+
+    WAYPOINT_COUNT,
+
     WAYPOINT_NONE = -1,
     WAYPOINT_FIRST = 0,
 } WaypointType;

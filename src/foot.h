@@ -223,7 +223,7 @@ class FootClass : public TechnoClass
 		Coordinate HeadToCoord;
         TubeType CurrentTube;
         TubeDirType CurrentTubeDir;
-        WaypointType field_33E;
+        char field_33E;                 // Waypoint planning index?
         bool IsToScatter;
         bool IsScanLimited;
         bool IsInitiated;
