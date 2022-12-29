@@ -2938,6 +2938,8 @@ struct AbilitiesStruct
 
 typedef struct DoStruct
 {
+    DoStruct() : Interrupt(false), IsMobile(false), RandomStart(false), Rate(0) {}
+
     bool Interrupt;         // Can it be interrupted?
     bool IsMobile;          // Can it move while doing this?
     bool RandomStart;       // Should animation be "randomized"?
@@ -2947,6 +2949,8 @@ typedef struct DoStruct
 
 typedef struct DoInfoStruct
 {
+    DoInfoStruct() : Frame(0), Count(0), Jump(0), Finish(FACING_NONE) {}
+
     int Frame;              // Starting frame of the animation.
     unsigned int Count;     // Number of frames of animation.
     unsigned int Jump;      // Frames to jump between facings.

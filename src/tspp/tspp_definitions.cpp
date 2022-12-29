@@ -5730,6 +5730,8 @@ ARRAY_DEF(0x00707AF4, ProgressTextStruct, ProgressText, 8);
 
 ARRAY_DEF(0x00760E90, GroundType, Ground, LAND_COUNT);
 ARRAY_DEF(0x006CCC70, const char * const, ActionName, ACTION_COUNT);
+ARRAY_DEF(0x006CD148, const char * const, ArmorName, ARMOR_COUNT);
+ARRAY_DEF(0x006FD5CC, const char * const, SequenceName, DO_COUNT);
 
 ARRAY_DEF(0x00809A28, unsigned long, CRC, 256);
 
@@ -5737,8 +5739,6 @@ ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 
 ARRAY_DEF(0x006F9A74, unsigned char, EventLength, EVENT_COUNT);
 ARRAY_DEF(0x006F9A98, const char *, EventNames, EVENT_COUNT);
-
-ARRAY_DEF(0x006CD148, const char * const, ArmorName, ARMOR_COUNT);
 
 
 /**
