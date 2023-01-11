@@ -271,6 +271,7 @@
 #include "foggedobject.h"
 #include "ownrdraw.h"
 #include "clipline.h"
+#include "sprite.h"
 #include "winfont.h"
 #include "vector3.h"
 #include "newdel.h"
@@ -2026,6 +2027,7 @@ DEFINE_IMPLEMENTATION(void TabClass::Hilite_Tab(int), 0x0060E8B0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScrollClass::ScrollClass(), 0x005E85A0);
 ScrollClass::ScrollClass(const NoInitClass &x) : TabClass(x) { *((unsigned long *)this) = (unsigned long)0x006D64D4; }
 ScrollClass::~ScrollClass() {}
+DEFINE_IMPLEMENTATION(void ScrollClass::Init_IO(), 0x00402B00);
 DEFINE_IMPLEMENTATION(void ScrollClass::AI(KeyNumType &, Point2D &), 0x005E85E0);
 DEFINE_IMPLEMENTATION(bool ScrollClass::entry_64() const, 0x005E92C0);
 DEFINE_IMPLEMENTATION(void ScrollClass::Abort_Drag_Select(), 0x005E9A30);
@@ -2037,7 +2039,6 @@ MouseClass::MouseClass(const NoInitClass &x) : ScrollClass(x) { *((unsigned long
 MouseClass::~MouseClass() {}
 DEFINE_IMPLEMENTATION(void MouseClass::One_Time(), 0x00562640);
 DEFINE_IMPLEMENTATION(void MouseClass::Init_Clear(), 0x00562660);
-DEFINE_IMPLEMENTATION(void MouseClass::Init_IO(), 0x00402B00);
 DEFINE_IMPLEMENTATION(void MouseClass::AI(KeyNumType &, Point2D &), 0x005624D0);
 DEFINE_IMPLEMENTATION(void MouseClass::Set_Default_Mouse(MouseType, bool), 0x005621D0);
 DEFINE_IMPLEMENTATION(bool MouseClass::Override_Mouse_Shape(MouseType, bool), 0x00562390);
@@ -4845,12 +4846,10 @@ JumpjetLocomotionClass::JumpjetLocomotionClass(const NoInitClass &noinit) : Loco
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(JumpjetLocomotionClass::~JumpjetLocomotionClass(), 0x004F9600);
 DEFINE_IMPLEMENTATION(int JumpjetLocomotionClass::Size_Of(bool) const, 0x004FAD50);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Dictionary::Dictionary(), 0x006B9450);
-DEFINE_IMPLEMENTATION(Dictionary::~Dictionary(), 0x006B9530);
-DEFINE_IMPLEMENTATION(unsigned Dictionary::CRC(Wstring &), 0x006B94E0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(Dictionary::Dictionary(), 0x005FD410);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(Dictionary::~Dictionary(), 0x005FD4F0);
+DEFINE_IMPLEMENTATION(unsigned Dictionary::CRC(Wstring &), 0x005FD4A0);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpriteCollectionClass::SpriteCollectionClass(), 0x0x006B9450);
-//DEFINE_IMPLEMENTATION_DESTRUCTOR(SpriteCollectionClass::~SpriteCollectionClass(), 0x0x006B9530);
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_PCX(const char *, int, bool), 0x005FDCC0);
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_Mono_PCX(const char *), 0x005FE0E0);
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_Bitmap(const char *, void *, int, int), 0x005FD700);
@@ -5183,8 +5182,8 @@ DEFINE_IMPLEMENTATION(void OwnerDraw::Load_Graphics(), 0x0059CC40);
 /**
  *  CRT
  */
-DEFINE_IMPLEMENTATION(void *operator_new(unsigned int size), 0x006B51D7);
-DEFINE_IMPLEMENTATION(void operator_delete(void *ptr), 0x006B51CC);
+DEFINE_IMPLEMENTATION(void *__cdecl operator_new(unsigned int size), 0x006B51D7);
+DEFINE_IMPLEMENTATION(void __cdecl operator_delete(void *ptr), 0x006B51CC);
 
 
 /**
@@ -5227,6 +5226,8 @@ DEFINE_IMPLEMENTATION(const char *Name_From_RTTI(RTTIType), 0x00403500);
 DEFINE_IMPLEMENTATION(RTTIType RTTI_From_Name(const char *), 0x00403530);
 
 DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
+
+DEFINE_IMPLEMENTATION(bool Scale_Rotate(Surface &, BitmapClass &, TPoint2D<int> &, int, unsigned char), 0x005FCEC0);
 
 DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842E0);
 

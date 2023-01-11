@@ -4,11 +4,11 @@
  *
  *  @project       TS++
  *
- *  @file          NEWDEL.H
+ *  @file          SPRITE.H
  *
  *  @authors       CCHyper
  *
- *  @brief         The new and delete operators.
+ *  @brief         Functions for blitting, scaling, and rotating bitmaps.
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,10 +27,33 @@
  ******************************************************************************/
 #pragma once
 
-
 #include "always.h"
-#include <new>
+#include "tpoint.h"
 
 
-void *__cdecl operator_new(unsigned int size);
-void __cdecl operator_delete(void *ptr);
+class Surface;
+
+
+class BitmapClass
+{
+    public:
+        BitmapClass(int w, int h, unsigned char *data) : Width(w), Height(h), Data(data) {}
+
+    public:
+        int Width;
+        int Height;
+        unsigned char *Data;
+};
+
+
+/**
+ *  Using Bi-Linear Interpolation, draws a scaled and rotated
+ *  bitmap onto the buffer. No clipping is performed, so beware!
+ *  
+ *  bmp     - bitmap to draw.
+ *  pt      - desired position of the center.
+ *  scale   - scale factor.
+ *  angle   - 8bit angle (0=0deg, 255=360deg)
+ *  
+ */
+bool Scale_Rotate(Surface &src, BitmapClass &bmp, TPoint2D<int> &pt, int scale, unsigned char angle);

@@ -41,6 +41,7 @@ class ScrollClass : public TabClass
         /**
          *  GScreenClass
          */
+        virtual void Init_IO() override;
         virtual void AI(KeyNumType &input, Point2D &xy) override;
 
         /**

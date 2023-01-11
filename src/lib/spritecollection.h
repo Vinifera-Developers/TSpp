@@ -46,12 +46,9 @@ class BSurface;
                                           | (255 >> DSurface::BlueRight << DSurface::BlueLeft)
 
 
-class SpriteCollectionClass
+class SpriteCollectionClass : public Dictionary
 {
     public:
-        SpriteCollectionClass();
-        ~SpriteCollectionClass();
-
         bool Load_PCX(const char *filename, int bpp, bool apply_palette = false);
         bool Load_Paletted_PCX(const char *filename) { return Load_PCX(filename, 2, true); }
         bool Load_Mono_PCX(const char *filename);
@@ -64,9 +61,6 @@ class SpriteCollectionClass
         bool Draw(Rect &rect, Surface &dest_surface, Surface &image, int width = 0, int height = 0);
         bool Draw_Trans(Rect &rect, Surface &dest_surface, Surface &image, unsigned trans = DEFUALT_TRANSPARENT_COLOR);
         bool Draw_Alpha(Rect &rect, Surface &dest_surface, Surface &image, Surface &mask, void *palette = nullptr, bool center = false, int x_offset = 0, int y_offset = 0);
-
-    public:
-        Dictionary ImageDictionary;
 };
 
 
