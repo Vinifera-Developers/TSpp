@@ -87,8 +87,8 @@ CellClass : public AbstractClass
         virtual Coordinate entry_5C() const override;
 
         int Get_Height(const Coordinate &coord) const;
-        int Preview_Cell_Color(void *a1, bool a2 = false); // 00451900
-        void Cell_Color(RGBClass &a1, RGBClass &a2);// 00451AF0
+        int Preview_Cell_Color(void *a1, bool a2 = false);
+        void Cell_Color(RGBClass &a1, RGBClass &a2);
         ObjectClass *Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
         ObjectClass *const Cell_Object(const Point2D &xy = Point2D(), bool a2 = false) const;
         TechnoClass *const Cell_Techno(const Point2D &xy = Point2D(), bool a2 = false, TechnoClass *a3 = nullptr) const;
@@ -201,16 +201,16 @@ CellClass : public AbstractClass
         // 0045C700
         // 0045C880
         // 0045C8E0
-        // 0045CA20
+        unsigned Toggle_Occupied_By(HousesType house);
         // 0045CAC0
         // 0045CB00
         // 0045CC80
-        // 0045CD30
-        // 0045CD50
-        // 0045CD70
-        // 0045CD90
-        // 0045CDB0
-        // 0045CDD0
+        bool Cloaked_By(HousesType house) const;
+        bool Sensed_By(HousesType house) const;
+        void Set_Cloaked_By(HousesType house);
+        void Clear_Cloaked_By(HousesType house);
+        void Set_Sensed_By(HousesType house);
+        void Clear_Sensed_By(HousesType house);
         bool Place_Tiberium(TiberiumType tiberium, int frame);
         // 0045D290
         // 0045D4A0
@@ -271,9 +271,9 @@ CellClass : public AbstractClass
         int field_4C;                       // -- always "-1"
         int field_50;                       // -- always "-1"
         Rect field_54;                      // set on cells that are the center of a bridge.
-        int field_64;                       // -- no hits
-        int field_68;                       // -- no hits     cloaked house flags?
-        unsigned field_6C;                  // foundation clear flags of adj cells (see 0045CA20)
+        unsigned CloakedBy;
+        unsigned SensedBy;
+        unsigned OccupiedBy;
         ObjectClass *OccupierPtr;
         ObjectClass *AltOccupierPtr;
         LandType Land;

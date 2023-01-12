@@ -1507,6 +1507,13 @@ DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Germinate(TiberiumClass *) co
 DEFINE_IMPLEMENTATION(int CellClass::Get_Tiberium_Value() const, 0x0045AC70);
 DEFINE_IMPLEMENTATION(void CellClass::Detach(TARGET), 0x0045AD80);
 DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
+DEFINE_IMPLEMENTATION(unsigned CellClass::Toggle_Occupied_By(HousesType), 0x0045CA20);
+DEFINE_IMPLEMENTATION(bool CellClass::Cloaked_By(HousesType) const, 0x0045CD30);
+DEFINE_IMPLEMENTATION(bool CellClass::Sensed_By(HousesType) const, 0x0045CD50);
+DEFINE_IMPLEMENTATION(void CellClass::Set_Cloaked_By(HousesType), 0x0045CD70);
+DEFINE_IMPLEMENTATION(void CellClass::Clear_Cloaked_By(HousesType), 0x0045CD90);
+DEFINE_IMPLEMENTATION(void CellClass::Set_Sensed_By(HousesType), 0x0045CDB0);
+DEFINE_IMPLEMENTATION(void CellClass::Clear_Sensed_By(HousesType), 0x0045CDD0);
 DEFINE_IMPLEMENTATION(bool CellClass::Place_Tiberium(TiberiumType, int), 0x0045CDF0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WarheadTypeClass::GetClassID(CLSID *), 0x0066F6B0);
@@ -1597,7 +1604,7 @@ DEFINE_IMPLEMENTATION(bool BaseClass::Is_Node(const BuildingClass *), 0x0041F750
 DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(const BuildingClass *), 0x0041F7E0);
 DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Get_Node(Cell &), 0x0041F860);
 DEFINE_IMPLEMENTATION(BaseNodeClass * BaseClass::Next_Buildable(BuildingType), 0x0041F8B0);
-DEFINE_IMPLEMENTATION(int BaseClass::Next_Buildable_Index(BuildingType), 0x0041F8B0);
+DEFINE_IMPLEMENTATION(int BaseClass::Next_Buildable_Index(BuildingType), 0x0041F910);
 DEFINE_IMPLEMENTATION(void BaseClass::Read_INI(CCINIClass &, const char *), 0x0041F970);
 DEFINE_IMPLEMENTATION(void BaseClass::Write_INI(const CCINIClass &, const char *), 0x0041FAC0);
 
