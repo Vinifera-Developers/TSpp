@@ -43,7 +43,6 @@ class MouseClass : public ScrollClass
          */
 		virtual void One_Time() override;
 		virtual void Init_Clear() override;
-		virtual void Init_IO() override;
 		virtual void AI(KeyNumType &input, Point2D &xy) override;
         virtual void Set_Default_Mouse(MouseType mouse, bool wsmall = false) override;
         virtual bool Override_Mouse_Shape(MouseType mouse, bool wsmall = false) override;
