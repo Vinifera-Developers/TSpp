@@ -457,6 +457,11 @@ ARRAY_DEC(MonoClass, MonoArray, DMONO_COUNT);
 ARRAY_DEC(unsigned char, EventLength, EVENT_COUNT);
 ARRAY_DEC(const char *, EventNames, EVENT_COUNT);
 
+ARRAY2D_DEC(Cell, BuildingOccupyLists, BSIZE_COUNT, 24);
+ARRAY2D_DEC(Cell, BuildingExitLists, BSIZE_COUNT, 24);
+
+ARRAY2D_DEC(Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
+
 
 /**
  *  Isometric tile set types.

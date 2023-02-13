@@ -5748,6 +5748,11 @@ ARRAY_DEF(0x007A1F24, MonoClass, MonoArray, DMONO_COUNT);
 ARRAY_DEF(0x006F9A74, unsigned char, EventLength, EVENT_COUNT);
 ARRAY_DEF(0x006F9A98, const char *, EventNames, EVENT_COUNT);
 
+ARRAY2D_DEF(0x0075F2A0, Cell, BuildingOccupyLists, BSIZE_COUNT, 24);
+ARRAY2D_DEF(0x0075FAE8, Cell, BuildingExitLists, BSIZE_COUNT, 24);
+
+ARRAY2D_DEF(0x0080ED00, Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
+
 
 /**
  *  WOLAPI globals.

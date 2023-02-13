@@ -97,6 +97,13 @@ extern int &BridgeCellHeight;
 #define BRIDGE_HEIGHT	BridgeCellHeight
 
 
+// The maximum size of a cell list (occupy, etc).
+#define LIST_SIZE_MAX 24 // 24 cells, which is the largest in TibSun (foundation 6x4)
+
+// This cells ends a refresh/occupy offset list.
+#define EOL_CELL Cell(REFRESH_EOL, REFRESH_EOL)
+
+
 /**
  *  The map is broken down into regions of this specified dimensions.
  */
@@ -477,6 +484,7 @@ typedef enum BSizeType
     BSIZE_COUNT,
 
     BSIZE_NONE = -1,
+    BSIZE_FIRST = 0,
 } BSizeType;
 DEFINE_ENUMERATION_OPERATORS(BSizeType);
 
