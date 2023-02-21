@@ -32,12 +32,19 @@
 
 
 /**
- *  Perform a C&C engine cast.
+ *  Perform a runtime C&C engine cast.
  *  
  *  @author: CCHyper
  */
-template<class TBase, class TDerived> TDerived * CC_Dynamic_Cast(TBase * abstract)
+template<typename TDerived> TDerived * CC_Dynamic_Cast(AbstractClass * abstract)
 {
+    /**
+     *  Check if the desired class is really derived from AbstractClass
+     */
+    if (!std::is_base_of<AbstractClass, TDerived>()) {
+        return nullptr;
+    }
+
     /**
      *  Base class sanity check.
      */
