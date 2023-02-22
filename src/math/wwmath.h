@@ -535,4 +535,44 @@ inline double Signum(double val)
     return (val > 0.0) - (val < 0.0);
 }
 
+inline bool ApproximatelyEqual(float a, float b, float epsilon = WWMATH_EPSILON)
+{
+    return std::fabs(a - b) <= ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool EssentiallyEqual(float a, float b, float epsilon = WWMATH_EPSILON)
+{
+    return std::fabs(a - b) <= ((std::fabs(a) > std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool DefinitelyGreaterThan(float a, float b, float epsilon = WWMATH_EPSILON)
+{
+    return (a - b) > ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool DefinitelyLessThan(float a, float b, float epsilon = WWMATH_EPSILON)
+{
+    return (b - a) > ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool ApproximatelyEqual(double a, double b, float epsilon = WWMATH_EPSILON)
+{
+    return std::fabs(a - b) <= ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool EssentiallyEqual(double a, double b, float epsilon = WWMATH_EPSILON)
+{
+    return std::fabs(a - b) <= ((std::fabs(a) > std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool DefinitelyGreaterThan(double a, double b, float epsilon = WWMATH_EPSILON)
+{
+    return (a - b) > ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
+inline bool DefinitelyLessThan(double a, double b, float epsilon = WWMATH_EPSILON)
+{
+    return (b - a) > ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
+}
+
 }; // WWMath namespace
