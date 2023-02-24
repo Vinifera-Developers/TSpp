@@ -146,16 +146,16 @@ class CCINIClass : public INIClass
 
         AbilitiesStruct Get_Ability(const char *section, const char *entry, const AbilitiesStruct &defvalue);
 
-        TypeList<RGBStruct> Get_RGB_List(const char *section, const char *entry, const TypeList<RGBStruct> defvalue);
+        TypeList<RGBStruct> Get_RGBs(const char *section, const char *entry, const TypeList<RGBStruct> defvalue);
 
-        TypeList<int> Get_Integer_List(const char *section, const char *entry, const TypeList<int> defvalue);
-        bool Put_Integer_List(const char *section, const char *entry, const TypeList<int> value);
+        TypeList<int> Get_Integers(const char *section, const char *entry, const TypeList<int> defvalue);
+        bool Put_Integers(const char *section, const char *entry, const TypeList<int> value);
         
-        TypeList<TechnoTypeClass *> Get_TechnoType_List(const char *section, const char *entry, const TypeList<TechnoTypeClass *> defvalue);
-        bool Put_TechnoType_List(const char *section, const char *entry, const TypeList<TechnoTypeClass *> value);
+        TypeList<TechnoTypeClass *> Get_TechnoTypes(const char *section, const char *entry, const TypeList<TechnoTypeClass *> defvalue);
+        bool Put_TechnoTypes(const char *section, const char *entry, const TypeList<TechnoTypeClass *> value);
 
-        TypeList<SideType> Get_SideType_List(const char *section, const char *entry, const TypeList<SideType> defvalue);
-        bool Put_HousesType_List(const char *section, const char *entry, const TypeList<SideType> value);
+        TypeList<SideType> Get_SideTypes(const char *section, const char *entry, const TypeList<SideType> defvalue);
+        bool Put_HousesTypes(const char *section, const char *entry, const TypeList<SideType> value);
         
         xTargetClass Get_Target(const char *section, const char *entry, const xTargetClass &defvalue);
         bool Put_Target(const char *section, const char *entry, xTargetClass &value);
@@ -191,10 +191,10 @@ class CCINIClass : public INIClass
         TiberiumType Get_TiberiumType(const char *section, const char *entry, const TiberiumType defvalue);
         bool Put_TiberiumType(const char *section, const char *entry, TiberiumType value);
 
-        //static TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
+        //static TypeList<VocType> Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue);
 
-        TypeList<VocType> Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue);
-        bool Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value);
+        TypeList<VocType> Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue);
+        bool Put_VocTypes(const char *section, const char *entry, const TypeList<VocType> value);
 
         const TechnoTypeClass *Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue);
         bool Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value);
@@ -223,17 +223,17 @@ class CCINIClass : public INIClass
         const BuildingTypeClass *Get_Building(const char *section, const char *entry, const BuildingTypeClass *defvalue);
         bool Put_Building(const char *section, const char *entry, const BuildingTypeClass *value);
 
-        TypeList<const char *> Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue);
-        bool Put_String_List(const char *section, const char *entry, const TypeList<const char *> value);
+        TypeList<const char *> Get_Strings(const char *section, const char *entry, const TypeList<const char *> defvalue);
+        bool Put_Strings(const char *section, const char *entry, const TypeList<const char *> value);
 
-        DynamicVectorClass<const char *> Get_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue);
-        bool Put_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> value);
+        DynamicVectorClass<const char *> Get_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue);
+        bool Put_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> value);
 
-        TypeList<Wstring> Get_String_List(const char *section, const char *entry, const TypeList<Wstring> defvalue);
-        bool Put_String_List(const char *section, const char *entry, const TypeList<Wstring> value);
+        TypeList<Wstring> Get_Strings(const char *section, const char *entry, const TypeList<Wstring> defvalue);
+        bool Put_Strings(const char *section, const char *entry, const TypeList<Wstring> value);
 
-        DynamicVectorClass<Wstring> Get_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue);
-        bool Put_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> value);
+        DynamicVectorClass<Wstring> Get_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue);
+        bool Put_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> value);
 
         template<class T>
         TypeList<T *> Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap);

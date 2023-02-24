@@ -384,7 +384,7 @@ bool CCINIClass::Put_ParticleType(const char *section, const char *entry, Partic
  * 
  *  @author: CCHyper
  */
-TypeList<VocType> CCINIClass::Get_VocType_List(const char *section, const char *entry, const TypeList<VocType> defvalue)
+TypeList<VocType> CCINIClass::Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue)
 {
     char buffer[1024];
 
@@ -415,7 +415,7 @@ TypeList<VocType> CCINIClass::Get_VocType_List(const char *section, const char *
  * 
  *  @author: CCHyper
  */
-bool CCINIClass::Put_VocType_List(const char *section, const char *entry, const TypeList<VocType> value)
+bool CCINIClass::Put_VocTypes(const char *section, const char *entry, const TypeList<VocType> value)
 {
     char buffer[1024] = { '\0' };
 
@@ -753,7 +753,7 @@ bool CCINIClass::Put_Building(const char *section, const char *entry, const Buil
  *
  *  @author: CCHyper
  */
-TypeList<const char *> CCINIClass::Get_String_List(const char *section, const char *entry, const TypeList<const char *> defvalue)
+TypeList<const char *> CCINIClass::Get_Strings(const char *section, const char *entry, const TypeList<const char *> defvalue)
 {
     char buffer[1024];
 
@@ -780,7 +780,7 @@ TypeList<const char *> CCINIClass::Get_String_List(const char *section, const ch
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_String_List(const char *section, const char *entry, const TypeList<const char *> value)
+bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeList<const char *> value)
 {
     char buffer[1024] ={'\0'};
 
@@ -800,7 +800,7 @@ bool CCINIClass::Put_String_List(const char *section, const char *entry, const T
  *
  *  @author: CCHyper
  */
-DynamicVectorClass<const char *> CCINIClass::Get_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue)
+DynamicVectorClass<const char *> CCINIClass::Get_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue)
 {
     char buffer[1024];
 
@@ -827,7 +827,7 @@ DynamicVectorClass<const char *> CCINIClass::Get_String_List(const char *section
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_String_List(const char *section, const char *entry, const DynamicVectorClass<const char *> value)
+bool CCINIClass::Put_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> value)
 {
     char buffer[1024] ={'\0'};
 
@@ -847,7 +847,7 @@ bool CCINIClass::Put_String_List(const char *section, const char *entry, const D
  *
  *  @author: CCHyper
  */
-TypeList<Wstring> CCINIClass::Get_String_List(const char *section, const char *entry, const TypeList<Wstring> defvalue)
+TypeList<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry, const TypeList<Wstring> defvalue)
 {
     char buffer[1024];
 
@@ -874,7 +874,7 @@ TypeList<Wstring> CCINIClass::Get_String_List(const char *section, const char *e
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_String_List(const char *section, const char *entry, const TypeList<Wstring> value)
+bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeList<Wstring> value)
 {
     char buffer[1024] ={'\0'};
 
@@ -894,7 +894,7 @@ bool CCINIClass::Put_String_List(const char *section, const char *entry, const T
  *
  *  @author: CCHyper
  */
-DynamicVectorClass<Wstring> CCINIClass::Get_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue)
+DynamicVectorClass<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue)
 {
     char buffer[1024];
 
@@ -921,7 +921,7 @@ DynamicVectorClass<Wstring> CCINIClass::Get_String_List(const char *section, con
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_String_List(const char *section, const char *entry, const DynamicVectorClass<Wstring> value)
+bool CCINIClass::Put_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> value)
 {
     char buffer[1024] ={'\0'};
 
