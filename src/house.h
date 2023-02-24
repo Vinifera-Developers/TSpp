@@ -291,11 +291,11 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C9B80
         // 004C9BC0
         // 004C9CB0
-        // 004C9EA0
-        // 004C9FB0
-        // 004CA450
-        // 004CA4A0
-        // 004CA600
+        void AI_Super_Weapon_Handler();
+        void Super_Weapon_Ion_Cannon(SuperClass *super);
+        void Super_Weapon_Hunter_Seeker(SuperClass *super);
+        void Super_Weapon_Multi_Missile(SuperClass *super);
+        void Super_Weapon_Chem_Missile(SuperClass *super);
         // 004CA760
         // 004CA880
         // 004CB2D0
@@ -305,7 +305,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool Is_Human_Control() const;
         // 004CB9C0
         void Init_Remap_Color();
-        // 004CBB30
+        void Super_Weapon_Drop_Pods(SuperClass *super);
 
         bool Is_Player() const { return this == PlayerPtr; }
 

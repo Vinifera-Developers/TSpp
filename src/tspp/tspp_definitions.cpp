@@ -2176,7 +2176,7 @@ DEFINE_IMPLEMENTATION(bool SuperClass::Remove(), 0x0060B830);
 DEFINE_IMPLEMENTATION(bool SuperClass::Recharge(bool), 0x0060B860);
 DEFINE_IMPLEMENTATION(void SuperClass::Impatient_Click() const, 0x0060BE20);
 DEFINE_IMPLEMENTATION(int SuperClass::Anim_Stage() const, 0x0060BD10);
-DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, Cell *), 0x0060B8E0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, Cell &), 0x0060B8E0);
 DEFINE_IMPLEMENTATION(const char *SuperClass::Ready_String() const, 0x0060BEC0);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
@@ -2411,11 +2411,11 @@ DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Threat_Regions(), 0x004C99D0);
 // 004C9B80
 // 004C9BC0
 // 004C9CB0
-// 004C9EA0
-// 004C9FB0
-// 004CA450
-// 004CA4A0
-// 004CA600
+DEFINE_IMPLEMENTATION(void HouseClass::AI_Super_Weapon_Handler(), 0x004C9EA0);
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Ion_Cannon(SuperClass *), 0x004C9FB0);
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Hunter_Seeker(SuperClass *), 0x004CA450);
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Multi_Missile(SuperClass *), 0x004CA4A0);
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Chem_Missile(SuperClass *), 0x004CA600);
 // 004CA760
 // 004CA880
 // 004CB2D0
@@ -2426,7 +2426,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Is_Player_Control() const, 0x004CB950);
 DEFINE_IMPLEMENTATION(bool HouseClass::Is_Human_Control() const, 0x004CB990);
 // 004CB9C0
 DEFINE_IMPLEMENTATION(void HouseClass::Init_Remap_Color(), 0x004CBAA0);
-// 004CBB30
+DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Drop_Pods(SuperClass *), 0x004CBB30);
 // 004CBC30
 // 004CBC40
 DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
