@@ -147,7 +147,7 @@ class ObjectClass : public AbstractClass
         virtual void Sell_Back(int control);
         virtual void entry_174(int a1, int a2);
         virtual void Move(FacingType facing);
-        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false);
+        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true);
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual Coordinate Get_Coord() const;
         virtual void Set_Coord(Coordinate &coord);

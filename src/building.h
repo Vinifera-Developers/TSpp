@@ -114,7 +114,7 @@ BuildingClass : public TechnoClass
         virtual bool Revealed(const HouseClass *house = nullptr) override;
         virtual void Repair(int control) override;
         virtual void Sell_Back(int control) override;
-        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false) override;
+        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true) override;
 
         /**
          *  MissionClass

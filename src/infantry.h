@@ -84,7 +84,7 @@ InfantryClass : public FootClass
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual void Per_Cell_Process(PCPType why) override;
-        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = false) override;
+        virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true) override;
 
         /**
          *  MissionClass
