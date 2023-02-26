@@ -87,11 +87,22 @@ bool TypeList<T>::Save(IStream *pStm)
 {
     TSPP_ASSERT(pStm != nullptr);
 
-    int count = Count();
-    pStm->Write(&count, sizeof(count), nullptr);
+    ULONG bytes_written = 0;
+    T object;
 
-    for (int index = 0; index < count; ++index) {
-        pStm->Write(&(*this)[index], sizeof(T), nullptr);
+    /**
+     *  Save the number of instances of this class.
+     */
+    pStm->Write(&ActiveCount, sizeof(ActiveCount), &bytes_written);
+    TSPP_ASSERT(bytes_written == sizeof(ActiveCount));
+
+    /**
+     *  Save the pointer to the object.
+     */
+    for (int index = 0; index < ActiveCount; ++index) {
+        object = (*this)[index];
+        pStm->Write(&object, sizeof(T), &bytes_written);
+        TSPP_ASSERT(bytes_written == sizeof(T));
     }
 
     return true;
@@ -108,13 +119,23 @@ bool TypeList<T>::Load(IStream *pStm)
 {
     TSPP_ASSERT(pStm != nullptr);
 
-    int count = 0;
-    pStm->Read(&count, sizeof(count), nullptr);
+    ULONG bytes_read = 0;
+    T object;
 
-    for (int index = 0; index < count; ++index) {
-        T *object = nullptr;
-        pStm->Read(object, sizeof(T), nullptr);
-        Add(*object);
+    /**
+     *  Read the number of instances of this class.
+     */
+    int a_count = 0;
+    pStm->Read(&a_count, sizeof(a_count), &bytes_read);
+    TSPP_ASSERT(bytes_read == sizeof(a_count));
+
+    /**
+     *  Read each class instance.
+     */
+    for (int index = 0; index < a_count; ++index) {
+        pStm->Read(&object, sizeof(T), &bytes_read);
+        TSPP_ASSERT(bytes_read == sizeof(T));
+        Add(object);
     }
 
     return true;
