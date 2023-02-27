@@ -191,6 +191,11 @@ class EventClass
 				unsigned long Extra;
 			} LongLongExtra;
 
+			// Used for direct byte access to this events data, in debug cases only!
+			struct {
+				unsigned char Byte[1];
+			} Array;
+
 		} Data;
 #pragma pack()
 };
