@@ -1548,6 +1548,7 @@ DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D 
 DEFINE_IMPLEMENTATION(Coordinate Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::func_60F740(const Point2D &) const, 0x0060F740);
 DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coordinate &, int), 0x0060F800);
+DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface &surface, bool full_redraw, RenderPassEnum render_pass), 0x006111E0);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);

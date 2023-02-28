@@ -36,9 +36,18 @@
 
 
 class CellClass;
+class XSurface;
 
 
 struct IsoCoordinate : public Point2D {};
+
+typedef enum RenderPassEnum
+{
+    RENDERPASS_FIRST,       // Tile surface, ZBuffer, and ABuffer.
+    RENDERPASS_SECOND,      // Buildings (without animations), Overlays, and Smudges.
+    RENDERPASS_THIRD,       // Animations, Terrain, Tile animations, and Objects.
+    RENDERPASS_ALL,         // Composite of all passes.
+};
 
 
 class DECLSPEC_UUID("CF56B38A-240D-11D2-817C-006008055BB5")
@@ -92,6 +101,7 @@ Tactical : public AbstractClass
         // 00610AD0
         // 00610D40
         // 00610F90
+        void Render(XSurface &surface, bool full_redraw, RenderPassEnum render_pass);
         void Set_Caption_Text(int text_id);
         void Clear_Caption_Text();
         void Draw_Screen_Text(const char *text);
