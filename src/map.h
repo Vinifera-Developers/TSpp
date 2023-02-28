@@ -175,8 +175,8 @@ class MapClass : public GScreenClass
         //bool In_Radar(CellClass &cell, bool a2 = true) const;
         //bool In_Radar(Coordinate &coord) const;
         // 0051E560
-        // 0051E630
-        // 0051E770
+        CellClass *Horizontal_Iterator_Next_Cell();
+        void Horizontal_Iterator_Reset();
         // 0051E7A0
         // 0051E9E0
         // 0051EAE0
@@ -287,8 +287,8 @@ class MapClass : public GScreenClass
         int NextY;                  // Iterator next y
         int NextColumn;             // Iterator remaining row cells
         CellClass *NextCell;        // Iterator next cell
-        int field_124;
-        int field_128;
+        int HorizonalLeft;          // Horizontal iterator left boundry
+        int HorizonalRight;         // Horizontal iterator right boundry
         int MapCellX;
         int MapCellY;
         int MapCellWidth;
