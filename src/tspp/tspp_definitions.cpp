@@ -269,6 +269,7 @@
 #include "alphashape.h"
 #include "veinholemonster.h"
 #include "foggedobject.h"
+#include "reinf.h"
 #include "ownrdraw.h"
 #include "clipline.h"
 #include "sprite.h"
@@ -5185,6 +5186,14 @@ DEFINE_IMPLEMENTATION(Cell *FoggedObjectClass::Get_Occupy_List() const, 0x0049F6
 DEFINE_IMPLEMENTATION(const ObjectTypeClass *FoggedObjectClass::Get_Object() const, 0x0049F7C0);
 DEFINE_IMPLEMENTATION(void FoggedObjectClass::Draw_All(), 0x0049E7B0);
 DEFINE_IMPLEMENTATION(void FoggedObjectClass::Update_All(), 0x0049F280);
+
+DEFINE_IMPLEMENTATION(bool Need_To_Take(const AircraftClass *), 0x005BF040);
+DEFINE_IMPLEMENTATION(bool Do_Reinforcements(const TeamTypeClass *, WaypointType), 0x005BF050);
+DEFINE_IMPLEMENTATION(bool Pop_Group_Out_Of_Object(FootClass *, TechnoClass *), 0x005BF690);
+DEFINE_IMPLEMENTATION(int Create_Tunnel_Reinforcement(const TeamTypeClass *, FootClass *, Cell &, bool), 0x005BF740);
+DEFINE_IMPLEMENTATION(bool Create_Special_Reinforcement(HouseClass *, const TechnoTypeClass *, const TechnoTypeClass *, ScriptMissionType, int), 0x005BFD80);
+DEFINE_IMPLEMENTATION(int Create_Air_Reinforcement(HouseClass *, AircraftType, int, MissionType, TARGET, TARGET, InfantryType), 0x005BFD90);
+
 
 
 /**
