@@ -91,7 +91,7 @@ class MapClass : public GScreenClass
         // 0050F2C0
         // 00510900
         // 00510A20
-        void Sight_From(Cell &cell, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
+        void Sight_From(Coordinate &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
         bool In_Radar(Cell &cell) const;
         bool In_Radar(Coordinate &coord) const;
         void Place_Down(Cell &cell, ObjectClass *object);
@@ -265,6 +265,11 @@ class MapClass : public GScreenClass
         // 0052DBC0
 
         bool Place_Crate(Cell where);
+
+        void Sight_From(Cell &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true)
+        {
+            Sight_From(Cell_Coord(coord), sight_range, house, incremental, a5, a6, a7);
+        }
 
     public:
         void *field_10;

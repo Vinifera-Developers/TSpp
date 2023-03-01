@@ -1719,7 +1719,7 @@ DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Cell &), 0x0050F2
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) const, 0x0050F280);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coordinate &), 0x0050F210);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coordinate &) const, 0x0050F210);
-DEFINE_IMPLEMENTATION(void MapClass::Sight_From(Cell &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(void MapClass::Sight_From(Coordinate &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &) const, 0x00510FB0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x00511000);
 DEFINE_IMPLEMENTATION(void MapClass::Place_Down(Cell &, ObjectClass *), 0x00511070);
