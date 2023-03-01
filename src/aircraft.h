@@ -123,7 +123,7 @@ AircraftClass : public FootClass, public IFlyControl
         virtual DirStruct Turret_Facing() const override;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
         virtual DirStruct Fire_Direction() const override;
-        virtual void Player_Assign_Mission(MissionType order, TARGET target = nullptr, TARGET destination = nullptr) override;
+        virtual void Player_Assign_Mission(MissionType order, TARGET target = TARGET_NULL, TARGET destination = TARGET_NULL) override;
         virtual void Reduce_Ammunition() const override;
         virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;

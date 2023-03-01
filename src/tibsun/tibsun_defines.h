@@ -129,6 +129,9 @@ extern int &BridgeCellHeight;
 
 
 #define TARGET_NONE TargetClass()
+#define TARGET_NULL nullptr
+#define INVALID_CELL Cell(0,0)
+#define INVALID_COORD Coordinate(0,0,0)
 
 
 typedef enum WaypointEnum

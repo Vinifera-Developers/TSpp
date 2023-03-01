@@ -36,7 +36,7 @@ class TeamClass;
 class HouseClass;
 class TagTypeClass;
 class ScriptTypeClass;
-class TaskForceTypeClass;
+class TaskForceClass;
 
 
 class DECLSPEC_UUID("D1DBA64E-0778-11D2-ACA5-006008055BB5")
@@ -122,7 +122,7 @@ TeamTypeClass : public AbstractTypeClass
         int Origin;
         int Number;
         ScriptTypeClass *Script;
-        TaskForceTypeClass *TaskForce;
+        TaskForceClass *TaskForce;
         int field_A4;
         bool AvoidThreats;
         bool IsIonImmune;
