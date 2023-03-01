@@ -110,7 +110,7 @@ Tactical : public AbstractClass
         // 00612570
         // 00612810
         // 00612B10
-        // 00612B40
+        void Set_Tactical_Dimensions(const Rect & rect);
         void Set_Tactical_Center_Position(const Point2D &point);
         void Set_Tactical_Position(const Coordinate &coord);
         Point2D Get_Tactical_Center_Position() const;

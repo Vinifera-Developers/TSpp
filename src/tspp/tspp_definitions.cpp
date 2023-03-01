@@ -1552,6 +1552,7 @@ DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface &surface, bool full_redraw,
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);
+DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Dimensions(const Rect &), 0x00612B40);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Center_Position(const Point2D &), 0x00612BE0);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Position(const Coordinate &), 0x00612C50);
 DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Center_Position() const, 0x00612D50);
