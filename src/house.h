@@ -44,6 +44,7 @@
 #include "rgb.h"
 #include "tibsun_globals.h"
 #include "tibsun_defines.h"
+#include "tspp_assert.h"
 #include <ocidl.h> // for IConnectionPointContainer.
 
 
@@ -308,6 +309,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Super_Weapon_Drop_Pods(SuperClass *super);
 
         bool Is_Player() const { return this == PlayerPtr; }
+        SourceType Get_Starting_Edge() const { if (Control.Edge < SOURCE_NORTH || Control.Edge > SOURCE_WEST) { return SOURCE_NORTH; } return Control.Edge; }
 
         UnitTypeClass *Get_First_Ownable(TypeList<UnitTypeClass *> &list) const
         {
