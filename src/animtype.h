@@ -136,14 +136,14 @@ AnimTypeClass : public ObjectTypeClass
         bool IsFlamingGuy;
         bool IsVeins;
         bool IsMeteor;
-        bool TiberiumChainReaction;
+        bool IsTiberiumChainReaction;
         bool IsTiberium;
         bool IsBouncer;
         bool IsTiled;
-        bool ShouldUseCellDrawer;
-        bool UseNormalLight;
+        bool IsShouldUseCellDrawer;
+        bool IsUseNormalLight;
         bool IsDemandLoad;
-        bool FreeAfterPlaying;
+        bool IsFreeAfterPlaying;
         bool IsAnimatedTiberium;
         bool IsAltPalette;
         bool IsNormalized;
