@@ -95,7 +95,7 @@ class IndexClass
             return Archive;
         }
 
-    private:
+    public:
         bool Increase_Table_Size(int amount);
         bool Is_Archive_Same(const I &id) const;
         void Invalidate_Archive();
@@ -248,6 +248,10 @@ void IndexClass<I, T>::Set_Archive(const NodeElement * node)
 template<typename I, class T>
 bool IndexClass<I, T>::Add_Index(const I &id, const T &data)
 {
+    for (int index = 0; index < IndexCount; ++index) {
+        TSPP_ASSERT(IndexTable[index].ID != id);
+    }
+
     if (IndexCount + 1 > IndexSize) {
         if (!Increase_Table_Size(IndexSize == 0 ? 10 : IndexSize)) {
             return false;
