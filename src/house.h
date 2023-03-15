@@ -497,7 +497,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         CDTimerClass<FrameTimerClass> SpeakPowerDelay;
         CDTimerClass<FrameTimerClass> SpeakMoneyDelay;
         CDTimerClass<FrameTimerClass> SpeakMaxedDelay;
-        IAIHouse *AIGeneral;
+        IAIHousePtr AIGeneral;
         RegionClass Regions[MAP_TOTAL_REGIONS];
         char IniName[HOUSE_NAME_MAX+1];
         ColorSchemeType RemapColor;

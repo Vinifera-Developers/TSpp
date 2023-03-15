@@ -29,6 +29,7 @@
 
 #include "always.h"
 #include "ihouse.h"
+#include <comdef.h>
 #include <unknwn.h>
 
 
@@ -49,3 +50,8 @@ DECLARE_INTERFACE_IID_(IAIHouse, IUnknown, "96F02EC4-6FE8-11D1-B6FD-00A024DDAFD1
      */
     STDMETHOD_(LONG, AI)(long *framedelay) PURE;
 };
+
+/**
+ *  IAIHouse com smart pointer declaration.
+ */
+_COM_SMARTPTR_TYPEDEF(IAIHouse, __uuidof(IAIHouse));
