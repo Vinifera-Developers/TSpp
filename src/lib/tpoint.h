@@ -42,6 +42,8 @@ class TPoint2D
         bool operator==(const TPoint2D &that) const { return X == that.X && Y == that.Y; }
         bool operator!=(const TPoint2D &that) const { return X != that.X && Y != that.Y; }
 
+        bool Is_Valid() const { return X > 0 || Y > 0; }
+
     public:
         T X;
         T Y;
@@ -109,6 +111,8 @@ class TPoint3D
 
         bool operator==(const TPoint3D &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
         bool operator!=(const TPoint3D &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+
+        bool Is_Valid() const { return X > 0 || Y > 0; }
 
     public:
         T X;
