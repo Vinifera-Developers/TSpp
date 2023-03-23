@@ -146,6 +146,12 @@ class MixFileClass : public Node<MixFileClass *>
             return ptr;
         }
 
+        template<typename T>
+        static const T * Retrieve_WithinT(const char *filename, const char *mix_filename)
+        {
+            return (const T *)Retrieve_Within(filename, mix_filename);
+        }
+
     private:
         static int __cdecl mix_compfunc(const void * ptr1, const void * ptr2)
         {
