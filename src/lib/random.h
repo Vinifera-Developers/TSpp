@@ -80,3 +80,24 @@ class Random3Class
         static unsigned Mix1[20];
         static unsigned Mix2[20];
 };
+
+class Random4Class
+{
+    public:
+        Random4Class(unsigned int seed = 4357);
+
+        operator int() { return operator()(); }
+        int operator()();
+        int operator()(int minval, int maxval);
+        template<typename T> T operator()(T minval, T maxval) { return T(*this)(int(minval), int(maxval)); }
+
+        float Get_Float();
+
+        enum {
+            SIGNIFICANT_BITS = 32 // Random number bit significance.
+        };
+        
+    protected:
+        unsigned int mt[624]; // state vector
+        int mti; // index
+};
