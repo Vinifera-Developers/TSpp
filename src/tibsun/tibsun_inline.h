@@ -457,6 +457,12 @@ inline T Random_Pick(T a, T b)
 };
 
 
+inline float Random_Pick_Float(float a, float b)
+{
+    return ((unsigned)Scen->RandomNumber() % 4096) / 4096.0f * (b - a) + a;
+};
+
+
 inline bool Percent_Chance(int percent)
 {
     return Scen->RandomNumber(0, 99) < percent;
@@ -479,6 +485,12 @@ template<typename T>
 inline T Sim_Random_Pick(T a, T b)
 {
     return NonCriticalRandomNumber(a, b);
+};
+
+
+inline float Sim_Random_Pick_Float(float a, float b)
+{
+    return ((unsigned)NonCriticalRandomNumber() % 4096) / 4096.0f * (b - a) + a;
 };
 
 
