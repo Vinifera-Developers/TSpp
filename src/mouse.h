@@ -56,10 +56,23 @@ class MouseClass : public ScrollClass
 		virtual HRESULT Save(IStream *pStm) override;
         virtual MouseType Get_Mouse_Shape() const override;
 
-		int Get_Mouse_Frame(MouseType mouse, bool wsmall = false) const; // 005622D0
+		int Get_Mouse_Current_Frame(MouseType mouse, bool wsmall = false) const; // 005622D0
 		Point2D Get_Mouse_Hotspot(MouseType mouse) const; // 00562310
 		int Get_Mouse_Start_Frame(MouseType mouse) const; // 00563220
 		int Get_Mouse_Frame_Count(MouseType mouse) const; // 00563240
+
+		int Get_Mouse_First_Frame(MouseType mouse, bool wsmall) const
+		{
+			MouseStruct const * control = &MouseControl[mouse];
+
+			if (wsmall) {
+				if (control->SmallFrame != -1) {
+					return control->SmallFrame;
+				}
+			}
+
+			return control->StartFrame;
+		}
 
 	public:
 		bool IsSmall;

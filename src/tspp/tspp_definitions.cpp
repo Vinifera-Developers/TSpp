@@ -2062,7 +2062,7 @@ DEFINE_IMPLEMENTATION(void MouseClass::Mouse_Small(bool), 0x00562200);
 DEFINE_IMPLEMENTATION(HRESULT MouseClass::Load(IStream *), 0x00562680);
 DEFINE_IMPLEMENTATION(HRESULT MouseClass::Save(IStream *), 0x00562F10);
 DEFINE_IMPLEMENTATION(MouseType MouseClass::Get_Mouse_Shape() const, 0x00402B10);
-DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame(MouseType, bool) const, 0x005622D0);
+DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Current_Frame(MouseType, bool) const, 0x005622D0);
 DEFINE_IMPLEMENTATION(Point2D MouseClass::Get_Mouse_Hotspot(MouseType) const, 0x00562310);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Start_Frame(MouseType) const, 0x00563220);
 DEFINE_IMPLEMENTATION(int MouseClass::Get_Mouse_Frame_Count(MouseType) const, 0x00563240);
