@@ -78,4 +78,7 @@ class MouseClass : public ScrollClass
 		} MouseStruct;
 
 		static MouseStruct *MouseControl;
+
+		static ShapeFileStruct const *&MouseShapes;
+		static CDTimerClass<SystemTimerClass> &Timer;
 };

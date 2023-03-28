@@ -134,6 +134,14 @@ extern int &BridgeCellHeight;
 #define INVALID_COORD Coordinate(0,0,0)
 
 
+/**
+ *  Hotspot locations for the mouse cursor controls.
+ */
+#define MOUSE_HOTSPOT_MIN 0
+#define MOUSE_HOTSPOT_CENTER 12345
+#define MOUSE_HOTSPOT_MAX 54321
+
+
 typedef enum WaypointEnum
 {
     WAYPT_HOME = 98,    // Home-cell for this scenario

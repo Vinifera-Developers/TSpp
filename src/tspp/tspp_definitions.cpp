@@ -510,7 +510,7 @@ DEFINE_IMPLEMENTATION(void CCFileClass::Error(FileErrorType error, bool, const c
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWMouseClass::WWMouseClass(XSurface *, HWND), 0x006A5000);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(WWMouseClass::~WWMouseClass(), 0x006A5170);
-DEFINE_IMPLEMENTATION(void WWMouseClass::Set_Cursor(Point2D *, void *, int), 0x006A52A0);
+DEFINE_IMPLEMENTATION(void WWMouseClass::Set_Cursor(Point2D *, const ShapeFileStruct *, int), 0x006A52A0);
 DEFINE_IMPLEMENTATION(bool WWMouseClass::Is_Locked() const, 0x006A6910);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Hide_Mouse(), 0x006A6140);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Show_Mouse(), 0x006A5FE0);
@@ -5478,6 +5478,8 @@ const ShapeFileStruct *&Cell_ShroudShape = Make_Global<const ShapeFileStruct *>(
 const ShapeFileStruct *&Cell_FogShape = Make_Global<const ShapeFileStruct *>(0x00760CB0);
 const ShapeFileStruct *&Cell_FixupFogShape = Make_Global<const ShapeFileStruct *>(0x00760C88);
 MouseClass::MouseStruct *MouseClass::MouseControl = Make_Pointer<MouseStruct>(0x00703070);
+ShapeFileStruct const *&MouseClass::MouseShapes = Make_Global<const ShapeFileStruct *>(0x00806CB4);
+CDTimerClass<SystemTimerClass> &MouseClass::Timer = Make_Global<CDTimerClass<SystemTimerClass>>(0x00806CC8);
 MonoClass *&MonoClass::Current = Make_Global<MonoClass *>(0x00806C50);
 bool &MonoClass::Enabled = Make_Global<bool>(0x00806C54);
 IsometricTileType &WaterSet = Make_Global<IsometricTileType>(0x007F59A0);

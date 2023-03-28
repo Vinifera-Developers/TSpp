@@ -44,7 +44,7 @@ class WWMouseClass
         WWMouseClass(XSurface *scr, HWND hWnd = nullptr);
         virtual ~WWMouseClass();
 
-        virtual void Set_Cursor(Point2D *hotspot, void *cursor, int cursor_index);
+        virtual void Set_Cursor(Point2D *hotspot, const ShapeFileStruct *cursor, int cursor_index);
         virtual bool Is_Locked() const;
         virtual void Hide_Mouse();
         virtual void Show_Mouse();
