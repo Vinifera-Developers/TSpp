@@ -3688,8 +3688,8 @@ DEFINE_IMPLEMENTATION(int VocClass::Play(float), 0x00664B00);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, int, float), 0x00664BA0);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, float), 0x00664C60);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, Coordinate &), 0x00664D10);
-// 00664EC0
-// 00665080
+DEFINE_IMPLEMENTATION(void VocClass::Process(CCINIClass &), 0x00664EC0);
+DEFINE_IMPLEMENTATION(void VocClass::Clear(), 0x00665080);
 DEFINE_IMPLEMENTATION(VocType VocClass::VocType_From_Voc(VocClass *), 0x006651C0);
 DEFINE_IMPLEMENTATION(VocType VocClass::From_Name(const char *), 0x00665100);
 DEFINE_IMPLEMENTATION(VocClass *VocClass::Voc_From_Name(const char *), 0x00665140);

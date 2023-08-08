@@ -57,8 +57,8 @@ class VocClass
         static int Play(VocType voc, int a2, float volume = 1.0f);
         static int Play(VocType voc, float volume = 1.0f);
         static int Play(VocType voc, Coordinate &coord);
-        // 00664EC0
-        // 00665080
+        static void Process(CCINIClass &ini);
+        static void Clear();
         static VocType VocType_From_Voc(VocClass *voc);
         static VocType From_Name(const char *name);
         static VocClass *Voc_From_Name(const char *name);
