@@ -51,15 +51,15 @@ class SpecialClass
         unsigned IsTSpread:1;               // 64
         unsigned IsMCVDeploy:1;             // 128
 
-        unsigned InitialVeteran:1;          // 1
-        unsigned FixedAlliance:1;           // 2
-        unsigned HarvesterImmune:1;         // 4
-        unsigned FogOfWar:1;                // 8
+        unsigned IsInitialVeteran:1;        // 1
+        unsigned IsFixedAlliance:1;         // 2
+        unsigned IsHarvesterImmune:1;       // 4
+        unsigned IsFogOfWar:1;              // 8
         unsigned Bit2_16:1;                 // 16   // could be ShroudRegrows?
-        unsigned TiberiumExplosive:1;       // 32
-        unsigned DestroyableBridges:1;      // 64
-        unsigned Meteorites:1;              // 128
+        unsigned IsTExplosive:1;            // 32
+        unsigned IsDestroyableBridges:1;    // 64
+        unsigned IsMeteorites:1;            // 128
 
-        unsigned IonStorms:1;               // 1
+        unsigned IsIonStorms:1;             // 1
         unsigned IsVisceroids:1;            // 2
 };
