@@ -29,6 +29,7 @@
 
 #include "vector.h"
 #include "tibsun_defines.h"
+#include <unknwn.h>
 
 
 class Straw;
