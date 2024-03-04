@@ -32,6 +32,8 @@
 
 #define AUD_CHUNK_MAGIC_ID 0xDEAF
 
+#define	AUD_FLAG_STEREO 1
+#define	AUD_FLAG_16BIT 2
 
 #pragma pack(push, 1)
 typedef struct AUDHeaderType
