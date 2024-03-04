@@ -224,3 +224,4 @@ class DirectSoundAudioClass
 
 int Convert_HMI_To_Direct_Sound_Volume(int vol);
 void *Audio_Add_Long_To_Pointer(void const *ptr, long size);
+void Print_Sound_Error(char const *sound_error, HWND window);
