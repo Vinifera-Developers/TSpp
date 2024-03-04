@@ -57,7 +57,7 @@ typedef enum SCompressType
 } SCompressType;
 
 
-enum {
+typedef enum DSAudioEnums {
     PRIORITY_MIN = 0,
     PRIORITY_MAX = 255,
     VOLUME_MIN = 0,
@@ -65,8 +65,21 @@ enum {
 
     INVALID_AUDIO_HANDLE = -1,
 
-    MAX_SFX = 5
-};
+    MAX_SFX = 5,
+
+    MUTEX_COUNT = 1 + MAX_SFX,
+    MUTEX_TIMEOUT = 10000, // 10 milliseconds
+    SECONDARY_BUFFER_SIZE = 1024*32,
+    STREAM_BUFFER_COUNT = 16,
+
+    TARGET_TIMER_RESOLUTION = 10, // 1-millisecond target resolution
+    WORST_TIMER_RESOLUTION = 25,
+
+    MAINTENANCE_RATE = 40,	// 30 times per sec plus a safety margin
+    STREAM_BUFFER_SIZE = (128L*1024L),
+    STREAM_CUSHION_BLOCKS = 4,
+    LARGEST_SONARC_BLOCK = 2048,
+} DSAudioEnums;
 
 
 typedef struct tSampleTrackerType
