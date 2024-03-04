@@ -179,6 +179,9 @@ class DirectSoundAudioClass
         bool Lock_Mutex();
         bool Unlock_Mutex();
 
+        bool Set_Primary_Buffer_Format(void);
+        void Restore_Sound_Buffers(void);
+
         int Set_Volume_All(int vol);
         int Adjust_Volume_All(int vol_percent);
 
