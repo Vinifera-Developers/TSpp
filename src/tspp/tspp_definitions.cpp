@@ -2139,7 +2139,9 @@ DEFINE_IMPLEMENTATION(int __cdecl sosCODECDecompressData(_SOS_COMPRESS_INFO *, i
 DEFINE_IMPLEMENTATION(int __cdecl sosCODEC2DecompressData(_SOS_COMPRESS_INFO_2 *, int16_t), 0x006B26BC);
 DEFINE_IMPLEMENTATION(int Convert_HMI_To_Direct_Sound_Volume(int), 0x004879C0);
 void *Audio_Add_Long_To_Pointer(void const *ptr, long size) {return ((void *) ( (char const *) ptr + size));}
-DEFINE_IMPLEMENTATION(void Print_Sound_Error(char const *, HWND), 0x00489D10)
+DEFINE_IMPLEMENTATION(void Print_Sound_Error(char const *, HWND), 0x00489D10);
+DEFINE_IMPLEMENTATION(long Simple_Copy(void **, long *, void **, long *, void **, long), 0x0048A690);
+DEFINE_IMPLEMENTATION(long Sample_Copy(SampleTrackerType *, void **, long *, void **, long *, void *, long, SCompressType), 0x0048A750);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PreviewClass::PreviewClass(), 0x005AC010);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(PreviewClass::~PreviewClass(), 0x005AC020);
