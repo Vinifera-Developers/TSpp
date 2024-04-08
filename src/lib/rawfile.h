@@ -38,6 +38,7 @@ class RawFileClass : public FileClass
         RawFileClass();
         //RawFileClass(const RawFileClass &f);
         RawFileClass(const char *filename);
+        RawFileClass(const Wstring &filename);
         virtual ~RawFileClass();
 
         virtual const char *File_Name() const override;

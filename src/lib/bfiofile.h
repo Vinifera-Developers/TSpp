@@ -35,6 +35,7 @@ class BufferIOFileClass : public RawFileClass
     public:
         BufferIOFileClass();
         BufferIOFileClass(const char *filename);
+        BufferIOFileClass(const Wstring &filename);
         virtual ~BufferIOFileClass();
 
         virtual const char *Set_Name(const char *filename) override;

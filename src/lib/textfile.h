@@ -41,6 +41,7 @@ class TextFileClass : public RawFileClass
     public:
         TextFileClass() : RawFileClass() {}
         TextFileClass(char const *filename) : RawFileClass(filename) {}
+        TextFileClass(Wstring const &filename);
         virtual ~TextFileClass() {}
 
         int Read_Line(char *string, bool &last_line);

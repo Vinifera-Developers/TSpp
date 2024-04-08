@@ -37,6 +37,7 @@ class CCFileClass : public CDFileClass
     public:
         CCFileClass();
         CCFileClass(const char * filename);
+        CCFileClass(const Wstring &filename);
         virtual ~CCFileClass();
 
         virtual bool Is_Available(bool forced = false) override;

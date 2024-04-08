@@ -45,6 +45,7 @@ class CDFileClass : public BufferIOFileClass
     public:
         CDFileClass();
         CDFileClass(const char *filename);
+        CDFileClass(const Wstring &filename);
         virtual ~CDFileClass() {}
 
         virtual const char *Set_Name(const char *filename) override;

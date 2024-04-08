@@ -28,6 +28,7 @@
 #pragma once
 
 #include "always.h"
+#include "wstring.h"
 #include <errno.h>
 
 
@@ -143,6 +144,10 @@ class FileClass
         virtual void Error(FileErrorType error, bool can_retry = false, const char *filename = nullptr) = 0;
 
         off_t Tell() { return Seek(0, FILE_SEEK_CURRENT); }
+        
+        operator const Wstring () { return File_Name(); }
+        Wstring Set_Name(const Wstring &filename) { return Wstring(Set_Name(filename.Peek_Buffer())); }
+        bool Open(const Wstring &filename, FileAccessType rights = FILE_ACCESS_READ) { return Open(filename.Peek_Buffer(), rights); }
 
     protected:
         static const char *File_Error_To_String(FileErrorType error);

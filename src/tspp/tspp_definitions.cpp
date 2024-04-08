@@ -278,6 +278,7 @@
 #include "newdel.h"
 #include "tibsun_functions.h"
 #include "wolapi.h"
+#include "textfile.h"
 
 
 /**
@@ -337,6 +338,7 @@ DEFINE_IMPLEMENTATION(bool RawFileClass::Set_Date_Time(LONG), 0x005BEAB0);
 DEFINE_IMPLEMENTATION(void RawFileClass::Error(FileErrorType, bool, const char *), 0x005BE300);
 DEFINE_IMPLEMENTATION(void RawFileClass::Bias(off_t, int), 0x005BEB20);
 DEFINE_IMPLEMENTATION(off_t RawFileClass::Raw_Seek(off_t, FileSeekType), 0x005BEB90);
+RawFileClass::RawFileClass(const Wstring &filename) : Rights(FILE_ACCESS_READ), BiasStart(0), BiasLength(-1), Handle(INVALID_HANDLE_VALUE), Filename((char *)filename.Peek_Buffer()), Date(0), Time(0), Allocated(false) { *((unsigned long *)this) = (unsigned long)0x006D5E34; }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MixFileClass::MixFileClass(const char *, const PKey *), 0x00559A10);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(MixFileClass::~MixFileClass(), 0x00559D40);
@@ -424,6 +426,7 @@ DEFINE_IMPLEMENTATION(void BufferIOFileClass::Close(), 0x004217E0);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Cache(long, void *), 0x00420DD0);
 DEFINE_IMPLEMENTATION(void BufferIOFileClass::Free(), 0x00420FA0);
 DEFINE_IMPLEMENTATION(bool BufferIOFileClass::Commit(), 0x00420FE0);
+BufferIOFileClass::BufferIOFileClass(const Wstring &filename) : RawFileClass(filename), IsOpen(false), IsDiskOpen(false), IsCached(false), IsChanged(false), UseBuffer(false), BufferRights(0), BufferPtr(0), BufferSize(0), BufferPos(0), BufferFilePos(0), BufferChangeBeg(-1), BufferChangeEnd(-1), FileSize(0), FilePos(0), TrueFileStart(0) { *((unsigned long *)this) = (unsigned long)0x006CBF68; BufferIOFileClass::Set_Name(filename.Peek_Buffer()); }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDFileClass::CDFileClass(), 0x00450610);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDFileClass::CDFileClass(const char *), 0x004505E0);
@@ -438,6 +441,7 @@ DEFINE_IMPLEMENTATION(void CDFileClass::Set_CD_Drive(int), 0x00450960);
 DEFINE_IMPLEMENTATION(bool CDFileClass::Find_First_File(char *), 0x00450B30);
 DEFINE_IMPLEMENTATION(bool CDFileClass::Find_Next_File(char *), 0x00450C80);
 DEFINE_IMPLEMENTATION(void CDFileClass::Find_Close(), 0x00450CF0);
+CDFileClass::CDFileClass(const Wstring &filename) : BufferIOFileClass(filename), IsDisabled(false) { *((unsigned long *)this) = (unsigned long)0x006CAD1C; }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(), 0x005C4350);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RulesClass::RulesClass(const NoInitClass &), 0x005C3E00);
@@ -507,6 +511,7 @@ DEFINE_IMPLEMENTATION(void CCFileClass::Close(), 0x00449A10);
 DEFINE_IMPLEMENTATION(LONG CCFileClass::Get_Date_Time() const, 0x00449B70);
 DEFINE_IMPLEMENTATION(bool CCFileClass::Set_Date_Time(LONG), 0x00449C20);
 DEFINE_IMPLEMENTATION(void CCFileClass::Error(FileErrorType error, bool, const char *), 0x00449820);
+CCFileClass::CCFileClass(const Wstring &filename) : CDFileClass(filename), Data(), Position(0) { *((unsigned long *)this) = (unsigned long)0x006CAD64; }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWMouseClass::WWMouseClass(XSurface *, HWND), 0x006A5000);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(WWMouseClass::~WWMouseClass(), 0x006A5170);
@@ -5261,6 +5266,8 @@ DEFINE_IMPLEMENTATION(bool Scale_Rotate(Surface &, BitmapClass &, TPoint2D<int> 
 DEFINE_IMPLEMENTATION(HFONT WinCreateFont(HDC, TCHAR *, int, int, int), 0x006842E0);
 
 DEFINE_IMPLEMENTATION(ArmorType Armor_From_Name(const char *), 0x00681320);
+
+TextFileClass::TextFileClass(const Wstring &filename) : RawFileClass(filename) {}
 
 
 /**
