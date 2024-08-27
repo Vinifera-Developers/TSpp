@@ -98,9 +98,9 @@ class DSurface : public XSurface
 
         static unsigned RGB_To_Pixel(RGBClass &rgb)
         {
-            return (unsigned((rgb.Red >> BlueRight) << BlueLeft)
-                  | unsigned((rgb.Green >> RedRight) << RedLeft)
-                  | unsigned((rgb.Blue >> GreenRight) << GreenLeft));
+            return (unsigned((rgb.Blue >> BlueRight) << BlueLeft)
+                  | unsigned((rgb.Red >> RedRight) << RedLeft)
+                  | unsigned((rgb.Green >> GreenRight) << GreenLeft));
         }
 
         static void Pixel_To_RGB(unsigned pixel, unsigned *red, unsigned *green, unsigned *blue)
