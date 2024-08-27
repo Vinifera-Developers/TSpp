@@ -31,6 +31,7 @@
 #include "ttimer.h"
 #include "ftimer.h"
 #include "tibsun_defines.h"
+#include "supertype.h"
 
 
 class HouseClass;
@@ -89,13 +90,7 @@ SuperClass : public AbstractClass
 		bool Is_Present() const { return IsPresent; }
 		bool Is_One_Time() const { return IsOneTime && IsPresent; }
 		bool Is_Powered() const;
-		/*bool Time_To_Redraw() const
-		{
-			if (Class->IsUseChargeDrain) {
-				return true;
-			}
-			return !IsReady;
-		}*/
+		bool Needs_Redraw() const { return  Class->IsUseChargeDrain || !IsReady; }
 		/*void Set_Recharge_Time(int time)
 		{
 			if (IsPresent) {

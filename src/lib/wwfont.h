@@ -30,6 +30,7 @@
 #include "always.h"
 #include "rect.h"
 #include "point.h"
+#include "textprint.h"
 
 
 class Surface;

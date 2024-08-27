@@ -2585,7 +2585,7 @@ typedef enum ShapeFlagsType
     SHAPE_80 = 1 << 7,
     SHAPE_MULTI_WRITE_ALPHA = 1 << 8,
     SHAPE_CENTER = 1 << 9,
-    SHAPE_400 = 1 << 10,
+    SHAPE_WIN_REL = 1 << 10,
     SHAPE_ALPHA = 1 << 11,
     SHAPE_1000 = 1 << 12,
     SHAPE_FLAT = 1 << 13,

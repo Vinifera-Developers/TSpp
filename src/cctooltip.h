@@ -40,11 +40,11 @@ class CCToolTip : public ToolTipManager
 
         virtual bool Update(const ToolTipText *text);
         virtual void Reset(const ToolTipText *text);
-        virtual void entry_C(bool update = false);
+        virtual void Force_Redraw(bool sidebar = false);
         virtual void Draw(const ToolTipText *text);
         virtual const char *ToolTip_Text(int id);
 
     protected:
-        bool field_15C;
+        bool DrawOnSidebar;
         TextPrintType Style;
 };

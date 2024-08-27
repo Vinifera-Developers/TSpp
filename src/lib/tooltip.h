@@ -70,7 +70,7 @@ class ToolTipManager
 
         virtual bool Update(const ToolTipText *text);
         virtual void Reset(const ToolTipText *text);
-        virtual void entry_C(bool update = false);
+        virtual void Force_Redraw(bool update = false);
         virtual void Draw(const ToolTipText *text);
         virtual const char *ToolTip_Text(int id);
 

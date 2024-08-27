@@ -956,7 +956,7 @@ DEFINE_IMPLEMENTATION(int HSVClass::Difference(const HSVClass &) const, 0x004D1C
 PaletteClass::PaletteClass() : Palette() {}
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const RGBClass &), 0x005A2810);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const PaletteClass &), 0x005A2860);
-PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCC::Retrieve(filename), sizeof(this)); for (int i = 0; i < COLOR_COUNT; ++i) { Palette[i].Red *= 4; Palette[i].Green *= 4; Palette[i].Blue *= 4; } }
+PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCC::Retrieve(filename), sizeof(*this)); for (int i = 0; i < COLOR_COUNT; ++i) { Palette[i].Red *= 4; Palette[i].Green *= 4; Palette[i].Blue *= 4; } }
 PaletteClass::~PaletteClass() {}
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int), 0x005A28E0);
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int, const PaletteClass &), 0x005A2910);
@@ -1004,7 +1004,7 @@ CommandClass::~CommandClass() {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(ToolTipManager::~ToolTipManager(), 0x00647240);
 DEFINE_IMPLEMENTATION(bool ToolTipManager::Update(const ToolTipText *), 0x00647B60);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Reset(const ToolTipText *), 0x00647B70);
-DEFINE_IMPLEMENTATION(void ToolTipManager::entry_C(bool), 0x00647C40);
+DEFINE_IMPLEMENTATION(void ToolTipManager::Force_Redraw(bool), 0x00647C40);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Draw(const ToolTipText *), 0x00647C70);
 DEFINE_IMPLEMENTATION(const char *ToolTipManager::ToolTip_Text(int), 0x00647C90);
 DEFINE_IMPLEMENTATION(void ToolTipManager::Set_Active(bool), 0x00647330);
@@ -1020,11 +1020,11 @@ DEFINE_IMPLEMENTATION(int ToolTipManager::Get_Count() const, 0x00647630);
 DEFINE_IMPLEMENTATION(ToolTip * ToolTipManager::Find_From_Pos(Point2D &), 0x00647AF0);
 DEFINE_IMPLEMENTATION(bool ToolTipManager::Process(), 0x00647B90);
 
-CCToolTip::CCToolTip(HWND hWnd) : ToolTipManager(hWnd), field_15C(false), Style(TPF_MAP) { Set_Timer_Delay(500); *((unsigned long *)this) = (unsigned long)0x006D9E4C; }
+CCToolTip::CCToolTip(HWND hWnd) : ToolTipManager(hWnd), DrawOnSidebar(false), Style(TPF_MAP) { Set_Timer_Delay(500); *((unsigned long *)this) = (unsigned long)0x006D9E4C; }
 CCToolTip::~CCToolTip() {}
 DEFINE_IMPLEMENTATION(bool CCToolTip::Update(const ToolTipText *), 0x0044E3B0);
 DEFINE_IMPLEMENTATION(void CCToolTip::Reset(const ToolTipText *), 0x0044E530);
-DEFINE_IMPLEMENTATION(void CCToolTip::entry_C(bool), 0x0044E590);
+DEFINE_IMPLEMENTATION(void CCToolTip::Force_Redraw(bool), 0x0044E590);
 DEFINE_IMPLEMENTATION(void CCToolTip::Draw(const ToolTipText *), 0x0044E5B0);
 DEFINE_IMPLEMENTATION(const char *CCToolTip::ToolTip_Text(int), 0x0044E720);
 
@@ -1662,7 +1662,7 @@ DEFINE_IMPLEMENTATION(void GScreenClass::Input(KeyNumType &, int &, int &), 0x00
 DEFINE_IMPLEMENTATION(void GScreenClass::AI(KeyNumType &, Point2D &), 0x004B9A70);
 DEFINE_IMPLEMENTATION(void GScreenClass::Add_A_Button(GadgetClass &), 0x004B9540);
 DEFINE_IMPLEMENTATION(void GScreenClass::Remove_A_Button(GadgetClass &), 0x004B9580);
-DEFINE_IMPLEMENTATION(void GScreenClass::Flag_To_Redraw(bool), 0x004B9440);
+DEFINE_IMPLEMENTATION(void GScreenClass::Flag_To_Redraw(int), 0x004B9440);
 DEFINE_IMPLEMENTATION(void GScreenClass::Render(), 0x004B95A0);
 DEFINE_IMPLEMENTATION(void GScreenClass::Draw_It(bool), 0x0047C180);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit_Display(), 0x004B96B0);
@@ -1997,7 +1997,7 @@ DEFINE_IMPLEMENTATION(bool SidebarClass::Activate_Demolish(int), 0x005F2DB0);
 DEFINE_IMPLEMENTATION(bool SidebarClass::Add(RTTIType, int), 0x005F2E20);
 DEFINE_IMPLEMENTATION(bool SidebarClass::Scroll(bool, int), 0x005F2E90);
 DEFINE_IMPLEMENTATION(bool SidebarClass::Scroll_Page(bool, int), 0x005F30F0);
-// 005F38C0
+DEFINE_IMPLEMENTATION(void SidebarClass::Blit_Sidebar(bool), 0x005F38C0);
 DEFINE_IMPLEMENTATION(void SidebarClass::Recalc(), 0x005F3E20);
 DEFINE_IMPLEMENTATION(bool SidebarClass::Activate(int), 0x005F3E60);
 DEFINE_IMPLEMENTATION(bool SidebarClass::Abandon_Production(RTTIType, FactoryClass *), 0x005F5F70);
@@ -2023,7 +2023,7 @@ DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Abandon_Production(FactoryC
 // 005F6080
 // 005F6620
 // 005F6670
-// 005F66E0
+DEFINE_IMPLEMENTATION(void Print_Cameo_Text(const char*, Point2D&, Rect&, int), 0x005F66E0);
 DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::SelectClass::Action(unsigned, KeyNumType &), 0x005F59A0);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::SelectClass::Set_Owner(StripClass &, int), 0x005F5980);
 SidebarClass::StripClass::StripClass() : StageClass() {}
@@ -2099,6 +2099,7 @@ DEFINE_IMPLEMENTATION(void Play_Movie(VQType, ThemeType, bool, bool), 0x005639A0
 DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char *, ThemeType), 0x005638A0);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
+DEFINE_IMPLEMENTATION(void End_Ingame_Movie(), 0x00563C40);
 
 DEFINE_IMPLEMENTATION(void CC_Draw_Shape(XSurface *, ConvertClass *, const ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, ZGradientType, int, ShapeFileStruct *, int, int, int), 0x0047C780);
 
@@ -2302,7 +2303,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::AI(), 0x004BC5E0);
 // 004BAED0
 DEFINE_IMPLEMENTATION(float HouseClass::Tiberium_Fraction() const, 0x004BB410);
 DEFINE_IMPLEMENTATION(DiffType HouseClass::Assign_Handicap(DiffType), 0x004BB460);
-DEFINE_IMPLEMENTATION(bool HouseClass::Can_Build(const ObjectTypeClass *, bool, bool) const, 0x004BBC20);
+DEFINE_IMPLEMENTATION(int HouseClass::Can_Build(const ObjectTypeClass *, bool, bool) const, 0x004BBC20);
 DEFINE_IMPLEMENTATION(FactoryClass *HouseClass::Factory_Building_This(const ObjectTypeClass *) const, 0x004BC560);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Handler(), 0x004BD2E0);
 DEFINE_IMPLEMENTATION(void HouseClass::Attacked(BuildingClass *), 0x004BD3C0);
@@ -5359,6 +5360,23 @@ ARRAY_DEF(0x00711D14, char const *, Speech, VOX_COUNT);
 VoxType &SpeakQueue = Make_Global<VoxType>(0x00712610);
 VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
 Rect &SidebarRect = Make_Global<Rect>(0x0074C240);
+bool& RedrawSidebar = Make_Global<bool>(0x0080C3BC);
+ShapeButtonClass (&SidebarClass::StripClass::UpButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080C250);
+ShapeButtonClass (&SidebarClass::StripClass::DownButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080B630);
+SidebarClass::StripClass::SelectClass (&SidebarClass::StripClass::SelectButton)[COLUMNS][20] = Make_Global<SidebarClass::StripClass::SelectClass[COLUMNS][20]>(0x0080B950);
+const ShapeFileStruct*& SidebarClass::StripClass::LogoShape = Make_Global<const ShapeFileStruct*>(0x0080C3B8);
+const ShapeFileStruct*& SidebarClass::StripClass::ClockShape = Make_Global<const ShapeFileStruct*>(0x0080C23C);
+const ShapeFileStruct*& SidebarClass::StripClass::RechargeClockShape = Make_Global<const ShapeFileStruct*>(0x0080B6D0);
+const ShapeFileStruct *&SidebarClass::StripClass::DarkenShape = Make_Global<const ShapeFileStruct*>(0x0080B6D4);
+SidebarClass::SBGadgetClass &SidebarClass::Background = Make_Global<SidebarClass::SBGadgetClass>(0x0080C218);
+ShapeButtonClass &SidebarClass::Repair = Make_Global<ShapeButtonClass>(0x0080C358);
+ShapeButtonClass &SidebarClass::Sell = Make_Global<ShapeButtonClass>(0x0080C1C8);
+ShapeButtonClass &SidebarClass::Power = Make_Global<ShapeButtonClass>(0x0080C2F0);
+ShapeButtonClass &SidebarClass::Waypoint = Make_Global<ShapeButtonClass>(0x0080C178);
+const ShapeFileStruct*& SidebarClass::SidebarShape = Make_Global<const ShapeFileStruct*>(0x0080C3A8);
+const ShapeFileStruct*& SidebarClass::SidebarMiddleShape = Make_Global<const ShapeFileStruct*>(0x0080C3AC);
+const ShapeFileStruct*& SidebarClass::SidebarBottomShape = Make_Global<const ShapeFileStruct*>(0x0080C3B0);
+const ShapeFileStruct *&SidebarClass::SidebarAddonShape = Make_Global<const ShapeFileStruct*>(0x0080C3B4);
 Rect &TacticalRect = Make_Global<Rect>(0x0074C250);
 Rect &ScreenRect = Make_Global<Rect>(0x0074C260);
 unsigned &Seed = Make_Global<unsigned>(0x007E4934);

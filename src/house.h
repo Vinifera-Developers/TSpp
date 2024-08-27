@@ -166,7 +166,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004BAED0
         float Tiberium_Fraction() const;
         DiffType Assign_Handicap(DiffType handicap);
-        bool Can_Build(const ObjectTypeClass *type, bool a2 = false, bool a3 = false) const;
+        int Can_Build(const ObjectTypeClass *type, bool a2 = false, bool a3 = false) const;
         FactoryClass *Factory_Building_This(const ObjectTypeClass *type) const;
         void Super_Weapon_Handler();
         void Attacked(BuildingClass *source);

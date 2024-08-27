@@ -61,7 +61,7 @@ class GScreenClass : public IGameMap
         virtual void AI(KeyNumType &input, Point2D &xy);
         virtual void Add_A_Button(GadgetClass &gadget);
         virtual void Remove_A_Button(GadgetClass &gadget);
-        virtual void Flag_To_Redraw(bool complete = false);
+        virtual void Flag_To_Redraw(int flags = 0);
         virtual void Render();
         virtual void Draw_It(bool forced = false);
         virtual void Blit_Display();

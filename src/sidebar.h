@@ -30,6 +30,7 @@
 
 #include "power.h"
 #include "gcntrl.h"
+#include "shapebtn.h"
 #include "stage.h"
 
 
@@ -40,15 +41,36 @@ class InitClass {};
 class SidebarClass : public PowerClass
 {
     public:
-        enum {
-            OBJECT_HEIGHT = 51,		// Pixel height of each buildable object.
-		    OBJECT_WIDTH = 64,		// Pixel width of each buildable object.
+        enum SideBarClassEnums
+        {
             COLUMNS = 2,			// Number of side strips on sidebar.
-            MAX_BUILDABLES = 75,	// Maximum number of object types in sidebar.
-            SIDE_WIDTH = 168
+            SIDE_WIDTH = 168,
+            COLUMN_ONE_X = 24,
+            COLUMN_ONE_Y = 26,
+            COLUMN_TWO_Y = 26,
+            COLUMN_TWO_X = 92,
+            BUTTON_REPAIR_X_OFFSET = 31,
+            BUTTON_REPAIR_Y_OFFSET = -9,
+            BUTTON_SELL_X_OFFSET = 27,
+            BUTTON_POWER_X_OFFSET = BUTTON_SELL_X_OFFSET,
+            BUTTON_WAYPOINT_X_OFFSET = BUTTON_POWER_X_OFFSET,
         };
 
+        typedef enum ButtonNumberType {
+            BUTTON_RADAR = 100,
+            BUTTON_REPAIR,
+            BUTTON_POWER,
+            BUTTON_SELL,
+            BUTTON_WAYPOINT = 105,
+        } ButtonNumberType;
+
     public:
+
+        static const ShapeFileStruct*& SidebarShape;
+        static const ShapeFileStruct*& SidebarMiddleShape;
+        static const ShapeFileStruct*& SidebarBottomShape;
+        static const ShapeFileStruct*& SidebarAddonShape;
+
         SidebarClass();
         SidebarClass(const NoInitClass &x);
         ~SidebarClass();
@@ -85,7 +107,7 @@ class SidebarClass : public PowerClass
         bool Add(RTTIType type, int id);
         bool Scroll(bool up, int column);
         bool Scroll_Page(bool up, int column);
-        // 005F38C0
+        void Blit_Sidebar(bool complete);
         void Recalc();
         bool Activate(int control);
         bool Abandon_Production(RTTIType type, FactoryClass *factory);
@@ -140,10 +162,9 @@ class SidebarClass : public PowerClass
                 bool Factory_Link(FactoryClass *factory, RTTIType type, int id);
                 bool Abandon_Production(FactoryClass *factory);
                 // 005F6030
-                // 005F6080
+                void entry_84();
                 // 005F6620
                 // 005F6670
-                // 005F66E0
 
                 bool Is_On_Sidebar(RTTIType type, int id) const
                 {
@@ -155,6 +176,29 @@ class SidebarClass : public PowerClass
                     }
                     return false;
                 }
+
+                enum SideBarGeneralEnums {
+                    BUTTON_UP = 200,
+                    BUTTON_DOWN = 210,
+                    BUTTON_SELECT = 220,
+                    MAX_BUILDABLES = 75,			                            // Maximum number of object types in sidebar. //ts
+                    OBJECT_HEIGHT = 51,				                            // Pixel height of each buildable object. //ts
+                    OBJECT_WIDTH = 64,				                            // Pixel width of each buildable object. //ts
+                    OBJECT_NAME_OFFSET = 41,		                            // Offset of the cameo text from the cameo
+                    //STRIP_WIDTH = 35,				                            // Width of strip (not counting border lines).
+                    MAX_VISIBLE = 4,				                            // Number of object slots visible at any one time. //ts
+                    SCROLL_RATE = 51,				                            // The pixel jump while scrolling (larger is faster). //ts
+                    UP_X_OFFSET = 5,				                            // Scroll up arrow coordinates.
+                    UP_Y_OFFSET = 25,
+                    DOWN_X_OFFSET = UP_X_OFFSET,				                            // Scroll down arrow coordinates.
+                    DOWN_Y_OFFSET = UP_Y_OFFSET,                                //BGint(MAX_VISIBLE)*int(OBJECT_HEIGHT)+1,
+                    //SBUTTON_WIDTH = 16,				                            // Width of the mini-scroll button.
+                    //SBUTTON_HEIGHT = 12,			                            // Height of the mini-scroll button.
+                    //LEFT_EDGE_OFFSET = 2,			                            // Offset from left edge for building shapes.
+                    TEXT_X_OFFSET = 30,				                            // X offset to print "ready" text.
+                    TEXT_Y_OFFSET = 2,				                            // Y offset to print "ready" text.
+                    QUEUE_COUNT_X_OFFSET = 60,				                    // X offset to print the queued unit count.
+                };
 
             public:
                 int X;
@@ -180,12 +224,31 @@ class SidebarClass : public PowerClass
                 } BuildType;
                 BuildType Buildables[MAX_BUILDABLES];
 
+                /*
+                **	Pointer to the shape data for small versions of the logos. These are used as
+                **	placeholder pieces on the side bar.
+                */
+                static const ShapeFileStruct*& LogoShape;
+
+                /*
+                **	This points to the animation sequence of frames used to mark the passage of time
+                **	as an object is undergoing construction.
+                */
+                static const ShapeFileStruct*& ClockShape;
+                static const ShapeFileStruct*& RechargeClockShape;
+
+                static const ShapeFileStruct*& DarkenShape;
+
+                static ShapeButtonClass (&UpButton)[COLUMNS];
+                static ShapeButtonClass (&DownButton)[COLUMNS];
+                static SelectClass (&SelectButton)[COLUMNS][20];
+
         } Column[COLUMNS];
 
         bool field_1CD4;                // toggles cameo text?
         bool IsSidebarActive;
         bool IsToRedraw;
-        bool field_1CD7;                // another redraw flag?
+        bool IsToFullRedraw;                // another redraw flag?
         bool field_1CD8;
         bool IsRepairActive;
         bool IsUpgradeActive;
@@ -199,4 +262,12 @@ class SidebarClass : public PowerClass
 
                 virtual bool Action(unsigned flags, KeyNumType &key) override;
         };
+
+    static ShapeButtonClass& Repair;
+    static ShapeButtonClass& Sell;
+    static ShapeButtonClass& Power;
+    static ShapeButtonClass& Waypoint;
+    static SBGadgetClass& Background;
 };
+
+void Print_Cameo_Text(const char* string, Point2D& pos, Rect& bounds, int max_width);

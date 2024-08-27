@@ -244,6 +244,7 @@ extern bool &Debug_Modem_Dump;
 extern bool &Debug_Print_Events;
 extern HouseClass *&PlayerPtr;
 extern Rect &SidebarRect;
+extern bool &RedrawSidebar;
 extern Rect &TacticalRect;
 extern Rect &ScreenRect;
 extern unsigned &Seed;
