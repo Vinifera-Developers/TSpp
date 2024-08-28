@@ -243,7 +243,7 @@ class MapClass : public GScreenClass
         // 0052B220
         // 0052B460
         // 0052B7E0
-        // 0052B870
+        bool Is_Shrouded(Coordinate& coord);
         // 0052B9B0
         // 0052BB10
         // 0052BBE0
@@ -260,8 +260,8 @@ class MapClass : public GScreenClass
         // 0052C900
         // 0052CE90
         // 0052D2E0
-        // 0052D7B0
-        // 0052D990
+        void Building_To_Overlay(Cell& cell, HouseClass& house, BuildingTypeClass* type);
+        void Building_To_Wall(Cell& cell, HouseClass& house, BuildingTypeClass* type);
         // 0052DBC0
 
         bool Place_Crate(Cell where);

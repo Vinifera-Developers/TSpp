@@ -177,7 +177,7 @@ BuildingClass : public TechnoClass
 
         operator BuildingType () const;
 
-        // 00428810
+        void Draw_Overlays(Point2D& coord, Rect& rect);
         // 00429070
         // 00429100
         int Shape_Number() const;
@@ -305,4 +305,9 @@ BuildingClass : public TechnoClass
         unsigned short TintColor; // when flashing?
         char UpgradeLevel;
         char GateFrame;
+
+    public:
+        static const ShapeFileStruct*& WrenchShape;
+        static const ShapeFileStruct*& PowerOffShape;
+
 };

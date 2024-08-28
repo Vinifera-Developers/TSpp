@@ -1752,6 +1752,9 @@ DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Horizontal_Iterator_Next_Cell(), 0x0051E630);
 DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coordinate&), 0x0052B870);
+DEFINE_IMPLEMENTATION(void MapClass::Building_To_Overlay(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D7B0);
+DEFINE_IMPLEMENTATION(void MapClass::Building_To_Wall(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D990);
 
 LayerClass::LayerClass() : DynamicVectorClass() { *((unsigned long *)this) = (unsigned long)0x006CDAE0; }
 LayerClass::~LayerClass() {}
@@ -3165,7 +3168,7 @@ DEFINE_IMPLEMENTATION(DirStruct BuildingClass::entry_374(TARGET), 0x00428F60);
 DEFINE_IMPLEMENTATION(void BuildingClass::entry_378(TechnoClass *, TechnoClass *, bool, Cell *), 0x0042AB00);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Toggle_Primary(), 0x0042F590);
 DEFINE_IMPLEMENTATION(unsigned BuildingClass::entry_380(), 0x00436780);
-// 00428810
+DEFINE_IMPLEMENTATION(void BuildingClass::Draw_Overlays(Point2D&, Rect&), 0x00428810);
 // 00429070
 // 00429100
 DEFINE_IMPLEMENTATION(int BuildingClass::Shape_Number() const, 0x00429220);
@@ -5360,23 +5363,6 @@ ARRAY_DEF(0x00711D14, char const *, Speech, VOX_COUNT);
 VoxType &SpeakQueue = Make_Global<VoxType>(0x00712610);
 VoxType &CurrentVoice = Make_Global<VoxType>(0x00712614);
 Rect &SidebarRect = Make_Global<Rect>(0x0074C240);
-bool& RedrawSidebar = Make_Global<bool>(0x0080C3BC);
-ShapeButtonClass (&SidebarClass::StripClass::UpButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080C250);
-ShapeButtonClass (&SidebarClass::StripClass::DownButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080B630);
-SidebarClass::StripClass::SelectClass (&SidebarClass::StripClass::SelectButton)[COLUMNS][20] = Make_Global<SidebarClass::StripClass::SelectClass[COLUMNS][20]>(0x0080B950);
-const ShapeFileStruct*& SidebarClass::StripClass::LogoShape = Make_Global<const ShapeFileStruct*>(0x0080C3B8);
-const ShapeFileStruct*& SidebarClass::StripClass::ClockShape = Make_Global<const ShapeFileStruct*>(0x0080C23C);
-const ShapeFileStruct*& SidebarClass::StripClass::RechargeClockShape = Make_Global<const ShapeFileStruct*>(0x0080B6D0);
-const ShapeFileStruct *&SidebarClass::StripClass::DarkenShape = Make_Global<const ShapeFileStruct*>(0x0080B6D4);
-SidebarClass::SBGadgetClass &SidebarClass::Background = Make_Global<SidebarClass::SBGadgetClass>(0x0080C218);
-ShapeButtonClass &SidebarClass::Repair = Make_Global<ShapeButtonClass>(0x0080C358);
-ShapeButtonClass &SidebarClass::Sell = Make_Global<ShapeButtonClass>(0x0080C1C8);
-ShapeButtonClass &SidebarClass::Power = Make_Global<ShapeButtonClass>(0x0080C2F0);
-ShapeButtonClass &SidebarClass::Waypoint = Make_Global<ShapeButtonClass>(0x0080C178);
-const ShapeFileStruct*& SidebarClass::SidebarShape = Make_Global<const ShapeFileStruct*>(0x0080C3A8);
-const ShapeFileStruct*& SidebarClass::SidebarMiddleShape = Make_Global<const ShapeFileStruct*>(0x0080C3AC);
-const ShapeFileStruct*& SidebarClass::SidebarBottomShape = Make_Global<const ShapeFileStruct*>(0x0080C3B0);
-const ShapeFileStruct *&SidebarClass::SidebarAddonShape = Make_Global<const ShapeFileStruct*>(0x0080C3B4);
 Rect &TacticalRect = Make_Global<Rect>(0x0074C250);
 Rect &ScreenRect = Make_Global<Rect>(0x0074C260);
 unsigned &Seed = Make_Global<unsigned>(0x007E4934);
@@ -5579,6 +5565,25 @@ IsometricTileType &BridgeTopLeft1 = Make_Global<IsometricTileType>(0x008044FC);
 IsometricTileType &RoughTile = Make_Global<IsometricTileType>(0x00804500);
 IsometricTileType &DestroyableCliff = Make_Global<IsometricTileType>(0x00804508);
 IsometricTileType &BlackTile = Make_Global<IsometricTileType>(0x0080450C);
+bool& RedrawSidebar = Make_Global<bool>(0x0080C3BC);
+ShapeButtonClass(&SidebarClass::StripClass::UpButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080C250);
+ShapeButtonClass(&SidebarClass::StripClass::DownButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080B630);
+SidebarClass::StripClass::SelectClass(&SidebarClass::StripClass::SelectButton)[COLUMNS][20] = Make_Global<SidebarClass::StripClass::SelectClass[COLUMNS][20]>(0x0080B950);
+const ShapeFileStruct*& SidebarClass::StripClass::LogoShape = Make_Global<const ShapeFileStruct*>(0x0080C3B8);
+const ShapeFileStruct*& SidebarClass::StripClass::ClockShape = Make_Global<const ShapeFileStruct*>(0x0080C23C);
+const ShapeFileStruct*& SidebarClass::StripClass::RechargeClockShape = Make_Global<const ShapeFileStruct*>(0x0080B6D0);
+const ShapeFileStruct*& SidebarClass::StripClass::DarkenShape = Make_Global<const ShapeFileStruct*>(0x0080B6D4);
+SidebarClass::SBGadgetClass& SidebarClass::Background = Make_Global<SidebarClass::SBGadgetClass>(0x0080C218);
+ShapeButtonClass& SidebarClass::Repair = Make_Global<ShapeButtonClass>(0x0080C358);
+ShapeButtonClass& SidebarClass::Sell = Make_Global<ShapeButtonClass>(0x0080C1C8);
+ShapeButtonClass& SidebarClass::Power = Make_Global<ShapeButtonClass>(0x0080C2F0);
+ShapeButtonClass& SidebarClass::Waypoint = Make_Global<ShapeButtonClass>(0x0080C178);
+const ShapeFileStruct*& SidebarClass::SidebarShape = Make_Global<const ShapeFileStruct*>(0x0080C3A8);
+const ShapeFileStruct*& SidebarClass::SidebarMiddleShape = Make_Global<const ShapeFileStruct*>(0x0080C3AC);
+const ShapeFileStruct*& SidebarClass::SidebarBottomShape = Make_Global<const ShapeFileStruct*>(0x0080C3B0);
+const ShapeFileStruct*& SidebarClass::SidebarAddonShape = Make_Global<const ShapeFileStruct*>(0x0080C3B4);
+const ShapeFileStruct*& BuildingClass::PowerOffShape = Make_Global<const ShapeFileStruct*>(0x00760544);
+const ShapeFileStruct*& BuildingClass::WrenchShape = Make_Global<const ShapeFileStruct*>(0x00760548);
 
 
 /**
