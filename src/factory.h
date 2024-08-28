@@ -88,7 +88,7 @@ FactoryClass : public AbstractClass, public StageClass
         int Total_Queued(const TechnoTypeClass &object);
         int Cost_Per_Tick() const;
         int Build_Rate() const;
-        bool Is_Building() const { return StageClass::Fetch_Rate() != 0; }
+        bool Is_Building() const { return StageClass::Fetch_Rate() != 0 && !IsSuspended; }
         HouseClass *Get_House() { return House; }
         int Queued_Object_Count() { return QueuedObjects.Count(); }
 
