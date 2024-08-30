@@ -88,7 +88,7 @@ SuperWeaponTypeClass : public AbstractTypeClass
         VoxType VoxCharging;
         VoxType VoxImpatient;
         VoxType VoxSuspend;
-        float RechargeTime;
+        int RechargeTime;
         SpecialWeaponType ActsLike;
         ShapeFileStruct *SidebarIcon;
         ActionType Action;
