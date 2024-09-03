@@ -31,6 +31,7 @@
 #include "tibsun_functions.h"
 #include "voc.h"
 #include "unittype.h"
+#include "aircrafttype.h"
 #include "animtype.h"
 #include "buildingtype.h"
 #include "particletype.h"
@@ -133,6 +134,39 @@ bool CCINIClass::Put_Unit(const char *section, const char *entry, const UnitType
     if (value) {
         return Put_String(section, entry, value->Name());
     } else {
+        return Put_String(section, entry, "<none>");
+    }
+}
+
+
+/**
+ *  Fetch the unit type identifier from the INI database.
+ *
+ *  @author: CCHyper
+ */
+const AircraftTypeClass* CCINIClass::Get_Aircraft(const char* section, const char* entry, const AircraftTypeClass* defvalue)
+{
+    char buffer[1024];
+
+    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+        return AircraftTypeClass::Find_Or_Make(buffer);
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the unit type identifier to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Aircraft(const char* section, const char* entry, const AircraftTypeClass* value)
+{
+    if (value) {
+        return Put_String(section, entry, value->Name());
+    }
+    else {
         return Put_String(section, entry, "<none>");
     }
 }

@@ -35,9 +35,11 @@
 #include "wstring.h"
 
 
+
 class FileClass;
 class Straw;
 class Pipe;
+class AircraftTypeClass;
 class TechnoTypeClass;
 class xTargetClass;
 class UnitTypeClass;
@@ -169,6 +171,9 @@ class CCINIClass : public INIClass
 
         const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
         bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
+
+        const AircraftTypeClass *Get_Aircraft(const char* section, const char* entry, const AircraftTypeClass* defvalue);
+        bool Put_Aircraft(const char *section, const char *entry, const AircraftTypeClass *value);
 
         const AnimTypeClass *Get_Anim(const char *section, const char *entry, const AnimTypeClass *defvalue);
         bool Put_Anim(const char *section, const char *entry, const AnimTypeClass *value);

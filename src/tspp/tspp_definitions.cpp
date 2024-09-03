@@ -1753,6 +1753,7 @@ DEFINE_IMPLEMENTATION(CellClass *MapClass::Horizontal_Iterator_Next_Cell(), 0x00
 DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coordinate&), 0x0052B870);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coordinate&), 0x0052B9B0);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Overlay(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D7B0);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Wall(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D990);
 
@@ -3613,7 +3614,7 @@ DEFINE_IMPLEMENTATION(CellClass *AircraftClass::New_LZ(CellClass *), 0x0040C610)
 DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_Fire_Location(TARGET) const, 0x0040CF00);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Cell_Seems_Ok(Cell &, bool) const, 0x0040D260);
 DEFINE_IMPLEMENTATION(CellClass *AircraftClass::Good_LZ(), 0x0040D710);
-// 0040EFB0
+DEFINE_IMPLEMENTATION(bool AircraftClass::On_Death(ObjectClass *), 0x0040EFB0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Read_INI(CCINIClass &), 0x0040E7A0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Write_INI(CCINIClass &), 0x0040E620);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Counts_As_Civ_Evac(const ObjectClass *), 0x00408580);

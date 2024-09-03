@@ -146,7 +146,7 @@ AircraftClass : public FootClass, public IFlyControl
         CellClass *Good_Fire_Location(TARGET target) const;
         bool Cell_Seems_Ok(Cell &cell, bool strict) const;
         CellClass *Good_LZ();
-        // 0040EFB0
+        bool On_Death(ObjectClass* source);
 
         static void Read_INI(CCINIClass &ini);
         static void Write_INI(CCINIClass &ini);
@@ -157,7 +157,7 @@ AircraftClass : public FootClass, public IFlyControl
         AircraftTypeClass *Class;
         bool field_358;
 		bool Passenger;
-        bool field_35A;
+        bool IsKamikaze;
         bool field_35B;
         bool IsLocked;
 		CDTimerClass<FrameTimerClass> SightTimer;
