@@ -355,7 +355,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         double BuildDelay;
         HouseStaticClass Control;
         int field_BC;
-        SideType ActLike;
+        HousesType ActLike;
         bool IsHuman;
         bool IsPlayerControl;
         bool IsStarted;
