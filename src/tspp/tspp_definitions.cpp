@@ -5585,6 +5585,10 @@ const ShapeFileStruct*& SidebarClass::SidebarBottomShape = Make_Global<const Sha
 const ShapeFileStruct*& SidebarClass::SidebarAddonShape = Make_Global<const ShapeFileStruct*>(0x0080C3B4);
 const ShapeFileStruct*& BuildingClass::PowerOffShape = Make_Global<const ShapeFileStruct*>(0x00760544);
 const ShapeFileStruct*& BuildingClass::WrenchShape = Make_Global<const ShapeFileStruct*>(0x00760548);
+const ShapeFileStruct*& ObjectTypeClass::SelectShapes = Make_Global<const ShapeFileStruct*>(0x0080874C);
+const ShapeFileStruct*& ObjectTypeClass::PipShapes = Make_Global<const ShapeFileStruct*>(0x00808750);
+const ShapeFileStruct*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeFileStruct*>(0x00808754);
+const ShapeFileStruct*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeFileStruct*>(0x00808758);
 
 
 /**

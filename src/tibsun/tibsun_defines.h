@@ -350,7 +350,17 @@ typedef enum HousesType
 DEFINE_ENUMERATION_OPERATORS(HousesType);
 
 typedef enum PipType {} PipType;
-typedef enum PipScaleType {} PipScaleType;
+
+typedef enum PipScaleType
+{
+    PIP_NONE,
+    PIP_AMMO,
+    PIP_TIBERIUM,
+    PIP_PASSENGERS,
+    PIP_POWER,
+    PIP_CHARGE,
+} PipScaleType;
+DEFINE_ENUMERATION_OPERATORS(PipScaleType);
 
 typedef enum CategoryType
 {

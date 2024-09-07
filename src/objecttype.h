@@ -128,4 +128,17 @@ class ObjectTypeClass : public AbstractTypeClass
         IndexClass<int, int> field_E8;
         IndexClass<int, int> field_FC;
         IndexClass<int, int> field_110;
+
+    public:
+
+    /*
+    **	Selected objects have a special marking box around them. This is the shapes that are
+    **	used for this purpose.
+    */
+    static const ShapeFileStruct*& SelectShapes;
+
+    static const ShapeFileStruct*& PipShapes;
+    static const ShapeFileStruct*& Pip2Shapes;
+
+    static const ShapeFileStruct*& TalkBubbleShapes;
 };
