@@ -67,8 +67,8 @@ class ScenarioClass
         SpecialClass SpecialFlags;
         char NextScenario[PATH_MAX];
         char AltNextScenario[PATH_MAX];
-        Cell HomeCell;
-        Cell AltHomeCell;
+        int HomeCell;                           // These are waypoint indices, not Cell coordinates
+        int AltHomeCell;
         int UniqueID;
         Random2Class RandomNumber;
         DiffType Difficulty;			        // For human player.
