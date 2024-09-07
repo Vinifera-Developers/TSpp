@@ -2168,10 +2168,10 @@ DEFINE_IMPLEMENTATION(void PreviewClass::Create_Preview_Surface(PreviewDataStruc
 VeterancyClass::VeterancyClass(const NoInitClass &noinit) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(VeterancyClass::~VeterancyClass(), 0x00664350);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Gain_Experience(int, int), 0x00664360);
-DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Veteran(), 0x006643A0);
-DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie(), 0x006643D0);
-DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Dumbass(), 0x00664400);
-DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Elite(), 0x00664420);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Veteran() const, 0x006643A0);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie() const, 0x006643D0);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Dumbass() const, 0x00664400);
+DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Elite() const, 0x00664420);
 DEFINE_IMPLEMENTATION(double VeterancyClass::sub_664440(double), 0x00664440);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Rookie(bool), 0x006644B0);
 DEFINE_IMPLEMENTATION(void VeterancyClass::sub_6644E0(bool), 0x006644E0);

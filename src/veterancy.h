@@ -43,10 +43,10 @@ class VeterancyClass
 
         void Gain_Experience(int cost, int value);
 
-        bool Is_Veteran();
-        bool Is_Rookie();
-        bool Is_Dumbass();
-        bool Is_Elite();
+        bool Is_Veteran() const;
+        bool Is_Rookie() const;
+        bool Is_Dumbass() const;
+        bool Is_Elite() const;
 
         double sub_664440(double a1);
 
