@@ -92,7 +92,7 @@ HRESULT Load_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
     for (int index = 0; index < count; ++index) {
 
         LPVOID obj;
-        hr = OleLoadFromStream(pStm, __uuidof(IUnknown), ppvObj);
+        hr = OleLoadFromStream(pStm, __uuidof(IUnknown), &obj);
         if (FAILED(hr)) {
             return hr;
         }
