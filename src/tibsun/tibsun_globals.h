@@ -183,7 +183,7 @@ extern DSurface *&SidebarSurface;
 extern DSurface *&PrimarySurface;
 extern DSurface *&HiddenSurface;
 extern DSurface *&AlternateSurface;
-extern DSurface *&TempSurface;
+extern DSurface *&LogicSurface;
 extern DSurface *&CompositeSurface;
 extern Random2Class &NonCriticalRandomNumber;
 extern long &Frame;
