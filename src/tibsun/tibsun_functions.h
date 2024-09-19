@@ -73,6 +73,7 @@ ThemeType Get_Maps_Theme();
 void Init_Random();
 void Init_Campaigns();
 bool Init_Game(int argc, char *argv[]);
+bool Init_Network();
 void Focus_Loss();
 void Focus_Restore();
 bool Select_Game(bool fade);
