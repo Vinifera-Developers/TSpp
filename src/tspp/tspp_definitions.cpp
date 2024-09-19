@@ -5299,7 +5299,9 @@ DEFINE_IMPLEMENTATION(int Create_Air_Reinforcement(HouseClass *, AircraftType, i
 /**
  *  Owner draw
  */
+DEFINE_IMPLEMENTATION(void OwnerDraw::Init_Glow_Colors(), 0x0059CBC0);
 DEFINE_IMPLEMENTATION(void OwnerDraw::Load_Graphics(), 0x0059CC40);
+DEFINE_IMPLEMENTATION(void OwnerDraw::Init_UI_Color_Stuff_58F060(), 0x0058F060);
 
 
 /**
@@ -5511,6 +5513,7 @@ bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 int &BuildLevel = Make_Global<int>(0x006FB628);
 SpriteCollectionClass &SpriteCollection = Make_Global<SpriteCollectionClass>(0x00809360);
+bool& OwnerDraw::UIInitialized = Make_Global<bool>(0x008093C4);
 bool &PlayerWins = Make_Global<bool>(0x007E4870);
 bool &PlayerLoses = Make_Global<bool>(0x007E2281);
 bool &PlayerRestarts = Make_Global<bool>(0x007B3510);
