@@ -5905,6 +5905,9 @@ WOL::Tournament &TournamentGameType = Make_Global<WOL::Tournament>(0x00867008);
 unsigned long &PlanetWestwoodGameID = Make_Global<unsigned long>(0x00867014);
 unsigned long &PlanetWestwoodPortNumber = Make_Global<unsigned long>(0x0070FCF0);
 unsigned long &PlanetWestwoodStartTime = Make_Global<unsigned long>(0x00866E68);
+int &GameSKU = Make_Global<int>(0x00867200);
+int &GameFSSKU = Make_Global<int>(0x00866E6C);
+FrameSyncStruct (&FrameSyncSettings)[6] = Make_Global<FrameSyncStruct[6]>(0x00707F88);
 
 
 #ifndef NDEBUG

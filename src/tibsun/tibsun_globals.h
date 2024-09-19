@@ -540,3 +540,15 @@ extern WOL::Tournament &TournamentGameType;
 extern unsigned long &PlanetWestwoodGameID;
 extern unsigned long &PlanetWestwoodPortNumber;
 extern unsigned long &PlanetWestwoodStartTime;
+extern int &GameSKU;
+extern int &GameFSSKU;
+
+struct FrameSyncStruct
+{
+    int ResendDelta;
+    int DialogTime;
+    int FrameSync;
+    int Timeout;
+};
+
+extern FrameSyncStruct (&FrameSyncSettings)[6];
