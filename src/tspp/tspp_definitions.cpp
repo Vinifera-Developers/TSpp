@@ -278,7 +278,8 @@
 #include "newdel.h"
 #include "tibsun_functions.h"
 #include "wolapi.h"
-#include "textfile.h"
+#include "textfile.h"'
+#include "ipxmgr.h"
 
 
 /**
@@ -1326,6 +1327,89 @@ DEFINE_IMPLEMENTATION(LRESULT WinsockInterfaceClass::Message_Handler(HWND, UINT,
 DEFINE_IMPLEMENTATION(int WinsockInterfaceClass::Local_Addresses_Count() const, 0x006A0BF0);
 DEFINE_IMPLEMENTATION(unsigned char * WinsockInterfaceClass::Get_Local_Address(int) const, 0x006A0C00);
 DEFINE_IMPLEMENTATION(void WinsockInterfaceClass::Set_NetCard(int), 0x006A0C10);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXManagerClass::IPXManagerClass(int, int, int, int, unsigned short, unsigned short), 0x004F0320);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(IPXManagerClass::~IPXManagerClass(), 0x004F0410);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Init(), 0x004F0480);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Is_IPX(), 0x004F05A0);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Set_Timing(unsigned long, unsigned long, unsigned long, bool), 0x004F05B0);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Set_External_Timing(unsigned long, unsigned long, unsigned long), 0x004F0640);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Set_Bridge(NetNumType), 0x004F1930);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Create_Connection(int, char*, IPXAddressClass*), 0x004F0670);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Delete_Connection(int), 0x004F0720);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Num_Connections(), 0x004F07B0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Connection_ID(int), 0x004F07C0);
+DEFINE_IMPLEMENTATION(char* IPXManagerClass::Connection_Name(int), 0x004F07E0);
+DEFINE_IMPLEMENTATION(IPXAddressClass* IPXManagerClass::Connection_Address(int), 0x004F0820);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Connection_Index(int), 0x004F0860);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Set_Connection_Parms(int, int, char*), 0x004F0890);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Send_Global_Message(void*, int, int, IPXAddressClass*), 0x004F08E0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Get_Global_Message(void*, int*, IPXAddressClass*, unsigned short*), 0x004F0960);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Send_Private_Message(void*, int, int, int), 0x004F09A0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Get_Private_Message(void*, int*, int*), 0x004F0A80);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Service(), 0x004F0B10);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Get_Bad_Connection(), 0x004F0DB0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Global_Num_Send(), 0x004F0DC0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Global_Num_Receive(), 0x004F0DE0);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Private_Num_Send(int), 0x004F0E00);
+DEFINE_IMPLEMENTATION(int IPXManagerClass::Private_Num_Receive(int), 0x004F0E70);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Set_Socket(unsigned short), 0x004F0EE0);
+DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Response_Time(), 0x004F0F00);
+DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Global_Response_Time(), 0x004F0F60);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Reset_Response_Time(bool), 0x004F1850);
+DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Avg_Response_Time(int), 0x004F0F40);
+DEFINE_IMPLEMENTATION(void* IPXManagerClass::Oldest_Send(), 0x004F18A0);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Configure_Debug(int, int, int, char**, int, int), 0x004F1950);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Mono_Debug_Print(int, int), 0x004F19B0);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Multiplayer_Debug_Print(), 0x004F10B0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConnectionClass::ConnectionClass(int, int, int, unsigned short, unsigned long, unsigned long, unsigned long, int), 0x00461D00);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(ConnectionClass::~ConnectionClass(), 0x00461D80);
+DEFINE_IMPLEMENTATION(void ConnectionClass::Init(), 0x00461DB0);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Send_Packet(void*, int, int), 0x00461DE0);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Receive_Packet(void*, int), 0x00461E80);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Get_Packet(void*, int*), 0x004620A0);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Service(), 0x00462130);
+DEFINE_IMPLEMENTATION(unsigned long ConnectionClass::Time(), 0x00462350);
+DEFINE_IMPLEMENTATION(char* ConnectionClass::Command_Name(int), 0x00462380);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Service_Send_Queue(), 0x00462160);
+DEFINE_IMPLEMENTATION(int ConnectionClass::Service_Receive_Queue(), 0x004622F0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXConnClass::IPXConnClass(int, int, int, unsigned short, IPXAddressClass*, int, char*, int), 0x004EF450);
+DEFINE_IMPLEMENTATION(void IPXConnClass::Init(), 0x004EF510);
+DEFINE_IMPLEMENTATION(void IPXConnClass::Configure(unsigned short, int, ECBType*, ECBType*, IPXHeaderType*, IPXHeaderType*, char*, char*, long, int), 0x004EF520);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Start_Listening(), 0x004EF570);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Stop_Listening(), 0x004EF5E0);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Send(char*, int, void*, int), 0x004EF600);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Open_Socket(unsigned short), 0x004EF6D0);
+DEFINE_IMPLEMENTATION(void IPXConnClass::Close_Socket(unsigned short), 0x004EF710);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Send_To(char*, int, IPXAddressClass*, NetNodeType), 0x004EF730);
+DEFINE_IMPLEMENTATION(int IPXConnClass::Broadcast(char*, int), 0x004EF7C0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXGlobalConnClass::IPXGlobalConnClass(int, int, int, unsigned short), 0x004EFA60);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(IPXGlobalConnClass::~IPXGlobalConnClass(), 0x004EFB91);
+DEFINE_IMPLEMENTATION(int IPXGlobalConnClass::Send_Packet(void*, int, IPXAddressClass*, int), 0x004EFBA0);
+DEFINE_IMPLEMENTATION(int IPXGlobalConnClass::Receive_Packet(void*, int, IPXAddressClass*), 0x004EFC50);
+DEFINE_IMPLEMENTATION(int IPXGlobalConnClass::Get_Packet(void*, int*, IPXAddressClass*, unsigned short*), 0x004EFE30);
+DEFINE_IMPLEMENTATION(void IPXGlobalConnClass::Set_Bridge(NetNumType), 0x004EFF70);
+DEFINE_IMPLEMENTATION(int IPXGlobalConnClass::Send(char*, int, void*, int), 0x004EFEC0);
+DEFINE_IMPLEMENTATION(int IPXGlobalConnClass::Service_Receive_Queue(), 0x004EFF30);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(CommBufferClass::CommBufferClass(int, int, int, int), 0x00460BC0);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(CommBufferClass::~CommBufferClass(), 0x00460CD0);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Init(), 0x00460D80);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Init_Send_Queue(), 0x00460E60);
+DEFINE_IMPLEMENTATION(int CommBufferClass::Queue_Send(void*, int, void*, int), 0x00460ED0);
+DEFINE_IMPLEMENTATION(int CommBufferClass::UnQueue_Send(void*, int*, int, void*, int*), 0x00461020);
+DEFINE_IMPLEMENTATION(int CommBufferClass::Queue_Receive(void*, int, void*, int), 0x004611C0);
+DEFINE_IMPLEMENTATION(int CommBufferClass::UnQueue_Receive(void*, int*, int, void*, int*), 0x004612C0);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Add_Delay(unsigned long), 0x00461440);
+DEFINE_IMPLEMENTATION(unsigned long CommBufferClass::Avg_Response_Time(), 0x004614B0);
+DEFINE_IMPLEMENTATION(unsigned long CommBufferClass::Max_Response_Time(), 0x004614C0);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Reset_Response_Time(), 0x004614D0);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Configure_Debug(int, int, char**, int, int), 0x00461500);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Mono_Debug_Print(int), 0x00461530);
+DEFINE_IMPLEMENTATION(void CommBufferClass::Mono_Debug_Print2(int), 0x00461810);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x00483AD0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE DropPodLocomotionClass::AddRef(), 0x00483CF0);
@@ -5320,7 +5404,8 @@ WWFontClass *&EditorFont = Make_Global<WWFontClass *>(0x00748214);
 WWFontClass *&Font8Ptr = Make_Global<WWFontClass *>(0x00748224);
 WWFontClass *&GradFont6Ptr = Make_Global<WWFontClass *>(0x00748218);
 WinsockInterfaceClass *&PacketTransport = Make_Global<WinsockInterfaceClass *>(0x0074C8D8);
-Tactical *&TacticalMap = Make_Global<Tactical  *>(0x0074C5F4);
+IPXManagerClass *&Ipx = Make_Global<IPXManagerClass *>(0x007E45A0);
+Tactical *&TacticalMap = Make_Global<Tactical *>(0x0074C5F4);
 LogicClass &Logic = Make_Global<LogicClass>(0x007482C8);
 MouseClass &Map = Make_Global<MouseClass>(0x00748348);
 DirectSoundAudioClass &Audio = Make_Global<DirectSoundAudioClass>(0x007A2448);
@@ -5817,7 +5902,9 @@ ARRAY2D_DEF(0x0080ED00, Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
  *  WOLAPI globals.
  */
 WOL::Tournament &TournamentGameType = Make_Global<WOL::Tournament>(0x00867008);
-unsigned long &GameID = Make_Global<unsigned long>(0x00867014);
+unsigned long &PlanetWestwoodGameID = Make_Global<unsigned long>(0x00867014);
+unsigned long &PlanetWestwoodPortNumber = Make_Global<unsigned long>(0x0070FCF0);
+unsigned long &PlanetWestwoodStartTime = Make_Global<unsigned long>(0x00866E68);
 
 
 #ifndef NDEBUG

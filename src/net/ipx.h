@@ -53,3 +53,25 @@ typedef struct IPXHEADER
     unsigned char SourceNetworkNode[6];     // IPX: source Node Address
     unsigned short SourceNetworkSocket;     // IPX: source Socket Number
 } IPXHeaderType;
+
+/**
+ *  This is the IPX Event Control Block.  It serves as a communications area
+ *  between IPX and the application for a single IPX operation.  You should set
+ *  up a separate ECB for each IPX operation you perform.
+ */
+typedef struct ECB {
+    void* Link_Address;
+    void (*Event_Service_Routine)();		// APP: event handler (NULL=none)
+    unsigned char InUse;						// IPX: 0 = event complete
+    unsigned char CompletionCode;				// IPX: event's return code
+    unsigned short SocketNumber;				// APP: socket to send data through
+    unsigned short ConnectionID;				// returned by Listen (???)
+    unsigned short RestOfWorkspace;
+    unsigned char DriverWorkspace[12];
+    unsigned char ImmediateAddress[6];			// returned by Get_Local_Target
+    unsigned short PacketCount;
+    struct {
+        void* Address;
+        unsigned short Length;
+    } Packet[2];
+} ECBType;
