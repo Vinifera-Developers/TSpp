@@ -103,7 +103,7 @@ class RadarClass : public DisplayClass
         bool Radar_Activate(int control);
         // 005BC050
         // 005BC070
-        // 005BC080
+        void Toggle_Radar(bool tactical_availability);
         // 005BC150
         // 005BC170
         // 005BC190
@@ -146,7 +146,7 @@ class RadarClass : public DisplayClass
         int field_14B4;
         int field_14B8;
         int field_14BC;
-        bool field_14C0;
+        bool IsRadarAvailable;
         bool IsToRedraw;
         bool field_14C2;
         Rect field_14C4;
