@@ -1358,6 +1358,7 @@ DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Response_Time(), 0x004F0F00
 DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Global_Response_Time(), 0x004F0F60);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Reset_Response_Time(bool), 0x004F1850);
 DEFINE_IMPLEMENTATION(unsigned long IPXManagerClass::Avg_Response_Time(int), 0x004F0F40);
+DEFINE_IMPLEMENTATION(void IPXManagerClass::Store_Multiplayer_Stats(), 0x004F0F80);
 DEFINE_IMPLEMENTATION(void* IPXManagerClass::Oldest_Send(), 0x004F18A0);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Configure_Debug(int, int, int, char**, int, int), 0x004F1950);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Mono_Debug_Print(int, int), 0x004F19B0);

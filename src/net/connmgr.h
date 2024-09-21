@@ -89,8 +89,10 @@ class ConnManClass
          */
         virtual void Reset_Response_Time(bool zero) = 0;
         virtual unsigned long Response_Time() = 0;
-        virtual void Set_Timing (unsigned long retrydelta,
-            unsigned long maxretries, unsigned long timeout, bool bool1 = true) = 0;
+        virtual void Set_Timing(unsigned long retrydelta,
+            unsigned long maxretries, unsigned long timeout, bool global = true) = 0;
+        virtual void Set_External_Timing(unsigned long retrydelta, unsigned long maxretries,
+            unsigned long timeout);
 
         /**
          *  Debugging

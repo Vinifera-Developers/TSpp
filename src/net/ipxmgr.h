@@ -63,7 +63,7 @@ class IPXManagerClass : public ConnManClass
         int Init ();
         int Is_IPX();
         virtual void Set_Timing(unsigned long retrydelta, unsigned long maxretries,
-            unsigned long timeout, bool bool1 = true);
+            unsigned long timeout, bool global = true);
         virtual void Set_External_Timing(unsigned long retrydelta, unsigned long maxretries,
             unsigned long timeout);
         void Set_Bridge(NetNumType bridge);
@@ -84,14 +84,14 @@ class IPXManagerClass : public ConnManClass
         /**
          *  This is how the application sends & receives messages.
          */
-        int Send_Global_Message (void *buf, int buflen, int ack_req = 0,
+        int Send_Global_Message(void *buf, int buflen, int ack_req = 0,
             IPXAddressClass *address = NULL);
-        int Get_Global_Message (void *buf, int *buflen, IPXAddressClass *address,
+        int Get_Global_Message(void *buf, int *buflen, IPXAddressClass *address,
             unsigned short *product_id);
 
-        virtual int Send_Private_Message (void *buf, int buflen,
+        virtual int Send_Private_Message(void *buf, int buflen,
             int ack_req = 1, int conn_id = CONNECTION_NONE);
-        virtual int Get_Private_Message (void *buf, int *buflen, int *conn_id);
+        virtual int Get_Private_Message(void *buf, int *buflen, int *conn_id);
 
         /**
          *  The main polling routine; should be called as often as possible.
@@ -129,6 +129,7 @@ class IPXManagerClass : public ConnManClass
         virtual void Reset_Response_Time(bool zero);
 
         virtual unsigned long Avg_Response_Time(int index);
+        virtual void Store_Multiplayer_Stats();
 
         /**
          *  This routine returns a pointer to the oldest non-ACK'd buffer I've sent.
@@ -144,7 +145,7 @@ class IPXManagerClass : public ConnManClass
 
         void Multiplayer_Debug_Print();
 
-    private:
+    protected:
         /**
          *  These routines allocate & free the DOS Real-mode memory block.
          */
