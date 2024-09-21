@@ -540,6 +540,7 @@ extern WOL::Tournament &TournamentGameType;
 extern unsigned long &PlanetWestwoodGameID;
 extern unsigned long &PlanetWestwoodPortNumber;
 extern unsigned long &PlanetWestwoodStartTime;
+extern bool &GameStatisticsPacketSent;
 extern int &GameSKU;
 extern int &GameFSSKU;
 
