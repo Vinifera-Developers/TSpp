@@ -209,7 +209,7 @@ extern WWFontClass *&EditorFont;
 extern WWFontClass *&Font8Ptr;
 extern WWFontClass *&GradFont6Ptr;
 extern WinsockInterfaceClass *&PacketTransport;
-extern IPXManagerClass *&Ipx;
+extern IPXManagerClass &Ipx;
 extern Tactical *&TacticalMap;
 extern LogicClass &Logic;
 extern MouseClass &Map;
