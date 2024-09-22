@@ -33,11 +33,11 @@
 extern int &InstalledMode;
 extern int &EnabledMode;
 
-bool Addon_Present();
-bool Addon_Installed(AddonType addon);
-bool Addon_Enabled(AddonType addon);
-void Addon_407190(AddonType addon);
-void Addon_4071C0(AddonType addon);
-bool Is_Addon_Set(AddonType addon);
+bool Detect_Addons();
+bool Is_Addon_Available(AddonType addon);
+bool Is_Addon_Enabled(AddonType addon);
+void Enable_Addon(AddonType addon);
+void Disable_Addon(AddonType addon);
+bool Is_Required_Addon(AddonType addon);
 AddonType Get_Required_Addon();
 void Set_Required_Addon(AddonType addon);
