@@ -951,7 +951,8 @@ typedef enum SpecialWeaponType
     SPECIAL_COUNT,
 
     SPECIAL_NONE = -1,
-    SPECIAL_FIRST = 0
+    SPECIAL_FIRST = 0,
+    SPECIAL_ANY = 1
 } SpecialWeaponType;
 DEFINE_ENUMERATION_OPERATORS(SpecialWeaponType);
 
