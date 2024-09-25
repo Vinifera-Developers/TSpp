@@ -65,7 +65,7 @@ class RadarClass : public DisplayClass
          */
 		virtual HRESULT Load(IStream *pStm) override;
 		virtual HRESULT Save(IStream *pStm) override;
-        virtual void entry_84() override;
+        virtual void Set_Dimensions() override;
 		virtual bool Map_Cell(Cell &cell, HouseClass *house) override;
 
         virtual Cell Click_Cell_Calc(Point2D &cell);

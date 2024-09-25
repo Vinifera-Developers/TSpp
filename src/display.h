@@ -58,7 +58,7 @@ class DisplayClass : public MapClass
         virtual HRESULT Save(IStream *pStm);
         virtual void Read_INI(CCINIClass &ini);
         virtual const char *Help_Text(int text);
-        virtual void entry_84();
+        virtual void Set_Dimensions();
         virtual void Abort_Drag_Select();
         virtual bool Map_Cell(Cell &cell, HouseClass *house);
         virtual bool entry_90(Cell &cell, HouseClass *house);

@@ -1949,7 +1949,7 @@ DEFINE_IMPLEMENTATION(HRESULT DisplayClass::Load(IStream *), 0x0047B1E0);
 DEFINE_IMPLEMENTATION(HRESULT DisplayClass::Save(IStream *), 0x0047B1B0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Read_INI(CCINIClass &), 0x00479C10);
 DEFINE_IMPLEMENTATION(const char *DisplayClass::Help_Text(int), 0x0047AF20);
-DEFINE_IMPLEMENTATION(void DisplayClass::entry_84(), 0x0047B170);
+DEFINE_IMPLEMENTATION(void DisplayClass::Set_Dimensions(), 0x0047B170);
 DEFINE_IMPLEMENTATION(void DisplayClass::Abort_Drag_Select(), 0x0047C070);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Map_Cell(Cell &, HouseClass *), 0x00476AB0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::entry_90(Cell &, HouseClass *), 0x00476EB0);
@@ -2041,7 +2041,7 @@ DEFINE_IMPLEMENTATION(void RadarClass::Set_Map_Dimensions(Rect &, bool, int, boo
 DEFINE_IMPLEMENTATION(void RadarClass::entry_70(Rect &), 0x005B99D0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Load(IStream *), 0x005BBBE0);
 DEFINE_IMPLEMENTATION(HRESULT RadarClass::Save(IStream *), 0x005BBDA0);
-DEFINE_IMPLEMENTATION(void RadarClass::entry_84(), 0x005B9980);
+DEFINE_IMPLEMENTATION(void RadarClass::Set_Dimensions(), 0x005B9980);
 DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(Cell &, HouseClass *), 0x005B9110);
 DEFINE_IMPLEMENTATION(Cell RadarClass::Click_Cell_Calc(Point2D &), 0x005B9060);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coordinate &), 0x005B95A0);
@@ -2061,7 +2061,7 @@ DEFINE_IMPLEMENTATION(void PowerClass::Init_Clear(), 0x005AB050);
 DEFINE_IMPLEMENTATION(void PowerClass::AI(KeyNumType &, Point2D &), 0x005AB7C0);
 DEFINE_IMPLEMENTATION(void PowerClass::Draw_It(bool), 0x005AB460);
 DEFINE_IMPLEMENTATION(const char *PowerClass::Help_Text(int), 0x005ABD50);
-DEFINE_IMPLEMENTATION(void PowerClass::entry_84(), 0x005ABCC0);
+DEFINE_IMPLEMENTATION(void PowerClass::Set_Dimensions(), 0x005ABCC0);
 DEFINE_IMPLEMENTATION(void PowerClass::Init_For_House(), 0x005AB0E0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(SidebarClass::SidebarClass(), 0x005F2330);
@@ -2075,7 +2075,7 @@ DEFINE_IMPLEMENTATION(void SidebarClass::Draw_It(bool), 0x005F3560);
 DEFINE_IMPLEMENTATION(HRESULT SidebarClass::Load(IStream *), 0x005F68A0);
 DEFINE_IMPLEMENTATION(HRESULT SidebarClass::Save(IStream *), 0x005F68B0);
 DEFINE_IMPLEMENTATION(const char *SidebarClass::Help_Text(int), 0x005F6620);
-DEFINE_IMPLEMENTATION(void SidebarClass::entry_84(), 0x005F6080);
+DEFINE_IMPLEMENTATION(void SidebarClass::Set_Dimensions(), 0x005F6080);
 DEFINE_IMPLEMENTATION(void SidebarClass::Init_For_House(), 0x005F2900);
 // 005F25E0
 DEFINE_IMPLEMENTATION(void SidebarClass::Reload_Sidebar(), 0x005F2B00);

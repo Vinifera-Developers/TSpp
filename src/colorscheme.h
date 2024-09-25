@@ -60,7 +60,7 @@ class ColorScheme
 		int ID;
 		PaletteClass Palette;
 		const char *Name;
-		HSVClass field_308;
+		HSVClass HSV;
 		ConvertClass *Drawer;
 		unsigned int field_310;
 		unsigned int Color;

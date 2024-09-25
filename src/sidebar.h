@@ -90,7 +90,7 @@ class SidebarClass : public PowerClass
         virtual HRESULT Load(IStream *pStm) override;
         virtual HRESULT Save(IStream *pStm) override;
         virtual const char *Help_Text(int text) override;
-        virtual void entry_84() override;
+        virtual void Set_Dimensions() override;
 
 		/**
 		 *  RadarClass
@@ -162,7 +162,7 @@ class SidebarClass : public PowerClass
                 bool Factory_Link(FactoryClass *factory, RTTIType type, int id);
                 bool Abandon_Production(FactoryClass *factory);
                 // 005F6030
-                void entry_84();
+                void Set_Dimensions();
                 // 005F6620
                 // 005F6670
 

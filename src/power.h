@@ -50,7 +50,7 @@ class PowerClass : public RadarClass
          *  DisplayClass
          */
 		virtual const char *Help_Text(int text) override;
-        virtual void entry_84() override;
+        virtual void Set_Dimensions() override;
 
 		/**
 		 *  RadarClass
