@@ -147,7 +147,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual InfantryTypeClass *const Crew_Type() const;
         virtual bool entry_29C() const;
         virtual bool entry_2A0() const;
-        virtual bool entry_2A4() const;
+        virtual bool Is_Immobilized() const;
         virtual int Get_Max_Speed() const;
         virtual int Rearm_Delay(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual int Threat_Range(int control) const;
@@ -164,9 +164,9 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Reduce_Ammunition() const;
         virtual bool Target_Something_Nearby(Coordinate &coord, ThreatType threat);
         virtual void Stun();
-        virtual bool In_Range_Of(const ObjectClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual bool In_Range_Of(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const = 0;
-        virtual FireErrorType Can_Fire(const TechnoClass *object, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
         virtual void Assign_Target(TARGET target) const;
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
