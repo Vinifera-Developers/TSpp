@@ -5376,7 +5376,7 @@ int &BridgeCellHeight = Make_Global<int>(0x0074819C);
  */
 WWKeyboardClass *&WWKeyboard = Make_Global<WWKeyboardClass *>(0x007482C0);
 OptionsClass &Options = Make_Global<OptionsClass>(0x007E4720);
-SpecialClass &Special = Make_Global<SpecialClass>(0x007E4540);
+SpecialClass &Special = Make_Global<SpecialClass>(0x007E4548);
 RulesClass *&Rule = Make_Global<RulesClass *>(0x0074C488);
 WWMouseClass *&WWMouse = Make_Global<WWMouseClass *>(0x0074C8F0);
 DSurface *&TileSurface = Make_Global<DSurface *>(0x0074C5CC);
