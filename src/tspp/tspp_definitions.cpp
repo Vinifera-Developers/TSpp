@@ -3026,7 +3026,7 @@ DEFINE_IMPLEMENTATION(Coordinate TechnoClass::func_638AF0() const, 0x00638AF0);
 // 00638C70);
 // 00639130);
 // 006391B0);
-// 00639810);
+DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coordinate&) const, 0x00639810);
 // 00639BB0);
 // 00639C30);
 // 00639C60);

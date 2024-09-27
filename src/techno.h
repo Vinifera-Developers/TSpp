@@ -230,7 +230,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 00638C70
         // 00639130
         // 006391B0
-        // 00639810
+        float Target_Threat(TechnoClass* target, Coordinate& firing_coord) const;
         // 00639BB0
         // 00639C60
         // 00639EF0
