@@ -3076,13 +3076,13 @@ typedef struct DirStruct : public fixed
         explicit DirStruct() : fixed(0) {}
         explicit DirStruct(int raw) { Set_Raw(raw); }
         explicit DirStruct(const DirType dir) { Set_Dir(dir); }
-        explicit DirStruct(const NoInitClass &noinit) {}
+        explicit DirStruct(const NoInitClass& noinit) {}
 
-        void Set_Dir(DirType dir) { fixed::Set_Raw(unsigned(dir % DIR_MAX) * 256); }
-        DirType Get_Dir() const { return (DirType)((((fixed::Get_Raw() / (32768/256)) + 1) / 2) & 255); }
+        void Set_Dir(DirType dir) { Set_Raw(static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8)); }
+        DirType Get_Dir() const { return static_cast<DirType>(Get_Raw() >> 8); }
 
-        bool func_5589F0(const DirStruct &a, const DirStruct &b);
-        bool func_558A20(const DirStruct &a, const DirStruct &b);
+        bool Difference_Not_Greater(const DirStruct& that, const DirStruct& theta);
+        bool Turn_Towards(const DirStruct& that, const DirStruct& theta);
 
 } DirStruct;
 #pragma pack()

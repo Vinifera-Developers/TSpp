@@ -2853,8 +2853,8 @@ DEFINE_IMPLEMENTATION(DirStruct FacingClass::Difference() const, 0x004968A0);
 DEFINE_IMPLEMENTATION(DirStruct FacingClass::Difference(DirStruct &) const, 0x00496940);
 DEFINE_IMPLEMENTATION(void FacingClass::Set_ROT(int), 0x004969F0);
 
-DEFINE_IMPLEMENTATION(bool DirStruct::func_5589F0(const DirStruct &, const DirStruct &), 0x005589F0);
-DEFINE_IMPLEMENTATION(bool DirStruct::func_558A20(const DirStruct &, const DirStruct &), 0x00558A20);
+DEFINE_IMPLEMENTATION(bool DirStruct::Difference_Not_Greater(const DirStruct &, const DirStruct &), 0x005589F0);
+DEFINE_IMPLEMENTATION(bool DirStruct::Turn_Towards(const DirStruct &, const DirStruct &), 0x00558A20);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(DoorClass::DoorClass(), 0x00473C70);
 DoorClass::~DoorClass() {}
