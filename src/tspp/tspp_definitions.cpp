@@ -932,6 +932,7 @@ DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
+DEFINE_IMPLEMENTATION(void BuildingTypeClass::Set_Base_Defense_Values(), 0x00443D20);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Flush_For_Placement(Cell &, HouseClass *) const, 0x00440120);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::One_Time(), 0x0043F9B0);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init(TheaterType), 0x0043FC40);
@@ -5759,6 +5760,8 @@ DynamicVectorClass<EMPulseClass *> &Empulses = Make_Global<DynamicVectorClass<EM
 DynamicVectorClass<AlphaShapeClass *> &AlphaShapes = Make_Global<DynamicVectorClass<AlphaShapeClass *>>(0x0074CCE0);
 DynamicVectorClass<FoggedObjectClass *> &FoggedObjects = Make_Global<DynamicVectorClass<FoggedObjectClass *>>(0x007B3238);
 DynamicVectorClass<VeinholeMonsterClass *> &VeinholeMonsters = Make_Global<DynamicVectorClass<VeinholeMonsterClass *>>(0x0080FBA8);
+
+MissionControlClass (&MissionControl)[MISSION_COUNT] = Make_Global<MissionControlClass[MISSION_COUNT]>(0x007E4070);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
 

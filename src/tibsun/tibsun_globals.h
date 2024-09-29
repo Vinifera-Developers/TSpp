@@ -160,6 +160,7 @@ class ABuffer;
 class ZBuffer;
 class MovieClass;
 struct ShapeFileStruct;
+class MissionControlClass;
 
 enum KeyNumType;
 
@@ -404,6 +405,8 @@ extern DynamicVectorClass<EMPulseClass *> &Empulses;
 extern DynamicVectorClass<AlphaShapeClass *> &AlphaShapes;
 extern DynamicVectorClass<FoggedObjectClass *> &FoggedObjects;
 extern DynamicVectorClass<VeinholeMonsterClass *> &VeinholeMonsters;
+
+extern MissionControlClass (&MissionControl)[MISSION_COUNT];
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 

@@ -101,6 +101,7 @@ BuildingTypeClass : public TechnoTypeClass
         int Flush_For_Placement(Cell &cell, HouseClass *house) const;
 
         void Init_Anim(BStateType state, int start, int count, int rate) const;
+        void Set_Base_Defense_Values();
 
         static void One_Time();
         static void Init(TheaterType theater);
