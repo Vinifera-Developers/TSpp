@@ -32,7 +32,7 @@
 #include <winsock2.h>
 
 
-#define WS_RECEIVE_BUFFER_LEN	640
+#define WS_RECEIVE_BUFFER_LEN	1024
 #define WS_NUM_BUFFERS			128
 #define SOCKET_BUFFER_SIZE		1024*128
 
@@ -149,6 +149,7 @@ class WinsockInterfaceClass
 		int StaticOutBuffersInUse;
 		bool WinsockInitialised;
 		SOCKET Socket;
+		int ASync;
 		unsigned char ReceiveBuffer[WS_RECEIVE_BUFFER_LEN];
 		ConnectStatusEnum ConnectStatus;
 		int NetCard;
