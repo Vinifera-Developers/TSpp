@@ -174,7 +174,7 @@ class EventClass
 			struct {
 				unsigned short DesiredFrameRate;
 				unsigned short MaxAhead;
-				unsigned short FrameSendRate;
+				unsigned char FrameSendRate;
 			} Timing;
 
 			struct {
