@@ -38,6 +38,8 @@ bool Load_Game(const char *file_name);
 HRESULT Save_Misc_Values(IStream *pStm);
 HRESULT Load_Misc_Values(IStream *pStm);
 
+bool Get_Savefile_Info(const char *file_name, void*);
+
 
 template<class T>
 HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
