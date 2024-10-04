@@ -2392,7 +2392,7 @@ DEFINE_IMPLEMENTATION(int HouseClass::Size_Of(bool) const, 0x004C5360);
 DEFINE_IMPLEMENTATION(void HouseClass::Compute_CRC(WWCRCEngine &) const, 0x004C4760);
 DEFINE_IMPLEMENTATION(int HouseClass::Get_Heap_ID() const, 0x004CBC40);
 DEFINE_IMPLEMENTATION(void HouseClass::AI(), 0x004BC5E0);
-// 004BAED0
+DEFINE_IMPLEMENTATION(bool HouseClass::Can_Make_Money() const, 0x004BAED0);
 DEFINE_IMPLEMENTATION(float HouseClass::Tiberium_Fraction() const, 0x004BB410);
 DEFINE_IMPLEMENTATION(DiffType HouseClass::Assign_Handicap(DiffType), 0x004BB460);
 DEFINE_IMPLEMENTATION(int HouseClass::Can_Build(const ObjectTypeClass *, bool, bool) const, 0x004BBC20);
