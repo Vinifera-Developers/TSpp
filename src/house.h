@@ -28,6 +28,10 @@
 #pragma once
 
 #include "abstract.h"
+#include "aircrafttype.h"
+#include "buildingtype.h"
+#include "unittype.h"
+#include "infantrytype.h"
 #include "ihouse.h"
 #include "ipublichouse.h"
 #include "iaihouse.h"
@@ -311,24 +315,60 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool Is_Player() const { return this == PlayerPtr; }
         SourceType Get_Starting_Edge() const { if (Control.Edge < SOURCE_NORTH || Control.Edge > SOURCE_WEST) { return SOURCE_NORTH; } return Control.Edge; }
 
-        UnitTypeClass *Get_First_Ownable(TypeList<UnitTypeClass *> &list) const
-        {
-            return reinterpret_cast<UnitTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
-        }
-
-        AircraftTypeClass *Get_First_Ownable(TypeList<AircraftTypeClass *> &list) const
-        {
-            return reinterpret_cast<AircraftTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
-        }
-
         BuildingTypeClass *Get_First_Ownable(TypeList<BuildingTypeClass *> &list) const
         {
             return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
         }
 
+        UnitTypeClass* Get_First_Ownable(TypeList<UnitTypeClass*>& list) const
+        {
+            return reinterpret_cast<UnitTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+        }
+
         InfantryTypeClass *Get_First_Ownable(TypeList<InfantryTypeClass *> &list) const
         {
             return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        }
+
+        AircraftTypeClass* Get_First_Ownable(TypeList<AircraftTypeClass*>& list) const
+        {
+            return reinterpret_cast<AircraftTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+        }
+
+        int Count_Owned(TypeList<BuildingTypeClass*>& list)
+        {
+            int count = 0;
+            for (int i = 0; i < list.Count(); i++) {
+                count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Get_Heap_ID()));
+            }
+            return count;
+        }
+
+        int Count_Owned(TypeList<UnitTypeClass*>& list)
+        {
+            int count = 0;
+            for (int i = 0; i < list.Count(); i++) {
+                count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Get_Heap_ID()));
+            }
+            return count;
+        }
+
+        int Count_Owned(TypeList<InfantryTypeClass*>& list)
+        {
+            int count = 0;
+            for (int i = 0; i < list.Count(); i++) {
+                count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Get_Heap_ID()));
+            }
+            return count;
+        }
+
+        int Count_Owned(TypeList<AircraftTypeClass*>& list)
+        {
+            int count = 0;
+            for (int i = 0; i < list.Count(); i++) {
+                count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Get_Heap_ID()));
+            }
+            return count;
         }
 
         static void One_Time();
