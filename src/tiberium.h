@@ -102,6 +102,7 @@ TiberiumClass : public AbstractTypeClass
         static const TiberiumClass *As_Pointer(const char *name);
         static TiberiumType From_Name(const char *name);
         static const char *Name_From(TiberiumType type);
+        static const TiberiumClass* Find_Or_Make(const char* name);
 
     public:
         TiberiumType Type;

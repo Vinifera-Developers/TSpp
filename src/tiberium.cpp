@@ -80,3 +80,22 @@ const char *TiberiumClass::Name_From(TiberiumType type)
 {
     return (type != TIBERIUM_NONE && type < Tiberiums.Count() ? As_Reference(type).Name() : "<none>");
 }
+
+
+const TiberiumClass* TiberiumClass::Find_Or_Make(const char* name) {
+  TSPP_ASSERT(name != nullptr);
+
+  if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
+    return nullptr;
+  }
+
+  for (TiberiumType index = TIBERIUM_FIRST; index < Tiberiums.Count(); ++index) {
+    if (!strcasecmp(Tiberiums[index]->Name(), name)) {
+      return Tiberiums[index];
+    }
+  }
+
+  TiberiumClass* ptr = new TiberiumClass(name);
+  TSPP_ASSERT(ptr != nullptr);
+  return ptr;
+}
