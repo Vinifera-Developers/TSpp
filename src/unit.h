@@ -125,7 +125,7 @@ UnitClass : public FootClass
         /**
          *  FootClass
          */
-        virtual bool entry_370() override;
+        virtual bool Deploy_To_Fire() override;
         virtual void Overrun_Square(Cell &cell, bool threaten) override;
         virtual void Approach_Target() override;
 

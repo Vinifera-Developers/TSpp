@@ -147,7 +147,7 @@ class FootClass : public TechnoClass
          */
         virtual bool entry_368();
         virtual bool entry_36C();
-        virtual bool entry_370();
+        virtual bool Deploy_To_Fire();
         virtual Coordinate Likely_Coord() const;
         virtual void entry_378();
         virtual bool entry_37C();

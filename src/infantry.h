@@ -155,6 +155,6 @@ InfantryClass : public FootClass
         bool IsProne;
         bool IsZoneCheat;
         bool WasSelected;
-        CDTimerClass<FrameTimerClass> field_370;
+        CDTimerClass<FrameTimerClass> ProneStruggleTimer;
         CDTimerClass<FrameTimerClass> SightTimer;
 };

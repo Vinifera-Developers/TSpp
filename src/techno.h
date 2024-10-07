@@ -210,11 +210,11 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 006313D0
         // 00632730
         Cell Nearby_Location(const TechnoClass *techno = nullptr) const;
-        // 00633F60
+        bool Is_Z_Fudge_Bridge() const;
         // 00634110
-        // 006342C0
-        // 00634450
-        // 00634690
+        bool Is_Z_Fudge_Column() const;
+        bool Is_Z_Fudge_Tunnel() const;
+        bool Is_Z_Fudge_Cliff() const;
         // 00635860
         // 00635B00
         // 00635E20
