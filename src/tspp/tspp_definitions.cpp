@@ -5233,6 +5233,25 @@ DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator >= (IPXAddressClass &) cons
 DEFINE_IMPLEMENTATION(bool IPXAddressClass::operator <= (IPXAddressClass &) const, 0x004EF360);
 DEFINE_IMPLEMENTATION(const char *IPXAddressClass::As_String() const, 0x004EF390);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelLibraryClass(), 0x00667E50);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelLibraryClass(FileClass&), 0x00667E70);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(~VoxelLibraryClass(), 0x00667EB0);
+DEFINE_IMPLEMENTATION(void VoxelLibraryClass::Clear(), 0x00667F00);
+DEFINE_IMPLEMENTATION(HRESULT VoxelLibraryClass::Read(FileClass&, bool), 0x00667F50);
+DEFINE_IMPLEMENTATION(VoxelLibraryClass::VoxelSectionHeaderStruct* VoxelLibraryClass::Get_Header(int), 0x00668640);
+DEFINE_IMPLEMENTATION(VoxelLibraryClass::VoxelSectionTailerStruct* VoxelLibraryClass::Get_Tailer(int, int), 0x00668650);
+// 00668680
+DEFINE_IMPLEMENTATION(int VoxelLibraryClass::Memory_Used(), 0x00668710);
+// 00668730
+// 00668A00
+// 00668BA0
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(MotionLibraryClass(), 0x00561C90);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(MotionLibraryClass(FileClass&), 0x00561CA0);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(~MotionLibraryClass(), 0x00561CD0);
+DEFINE_IMPLEMENTATION(HRESULT MotionLibraryClass::Read(FileClass&), 0x00561CF0);
+DEFINE_IMPLEMENTATION(void MotionLibraryClass::Scale(float), 0x00561E50);
+
 BrainClass::BrainClass() : Neurons(), field_1C(nullptr), Max(0) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(BrainClass::~BrainClass(), 0x00425540);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(NeuronClass::NeuronClass(), 0x004252B0);

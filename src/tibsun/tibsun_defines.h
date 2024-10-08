@@ -30,11 +30,13 @@
 #include "always.h"
 #include "rect.h"
 #include "fixed.h"
+#include "matrix3d.h"
 #include "vector.h"
 #include "tpoint.h"
 #include "wwmath.h"
 
 
+class FileClass;
 class AbstractClass;
 class HouseClass;
 class NoInitClass;
@@ -1967,19 +1969,19 @@ DEFINE_ENUMERATION_OPERATORS(ColorSchemeType);
 
 typedef enum PlayerColorType
 {
-	PCOLOR_NONE = -1,
-	PCOLOR_GOLD,
-	PCOLOR_RED,
-	PCOLOR_BLUE,
-	PCOLOR_GREEN,
-	PCOLOR_ORANGE,
-	PCOLOR_LTBLUE,
-	PCOLOR_PURPLE,
-	PCOLOR_PINK,
+    PCOLOR_NONE = -1,
+    PCOLOR_GOLD,
+    PCOLOR_RED,
+    PCOLOR_BLUE,
+    PCOLOR_GREEN,
+    PCOLOR_ORANGE,
+    PCOLOR_LTBLUE,
+    PCOLOR_PURPLE,
+    PCOLOR_PINK,
 
-	PCOLOR_COUNT,
-	PCOLOR_FIRST = 0,
-	PCOLOR_LAST = PCOLOR_COUNT-1
+    PCOLOR_COUNT,
+    PCOLOR_FIRST = 0,
+    PCOLOR_LAST = PCOLOR_COUNT-1
 } PlayerColorType;
 DEFINE_ENUMERATION_OPERATORS(PlayerColorType);
 
@@ -2626,14 +2628,14 @@ typedef enum SpecialDialogType
 
 typedef enum DMonoType
 {
-	DMONO_OBJECT,
-	DMONO_HOUSE,
-	DMONO_STRESS,
-	DMONO_EVENTS,
+    DMONO_OBJECT,
+    DMONO_HOUSE,
+    DMONO_STRESS,
+    DMONO_EVENTS,
 
-	DMONO_COUNT,
+    DMONO_COUNT,
 
-	DMONO_FIRST = 0
+    DMONO_FIRST = 0
 } DMonoType;
 
 
@@ -2774,6 +2776,75 @@ struct ShapeFileStruct
         ShapeFileFrameStruct FrameData;
 };
 #pragma pack()
+
+
+class VoxelLibraryClass {
+public:
+    struct VoxelSectionHeaderStruct {
+        int LimbNumber;
+        int Unknown1;
+        int Unknown2;
+    };
+
+    struct VoxelSectionTailerStruct {
+        int StartingSpanOffset;
+        int EndingSpanOffset;
+        int DataSpanOffset;
+        float HvaMatrixScale;
+        Matrix3D TransformationMatrix;
+        Vector3 MinBounds;
+        Vector3 MaxBounds;
+        int Unknown[18];
+        char SizeX;
+        char SizeY;
+        char SizeZ;
+        char NormalsMode;
+    };
+
+    bool FailedToLoad;
+    int HeaderCount;
+    int TailerCount;
+    int TotalSize;
+    VoxelSectionHeaderStruct* HeaderData;
+    VoxelSectionTailerStruct* TailerData;
+    char* BodyData;
+
+    VoxelLibraryClass();
+    VoxelLibraryClass(FileClass& file, bool read_palette = false);
+    ~VoxelLibraryClass();
+    void Clear();
+    HRESULT Read(FileClass& file, bool read_palette = false);
+    VoxelSectionHeaderStruct* Get_Header(int index);
+    VoxelSectionTailerStruct* Get_Tailer(int index, int a2 = 0);
+    // 00668680
+    int Memory_Used();
+    // 00668730
+    // 00668A00
+    // 00668BA0
+};
+
+
+
+class MotionLibraryClass {
+public:
+    bool FailedToLoad;
+    int SectionCount;
+    int FrameCount;
+    Matrix3D* Matrices;
+    
+    MotionLibraryClass();
+    MotionLibraryClass(FileClass& file);
+    ~MotionLibraryClass();
+    
+    HRESULT Read(FileClass& file);
+    void Scale(float scale);
+};
+
+
+struct VoxelStruct {
+    VoxelLibraryClass* VoxelLibrary;
+    MotionLibraryClass* MotionLibrary;
+};
 
 
 #pragma pack(4)
