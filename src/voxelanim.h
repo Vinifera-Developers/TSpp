@@ -74,8 +74,8 @@ VoxelAnimClass : public ObjectClass
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
-		void Make_Invisible() { IsInvisible = true; }
-		void Make_Visible() { IsInvisible = false; }
+        void Make_Invisible() { IsInvisible = true; }
+        void Make_Visible() { IsInvisible = false; }
 
         static void Init();
 
