@@ -74,21 +74,21 @@ class ObjectTypeClass : public AbstractTypeClass
         virtual ShapeFileStruct *const Get_Cameo_Data() const;
         virtual ShapeFileStruct *const Get_Image_Data() const;
 
-		const char * Graphic_Name() const
-		{
-			if (GraphicName[0] != '\0') {
-				return GraphicName;
-			}
-			return Name();
-		}
+        const char * Graphic_Name() const
+        {
+            if (GraphicName[0] != '\0') {
+                return GraphicName;
+            }
+            return Name();
+        }
 
-		const char * Alpha_Graphic_Name() const
-		{
-			if (AlphaGraphicName[0] != '\0') {
-				return AlphaGraphicName;
-			}
-			return Name();
-		}
+        const char * Alpha_Graphic_Name() const
+        {
+            if (AlphaGraphicName[0] != '\0') {
+                return AlphaGraphicName;
+            }
+            return Name();
+        }
 
         void Assign_Theater_Name(char *buffer, TheaterType theater);
 
@@ -118,8 +118,8 @@ class ObjectTypeClass : public AbstractTypeClass
         bool IsLegalTarget;
         bool IsInsignificant;
         bool IsImmune;
-		bool IsSentient;
-		bool IsFootprint;
+        bool IsSentient;
+        bool IsFootprint;
         bool IsVoxel;
         bool IsNewTheater;
         bool IsHasRadialIndicator;

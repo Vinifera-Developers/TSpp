@@ -94,7 +94,7 @@
 #define RAD_TO_BAU(x) ((int)((x) * -65535 / DEG_TO_RAD(360.0)))
 #endif
 #ifndef BAU_TO_RAD
-#define BAU_TO_RAD(x) ((int)((x) * DEG_TO_RAD(360.0) / -65535))
+#define BAU_TO_RAD(x) ((((double)x) * DEG_TO_RAD(360.0) / -65535))
 #endif
 #ifndef DEG_TO_BAU
 #define DEG_TO_BAU(x) (RAD_TO_BAU(DEG_TO_RAD(x)))
