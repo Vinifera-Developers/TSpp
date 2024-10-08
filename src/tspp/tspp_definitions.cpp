@@ -1192,7 +1192,7 @@ DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType
 DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(Cell &), 0x0045EC30);
 DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate *, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
-DEFINE_IMPLEMENTATION(void Do_Flash(int, WarheadTypeClass *, Coordinate, bool), 0x00460460);
+DEFINE_IMPLEMENTATION(void Do_Flash(int, const WarheadTypeClass *, Coordinate, bool), 0x00460460);
 DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate *, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
 
 DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);

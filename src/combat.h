@@ -39,5 +39,5 @@ int Modify_Damage(int damage, const WarheadTypeClass * warhead, ArmorType armor,
 void Chain_Reaction_Damage(Cell &cell);
 void Explosion_Damage(const Coordinate *coord, int strength, TechnoClass * source, const WarheadTypeClass * warhead, bool a5 = false);
 const AnimTypeClass * Combat_Anim(int damage, const WarheadTypeClass * warhead, LandType land, const Coordinate *coord);
-void Do_Flash(int damage, WarheadTypeClass *warhead, Coordinate coord, bool a4 = false);
+void Do_Flash(int damage, const WarheadTypeClass *warhead, Coordinate coord, bool a4 = false);
 void Wide_Area_Damage(const Coordinate *coord, LEPTON radius, int rawdamage, TechnoClass * source, const WarheadTypeClass * warhead);
