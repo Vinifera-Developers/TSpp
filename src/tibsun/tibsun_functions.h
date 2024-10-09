@@ -81,6 +81,8 @@ void Init_Theater(TheaterType theater);
 
 Rect Get_Tactical_Rect(bool use_options_size = false);
 
+Matrix3D Get_Voxel_Draw_Matrix();
+
 ArmorType Armor_From_Name(const char *name);
 const char *Name_From_Armor(ArmorType armor);
 ActionType Action_From_Name(const char *name);

@@ -138,7 +138,7 @@ class FootClass : public TechnoClass
         virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual void entry_324() const override;
-        virtual void entry_328(int a1, int a2, int a3, IndexClass<int, int> *a4, Rect *a5, int a6, int a7, int a8, int a9) const override;
+        virtual void Draw_Voxel(VoxelStruct* voxlib, int frame, int key, IndexClass<int, int>* cache, Rect* rect, Point2D* point, Matrix3D* matrix, int color, int flags) const override;
         virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const override;
 

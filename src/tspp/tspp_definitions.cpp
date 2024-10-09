@@ -2979,7 +2979,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Cloaking_AI(bool) const, 0x0062F150);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_31C() const, 0x00638790);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_320() const, 0x0062AF80);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_324() const, 0x0043B920);
-DEFINE_IMPLEMENTATION(void TechnoClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x006354E0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelStruct*, int, int, IndexClass<int, int>*, Rect*, Point2D*, Matrix3D*, int, int) const, 0x006354E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D &, Rect &) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D &, Rect &, bool) const, 0x0062C450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(Point2D &, Point2D &, Rect &) const, 0x00637540);
@@ -3111,7 +3111,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) co
 DEFINE_IMPLEMENTATION(TARGET FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
-DEFINE_IMPLEMENTATION(void FootClass::entry_328(int, int, int, IndexClass<int, int> *, Rect *, int, int, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelStruct*, int, int, IndexClass<int, int>*, Rect*, Point2D*, Matrix3D*, int, int) const, 0x004A5B50);
 DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const TARGET, bool) const, 0x004A49F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool) const, 0x004A3AA0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
@@ -5370,6 +5370,7 @@ DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
 DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 DEFINE_IMPLEMENTATION(bool Select_Game(bool), 0x004E1DE0);
 DEFINE_IMPLEMENTATION(void Init_Theater(TheaterType), 0x004E7B50);
+DEFINE_IMPLEMENTATION(Matrix3D Get_Voxel_Draw_Matrix(), 0x00666E30);
 
 DEFINE_IMPLEMENTATION(const char *Name_From_RTTI(RTTIType), 0x00403500);
 DEFINE_IMPLEMENTATION(RTTIType RTTI_From_Name(const char *), 0x00403530);

@@ -54,9 +54,9 @@ class Matrix3D
                  float m21,float m22,float m23,float m24,
                  float m31,float m32,float m33,float m34);
 
-	    void Set(const Vector3 &position);
+        void Set(const Vector3 &position);
 
-	    inline Matrix3D &operator = (const Matrix3D &m);
+        inline Matrix3D &operator = (const Matrix3D &m);
 
         Vector4 &operator [] (int i) { return Row[i]; }
         const Vector4 &operator [] (int i) const { return Row[i]; }
@@ -101,15 +101,15 @@ class Matrix3D
         void Pre_Rotate_X(float theta);
         void Pre_Rotate_Y(float theta);
         void Pre_Rotate_Z(float theta);
-	    void Pre_Rotate_X(float s, float c);
-	    void Pre_Rotate_Y(float s, float c);
-	    void Pre_Rotate_Z(float s, float c);
-	    void In_Place_Pre_Rotate_X(float theta);
-	    void In_Place_Pre_Rotate_Y(float theta);
-	    void In_Place_Pre_Rotate_Z(float theta);
-	    void In_Place_Pre_Rotate_X(float s, float c);
-	    void In_Place_Pre_Rotate_Y(float s, float c);
-	    void In_Place_Pre_Rotate_Z(float s, float c);
+        void Pre_Rotate_X(float s, float c);
+        void Pre_Rotate_Y(float s, float c);
+        void Pre_Rotate_Z(float s, float c);
+        void In_Place_Pre_Rotate_X(float theta);
+        void In_Place_Pre_Rotate_Y(float theta);
+        void In_Place_Pre_Rotate_Z(float theta);
+        void In_Place_Pre_Rotate_X(float s, float c);
+        void In_Place_Pre_Rotate_Y(float s, float c);
+        void In_Place_Pre_Rotate_Z(float s, float c);
 
         float Get_X();
         float Get_Y();
@@ -119,24 +119,24 @@ class Matrix3D
         float Get_Y_Rotation() const;
         float Get_Z_Rotation() const;
 
-	    inline Vector3 Get_X_Vector() const { return Vector3(Row[0][0], Row[1][0], Row[2][0]); }
-	    inline Vector3 Get_Y_Vector() const { return Vector3(Row[0][1], Row[1][1], Row[2][1]); }
-	    inline Vector3 Get_Z_Vector() const { return Vector3(Row[0][2], Row[1][2], Row[2][2]); }
-	    inline void Get_X_Vector(Vector3 *set_x) const { set_x->Set(Row[0][0], Row[1][0], Row[2][0]); }
-	    inline void Get_Y_Vector(Vector3 *set_y) const { set_y->Set(Row[0][1], Row[1][1], Row[2][1]); }
-	    inline void Get_Z_Vector(Vector3 *set_z) const { set_z->Set(Row[0][2], Row[1][2], Row[2][2]); }
+        inline Vector3 Get_X_Vector() const { return Vector3(Row[0][0], Row[1][0], Row[2][0]); }
+        inline Vector3 Get_Y_Vector() const { return Vector3(Row[0][1], Row[1][1], Row[2][1]); }
+        inline Vector3 Get_Z_Vector() const { return Vector3(Row[0][2], Row[1][2], Row[2][2]); }
+        inline void Get_X_Vector(Vector3 *set_x) const { set_x->Set(Row[0][0], Row[1][0], Row[2][0]); }
+        inline void Get_Y_Vector(Vector3 *set_y) const { set_y->Set(Row[0][1], Row[1][1], Row[2][1]); }
+        inline void Get_Z_Vector(Vector3 *set_z) const { set_z->Set(Row[0][2], Row[1][2], Row[2][2]); }
 
         Vector3 Rotate_Vector(const Vector3 &vect) const;
 
         void Look_At_1(Vector3 &p, Vector3 &t, float roll);
         void Look_At_2(Vector3 &p, Vector3 &t, float roll);
 
-	    static void	Multiply(const Matrix3D &A,const Matrix3D &B, Matrix3D *set_result);
-	    static void Transform_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
-	    static void Rotate_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
+        static void Multiply(const Matrix3D &A,const Matrix3D &B, Matrix3D *set_result);
+        static void Transform_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
+        static void Rotate_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
 
-	    static void Inverse_Transform_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
-	    static void Inverse_Rotate_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
+        static void Inverse_Transform_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
+        static void Inverse_Rotate_Vector(const Matrix3D &tm, const Vector3 &in, Vector3 *out);
 
     public:
         static const Matrix3D Identity;
