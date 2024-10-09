@@ -278,8 +278,12 @@
 #include "newdel.h"
 #include "tibsun_functions.h"
 #include "wolapi.h"
-#include "textfile.h"'
+#include "textfile.h"
 #include "ipxmgr.h"
+#include "motionlib.h"
+#include "voxellib.h"
+#include "staticbuffer.h"
+#include "voxelpal.h"
 
 
 /**
@@ -2979,7 +2983,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Cloaking_AI(bool) const, 0x0062F150);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_31C() const, 0x00638790);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_320() const, 0x0062AF80);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_324() const, 0x0043B920);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelStruct*, int, int, IndexClass<int, int>*, Rect*, Point2D*, Matrix3D*, int, int) const, 0x006354E0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject &, unsigned int, int, VoxelIndexClass &, Rect &, Point2D &, Matrix3D &, int, int) const, 0x006354E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D &, Rect &) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D &, Rect &, bool) const, 0x0062C450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(Point2D &, Point2D &, Rect &) const, 0x00637540);
@@ -3013,7 +3017,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Bridge() const, 0x00633F60);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Column() const, 0x006342C0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Tunnel() const, 0x00634450);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Cliff() const, 0x00634690);
-// 00635860);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel_Shadow(VoxelObject&), 0x00635860);
 // 00635B00);
 // 00635E20);
 // 00635FA0);
@@ -3111,7 +3115,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) co
 DEFINE_IMPLEMENTATION(TARGET FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
-DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelStruct*, int, int, IndexClass<int, int>*, Rect*, Point2D*, Matrix3D*, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelObject &, unsigned int, int, VoxelIndexClass &, Rect &, Point2D &, Matrix3D &, int, int) const, 0x004A5B50);
 DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const TARGET, bool) const, 0x004A49F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool) const, 0x004A3AA0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
@@ -4254,9 +4258,9 @@ DEFINE_IMPLEMENTATION(bool UnitClass::Enter_Idle_Mode(bool, bool) const, 0x00650
 DEFINE_IMPLEMENTATION(bool UnitClass::Deploy_To_Fire(), 0x0064E880);
 DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(Cell &, bool), 0x006572B0);
 DEFINE_IMPLEMENTATION(void UnitClass::Approach_Target(), 0x006571E0);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C0(int, int, int, int, int, int, int, int), 0x00652330);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C4(int, int, int, int, int, int, int, int), 0x00653090);
-DEFINE_IMPLEMENTATION(void UnitClass::entry_3C8(int, int, int, int, int, int, int, int, int), 0x00651F50);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Voxel(Point2D, Rect, int), 0x00652330);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Shape(Point2D, Rect, int), 0x00653090);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Blit_Voxel(Surface &, Point2D, Rect, int, int), 0x00651F50);
 DEFINE_IMPLEMENTATION(void UnitClass::Tunnel_AI(), 0x0064D9D0);
 DEFINE_IMPLEMENTATION(void UnitClass::Rotation_AI(), 0x0064E560);
 DEFINE_IMPLEMENTATION(bool UnitClass::Edge_Of_World_AI(), 0x0064E6F0);
@@ -5237,20 +5241,30 @@ DEFINE_IMPLEMENTATION(const char *IPXAddressClass::As_String() const, 0x004EF390
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelLibraryClass(FileClass&), 0x00667E70);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(~VoxelLibraryClass(), 0x00667EB0);
 DEFINE_IMPLEMENTATION(void VoxelLibraryClass::Clear(), 0x00667F00);
-DEFINE_IMPLEMENTATION(HRESULT VoxelLibraryClass::Read(FileClass&, bool), 0x00667F50);
-DEFINE_IMPLEMENTATION(VoxelLibraryClass::VoxelSectionHeaderStruct* VoxelLibraryClass::Get_Header(int), 0x00668640);
-DEFINE_IMPLEMENTATION(VoxelLibraryClass::VoxelSectionTailerStruct* VoxelLibraryClass::Get_Tailer(int, int), 0x00668650);
-// 00668680
+DEFINE_IMPLEMENTATION(bool VoxelLibraryClass::Read_File(FileClass*, bool), 0x00667F50);
+DEFINE_IMPLEMENTATION(VoxelLibraryClass::LayerStruct* VoxelLibraryClass::Get_Layer(int), 0x00668640);
+DEFINE_IMPLEMENTATION(VoxelLibraryClass::LayerInfoStruct* VoxelLibraryClass::Get_Layer_Info(int, int), 0x00668650);
+DEFINE_IMPLEMENTATION(void VoxelLibraryClass::func_668680(Vector3&, int, int), 0x00668680);
 DEFINE_IMPLEMENTATION(int VoxelLibraryClass::Memory_Used(), 0x00668710);
-// 00668730
-// 00668A00
-// 00668BA0
+DEFINE_IMPLEMENTATION(void VoxelLibraryClass::func_668730(void*, Vector3&), 0x00668730);
+DEFINE_IMPLEMENTATION(void VoxelLibraryClass::func_668A00(void*, Vector3&), 0x00668A00);
+DEFINE_IMPLEMENTATION(void VoxelLibraryClass::func_668BA0(), 0x00668BA0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MotionLibraryClass(), 0x00561C90);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MotionLibraryClass(FileClass&), 0x00561CA0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(~MotionLibraryClass(), 0x00561CD0);
-DEFINE_IMPLEMENTATION(HRESULT MotionLibraryClass::Read(FileClass&), 0x00561CF0);
+DEFINE_IMPLEMENTATION(bool MotionLibraryClass::Read_File(FileClass*), 0x00561CF0);
 DEFINE_IMPLEMENTATION(void MotionLibraryClass::Scale(float), 0x00561E50);
+DEFINE_IMPLEMENTATION(void MotionLibraryClass::Clear(), 0x00561EE0);
+
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(VoxelPaletteClass(void*, void*), 0x0066A940);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(~VoxelPaletteClass(), 0x0066A9B0);
+DEFINE_IMPLEMENTATION(bool VoxelPaletteClass::Read_Palette_File(FileClass*), 0x0066A9E0);
+DEFINE_IMPLEMENTATION(bool VoxelPaletteClass::Read_File(FileClass*), 0x0066AA20);
+DEFINE_IMPLEMENTATION(bool VoxelPaletteClass::Write_File(FileClass*), 0x0066AAC0);
+DEFINE_IMPLEMENTATION(void VoxelPaletteClass::Calculate_Lookup_Table(float*, int), 0x0066AB60);
+DEFINE_IMPLEMENTATION(unsigned char VoxelPaletteClass::Closest_Color(float, float, float) const, 0x0066AE00);
+DEFINE_IMPLEMENTATION(unsigned char VoxelPaletteClass::Closest_Color(float, float, float, bool) const, 0x0066AE90);
 
 BrainClass::BrainClass() : Neurons(), field_1C(nullptr), Max(0) {}
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(BrainClass::~BrainClass(), 0x00425540);
@@ -5317,6 +5331,10 @@ DEFINE_IMPLEMENTATION(int Create_Tunnel_Reinforcement(const TeamTypeClass *, Foo
 DEFINE_IMPLEMENTATION(bool Create_Special_Reinforcement(HouseClass *, const TechnoTypeClass *, const TechnoTypeClass *, ScriptMissionType, int), 0x005BFD80);
 DEFINE_IMPLEMENTATION(int Create_Air_Reinforcement(HouseClass *, AircraftType, int, MissionType, TARGET, TARGET, InfantryType), 0x005BFD90);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(StaticBufferClass::StaticBufferClass(), 0x0060A880);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(StaticBufferClass::~StaticBufferClass(), 0x0060A8A0);
+DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, AreaStruct &), 0x0060A8B0);
+DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, Rect &, TPoint2D<unsigned short>), 0x0060A9E0);
 
 
 /**
@@ -5371,6 +5389,14 @@ DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 DEFINE_IMPLEMENTATION(bool Select_Game(bool), 0x004E1DE0);
 DEFINE_IMPLEMENTATION(void Init_Theater(TheaterType), 0x004E7B50);
 DEFINE_IMPLEMENTATION(Matrix3D Get_Voxel_Draw_Matrix(), 0x00666E30);
+DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, int), 0x0066A660);
+DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, const Vector3&, float, int), 0x0066A6E0);
+DEFINE_IMPLEMENTATION(int Voxel_Find_Best_Normal_Index(const Vector3&, int), 0x0066A870);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Normal_Indexes(), 0x0066A920);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Lighting(float theta), 0x004E8AE0);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Projections(), 0x00666E50);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Palette(FileClass* file), 0x00665DA0);
+
 
 DEFINE_IMPLEMENTATION(const char *Name_From_RTTI(RTTIType), 0x00403500);
 DEFINE_IMPLEMENTATION(RTTIType RTTI_From_Name(const char *), 0x00403530);
@@ -5538,6 +5564,7 @@ bool &GameActive = Make_Global<bool>(0x007E4580);
 SpecialDialogType &SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 int &BuildLevel = Make_Global<int>(0x006FB628);
 SpriteCollectionClass &SpriteCollection = Make_Global<SpriteCollectionClass>(0x00809360);
+StaticBufferClass& StaticBuffer = Make_Global<StaticBufferClass>(0x0074C728);
 bool& OwnerDraw::UIInitialized = Make_Global<bool>(0x008093C4);
 bool &PlayerWins = Make_Global<bool>(0x007E4870);
 bool &PlayerLoses = Make_Global<bool>(0x007E2281);
@@ -5545,6 +5572,12 @@ bool &PlayerRestarts = Make_Global<bool>(0x007B3510);
 bool &PlayerAborts = Make_Global<bool>(0x007E2280);
 int &NewMaxAheadFrame1 = Make_Global<int>(0x007E2400);
 int &NewMaxAheadFrame2 = Make_Global<int>(0x007E23E4);
+int &VPL_RemapStart = Make_Global<int>(0x0082233C);
+int &VPL_RemapEnd = Make_Global<int>(0x00835644);
+int &VPL_SectionCount = Make_Global<int>(0x00822320);
+int &VPL_field_C = Make_Global<int>(0x00835640);
+RGBStruct (&Voxel_Palette)[VOXEL_PALETTE_SIZE] = Make_Global<RGBStruct[VOXEL_PALETTE_SIZE]>(0x00822340);
+unsigned char (&Voxel_PaletteLookup)[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE] = Make_Global<unsigned char[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE]>(0x00833640);
 
 
 /**

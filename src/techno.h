@@ -180,7 +180,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_31C() const;
         virtual void entry_320() const;
         virtual void entry_324() const;
-        virtual void Draw_Voxel(VoxelStruct* voxlib, int frame, int key, IndexClass<int, int> *cache, Rect *rect, Point2D *point, Matrix3D* matrix, int color, int flags) const;
+        virtual void Draw_Voxel(VoxelObject &voxeldata, unsigned int frame, int key, VoxelIndexClass &index, Rect &rect, Point2D &point, Matrix3D &matrix, int color, int flags) const;
         virtual void entry_32C(Point2D &point, Rect &rect) const;
         virtual void entry_330(Point2D &point, Rect &rect, bool a2) const;
         virtual void Draw_Pips(Point2D &point1, Point2D &point2, Rect &rect) const;
@@ -215,7 +215,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         bool Is_Z_Fudge_Column() const;
         bool Is_Z_Fudge_Tunnel() const;
         bool Is_Z_Fudge_Cliff() const;
-        // 00635860
+        void Draw_Voxel_Shadow(VoxelObject& voxeldata);
         // 00635B00
         // 00635E20
         // 00635FA0

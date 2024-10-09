@@ -31,9 +31,11 @@
 #include "rect.h"
 #include "fixed.h"
 #include "matrix3d.h"
+#include "search.h"
 #include "vector.h"
 #include "tpoint.h"
 #include "wwmath.h"
+#include "staticbuffer.h"
 
 
 class FileClass;
@@ -41,6 +43,8 @@ class AbstractClass;
 class HouseClass;
 class NoInitClass;
 class WeaponTypeClass;
+class VoxelLibraryClass;
+class MotionLibraryClass;
 
 extern int &CellHeight;
 extern int &BridgeCellHeight;
@@ -142,6 +146,13 @@ extern int &BridgeCellHeight;
 #define MOUSE_HOTSPOT_MIN 0
 #define MOUSE_HOTSPOT_CENTER 12345
 #define MOUSE_HOTSPOT_MAX 54321
+
+
+/**
+ *  Type definitions.
+ */
+typedef IndexClass<int, DataStruct> VoxelIndexClass;
+
 
 
 typedef enum WaypointEnum
@@ -2778,70 +2789,7 @@ struct ShapeFileStruct
 #pragma pack()
 
 
-class VoxelLibraryClass {
-public:
-    struct VoxelSectionHeaderStruct {
-        int LimbNumber;
-        int Unknown1;
-        int Unknown2;
-    };
-
-    struct VoxelSectionTailerStruct {
-        int StartingSpanOffset;
-        int EndingSpanOffset;
-        int DataSpanOffset;
-        float HvaMatrixScale;
-        Matrix3D TransformationMatrix;
-        Vector3 MinBounds;
-        Vector3 MaxBounds;
-        int Unknown[18];
-        char SizeX;
-        char SizeY;
-        char SizeZ;
-        char NormalsMode;
-    };
-
-    bool FailedToLoad;
-    int HeaderCount;
-    int TailerCount;
-    int TotalSize;
-    VoxelSectionHeaderStruct* HeaderData;
-    VoxelSectionTailerStruct* TailerData;
-    char* BodyData;
-
-    VoxelLibraryClass();
-    VoxelLibraryClass(FileClass& file, bool read_palette = false);
-    ~VoxelLibraryClass();
-    void Clear();
-    HRESULT Read(FileClass& file, bool read_palette = false);
-    VoxelSectionHeaderStruct* Get_Header(int index);
-    VoxelSectionTailerStruct* Get_Tailer(int index, int a2 = 0);
-    // 00668680
-    int Memory_Used();
-    // 00668730
-    // 00668A00
-    // 00668BA0
-};
-
-
-
-class MotionLibraryClass {
-public:
-    bool FailedToLoad;
-    int SectionCount;
-    int FrameCount;
-    Matrix3D* Matrices;
-    
-    MotionLibraryClass();
-    MotionLibraryClass(FileClass& file);
-    ~MotionLibraryClass();
-    
-    HRESULT Read(FileClass& file);
-    void Scale(float scale);
-};
-
-
-struct VoxelStruct {
+struct VoxelObject {
     VoxelLibraryClass* VoxelLibrary;
     MotionLibraryClass* MotionLibrary;
 };

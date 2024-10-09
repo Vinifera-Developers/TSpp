@@ -161,6 +161,7 @@ class ZBuffer;
 class MovieClass;
 struct ShapeFileStruct;
 class MissionControlClass;
+class StaticBufferClass;
 
 enum KeyNumType;
 
@@ -438,6 +439,8 @@ extern int &IsMono;
 extern const TheaterDataType *Theaters; 
 
 extern SpriteCollectionClass &SpriteCollection;
+
+extern StaticBufferClass& StaticBuffer;
 
 extern LPDIRECTDRAW &DirectDrawObject;
 extern LPDIRECTDRAWCLIPPER &DirectDrawClipper;

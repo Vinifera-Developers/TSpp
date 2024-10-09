@@ -101,9 +101,9 @@ class ObjectTypeClass : public AbstractTypeClass
         unsigned int MaxStrength;
         const ShapeFileStruct *Image;
         const ShapeFileStruct *AlphaImage;
-        VoxelStruct BodyVoxel;
-        VoxelStruct TurretVoxel;
-        VoxelStruct BarrelVoxel;
+        VoxelObject Voxel;
+        VoxelObject AuxVoxel;
+        VoxelObject AuxVoxel2;
         unsigned int MaxDimension;
         VocType CrushSound;
         char GraphicName[25];
@@ -121,10 +121,10 @@ class ObjectTypeClass : public AbstractTypeClass
         bool IsNewTheater;
         bool IsHasRadialIndicator;
         bool IsIgnoresFirestorm;
-        IndexClass<int, int> VoxelCache1;
-        IndexClass<int, int> VoxelCache2;
-        IndexClass<int, int> VoxelCache3;
-        IndexClass<int, int> VoxelCache4;
+        VoxelIndexClass VoxelIndex;
+        VoxelIndexClass AuxVoxelIndex;
+        VoxelIndexClass ShadowVoxelIndex;
+        VoxelIndexClass AuxVoxel2Index;
 
     public:
 

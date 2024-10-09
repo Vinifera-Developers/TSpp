@@ -43,11 +43,11 @@ class RGBClass
         RGBClass(unsigned char red, unsigned char green, unsigned char blue);
 
         operator HSVClass () const;
-        inline operator RGBStruct () const { return RGBStruct{Red, Green, Blue}; }
+        operator RGBStruct () const { return RGBStruct { Red, Green, Blue }; }
 
         bool operator==(const RGBClass &that) const { return Red == that.Red && Green == that.Green && Blue == that.Blue; }
         bool operator!=(const RGBClass &that) const { return Red != that.Red && Green != that.Green && Blue != that.Blue; }
-        RGBClass & operator = (const RGBClass & rgb);
+        RGBClass & operator= (const RGBClass &that);
 
         void Adjust(int adjust, const RGBClass &that);
         int Difference(const RGBClass &that) const;
