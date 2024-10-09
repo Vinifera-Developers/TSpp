@@ -3017,7 +3017,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Bridge() const, 0x00633F60);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Column() const, 0x006342C0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Tunnel() const, 0x00634450);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Cliff() const, 0x00634690);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel_Shadow(VoxelObject&), 0x00635860);
+// 00635860);
 // 00635B00);
 // 00635E20);
 // 00635FA0);

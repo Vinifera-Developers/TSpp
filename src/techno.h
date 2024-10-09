@@ -215,7 +215,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         bool Is_Z_Fudge_Column() const;
         bool Is_Z_Fudge_Tunnel() const;
         bool Is_Z_Fudge_Cliff() const;
-        void Draw_Voxel_Shadow(VoxelObject& voxeldata);
+        // 00635860
         // 00635B00
         // 00635E20
         // 00635FA0
