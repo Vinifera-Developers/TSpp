@@ -72,7 +72,7 @@ class ParticleSystemClass : public ObjectClass
          */
         virtual LayerType In_Which_Layer() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
-        virtual void entry_E4() override;
+        virtual void Remove_This() override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
         ParticleClass *Spawn_Held_Particle(Coordinate &a1, Coordinate &a2);

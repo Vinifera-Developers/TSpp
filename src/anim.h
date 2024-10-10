@@ -75,7 +75,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual int Sort_Y() const override;
         virtual bool Limbo() override;
-        virtual void entry_E4() override;
+        virtual void Remove_This() override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;

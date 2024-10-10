@@ -109,7 +109,7 @@ class ObjectClass : public AbstractClass
         virtual void entry_D8();
         virtual void Set_Occupy_Bit(Coordinate &coord);
         virtual void Clear_Occupy_Bit(Coordinate &coord);
-        virtual void entry_E4();
+        virtual void Remove_This();
         virtual void Do_Shimmer();
         virtual ExitType Exit_Object(const TechnoClass *object);
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false);
