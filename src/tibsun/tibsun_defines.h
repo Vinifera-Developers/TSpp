@@ -3088,23 +3088,122 @@ struct ScoutStruct
 /**
  *  DirStruct is in stages of 128 (0-32768) (128*256).
  */
-#pragma pack(4)
-typedef struct DirStruct : public fixed
-{
-    public:
-        explicit DirStruct() : fixed(0) {}
-        explicit DirStruct(int raw) { Set_Raw(raw); }
-        explicit DirStruct(const DirType dir) { Set_Dir(dir); }
-        explicit DirStruct(const NoInitClass& noinit) {}
+struct DirStruct {
+public:
+    constexpr explicit DirStruct() noexcept : Raw{0} {}
+    constexpr explicit DirStruct(int raw) noexcept : Raw{static_cast<unsigned short>(raw)} {}
+    explicit DirStruct(double rad) noexcept { Set_Radian<65536>(rad); }
+    explicit DirStruct(const DirType dir) noexcept { Set_Dir(dir); }
+    explicit DirStruct(const NoInitClass& noinit) noexcept {}
 
-        void Set_Dir(DirType dir) { Set_Raw(static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8)); }
-        DirType Get_Dir() const { return static_cast<DirType>(Get_Raw() >> 8); }
+    bool Difference_Not_Greater(const DirStruct& that, const DirStruct& theta);
+    bool Turn_Towards(const DirStruct& that, const DirStruct& theta);
 
-        bool Difference_Not_Greater(const DirStruct& that, const DirStruct& theta);
-        bool Turn_Towards(const DirStruct& that, const DirStruct& theta);
+    constexpr bool operator==(const DirStruct& that) const { return Raw == that.Raw; }
+    constexpr bool operator!=(const DirStruct& that) const { return Raw != that.Raw; }
 
-} DirStruct;
-#pragma pack()
+    constexpr DirStruct operator+(const DirStruct& that) const { return DirStruct(Raw + that.Raw); }
+    constexpr DirStruct operator-(const DirStruct& that) const { return DirStruct(Raw - that.Raw); }
+    constexpr DirStruct& operator+=(const DirStruct& that) { Raw += that.Raw; return *this; }
+    constexpr DirStruct& operator-=(const DirStruct& that) { Raw -= that.Raw; return *this; }
+
+    constexpr DirStruct operator+(unsigned short raw) const { return DirStruct(Raw + raw); }
+    constexpr DirStruct operator-(unsigned short raw) const { return DirStruct(Raw - raw); }
+    constexpr DirStruct& operator+=(unsigned short raw) { Raw += raw; return *this; }
+    constexpr DirStruct& operator-=(unsigned short raw) { Raw -= raw; return *this; }
+
+    constexpr DirStruct operator+() const { return DirStruct(Raw); }
+    constexpr DirStruct operator-() const { return DirStruct(-Raw); }
+
+    constexpr bool operator<(const DirStruct& that) const { return Raw < that.Raw; }
+    constexpr bool operator<=(const DirStruct& that) const { return Raw <= that.Raw; }
+    constexpr bool operator>(const DirStruct& that) const { return Raw > that.Raw; }
+    constexpr bool operator>=(const DirStruct& that) const { return Raw >= that.Raw; }
+
+    constexpr bool operator<(unsigned short raw) const { return Raw < raw; }
+    constexpr bool operator<=(unsigned short raw) const { return Raw <= raw; }
+    constexpr bool operator>(unsigned short raw) const { return Raw > raw; }
+    constexpr bool operator>=(unsigned short raw) const { return Raw >= raw; }
+
+    constexpr unsigned short Get_Raw() const { return Raw; }
+    constexpr void Set_Raw(unsigned short raw) { Raw = raw; }
+    constexpr DirType Get_Dir() const { return static_cast<DirType>(Raw >> 8); }
+    constexpr void Set_Dir(DirType dir) { Raw = static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8); }
+
+    /**
+     *  Use the number of bits the facing has as the template argument.
+     *  For example, 32 facings would use 5, 64 facings would use 6, etc.
+     */
+    template <size_t Bits> constexpr size_t Get_Value(size_t offset = 0) const {
+        return Dir_To<16, Bits>(Raw, offset);
+    }
+
+    template <size_t Bits>
+    constexpr void Set_Value(size_t value, size_t offset = 0) {
+        Raw = static_cast<unsigned short>(Dir_To<Bits, 16>(value, offset));
+    }
+
+    template <size_t Count> constexpr size_t Get_Facing(size_t offset = 0) const {
+        static_assert(std::has_single_bit(Count), "Count must be a power of two");
+
+        constexpr size_t Bits = std::bit_width(Count - 1);
+        return Get_Value<Bits>(offset);
+    }
+
+    template <size_t Count>
+    constexpr void Set_Facing(size_t value, size_t offset = 0) {
+      static_assert(std::has_single_bit(Count), "Count must be a power of two");
+
+        constexpr size_t Bits = std::bit_width(Count - 1);
+        Set_Value<Bits>(value, offset);
+    }
+
+    template <size_t FacingCount> double Get_Radian() const {
+        static_assert(std::has_single_bit(FacingCount), "FacingCount must be a power of two");
+
+        constexpr size_t Bits = std::bit_width(FacingCount - 1);
+
+        size_t value = Get_Value<Bits>();
+        int dir = static_cast<int>(value) - FacingCount / 4; // Rotate left by 90 degrees
+        return dir * (-static_cast<double>(WWMATH_TWO_PI) / FacingCount);
+    }
+
+    template <size_t FacingCount> void Set_Radian(double rad) {
+        static_assert(std::has_single_bit(FacingCount), "FacingCount must be a power of two");
+
+        constexpr size_t Bits = std::bit_width(FacingCount - 1);
+        constexpr size_t Max = (1 << Bits) - 1;
+
+        int dir = static_cast<int>(rad / (-static_cast<double>(WWMATH_TWO_PI) / FacingCount));
+        size_t value = dir + FacingCount / 4; // Rotate right by 90 degrees
+        Set_Value<Bits>(value & Max);
+    }
+
+private:
+#pragma warning(push)           // Save the current warning state
+#pragma warning(disable : 4127) // Disable "conditional expression is constant"
+#pragma warning(disable : 4293) // Disable "shift count negative or too big"
+    template <size_t BitsFrom, size_t BitsTo>
+    static size_t Dir_To(size_t value, size_t offset = 0) {
+        constexpr size_t MaskIn = ((1u << BitsFrom) - 1);
+        constexpr size_t MaskOut = ((1u << BitsTo) - 1);
+
+        if (BitsFrom > BitsTo) {
+            return (((((value & MaskIn) >> (BitsFrom - BitsTo - 1)) + 1) >> 1) + offset) & MaskOut;
+        } else if (BitsFrom < BitsTo) {
+            return (((value - offset) & MaskIn) << (BitsTo - BitsFrom)) & MaskOut;
+        } else {
+            return value & MaskOut;
+        }
+    }
+#pragma warning(pop) // Restore the warning state
+
+public:
+    unsigned short Raw;
+
+private:
+    unsigned short Padding = 0;
+};
 
 
 /**

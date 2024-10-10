@@ -90,18 +90,6 @@
 #ifndef DEG_TO_RADF
 #define DEG_TO_RADF(x) (((float)x) * WWMATH_PI / 180.0f)
 #endif
-#ifndef RAD_TO_BAU
-#define RAD_TO_BAU(x) ((int)((x) * -65535 / DEG_TO_RAD(360.0)))
-#endif
-#ifndef BAU_TO_RAD
-#define BAU_TO_RAD(x) ((((double)x) * DEG_TO_RAD(360.0) / -65535))
-#endif
-#ifndef DEG_TO_BAU
-#define DEG_TO_BAU(x) (RAD_TO_BAU(DEG_TO_RAD(x)))
-#endif
-#ifndef BAU_TO_DEG
-#define BAU_TO_DEG(x) RAD_TO_DEG(BAU_TO_RAD((x)))
-#endif
 
 const int ARC_TABLE_SIZE = 1024;
 const int SIN_TABLE_SIZE = 1024;

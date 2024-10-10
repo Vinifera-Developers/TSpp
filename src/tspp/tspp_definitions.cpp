@@ -5411,6 +5411,8 @@ DEFINE_IMPLEMENTATION(ArmorType Armor_From_Name(const char *), 0x00681320);
 
 TextFileClass::TextFileClass(const Wstring &filename) : RawFileClass(filename) {}
 
+DEFINE_IMPLEMENTATION(Vector3 operator*(const Matrix3D&, const Vector3&), 0x00555C90);
+
 
 /**
  *  Various values calculated at runtime init.
