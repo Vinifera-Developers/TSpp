@@ -44,7 +44,7 @@ class CDControlClass
 
         bool Unlock_All_CD_Drives()
         {
-            for (UINT drive_num = 0; drive_num <= ARRAY_SIZE(LockCount); ++drive_num) {
+            for (UINT drive_num = 0; drive_num <= std::size(LockCount); ++drive_num) {
 
                 if (LockCount[drive_num] <= 0) {
                     continue;

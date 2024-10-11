@@ -70,35 +70,6 @@
 #define __novtable __declspec(novtable)
 
 /**
- *  Returns the count of items in a built-in C array. This is a common technique
- *  which is often used to help properly calculate the number of items in an
- *  array at runtime in order to prevent overruns, etc.
- *  
- *  Example usage :
- *      int array[95];
- *      size_t arrayCount = ARRAY_SIZE(array);     // arrayCount is 95.
- */
-#ifndef ARRAY_SIZE
-#define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
-#endif // !ARRAY_SIZE
-
-/**
- *  Use to determine the size of a public struct member:
- *  
- *  Example usage:
- *   typedef struct _ABC {
- *       sint32    A;
- *       sint32    B;
- *       sint16    C;
- *   } ABC, * PTR_ABC
- *  
- *   SIZE_OF(struct _ABC, C)
- */
-#ifndef SIZE_OF
-#define SIZE_OF(typ, id) sizeof(((typ *)0)->id)
-#endif // !SIZE_OF
-
-/**
  *  Defines operator overloads to enable bit operations on enum values, useful for
  *  using an enum to define flags for a bitfield.
  *  

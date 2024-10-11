@@ -54,10 +54,10 @@ bool MapClass::Place_Crate(Cell where)
      *  no free slots, then return with failure to place crate.
      */
     int crateindex = 0;
-    for (crateindex = 0; crateindex < ARRAY_SIZE(Crates); crateindex++) {
+    for (crateindex = 0; crateindex < std::size(Crates); crateindex++) {
         if (!Crates[crateindex].Is_Valid()) break;
     }
-    if (crateindex == ARRAY_SIZE(Crates)) {
+    if (crateindex == std::size(Crates)) {
         return false;
     }
 

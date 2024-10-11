@@ -37,7 +37,7 @@ static bool CRC32TableGenerated = false;
 
 static void Generate_CRC32_Table()
 {
-    for (uint32_t i = 0; i < ARRAY_SIZE(CRC32Table); ++i) {
+    for (uint32_t i = 0; i < std::size(CRC32Table); ++i) {
         uint32_t crc = i;
 
         for (size_t j = 0; j < 8; ++j) {
