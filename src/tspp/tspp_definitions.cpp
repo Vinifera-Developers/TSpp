@@ -5389,6 +5389,7 @@ DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 DEFINE_IMPLEMENTATION(bool Select_Game(bool), 0x004E1DE0);
 DEFINE_IMPLEMENTATION(void Init_Theater(TheaterType), 0x004E7B50);
 DEFINE_IMPLEMENTATION(Matrix3D Get_Voxel_Draw_Matrix(), 0x00666E30);
+DEFINE_IMPLEMENTATION(Matrix3D Get_Voxel_Ramp_Matrix(TileRampType), 0x00667B50);
 DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, int), 0x0066A660);
 DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, const Vector3&, float, int), 0x0066A6E0);
 DEFINE_IMPLEMENTATION(int Voxel_Find_Best_Normal_Index(const Vector3&, int), 0x0066A870);
