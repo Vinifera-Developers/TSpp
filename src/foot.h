@@ -168,7 +168,7 @@ class FootClass : public TechnoClass
         virtual void Fixup_Path(PathType *path);
         virtual void Set_Speed(double speed);
         virtual void entry_3B8();
-        virtual bool entry_3BC(FootClass *foot);
+        virtual bool Is_LZ_Clear(TARGET);
 
         int Rescue_Mission(TARGET tarcom);
         Cell Adjust_Dest(Cell &cell);
@@ -203,7 +203,7 @@ class FootClass : public TechnoClass
         double field_230;
         int TotalFramesWalked;
         Cell field_23C;
-        Cell field_240;
+        Cell LastAdjanencyCell;
         Coordinate field_244;
         double Speed;
         double SpeedBias;

@@ -1194,10 +1194,10 @@ DEFINE_IMPLEMENTATION(Cell *AircraftTypeClass::Occupy_List(bool) const, 0x0040FD
 
 DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType, int), 0x0045EB60);
 DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(Cell &), 0x0045EC30);
-DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate *, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
+DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate &, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
-DEFINE_IMPLEMENTATION(void Do_Flash(int, const WarheadTypeClass *, Coordinate, bool), 0x00460460);
-DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate *, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
+DEFINE_IMPLEMENTATION(void Combat_Lighting(int, const WarheadTypeClass *, Coordinate, bool), 0x00460460);
+DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate &, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
 
 DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);
 DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
@@ -1604,6 +1604,7 @@ DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Germinate(TiberiumClass *) co
 DEFINE_IMPLEMENTATION(int CellClass::Get_Tiberium_Value() const, 0x0045AC70);
 DEFINE_IMPLEMENTATION(void CellClass::Detach(TARGET), 0x0045AD80);
 DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
+DEFINE_IMPLEMENTATION(void CellClass::Trigger_Veins(), 0x0045C5C0);
 DEFINE_IMPLEMENTATION(unsigned CellClass::Toggle_Occupied_By(HousesType), 0x0045CA20);
 DEFINE_IMPLEMENTATION(bool CellClass::Cloaked_By(HousesType) const, 0x0045CD30);
 DEFINE_IMPLEMENTATION(bool CellClass::Sensed_By(HousesType) const, 0x0045CD50);
@@ -1837,9 +1838,10 @@ DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
 DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Height(Coordinate &) const, 0x0051E130);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
-//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Cell &, bool) const, 0x0051E380);
-//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(CellClass &, bool) const, 0x0051E460);
-//DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(Coordinate &) const, 0x0051E510);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Rect &, bool) const, 0x0051E2B0);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Cell &, bool) const, 0x0051E380);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(CellClass &, bool) const, 0x0051E460);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Coordinate &) const, 0x0051E510);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Horizontal_Iterator_Next_Cell(), 0x0051E630);
 DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
@@ -3139,7 +3141,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Approach_Target(), 0x004A1E30);
 DEFINE_IMPLEMENTATION(void FootClass::Fixup_Path(PathType *), 0x0040F400);
 DEFINE_IMPLEMENTATION(void FootClass::Set_Speed(double), 0x004A0520);
 DEFINE_IMPLEMENTATION(void FootClass::entry_3B8(), 0x004A64F0);
-DEFINE_IMPLEMENTATION(bool FootClass::entry_3BC(FootClass *), 0x004A8300);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_LZ_Clear(TARGET), 0x004A8300);
 DEFINE_IMPLEMENTATION(int FootClass::Rescue_Mission(TARGET), 0x004A4C40);
 DEFINE_IMPLEMENTATION(Cell FootClass::Adjust_Dest(Cell &), 0x004A53C0);
 DEFINE_IMPLEMENTATION(void FootClass::Handle_Navigation_List(), 0x004A53D0);
@@ -4180,7 +4182,7 @@ DEFINE_IMPLEMENTATION(void BulletClass::Draw_It(Point2D &, Rect &) const, 0x0044
 DEFINE_IMPLEMENTATION(bool BulletClass::Mark(MarkType), 0x004446D0);
 DEFINE_IMPLEMENTATION(int BulletClass::Shape_Number() const, 0x00445B70);
 DEFINE_IMPLEMENTATION(void BulletClass::Assign_Target(TARGET), 0x004474A0);
-DEFINE_IMPLEMENTATION(bool BulletClass::Unlimbo(Coordinate &, FlyClass &), 0x00445F40);
+DEFINE_IMPLEMENTATION(bool BulletClass::Unlimbo(Coordinate &, TVelocity3D &), 0x00445F40);
 // 00444580
 DEFINE_IMPLEMENTATION(bool BulletClass::Is_Forced_To_Explode(Coordinate &coord) const, 0x004462C0);
 DEFINE_IMPLEMENTATION(void BulletClass::Bullet_Explodes(bool forced), 0x004463D0);
@@ -4189,15 +4191,15 @@ DEFINE_IMPLEMENTATION(bool BulletClass::Homes_In() const, 0x00447210);
 // 004472C0
 DEFINE_IMPLEMENTATION(BulletClass *BulletClass::Create_Bullet(BulletTypeClass *, TARGET, TechnoClass *, int, WarheadTypeClass *, int, int, bool), 0x00447220);
 
-DEFINE_IMPLEMENTATION(DirStruct FlyClass::Direction(), 0x0040F5E0);
-DEFINE_IMPLEMENTATION(double FlyClass::Length_2D(), 0x0040F650);
-DEFINE_IMPLEMENTATION(double FlyClass::Length_3D(), 0x0040F6C0);
-DEFINE_IMPLEMENTATION(double FlyClass::Length_2D_0(), 0x0040F730);
-DEFINE_IMPLEMENTATION(void FlyClass::Update_Position(DirStruct &), 0x00558A90);
-DEFINE_IMPLEMENTATION(void FlyClass::If_XYZ_0_Set_X_100(), 0x0040F6F0);
-DEFINE_IMPLEMENTATION(void FlyClass::If_XY_0_Set_X_100(), 0x0040F760);
+DEFINE_IMPLEMENTATION(DirStruct TVelocity3D::Direction(), 0x0040F5E0);
+DEFINE_IMPLEMENTATION(double TVelocity3D::Length_2D(), 0x0040F650);
+DEFINE_IMPLEMENTATION(double TVelocity3D::Length_3D(), 0x0040F6C0);
+DEFINE_IMPLEMENTATION(double TVelocity3D::Length_2D_0(), 0x0040F730);
+DEFINE_IMPLEMENTATION(void TVelocity3D::Update_Position(DirStruct &), 0x00558A90);
+DEFINE_IMPLEMENTATION(void TVelocity3D::If_XYZ_0_Set_X_100(), 0x0040F6F0);
+DEFINE_IMPLEMENTATION(void TVelocity3D::If_XY_0_Set_X_100(), 0x0040F760);
 
-DEFINE_IMPLEMENTATION(int Projectile_Motion(Coordinate &, FlyClass &, Coordinate &, DirStruct &, bool, bool, bool), 0x00558230);
+DEFINE_IMPLEMENTATION(int Projectile_Motion(Coordinate &, TVelocity3D &, Coordinate &, DirStruct &, bool, bool, bool), 0x00558230);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitClass::GetClassID(CLSID *), 0x0065B5D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Load(IStream *), 0x00659580);

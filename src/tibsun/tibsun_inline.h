@@ -84,7 +84,7 @@ inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
     /**
      *  Get the angle between the two points.
      */
-    double angle = WWMath::Atan2((double)y2 - y1, (double)x2 - x1);
+    double angle = WWMath::Atan2((double)y2 - y1, (double)x1 - x2);
 
     /**
      *  Assign direction to return.

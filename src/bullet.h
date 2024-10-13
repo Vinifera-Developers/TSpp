@@ -35,7 +35,7 @@
 class BulletTypeClass;
 
 
-struct FlyClass
+struct TVelocity3D
 {
     DirStruct Direction();
     double Length_2D();
@@ -51,7 +51,7 @@ struct FlyClass
 };
 
 
-int Projectile_Motion(Coordinate &a1, FlyClass &a2, Coordinate &a3, DirStruct &dir, bool is_aircraft, bool is_airburst, bool is_very_high);
+int Projectile_Motion(Coordinate &a1, TVelocity3D &a2, Coordinate &a3, DirStruct &dir, bool is_aircraft, bool is_airburst, bool is_very_high);
 
 
 class DECLSPEC_UUID("0E272DC9-9C0F-11D1-B709-00A024DDAFD1")
@@ -103,7 +103,7 @@ BulletClass :	public ObjectClass
          */
         virtual int Shape_Number() const;
         virtual void Assign_Target(TARGET target);
-        virtual bool Unlimbo(Coordinate &coord, FlyClass &flyer);
+        virtual bool Unlimbo(Coordinate &coord, TVelocity3D &flyer);
 
         // 00444580
         bool Is_Forced_To_Explode(Coordinate &coord) const;
@@ -120,7 +120,7 @@ BulletClass :	public ObjectClass
         bool IsInaccurate;
         FuseClass Fuse;
         bool IsBright;
-        FlyClass Fly;
+        TVelocity3D Fly;
         int field_A0;
         bool field_A4;
         bool field_A45;

@@ -197,7 +197,7 @@ CellClass : public AbstractClass
         // 0045C490
         // 0045C4E0
         // 0045C530
-        // 0045C5C0
+        void Trigger_Veins();
         // 0045C700
         // 0045C880
         // 0045C8E0
@@ -292,7 +292,7 @@ CellClass : public AbstractClass
         unsigned char SmudgeData;
         char field_98;             // shadow flags? Changes as shroud gets mapped
         char field_99;             // shadow flags? Changes as shroud gets mapped
-        unsigned char field_9A;
+        unsigned char AdjacentObjectCount;
 
         union {
             struct {

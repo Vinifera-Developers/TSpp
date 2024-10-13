@@ -170,10 +170,10 @@ class MapClass : public GScreenClass
         int Get_Cell_Height(Coordinate &coord) const;
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
-        // 0051E2B0
-        //bool In_Radar(Cell &cell, bool a2 = true) const;      // Not In_Radar...
-        //bool In_Radar(CellClass &cell, bool a2 = true) const;
-        //bool In_Radar(Coordinate &coord) const;
+        bool In_Local_Radar(Rect &rect, bool a2 = true) const;
+        bool In_Local_Radar(Cell &cell, bool a2 = true) const;
+        bool In_Local_Radar(CellClass &cell, bool a2 = true) const;
+        bool In_Local_Radar(Coordinate &coord) const;
         // 0051E560
         CellClass *Horizontal_Iterator_Next_Cell();
         void Horizontal_Iterator_Reset();

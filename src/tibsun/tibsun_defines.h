@@ -949,6 +949,14 @@ typedef enum SpeedType
 } SpeedType;
 DEFINE_ENUMERATION_OPERATORS(SpeedType);
 
+typedef enum ImpactType : unsigned char
+{
+    IMPACT_NONE,          // No movement (of significance) occurred.
+    IMPACT_NORMAL,        // Some (non eventful) movement occurred.
+    IMPACT_EDGE           // The edge of the world was reached.
+} ImpactType;
+DEFINE_ENUMERATION_OPERATORS(ImpactType);
+
 typedef enum PrerequisiteType {} PrerequisiteType;
 
 typedef enum SpecialWeaponType
@@ -2932,6 +2940,8 @@ struct Coordinate
         return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
     }
 
+    Cell As_Cell() { return Cell(X, Y); }
+
     const char *As_String() const
     {
         static char _buffer[8+8+8];
@@ -3094,6 +3104,7 @@ public:
     constexpr explicit DirStruct(int raw) noexcept : Raw{static_cast<unsigned short>(raw)} {}
     explicit DirStruct(double rad) noexcept { Set_Radian<65536>(rad); }
     explicit DirStruct(const DirType dir) noexcept { Set_Dir(dir); }
+    explicit DirStruct(const FacingType facing) noexcept { Set_Facing<8>(facing); }
     explicit DirStruct(const NoInitClass& noinit) noexcept {}
 
     bool Difference_Not_Greater(const DirStruct& that, const DirStruct& theta);

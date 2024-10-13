@@ -84,12 +84,12 @@ class TechnoTypeClass : public ObjectTypeClass
          *  TechnoTypeClass
          */
         virtual bool Legal_Placement(Cell &pos, HouseClass *house = nullptr) const;
-		virtual int Raw_Cost() const;
-		virtual int Repair_Cost() const;
-		virtual int Repair_Step() const;
-		virtual int Flight_Level() const;
+        virtual int Raw_Cost() const;
+        virtual int Repair_Cost() const;
+        virtual int Repair_Step() const;
+        virtual int Flight_Level() const;
 
-		bool Is_Two_Shooter() const;
+        bool Is_Two_Shooter() const;
         const WeaponInfoStruct & Fetch_Weapon_Info(WeaponSlotType slot) const;
         bool In_Range(Coordinate &coord, TARGET target, WeaponTypeClass *weapon);
 
@@ -152,16 +152,16 @@ class TechnoTypeClass : public ObjectTypeClass
         int FlightLevel;
         unsigned TechLevel;
         TypeList<int> Prerequisite;
-		int Risk;
+        int Risk;
         int Reward;
         MPHType MaxSpeed;
         SpeedType Speed;
-		int MaxAmmo;
+        int MaxAmmo;
         long Ownable;
         bool IsAllowedToStartInMultiplayer;
         char CameoFilename[21 + 4];
         const ShapeFileStruct *CameoData;
-		int Rotation;
+        int Rotation;
         int ROT;
         int TurretOffset;
         int Points;
@@ -196,13 +196,13 @@ class TechnoTypeClass : public ObjectTypeClass
         bool IsTurretEquipped;
         bool IsRepairable;
         bool IsCrew;
-		bool IsRemappable;
+        bool IsRemappable;
         bool IsCloakable;
         bool IsSelfHealing;
         bool IsExploding;
         bool IsNoAutoFire;
         bool IsTurretSpins;
-		bool IsRegulated;
+        bool IsRegulated;
         bool IsManualReload;
         bool IsVisibleLoad;
         bool IsLightningRod;
