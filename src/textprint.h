@@ -45,23 +45,23 @@ class ConvertClass;
  */
 typedef enum ColorType
 {
-	COLOR_TBLACK,
+    COLOR_TBLACK,
 
-	COLOR_PURPLE,
-	COLOR_CYAN,
-	COLOR_GREEN,
-	COLOR_LTGREEN,
-	COLOR_YELLOW,
-	COLOR_PINK,
-	COLOR_BROWN,
-	COLOR_RED,
-	COLOR_LTCYAN,
-	COLOR_LTBLUE,
-	COLOR_BLUE,
-	COLOR_BLACK,
-	COLOR_GREY,
-	COLOR_LTGREY,
-	COLOR_WHITE,
+    COLOR_PURPLE,
+    COLOR_CYAN,
+    COLOR_GREEN,
+    COLOR_LTGREEN,
+    COLOR_YELLOW,
+    COLOR_PINK,
+    COLOR_BROWN,
+    COLOR_RED,
+    COLOR_LTCYAN,
+    COLOR_LTBLUE,
+    COLOR_BLUE,
+    COLOR_BLACK,
+    COLOR_GREY,
+    COLOR_LTGREY,
+    COLOR_WHITE,
 
     /**
      *  These defines handle the various names given to the same color.
@@ -70,7 +70,7 @@ typedef enum ColorType
     COLOR_DKBLUE = COLOR_BLUE,
     COLOR_DKGREY = COLOR_GREY,
 
-	COLOR_PADDING = 0x1000
+    COLOR_PADDING = 0x1000
 } ColorType;
 DEFINE_ENUMERATION_OPERATORS(ColorType);
 
