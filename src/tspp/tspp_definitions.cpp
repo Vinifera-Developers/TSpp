@@ -1984,6 +1984,7 @@ DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Next_Object(ObjectClass *) cons
 DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Prev_Object(ObjectClass *) const, 0x00477430);
 DEFINE_IMPLEMENTATION(Cell DisplayClass::Calculated_Cell(SourceType, Cell &, Cell &, SpeedType, bool, MZoneType) const, 0x004774C0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Good_Reinforcement_Cell(Cell &, Cell &, SpeedType, int, MZoneType) const, 0x00477B40);
+DEFINE_IMPLEMENTATION(void DisplayClass::Bandbox_Select(ObjectClass*), 0x00479150);
 DEFINE_IMPLEMENTATION(void DisplayClass::Compute_Start_Pos(), 0x004793A0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Sell_Mode_Control(int), 0x004794E0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Waypoint_Mode_Control(int, bool), 0x00479580);
@@ -5823,6 +5824,7 @@ DynamicVectorClass<VeinholeMonsterClass *> &VeinholeMonsters = Make_Global<Dynam
 MissionControlClass (&MissionControl)[MISSION_COUNT] = Make_Global<MissionControlClass[MISSION_COUNT]>(0x007E4070);
 
 DynamicVectorClass<ObjectClass *> &CurrentObjects = Make_Global<DynamicVectorClass<ObjectClass *>>(0x007E4858);
+SelectData (&DirtyObjects)[500] = Make_Global<SelectData[500]>(0x0080CEE8);
 
 DynamicVectorClass<TARGET> &vec_80F5E0 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F5E0);
 DynamicVectorClass<TARGET> &vec_80F4C0 = Make_Global<DynamicVectorClass<TARGET>>(0x0080F4C0);

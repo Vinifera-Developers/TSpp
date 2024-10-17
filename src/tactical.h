@@ -183,7 +183,7 @@ Tactical : public AbstractClass
         IsoCoordinate field_64;
         int field_6C;
         double ZoomFactor;
-        int field_78;
+        int DirtyObjectCount;
         IsoCoordinate MoveFrom;
         IsoCoordinate MoveTo;
         float MoveRate;

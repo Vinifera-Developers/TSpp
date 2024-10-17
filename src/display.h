@@ -87,7 +87,6 @@ class DisplayClass : public MapClass
         ObjectClass *Prev_Object(ObjectClass *object) const;
         Cell Calculated_Cell(SourceType dir, Cell &waypoint = INVALID_CELL, Cell &cell = INVALID_CELL, SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
         bool Good_Reinforcement_Cell(Cell &outcell, Cell &incell, SpeedType loco, int zone, MZoneType mzone) const;
-        // 00479150
         void Compute_Start_Pos();
         void Sell_Mode_Control(int control);
         void Waypoint_Mode_Control(int control, bool a2);
@@ -114,6 +113,8 @@ class DisplayClass : public MapClass
         // 0047BFC0
         ObjectClass *Following_What() const;
         void Follow_This(ObjectClass *object);
+
+        static void Bandbox_Select(ObjectClass* obj);
 
     public:
         Cell ZoneCell;

@@ -411,6 +411,13 @@ extern MissionControlClass (&MissionControl)[MISSION_COUNT];
 
 extern DynamicVectorClass<ObjectClass *> &CurrentObjects;
 
+struct SelectData {
+    ObjectClass* Object;
+    Point2D Position;
+};
+
+extern SelectData (&DirtyObjects)[500];
+
 extern DynamicVectorClass<TARGET> &vec_80F5E0;
 extern DynamicVectorClass<TARGET> &vec_80F4C0;
 extern DynamicVectorClass<TARGET> &vec_80F588;
