@@ -39,38 +39,38 @@ class ConvertClass;
 
 class ColorScheme
 {
-    public:
-		ColorScheme();
-		ColorScheme(const char *name, HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, int id);
-		~ColorScheme();
+public:
+    ColorScheme();
+    ColorScheme(const char *name, HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, int id);
+    ~ColorScheme();
 
-		bool operator==(const char *their_name) { return strcmpi(Name, their_name) == 0; }
-        bool operator!=(const char *their_name) { return strcmpi(Name, their_name) != 0; }
+    bool operator==(const char *their_name) { return strcmpi(Name, their_name) == 0; }
+    bool operator!=(const char *their_name) { return strcmpi(Name, their_name) != 0; }
 
-		void func_5E2650(PaletteClass *pal1, PaletteClass *pal2, int r, int g, int b);
+    void func_5E2650(PaletteClass *pal1, PaletteClass *pal2, int r, int g, int b);
 
-		static ConvertClass * func_68C3B0(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, PaletteClass *pal3, Surface *surface, int shade_count, int r, int g, int b, bool *indexes);
-		static ConvertClass * func_68C500(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, Surface *surface, PaletteClass *pal3);
+    static ConvertClass * func_68C3B0(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, PaletteClass *pal3, Surface *surface, int shade_count, int r, int g, int b, bool *indexes);
+    static ConvertClass * func_68C500(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, Surface *surface, PaletteClass *pal3);
 
-		static ColorScheme *Find_Or_Make(const char *name, HSVClass &, PaletteClass *a2, PaletteClass *a3, int a4 = 63);
-		static ColorScheme *As_Pointer(const char *name, int a2 = 63);
-		static ColorSchemeType From_Name(const char *name, int a2 = 63);
+    static ColorScheme *Find_Or_Make(const char *name, HSVClass &, PaletteClass *a2, PaletteClass *a3, int a4 = 63);
+    static ColorScheme *As_Pointer(const char *name, int a2 = 63);
+    static ColorSchemeType From_Name(const char *name, int a2 = 63);
 
-	public:
-		int ID;
-		PaletteClass Palette;
-		const char *Name;
-		HSVClass HSV;
-		ConvertClass *Drawer;
-		unsigned int field_310;
-		unsigned int Color;
-		unsigned int BrightColor;
-		unsigned int Shadow;
-		unsigned int Background;
-		unsigned int Corners;
-		unsigned int Highlight;
-		unsigned int Box;
-		unsigned int Bright;
-		unsigned int Underline;
-		unsigned int Bar;
+public:
+    int ID;
+    PaletteClass Palette;
+    const char *Name;
+    HSVClass HSV;
+    ConvertClass *Drawer;
+    unsigned int field_310;
+    unsigned int Color;
+    unsigned int BrightColor;
+    unsigned int Shadow;
+    unsigned int Background;
+    unsigned int Corners;
+    unsigned int Highlight;
+    unsigned int Box;
+    unsigned int Bright;
+    unsigned int Underline;
+    unsigned int Bar;
 };
