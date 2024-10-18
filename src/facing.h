@@ -38,50 +38,50 @@ class NoInitClass;
 
 class FacingClass
 {
-	public:
-		FacingClass();
-		FacingClass(int rate);
-		FacingClass(DirStruct &facing);
-		FacingClass(DirType dir);
-		FacingClass(FacingClass &that) :
+    public:
+        FacingClass();
+        FacingClass(int rate);
+        FacingClass(DirStruct &facing);
+        FacingClass(DirType dir);
+        FacingClass(FacingClass &that) :
             DesiredFacing(that.DesiredFacing),
             StartFacing(that.StartFacing),
             RotationTimer(that.RotationTimer),
             ROT(that.ROT)
-		{
-		}
+        {
+        }
 
-		FacingClass(const NoInitClass &noinit);
+        FacingClass(const NoInitClass &noinit);
 
-		FacingClass & operator = (const FacingClass &that)
-		{
-			if (this != &that) {
+        FacingClass & operator = (const FacingClass &that)
+        {
+            if (this != &that) {
                 DesiredFacing = that.DesiredFacing;
                 StartFacing = that.StartFacing;
                 RotationTimer = that.RotationTimer;
                 ROT = that.ROT;
-			}
-			return *this;
-		}
+            }
+            return *this;
+        }
 
-		bool Set_Desired(DirStruct &facing);
-		bool Set(DirStruct &facing);
+        bool Set_Desired(DirStruct &facing);
+        bool Set(DirStruct &facing);
 
-		DirStruct Desired() const;
-		DirStruct Current() const;
+        DirStruct Desired() const;
+        DirStruct Current() const;
 
-		bool Is_Rotating() const;
+        bool Is_Rotating() const;
         bool Is_Rotating_CW() const;
         bool Is_Rotating_CCW() const;
 
         DirStruct Difference() const;
         DirStruct Difference(DirStruct &facing) const;
 
-		void Set_ROT(int rate);
+        void Set_ROT(int rate);
 
-	public:
-		DirStruct DesiredFacing;
-		DirStruct StartFacing; // The starting direction from which to calcuate the rotation.
-		CDTimerClass<FrameTimerClass> RotationTimer;
-		DirStruct ROT;
+    public:
+        DirStruct DesiredFacing;
+        DirStruct StartFacing; // The starting direction from which to calcuate the rotation.
+        CDTimerClass<FrameTimerClass> RotationTimer;
+        DirStruct ROT;
 };

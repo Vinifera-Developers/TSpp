@@ -240,7 +240,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 0063A1D0
         // 0063A530
 
-		void Techno_Draw_Object(const ShapeFileStruct *shapefile,
+        void Techno_Draw_Object(const ShapeFileStruct *shapefile,
             int shapenum,
             Point2D &xy,
             Rect &rect,
@@ -250,10 +250,10 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
             int a8 = 0,
             bool a9 = false,
             int a10 = 0,
-	        ShapeFileStruct *z_shape = nullptr,
-	        int z_framenum = 0,
-	        int z_xoff = 0,
-	        int z_yoff = 0,
+            ShapeFileStruct *z_shape = nullptr,
+            int z_framenum = 0,
+            int z_xoff = 0,
+            int z_yoff = 0,
             ShapeFlagsType flags = SHAPE_NORMAL) const;
 
         static void Reset_Action_Line_Timer();
@@ -268,19 +268,19 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         CDTimerClass<FrameTimerClass> IdleTimer;
         CDTimerClass<FrameTimerClass> RadarFlashTimer;
         Point2D RadarPos;
-		unsigned SpiedBy;
+        unsigned SpiedBy;
         unsigned int Group;
         TARGET ArchiveTarget;
         HouseClass *House;
-		CloakType Cloak;
-		StageClass CloakingDevice;
-		CDTimerClass<FrameTimerClass> CloakDelay;
+        CloakType Cloak;
+        StageClass CloakingDevice;
+        CDTimerClass<FrameTimerClass> CloakDelay;
         float field_118;
         TARGET TarCom;
         TARGET SuspendedTarCom;
         float PitchAngle;
-		CDTimerClass<FrameTimerClass> Arm;
-		int Ammo;
+        CDTimerClass<FrameTimerClass> Arm;
+        int Ammo;
         int PurchasePrice;
         ParticleSystemClass *ParticleSystems[ATTACHED_PARTICLE_COUNT];
         WaveClass *Wave;
@@ -292,7 +292,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         StorageClass Storage;
         DoorClass Door;
         FacingClass BarrelFacing;
-		FacingClass PrimaryFacing;
+        FacingClass PrimaryFacing;
         FacingClass SecondaryFacing;
         int CurrentBurstIndex;
         CDTimerClass<FrameTimerClass> TargetingLaserTimer;
@@ -300,7 +300,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         short SinkingYOffset;
         bool IsSinking;
         bool IsNeedingRescue;
-		bool IsUseless;
+        bool IsUseless;
         bool IsTickedOff;
         bool IsCloakable;
         bool IsLeader;
