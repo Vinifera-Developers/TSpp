@@ -2990,7 +2990,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject &, unsigned int, 
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D &, Rect &) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D &, Rect &, bool) const, 0x0062C450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(Point2D &, Point2D &, Rect &) const, 0x00637540);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Leader(Point2D &, Point2D &, Rect &) const, 0x00637D60);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Text_Overlay(Point2D &, Point2D &, Rect &) const, 0x00637D60);
 DEFINE_IMPLEMENTATION(void TechnoClass::Do_Uncloak(bool), 0x00633B20);
 DEFINE_IMPLEMENTATION(void TechnoClass::Do_Cloak(bool), 0x00633BF0);
 DEFINE_IMPLEMENTATION(int TechnoClass::entry_344(int) const, 0x00639C70);
