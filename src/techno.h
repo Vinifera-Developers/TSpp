@@ -228,7 +228,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         int Anti_Infantry() const;
         Coordinate func_638AF0() const;
         // 00638C70
-        // 00639130
+        void Assign_Archive_Target(TARGET target);
         // 006391B0
         float Target_Threat(TechnoClass* target, Coordinate& firing_coord) const;
         // 00639BB0

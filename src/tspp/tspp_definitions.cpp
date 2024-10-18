@@ -3035,7 +3035,7 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Armor() const, 0x00638170);
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Infantry() const, 0x00638240);
 DEFINE_IMPLEMENTATION(Coordinate TechnoClass::func_638AF0() const, 0x00638AF0);
 // 00638C70);
-// 00639130);
+DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Archive_Target(TARGET), 0x00639130);
 // 006391B0);
 DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coordinate&) const, 0x00639810);
 // 00639BB0);
