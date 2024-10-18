@@ -79,7 +79,7 @@ BuildingClass : public TechnoClass
          *  ObjectClass
          */
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr) override;
-        virtual void *const Get_Image_Data() const override;
+        virtual ShapeFileStruct *const Get_Image_Data() const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
         virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
