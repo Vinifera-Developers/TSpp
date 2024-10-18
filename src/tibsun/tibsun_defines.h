@@ -2940,7 +2940,7 @@ struct Coordinate
         return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
     }
 
-    Cell As_Cell() { return Cell(X, Y); }
+    Cell As_Cell() const { return Cell(X, Y); }
 
     const char *As_String() const
     {
