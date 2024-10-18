@@ -68,7 +68,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Init() override;
         virtual void Detach(TARGET target, bool all = false) override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual int Owner() const override;
+        virtual HousesType Owner() const override;
         virtual HouseClass *Owning_House() const override;
         virtual void AI() override;
 

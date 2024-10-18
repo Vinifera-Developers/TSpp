@@ -660,7 +660,7 @@ DEFINE_IMPLEMENTATION(void AbstractClass::Init(), 0x00405E20);
 DEFINE_IMPLEMENTATION(void AbstractClass::Detach(TARGET, bool), 0x00405E30);
 DEFINE_IMPLEMENTATION(int AbstractClass::entry_34() const, 0x00405E40);
 DEFINE_IMPLEMENTATION(void AbstractClass::Compute_CRC(WWCRCEngine &) const, 0x00405DB0);
-DEFINE_IMPLEMENTATION(int AbstractClass::Owner() const, 0x00405E50);
+DEFINE_IMPLEMENTATION(HousesType AbstractClass::Owner() const, 0x00405E50);
 DEFINE_IMPLEMENTATION(HouseClass *AbstractClass::Owning_House() const, 0x00405E60);
 DEFINE_IMPLEMENTATION(int AbstractClass::Get_Heap_ID() const, 0x00405E70);
 DEFINE_IMPLEMENTATION(bool AbstractClass::Is_Inactive() const, 0x00405DE0);
@@ -2059,6 +2059,8 @@ DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell &) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(void RadarClass::Toggle_Radar(bool), 0x005BC080);
+DEFINE_IMPLEMENTATION(bool RadarClass::Is_Player_Names(), 0x005BC150);
+DEFINE_IMPLEMENTATION(void RadarClass::Player_Names(bool), 0x005BC190);
 RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
 DEFINE_IMPLEMENTATION(bool RadarClass::RTacticalClass::Action(unsigned, KeyNumType &), 0x005B9190);
 
@@ -2887,7 +2889,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoClass::Load(IStream *), 0x
 DEFINE_IMPLEMENTATION(void TechnoClass::Init(), 0x0062A7C0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Detach(TARGET, bool), 0x006362E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Compute_CRC(WWCRCEngine &) const, 0x00638E80);
-DEFINE_IMPLEMENTATION(int TechnoClass::Owner() const, 0x0062E6F0);
+DEFINE_IMPLEMENTATION(HousesType TechnoClass::Owner() const, 0x0062E6F0);
 DEFINE_IMPLEMENTATION(HouseClass *TechnoClass::Owning_House() const, 0x0062E700);
 DEFINE_IMPLEMENTATION(void TechnoClass::AI(), 0x0062E750);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Players_Army() const, 0x0062A070);

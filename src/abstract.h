@@ -84,7 +84,7 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         virtual int Size_Of(bool firestorm = false) const = 0;
         virtual int entry_34() const;
         virtual void Compute_CRC(WWCRCEngine &crc) const;
-        virtual int Owner() const;
+        virtual HousesType Owner() const;
         virtual HouseClass *Owning_House() const;
         virtual int Get_Heap_ID() const;
         virtual bool Is_Inactive() const;

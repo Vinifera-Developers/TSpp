@@ -49,9 +49,9 @@ class RadarClass : public DisplayClass
         /**
          *  GScreenClass
          */
-		virtual void One_Time() override;
-		virtual void Init_Clear() override;
-		virtual void AI(KeyNumType &input, Point2D &xy) override;
+        virtual void One_Time() override;
+        virtual void Init_Clear() override;
+        virtual void AI(KeyNumType &input, Point2D &xy) override;
         virtual void Draw_It(bool forced = false) override;
 
         /**
@@ -63,10 +63,10 @@ class RadarClass : public DisplayClass
         /**
          *  DisplayClass
          */
-		virtual HRESULT Load(IStream *pStm) override;
-		virtual HRESULT Save(IStream *pStm) override;
+        virtual HRESULT Load(IStream *pStm) override;
+        virtual HRESULT Save(IStream *pStm) override;
         virtual void Set_Dimensions() override;
-		virtual bool Map_Cell(Cell &cell, HouseClass *house) override;
+        virtual bool Map_Cell(Cell &cell, HouseClass *house) override;
 
         virtual Cell Click_Cell_Calc(Point2D &cell);
         virtual void Set_Tactical_Position(Coordinate &coord);
@@ -104,9 +104,9 @@ class RadarClass : public DisplayClass
         // 005BC050
         // 005BC070
         void Toggle_Radar(bool tactical_availability);
-        // 005BC150
+        bool Is_Player_Names();
         // 005BC170
-        // 005BC190
+        void Player_Names(bool a1);
         // 005BC1C0
         // 005BCC40
         // 005BCE90
@@ -155,16 +155,16 @@ class RadarClass : public DisplayClass
         CDTimerClass<SystemTimerClass> RadarAnimTimer;
 
     public:
-		class RTacticalClass : public GadgetClass
+        class RTacticalClass : public GadgetClass
         {
-			public:
-				RTacticalClass();
-				virtual bool Action(unsigned flags, KeyNumType &key) override;
+            public:
+                RTacticalClass();
+                virtual bool Action(unsigned flags, KeyNumType &key) override;
 
-			friend class RadarClass;
-		};
+            friend class RadarClass;
+        };
 
-		friend class RTacticalClass;
+        friend class RTacticalClass;
 
-		static RTacticalClass &RadarButton;
+        static RTacticalClass &RadarButton;
 };
