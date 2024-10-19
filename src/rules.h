@@ -302,8 +302,8 @@ class RulesClass
         BuildingTypeClass *NodRegularPower;
         BuildingTypeClass *NodAdvancedPower;
         BuildingTypeClass *GDIFirestormGenerator;
-        BuildingTypeClass *GDIHunterSeeker;
-        BuildingTypeClass *NodHunterSeeker;
+        UnitTypeClass *GDIHunterSeeker;
+        UnitTypeClass *NodHunterSeeker;
         TypeList<BuildingTypeClass *> BuildConst;
         TypeList<BuildingTypeClass *> BuildPower;
         TypeList<BuildingTypeClass *> BuildRefinery;
