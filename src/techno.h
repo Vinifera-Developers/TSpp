@@ -260,7 +260,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         static void Set_Action_Lines(bool set);
 
     public:
-        SideType ActLike;
+        HousesType ActLike;
         CargoClass Cargo;
         VeterancyClass Veterancy;
         double ArmorBias;
