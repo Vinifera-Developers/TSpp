@@ -268,7 +268,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C5840
         void Begin_Construction(); // 004C5880
         TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
-        // 004C5920
+        bool Has_Prerequisites(const TechnoTypeClass* techno, DynamicVectorClass<BuildingTypeClass*>& owned_buildings, int owned_count) const;// 004C5920
         // 004C5BB0
         // 004C68E0
         // 004C6930
@@ -278,12 +278,12 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C7320
         // 004C7470
         // 004C74F0
-        // 004C7690
+        bool AI_Build_Defense(int nodeid, DynamicVectorClass<Cell>* cells);// 004C7690
         // 004C83F0
         // 004C85A0
         // 004C8750
         // 004C8900
-        // 004C8920
+        void AI_Build_Wall(); // 004C8920
         // 004C93F0
         void Update_Radars();
         // 004C96A0
@@ -551,7 +551,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         float field_10E3C;
         float field_10E40;
         float field_10E44;
-        int field_10E48;
+        int PowerSurplus;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

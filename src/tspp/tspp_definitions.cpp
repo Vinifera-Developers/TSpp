@@ -2503,8 +2503,8 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bo
 // 004C5770
 // 004C5840
 DEFINE_IMPLEMENTATION(void HouseClass::Begin_Construction(), 0x04C5880);
-DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const, 0x004C58B0);
-// 004C5920
+DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<TechnoTypeClass *>&) const, 0x004C58B0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Has_Prerequisites(const TechnoTypeClass*, DynamicVectorClass<BuildingTypeClass*>&, int) const, 0x004C5920);
 // 004C5BB0
 // 004C68E0
 // 004C6930
@@ -2514,12 +2514,12 @@ DEFINE_IMPLEMENTATION(Cell HouseClass::Find_Build_Location(BuildingTypeClass *, 
 // 004C7320
 // 004C7470
 // 004C74F0
-// 004C7690
+DEFINE_IMPLEMENTATION(bool HouseClass::AI_Build_Defense(int, DynamicVectorClass<Cell>*), 0x004C7690);
 // 004C83F0
 // 004C85A0
 // 004C8750
 // 004C8900
-// 004C8920
+DEFINE_IMPLEMENTATION(void HouseClass::AI_Build_Wall(), 0x004C8920);
 // 004C93F0
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Radars(), 0x004C9560);
 // 004C96A0
