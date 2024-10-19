@@ -41,10 +41,10 @@ class RadioClass : public MissionClass
          */
         IFACEMETHOD(Load)(IStream *pStm);
 
-	public:
-		RadioClass();
-		RadioClass(const NoInitClass &noinit);
-		virtual ~RadioClass();
+    public:
+        RadioClass();
+        RadioClass(const NoInitClass &noinit);
+        virtual ~RadioClass();
 
         /**
          *  AbstractClass
@@ -52,23 +52,23 @@ class RadioClass : public MissionClass
         virtual void Detach(TARGET target, bool all = false) override;
         virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-		/**
-		 *  ObjectClass
-		 */
-		virtual bool Limbo() override;
-		virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
+        /**
+         *  ObjectClass
+         */
+        virtual bool Limbo() override;
+        virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
 
-		/**
-		 *  RadioClass
-		 */
-		virtual RadioMessageType Transmit_Message(RadioMessageType message, long &param = LParam, RadioClass *to = nullptr);
-		virtual RadioMessageType Transmit_Message(RadioMessageType message, RadioClass *to);
+        /**
+         *  RadioClass
+         */
+        virtual RadioMessageType Transmit_Message(RadioMessageType message, long &param = LParam, RadioClass *to = nullptr);
+        virtual RadioMessageType Transmit_Message(RadioMessageType message, RadioClass *to);
 
-		bool In_Radio_Contact() const { return Radio != nullptr; }
-		TechnoClass *Contact_With_Whom() { return reinterpret_cast<TechnoClass *>(Radio); }
-		void Radio_Off() { Radio = nullptr; }
+        bool In_Radio_Contact() const { return Radio != nullptr; }
+        TechnoClass *Contact_With_Whom() { return reinterpret_cast<TechnoClass *>(Radio); }
+        void Radio_Off() { Radio = nullptr; }
 
-	public:
-		RadioMessageType Old[3];
-		RadioClass *Radio;
+    public:
+        RadioMessageType Old[3];
+        RadioClass *Radio;
 };

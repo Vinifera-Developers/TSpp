@@ -2836,8 +2836,8 @@ DEFINE_IMPLEMENTATION(void RadioClass::Detach(TARGET, bool), 0x005BDA30);
 DEFINE_IMPLEMENTATION(void RadioClass::Compute_CRC(WWCRCEngine &) const, 0x005BDA60);
 DEFINE_IMPLEMENTATION(bool RadioClass::Limbo(), 0x005BD9E0);
 DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x005BD880);
-DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, long &, RadioClass *), 0x005BDA10);
-DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, RadioClass *), 0x005BD940);
+DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, long &, RadioClass *), 0x005BD940);
+DEFINE_IMPLEMENTATION(RadioMessageType RadioClass::Transmit_Message(RadioMessageType, RadioClass *), 0x005BDA10);
 
 CargoClass::CargoClass() : Quantity(0), CargoHold(nullptr) {}
 CargoClass::CargoClass(const NoInitClass &noinit) {}
