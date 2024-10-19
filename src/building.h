@@ -158,8 +158,8 @@ BuildingClass : public TechnoClass
         virtual bool Is_Turret_Equipped() const override;
         virtual void Cloaking_AI(bool a1 = false) const override;
         virtual int entry_344(int a1) const override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;
-        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const;
+        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false);
         virtual void entry_358() override;
         virtual void entry_35C() override;
         virtual void entry_360() const override;

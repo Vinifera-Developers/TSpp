@@ -124,11 +124,11 @@ AircraftClass : public FootClass, public IFlyControl
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
         virtual DirStruct Fire_Direction() const override;
         virtual void Player_Assign_Mission(MissionType order, TARGET target = TARGET_NULL, TARGET destination = TARGET_NULL) override;
-        virtual void Reduce_Ammunition() const override;
+        virtual void Reduce_Ammunition() override;
         virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;
-        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const override;
+        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
+        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**
          *  FootClass

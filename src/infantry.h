@@ -102,11 +102,11 @@ InfantryClass : public FootClass
         virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
         virtual void Assign_Target(TARGET target) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
         virtual bool Is_Ready_To_Random_Animate() const override;
         virtual bool Random_Animate() override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;
-        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const override;
+        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**
          *  FootClass

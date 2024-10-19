@@ -161,7 +161,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Response_Move() const;
         virtual void Response_Attack() const;
         virtual void Player_Assign_Mission(MissionType order, TARGET target = TARGET_NULL, TARGET destination = TARGET_NULL);
-        virtual void Reduce_Ammunition() const;
+        virtual void Reduce_Ammunition();
         virtual bool Target_Something_Nearby(Coordinate &coord, ThreatType threat);
         virtual void Stun();
         virtual bool In_Range_Of(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
@@ -169,7 +169,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
         virtual void Assign_Target(TARGET target) const;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
         virtual bool Captured(HouseClass *house = nullptr);
         virtual void Laser_Zap(TARGET target, int which, const WeaponTypeClass *weapontype, Coordinate &a4);
         virtual void entry_308(Coordinate &coord, float a2);
@@ -190,8 +190,8 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int entry_344(int a1) const;
         virtual bool Is_Ready_To_Random_Animate() const;
         virtual bool Random_Animate();
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) const;
-        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const;
+        virtual void Assign_Destination(const TARGET target, bool a2 = true);
+        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false);
         virtual void entry_358();
         virtual void entry_35C();
         virtual void entry_360() const;

@@ -39,7 +39,7 @@ class MissionControlClass;
 class MissionClass : public ObjectClass
 {
     public:
-		MissionClass();
+        MissionClass();
         MissionClass(const NoInitClass &noinit);
         virtual ~MissionClass();
 
@@ -85,48 +85,48 @@ class MissionClass : public ObjectClass
         virtual void Set_Mission(MissionType mission);
         virtual void Override_Mission(MissionType mission, TARGET tarcom = nullptr, TARGET navcom = nullptr);
         virtual bool Restore_Mission();
-        virtual bool entry_214() const; // has suspended mission?
+        virtual bool Has_Suspended_Mission() const; // has suspended mission?
 
-		void Shorten_Mission_Timer() { Timer = 0; }
+        void Shorten_Mission_Timer() { Timer = 0; }
 
-		const MissionControlClass &Get_Current_Mission_Control();
+        const MissionControlClass &Get_Current_Mission_Control();
 
-		static bool Is_Recruitable_Mission(MissionType mission);
+        static bool Is_Recruitable_Mission(MissionType mission);
 
         static const char *Mission_Name(MissionType mission);
         static MissionType Mission_From_Name(const char *name);
 
     public:
-		MissionType Mission;
-		MissionType SuspendedMission;
-		MissionType MissionQueue;
-		int Status;
-		bool field_5C;      // set when closing apc door in UnitClass::Mission_Unload.	// is mission done?
-		CDTimerClass<FrameTimerClass> Timer;
+        MissionType Mission;
+        MissionType SuspendedMission;
+        MissionType MissionQueue;
+        int Status;
+        bool field_5C;      // set when closing apc door in UnitClass::Mission_Unload.	// is mission done?
+        CDTimerClass<FrameTimerClass> Timer;
 };
 
 
 class MissionControlClass
 {
-	public:
-		MissionControlClass();
-		~MissionControlClass() {}
+    public:
+        MissionControlClass();
+        ~MissionControlClass() {}
 
-		const char *Name() const;
+        const char *Name() const;
 
-		int Normal_Delay() const { return TICKS_PER_MINUTE * Rate; }
-		int AA_Delay() const { return TICKS_PER_MINUTE * AARate; }
+        int Normal_Delay() const { return TICKS_PER_MINUTE * Rate; }
+        int AA_Delay() const { return TICKS_PER_MINUTE * AARate; }
 
-		bool Read_INI(CCINIClass &ini);
+        bool Read_INI(CCINIClass &ini);
 
-	public:
-		MissionType Mission;
-		bool IsNoThreat;
-		bool IsZombie;
-		bool IsRecruitable;
-		bool IsParalyzed;
-		bool IsRetaliate;
-		bool IsScatter;
-		double Rate;
-		double AARate;
+    public:
+        MissionType Mission;
+        bool IsNoThreat;
+        bool IsZombie;
+        bool IsRecruitable;
+        bool IsParalyzed;
+        bool IsRetaliate;
+        bool IsScatter;
+        double Rate;
+        double AARate;
 };

@@ -118,10 +118,10 @@ UnitClass : public FootClass
         virtual int Get_Max_Speed() const override;
         virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
         virtual bool Captured(HouseClass *house = nullptr) override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) const override;
-        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) const override;
+        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**
          *  FootClass
