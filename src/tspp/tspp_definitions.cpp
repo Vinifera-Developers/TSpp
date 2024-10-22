@@ -2820,7 +2820,7 @@ DEFINE_IMPLEMENTATION(void MissionClass::Set_Mission(MissionType), 0x00558FE0);
 DEFINE_IMPLEMENTATION(void MissionClass::Override_Mission(MissionType, const TARGET, const TARGET), 0x005594D0);
 DEFINE_IMPLEMENTATION(bool MissionClass::Restore_Mission(), 0x00559510);
 DEFINE_IMPLEMENTATION(bool MissionClass::Has_Suspended_Mission() const, 0x00559840);
-DEFINE_IMPLEMENTATION(const MissionControlClass &MissionClass::Get_Current_Mission_Control(), 0x00559830);
+DEFINE_IMPLEMENTATION(const MissionControlClass &MissionClass::Get_Current_Mission_Control() const, 0x00559830);
 DEFINE_IMPLEMENTATION(bool MissionClass::Is_Recruitable_Mission(MissionType), 0x00559530);
 DEFINE_IMPLEMENTATION(const char *MissionClass::Mission_Name(MissionType), 0x005597A0);
 DEFINE_IMPLEMENTATION(MissionType MissionClass::Mission_From_Name(const char *), 0x00559760);
