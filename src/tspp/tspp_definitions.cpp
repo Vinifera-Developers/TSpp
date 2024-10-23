@@ -1649,6 +1649,8 @@ DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D 
 DEFINE_IMPLEMENTATION(Coordinate Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coordinate Tactical::func_60F740(const Point2D &) const, 0x0060F740);
 DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coordinate &, int), 0x0060F800);
+DEFINE_IMPLEMENTATION(int Tactical::Z_Lepton_To_Pixel(LEPTON), 0x0060F3C0);
+DEFINE_IMPLEMENTATION(LEPTON Tactical::Pixel_To_Z_Lepton(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface &surface, bool full_redraw, RenderPassEnum render_pass), 0x006111E0);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
@@ -1660,7 +1662,7 @@ DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Center_Position() const, 0x
 DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Position() const, 0x00612D70);
 DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
 DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
-DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(int, int), 0x0060F0F0);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(Point2D), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
@@ -5411,7 +5413,7 @@ DEFINE_IMPLEMENTATION(void Init_Voxel_Palette(FileClass* file), 0x00665DA0);
 DEFINE_IMPLEMENTATION(const char *Name_From_RTTI(RTTIType), 0x00403500);
 DEFINE_IMPLEMENTATION(RTTIType RTTI_From_Name(const char *), 0x00403530);
 
-DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D *, Point2D *, const Rect *), 0x006A8870);
+DEFINE_IMPLEMENTATION(bool Clip_Line(Point2D &, Point2D &, const Rect &), 0x006A8870);
 
 DEFINE_IMPLEMENTATION(bool Scale_Rotate(Surface &, BitmapClass &, TPoint2D<int> &, int, unsigned char), 0x005FCEC0);
 

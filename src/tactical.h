@@ -92,6 +92,8 @@ Tactical : public AbstractClass
         Coordinate func_60F740(const Point2D &pixel) const;
         void func_60F800(const Coordinate &coord, int a2);
         // 0060FBB0
+        static int Z_Lepton_To_Pixel(LEPTON z);
+        static LEPTON Pixel_To_Z_Lepton(int a1);
         // 0060FF70
         // 0060FF80
         // 00610240
@@ -170,7 +172,7 @@ Tactical : public AbstractClass
         // 00617EE0
         void Draw_Radial_Indicators() const; // 00617FA0
         
-        static Point2D func_60F0F0(int x, int y);
+        static Point2D func_60F0F0(Point2D point);
         static int func_60F450(int a1);
         static void func_60FBB0(Rect &rect, bool a5 = false);
 

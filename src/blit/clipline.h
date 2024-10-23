@@ -35,4 +35,4 @@ class Point2D;
 class Rect;
 
 
-bool Clip_Line(Point2D *point1, Point2D *point2, const Rect *rect);
+bool Clip_Line(Point2D &point1, Point2D &point2, const Rect &rect);
