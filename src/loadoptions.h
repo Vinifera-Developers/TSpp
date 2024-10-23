@@ -35,23 +35,23 @@
 
 class FileEntryClass
 {
-	public:
-		char Descr[128];	// Save-game description.
-		char Filename[32];
-		unsigned Scenario;	// Scenario #
-		HousesType House;
+    public:
+        char Descr[128];	// Save-game description.
+        char Filename[32];
+        unsigned Scenario;	// Scenario #
+        HousesType House;
         char Handle[64];
-		int Campaign;       // The campaign internal id.
-		FILETIME DateTime;	// Date/time stamp of file.
-		bool Valid;			// Is the scenario valid?
-		bool Old;
+        int Campaign;       // The campaign internal id.
+        FILETIME DateTime;	// Date/time stamp of file.
+        bool Valid;			// Is the scenario valid?
+        bool Old;
         GameEnum Session;   // Game session mode.
 };
 
 
 class LoadOptionsClass
 {
-	public:
+    public:
         /**
          *  This defines the mode of the dialog.
          */
@@ -62,7 +62,7 @@ class LoadOptionsClass
             MODE_DELETE
         } OperationModeEnum;
 
-	public:
+    public:
         LoadOptionsClass();
         virtual ~LoadOptionsClass();
 
@@ -80,7 +80,7 @@ class LoadOptionsClass
         void Fill_List(HWND hWnd);
         bool Read_Save_Files();
 
-	private:
+    private:
         OperationModeEnum Mode;
         char *FileExt;
         char *Description;

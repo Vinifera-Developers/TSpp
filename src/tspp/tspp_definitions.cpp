@@ -1204,6 +1204,9 @@ DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
 DEFINE_IMPLEMENTATION(HRESULT Save_Misc_Values(IStream *), 0x005D7910);
 DEFINE_IMPLEMENTATION(HRESULT Load_Misc_Values(IStream *), 0x005D7AF0);
 DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(const char*, void*), 0x005D7E90);
+DEFINE_IMPLEMENTATION(bool Put_All(IStream*, bool), 0x005D54A0);
+DEFINE_IMPLEMENTATION(bool Get_All(IStream*, bool), 0x005D6BE0);
+DEFINE_IMPLEMENTATION(void Post_Load_Game(), 0x005DC470);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimTypeClass::GetClassID(CLSID *), 0x0065FE30);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimTypeClass::Load(IStream *), 0x0065FE70);
@@ -2061,6 +2064,7 @@ DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(void RadarClass::Toggle_Radar(bool), 0x005BC080);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Player_Names(), 0x005BC150);
 DEFINE_IMPLEMENTATION(void RadarClass::Player_Names(bool), 0x005BC190);
+DEFINE_IMPLEMENTATION(void RadarClass::Total_Radar_Refresh(), 0x005BCE90);
 RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
 DEFINE_IMPLEMENTATION(bool RadarClass::RTacticalClass::Action(unsigned, KeyNumType &), 0x005B9190);
 

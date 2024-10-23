@@ -40,6 +40,11 @@ HRESULT Load_Misc_Values(IStream *pStm);
 
 bool Get_Savefile_Info(const char *file_name, void*);
 
+bool Put_All(IStream* pStm, bool save_net);
+bool Get_All(IStream* pStm, bool load_net);
+
+void Post_Load_Game();
+
 
 template<class T>
 HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)

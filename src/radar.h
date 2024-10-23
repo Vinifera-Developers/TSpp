@@ -109,7 +109,7 @@ class RadarClass : public DisplayClass
         void Player_Names(bool a1);
         // 005BC1C0
         // 005BCC40
-        // 005BCE90
+        void Total_Radar_Refresh();
 
     public:
         int RadarX;                     // Offset of the radar image.
