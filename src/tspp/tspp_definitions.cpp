@@ -1204,7 +1204,6 @@ DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4F
 DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
 DEFINE_IMPLEMENTATION(HRESULT Save_Misc_Values(IStream *), 0x005D7910);
 DEFINE_IMPLEMENTATION(HRESULT Load_Misc_Values(IStream *), 0x005D7AF0);
-DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(const char*, void*), 0x005D7E90);
 DEFINE_IMPLEMENTATION(bool Put_All(IStream*, bool), 0x005D54A0);
 DEFINE_IMPLEMENTATION(bool Get_All(IStream*, bool), 0x005D6BE0);
 DEFINE_IMPLEMENTATION(void Post_Load_Game(), 0x005DC470);
@@ -3060,7 +3059,9 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Set_Action_Lines(bool), 0x00639C60);
 
 DEFINE_IMPLEMENTATION(char *strtrim(char *), 0x0064AC10);
 
+DEFINE_IMPLEMENTATION(void WinDialogClass::Display_Dialog(HWND), 0x005A0820);
 DEFINE_IMPLEMENTATION(void WinDialogClass::End_Dialog(HWND), 0x005A0700);
+DEFINE_IMPLEMENTATION(HWND WinDialogClass::Do_Message_Box(const char*, const char*, bool*), 0x005A0C60);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Dialog_Move(HWND, WPARAM, LPARAM, UINT), 0x00685300);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window_Within(HWND, HWND), 0x00685600);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window(HWND), 0x006855E0);
@@ -5391,7 +5392,7 @@ DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Time(IStorage *, int, FILETI
 DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Time_Set(IPropertySetStorage *, int, FILETIME *), 0x005DA7C0);
 
 DEFINE_IMPLEMENTATION(const WCHAR* Stream_Name_From_ID(int), 0x005DA8C0);
-DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(char const *, SaveVersionInfo *), 0x005D7E90);
+DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(char const *, SaveVersionInfo &), 0x005D7E90);
 
 
 

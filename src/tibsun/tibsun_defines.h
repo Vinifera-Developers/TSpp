@@ -148,6 +148,9 @@ extern int &BridgeCellHeight;
 #define MOUSE_HOTSPOT_MAX 54321
 
 
+#define NET_SAVE_FILE_NAME "SAVEGAME.NET"
+
+
 /**
  *  Type definitions.
  */

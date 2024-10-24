@@ -33,7 +33,9 @@
 namespace WinDialogClass
 {
 
+void Display_Dialog(HWND hWnd);
 void End_Dialog(HWND hWnd);
+HWND Do_Message_Box(const char* button1, const char* button2, bool* state);
 bool Dialog_Move(HWND hWnd, WPARAM wParam, LPARAM lParam, UINT uMsg);
 bool Center_Window(HWND dialog);
 bool Center_Window_Within(HWND dialog, HWND window);

@@ -38,8 +38,6 @@ bool Load_Game(const char *file_name);
 HRESULT Save_Misc_Values(IStream *pStm);
 HRESULT Load_Misc_Values(IStream *pStm);
 
-bool Get_Savefile_Info(const char *file_name, void*);
-
 bool Put_All(IStream* pStm, bool save_net);
 bool Get_All(IStream* pStm, bool load_net);
 
