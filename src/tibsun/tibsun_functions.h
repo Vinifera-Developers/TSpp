@@ -39,6 +39,7 @@ class PaletteClass;
 class ObjectClass;
 class AbstractClass;
 class TechnoTypeClass;
+class TechnoClass;
 
 
 void *Load_Alloc_Data(char const *name, int flags = 0 /* MEM_NORMAL */);
@@ -63,6 +64,7 @@ const TechnoTypeClass * Fetch_Techno_Type(RTTIType type, int id);
 void Unselect_All_Except(ObjectClass *object);
 bool Prep_For_Side(SideType side);
 bool Prep_Speech_For_Side(SideType side);
+TechnoClass* Best_Selected_Object();
 void Shake_The_Screen(int shakes);
 long Owner_From_Name(const char *name);
 bool Main_Loop();

@@ -5384,6 +5384,7 @@ DEFINE_IMPLEMENTATION(void Unselect_All(), 0x00463180);
 DEFINE_IMPLEMENTATION(const TechnoTypeClass * Fetch_Techno_Type(RTTIType, int), 0x004631B0);
 DEFINE_IMPLEMENTATION(bool Prep_For_Side(SideType), 0x004E7EB0);
 DEFINE_IMPLEMENTATION(bool Prep_Speech_For_Side(SideType), 0x004E8460);
+DEFINE_IMPLEMENTATION(TechnoClass* Best_Selected_Object(), 0x004E8770);
 DEFINE_IMPLEMENTATION(void Shake_The_Screen(int), 0x004633B0);
 DEFINE_IMPLEMENTATION(long Owner_From_Name(const char *), 0x00463390);
 DEFINE_IMPLEMENTATION(bool Main_Loop(), 0x00508A40);
