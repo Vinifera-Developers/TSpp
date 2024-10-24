@@ -284,6 +284,7 @@
 #include "voxellib.h"
 #include "staticbuffer.h"
 #include "voxelpal.h"
+#include "savever.h"
 
 
 /**
@@ -5347,6 +5348,52 @@ DEFINE_IMPLEMENTATION(int Create_Air_Reinforcement(HouseClass *, AircraftType, i
 DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, AreaStruct &), 0x0060A8B0);
 DEFINE_IMPLEMENTATION(DataStruct * StaticBufferClass::Write_To_Surface(BSurface &, Rect &, TPoint2D<unsigned short>), 0x0060A9E0);
 
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(SaveVersionInfo::SaveVersionInfo(), 0x005D8BE0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Version(int), 0x005D8C40);
+DEFINE_IMPLEMENTATION(int SaveVersionInfo::Get_Version(), 0x005D8C50);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Internal_Version(int), 0x005D8C60);
+DEFINE_IMPLEMENTATION(int SaveVersionInfo::Get_Internal_Version(), 0x005D8C70);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Scenario_Description(const char *), 0x005D8C80);
+DEFINE_IMPLEMENTATION(const char * SaveVersionInfo::Get_Scenario_Description(), 0x005D8CA0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Player_House(const char *), 0x005D8CB0);
+DEFINE_IMPLEMENTATION(const char * SaveVersionInfo::Get_Player_House(), 0x005D8CD0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Campaign_Number(int), 0x005D8CE0);
+DEFINE_IMPLEMENTATION(int SaveVersionInfo::Get_Campaign_Number(), 0x005D8CF0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Scenario_Number(int), 0x005D8D00);
+DEFINE_IMPLEMENTATION(int SaveVersionInfo::Get_Scenario_Number(), 0x005D8D10);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Unknown_String(const char *), 0x005D8D20);
+DEFINE_IMPLEMENTATION(const char * SaveVersionInfo::Get_Unknown_String(), 0x005D8D50);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Player_Name(const char *), 0x005D8D60);
+DEFINE_IMPLEMENTATION(const char * SaveVersionInfo::Get_Player_Name(), 0x005D8D80);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Executable_Name(const char *), 0x005D8D90);
+DEFINE_IMPLEMENTATION(const char * SaveVersionInfo::Get_Executable_Name(), 0x005D8DC0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Start_Time(FILETIME &), 0x005D8DD0);
+DEFINE_IMPLEMENTATION(FILETIME SaveVersionInfo::Get_Start_Time(), 0x005D8DF0);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Play_Time(FILETIME &), 0x005D8E10);
+DEFINE_IMPLEMENTATION(FILETIME SaveVersionInfo::Get_Play_Time(), 0x005D8E30);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Last_Time(FILETIME &), 0x005D8E50);
+DEFINE_IMPLEMENTATION(FILETIME SaveVersionInfo::Get_Last_Time(), 0x005D8E70);
+DEFINE_IMPLEMENTATION(void SaveVersionInfo::Set_Game_Type(int), 0x005D8E90);
+DEFINE_IMPLEMENTATION(int SaveVersionInfo::Get_Game_Type(), 0x005D8EA0);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save(IStorage *), 0x005D8EB0);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load(IStorage *), 0x005D9440);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_String(IStorage *, int, char *), 0x005D9D90);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_String_Set(IPropertySetStorage *, int, char *), 0x005D9E80);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_Int(IStorage *, int, int *), 0x005D9F60);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_Int_Set(IPropertySetStorage *, int, int *), 0x005DA020);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_String(IStorage *, int, char *), 0x005DA0F0);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_String_Set(IPropertySetStorage *, int, const char *), 0x005DA230);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Int(IStorage *, int, int), 0x005DA350);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Int_Set(IPropertySetStorage *, int, int), 0x005DA440);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_Time(IStorage *, int, FILETIME *), 0x005DA530);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Load_Time_Set(IPropertySetStorage *, int, FILETIME *), 0x005DA5F0);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Time(IStorage *, int, FILETIME *), 0x005DA6D0);
+DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Time_Set(IPropertySetStorage *, int, FILETIME *), 0x005DA7C0);
+
+DEFINE_IMPLEMENTATION(const WCHAR* Stream_Name_From_ID(int), 0x005DA8C0);
+DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(char const *, SaveVersionInfo *), 0x005D7E90);
+
+
 
 /**
  *  Owner draw
@@ -5593,6 +5640,7 @@ int &VPL_SectionCount = Make_Global<int>(0x00822320);
 int &VPL_field_C = Make_Global<int>(0x00835640);
 RGBStruct (&Voxel_Palette)[VOXEL_PALETTE_SIZE] = Make_Global<RGBStruct[VOXEL_PALETTE_SIZE]>(0x00822340);
 unsigned char (&Voxel_PaletteLookup)[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE] = Make_Global<unsigned char[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE]>(0x00833640);
+unsigned& GameVersion = Make_Global<unsigned>(0x0070BC58);
 
 
 /**
