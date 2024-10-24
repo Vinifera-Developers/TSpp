@@ -31,6 +31,7 @@
 #include "tibsun_defines.h"
 
 
+class ObjectClass;
 class CCINIClass;
 class WeaponTypeClass;
 class BuildingTypeClass;
@@ -69,7 +70,7 @@ SuperWeaponTypeClass : public AbstractTypeClass
          */
         virtual bool Read_INI(CCINIClass &ini) override;
 
-        virtual ActionType entry_70() const;
+        virtual ActionType What_Action(Cell& cell, ObjectClass* object) const;
 
         static const SuperWeaponTypeClass *From_Action(ActionType action);
 

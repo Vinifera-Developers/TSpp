@@ -2322,7 +2322,7 @@ DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Size_Of(bool) const, 0x0060D230)
 DEFINE_IMPLEMENTATION(void SuperWeaponTypeClass::Compute_CRC(WWCRCEngine &) const, 0x0060D240);
 DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Get_Heap_ID() const, 0x0060D2E0);
 DEFINE_IMPLEMENTATION(bool SuperWeaponTypeClass::Read_INI(CCINIClass &), 0x0060D2F0);
-DEFINE_IMPLEMENTATION(ActionType SuperWeaponTypeClass::entry_70() const, 0x0060D6C0);
+DEFINE_IMPLEMENTATION(ActionType SuperWeaponTypeClass::What_Action(Cell&, ObjectClass*) const, 0x0060D6C0);
 DEFINE_IMPLEMENTATION(const SuperWeaponTypeClass *SuperWeaponTypeClass::From_Action(ActionType), 0x0060CF30);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ConnectionPointClass::QueryInterface(REFIID, LPVOID *), 0x0046F500);
