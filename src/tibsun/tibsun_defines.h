@@ -2907,6 +2907,11 @@ struct Cell
         return (short)WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
     }
 
+    short Length2() const
+    {
+        return X * X + Y * Y;
+    }
+
     const char *As_String() const
     {
         static char _buffer[8+8];
