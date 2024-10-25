@@ -44,111 +44,114 @@ class TechnoTypeClass;
 
 class ScenarioClass
 {
-    public:
-        ScenarioClass();
-        ~ScenarioClass();
+public:
+    ScenarioClass();
+    ~ScenarioClass();
 
-        void Save(LPSTREAM pStm);
-        void Load(LPSTREAM pStm);
+    void Save(LPSTREAM pStm);
+    void Load(LPSTREAM pStm);
 
-        bool Read_INI(CCINIClass &ini);
-        bool Write_INI(CCINIClass &ini);
-        
-        bool Read_Global_INI(CCINIClass &ini);
-        bool Read_Local_INI(CCINIClass &ini);
-        bool Write_Local_INI(CCINIClass &ini);
+    bool Read_INI(CCINIClass &ini);
+    bool Write_INI(CCINIClass &ini);
+    
+    bool Read_Global_INI(CCINIClass &ini);
+    bool Read_Local_INI(CCINIClass &ini);
+    bool Write_Local_INI(CCINIClass &ini);
 
-        Cell Get_Waypoint_Location(int wp) const;
-        CellClass *Get_Waypoint_Cell(int wp) const;
-        Coordinate Get_Waypoint_Coord(int wp) const;
-        bool Is_Valid_Waypoint(int wp) const;
+    Cell Get_Waypoint_Location(int wp) const;
+    CellClass *Get_Waypoint_Cell(int wp) const;
+    Coordinate Get_Waypoint_Coord(int wp) const;
+    bool Is_Valid_Waypoint(int wp) const;
 
-    public:
-        SpecialClass SpecialFlags;
-        char NextScenario[PATH_MAX];
-        char AltNextScenario[PATH_MAX];
-        int HomeCell;                           // These are waypoint indices, not Cell coordinates
-        int AltHomeCell;
-        int UniqueID;
-        Random2Class RandomNumber;
-        DiffType Difficulty;			        // For human player.
-        DiffType CDifficulty;		            // For computer players.
-        TTimerClass<SystemTimerClass> ElapsedTimer;
-        Cell Waypoint[WAYPT_COUNT];
-        CDTimerClass<FrameTimerClass> MissionTimer;
-        CDTimerClass<FrameTimerClass> ShroudTimer;
-        CDTimerClass<FrameTimerClass> FogTimer;
-        CDTimerClass<FrameTimerClass> IceTimer;
-        CDTimerClass<FrameTimerClass> field_7E0;
-        CDTimerClass<FrameTimerClass> AmbientChangeTimer;
-        int Scenario;
-        TheaterType Theater;
-        char ScenarioName[PATH_MAX];
-        char Description[DESCRIP_MAX];
-        VQType IntroMovie;
-        VQType BriefMovie;
-        VQType WinMovie;
-        VQType LoseMovie;
-        VQType ActionMovie;
-        VQType PostScoreMovie;
-        VQType PreMapSelectMovie;
-        char BriefingText[1024];
-        ThemeType TransitTheme;
-        HousesType PlayerHouse;
-        double CarryOverPercent;
-        int CarryOverCap;
-        int Percent;
-        VariableFlagStruct GlobalFlags[50];
-        VariableFlagStruct LocalFlags[50];
-        Cell Views[VIEW_COUNT];
-        int BridgeCount;
-        bool IsFreeRadar;
-        bool IsTrainCrate;
-        bool IsTiberiumGrowth;
-        bool IsVeinGrowth;
-        bool IsIceGrowth;
-        bool IsBridgeChanged;
-        bool IsFlagChanged;
-        bool IsAmbientChanged;
-        bool IsEndOfGame;
-        bool IsInheritTimer;
-        bool IsSkipScore;
-        bool IsOneTimeOnly;
-        bool IsNoMapSel;
-        bool IsTruckCrate;
-        bool IsMoneyTiberium;
-        bool IsTiberiumDeathToVisceroid;
-        bool IsIgnoreGlobalAITriggers;
-        bool IsGDI;
-        bool IsMultiplayerOnly;
-        bool IsRandom;
-        bool CratePickedUp;
-        CDTimerClass<FrameTimerClass> FadeTimer;
-        CampaignType CampaignID;
-        int StartingDropships;
-        TypeList<TechnoTypeClass *> AllowableUnits;
-        TypeList<int> AllowableUnitMaximums;
-        TypeList<int> DropshipUnitCounts;
-        int AmbientOriginal;
-        int AmbientCurrent;
-        int AmbientTarget;
-        int Red;
-        int Green;
-        int Blue;
-        int Ground;
-        int Level;
-        int IonAmbient;
-        int IonRed;
-        int IonGreen;
-        int IonBlue;
-        int IonGround;
-        int IonLevel;
-        bool field_1E38;                    // Currently reading scenario ini?
-        int InitTime;
-        AddonType RequiredAddOn;
-        SideType SpeechSide;
-        unsigned short Stage;
-        bool UserInputLocked;
+    void Read_Waypoint_INI(CCINIClass& ini);
+    void Write_Waypoint_INI(CCINIClass& ini);
+
+public:
+    SpecialClass SpecialFlags;
+    char NextScenario[PATH_MAX];
+    char AltNextScenario[PATH_MAX];
+    int HomeCell;                           // These are waypoint indices, not Cell coordinates
+    int AltHomeCell;
+    int UniqueID;
+    Random2Class RandomNumber;
+    DiffType Difficulty;			        // For human player.
+    DiffType CDifficulty;		            // For computer players.
+    TTimerClass<SystemTimerClass> ElapsedTimer;
+    Cell Waypoint[WAYPT_COUNT];
+    CDTimerClass<FrameTimerClass> MissionTimer;
+    CDTimerClass<FrameTimerClass> ShroudTimer;
+    CDTimerClass<FrameTimerClass> FogTimer;
+    CDTimerClass<FrameTimerClass> IceTimer;
+    CDTimerClass<FrameTimerClass> field_7E0;
+    CDTimerClass<FrameTimerClass> AmbientChangeTimer;
+    int Scenario;
+    TheaterType Theater;
+    char ScenarioName[PATH_MAX];
+    char Description[DESCRIP_MAX];
+    VQType IntroMovie;
+    VQType BriefMovie;
+    VQType WinMovie;
+    VQType LoseMovie;
+    VQType ActionMovie;
+    VQType PostScoreMovie;
+    VQType PreMapSelectMovie;
+    char BriefingText[1024];
+    ThemeType TransitTheme;
+    HousesType PlayerHouse;
+    double CarryOverPercent;
+    int CarryOverCap;
+    int Percent;
+    VariableFlagStruct GlobalFlags[50];
+    VariableFlagStruct LocalFlags[50];
+    Cell Views[VIEW_COUNT];
+    int BridgeCount;
+    bool IsFreeRadar;
+    bool IsTrainCrate;
+    bool IsTiberiumGrowth;
+    bool IsVeinGrowth;
+    bool IsIceGrowth;
+    bool IsBridgeChanged;
+    bool IsFlagChanged;
+    bool IsAmbientChanged;
+    bool IsEndOfGame;
+    bool IsInheritTimer;
+    bool IsSkipScore;
+    bool IsOneTimeOnly;
+    bool IsNoMapSel;
+    bool IsTruckCrate;
+    bool IsMoneyTiberium;
+    bool IsTiberiumDeathToVisceroid;
+    bool IsIgnoreGlobalAITriggers;
+    bool IsGDI;
+    bool IsMultiplayerOnly;
+    bool IsRandom;
+    bool CratePickedUp;
+    CDTimerClass<FrameTimerClass> FadeTimer;
+    CampaignType CampaignID;
+    int StartingDropships;
+    TypeList<TechnoTypeClass *> AllowableUnits;
+    TypeList<int> AllowableUnitMaximums;
+    TypeList<int> DropshipUnitCounts;
+    int AmbientOriginal;
+    int AmbientCurrent;
+    int AmbientTarget;
+    int Red;
+    int Green;
+    int Blue;
+    int Ground;
+    int Level;
+    int IonAmbient;
+    int IonRed;
+    int IonGreen;
+    int IonBlue;
+    int IonGround;
+    int IonLevel;
+    bool field_1E38;                    // Currently reading scenario ini?
+    int InitTime;
+    AddonType RequiredAddOn;
+    SideType SpeechSide;
+    unsigned short Stage;
+    bool UserInputLocked;
 };
 
 

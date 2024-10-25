@@ -73,7 +73,7 @@ OverlayClass : public ObjectClass
 
         // 0058C850
         static TiberiumType To_TiberiumType(OverlayType overlay);
-        // 0058C980
+        static void Place_All_Veins();
 
         static void Read_INI(CCINIClass &ini);
         static void Write_INI(CCINIClass &ini);

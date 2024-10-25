@@ -218,7 +218,7 @@ BuildingClass : public TechnoClass
         // 00436CF0
         // 00436D50
         // 00436EC0
-        // 00437050
+        static void Init_Laser_Fences();
         // 004370D0
         // 00437370
         // 00437550

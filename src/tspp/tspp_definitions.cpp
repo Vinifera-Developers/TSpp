@@ -941,6 +941,7 @@ DEFINE_IMPLEMENTATION(void BuildingTypeClass::Set_Base_Defense_Values(), 0x00443
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Flush_For_Placement(Cell &, HouseClass *) const, 0x00440120);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::One_Time(), 0x0043F9B0);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init(TheaterType), 0x0043FC40);
+DEFINE_IMPLEMENTATION(void BuildingTypeClass::Fetch_ToTile_Types(), 0x00443E30);
 
 RGBClass::RGBClass() : Red(0), Green(0), Blue(0) {}
 RGBClass::RGBClass(const RGBStruct &that) : Red(that.R), Green(that.G), Blue(that.B) {}
@@ -1802,7 +1803,7 @@ DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-=(StorageClass &), 0x0
 DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
 
 DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD100);
-DEFINE_IMPLEMENTATION(void Load_Scenario(CCINIClass &, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(bool Load_Scenario(CCINIClass &, bool), 0x005DD4C0);
 DEFINE_IMPLEMENTATION(void Scenario_MP_Fixups(bool), 0x005DD290);
 DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 
@@ -1854,6 +1855,7 @@ DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coordinate&), 0x0052B870);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coordinate&), 0x0052B9B0);
+DEFINE_IMPLEMENTATION(void MapClass::Fog_Map(), 0x0052BBE0);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Overlay(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D7B0);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Wall(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D990);
 
@@ -2064,6 +2066,7 @@ DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coordinate &), 0x00
 DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
 DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell &) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
+DEFINE_IMPLEMENTATION(void RadarClass::Compute_Radar_Image(), 0x005B9B90);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(void RadarClass::Toggle_Radar(bool), 0x005BC080);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Player_Names(), 0x005BC150);
@@ -3317,7 +3320,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Animation_AI(), 0x00435A50);
 // 00436CF0
 // 00436D50
 // 00436EC0
-// 00437050
+DEFINE_IMPLEMENTATION(void BuildingClass::Init_Laser_Fences(), 0x00437050);
 // 004370D0
 // 00437370
 // 00437550
@@ -4137,7 +4140,7 @@ DEFINE_IMPLEMENTATION(void OverlayClass::Placement_Draw_It(Point2D &, Rect &) co
 DEFINE_IMPLEMENTATION(bool OverlayClass::Mark(MarkType), 0x0058B5E0);
 // 0058C850
 DEFINE_IMPLEMENTATION(TiberiumType OverlayClass::To_TiberiumType(OverlayType), 0x0058C8B0);
-// 0058C980
+DEFINE_IMPLEMENTATION(void OverlayClass::Place_All_Veins(), 0x0058C980);
 DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass &), 0x0058BE30);
 DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass &), 0x0058C280);
 OverlayClass::operator OverlayType () const { return Class->Type; }
@@ -4447,6 +4450,8 @@ DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x00
 DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
 DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoint_INI(CCINIClass &), 0x005E1560);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoint_INI(CCINIClass &), 0x005E1630);
 DEFINE_IMPLEMENTATION(bool Start_Scenario(const char *, bool, CampaignType), 0x005DB170);
 DEFINE_IMPLEMENTATION(void Clear_Scenario(), 0x005DC510);
 DEFINE_IMPLEMENTATION(void Do_Win(), 0x005DC8D0);
@@ -5320,6 +5325,7 @@ DEFINE_IMPLEMENTATION(bool VeinholeMonsterClass::Save_All(IStream *), 0x00663210
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Init_Clear(), 0x00661D00);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Draw_All(), 0x006619D0);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Update_All(), 0x006613C0);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Place_Veinhole_Monsters(bool), 0x006623F0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FoggedObjectClass::GetClassID(CLSID *), 0x0049F6D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Load(IStream *), 0x0049F420);
@@ -5801,6 +5807,7 @@ const ShapeFileStruct*& ObjectTypeClass::SelectShapes = Make_Global<const ShapeF
 const ShapeFileStruct*& ObjectTypeClass::PipShapes = Make_Global<const ShapeFileStruct*>(0x00808750);
 const ShapeFileStruct*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeFileStruct*>(0x00808754);
 const ShapeFileStruct*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeFileStruct*>(0x00808758);
+bool& LightSourceClass::UpdateAllowed = Make_Global<bool>(0x00700398);
 
 
 /**
@@ -5909,6 +5916,7 @@ QueueClass<EventClass, MAX_EVENTS> &OutList = Make_Global< QueueClass<EventClass
 QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList = Make_Global< QueueClass<EventClass, (MAX_EVENTS * 64)> >(0x007B3530);
 
 unsigned long &GameCRC = Make_Global<unsigned long>(0x00809894);
+unsigned long& ScenarioCRC = Make_Global<unsigned long>(0x007E4390);
 int &IsMono = Make_Global<int>(0x00809E28);
 
 const TheaterDataType *Theaters = Make_Pointer<const TheaterDataType>(0x006CA930);

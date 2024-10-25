@@ -76,7 +76,7 @@ class RadarClass : public DisplayClass
         int Cell_On_Radar(Cell &cell) const;
         void Draw_Names();
         // 005B99D0
-        // 005B9B90
+        void Compute_Radar_Image();
         // 005B9D10
         // 005BA3E0
         // 005BA590

@@ -37,77 +37,81 @@ class LightConvertClass;
 class DECLSPEC_UUID("6F9C48F0-1207-11D2-8174-006008055BB5")
 LightSourceClass : public AbstractClass
 {
-    public:
-        class PendingCellClass
-        {
-            public:
-                PendingCellClass() :
-                    Drawer(nullptr),
-                    Intensity(65536),
-                    Ambient(0),
-                    RedTint(1000),
-                    GreenTint(1000),
-                    BlueTint(1000),
-                    Cell(0)
-                {
-                }
+public:
+    class PendingCellClass
+    {
+        public:
+            PendingCellClass() :
+                Drawer(nullptr),
+                Intensity(65536),
+                Ambient(0),
+                RedTint(1000),
+                GreenTint(1000),
+                BlueTint(1000),
+                Cell(0)
+            {
+            }
 
-                ~PendingCellClass()
-                {
-                }
+            ~PendingCellClass()
+            {
+            }
 
-            public:
-                LightConvertClass *Drawer;
-                int Intensity;
-                int Ambient;
-                short RedTint;
-                short GreenTint;
-                short BlueTint;
-                Cell Cell;
-        };
+        public:
+            LightConvertClass *Drawer;
+            int Intensity;
+            int Ambient;
+            short RedTint;
+            short GreenTint;
+            short BlueTint;
+            Cell Cell;
+    };
 
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID *pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream *pStm);
+    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
-    public:
-        LightSourceClass();
-        LightSourceClass(Coordinate coord, int visibility, int intensity, int red, int green, int blue);
-        LightSourceClass(const NoInitClass &noinit);
-        virtual ~LightSourceClass();
-        
-        /**
-         *  AbstractClass
-         */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+public:
+    LightSourceClass();
+    LightSourceClass(Coordinate coord, int visibility, int intensity, int red, int green, int blue);
+    LightSourceClass(const NoInitClass &noinit);
+    virtual ~LightSourceClass();
+    
+    /**
+     *  AbstractClass
+     */
+    virtual RTTIType Kind_Of() const override;
+    virtual int Size_Of(bool firestorm = false) const override;
+    virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        void Enable(bool update = false);
-        void Disable(bool update = false);
-        void Process();
+    void Enable(bool update = false);
+    void Disable(bool update = false);
+    void Process();
 
-        const char *Name() const;
+    const char *Name() const;
 
-        static void Init_Clear();
-        // 00501950
+    static void Init_Clear();
+    // 00501950
 
-    public:
-        int Intensity;
-        int RedTint;
-        int GreenTint;
-        int BlueTint;
-        Coordinate Where;
-        int Visibility;
-        bool IsEnabled;
+public:
+    int Intensity;
+    int RedTint;
+    int GreenTint;
+    int BlueTint;
+    Coordinate Where;
+    int Visibility;
+    bool IsEnabled;
+
+public:
+    static bool& UpdateAllowed;
+
 };
 
 

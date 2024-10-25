@@ -441,6 +441,7 @@ extern QueueClass<EventClass, MAX_EVENTS> &OutList;
 extern QueueClass<EventClass, (MAX_EVENTS * 64)> &DoList;
 
 extern unsigned long &GameCRC;
+extern unsigned long &ScenarioCRC;
 extern int &IsMono;
 
 extern const TheaterDataType *Theaters; 

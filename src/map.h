@@ -246,7 +246,7 @@ class MapClass : public GScreenClass
         bool Is_Shrouded(Coordinate& coord);
         bool Is_Fogged(Coordinate& coord);
         // 0052BB10
-        // 0052BBE0
+        void Fog_Map();
         // 0052BC40
         // 0052BCA0
         // 0052BD50
