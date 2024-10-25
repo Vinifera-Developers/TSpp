@@ -1801,7 +1801,9 @@ DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-(StorageClass &) const
 DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-=(StorageClass &), 0x0060AF50);
 DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
 
-DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD100);
+DEFINE_IMPLEMENTATION(void Load_Scenario(CCINIClass &, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(void Scenario_MP_Fixups(bool), 0x005DD290);
 DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
 
 DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(Cell), 0x0050F1B0);

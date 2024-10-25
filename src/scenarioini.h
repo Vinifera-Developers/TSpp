@@ -27,5 +27,7 @@
  ******************************************************************************/
 #pragma once
 
-bool Read_Scenario_INI(const char *root, bool fresh = true);
-void Write_Scenario_INI(const char *root, bool a2 = false);
+bool Read_Scenario_INI(const char* root, bool fresh = true);
+void Load_Scenario(CCINIClass& ini, bool random = false);
+void Scenario_MP_Fixups(bool official);
+void Write_Scenario_INI(const char* root, bool a2 = false);
