@@ -2407,7 +2407,7 @@ typedef enum TActionType
     TACTION_TEXT_TRIGGER,          // Triggers a text message display.
     TACTION_DESTROY_TRIGGER,       // Destroy specified trigger.
     TACTION_AUTOCREATE,            // Computer to auto-create teams.
-    TACTION_WINLOSE,               // Win if captured, lose if destroyed.
+    TACTION_CHANGE_HOUSE,          // Repurposed in TS // TACTION_WINLOSE,               // Win if captured, lose if destroyed.
     TACTION_ALLOWWIN,              // Allows winning if triggered.
     TACTION_REVEAL_ALL,            // Reveal the entire map.
     TACTION_REVEAL_SOME,           // Reveal map around cell #.
@@ -2422,7 +2422,7 @@ typedef enum TActionType
     TACTION_SUB_TIMER,             // Decrease mission timer time.
     TACTION_SET_TIMER,             // Set and start the mission timer.
     TACTION_SET_GLOBAL,            // Set global variable.
-    TACTION_CLEAR_GLOBAL,          // Clear global variable.
+    TACTION_GLOBAL_CLEAR,          // Clear global variable.
     TACTION_BASE_BUILDING,         // Automated base building.
     TACTION_CREEP_SHADOW,          // Shadow grows back one 'step'.
     TACTION_DESTROY_OBJECT,        // Destroys the building this trigger is attached to.
@@ -2445,7 +2445,7 @@ typedef enum TActionType
     TACTION_ZOOM_IN,
     TACTION_ZOOM_OUT,
     TACTION_RESHROUD_MAP,
-    TACTION_CHANGE_LIGHT_BEHAVIOR,
+    TACTION_CHANGE_SPOTLIGHT_BEHAVIOR,
     TACTION_ENABLE_TRIGGER,
     TACTION_DISABLE_TRIGGER,
     TACTION_CREATE_RADAR_EVENT,
@@ -2468,12 +2468,12 @@ typedef enum TActionType
     TACTION_SET_AMBIENT_RATE,
     TACTION_SET_AMBIENT_LIGHT,
     TACTION_AI_TRIGGERS_BEGIN,
-    TACTION_AI_TRIGGERS_STOP,
+    TACTION_AI_TRIGGERS_END,
     TACTION_RATIO_AI_TRIGGER_TEAMS,
-    TACTION_RADIO_TEAM_AIRCRAFT,
-    TACTION_RADIO_TEAM_INFANTRY,
-    TACTION_RADIO_TEAM_UNITS,
-    TACTION_REINFORCEMENT_TEAM,
+    TACTION_SET_TEAM_AIRCRAFT_RATIO,
+    TACTION_SET_TEAM_INFANTRY_RATIO,
+    TACTION_SET_TEAM_UNIT_RATIO,
+    TACTION_REINFORCEMENTS_AT,
     TACTION_WAKEUP_SELF,
     TACTION_WAKEUP_ALL_SLEEPERS,
     TACTION_WAKEUP_ALL_HARMLESS,
@@ -2497,7 +2497,7 @@ typedef enum TActionType
     TACTION_FLASH_TEAM,
     TACTION_DISABLE_SPEECH,
     TACTION_ENABLE_SPEECH,
-    TACTION_SET_CONTROL_ID,
+    TACTION_SET_GROUP_ID,
     TACTION_TALK_BUBBLE,
 
     TACTION_COUNT,
