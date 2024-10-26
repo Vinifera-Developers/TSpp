@@ -72,7 +72,7 @@ TagClass : public AbstractClass
         // 0061E830
         // 0061E840
         // 0061E850
-        // 0061E860
+        bool Is_Trigger_Attached(TriggerClass* trig);
         void Set_Cell(Cell cell); // 0061EA10
         // 0061EA20
         // 0061EA50

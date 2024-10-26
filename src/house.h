@@ -400,7 +400,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         bool IsPlayerControl;
         bool IsStarted;
         bool IsAlerted;
-        bool field_C8; // set when ai triggers begin action.
+        bool IsAITriggersOn;
         bool IsBaseBuilding;
         bool IsDiscovered;
         bool IsDefeated;
