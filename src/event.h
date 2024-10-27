@@ -36,167 +36,167 @@
 
 
 /**
- *	This event class is used to contain all external game events (things that the player can
- *	do at any time) so that these events can be transported between linked computers. This
- *	encapsulation is required in order to ensure that each event affects all computers at the
- *	same time (same game frame).
+ *  This event class is used to contain all external game events (things that the player can
+ *  do at any time) so that these events can be transported between linked computers. This
+ *  encapsulation is required in order to ensure that each event affects all computers at the
+ *  same time (same game frame).
  */
 class EventClass
 {
-	public:
-		EventClass();
-		EventClass(unsigned int house_id, SpecialClass data);
-		EventClass(unsigned int house_id, EventType type, TargetClass target);
-		EventClass(unsigned int house_id, EventType type);
-		EventClass(unsigned int house_id, EventType type, Cell *cell);
-		EventClass(unsigned int house_id, EventType type, TargetClass src, TargetClass dest);
-		EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target = TARGET_NONE, TargetClass destination = TARGET_NONE);
-		EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
-		EventClass(unsigned int house_id, EventType type, RTTIType object, int id);
-		EventClass(unsigned int house_id, EventType type, RTTIType object, Cell *cell);
-		EventClass(unsigned int house_id, EventType type, int id, Cell *cell);
-		EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
-		EventClass(unsigned int house_id, void *ptr, unsigned long size);
+public:
+    EventClass();
+    EventClass(unsigned int house_id, SpecialClass data);
+    EventClass(unsigned int house_id, EventType type, TargetClass target);
+    EventClass(unsigned int house_id, EventType type);
+    EventClass(unsigned int house_id, EventType type, Cell *cell);
+    EventClass(unsigned int house_id, EventType type, TargetClass src, TargetClass dest);
+    EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target = TARGET_NONE, TargetClass destination = TARGET_NONE);
+    EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
+    EventClass(unsigned int house_id, EventType type, RTTIType object, int id);
+    EventClass(unsigned int house_id, EventType type, RTTIType object, Cell *cell);
+    EventClass(unsigned int house_id, EventType type, int id, Cell *cell);
+    EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
+    EventClass(unsigned int house_id, void *ptr, unsigned long size);
 
-		EventClass(EventType type, unsigned long hi, unsigned long lo)
-		{
-			ID = PlayerPtr->ID;
-			Type = type;
-			Frame = ::Frame;
-			Data.LongLong.Hi = hi;
-			Data.LongLong.Lo = lo;
-		}
+    EventClass(EventType type, unsigned long hi, unsigned long lo)
+    {
+        ID = PlayerPtr->ID;
+        Type = type;
+        Frame = ::Frame;
+        Data.LongLong.Hi = hi;
+        Data.LongLong.Lo = lo;
+    }
 
-		EventClass(EventType type, unsigned long hi, unsigned long lo, unsigned long extra)
-		{
-			ID = PlayerPtr->ID;
-			Type = type;
-			Frame = ::Frame;
-			Data.LongLongExtra.Hi = hi;
-			Data.LongLongExtra.Lo = lo;
-			Data.LongLongExtra.Extra = extra;
-		}
+    EventClass(EventType type, unsigned long hi, unsigned long lo, unsigned long extra)
+    {
+        ID = PlayerPtr->ID;
+        Type = type;
+        Frame = ::Frame;
+        Data.LongLongExtra.Hi = hi;
+        Data.LongLongExtra.Lo = lo;
+        Data.LongLongExtra.Extra = extra;
+    }
 
-		int operator==(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
-		int operator!=(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
+    int operator==(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
+    int operator!=(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
 
-		void Execute();
+    void Execute();
 
-		static const char *Event_Name(EventType event);
-		static unsigned char Event_Length(EventType event);
+    static const char *Event_Name(EventType event);
+    static unsigned char Event_Length(EventType event);
 
 #pragma pack(1) // We need this so bools/bits are not aligned.
-	public:
-		EventType Type;
-		unsigned Frame;
-		bool IsExecuted;
-		int ID;
+public:
+    EventType Type;
+    unsigned Frame;
+    bool IsExecuted;
+    int ID;
 
-		union {
-			struct {
-				SpecialClass Data;
-			} Options;
+    union {
+        struct {
+            SpecialClass Data;
+        } Options;
 
-			struct {
-				xCell Cell;
-			} SellCell;
+        struct {
+            xCell Cell;
+        } SellCell;
 
-			struct {
-				xTargetClass Whom;
-			} Target;
+        struct {
+            xTargetClass Whom;
+        } Target;
 
-			struct {
-				AnimType What;
-				HousesType Owner;
-				xCoordinate Where;
-			} Anim;
-			struct {
-				int Value;
-			} General;
+        struct {
+            AnimType What;
+            HousesType Owner;
+            xCoordinate Where;
+        } Anim;
+        struct {
+            int Value;
+        } General;
 
-			struct {
-				xTargetClass Whom;
-				MissionType	Mission;
-				xTargetClass Target;
-				xTargetClass Destination;
-			} MegaMission;
+        struct {
+            xTargetClass Whom;
+            MissionType	Mission;
+            xTargetClass Target;
+            xTargetClass Destination;
+        } MegaMission;
 
-			struct {
-				xTargetClass Whom;
-				MissionType	Mission;
-				xTargetClass Target;
-				xTargetClass Destination;
-				SpeedType Speed;
-				MPHType MaxSpeed;
-			} MegaMission_F;
+        struct {
+            xTargetClass Whom;
+            MissionType	Mission;
+            xTargetClass Target;
+            xTargetClass Destination;
+            SpeedType Speed;
+            MPHType MaxSpeed;
+        } MegaMission_F;
 
-			struct {
-				xTargetClass Whom;
-				MissionType Mission;
-			} Mission;
+        struct {
+            xTargetClass Whom;
+            MissionType Mission;
+        } Mission;
 
-			struct {
-				xTargetClass Whom;
-				xTargetClass Where;
-			} NavCom;
+        struct {
+            xTargetClass Whom;
+            xTargetClass Where;
+        } NavCom;
 
-			struct {
-				xTargetClass Whom;
-				xTargetClass Target;
-			} TarCom;
+        struct {
+            xTargetClass Whom;
+            xTargetClass Target;
+        } TarCom;
 
-			struct {
-				RTTIType Type;
-				int ID;
-			} Specific;
+        struct {
+            RTTIType Type;
+            int ID;
+        } Specific;
 
-			struct {
-				RTTIType Type;
-				xCoordinate Cell;
-			} Place;
+        struct {
+            RTTIType Type;
+            xCoordinate Cell;
+        } Place;
 
-			struct {
-				int ID;
-				xCoordinate Cell;
-			} Special;
+        struct {
+            int ID;
+            xCoordinate Cell;
+        } Special;
 
-			struct {
-				unsigned long CRC;
-				unsigned short CommandCount;
-				unsigned char Delay;
-			} FrameInfo;
+        struct {
+            unsigned long CRC;
+            unsigned short CommandCount;
+            unsigned char Delay;
+        } FrameInfo;
 
-			struct {
-				void * Pointer;
-				unsigned long Size;
-			} Variable;
+        struct {
+            void * Pointer;
+            unsigned long Size;
+        } Variable;
 
-			struct {
-				unsigned short DesiredFrameRate;
-				unsigned short MaxAhead;
-				unsigned char FrameSendRate;
-			} Timing;
+        struct {
+            unsigned short DesiredFrameRate;
+            unsigned short MaxAhead;
+            unsigned char FrameSendRate;
+        } Timing;
 
-			struct {
-				unsigned short AverageTicks;
-			} ProcessTime;
+        struct {
+            unsigned short AverageTicks;
+        } ProcessTime;
 
-			struct { // For 64-bit integers.
-				unsigned long Hi;
-				unsigned long Lo;
-			} LongLong;
+        struct { // For 64-bit integers.
+            unsigned long Hi;
+            unsigned long Lo;
+        } LongLong;
 
-			struct { // For 64-bit integers with additional 32-bit value.
-				unsigned long Hi;
-				unsigned long Lo;
-				unsigned long Extra;
-			} LongLongExtra;
+        struct { // For 64-bit integers with additional 32-bit value.
+            unsigned long Hi;
+            unsigned long Lo;
+            unsigned long Extra;
+        } LongLongExtra;
 
-			// Used for direct byte access to this events data, in debug cases only!
-			struct {
-				unsigned char Byte[1];
-			} Array;
+        // Used for direct byte access to this events data, in debug cases only!
+        struct {
+            unsigned char Byte[1];
+        } Array;
 
-		} Data;
+    } Data;
 #pragma pack()
 };
