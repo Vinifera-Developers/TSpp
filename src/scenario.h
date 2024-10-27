@@ -163,3 +163,5 @@ void Do_Restart();
 void Do_Abort();
 void Remove_AI_Players();
 void Assign_Houses();
+void Pause_Scenario_Timer();
+void Resume_Scenario_Timer();

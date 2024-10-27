@@ -122,6 +122,8 @@ bool TypeList<T>::Load(IStream *pStm)
     ULONG bytes_read = 0;
     T object;
 
+    new (this) TypeList<T>;
+
     /**
      *  Read the number of instances of this class.
      */
