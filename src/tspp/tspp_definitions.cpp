@@ -2549,7 +2549,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Hunter_Seeker(SuperClass *),
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Multi_Missile(SuperClass *), 0x004CA4A0);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Chem_Missile(SuperClass *), 0x004CA600);
 // 004CA760
-// 004CA880
+DEFINE_IMPLEMENTATION(void HouseClass::AI_Takeover(), 0x004CA880);
 // 004CB2D0
 // 004CB5B0
 // 004CB720
@@ -2945,7 +2945,7 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::entry_23C() const, 0x0062F750);
 DEFINE_IMPLEMENTATION(bool TechnoClass::entry_240() const, 0x0062F650);
 DEFINE_IMPLEMENTATION(DirStruct TechnoClass::Turret_Facing() const, 0x004A8DB0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Weapon_Equipped() const, 0x00632360);
-DEFINE_IMPLEMENTATION(bool TechnoClass::entry_24C() const, 0x00639140);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Is_On_Elevation() const, 0x00639140);
 DEFINE_IMPLEMENTATION(double TechnoClass::Tiberium_Load() const, 0x00637230);
 DEFINE_IMPLEMENTATION(double TechnoClass::Weed_Load() const, 0x006391A0);
 DEFINE_IMPLEMENTATION(int TechnoClass::Pip_Count() const, 0x00637260);
@@ -3310,8 +3310,8 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Animation_AI(), 0x00435A50);
 // 00436580
 // 00436610
 // 00436730
-// 00436790
-// 00436890
+DEFINE_IMPLEMENTATION(void BuildingClass::Turn_On(), 0x00436790);
+DEFINE_IMPLEMENTATION(void BuildingClass::Turn_Off(), 0x00436890);
 // 00436950
 // 004369D0
 // 00436A80

@@ -302,7 +302,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         void Super_Weapon_Multi_Missile(SuperClass *super);
         void Super_Weapon_Chem_Missile(SuperClass *super);
         // 004CA760
-        // 004CA880
+        void AI_Takeover();
         // 004CB2D0
         // 004CB5B0
         // 004CB720

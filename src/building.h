@@ -208,8 +208,8 @@ BuildingClass : public TechnoClass
         // 00436580
         // 00436610
         // 00436730
-        // 00436790
-        // 00436890
+        void Turn_On();
+        void Turn_Off();
         // 00436950
         // 004369D0
         // 00436A80

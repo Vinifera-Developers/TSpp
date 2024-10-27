@@ -220,8 +220,8 @@ class SessionClass
         bool IsGDI;
         int MaxPlayers;
         int NumPlayers;
-        unsigned long MaxAhead;
-        unsigned long FrameSendRate;
+        int MaxAhead;
+        int FrameSendRate;
         int DesiredFrameRate;
         int ProcessTimer;
         int ProcessTicks;

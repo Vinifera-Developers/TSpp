@@ -152,12 +152,12 @@ public:
 
         struct {
             RTTIType Type;
-            xCoordinate Cell;
+            xCell Cell;
         } Place;
 
         struct {
             int ID;
-            xCoordinate Cell;
+            Cell Cell;
         } Special;
 
         struct {

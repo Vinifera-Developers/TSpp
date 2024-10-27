@@ -340,13 +340,13 @@ inline Cell XY_Cell(int x, int y)
 
 inline Cell Coord_XCell(const Coordinate &coord)
 {
-    return coord.X / 256;
+    return Cell(coord.X / 256, 0);
 }
 
 
 inline Cell Coord_YCell(const Coordinate &coord)
 {
-    return coord.Y / 256;
+    return Cell(coord.Y / 256, 0);
 }
 
 

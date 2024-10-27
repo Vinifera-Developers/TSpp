@@ -2887,9 +2887,23 @@ struct IsoTileFileStruct
 #pragma pack()
 
 
+struct xCell {
+    short X; // X component of location.
+    short Y; // Y component of location.
+};
+
+struct xCoordinate {
+    int X; // X coordinate of the location.
+    int Y; // Y coordinate of the location.
+    int Z; // Z coordinate of the location.
+};
+
+
 struct Cell
 {
-    Cell(int16_t x = 0, int16_t y = 0) : X(x), Y(y) {}
+    Cell() = default;
+    Cell(const xCell& x) : X(x.X), Y(x.Y) {}
+    Cell(short x, short y) : X(x), Y(y) {}
     Cell(const Cell &that) : X(that.X), Y(that.Y) {}
 
     operator bool () const { return X != 0 || Y != 0 /*&& As_Cell_Number() < MAP_CELL_TOTAL*/; }
@@ -2903,7 +2917,7 @@ struct Cell
     Cell operator-(const Cell &that) const { return Cell(X - that.X, Y - that.Y); }
     Cell &operator-=(const Cell &that) { X -= that.X; Y -= that.Y; return *this; }
 
-    int32_t As_Cell_Number() const { return X + (Y << 9); }
+    int As_Cell_Number() const { return X + (Y << 9); }
 
     short Length() const
     {
@@ -2922,14 +2936,16 @@ struct Cell
         return _buffer;
     }
 
-    int16_t X; // X component of location.
-    int16_t Y; // Y component of location.
+    short X; // X component of location.
+    short Y; // Y component of location.
 };
 
 
 struct Coordinate
 {
-    Coordinate(int32_t x = 0, int32_t y = 0, int32_t z = 0) : X(x), Y(y), Z(z) {}
+    Coordinate() = default;
+    Coordinate(const xCoordinate& x) : X(x.X), Y(x.Y), Z(x.Z) {}
+    Coordinate(int x, int y, int z) : X(x), Y(y), Z(z) {}
     Coordinate(const Coordinate &that) : X(that.X), Y(that.Y), Z(that.Z) {}
 
     operator bool () const { return X != 0 || Y != 0 || Z != 0; }
@@ -2957,31 +2973,16 @@ struct Coordinate
         return _buffer;
     }
 
-    int32_t X; // X coordinate of the location.
-    int32_t Y; // Y coordinate of the location.
-    int32_t Z; // Z coordinate of the location.
-};
-
-
-struct xCell
-{
-    int16_t X; // X component of location.
-    int16_t Y; // Y component of location.
-};
-
-
-struct xCoordinate
-{
-    int32_t X; // X coordinate of the location.
-    int32_t Y; // Y coordinate of the location.
-    int32_t Z; // Z coordinate of the location.
+    int X; // X coordinate of the location.
+    int Y; // Y coordinate of the location.
+    int Z; // Z coordinate of the location.
 };
 
 
 struct wDimensionStruct
 {
-    int16_t W;
-    int16_t H;
+    short W;
+    short H;
 };
 
 

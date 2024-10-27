@@ -208,7 +208,7 @@ TActionClass : public AbstractClass
             long Value;
         } Data;
 
-    private:
+    public:
         struct ActionDescriptionStruct
         {
             char const *Name;

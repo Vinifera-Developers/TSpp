@@ -48,7 +48,7 @@ public:
                 RedTint(1000),
                 GreenTint(1000),
                 BlueTint(1000),
-                Cell(0)
+                Cell()
             {
             }
 

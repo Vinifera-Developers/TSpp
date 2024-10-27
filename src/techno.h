@@ -125,7 +125,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool entry_240() const;
         virtual DirStruct Turret_Facing() const;
         virtual bool Is_Weapon_Equipped() const;
-        virtual bool entry_24C() const;
+        virtual bool Is_On_Elevation() const;
         virtual double Tiberium_Load() const;
         virtual double Weed_Load() const;
         virtual int Pip_Count() const;
