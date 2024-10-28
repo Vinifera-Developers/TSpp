@@ -6041,7 +6041,7 @@ ARRAY2D_DEF(0x0080ED00, Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
 /**
  *  WOLAPI globals.
  */
-WOL::Tournament &TournamentGameType = Make_Global<WOL::Tournament>(0x00867008);
+WOL::Tournament &PlanetWestwoodTournament = Make_Global<WOL::Tournament>(0x00867008);
 unsigned long &PlanetWestwoodGameID = Make_Global<unsigned long>(0x00867014);
 unsigned long &PlanetWestwoodPortNumber = Make_Global<unsigned long>(0x0070FCF0);
 unsigned long &PlanetWestwoodStartTime = Make_Global<unsigned long>(0x00866E68);

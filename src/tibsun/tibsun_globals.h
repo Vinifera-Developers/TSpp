@@ -550,7 +550,7 @@ extern IsometricTileType &RoughTile;
 extern IsometricTileType &DestroyableCliff;
 extern IsometricTileType &BlackTile;
 
-extern WOL::Tournament &TournamentGameType;
+extern WOL::Tournament &PlanetWestwoodTournament;
 extern unsigned long &PlanetWestwoodGameID;
 extern unsigned long &PlanetWestwoodPortNumber;
 extern unsigned long &PlanetWestwoodStartTime;
