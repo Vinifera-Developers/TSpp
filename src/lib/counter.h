@@ -33,36 +33,36 @@
 
 class CounterClass : public VectorClass<int>
 {
-	// Required for GCC.
-    using VectorClass<int>::Vector;
-    using VectorClass<int>::VectorMax;
-    using VectorClass<int>::IsAllocated;
+// Required for GCC.
+using VectorClass<int>::Vector;
+using VectorClass<int>::VectorMax;
+using VectorClass<int>::IsAllocated;
 
-    public:
-        CounterClass();
-        virtual ~CounterClass();
+public:
+    CounterClass();
+    virtual ~CounterClass();
 
-        virtual void Clear() override;
+    virtual void Clear() override;
 
-        int Increment(int index);
-        int Decrement(int index);
-        bool Grow(int size);
-        int Count_Of(int index);
-        int Total();
+    int Increment(int index);
+    int Decrement(int index);
+    bool Grow(int size);
+    int Count_Of(int index);
+    int Total();
 
-        HRESULT Load(IStream *pStm);
-        HRESULT Save(IStream *pStm);
+    HRESULT Load(IStream *pStm);
+    HRESULT Save(IStream *pStm);
 };
 
 
 template<typename T>
-class TCounterClass : CounterClass
+class TCounterClass : public CounterClass
 {
-    public:
-        TCounterClass() : CounterClass() {}
-        virtual ~TCounterClass() {}
+public:
+    TCounterClass() : CounterClass() {}
+    virtual ~TCounterClass() {}
 
-        int Increment(T index) { return CounterClass::Increment((int)index); }
-        int Decrement(T index) { return CounterClass::Decrement((int)index); }
-        int Count_Of(T index) { return CounterClass::Count_Of((int)index); }
+    int Increment(T index) { return CounterClass::Increment((int)index); }
+    int Decrement(T index) { return CounterClass::Decrement((int)index); }
+    int Count_Of(T index) { return CounterClass::Count_Of((int)index); }
 };
