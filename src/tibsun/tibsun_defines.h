@@ -2917,6 +2917,15 @@ struct Cell
     Cell operator-(const Cell &that) const { return Cell(X - that.X, Y - that.Y); }
     Cell &operator-=(const Cell &that) { X -= that.X; Y -= that.Y; return *this; }
 
+    Cell operator*(short scalar) const { return Cell(X * scalar, Y * scalar); }
+    Cell &operator*=(short scalar) { X *= scalar; Y *= scalar; return *this; }
+
+    Cell operator/(short scalar) const { return Cell(X / scalar, Y / scalar); }
+    Cell &operator/=(short scalar) { X /= scalar; Y /= scalar; return *this; }
+
+    Cell operator%(short scalar) const { return Cell(X % scalar, Y % scalar); }
+    Cell &operator%=(short scalar) { X %= scalar; Y %= scalar; return *this; }
+
     int As_Cell_Number() const { return X + (Y << 9); }
 
     short Length() const
@@ -2958,6 +2967,16 @@ struct Coordinate
 
     Coordinate operator-(const Coordinate &that) const { return Coordinate(X - that.X, Y - that.Y, Z - that.Z); }
     Coordinate &operator-=(const Coordinate &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
+
+    Coordinate operator*(int scalar) const { return Coordinate(X * scalar, Y * scalar, Z * scalar); }
+    Coordinate &operator*=(int scalar) { X *= scalar; Y *= scalar; Z *= scalar; return *this; }
+
+    Coordinate operator/(int scalar) const { return Coordinate(X / scalar, Y / scalar, Z / scalar); }
+    Coordinate &operator/=(int scalar) { X /= scalar; Y /= scalar; Z /= scalar; return *this; }
+
+    Coordinate operator%(int scalar) const { return Coordinate(X % scalar, Y % scalar, Z % scalar); }
+    Coordinate &operator%=(int scalar) { X %= scalar; Y %= scalar; Z %= scalar; return *this; }
+
 
     int Length() const
     {
