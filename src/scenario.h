@@ -155,7 +155,8 @@ public:
 };
 
 
-bool Start_Scenario(const char *name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);
+bool Start_Scenario(char *name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);
+bool Read_Scenario(char *name);
 void Clear_Scenario();
 void Do_Win();
 void Do_Lose();
@@ -165,3 +166,6 @@ void Remove_AI_Players();
 void Assign_Houses();
 void Pause_Scenario_Timer();
 void Resume_Scenario_Timer();
+
+// This really belongs in MainOptionsClass.
+bool Change_Video_Mode(int height, int width);

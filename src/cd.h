@@ -33,24 +33,24 @@
 
 class CD
 {
-    public:
-        CD();
+public:
+    CD();
 
-        virtual bool Is_Available(int disk);
-        virtual bool Insert_Disk(int disk);
-        virtual bool Init_Swap(int disk);
+    virtual bool Is_Available(DiskID disk);
+    virtual bool Insert_Disk(DiskID disk);
+    virtual bool Init_Swap(DiskID disk);
 
-        bool Force_Available(int disk);
+    bool Force_Available(DiskID disk);
 
-        static int Get_Volume_Index();
-        static void Set_Required_CD(int disk);
+    static DiskID Get_Volume_Index();
+    static void Set_Required_CD(DiskID disk);
 
-        static int Get_CD_Index(int cd_drive, int timeout);
+    static DiskID Get_CD_Index(int cd_drive, int timeout);
 
-    public:
-        static bool &IsFilesLocal;
-        static int &RequiredCD;
+public:
+    static bool &IsFilesLocal;
+    static DiskID& RequiredCD;
 
-    public:
-        ThemeType ThemePlaying;
+public:
+    ThemeType ThemePlaying;
 };

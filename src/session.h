@@ -278,7 +278,7 @@ class SessionClass
         DynamicVectorClass<NodeNameType *> Games;
         DynamicVectorClass<NodeNameType *> Players;
         DynamicVectorClass<NodeNameType *> Chat;
-        int field_1A68;
+        int Suspended;
         unsigned ModemService:1;
         int CurPhoneIdx;
         char SerialDefaults[112];            // SerialSettingsType

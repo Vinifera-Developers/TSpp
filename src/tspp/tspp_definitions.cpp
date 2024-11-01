@@ -4452,7 +4452,8 @@ DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoint_INI(CCINIClass &), 0x005E1560);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoint_INI(CCINIClass &), 0x005E1630);
-DEFINE_IMPLEMENTATION(bool Start_Scenario(const char *, bool, CampaignType), 0x005DB170);
+DEFINE_IMPLEMENTATION(bool Start_Scenario(char *, bool, CampaignType), 0x005DB170);
+DEFINE_IMPLEMENTATION(bool Read_Scenario(char * name), 0x005DB9A0);
 DEFINE_IMPLEMENTATION(void Clear_Scenario(), 0x005DC510);
 DEFINE_IMPLEMENTATION(void Do_Win(), 0x005DC8D0);
 DEFINE_IMPLEMENTATION(void Do_Lose(), 0x005DCC20);
@@ -4462,6 +4463,7 @@ DEFINE_IMPLEMENTATION(void Remove_AI_Players(), 0x005DD290);
 DEFINE_IMPLEMENTATION(void Assign_Houses(), 0x005DE210);
 DEFINE_IMPLEMENTATION(void Pause_Scenario_Timer(), 0x005DB4C0);
 DEFINE_IMPLEMENTATION(void Resume_Scenario_Timer(), 0x005DB590);
+DEFINE_IMPLEMENTATION(bool Change_Video_Mode(int, int), 0x0050AC30);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Load(IStream *), 0x006738F0);
@@ -4867,13 +4869,13 @@ HoverLocomotionClass::HoverLocomotionClass(const NoInitClass &noinit) : Locomoti
 DEFINE_IMPLEMENTATION(int HoverLocomotionClass::Size_Of(bool) const, 0x004D1AD0);
 
 CD::CD() {}
-DEFINE_IMPLEMENTATION(bool CD::Is_Available(int), 0x0044E7A0);
-DEFINE_IMPLEMENTATION(bool CD::Insert_Disk(int), 0x0044E7C0);
-DEFINE_IMPLEMENTATION(bool CD::Init_Swap(int), 0x0044E970);
-DEFINE_IMPLEMENTATION(bool CD::Force_Available(int), 0x004756B0);
-DEFINE_IMPLEMENTATION(int CD::Get_Volume_Index(), 0x0044E770);
-DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(int), 0x0044E780);
-DEFINE_IMPLEMENTATION(int CD::Get_CD_Index(int, int), 0x004754A0);
+DEFINE_IMPLEMENTATION(bool CD::Is_Available(DiskID), 0x0044E7A0);
+DEFINE_IMPLEMENTATION(bool CD::Insert_Disk(DiskID), 0x0044E7C0);
+DEFINE_IMPLEMENTATION(bool CD::Init_Swap(DiskID), 0x0044E970);
+DEFINE_IMPLEMENTATION(bool CD::Force_Available(DiskID), 0x004756B0);
+DEFINE_IMPLEMENTATION(DiskID CD::Get_Volume_Index(), 0x0044E770);
+DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(DiskID), 0x0044E780);
+DEFINE_IMPLEMENTATION(DiskID CD::Get_CD_Index(int, int), 0x004754A0);
 
 DEFINE_IMPLEMENTATION(void VQA_Init_Option(), 0x0066C720);
 DEFINE_IMPLEMENTATION(void VQA_Set_Option(VQAOptionType), 0x0066C760);
@@ -5690,7 +5692,7 @@ int &IonStorm_Duration = Make_Global<int>(0x006FF284);
 ThemeType &IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell &RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
 bool &CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
-int &CD::RequiredCD = Make_Global<int>(0x006F5558);
+DiskID &CD::RequiredCD = Make_Global<DiskID>(0x006F5558);
 double &Levitation_Drag = Make_Global<double>(0x007001E8);
 double &Levitation_MaxVelocityWhenHappy = Make_Global<double>(0x007001F0);
 double &Levitation_MaxVelocityWhenFollowing = Make_Global<double>(0x007001F8);
