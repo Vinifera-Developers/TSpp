@@ -2511,9 +2511,9 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bo
 // 004C53C0
 // 004C5510
 // 004C56A0
-// 004C5770
+DEFINE_IMPLEMENTATION(void HouseClass::Add_Anger(int, HouseClass*), 0x004C5770);
 // 004C5840
-DEFINE_IMPLEMENTATION(void HouseClass::Begin_Construction(), 0x04C5880);
+DEFINE_IMPLEMENTATION(void HouseClass::Begin_Construction(), 0x004C5880);
 DEFINE_IMPLEMENTATION(TechnoTypeClass *HouseClass::Get_First_Ownable(TypeList<TechnoTypeClass *>&) const, 0x004C58B0);
 DEFINE_IMPLEMENTATION(bool HouseClass::Has_Prerequisites(const TechnoTypeClass*, DynamicVectorClass<BuildingTypeClass*>&, int) const, 0x004C5920);
 // 004C5BB0
@@ -2538,7 +2538,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::Update_Radars(), 0x004C9560);
 // 004C9730
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Factories(RTTIType), 0x004C9740);
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Radar_Spied(HouseClass *), 0x004C98E0);
-DEFINE_IMPLEMENTATION(void HouseClass::Update_Anger(HouseClass *), 0x004C9990);
+DEFINE_IMPLEMENTATION(void HouseClass::Clear_Anger(HouseClass *), 0x004C9990);
 DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Threat_Regions(), 0x004C99D0);
 // 004C9B80
 // 004C9BC0

@@ -264,7 +264,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C53C0
         // 004C5510
         // 004C56A0
-        // 004C5770
+        void Add_Anger(int angerlevel, HouseClass* house);
         // 004C5840
         void Begin_Construction(); // 004C5880
         TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
@@ -291,7 +291,7 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C9730
         void Update_Factories(RTTIType rtti); // 004C9740
         void Update_Radar_Spied(HouseClass *house); // 004C98E0
-        void Update_Anger(HouseClass *house); // 004C9990
+        void Clear_Anger(HouseClass *house); // 004C9990
         void Recalc_Threat_Regions(); // 004C99D0
         // 004C9B80
         // 004C9BC0
