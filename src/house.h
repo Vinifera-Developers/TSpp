@@ -371,6 +371,19 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
             return count;
         }
 
+        bool Can_Transact_Money(int amount)
+        {
+            return amount > 0 || Available_Money() >= -amount;
+        }
+
+        void Transact_Money(int amount)
+        {
+            if (amount > 0)
+                Refund_Money(amount);
+            else if (amount < 0)
+                Spend_Money(amount);
+        }
+
         static void One_Time();
         static void Computer_Paranoid();
         static void Read_Scenario_INI(CCINIClass &ini);
