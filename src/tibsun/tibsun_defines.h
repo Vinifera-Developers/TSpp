@@ -1888,7 +1888,8 @@ typedef enum ArmorType
 
     ARMOR_COUNT,
 
-    ARMOR_FIRST = 0
+    ARMOR_FIRST = 0,
+    ARMOR_NULL = -1         // Can't call it ARMOR_NONE because none is an actual armor
 } ArmorType;
 DEFINE_ENUMERATION_OPERATORS(ArmorType);
 
