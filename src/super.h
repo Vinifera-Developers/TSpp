@@ -118,5 +118,5 @@ SuperClass : public AbstractClass
 		bool IsReady;
 		bool IsSuspended;
 		int OldStage;
-		int field_34;
+		ChargeDrainState ChargeDrainState;
 };

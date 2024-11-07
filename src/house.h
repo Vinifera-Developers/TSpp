@@ -261,8 +261,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C5320
         // 004C5360
         // 004C5370
-        // 004C53C0
-        // 004C5510
+        void Change_Firestorm();// 004C53C0
+        void Firestorm_AI();// 004C5510
         // 004C56A0
         void Add_Anger(int angerlevel, HouseClass* house);
         // 004C5840

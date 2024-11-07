@@ -2508,8 +2508,8 @@ DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bo
 // 004C5320
 // 004C5360
 // 004C5370
-// 004C53C0
-// 004C5510
+DEFINE_IMPLEMENTATION(void HouseClass::Change_Firestorm(), 0x004C53C0);
+DEFINE_IMPLEMENTATION(void HouseClass::Firestorm_AI(), 0x004C5510);
 // 004C56A0
 DEFINE_IMPLEMENTATION(void HouseClass::Add_Anger(int, HouseClass*), 0x004C5770);
 // 004C5840
