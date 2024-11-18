@@ -2801,12 +2801,6 @@ struct ShapeFileStruct
 #pragma pack()
 
 
-struct VoxelObject {
-    VoxelLibraryClass* VoxelLibrary;
-    MotionLibraryClass* MotionLibrary;
-};
-
-
 #pragma pack(4)
 struct IsoTileHeaderStruct
 {

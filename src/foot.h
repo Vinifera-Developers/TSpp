@@ -32,6 +32,7 @@
 #include "ftimer.h"
 #include "ilocomotion.h"
 #include "vector.h"
+#include "voxelobj.h"
 
 
 class TeamClass;

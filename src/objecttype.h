@@ -29,6 +29,7 @@
 
 #include "abstracttype.h"
 #include "search.h"
+#include "voxelobj.h"
 
 
 class ObjectClass;
