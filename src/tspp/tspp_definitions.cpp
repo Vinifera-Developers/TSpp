@@ -2785,7 +2785,7 @@ DEFINE_IMPLEMENTATION(void ObjectClass::Set_Health_Ratio(double), 0x005866A0);
 DEFINE_IMPLEMENTATION(int ObjectClass::func_586730() const, 0x00586730);
 DEFINE_IMPLEMENTATION(void ObjectClass::Set_Z_Coord(int), 0x00586840);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Foot() const, 0x00584BF0);
-DEFINE_IMPLEMENTATION(DirStruct ObjectClass::Direction(TARGET), 0x00584B50);
+DEFINE_IMPLEMENTATION(DirStruct ObjectClass::Direction(TARGET) const, 0x00584B50);
 DEFINE_IMPLEMENTATION(int ObjectClass::Distance(TARGET) const, 0x00586B20);
 DEFINE_IMPLEMENTATION(int ObjectClass::Distance(const AbstractClass *) const, 0x00586C00);
 DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const AbstractClass *) const, 0x00586CC0);

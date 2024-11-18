@@ -164,7 +164,7 @@ class ObjectClass : public AbstractClass
         void Set_Health_Ratio(double health);
         int func_586730() const;
         void Set_Z_Coord(int z);
-        DirStruct Direction(TARGET target);
+        DirStruct Direction(TARGET target) const;
         int Distance(TARGET target) const;
         int Distance(const AbstractClass *target) const;
         int Distance_Squared(const AbstractClass *object) const;
