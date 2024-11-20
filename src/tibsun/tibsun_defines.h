@@ -962,6 +962,14 @@ DEFINE_ENUMERATION_OPERATORS(ImpactType);
 
 typedef enum PrerequisiteType {} PrerequisiteType;
 
+typedef enum ChargeDrainState : int {
+    CHARGE_DRAIN_NONE = -1,
+    CHARGE_DRIAN_CHARGING = 0,
+    CHARGE_DRAIN_READY = 1,
+    CHARGE_DRAIN_DRAINING = 2
+};
+DEFINE_ENUMERATION_OPERATORS(ChargeDrainState);
+
 typedef enum SpecialWeaponType
 {
     SPECIAL_MULTI_MISSILE,        // Tactical nuclear weapon.

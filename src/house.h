@@ -261,8 +261,8 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
         // 004C5320
         // 004C5360
         // 004C5370
-        // 004C53C0
-        // 004C5510
+        void Change_Firestorm();// 004C53C0
+        void Firestorm_AI();// 004C5510
         // 004C56A0
         void Add_Anger(int angerlevel, HouseClass* house);
         // 004C5840
@@ -369,6 +369,19 @@ HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IC
                 count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Get_Heap_ID()));
             }
             return count;
+        }
+
+        bool Can_Transact_Money(int amount)
+        {
+            return amount > 0 || Available_Money() >= -amount;
+        }
+
+        void Transact_Money(int amount)
+        {
+            if (amount > 0)
+                Refund_Money(amount);
+            else if (amount < 0)
+                Spend_Money(amount);
         }
 
         static void One_Time();
