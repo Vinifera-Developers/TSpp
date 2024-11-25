@@ -140,7 +140,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int entry_278() const;
         virtual int Get_Z_Adjustment() const;
         virtual ZGradientType Get_Z_Gradient() const;
-        virtual BuildingClass *const Find_Docking_Bay(const BuildingTypeClass *buildingtype, bool a2 = false, bool a3 = false) const;
+        virtual BuildingClass *const Find_Docking_Bay(const BuildingTypeClass *buildingtype, bool friendly = false, bool evenoccupied = false) const;
         virtual Cell Find_Exit_Cell(const TechnoClass *object) const;
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const;
