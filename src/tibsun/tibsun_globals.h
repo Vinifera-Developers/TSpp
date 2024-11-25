@@ -479,6 +479,10 @@ ARRAY2D_DEC(Cell, BuildingExitLists, BSIZE_COUNT, 24);
 
 ARRAY2D_DEC(Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
 
+ARRAY_DEC(int, CrateShares, CRATE_COUNT);
+ARRAY_DEC(AnimType, CrateAnims, CRATE_COUNT);
+ARRAY_DEC(int, CrateData, CRATE_COUNT);
+
 
 /**
  *  Isometric tile set types.

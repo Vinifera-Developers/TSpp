@@ -240,6 +240,7 @@ typedef enum CrateType
     CRATE_POD,
 
     CRATE_COUNT,
+    CRATE_FIRST = 0,
 
     CRATE_NONE = -1,
 } CrateType;

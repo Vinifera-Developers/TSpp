@@ -6039,6 +6039,10 @@ ARRAY2D_DEF(0x0075FAE8, Cell, BuildingExitLists, BSIZE_COUNT, 24);
 
 ARRAY2D_DEF(0x0080ED00, Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
 
+ARRAY_DEF(0x006F6C64, int, CrateShares, CRATE_COUNT);
+ARRAY_DEF(0x006F6CB0, AnimType, CrateAnims, CRATE_COUNT);
+ARRAY_DEF(0x00761068, int, CrateData, CRATE_COUNT);
+
 
 /**
  *  WOLAPI globals.
