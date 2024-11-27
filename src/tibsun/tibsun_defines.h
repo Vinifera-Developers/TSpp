@@ -871,12 +871,12 @@ DEFINE_ENUMERATION_OPERATORS(TaskForceType);
 
 typedef enum VeterancyRankType
 {
-    RANK_ELITE,
-    RANK_VETERAN,
-    RANK_ROOKIE,       // Little experience
     RANK_DUMBASS,
+    RANK_ROOKIE, // Little experience
+    RANK_VETERAN,
+    RANK_ELITE,
 
-    VETERANCY_NONE = -1,
+    RANK_NONE = -1,
 } VeterancyRankType;
 DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
 

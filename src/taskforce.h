@@ -45,60 +45,60 @@ class TaskForceMemberClass
 class DECLSPEC_UUID("61DE341E-0774-11D2-ACA5-006008055BB5")
 TaskForceClass : public AbstractTypeClass
 {
-    public:
-		enum TaskForceClassEnums {
-			MAX_TEAM_CLASSCOUNT = 5
-		};
+public:
+    enum TaskForceClassEnums {
+        MAX_TEAM_CLASSCOUNT = 5
+    };
 
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID *pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream *pStm);
+    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
-    public:
-        TaskForceClass(const char *ini_name = nullptr);
-        TaskForceClass(const NoInitClass &noinit);
-        virtual ~TaskForceClass();
+public:
+    TaskForceClass(const char *ini_name = nullptr);
+    TaskForceClass(const NoInitClass &noinit);
+    virtual ~TaskForceClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual RTTIType Kind_Of() const override;
+    virtual int Size_Of(bool firestorm = false) const override;
+    virtual void Compute_CRC(WWCRCEngine &crc) const override;
 
-        /**
-         *  AbstractTypeClass
-         */
-        virtual bool Read_INI(CCINIClass &ini) override;
-        virtual bool Write_INI(CCINIClass &ini) const override;
+    /**
+     *  AbstractTypeClass
+     */
+    virtual bool Read_INI(CCINIClass &ini) override;
+    virtual bool Write_INI(CCINIClass &ini) const override;
 
-        // 006216C0
-        // 00621B80
-        // 00621DE0
+    // 006216C0
+    bool Consists_Only_Of_Infantry() const;
+    // 00621DE0
 
-        static void Read_Scenario_INI(CCINIClass &ini, int a2);
-        static void Write_Scenario_INI(CCINIClass &ini, int a2);
+    static void Read_Scenario_INI(CCINIClass &ini, int a2);
+    static void Write_Scenario_INI(CCINIClass &ini, int a2);
 
-        static const TaskForceClass &As_Reference(TaskForceType type);
-        static const TaskForceClass *As_Pointer(TaskForceType type);
-        static const TaskForceClass &As_Reference(const char *name);
-        static const TaskForceClass *As_Pointer(const char *name);
-        static TaskForceType From_Name(const char *name);
-        static TaskForceType From_Full_Name(const char *name);
-        static const char *Name_From(TaskForceType type);
-        static const TaskForceClass *Find_Or_Make(const char *name);
+    static const TaskForceClass &As_Reference(TaskForceType type);
+    static const TaskForceClass *As_Pointer(TaskForceType type);
+    static const TaskForceClass &As_Reference(const char *name);
+    static const TaskForceClass *As_Pointer(const char *name);
+    static TaskForceType From_Name(const char *name);
+    static TaskForceType From_Full_Name(const char *name);
+    static const char *Name_From(TaskForceType type);
+    static const TaskForceClass *Find_Or_Make(const char *name);
 
-    public:
-        int Group;
-		int ClassCount;
-        int field_68;
-		TaskForceMemberClass Members[MAX_TEAM_CLASSCOUNT];
+public:
+    int Group;
+    int ClassCount;
+    int field_68;
+    TaskForceMemberClass Members[MAX_TEAM_CLASSCOUNT];
 };

@@ -81,480 +81,480 @@ class InfantryTypeClass;
 class DECLSPEC_UUID("D9D4A910-87C6-11D1-B707-00A024DDAFD1")
 HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
-    public:
-        class HouseStaticClass
-        {
-            public:
-                HouseStaticClass();
-                HouseStaticClass(const HouseStaticClass &that);
-                HouseStaticClass(const NoInitClass &noinit);
-                ~HouseStaticClass();
+public:
+    class HouseStaticClass
+    {
+        public:
+            HouseStaticClass();
+            HouseStaticClass(const HouseStaticClass &that);
+            HouseStaticClass(const NoInitClass &noinit);
+            ~HouseStaticClass();
 
-                void Add_Ally(HousesType house) { Allies |= 1 << house; }
-                void Remove_Ally(HousesType house) { Allies &= ~(1 << house); }
+            void Add_Ally(HousesType house) { Allies |= 1 << house; }
+            void Remove_Ally(HousesType house) { Allies &= ~(1 << house); }
 
-            public:
-                int IQ;
-                int TechLevel;
-                unsigned Allies;
-                long InitialCredits;
-                SourceType Edge;
-        };
+        public:
+            int IQ;
+            int TechLevel;
+            unsigned Allies;
+            long InitialCredits;
+            SourceType Edge;
+    };
 
-    public:
-        /**
-         *  IUnknown
-         */
-        IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID *ppvObj);
-        IFACEMETHOD_(ULONG, AddRef)();
-        IFACEMETHOD_(ULONG, Release)();
+public:
+    /**
+     *  IUnknown
+     */
+    IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID *ppvObj);
+    IFACEMETHOD_(ULONG, AddRef)();
+    IFACEMETHOD_(ULONG, Release)();
 
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID *pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
-        
-        /**
-         *  IHouse
-         */
-        IFACEMETHOD_(LONG, ID_Number)();
-        IFACEMETHOD_(BSTR, Name)();
-        IFACEMETHOD_(IApplication *, Get_Application)();
-        IFACEMETHOD_(LONG, Available_Money)();
-        IFACEMETHOD_(LONG, Available_Storage)();
-        IFACEMETHOD_(LONG, Power_Output)();
-        IFACEMETHOD_(LONG, Power_Drain)();
-        IFACEMETHOD_(LONG, Category_Quantity)(CategoryType category);
-        IFACEMETHOD_(LONG, Category_Power)(CategoryType category);
-        IFACEMETHOD_(Cell, Base_Center)();
-        IFACEMETHOD_(LONG, Fire_Sale)();
-        IFACEMETHOD_(LONG, All_To_Hunt)();
-        
-        /**
-         *  IPublicHouse
-         */
-        IFACEMETHOD_(LONG, Apparent_Category_Quantity)(CategoryType category);
-        IFACEMETHOD_(LONG, Apparent_Category_Power)(CategoryType category);
-        IFACEMETHOD_(Cell, Apparent_Base_Center)();
-        IFACEMETHOD_(bool, Is_Powered)();
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream *pStm);
+    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    
+    /**
+     *  IHouse
+     */
+    IFACEMETHOD_(LONG, ID_Number)();
+    IFACEMETHOD_(BSTR, Name)();
+    IFACEMETHOD_(IApplication *, Get_Application)();
+    IFACEMETHOD_(LONG, Available_Money)();
+    IFACEMETHOD_(LONG, Available_Storage)();
+    IFACEMETHOD_(LONG, Power_Output)();
+    IFACEMETHOD_(LONG, Power_Drain)();
+    IFACEMETHOD_(LONG, Category_Quantity)(CategoryType category);
+    IFACEMETHOD_(LONG, Category_Power)(CategoryType category);
+    IFACEMETHOD_(Cell, Base_Center)();
+    IFACEMETHOD_(LONG, Fire_Sale)();
+    IFACEMETHOD_(LONG, All_To_Hunt)();
+    
+    /**
+     *  IPublicHouse
+     */
+    IFACEMETHOD_(LONG, Apparent_Category_Quantity)(CategoryType category);
+    IFACEMETHOD_(LONG, Apparent_Category_Power)(CategoryType category);
+    IFACEMETHOD_(Cell, Apparent_Base_Center)();
+    IFACEMETHOD_(bool, Is_Powered)();
 
-        /**
-         *  IConnectionPointContainer
-         */
-        IFACEMETHOD(EnumConnectionPoints)(IEnumConnectionPoints **ppEnum);
-        IFACEMETHOD(FindConnectionPoint)(REFIID riid, IConnectionPoint **ppCP);
+    /**
+     *  IConnectionPointContainer
+     */
+    IFACEMETHOD(EnumConnectionPoints)(IEnumConnectionPoints **ppEnum);
+    IFACEMETHOD(FindConnectionPoint)(REFIID riid, IConnectionPoint **ppCP);
 
-    public:
-        HouseClass(const HouseTypeClass *classof = nullptr);
-        HouseClass(const NoInitClass &noinit);
-        virtual ~HouseClass();
+public:
+    HouseClass(const HouseTypeClass *classof = nullptr);
+    HouseClass(const NoInitClass &noinit);
+    virtual ~HouseClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual int Get_Heap_ID() const override;
-        virtual void AI() override;
+    /**
+     *  AbstractClass
+     */
+    virtual void Detach(TARGET target, bool all = true) override;
+    virtual RTTIType Kind_Of() const override;
+    virtual int Size_Of(bool firestorm = false) const override;
+    virtual void Compute_CRC(WWCRCEngine &crc) const override;
+    virtual int Get_Heap_ID() const override;
+    virtual void AI() override;
 
-        operator HousesType () const;
+    operator HousesType () const;
 
-        bool Can_Make_Money() const;
-        float Tiberium_Fraction() const;
-        DiffType Assign_Handicap(DiffType handicap);
-        int Can_Build(const ObjectTypeClass *type, bool a2 = false, bool a3 = false) const;
-        FactoryClass *Factory_Building_This(const ObjectTypeClass *type) const;
-        void Super_Weapon_Handler();
-        void Attacked(BuildingClass *source);
-        void Tiberium_Harvested(unsigned amount, TiberiumType type);
-        void Weed_Harvested(unsigned amount, TiberiumType type);
-        float Weed_Fraction() const;
-        void Spend_Money(unsigned money);
-        void Refund_Money(unsigned money);
-        void Silo_Redraw_Check(long oldtib, long oldcap);
-        bool Is_Ally(HousesType house) const;
-        bool Is_Ally(const HouseClass *house) const;
-        bool Is_Ally(const ObjectClass *object) const;
-        bool Is_Ally(const TARGET target) const;
-        void Make_Ally(HousesType house);
-        void Make_Ally(HouseClass *house);
-        void Make_Enemy(HousesType house);
-        void Make_Enemy(HouseClass *house);
-        TypeList<const TeamTypeClass *> Suggested_New_Team(bool alertcheck = false);
-        void Adjust_Threat(int region, int threat);
-        ProdFailType Begin_Production(RTTIType type, int id, bool a3);
-        ProdFailType Suspend_Production(RTTIType type);
-        ProdFailType Abandon_Production(RTTIType type, int a1);
-        bool Special_Weapon_AI(SpecialWeaponType id);
-        bool Place_Special_Blast(SpecialWeaponType id, Cell &cell);
-        bool Place_Object(RTTIType type, Cell &cell);
-        void Just_Built(TechnoClass *techno); 
-        bool Manual_Place(BuildingClass *builder, BuildingClass *object);
-        void Clobber_All();
-        bool Does_Enemy_Building_Exist(BuildingType btype) const;
-        const TechnoTypeClass *Suggest_New_Object(RTTIType objecttype, bool kennel = false) const;
-        bool Flag_Remove(TARGET target, bool set_home = false);
-        bool Flag_Attach(Cell &cell, bool set_home = false);
-        bool Flag_Attach(UnitClass *object, bool set_home = false);
-        void MPlayer_Defeated();
-        void Blowup_All();
-        bool Flag_To_Die();
-        bool Flag_To_Win(bool a1 = true);
-        bool Flag_To_Lose(bool a1 = true);
-        // 004BFFB0
-        void Init_Data(PlayerColorType color, HousesType house, int credits);
-        float Power_Fraction() const;
-        void Sell_Wall(Cell &cell, bool quiet = true);
-        const BuildingTypeClass * Suggest_New_Building() const;
-        BuildingClass * Find_Building(BuildingType type, ZoneType zone = ZONE_NONE) const;
-        Coordinate Find_Build_Location(BuildingClass *building) const;
-        void Recalc_Center();
-        int Expert_AI();
-        UrgencyType Check_Fire_Sale() const;
-        UrgencyType Check_Raise_Money() const;
-        bool AI_Fire_Sale(UrgencyType urgency);
-        bool AI_Raise_Money(UrgencyType urgency);
-        int AI_Building();
-        int AI_Unit();
-        int AI_Infantry();
-        int AI_Aircraft();
-        void Production_Begun(const TechnoClass *rtti);
-        void Tracking_Remove(const TechnoClass *techno);
-        void Tracking_Add(const TechnoClass *techno);
-        int * Factory_Counter(RTTIType rtti);
-        void Active_Remove(const TechnoClass *techno);
-        void Active_Add(const TechnoClass *techno);
-        ZoneType Which_Zone(Coordinate &coord) const;
-        ZoneType Which_Zone(const ObjectClass * object) const;
-        ZoneType Which_Zone(Cell &cell) const;
-        Cell Zone_Cell(ZoneType zone) const;
-        Cell Where_To_Go(const FootClass *object) const;
-        TARGET Find_Juicy_Target(Coordinate &coord) const;
-        FactoryClass *Fetch_Factory(RTTIType rtti) const;
-        void Set_Factory(RTTIType rtti, FactoryClass * factory);
-        int Factory_Count(RTTIType rtti) const;
-        void Read_INI(CCINIClass &ini);
-        void Write_INI(CCINIClass &ini) const;
-        bool Is_Allowed_To_Ally(HouseClass *house) const;
-        void Adjust_Power(int adjust);
-        void Adjust_Drain(int adjust);
-        void Update_Spied_Power_Plants();
-        Cell Find_Cell_In_Zone(const TechnoClass * techno, ZoneType zone) const;
-        Cell Random_Cell_In_Zone(ZoneType zone) const;
-        void Make_Ally(TechnoClass *techno);
-        void Make_Enemy(TechnoClass *techno);
-        // 004C3FC0
-        // 004C40F0
-        // 004C4150
-        Coordinate *Get_Waypoint_Coord(Cell &coord); // 004C4210
-        bool Place_Waypoint_At(Coordinate &coord, int &index, bool &a3); // 004C42C0
-        // 004C4450
-        // 004C45D0
-        // 004C5320
-        // 004C5360
-        // 004C5370
-        // 004C53C0
-        // 004C5510
-        // 004C56A0
-        void Add_Anger(int angerlevel, HouseClass* house);
-        // 004C5840
-        void Begin_Construction(); // 004C5880
-        TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
-        bool Has_Prerequisites(const TechnoTypeClass* techno, DynamicVectorClass<BuildingTypeClass*>& owned_buildings, int owned_count) const;// 004C5920
-        // 004C5BB0
-        // 004C68E0
-        // 004C6930
-        Cell Find_Build_Location(BuildingTypeClass *building, int (__fastcall *callback)(int, Cell &, int, int), int a3 = -1) const;
-        // 004C7300
-        // 004C7310
-        // 004C7320
-        // 004C7470
-        // 004C74F0
-        bool AI_Build_Defense(int nodeid, DynamicVectorClass<Cell>* cells);// 004C7690
-        // 004C83F0
-        // 004C85A0
-        // 004C8750
-        // 004C8900
-        void AI_Build_Wall(); // 004C8920
-        // 004C93F0
-        void Update_Radars();
-        // 004C96A0
-        // 004C96F0
-        // 004C9730
-        void Update_Factories(RTTIType rtti); // 004C9740
-        void Update_Radar_Spied(HouseClass *house); // 004C98E0
-        void Clear_Anger(HouseClass *house); // 004C9990
-        void Recalc_Threat_Regions(); // 004C99D0
-        // 004C9B80
-        // 004C9BC0
-        // 004C9CB0
-        void AI_Super_Weapon_Handler();
-        void Super_Weapon_Ion_Cannon(SuperClass *super);
-        void Super_Weapon_Hunter_Seeker(SuperClass *super);
-        void Super_Weapon_Multi_Missile(SuperClass *super);
-        void Super_Weapon_Chem_Missile(SuperClass *super);
-        // 004CA760
-        void AI_Takeover();
-        // 004CB2D0
-        // 004CB5B0
-        // 004CB720
-        bool Is_Player_Control() const;
-        bool Is_Human_Control() const;
-        // 004CB9C0
-        void Init_Remap_Color();
-        void Super_Weapon_Drop_Pods(SuperClass *super);
+    bool Can_Make_Money() const;
+    float Tiberium_Fraction() const;
+    DiffType Assign_Handicap(DiffType handicap);
+    int Can_Build(const ObjectTypeClass *type, bool a2 = false, bool a3 = false) const;
+    FactoryClass *Factory_Building_This(const ObjectTypeClass *type) const;
+    void Super_Weapon_Handler();
+    void Attacked(BuildingClass *source);
+    void Tiberium_Harvested(unsigned amount, TiberiumType type);
+    void Weed_Harvested(unsigned amount, TiberiumType type);
+    float Weed_Fraction() const;
+    void Spend_Money(unsigned money);
+    void Refund_Money(unsigned money);
+    void Silo_Redraw_Check(long oldtib, long oldcap);
+    bool Is_Ally(HousesType house) const;
+    bool Is_Ally(const HouseClass *house) const;
+    bool Is_Ally(const ObjectClass *object) const;
+    bool Is_Ally(const TARGET target) const;
+    void Make_Ally(HousesType house);
+    void Make_Ally(HouseClass *house);
+    void Make_Enemy(HousesType house);
+    void Make_Enemy(HouseClass *house);
+    TypeList<const TeamTypeClass *> Suggested_New_Team(bool alertcheck = false);
+    void Adjust_Threat(int region, int threat);
+    ProdFailType Begin_Production(RTTIType type, int id, bool a3);
+    ProdFailType Suspend_Production(RTTIType type);
+    ProdFailType Abandon_Production(RTTIType type, int a1);
+    bool Special_Weapon_AI(SpecialWeaponType id);
+    bool Place_Special_Blast(SpecialWeaponType id, Cell &cell);
+    bool Place_Object(RTTIType type, Cell &cell);
+    void Just_Built(TechnoClass *techno); 
+    bool Manual_Place(BuildingClass *builder, BuildingClass *object);
+    void Clobber_All();
+    bool Does_Enemy_Building_Exist(BuildingType btype) const;
+    const TechnoTypeClass *Suggest_New_Object(RTTIType objecttype, bool kennel = false) const;
+    bool Flag_Remove(TARGET target, bool set_home = false);
+    bool Flag_Attach(Cell &cell, bool set_home = false);
+    bool Flag_Attach(UnitClass *object, bool set_home = false);
+    void MPlayer_Defeated();
+    void Blowup_All();
+    bool Flag_To_Die();
+    bool Flag_To_Win(bool a1 = true);
+    bool Flag_To_Lose(bool a1 = true);
+    // 004BFFB0
+    void Init_Data(PlayerColorType color, HousesType house, int credits);
+    float Power_Fraction() const;
+    void Sell_Wall(Cell &cell, bool quiet = true);
+    const BuildingTypeClass * Suggest_New_Building() const;
+    BuildingClass * Find_Building(BuildingType type, ZoneType zone = ZONE_NONE) const;
+    Coordinate Find_Build_Location(BuildingClass *building) const;
+    void Recalc_Center();
+    int Expert_AI();
+    UrgencyType Check_Fire_Sale() const;
+    UrgencyType Check_Raise_Money() const;
+    bool AI_Fire_Sale(UrgencyType urgency);
+    bool AI_Raise_Money(UrgencyType urgency);
+    int AI_Building();
+    int AI_Unit();
+    int AI_Infantry();
+    int AI_Aircraft();
+    void Production_Begun(const TechnoClass *rtti);
+    void Tracking_Remove(const TechnoClass *techno);
+    void Tracking_Add(const TechnoClass *techno);
+    int * Factory_Counter(RTTIType rtti);
+    void Active_Remove(const TechnoClass *techno);
+    void Active_Add(const TechnoClass *techno);
+    ZoneType Which_Zone(Coordinate &coord) const;
+    ZoneType Which_Zone(const ObjectClass * object) const;
+    ZoneType Which_Zone(Cell &cell) const;
+    Cell Zone_Cell(ZoneType zone) const;
+    Cell Where_To_Go(const FootClass *object) const;
+    TARGET Find_Juicy_Target(Coordinate &coord) const;
+    FactoryClass *Fetch_Factory(RTTIType rtti) const;
+    void Set_Factory(RTTIType rtti, FactoryClass * factory);
+    int Factory_Count(RTTIType rtti) const;
+    void Read_INI(CCINIClass &ini);
+    void Write_INI(CCINIClass &ini) const;
+    bool Is_Allowed_To_Ally(HouseClass *house) const;
+    void Adjust_Power(int adjust);
+    void Adjust_Drain(int adjust);
+    void Update_Spied_Power_Plants();
+    Cell Find_Cell_In_Zone(const TechnoClass * techno, ZoneType zone) const;
+    Cell Random_Cell_In_Zone(ZoneType zone) const;
+    void Make_Ally(TechnoClass *techno);
+    void Make_Enemy(TechnoClass *techno);
+    // 004C3FC0
+    // 004C40F0
+    // 004C4150
+    Coordinate *Get_Waypoint_Coord(Cell &coord); // 004C4210
+    bool Place_Waypoint_At(Coordinate &coord, int &index, bool &a3); // 004C42C0
+    // 004C4450
+    // 004C45D0
+    // 004C5320
+    // 004C5360
+    // 004C5370
+    // 004C53C0
+    // 004C5510
+    // 004C56A0
+    void Add_Anger(int angerlevel, HouseClass* house);
+    // 004C5840
+    void Begin_Construction(); // 004C5880
+    TechnoTypeClass *Get_First_Ownable(TypeList<TechnoTypeClass *> &list) const;
+    bool Has_Prerequisites(const TechnoTypeClass* techno, DynamicVectorClass<BuildingTypeClass*>& owned_buildings, int owned_count) const;// 004C5920
+    // 004C5BB0
+    // 004C68E0
+    // 004C6930
+    Cell Find_Build_Location(BuildingTypeClass *building, int (__fastcall *callback)(int, Cell &, int, int), int a3 = -1) const;
+    // 004C7300
+    // 004C7310
+    // 004C7320
+    // 004C7470
+    // 004C74F0
+    bool AI_Build_Defense(int nodeid, DynamicVectorClass<Cell>* cells);// 004C7690
+    // 004C83F0
+    // 004C85A0
+    // 004C8750
+    // 004C8900
+    void AI_Build_Wall(); // 004C8920
+    // 004C93F0
+    void Update_Radars();
+    // 004C96A0
+    // 004C96F0
+    // 004C9730
+    void Update_Factories(RTTIType rtti); // 004C9740
+    void Update_Radar_Spied(HouseClass *house); // 004C98E0
+    void Clear_Anger(HouseClass *house); // 004C9990
+    void Recalc_Threat_Regions(); // 004C99D0
+    // 004C9B80
+    // 004C9BC0
+    // 004C9CB0
+    void AI_Super_Weapon_Handler();
+    void Super_Weapon_Ion_Cannon(SuperClass *super);
+    void Super_Weapon_Hunter_Seeker(SuperClass *super);
+    void Super_Weapon_Multi_Missile(SuperClass *super);
+    void Super_Weapon_Chem_Missile(SuperClass *super);
+    // 004CA760
+    void AI_Takeover();
+    // 004CB2D0
+    // 004CB5B0
+    // 004CB720
+    bool Is_Player_Control() const;
+    bool Is_Human_Control() const;
+    // 004CB9C0
+    void Init_Remap_Color();
+    void Super_Weapon_Drop_Pods(SuperClass *super);
 
-        bool Is_Player() const { return this == PlayerPtr; }
-        SourceType Get_Starting_Edge() const { if (Control.Edge < SOURCE_NORTH || Control.Edge > SOURCE_WEST) { return SOURCE_NORTH; } return Control.Edge; }
+    bool Is_Player() const { return this == PlayerPtr; }
+    SourceType Get_Starting_Edge() const { if (Control.Edge < SOURCE_NORTH || Control.Edge > SOURCE_WEST) { return SOURCE_NORTH; } return Control.Edge; }
 
-        BuildingTypeClass *Get_First_Ownable(TypeList<BuildingTypeClass *> &list) const
-        {
-            return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+    BuildingTypeClass *Get_First_Ownable(TypeList<BuildingTypeClass *> &list) const
+    {
+        return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+    }
+
+    UnitTypeClass* Get_First_Ownable(TypeList<UnitTypeClass*>& list) const
+    {
+        return reinterpret_cast<UnitTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+    }
+
+    InfantryTypeClass *Get_First_Ownable(TypeList<InfantryTypeClass *> &list) const
+    {
+        return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+    }
+
+    AircraftTypeClass* Get_First_Ownable(TypeList<AircraftTypeClass*>& list) const
+    {
+        return reinterpret_cast<AircraftTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+    }
+
+    int Count_Owned(TypeList<BuildingTypeClass*>& list)
+    {
+        int count = 0;
+        for (int i = 0; i < list.Count(); i++) {
+            count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Get_Heap_ID()));
         }
+        return count;
+    }
 
-        UnitTypeClass* Get_First_Ownable(TypeList<UnitTypeClass*>& list) const
-        {
-            return reinterpret_cast<UnitTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+    int Count_Owned(TypeList<UnitTypeClass*>& list)
+    {
+        int count = 0;
+        for (int i = 0; i < list.Count(); i++) {
+            count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Get_Heap_ID()));
         }
+        return count;
+    }
 
-        InfantryTypeClass *Get_First_Ownable(TypeList<InfantryTypeClass *> &list) const
-        {
-            return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+    int Count_Owned(TypeList<InfantryTypeClass*>& list)
+    {
+        int count = 0;
+        for (int i = 0; i < list.Count(); i++) {
+            count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Get_Heap_ID()));
         }
+        return count;
+    }
 
-        AircraftTypeClass* Get_First_Ownable(TypeList<AircraftTypeClass*>& list) const
-        {
-            return reinterpret_cast<AircraftTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+    int Count_Owned(TypeList<AircraftTypeClass*>& list)
+    {
+        int count = 0;
+        for (int i = 0; i < list.Count(); i++) {
+            count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Get_Heap_ID()));
         }
+        return count;
+    }
 
-        int Count_Owned(TypeList<BuildingTypeClass*>& list)
-        {
-            int count = 0;
-            for (int i = 0; i < list.Count(); i++) {
-                count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Get_Heap_ID()));
-            }
-            return count;
-        }
+    static void One_Time();
+    static void Computer_Paranoid();
+    static void Read_Scenario_INI(CCINIClass &ini);
+    static void Write_Scenario_INI(CCINIClass &ini);
 
-        int Count_Owned(TypeList<UnitTypeClass*>& list)
-        {
-            int count = 0;
-            for (int i = 0; i < list.Count(); i++) {
-                count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Get_Heap_ID()));
-            }
-            return count;
-        }
+    static HouseClass *As_Pointer(HousesType house);
 
-        int Count_Owned(TypeList<InfantryTypeClass*>& list)
-        {
-            int count = 0;
-            for (int i = 0; i < list.Count(); i++) {
-                count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Get_Heap_ID()));
-            }
-            return count;
-        }
+public:
+    int ID;
+    HouseTypeClass *Class;
+    DynamicVectorClass<TagClass *> field_28;
+    DynamicVectorClass<BuildingClass *> ConstructionYards;
+    DiffType Difficulty;
+    double FirepowerBias;
+    double GroundspeedBias;
+    double AirspeedBias;
+    double ArmorBias;
+    double ROFBias;
+    double CostBias;
+    double BuildSpeedBias;
+    double RepairDelay;
+    double BuildDelay;
+    HouseStaticClass Control;
+    int field_BC;
+    HousesType ActLike;
+    bool IsHuman;
+    bool IsPlayerControl;
+    bool IsStarted;
+    bool IsAlerted;
+    bool IsAITriggersOn;
+    bool IsBaseBuilding;
+    bool IsDiscovered;
+    bool IsDefeated;
+    bool IsToDie;
+    bool IsToWin;
+    bool IsToLose;
+    bool IsCivEvacuated;
+    bool IsFirestormActive;
+    bool IsThreatRatingNodeActive;
+    bool IsRecalcNeeded;
+    int field_D4;
+    int Clan;
+    bool field_DC;
+    int field_E0; // selected waypoint path index?
+    WaypointPathClass *WaypointPaths[MAX_WAYPOINT_PATHS];
+    bool IsVisionary;
+    bool IsTiberiumShort;
+    bool IsSpied;
+    bool IsThieved;
+    bool DidRepair;
+    bool IsBuiltSomething;
+    bool IsResigner;
+    bool IsGiverUpper;
+    bool field_11C;
+    bool IsParanoid;
+    bool IsToLook;
+    int IQ;
+    StateType State;
+    DynamicVectorClass<SuperClass *> SuperWeapon;
+    BuildingType JustBuiltStructure;
+    InfantryType JustBuiltInfantry;
+    UnitType JustBuiltUnit;
+    AircraftType JustBuiltAircraft;
+    int Blockage;
+    CDTimerClass<FrameTimerClass> RepairTimer;
+    CDTimerClass<FrameTimerClass> AlertTime;
+    CDTimerClass<FrameTimerClass> BorrowedTime;
+    unsigned CreditsSpent;
+    unsigned HarvestedCredits;
+    int StolenBuildingsCredits;
+    unsigned CurUnits;
+    unsigned CurBuildings;
+    unsigned CurInfantry;
+    unsigned CurAircraft;
+    StorageClass Tiberium;
+    long Credits;
+    long Capacity;
+    StorageClass Weed;
+    long field_1BC;
+    UnitTrackerClass *AircraftTotals;
+    UnitTrackerClass *InfantryTotals;
+    UnitTrackerClass *UnitTotals;
+    UnitTrackerClass *BuildingTotals;
+    UnitTrackerClass *DestroyedAircraft;
+    UnitTrackerClass *DestroyedInfantry;
+    UnitTrackerClass *DestroyedUnits;
+    UnitTrackerClass *DestroyedBuildings;
+    UnitTrackerClass *CapturedBuildings;
+    UnitTrackerClass *TotalCrates;
+    int AircraftFactories;
+    int InfantryFactories;
+    int UnitFactories;
+    int BuildingFactories;
+    int Power;
+    int Drain;
+    FactoryClass *AircraftFactory;
+    FactoryClass *InfantryFactory;
+    FactoryClass *UnitFactory;
+    FactoryClass *BuildingFactory;
+    AbstractClass *FlagLocation;
+    Cell FlagHome;
+    unsigned UnitsKilled[20];
+    unsigned UnitsLost;
+    unsigned BuildingsKilled[20];
+    unsigned BuildingsLost;
+    HousesType WhoLastHurtMe;
+    Coordinate Center;
+    int Radius;
 
-        int Count_Owned(TypeList<AircraftTypeClass*>& list)
-        {
-            int count = 0;
-            for (int i = 0; i < list.Count(); i++) {
-                count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Get_Heap_ID()));
-            }
-            return count;
-        }
+    struct {
+        int AirDefense;
+        int ArmorDefense;
+        int InfantryDefense;
+    } ZoneInfo[ZONE_COUNT];
 
-        static void One_Time();
-        static void Computer_Paranoid();
-        static void Read_Scenario_INI(CCINIClass &ini);
-        static void Write_Scenario_INI(CCINIClass &ini);
+    int LATime;
+    HousesType LAEnemy;
+    AbstractClass * ToCapture;
+    int RadarSpied;
+    int PointTotal;
+    QuarryType PreferredTarget;
+    TCounterClass<BuildingType> BQuantity;
+    TCounterClass<UnitType> UQuantity;
+    TCounterClass<InfantryType> IQuantity;
+    TCounterClass<AircraftType> AQuantity;
+    TCounterClass<BuildingType> ActiveBQuantity;
+    TCounterClass<UnitType> ActiveUQuantity;
+    TCounterClass<InfantryType> ActiveIQuantity;
+    TCounterClass<AircraftType> ActiveAQuantity;
+    TCounterClass<BuildingType> FactoryBQuantity;
+    TCounterClass<UnitType> FactoryUQuantity;
+    TCounterClass<InfantryType> FactoryIQuantity;
+    TCounterClass<AircraftType> FactoryAQuantity;
+    CDTimerClass<FrameTimerClass> Attack;
+    int InitalAttack;
+    HousesType Enemy;
+    DynamicVectorClass<AngerStruct> AngerNodes;
+    DynamicVectorClass<ScoutStruct> ScoutNodes;
+    CDTimerClass<FrameTimerClass> AITimer;
+    CDTimerClass<FrameTimerClass> ExpertAITimer;
+    BuildingType BuildStructure;
+    UnitType BuildUnit;
+    InfantryType BuildInfantry;
+    AircraftType BuildAircraft;
+    int RatioAITriggerTeam;
+    int RatioTeamAircraft;
+    int RatioTeamInfantry;
+    int RatioTeamUnits;
+    int BaseDefenseTeamCount;
+    DropshipLoadoutClass DropshipLoadouts[DROPSHIP_LOADOUT_MAX];
+    int DropshipLoadoutIndex;
+    bool HasCloakGenerator;
+    RGBClass RemapColorRGB;
+    BaseClass Base;
+    bool field_56C;
+    bool field_56D;
+    Cell field_56E;
+    Cell NukeDest;
+    unsigned Allies;
+    CDTimerClass<FrameTimerClass> DamageTime;
+    CDTimerClass<FrameTimerClass> TeamTime;
+    CDTimerClass<FrameTimerClass> TriggerTime;
+    CDTimerClass<FrameTimerClass> SpeakAttackDelay;
+    CDTimerClass<FrameTimerClass> SpeakPowerDelay;
+    CDTimerClass<FrameTimerClass> SpeakMoneyDelay;
+    CDTimerClass<FrameTimerClass> SpeakMaxedDelay;
+    IAIHousePtr AIGeneral;
+    RegionClass Regions[MAP_TOTAL_REGIONS];
+    char IniName[HOUSE_NAME_MAX+1];
+    ColorSchemeType RemapColor;
+    int field_10E00;
+    DynamicVectorClass<IConnectionPoint *> field_10E04;
+    IConnectionPoint *PowerEvents;
+    int field_10E20;
+    double field_10E28;
+    double field_10E30;
+    int field_10E38;
+    float field_10E3C;
+    float field_10E40;
+    float field_10E44;
+    int PowerSurplus;
 
-        static HouseClass *As_Pointer(HousesType house);
-
-    public:
-        int ID;
-        HouseTypeClass *Class;
-        DynamicVectorClass<TagClass *> field_28;
-        DynamicVectorClass<BuildingClass *> ConstructionYards;
-        DiffType Difficulty;
-        double FirepowerBias;
-        double GroundspeedBias;
-        double AirspeedBias;
-        double ArmorBias;
-        double ROFBias;
-        double CostBias;
-        double BuildSpeedBias;
-        double RepairDelay;
-        double BuildDelay;
-        HouseStaticClass Control;
-        int field_BC;
-        HousesType ActLike;
-        bool IsHuman;
-        bool IsPlayerControl;
-        bool IsStarted;
-        bool IsAlerted;
-        bool IsAITriggersOn;
-        bool IsBaseBuilding;
-        bool IsDiscovered;
-        bool IsDefeated;
-        bool IsToDie;
-        bool IsToWin;
-        bool IsToLose;
-        bool IsCivEvacuated;
-        bool IsFirestormActive;
-        bool IsThreatRatingNodeActive;
-        bool IsRecalcNeeded;
-        int field_D4;
-        int Clan;
-        bool field_DC;
-        int field_E0; // selected waypoint path index?
-        WaypointPathClass *WaypointPaths[MAX_WAYPOINT_PATHS];
-        bool IsVisionary;
-        bool IsTiberiumShort;
-        bool IsSpied;
-        bool IsThieved;
-        bool DidRepair;
-        bool IsBuiltSomething;
-        bool IsResigner;
-        bool IsGiverUpper;
-        bool field_11C;
-        bool IsParanoid;
-        bool IsToLook;
-        int IQ;
-        StateType State;
-        DynamicVectorClass<SuperClass *> SuperWeapon;
-        BuildingType JustBuiltStructure;
-        InfantryType JustBuiltInfantry;
-        UnitType JustBuiltUnit;
-        AircraftType JustBuiltAircraft;
-        int Blockage;
-        CDTimerClass<FrameTimerClass> RepairTimer;
-        CDTimerClass<FrameTimerClass> AlertTime;
-        CDTimerClass<FrameTimerClass> BorrowedTime;
-        unsigned CreditsSpent;
-        unsigned HarvestedCredits;
-        int StolenBuildingsCredits;
-        unsigned CurUnits;
-        unsigned CurBuildings;
-        unsigned CurInfantry;
-        unsigned CurAircraft;
-        StorageClass Tiberium;
-        long Credits;
-        long Capacity;
-        StorageClass Weed;
-        long field_1BC;
-        UnitTrackerClass *AircraftTotals;
-        UnitTrackerClass *InfantryTotals;
-        UnitTrackerClass *UnitTotals;
-        UnitTrackerClass *BuildingTotals;
-        UnitTrackerClass *DestroyedAircraft;
-        UnitTrackerClass *DestroyedInfantry;
-        UnitTrackerClass *DestroyedUnits;
-        UnitTrackerClass *DestroyedBuildings;
-        UnitTrackerClass *CapturedBuildings;
-        UnitTrackerClass *TotalCrates;
-        int AircraftFactories;
-        int InfantryFactories;
-        int UnitFactories;
-        int BuildingFactories;
-        int Power;
-        int Drain;
-        FactoryClass *AircraftFactory;
-        FactoryClass *InfantryFactory;
-        FactoryClass *UnitFactory;
-        FactoryClass *BuildingFactory;
-        AbstractClass *FlagLocation;
-        Cell FlagHome;
-        unsigned UnitsKilled[20];
-        unsigned UnitsLost;
-        unsigned BuildingsKilled[20];
-        unsigned BuildingsLost;
-        HousesType WhoLastHurtMe;
-        Coordinate Center;
-        int Radius;
-
-        struct {
-            int AirDefense;
-            int ArmorDefense;
-            int InfantryDefense;
-        } ZoneInfo[ZONE_COUNT];
-
-        int LATime;
-        HousesType LAEnemy;
-        AbstractClass * ToCapture;
-        int RadarSpied;
-        int PointTotal;
-        QuarryType PreferredTarget;
-        TCounterClass<BuildingType> BQuantity;
-        TCounterClass<UnitType> UQuantity;
-        TCounterClass<InfantryType> IQuantity;
-        TCounterClass<AircraftType> AQuantity;
-        TCounterClass<BuildingType> ActiveBQuantity;
-        TCounterClass<UnitType> ActiveUQuantity;
-        TCounterClass<InfantryType> ActiveIQuantity;
-        TCounterClass<AircraftType> ActiveAQuantity;
-        TCounterClass<BuildingType> FactoryBQuantity;
-        TCounterClass<UnitType> FactoryUQuantity;
-        TCounterClass<InfantryType> FactoryIQuantity;
-        TCounterClass<AircraftType> FactoryAQuantity;
-        CDTimerClass<FrameTimerClass> Attack;
-        int InitalAttack;
-        HousesType Enemy;
-        DynamicVectorClass<AngerStruct> AngerNodes;
-        DynamicVectorClass<ScoutStruct> ScoutNodes;
-        CDTimerClass<FrameTimerClass> AITimer;
-        CDTimerClass<FrameTimerClass> ExpertAITimer;
-        BuildingType BuildStructure;
-        UnitType BuildUnit;
-        InfantryType BuildInfantry;
-        AircraftType BuildAircraft;
-        int RatioAITriggerTeam;
-        int RatioTeamAircraft;
-        int RatioTeamInfantry;
-        int RatioTeamUnits;
-        int BaseDefenseTeamCount;
-        DropshipLoadoutClass DropshipLoadouts[DROPSHIP_LOADOUT_MAX];
-        int field_4EC;
-        bool field_4F0;
-        RGBClass RemapColorRGB;
-        BaseClass Base;
-        bool field_56C;
-        bool field_56D;
-        Cell field_56E;
-        Cell NukeDest;
-        unsigned Allies;
-        CDTimerClass<FrameTimerClass> DamageTime;
-        CDTimerClass<FrameTimerClass> TeamTime;
-        CDTimerClass<FrameTimerClass> TriggerTime;
-        CDTimerClass<FrameTimerClass> SpeakAttackDelay;
-        CDTimerClass<FrameTimerClass> SpeakPowerDelay;
-        CDTimerClass<FrameTimerClass> SpeakMoneyDelay;
-        CDTimerClass<FrameTimerClass> SpeakMaxedDelay;
-        IAIHousePtr AIGeneral;
-        RegionClass Regions[MAP_TOTAL_REGIONS];
-        char IniName[HOUSE_NAME_MAX+1];
-        ColorSchemeType RemapColor;
-        int field_10E00;
-        DynamicVectorClass<IConnectionPoint *> field_10E04;
-        IConnectionPoint *PowerEvents;
-        int field_10E20;
-        double field_10E28;
-        double field_10E30;
-        int field_10E38;
-        float field_10E3C;
-        float field_10E40;
-        float field_10E44;
-        int PowerSurplus;
-
-    private:
-        // copy and assignment not implemented; prevent their use by declaring as private.
-        HouseClass(const HouseClass &) = delete;
-        HouseClass &operator=(const HouseClass &) = delete;
+private:
+    // copy and assignment not implemented; prevent their use by declaring as private.
+    HouseClass(const HouseClass &) = delete;
+    HouseClass &operator=(const HouseClass &) = delete;
 };

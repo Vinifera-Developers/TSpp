@@ -36,40 +36,29 @@ class NoInitClass;
 
 class VeterancyClass
 {
-    public:
-        VeterancyClass();
-        VeterancyClass(const NoInitClass &noinit);
-        ~VeterancyClass();
+public:
+    VeterancyClass();
+    VeterancyClass(const NoInitClass &noinit);
+    ~VeterancyClass();
 
-        void Gain_Experience(int cost, int value);
+    void Gain_Experience(int cost, int value);
 
-        bool Is_Veteran() const;
-        bool Is_Rookie() const;
-        bool Is_Dumbass() const;
-        bool Is_Elite() const;
+    bool Is_Veteran() const;
+    bool Is_Rookie() const;
+    bool Is_Dumbass() const;
+    bool Is_Elite() const;
 
-        double sub_664440(double a1);
+    double sub_664440(double a1);
 
-        void Set_Rookie(bool dumbass);
-        void sub_6644E0(bool a1);
-        void Set_Veteran(bool force);
-        void Set_Elite(bool force);
+    void Set_Dumbass(bool dumbass);
+    void Set_Rookie(bool a1);
+    void Set_Veteran(bool force);
+    void Set_Elite(bool force);
 
-        // Used for Read/Write INI. 
-        int To_Integer();
-        void From_Integer(int value);
+    // Used for Read/Write INI. 
+    int To_Integer();
+    void From_Integer(int value);
 
-        VeterancyRankType Get_Rank()
-        {
-            if (Level >= 2.0) {
-                return RANK_ELITE;
-            }
-            if (Level >= 1.0) {
-                return RANK_VETERAN;
-            }
-            return RANK_ROOKIE;
-        }
-
-    private:
-        double Level;
+private:
+    double Level;
 };

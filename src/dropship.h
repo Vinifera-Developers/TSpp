@@ -38,24 +38,24 @@ class Blitter;
 
 class DropshipLoadoutClass
 {
-    public:
-        DropshipLoadoutClass();
-        ~DropshipLoadoutClass();
+public:
+    DropshipLoadoutClass();
+    ~DropshipLoadoutClass();
 
-        bool Add(TechnoTypeClass *technotype);
-        bool Remove(int index);
-        void Remove_All();
-        void Load();
-        TechnoTypeClass *Fetch(int index);
+    bool Add(TechnoTypeClass *technotype);
+    bool Remove(int index);
+    void Remove_All();
+    void Load();
+    TechnoTypeClass *Fetch(int index);
 
-    public:
-        int field_0;
-        int field_4;
-        int field_8;
-        bool field_C;
-        int field_10;
-        TechnoTypeClass *field_14[5];
-        int field_28;
+public:
+    int field_0;
+    int field_4;
+    int field_8;
+    bool field_C;
+    int EntryCount;
+    TechnoTypeClass *field_14[5];
+    int field_28;
 };
 
 int Dropship_Get_Allowable_Index(TechnoTypeClass *technotype);

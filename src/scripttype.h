@@ -33,30 +33,30 @@
 
 class ScriptMissionClass
 {
-    public:
-        ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
-        ~ScriptMissionClass() {}
+public:
+    ScriptMissionClass() : Mission(SMISSION_NONE), Data() {}
+    ~ScriptMissionClass() {}
 
-        static const char *Mission_Name(ScriptMissionType mission);
-        static const char *Mission_Description(ScriptMissionType mission);
+    static const char *Mission_Name(ScriptMissionType mission);
+    static const char *Mission_Description(ScriptMissionType mission);
 
-    public:
-        ScriptMissionType Mission;  // Mission type.
-        union {
-            xCell Cell;
-            QuarryType Quarry;      // Combat quarry type.
-            MissionType Mission;    // General mission orders.
-            int Value;              // Usually a waypoint number.
-        } Data;
+public:
+    ScriptMissionType Mission;  // Mission type.
+    union {
+        xCell Cell;
+        QuarryType Quarry;      // Combat quarry type.
+        MissionType Mission;    // General mission orders.
+        int Value;              // Usually a waypoint number.
+    } Data;
 
-    private:
-        struct MissionDescriptionStruct
-        {
-            char const *Name;
-            char const *Description;
-        };
+private:
+    struct MissionDescriptionStruct
+    {
+        char const *Name;
+        char const *Description;
+    };
 
-        static MissionDescriptionStruct MissionDescriptions[SMISSION_COUNT];
+    static MissionDescriptionStruct MissionDescriptions[SMISSION_COUNT];
 };
 
 

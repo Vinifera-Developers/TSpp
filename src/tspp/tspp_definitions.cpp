@@ -2281,8 +2281,8 @@ DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie() const, 0x006643D0);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Dumbass() const, 0x00664400);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Elite() const, 0x00664420);
 DEFINE_IMPLEMENTATION(double VeterancyClass::sub_664440(double), 0x00664440);
-DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Rookie(bool), 0x006644B0);
-DEFINE_IMPLEMENTATION(void VeterancyClass::sub_6644E0(bool), 0x006644E0);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Dumbass(bool), 0x006644B0);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Rookie(bool), 0x006644E0);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Veteran(bool), 0x006644F0);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Elite(bool), 0x00664520);
 DEFINE_IMPLEMENTATION(int VeterancyClass::To_Integer(), 0x00664550);
@@ -3166,7 +3166,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Clear_Navigation_List(), 0x004A5550);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_Recruitable(const HouseClass *) const, 0x004A55C0);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_On_Priority_Mission() const, 0x004A5620);
 // 004A5D10
-// 004A6370
+DEFINE_IMPLEMENTATION(void FootClass::Link_Droppod(), 0x004A6370);
 // 004A6DE0
 // 004A6F40
 DEFINE_IMPLEMENTATION(bool FootClass::Tiberium_Check(Cell &), 0x004A74D0);
@@ -3373,7 +3373,7 @@ DEFINE_IMPLEMENTATION(TeamClass *TeamTypeClass::Create_One_Of(HouseClass *) cons
 DEFINE_IMPLEMENTATION(void TeamTypeClass::Destroy_All_Of() const, 0x00627FE0);
 DEFINE_IMPLEMENTATION(TypeList<const TeamTypeClass *> TeamTypeClass::Suggested_New_Team(HouseClass *, bool), 0x00628020);
 // 00628BE0
-// 00628C00
+DEFINE_IMPLEMENTATION(Cell TeamTypeClass::Get_Origin() const, 0x00628C00);
 // 006290F0
 // 006291E0
 // 00629220
@@ -3465,7 +3465,7 @@ DEFINE_IMPLEMENTATION(void TeamClass::TMission_Flash(ScriptMissionClass *, bool)
 DEFINE_IMPLEMENTATION(void TeamClass::TMission_Play_Animation(ScriptMissionClass *, bool), 0x00627930);
 DEFINE_IMPLEMENTATION(void TeamClass::TMission_Talk_Bubble(ScriptMissionClass *, bool), 0x006279F0);
 DEFINE_IMPLEMENTATION(void TeamClass::Flash_For(int), 0x00627910);
-DEFINE_IMPLEMENTATION(bool TeamClass::func_6277A0(), 0x006277A0);
+DEFINE_IMPLEMENTATION(bool TeamClass::Has_Air_Transport(), 0x006277A0);
 DEFINE_IMPLEMENTATION(void TeamClass::func_627800(DynamicVectorClass<const TechnoTypeClass *> &), 0x00627800);
 // 00627A20
 const char *TeamClass::Name() const { return Class->Name(); }
@@ -3653,7 +3653,7 @@ DEFINE_IMPLEMENTATION(void TaskForceClass::Compute_CRC(WWCRCEngine &) const, 0x0
 DEFINE_IMPLEMENTATION(bool TaskForceClass::Read_INI(CCINIClass &), 0x00621A20);
 DEFINE_IMPLEMENTATION(bool TaskForceClass::Write_INI(CCINIClass &) const, 0x00621AE0);
 // 006216C0
-// 00621B80
+DEFINE_IMPLEMENTATION(bool TaskForceClass::Consists_Only_Of_Infantry() const, 0x00621B80);
 // 00621DE0
 DEFINE_IMPLEMENTATION(void TaskForceClass::Read_Scenario_INI(CCINIClass &, int), 0x00621780);
 DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass &, int), 0x00621940);
