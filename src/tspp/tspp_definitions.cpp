@@ -1200,7 +1200,7 @@ DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate &, int, TechnoClass
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
 DEFINE_IMPLEMENTATION(void Combat_Lighting(Coordinate, int, const WarheadTypeClass*, bool), 0x00460460);
 DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate &, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
-DEFINE_IMPLEMENTATION(int Get_Explosion_Z(int, Coordinate*), 0x00460B40);
+DEFINE_IMPLEMENTATION(int Get_Explosion_Z(Coordinate), 0x00460B40);
 
 DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);
 DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
@@ -2329,7 +2329,7 @@ DEFINE_IMPLEMENTATION(void SuperWeaponTypeClass::Compute_CRC(WWCRCEngine &) cons
 DEFINE_IMPLEMENTATION(int SuperWeaponTypeClass::Get_Heap_ID() const, 0x0060D2E0);
 DEFINE_IMPLEMENTATION(bool SuperWeaponTypeClass::Read_INI(CCINIClass &), 0x0060D2F0);
 DEFINE_IMPLEMENTATION(ActionType SuperWeaponTypeClass::What_Action(Cell&, ObjectClass*) const, 0x0060D6C0);
-DEFINE_IMPLEMENTATION(const SuperWeaponTypeClass *SuperWeaponTypeClass::From_Action(ActionType), 0x0060CF30);
+DEFINE_IMPLEMENTATION(const SuperWeaponTypeClass *SuperWeaponTypeClass::From_Action(ActionType), 0x0060D5F0);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ConnectionPointClass::QueryInterface(REFIID, LPVOID *), 0x0046F500);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE ConnectionPointClass::AddRef(), 0x0046F570);
@@ -3814,7 +3814,7 @@ DEFINE_IMPLEMENTATION(int VocClass::Play(float, int), 0x00664A50);
 DEFINE_IMPLEMENTATION(int VocClass::Play(float), 0x00664B00);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, int, float), 0x00664BA0);
 DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, float), 0x00664C60);
-DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, Coordinate &), 0x00664D10);
+DEFINE_IMPLEMENTATION(int VocClass::Play(VocType, const Coordinate &), 0x00664D10);
 DEFINE_IMPLEMENTATION(void VocClass::Process(CCINIClass &), 0x00664EC0);
 DEFINE_IMPLEMENTATION(void VocClass::Clear(), 0x00665080);
 DEFINE_IMPLEMENTATION(VocType VocClass::VocType_From_Voc(VocClass *), 0x006651C0);
@@ -4078,8 +4078,8 @@ DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(Coordinate &, int, int
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(Coordinate &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 
-DEFINE_IMPLEMENTATION(Coordinate Coord_Move(Coordinate &, DirStruct &, unsigned), 0x004231B0);
-DEFINE_IMPLEMENTATION(Coordinate Coord_Scatter(Coordinate &, unsigned, bool), 0x0046E850);
+DEFINE_IMPLEMENTATION(Coordinate Coord_Move(const Coordinate &, DirStruct &, unsigned), 0x004231B0);
+DEFINE_IMPLEMENTATION(Coordinate Coord_Scatter(const Coordinate &, unsigned, bool), 0x0046E850);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 0x00497570);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Load(IStream *), 0x004975B0);
@@ -6040,6 +6040,7 @@ ARRAY2D_DEF(0x0075FAE8, Cell, BuildingExitLists, BSIZE_COUNT, 24);
 
 ARRAY2D_DEF(0x0080ED00, Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
 
+ARRAY_DEF(0x006CD15C, const char*, CrateNames, CRATE_COUNT);
 ARRAY_DEF(0x006F6C64, int, CrateShares, CRATE_COUNT);
 ARRAY_DEF(0x006F6CB0, AnimType, CrateAnims, CRATE_COUNT);
 ARRAY_DEF(0x00761068, int, CrateData, CRATE_COUNT);

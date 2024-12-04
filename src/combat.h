@@ -41,4 +41,4 @@ void Explosion_Damage(const Coordinate &coord, int strength, TechnoClass * sourc
 const AnimTypeClass * Combat_Anim(int damage, const WarheadTypeClass * warhead, LandType land, const Coordinate *coord);
 void Combat_Lighting(Coordinate coord, int damage, WarheadTypeClass const * warhead, bool a4 = false);
 void Wide_Area_Damage(const Coordinate &coord, LEPTON radius, int rawdamage, TechnoClass * source, const WarheadTypeClass * warhead);
-int Get_Explosion_Z(int z, Coordinate* coord);
+int Get_Explosion_Z(Coordinate coord);

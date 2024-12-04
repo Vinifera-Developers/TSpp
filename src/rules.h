@@ -165,8 +165,8 @@ class RulesClass
         int VeinDamage;
         int MaximumQueuedObjects;
         int AircraftFogReveal;
-        OverlayTypeClass *WoodCrateImage;
-        OverlayTypeClass *SteelCrateImage;
+        const OverlayTypeClass *WoodCrateImage;
+        const OverlayTypeClass *SteelCrateImage;
         TypeList<AnimTypeClass *> DropPod;
         TypeList<AnimTypeClass *> DeadBodies;
         TypeList<AnimTypeClass *> MetallicDebris;
@@ -412,7 +412,7 @@ class RulesClass
         int InfantryBaseMult;
         int SoloCrateMoney;
         int TreeStrength;
-        UnitTypeClass *UnitCrateType;
+        const UnitTypeClass *UnitCrateType;
         double PatrolTime;
         TypeList<int> TeamDelays;
         TypeList<int> AIHateDelays;
