@@ -67,7 +67,7 @@ VeinholeMonsterClass : public ObjectClass
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
 
-        // 00661330
+        static VeinholeMonsterClass* Fetch_At(const Cell& cell);
         // 00661380
         // 00661A30
         // 00661C10

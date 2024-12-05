@@ -127,7 +127,7 @@ class MapClass : public GScreenClass
         // 00515970
         // 005159A0
         // 005159D0
-        // 00515A00
+        void Update_Cell_Zone(const Cell& cell); // 00515A00
         // 00515B30
         // 00515C60
         // 00515F90
@@ -167,7 +167,7 @@ class MapClass : public GScreenClass
         const Cell Pick_Random_Location();
         void Shroud_The_Map();
         void Reveal_The_Map();
-        int Get_Cell_Height(Coordinate &coord) const;
+        int Get_Cell_Height(const Coordinate &coord) const;
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         bool In_Local_Radar(Rect &rect, bool a2 = true) const;
@@ -178,7 +178,7 @@ class MapClass : public GScreenClass
         CellClass *Horizontal_Iterator_Next_Cell();
         void Horizontal_Iterator_Reset();
         // 0051E7A0
-        // 0051E9E0
+        bool Deform(const Cell& cell, bool forced); // 0051E9E0
         // 0051EAE0
         // 0051EB20
         // 0051EB30
@@ -186,7 +186,7 @@ class MapClass : public GScreenClass
         // 0051F020
         // 0051F5B0
         // 0051FBC0
-        // 00520700
+        bool Crack_Ice(CellClass& cellptr, ObjectClass* object); // 00520700
         // 005208D0
         // 00520900
         // 00520DA0
@@ -210,7 +210,7 @@ class MapClass : public GScreenClass
         // 00523EA0
         // 00523F80
         // 005240A0
-        // 005241B0
+        bool Destroy_Low_Bridge_At(const Cell& cell); // 005241B0
         // 00524400
         // 00524920
         // 00524E40
@@ -223,7 +223,7 @@ class MapClass : public GScreenClass
         // 00526690
         // 005266E0
         // 00526BB0
-        // 00526C50
+        void Collapse_Cliff(CellClass& cellptr); // 00526C50
         void Clear_SubZones();
         // 00527B00
         // 00528010
@@ -234,7 +234,7 @@ class MapClass : public GScreenClass
         // 00529160
         // 005293A0
         // 00529640
-        // 00529AC0
+        void Update_Cell_Subzones(const Cell& cell); // 00529AC0
         // 0052A380
         // 0052A6E0
         // 0052AAD0
@@ -255,8 +255,8 @@ class MapClass : public GScreenClass
         // 0052C080
         // 0052C2E0
         // 0052C450
-        // 0052C610
-        // 0052C690
+        void Recalc_Ice(); // 0052C610
+        bool Destroy_Bridge_At(const Cell& cell); // 0052C690
         // 0052C900
         // 0052CE90
         // 0052D2E0

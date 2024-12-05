@@ -1611,6 +1611,7 @@ DEFINE_IMPLEMENTATION(void CellClass::Detach(TARGET), 0x0045AD80);
 DEFINE_IMPLEMENTATION(void CellClass::Attach_Tag(TagClass *), 0x0045AEA0);
 DEFINE_IMPLEMENTATION(void CellClass::Trigger_Veins(), 0x0045C5C0);
 DEFINE_IMPLEMENTATION(unsigned CellClass::Toggle_Occupied_By(HousesType), 0x0045CA20);
+DEFINE_IMPLEMENTATION(void CellClass::Redraw_Overlay(), 0x0045CB00);
 DEFINE_IMPLEMENTATION(bool CellClass::Cloaked_By(HousesType) const, 0x0045CD30);
 DEFINE_IMPLEMENTATION(bool CellClass::Sensed_By(HousesType) const, 0x0045CD50);
 DEFINE_IMPLEMENTATION(void CellClass::Set_Cloaked_By(HousesType), 0x0045CD70);
@@ -1666,7 +1667,7 @@ DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C
 DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(Point2D), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
-DEFINE_IMPLEMENTATION(void Tactical::func_60FBB0(Rect &, bool), 0x0060FBB0);
+DEFINE_IMPLEMENTATION(void Tactical::Register_Dirty_Area(const Rect &, bool), 0x0060FBB0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers_Flags(), 0x006177A0);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Radial_Indicators() const, 0x00617FA0);
@@ -1838,13 +1839,14 @@ DEFINE_IMPLEMENTATION(bool MapClass::Place_Random_Crate(), 0x00514500);
 DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(Cell &), 0x005145D0);
 DEFINE_IMPLEMENTATION(int MapClass::MapClass::Validate(), 0x005147E0);
 DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(Coordinate &) const, 0x005147F0);
+DEFINE_IMPLEMENTATION(void MapClass::Update_Cell_Zone(const Cell &), 0x00515A00);
 DEFINE_IMPLEMENTATION(Cell MapClass::Nearby_Location(Cell &, SpeedType, int, MZoneType, bool, int, int, bool, bool, bool, bool, Cell &) const, 0x005161A0);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Area_Clear(Cell &, int, int, SpeedType, int, MZoneType, int, bool, bool) const, 0x00516BE0);
 DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(Cell &, HousesType &, ZoneType &) const, 0x00516CB0);
 DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
-DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Height(Coordinate &) const, 0x0051E130);
+DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Height(const Coordinate &) const, 0x0051E130);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Rect &, bool) const, 0x0051E2B0);
@@ -1853,10 +1855,17 @@ DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(CellClass &, bool) const, 0x
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Coordinate &) const, 0x0051E510);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Horizontal_Iterator_Next_Cell(), 0x0051E630);
 DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
+DEFINE_IMPLEMENTATION(bool MapClass::Deform(const Cell&, bool), 0x0051E9E0);
+DEFINE_IMPLEMENTATION(bool MapClass::Crack_Ice(CellClass&, ObjectClass*), 0x00520700);
+DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Low_Bridge_At(const Cell&), 0x005241B0);
+DEFINE_IMPLEMENTATION(void MapClass::Collapse_Cliff(CellClass&), 0x00526C50);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
+DEFINE_IMPLEMENTATION(void MapClass::Update_Cell_Subzones(const Cell&), 0x00529AC0);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coordinate&), 0x0052B870);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coordinate&), 0x0052B9B0);
 DEFINE_IMPLEMENTATION(void MapClass::Fog_Map(), 0x0052BBE0);
+DEFINE_IMPLEMENTATION(void MapClass::Recalc_Ice(), 0x0052C610);
+DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Bridge_At(const Cell&), 0x0052C690);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Overlay(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D7B0);
 DEFINE_IMPLEMENTATION(void MapClass::Building_To_Wall(Cell&, HouseClass&, BuildingTypeClass*), 0x0052D990);
 
@@ -2992,7 +3001,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Target(TARGET) const, 0x0062FD70)
 DEFINE_IMPLEMENTATION(const BulletClass *TechnoClass::Fire_At(TARGET, WeaponSlotType), 0x00630350);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Captured(HouseClass *), 0x006324D0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Laser_Zap(TARGET, int, const WeaponTypeClass *, Coordinate &), 0x0062FFD0);
-DEFINE_IMPLEMENTATION(void TechnoClass::entry_308(Coordinate &, float), 0x006384A0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Rock(const Coordinate &, float), 0x006384A0);
 DEFINE_IMPLEMENTATION(WeaponInfoStruct *const TechnoClass::Get_Weapon(WeaponSlotType) const, 0x0040F2A0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Turret_Equipped() const, 0x0040F2F0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Renovate() const, 0x00632460);
@@ -3053,7 +3062,7 @@ DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coordinate&
 // 00639BB0);
 // 00639C30);
 // 00639C60);
-// 00639EF0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Update_Mission_Targets(TARGET), 0x00639EF0);
 // 00639F80);
 // 0063A0C0);
 // 0063A100);
@@ -4080,6 +4089,7 @@ DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 
 DEFINE_IMPLEMENTATION(Coordinate Coord_Move(const Coordinate &, DirStruct &, unsigned), 0x004231B0);
 DEFINE_IMPLEMENTATION(Coordinate Coord_Scatter(const Coordinate &, unsigned, bool), 0x0046E850);
+DEFINE_IMPLEMENTATION(Coordinate Adjacent_Coord_With_Height(const Coordinate&, FacingType), 0x0046E980);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 0x00497570);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Load(IStream *), 0x004975B0);
@@ -4609,9 +4619,9 @@ DEFINE_IMPLEMENTATION(LayerType ParticleSystemClass::In_Which_Layer() const, 0x0
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const ParticleSystemClass::Class_Of() const, 0x005A78B0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Remove_This(), 0x005A7880);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Draw_It(Point2D &, Rect &) const, 0x005A58A0);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle(Coordinate &, Coordinate &), 0x005A59B0);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Particle(ParticleTypeClass *, Coordinate &), 0x005A5A50);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle_Random(Coordinate &, Coordinate &, int), 0x005A5AD0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle(const Coordinate &, const Coordinate &), 0x005A59B0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Particle(ParticleTypeClass *, const Coordinate &), 0x005A5A50);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle_Random(const Coordinate &, const Coordinate &, int), 0x005A5AD0);
 DEFINE_IMPLEMENTATION(bool ParticleSystemClass::Delete_Particle(int), 0x005A5BD0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Delete_All_Particles(), 0x005A5C40);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Gas_AI(), 0x005A5CB0);
@@ -5330,6 +5340,7 @@ DEFINE_IMPLEMENTATION(bool VeinholeMonsterClass::Save_All(IStream *), 0x00663210
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Init_Clear(), 0x00661D00);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Draw_All(), 0x006619D0);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Update_All(), 0x006613C0);
+DEFINE_IMPLEMENTATION(VeinholeMonsterClass* VeinholeMonsterClass::Fetch_At(const Cell&), 0x0000661330);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Place_Veinhole_Monsters(bool), 0x006623F0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FoggedObjectClass::GetClassID(CLSID *), 0x0049F6D0);

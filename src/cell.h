@@ -203,7 +203,7 @@ CellClass : public AbstractClass
         // 0045C8E0
         unsigned Toggle_Occupied_By(HousesType house);
         // 0045CAC0
-        // 0045CB00
+        void Redraw_Overlay(); // 0045CB00
         // 0045CC80
         bool Cloaked_By(HousesType house) const;
         bool Sensed_By(HousesType house) const;
@@ -250,13 +250,15 @@ CellClass : public AbstractClass
         bool Is_Tile_Dirt_Road_Slope() const { return Tile >= DirtRoadSlopes && Tile < (DirtRoadSlopes+8); }
         bool Is_Tile_Black() const { return Tile == BlackTile; }
 
-        bool Is_Overlay_Low_Bridge() const { return Overlay >= OverlayType(74) && Overlay <= OverlayType(99); }
-        bool Is_Overlay_Train_Tracks() const { return Overlay >= OverlayType(39) && Overlay <= OverlayType(54); }
+        bool Is_Overlay_Low_Bridge() const { return Overlay >= OVERLAY_LOWBRIDGE_BEGIN && Overlay <= OVERLAY_LOWBRIDGE_END; }
+        bool Is_Overlay_Train_Tracks() const { return Overlay >= OVERLAY_TRACK_BEGIN && Overlay <= OVERLAY_TRACK_END; }
+        bool Is_Overlay_Bridge() const { return Overlay == OVERLAY_BRIDGE1 || Overlay == OVERLAY_BRIDGE2; }
+        bool Is_Overlay_Rail_Bridge() const { return Overlay == OVERLAY_RAIL_BRIDGE1 || Overlay == OVERLAY_RAIL_BRIDGE2; }
 
     public:
         Cell Pos;
         DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
-        CellClass *field_1C;
+        CellClass *BridgeOwner;
         int field_20;
         LightConvertClass *Drawer;
         IsometricTileType Tile;
@@ -334,8 +336,8 @@ CellClass : public AbstractClass
         unsigned IsFlagged:1;
         unsigned IsToShroud:1;
         unsigned IsToFog:1;
-        unsigned Bit2_8:1;              // is the starting point of a bridge connection? (from start to end?)
-        unsigned Bit2_16:1;             // is covered by bridge overlay?
+        unsigned IsBridgeOwner:1;       // is the starting point of a bridge connection? (from start to end?)
+        unsigned IsBridge:1;            // is covered by bridge overlay?
         unsigned Bit2_32:1;             // is covered by bridge overlay? also
         unsigned Bit2_64:1;             // unrepaired/repairable bridge connection.
         unsigned Bit2_128:1;            // draws on cells that are the length of the bridge body. (low down?)

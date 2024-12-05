@@ -173,7 +173,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
         virtual bool Captured(HouseClass *house = nullptr);
         virtual void Laser_Zap(TARGET target, int which, const WeaponTypeClass *weapontype, Coordinate &a4);
-        virtual void entry_308(Coordinate &coord, float a2);
+        virtual void Rock(const Coordinate &coord, float a2);
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual bool Is_Turret_Equipped() const;
         virtual void Renovate() const;
@@ -234,7 +234,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         float Target_Threat(TechnoClass* target, Coordinate& firing_coord) const;
         // 00639BB0
         // 00639C60
-        // 00639EF0
+        static void Update_Mission_Targets(TARGET target);
         // 00639F80
         // 0063A0C0
         // 0063A100

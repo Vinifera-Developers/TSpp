@@ -52,11 +52,11 @@ AnimClass : public ObjectClass, public StageClass
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
-	public:
-		AnimClass();
-		AnimClass(const AnimTypeClass *classof, Coordinate &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, int zadjust = 0);
+    public:
+        AnimClass();
+        AnimClass(const AnimTypeClass *classof, const Coordinate &coord, unsigned timedelay = 0, unsigned loop = 1, unsigned flags = 0x600, int zadjust = 0);
         AnimClass(const NoInitClass &noinit);
-		virtual ~AnimClass();
+        virtual ~AnimClass();
 
         /**
          *  AbstractClass
@@ -100,13 +100,13 @@ AnimClass : public ObjectClass, public StageClass
         // 00416E90
         // 00417270
 
-		void Make_Invisible() { IsInvisible = true; }
-		void Make_Visible() { IsInvisible = false; }
+        void Make_Invisible() { IsInvisible = true; }
+        void Make_Visible() { IsInvisible = false; }
 
         static void Init();
         static void Do_Atom_Damage(HousesType ownerhouse, Cell &cell);
 
-	public:
+    public:
         AnimTypeClass *Class;
         TARGET xObject;
         HousesType OwnerHouse;
@@ -119,7 +119,7 @@ AnimClass : public ObjectClass, public StageClass
         bool IsBuildingAnim;
         BounceClass Bounce;
         char TranslucencyLevel;
-		int Delay;
+        int Delay;
         double Accum;
         int ShapeFlags;
         bool field_FC;
