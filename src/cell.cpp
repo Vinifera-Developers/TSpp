@@ -30,6 +30,7 @@
 #include "tibsun_inline.h"
 #include "tiberium.h"
 #include "overlay.h"
+#include "mouse.h"
 
 
 /**
@@ -69,4 +70,18 @@ bool CellClass::Spread_Tiberium(TiberiumType tiberium, bool forced)
 	}
 
 	return false;
+}
+
+
+/**
+ *  Fetches the cell that owns the bridge that spans this cell.
+ *
+ *  @author: ZivDero
+ */
+CellClass* CellClass::Get_Bridge_Owner() const
+{
+    if (IsBridge) {
+        return &Map[IsBridgeOwner ? Pos : BridgeOwner->Pos];
+    }
+    return nullptr;
 }

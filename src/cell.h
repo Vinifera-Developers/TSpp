@@ -194,6 +194,21 @@ CellClass : public AbstractClass
         //bool Is_() const { return ; } // 0045C450     <- clear to sand LAT
         // 0045C470      <- clear to green LAT
         bool Is_Tile_Destroyable_Cliff() const { return Tile >= DestroyableCliff && Tile < (DestroyableCliff+1); } // 0045C5A0
+        bool Is_Tile_Bridge_Middle() const {
+            const IsometricTileType ttype = Tile - BridgeSet + 1;
+            return (ttype == BridgeMiddle1 + 0 || ttype == BridgeMiddle1 + 1 ||
+                    ttype == BridgeMiddle1 + 2 || ttype == BridgeMiddle1 + 3 ||
+                    ttype == BridgeMiddle2 + 0 || ttype == BridgeMiddle2 + 1 ||
+                    ttype == BridgeMiddle2 + 2 || ttype == BridgeMiddle2 + 3);
+        }
+
+        bool Is_Tile_Train_Bridge_Middle() const {
+            const IsometricTileType ttype = Tile - TrainBridgeSet + 1;
+            return (ttype == BridgeMiddle1 + 0 || ttype == BridgeMiddle1 + 1 ||
+                    ttype == BridgeMiddle1 + 2 || ttype == BridgeMiddle1 + 3 ||
+                    ttype == BridgeMiddle2 + 0 || ttype == BridgeMiddle2 + 1 ||
+                    ttype == BridgeMiddle2 + 2 || ttype == BridgeMiddle2 + 3);
+        }
         // 0045C490
         // 0045C4E0
         // 0045C530
@@ -254,6 +269,8 @@ CellClass : public AbstractClass
         bool Is_Overlay_Train_Tracks() const { return Overlay >= OVERLAY_TRACK_BEGIN && Overlay <= OVERLAY_TRACK_END; }
         bool Is_Overlay_Bridge() const { return Overlay == OVERLAY_BRIDGE1 || Overlay == OVERLAY_BRIDGE2; }
         bool Is_Overlay_Rail_Bridge() const { return Overlay == OVERLAY_RAIL_BRIDGE1 || Overlay == OVERLAY_RAIL_BRIDGE2; }
+
+        CellClass* Get_Bridge_Owner() const;
 
     public:
         Cell Pos;
