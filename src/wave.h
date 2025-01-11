@@ -131,7 +131,6 @@ WaveClass : public ObjectClass
         Point2D field_110; // active wave pixel start left
         Point2D field_118; // active wave pixel start right
         WavePointStruct2 field_120; // current active points?
-        int field_128;
         int field_12C[FACING_COUNT];
         FacingType field_14C;
         int LaserEC;
