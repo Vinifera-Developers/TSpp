@@ -186,8 +186,8 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_330(Point2D &point, Rect &rect, bool a2) const;
         virtual void Draw_Pips(Point2D &point1, Point2D &point2, Rect &rect) const;
         virtual void Draw_Text_Overlay(Point2D &point1, Point2D &point2, Rect &rect) const;
-        virtual void Do_Uncloak(bool play_sfx = true);
-        virtual void Do_Cloak(bool play_sfx = true);
+        virtual void Do_Uncloak(bool silent = false);
+        virtual void Do_Cloak(bool silent = false);
         virtual int entry_344(int a1) const;
         virtual bool Is_Ready_To_Random_Animate() const;
         virtual bool Random_Animate();
