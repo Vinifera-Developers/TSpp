@@ -494,3 +494,43 @@ Rect Get_Tactical_Rect(bool use_options_size)
 
     return rect;
 }
+
+/***********************************************************************************************
+ * List_Copy -- Makes a copy of a cell offset list.                                            *
+ *                                                                                             *
+ *    This routine will make a copy of a cell offset list. It will only copy the significant   *
+ *    elements of the list limited by the maximum length specified.                            *
+ *                                                                                             *
+ * INPUT:   source   -- Pointer to a cell offset list.                                         *
+ *                                                                                             *
+ *          len      -- The maximum number of cell offset elements to store in to the          *
+ *                      destination list pointer.                                              *
+ *                                                                                             *
+ *          dest     -- Pointer to the destination list to store the copy into.                *
+ *                                                                                             *
+ * OUTPUT:  none                                                                               *
+ *                                                                                             *
+ * WARNINGS:   Ensure that the destination list is large enough to hold the list copy.         *
+ *                                                                                             *
+ * HISTORY:
+ *   02/11/2025 Rampastring : Adjusted for Tiberian Sun.
+ *   09/04/1996 JLB : Created.                                                                 *
+ *=============================================================================================*/
+void List_Copy(Cell const * source, int len, Cell * dest)
+{
+    if (source == nullptr || dest == nullptr) {
+        return;
+    }
+
+    while (len > 0) {
+        *dest = *source;
+        if (dest->X == REFRESH_EOL && dest->Y == REFRESH_EOL)
+            return;
+        dest++;
+        source++;
+        len--;
+    }
+
+    // Terminate the list.
+    *(dest - 1) = Cell(REFRESH_EOL, REFRESH_EOL);
+}

@@ -105,3 +105,5 @@ bool Is_Object(const AbstractClass *a, bool use_dynamic_cast = false);
 bool Is_Foot(const AbstractClass *a, bool use_dynamic_cast = false);
 bool Is_Techno(const AbstractClass *a, bool use_dynamic_cast = false);
 bool Is_TypeClass(const AbstractClass *a, bool use_dynamic_cast = false);
+
+void List_Copy(Cell const* source, int len, Cell* dest);
