@@ -102,6 +102,7 @@ public:
 
     void Init_Anim(BStateType state, int start, int count, int rate) const;
     void Set_Base_Defense_Values();
+    bool Is_Deployable();
 
     static void One_Time();
     static void Init(TheaterType theater);
