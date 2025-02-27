@@ -23,7 +23,7 @@ You can discuss the development and progress of this project on the **C&C Moddin
 If you are interested in contributing to this project, you will need some knowledge of C++ as a minimum requirement, but it is recommended you have experience with binary analysis. All contributions towards this projects goals are welcome, provided they follow the contribution guidelines. Please join the Discord server to discuss these guidelines with the active developers. Any pull requests that do not fit within the project guidelines will be recommended to be developed as a downstream project.
 
 # Legal
-This project is an unofficial open-source community collaboration project for preservation, modding and compatibility purposes. This project has no direct affiliation with Electronic Arts Inc. and/or Command & Conquer. Command & Conquer is an Electronic Arts Inc. brand. All Rights Reserved.
+This project is an unofficial open-source community collaboration project for preservation, modding and compatibility purposes. EA has not endorsed and does not support this product. Command & Conquer is an Electronic Arts Inc. brand. All Rights Reserved.
 
 No assets, texts, artwork or other media from the original game(s) is included in this repository. We do not condone piracy in any way, shape or form and encourgage users to legally own the original game(s). 
 
