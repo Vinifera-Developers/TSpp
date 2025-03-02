@@ -2081,7 +2081,7 @@ DEFINE_IMPLEMENTATION(void RadarClass::Compute_Radar_Image(), 0x005B9B90);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(void RadarClass::Toggle_Radar(bool), 0x005BC080);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Player_Names(), 0x005BC150);
-DEFINE_IMPLEMENTATION(void RadarClass::Player_Names(bool), 0x005BC190);
+DEFINE_IMPLEMENTATION(void RadarClass::Redraw_Radar(bool), 0x005BC190);
 DEFINE_IMPLEMENTATION(void RadarClass::Total_Radar_Refresh(), 0x005BCE90);
 RadarClass::RTacticalClass::RTacticalClass() : GadgetClass(0,0,0,0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS, true) {}
 DEFINE_IMPLEMENTATION(bool RadarClass::RTacticalClass::Action(unsigned, KeyNumType &), 0x005B9190);

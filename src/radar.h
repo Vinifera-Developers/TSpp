@@ -106,7 +106,7 @@ class RadarClass : public DisplayClass
         void Toggle_Radar(bool tactical_availability);
         bool Is_Player_Names();
         // 005BC170
-        void Player_Names(bool a1);
+        void Redraw_Radar(bool a1);
         // 005BC1C0
         // 005BCC40
         void Total_Radar_Refresh();
