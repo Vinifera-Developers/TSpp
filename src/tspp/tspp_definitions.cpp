@@ -5503,8 +5503,22 @@ DEFINE_IMPLEMENTATION(Vector3 operator*(const Matrix3D&, const Vector3&), 0x0055
 /**
  *  Various values calculated at runtime init.
  */
-int &CellHeight = Make_Global<int>(0x007481A0);
-int &BridgeCellHeight = Make_Global<int>(0x0074819C);
+Rect& RectNone = Make_Global<Rect>(0x00748138);
+Cell& CellNone = Make_Global<Cell>(0x00748158);
+Coordinate& CoordNone = Make_Global<Coordinate>(0x00748178);
+
+double& CellLeptonDiag = Make_Global<double>(0x00748160);
+
+double& IsoTileSize = Make_Global<double>(0x00748148);
+int& IsoTilePixelH = Make_Global<int>(0x00748150);
+int& IsoTilePixelW = Make_Global<int>(0x00748154);
+
+int& LevelLeptonH = Make_Global<int>(0x007481A0);
+int& LevelPixelH = Make_Global<int>(0x00748184);
+double& CellSlopeAngle = Make_Global<double>(0x00748170);
+double& CellDiagSlopeAngle = Make_Global<double>(0x00748188);
+int& LevelPixelH1 = Make_Global<int>(0x00748198);
+int& BridgeLeptonHeight = Make_Global<int>(0x0074819C);
 
 
 /**

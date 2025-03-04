@@ -151,10 +151,14 @@ inline int Distance(const Coordinate &coord1, const Coordinate &coord2)
 }
 
 
-inline int Distance_Level_Snap(const Coordinate& coord1, const Coordinate& coord2) {
-    Coordinate coord;
-    coord = Coordinate(coord1.X - coord2.X, coord1.Y - coord2.Y, (std::abs(coord1.Z - coord2.Z) < CELL_HEIGHT(1)) ? 0 : (coord1.Z - coord2.Z));
-    return coord.Length();
+inline int Distance_Level_Snap(const Coordinate& coord1, const Coordinate& coord2)
+{
+    int z1 = coord1.Z;
+    int z2 = coord2.Z;
+    if (abs(z2 - z1) < LEVEL_LEPTON_H) {
+      z2 = coord1.Z;
+    }
+    return Coordinate(coord1.X - coord2.X, coord1.Y - coord2.Y, z1 - z2).Length();
 }
 
 

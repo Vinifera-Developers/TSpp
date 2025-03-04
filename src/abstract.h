@@ -98,6 +98,8 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         bool Is_Dirty() const { return Dirty; }
 
     public:
+        __declspec(property(get = Kind_Of)) RTTIType RTTI;
+
         int ID;
         int RefCount;
         bool Dirty;

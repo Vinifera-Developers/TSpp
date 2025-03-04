@@ -169,8 +169,22 @@ enum KeyNumType;
 /**
  *  Various values calculated at runtime init.
  */
-extern int &CellHeight;				// The height of one cell.
-extern int &BridgeCellHeight;		// The height of a bridge in cell height units.
+extern Rect& RectNone;
+extern Cell& CellNone;
+extern Coordinate& CoordNone;
+
+extern double& CellLeptonDiag;
+
+extern double& IsoTileSize;
+extern int& IsoTilePixelH;
+extern int& IsoTilePixelW;
+
+extern int& LevelLeptonH;
+extern int& LevelPixelH;
+extern double& CellSlopeAngle;
+extern double& CellDiagSlopeAngle;
+extern int& LevelPixelH1;
+extern int& BridgeLeptonHeight;
 
 
 /**

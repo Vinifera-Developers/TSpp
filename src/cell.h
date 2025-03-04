@@ -304,7 +304,7 @@ CellClass : public AbstractClass
         unsigned char field_90;
         unsigned char IsIceGrowthAllowed;
         unsigned char SubTile;
-        unsigned char Level;
+        unsigned char Height;
         unsigned char Ramp;
         unsigned char field_95;
         unsigned char OverlayData;
@@ -354,7 +354,7 @@ CellClass : public AbstractClass
         unsigned IsToShroud:1;
         unsigned IsToFog:1;
         unsigned IsBridgeOwner:1;       // is the starting point of a bridge connection? (from start to end?)
-        unsigned IsBridge:1;            // is covered by bridge overlay?
+        unsigned IsUnderBridge:1;            // is covered by bridge overlay?
         unsigned Bit2_32:1;             // is covered by bridge overlay? also
         unsigned Bit2_64:1;             // unrepaired/repairable bridge connection.
         unsigned Bit2_128:1;            // draws on cells that are the length of the bridge body. (low down?)

@@ -524,7 +524,7 @@ void List_Copy(Cell const * source, int len, Cell * dest)
 
     while (len > 0) {
         *dest = *source;
-        if (dest->X == REFRESH_EOL && dest->Y == REFRESH_EOL)
+        if (dest->X == REFRESH_EOL)
             return;
         dest++;
         source++;
@@ -532,5 +532,5 @@ void List_Copy(Cell const * source, int len, Cell * dest)
     }
 
     // Terminate the list.
-    *(dest - 1) = Cell(REFRESH_EOL, REFRESH_EOL);
+    *(dest - 1) = REFRESH_EOL;
 }

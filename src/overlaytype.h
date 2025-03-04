@@ -79,7 +79,7 @@ OverlayTypeClass : public ObjectTypeClass
         /**
          *  OverlayTypeClass
          */
-		virtual void Draw_It(Point2D &xy, Rect &a2, int frame) const;
+        virtual void Draw_It(Point2D &xy, Rect &a2, int frame) const;
 
         RGBStruct Get_Radar_Color(int a1 = 0);
         
@@ -94,23 +94,23 @@ OverlayTypeClass : public ObjectTypeClass
         static const OverlayTypeClass *Find_Or_Make(const char *name);
 
     public:
-		OverlayType Type;
-		LandType Land;
+        OverlayType Type;
+        LandType Land;
         AnimTypeClass *CellAnim;
-		int DamageLevels;
-		int DamagePoints;
-		bool IsWall;
-		bool IsHigh;
-		bool IsTiberium;
-		bool IsCrate;
-		bool IsCrateTrigger;
+        int DamageLevels;
+        int DamagePoints;
+        bool IsWall;
+        bool IsHigh;
+        bool IsTiberium;
+        bool IsCrate;
+        bool IsCrateTrigger;
         bool NoUseTileLandType;
         bool IsVeinholeMonster;
         bool IsVeins;
         bool IsDemandLoad;
-        bool IsExplodes;
-        bool IsChainReaction;
-        bool IsOverrides;
-        bool IsDrawFlat;
+        bool IsExplosive;
+        bool IsChainReactive;
+        bool IsPriority;
+        bool DrawFlat;
         bool IsARock;
 };
