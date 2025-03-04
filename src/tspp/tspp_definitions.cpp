@@ -4084,8 +4084,8 @@ DEFINE_IMPLEMENTATION(ObjectClass *const SmudgeTypeClass::Create_One_Of(HouseCla
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Draw_It(Point2D &, Rect &, int, int, Cell &) const, 0x005FB4E0);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Can_Place_Here(Cell &, bool), 0x005FBE30);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(Cell &), 0x005FBF30);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(Coordinate &, int, int, bool), 0x005FB870);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(Coordinate &, int, int, bool), 0x005FBB50);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(const Coordinate &, int, int, bool), 0x005FB870);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(const Coordinate &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 
 DEFINE_IMPLEMENTATION(Coordinate Coord_Move(const Coordinate &, DirStruct &, unsigned), 0x004231B0);
