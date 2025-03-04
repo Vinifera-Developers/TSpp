@@ -1668,7 +1668,7 @@ DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C
 DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(Point2D), 0x0060F0F0);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
-DEFINE_IMPLEMENTATION(void Tactical::Register_Dirty_Area(const Rect &, bool), 0x0060FBB0);
+DEFINE_IMPLEMENTATION(void Tactical::Register_Dirty_Area(Rect, bool), 0x0060FBB0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers_Flags(), 0x006177A0);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Radial_Indicators() const, 0x00617FA0);

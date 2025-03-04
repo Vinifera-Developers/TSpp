@@ -91,7 +91,7 @@ Tactical : public AbstractClass
         Coordinate Pixel_To_Coord(const Point2D &pixel) const;
         Coordinate func_60F740(const Point2D &pixel) const;
         void func_60F800(const Coordinate &coord, int a2);
-        void Register_Dirty_Area(const Rect& rect, bool a5 = false); // 0060FBB0
+        void Register_Dirty_Area(Rect rect, bool a5 = false); // 0060FBB0
         static int Z_Lepton_To_Pixel(LEPTON z);
         static LEPTON Pixel_To_Z_Lepton(int a1);
         // 0060FF70
