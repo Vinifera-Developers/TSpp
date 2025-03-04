@@ -1196,7 +1196,7 @@ DEFINE_IMPLEMENTATION(ObjectClass *const AircraftTypeClass::Create_One_Of(HouseC
 DEFINE_IMPLEMENTATION(Cell *AircraftTypeClass::Occupy_List(bool) const, 0x0040FDD0);
 
 DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType, int), 0x0045EB60);
-DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(Cell &), 0x0045EC30);
+DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(const Cell &), 0x0045EC30);
 DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate &, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
 DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
 DEFINE_IMPLEMENTATION(void Combat_Lighting(Coordinate, int, const WarheadTypeClass*, bool), 0x00460460);

@@ -36,7 +36,7 @@ class AnimTypeClass;
 
 
 int Modify_Damage(int damage, const WarheadTypeClass * warhead, ArmorType armor, int distance);
-void Chain_Reaction_Damage(Cell &cell);
+void Chain_Reaction_Damage(const Cell &cell);
 void Explosion_Damage(const Coordinate &coord, int strength, TechnoClass * source, const WarheadTypeClass * warhead, bool a5 = false);
 const AnimTypeClass * Combat_Anim(int damage, const WarheadTypeClass * warhead, LandType land, const Coordinate *coord);
 void Combat_Lighting(Coordinate coord, int damage, WarheadTypeClass const * warhead, bool a4 = false);
