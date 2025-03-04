@@ -193,7 +193,7 @@ CellClass : public AbstractClass
         bool Is_Tile_Train_Bridge() const { return Tile >= TrainBridgeSet && Tile < (TrainBridgeSet+16); } // 0045C430
         //bool Is_() const { return ; } // 0045C450     <- clear to sand LAT
         // 0045C470      <- clear to green LAT
-        bool Is_Tile_Destroyable_Cliff() const { return Tile >= DestroyableCliff && Tile < (DestroyableCliff+1); } // 0045C5A0
+        bool Is_Tile_Destroyable_Cliff() const { return Tile == DestroyableCliff || Tile == (DestroyableCliff+1); } // 0045C5A0
         bool Is_Tile_Bridge_Middle() const {
             const IsometricTileType ttype = Tile - BridgeSet + 1;
             return (ttype == BridgeMiddle1 + 0 || ttype == BridgeMiddle1 + 1 ||
