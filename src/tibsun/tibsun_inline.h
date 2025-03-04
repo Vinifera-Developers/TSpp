@@ -377,7 +377,7 @@ inline int Lepton_To_Cell(LEPTON lepton_distance)
 }
 
 
-inline Coordinate Cell_Coord(const Cell &cell, bool snap = false, int z_value = 0)
+inline Coordinate Cell_Coord(const Cell &cell, bool snap = true, int z_value = 0)
 {
     Coordinate tmp;
     tmp.X = cell.X * 256;
