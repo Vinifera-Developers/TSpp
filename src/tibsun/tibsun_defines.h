@@ -2925,8 +2925,6 @@ struct Cell
     Cell(short x, short y) : X(x), Y(y) {}
     Cell(const Cell &that) : X(that.X), Y(that.Y) {}
 
-    operator bool () const { return X != 0 || Y != 0 /*&& As_Cell_Number() < MAP_CELL_TOTAL*/; }
-
     bool operator==(const Cell &that) const { return X == that.X && Y == that.Y; }
     bool operator!=(const Cell &that) const { return X != that.X && Y != that.Y; }
 
@@ -2975,8 +2973,6 @@ struct Coordinate
     Coordinate(const xCoordinate& x) : X(x.X), Y(x.Y), Z(x.Z) {}
     Coordinate(int x, int y, int z) : X(x), Y(y), Z(z) {}
     Coordinate(const Coordinate &that) : X(that.X), Y(that.Y), Z(that.Z) {}
-
-    operator bool () const { return X != 0 || Y != 0 || Z != 0; }
 
     bool operator==(const Coordinate &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
     bool operator!=(const Coordinate &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
