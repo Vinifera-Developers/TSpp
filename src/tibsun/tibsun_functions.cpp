@@ -524,7 +524,7 @@ void List_Copy(Cell const * source, int len, Cell * dest)
 
     while (len > 0) {
         *dest = *source;
-        if (dest->X == REFRESH_EOL)
+        if (*dest == REFRESH_EOL)
             return;
         dest++;
         source++;
