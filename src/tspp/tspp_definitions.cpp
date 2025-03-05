@@ -5503,22 +5503,22 @@ DEFINE_IMPLEMENTATION(Vector3 operator*(const Matrix3D&, const Vector3&), 0x0055
 /**
  *  Various values calculated at runtime init.
  */
-Rect& RectNone = Make_Global<Rect>(0x00748138);
-Cell& CellNone = Make_Global<Cell>(0x00748158);
-Coordinate& CoordNone = Make_Global<Coordinate>(0x00748178);
+Rect& RECT_NONE = Make_Global<Rect>(0x00748138);
+Cell& CELL_NONE = Make_Global<Cell>(0x00748158);
+Coordinate& COORD_NONE = Make_Global<Coordinate>(0x00748178);
 
-double& CellLeptonDiag = Make_Global<double>(0x00748160);
+double& CELL_LEPTON_DIAG = Make_Global<double>(0x00748160);
 
-double& IsoTileSize = Make_Global<double>(0x00748148);
-int& IsoTilePixelH = Make_Global<int>(0x00748150);
-int& IsoTilePixelW = Make_Global<int>(0x00748154);
+double& ISO_TILE_SIZE = Make_Global<double>(0x00748148);
+int& ISO_TILE_PIXEL_W = Make_Global<int>(0x00748150);
+int& ISO_TILE_PIXEL_H = Make_Global<int>(0x00748154);
 
-int& LevelLeptonH = Make_Global<int>(0x007481A0);
-int& LevelPixelH = Make_Global<int>(0x00748184);
-double& CellSlopeAngle = Make_Global<double>(0x00748170);
-double& CellDiagSlopeAngle = Make_Global<double>(0x00748188);
-int& LevelPixelH1 = Make_Global<int>(0x00748198);
-int& BridgeLeptonHeight = Make_Global<int>(0x0074819C);
+int& LEVEL_LEPTON_H = Make_Global<int>(0x007481A0);
+int& LEVEL_PIXEL_H = Make_Global<int>(0x00748184);
+double& CELL_SLOPE_ANGLE = Make_Global<double>(0x00748170);
+double& CELL_DIAG_SLOPE_ANGLE = Make_Global<double>(0x00748188);
+int& LEVEL_PIXEL_H_1 = Make_Global<int>(0x00748198);
+int& BRIDGE_LEPTON_HEIGHT = Make_Global<int>(0x0074819C);
 
 
 /**

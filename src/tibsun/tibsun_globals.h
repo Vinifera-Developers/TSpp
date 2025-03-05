@@ -169,22 +169,22 @@ enum KeyNumType;
 /**
  *  Various values calculated at runtime init.
  */
-extern Rect& RectNone;
-extern Cell& CellNone;
-extern Coordinate& CoordNone;
+extern Rect& RECT_NONE;
+extern Cell& CELL_NONE;
+extern Coordinate& COORD_NONE;
 
-extern double& CellLeptonDiag;
+extern double& CELL_LEPTON_DIAG;
 
-extern double& IsoTileSize;
-extern int& IsoTilePixelH;
-extern int& IsoTilePixelW;
+extern double& ISO_TILE_SIZE;
+extern int& ISO_TILE_PIXEL_W;
+extern int& ISO_TILE_PIXEL_H;
 
-extern int& LevelLeptonH;
-extern int& LevelPixelH;
-extern double& CellSlopeAngle;
-extern double& CellDiagSlopeAngle;
-extern int& LevelPixelH1;
-extern int& BridgeLeptonHeight;
+extern int& LEVEL_LEPTON_H;
+extern int& LEVEL_PIXEL_H;
+extern double& CELL_SLOPE_ANGLE;
+extern double& CELL_DIAG_SLOPE_ANGLE;
+extern int& LEVEL_PIXEL_H_1;
+extern int& BRIDGE_LEPTON_HEIGHT;
 
 
 /**

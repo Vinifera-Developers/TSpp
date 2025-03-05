@@ -89,23 +89,6 @@ class MotionLibraryClass;
 #define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
 
-#define RECT_NONE RectNone
-#define CELL_NONE CellNone
-#define COORD_NONE CoordNone
-
-#define CELL_LEPTON_DIAG CellLeptonDiag
-
-#define ISO_TILE_SIZE IsoTileSize
-#define ISO_TILE_PIXEL_W IsoTilePixelH
-#define ISO_TILE_PIXEL_H IsoTilePixelW
-
-#define LEVEL_LEPTON_H LevelLeptonH
-#define LEVEL_PIXEL_H LevelPixelH
-#define CELL_SLOPE_ANGLE CellSlopeAngle
-#define CELL_DIAG_SLOPE_ANGLE CellDiagSlopeAngle
-#define LEVEL_PIXEL_H_1 LevelPixelH1
-#define BRIDGE_LEPTON_HEIGHT BridgeLeptonHeight
-
 // Returns the height of 'X' cells.
 #define CELL_HEIGHT(x) (LEVEL_LEPTON_H * int(x))
 
