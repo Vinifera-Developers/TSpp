@@ -241,9 +241,6 @@ class CCINIClass : public INIClass
         bool Put_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> value);
 
         template<class T>
-        TypeList<T *> Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap);
-
-        template<class T>
         bool Put_TypeList(const char *section, const char *entry, const TypeList<T *> value);
 
     private:
@@ -262,28 +259,33 @@ class CCINIClass : public INIClass
  *  @author: CCHyper
  */
 template<class T>
-TypeList<T *> CCINIClass::Get_TypeList(const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap)
+TypeList<T *> TGet_TypeList(CCINIClass const & ini, const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap)
 {
     char buffer[1024];
 
-    if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
-
+    if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
         TypeList<T> list;
-
-        char *name = std::strtok(buffer, ",");
-        while (name) {
-
-            for (int index = 0; index < heap.Count(); ++index) {
-                T * ptr = const_cast<T *>(T::Find_Or_Make(name));
-                if (ptr) {
-                    list.Add(ptr);
-                }
+        char *token = std::strtok(buffer, ",");
+        while (token) {
+            T * ptr = const_cast<T *>(T::Find_Or_Make(token));
+            if (ptr) {
+                list.Add(ptr);
             }
-
-            name = std::strtok(nullptr, ",");
+            token = std::strtok(nullptr, ",");
         }
-
         return list;
+    }
+    return defvalue;
+}
+
+
+template <class T>
+T* TGet_Class(CCINIClass const& ini, char const* section, char const* entry, T* defvalue)
+{
+    char buffer[1024];
+
+    if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
+      return const_cast<T*>(T::Find_Or_Make(buffer));
     }
 
     return defvalue;
