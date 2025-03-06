@@ -279,13 +279,18 @@ TypeList<T *> TGet_TypeList(CCINIClass const & ini, const char *section, const c
 }
 
 
+/**
+ *  Reads a type from the INI database.
+ *
+ *  @author: ZivDero
+ */
 template <class T>
 T* TGet_Class(CCINIClass const& ini, char const* section, char const* entry, T* defvalue)
 {
     char buffer[1024];
 
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
-      return const_cast<T*>(T::Find_Or_Make(buffer));
+        return const_cast<T*>(T::Find_Or_Make(buffer));
     }
 
     return defvalue;
