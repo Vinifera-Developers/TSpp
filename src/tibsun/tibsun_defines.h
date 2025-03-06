@@ -1063,10 +1063,8 @@ typedef enum MarkType
 {
     MARK_UP,              // Removed from the map.
     MARK_DOWN,            // Placed on the map.
-    MARK_CHANGE,          // Altered in place on the map.
-    MARK_CHANGE_REDRAW,   // Redraw because of animation change.
-    MARK_OVERLAP_DOWN,    // Mark overlap cells on the map
-    MARK_OVERLAP_UP       // Clear overlap cells on the map
+    MARK_UP_FORCED,
+    MARK_DOWN_FORCED,
 } MarkType;
 
 typedef enum ResultType

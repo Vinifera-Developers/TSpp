@@ -79,7 +79,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         virtual int Get_Z_Coord() const override;
 
         /**

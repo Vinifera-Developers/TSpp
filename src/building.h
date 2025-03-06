@@ -103,7 +103,7 @@ BuildingClass : public TechnoClass
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         virtual Rect entry_118() const override;
         virtual void Draw_Radial_Indicator() const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;

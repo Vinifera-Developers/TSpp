@@ -95,7 +95,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_FC(Point2D &point, Rect &bounds) const;
         virtual void Hidden() override;
         virtual void Look(bool incremental = false, bool a2 = false) override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         virtual void Clicked_As_Target(int flashes) override;
         virtual bool Select() override;
         virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;

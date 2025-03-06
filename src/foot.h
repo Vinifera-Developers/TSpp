@@ -95,7 +95,7 @@ public:
     virtual void Detach_All(bool all = false) override;
     virtual void Remove_This() override;
     virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-    virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+    virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
     virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
     virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false) override;
     virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
@@ -201,10 +201,10 @@ public:
     int field_220;
     Cell field_224;
     Cell field_228;
-    double field_230;
+    double ThreatAvoidanceCoefficient;
     int TotalFramesWalked;
     Cell field_23C;
-    Cell LastAdjanencyCell;
+    Cell LastAdjacencyCell;
     Coordinate field_244;
     double Speed;
     double SpeedBias;

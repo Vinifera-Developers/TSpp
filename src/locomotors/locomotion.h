@@ -124,8 +124,8 @@ class LocomotionClass : public IPersistStream, public ILocomotion
          */
         HRESULT STDMETHODCALLTYPE Locomotion_Load(IStream *pStm);
 
-    protected:
-        TechnoClass *LinkedTo;
+    public:
+        FootClass *LinkedTo;
         bool IsPowered;
         bool Dirty;
         LONG RefCount;

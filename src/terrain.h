@@ -77,7 +77,7 @@ TerrainClass : public ObjectClass, public StageClass
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         virtual Rect entry_118() const override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual bool Catch_Fire() override;

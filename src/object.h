@@ -120,7 +120,7 @@ class ObjectClass : public AbstractClass
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const;
         virtual void Hidden();
         virtual void Look(bool incremental = false, bool a2 = false);
-        virtual bool Mark(MarkType mark = MARK_CHANGE);
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED);
         virtual Rect entry_114() const;
         virtual Rect entry_118() const;
         virtual void Draw_Radial_Indicator() const;

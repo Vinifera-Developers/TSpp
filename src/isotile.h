@@ -68,7 +68,7 @@ IsometricTileClass : public ObjectClass
         virtual bool Limbo() override;
         virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         
         operator IsometricTileType () const;
 

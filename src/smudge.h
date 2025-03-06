@@ -66,7 +66,7 @@ SmudgeClass : public ObjectClass
          */
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
+        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         
         operator SmudgeType () const;
 
