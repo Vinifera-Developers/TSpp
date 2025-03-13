@@ -2907,7 +2907,7 @@ struct Cell
     Cell(const Cell &that) : X(that.X), Y(that.Y) {}
 
     bool operator==(const Cell &that) const { return X == that.X && Y == that.Y; }
-    bool operator!=(const Cell &that) const { return X != that.X && Y != that.Y; }
+    bool operator!=(const Cell &that) const { return X != that.X || Y != that.Y; }
 
     Cell operator+(const Cell &that) const { return Cell(X + that.X, Y + that.Y); }
     Cell &operator+=(const Cell &that) { X += that.X; Y += that.Y; return *this; }
@@ -2956,7 +2956,7 @@ struct Coordinate
     Coordinate(const Coordinate &that) : X(that.X), Y(that.Y), Z(that.Z) {}
 
     bool operator==(const Coordinate &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
-    bool operator!=(const Coordinate &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+    bool operator!=(const Coordinate &that) const { return X != that.X || Y != that.Y || Z != that.Z; }
 
     Coordinate operator+(const Coordinate &that) const { return Coordinate(X + that.X, Y + that.Y, Z + that.Z); }
     Coordinate &operator+=(const Coordinate &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
