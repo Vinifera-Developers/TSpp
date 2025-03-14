@@ -57,10 +57,10 @@ TerrainTypeClass : public ObjectTypeClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual int Get_Heap_ID() const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
+        virtual int Fetch_Heap_ID() const override;
 
         /**
          *  AbstractTypeClass

@@ -35,7 +35,7 @@
 
 
 class Point2D;
-struct DirStruct;
+struct DirType;
 
 enum MoveType;
 enum VisualType;
@@ -134,7 +134,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Try to face direction specified.
      */
-    STDMETHOD_(void, Do_Turn)(DirStruct coord) PURE;
+    STDMETHOD_(void, Do_Turn)(DirType coord) PURE;
 
     /**
      *  Object is appearing in the world.
@@ -169,12 +169,12 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Push object in direction specified.
      */
-    STDMETHOD_(bool, Push)(DirStruct dir) PURE;
+    STDMETHOD_(bool, Push)(DirType dir) PURE;
 
     /**
      *  Shove object (with spin) in direction specified.
      */
-    STDMETHOD_(bool, Shove)(DirStruct dir) PURE;
+    STDMETHOD_(bool, Shove)(DirType dir) PURE;
 
     /**
      *  Force drive track -- special case only.

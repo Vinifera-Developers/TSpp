@@ -60,10 +60,10 @@ UnitClass : public FootClass
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual void AI() override;
 
         /**
@@ -75,7 +75,7 @@ UnitClass : public FootClass
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Record_The_Kill(const ObjectClass *source) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
@@ -107,20 +107,20 @@ UnitClass : public FootClass
          *  TechnoClass
          */
         virtual bool entry_238() const override;
-        virtual DirStruct Turret_Facing() const override;
+        virtual DirType Turret_Facing() const override;
         virtual double Tiberium_Load() const override;
         virtual double Weed_Load() const override;
         virtual int Pip_Count() const override;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
-        virtual DirStruct Fire_Direction() const override;
+        virtual DirType Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
         virtual bool Is_Immobilized() const override;
         virtual int Get_Max_Speed() const override;
-        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
+        virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual const BulletClass *Fire_At(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
         virtual bool Captured(HouseClass *house = nullptr) override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual void Assign_Destination(const AbstractClass * target, bool a2 = true) override;
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**

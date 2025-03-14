@@ -56,8 +56,8 @@ VeinholeMonsterClass : public ObjectClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void AI() override;
 
         /**

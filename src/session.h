@@ -293,7 +293,7 @@ class SessionClass
         TrapObjectType TrapObject;
         Coordinate TrapCoord;
         int TrapThis;
-        TARGET TrapTarget;
+        AbstractClass * TrapTarget;
         CellClass * TrapCell;
         int TrapCheckHeap;
         long TrapPrintCRC;

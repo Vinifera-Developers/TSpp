@@ -55,9 +55,9 @@ SideClass : public AbstractTypeClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
 
         static const SideClass &As_Reference(SideType type);
         static const SideClass *As_Pointer(SideType type);

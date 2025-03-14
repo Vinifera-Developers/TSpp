@@ -73,15 +73,15 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
-        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
+        IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(void, Unlimbo)();
         IFACEMETHOD_(void, Tilt_Pitch_AI)();
         IFACEMETHOD_(bool, Power_On)();
         IFACEMETHOD_(bool, Power_Off)();
         IFACEMETHOD_(bool, Is_Powered)();
         IFACEMETHOD_(bool, Is_Ion_Sensitive)();
-        IFACEMETHOD_(bool, Push)(DirStruct dir);
-        IFACEMETHOD_(bool, Shove)(DirStruct dir);
+        IFACEMETHOD_(bool, Push)(DirType dir);
+        IFACEMETHOD_(bool, Shove)(DirType dir);
         IFACEMETHOD_(void, Force_Track)(int track, Coordinate coord);
         IFACEMETHOD_(void, Force_Immediate_Destination)(Coordinate coord);
         IFACEMETHOD_(void, Force_New_Slope)(TileRampType ramp);
@@ -113,7 +113,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
         LocomotionClass(const NoInitClass &noinit);
         virtual ~LocomotionClass();
 
-        virtual int Size_Of(bool firestorm = false) const = 0;
+        virtual int Get_Object_Size(bool firestorm = false) const = 0;
 
     protected:
         /**

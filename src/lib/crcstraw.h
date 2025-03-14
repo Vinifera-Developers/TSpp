@@ -49,7 +49,7 @@ class CRCStraw : public Straw
         long Result() const;
 
     protected:
-        WWCRCEngine CRC;
+        CRCEngine CRC;
 
     private:
         CRCStraw(CRCStraw &) = delete;

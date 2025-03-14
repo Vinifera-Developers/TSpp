@@ -48,17 +48,17 @@ AlphaShapeClass : public AbstractClass
 
     public:
         AlphaShapeClass();
-        AlphaShapeClass(TARGET target, int width, int height);
+        AlphaShapeClass(AbstractClass * target, int width, int height);
         AlphaShapeClass(NoInitClass &noinit);
         virtual ~AlphaShapeClass();
 
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool a1 = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool a1 = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
 
         // 0x00412A90
         // 0x00412B40
@@ -66,7 +66,7 @@ AlphaShapeClass : public AbstractClass
         // 0x004132D0
 
     public:
-        TARGET AttachedTo;
+        AbstractClass * AttachedTo;
         Rect Size;
         ShapeFileStruct *Image;
         bool field_2C;

@@ -76,10 +76,10 @@ AircraftClass : public FootClass, public IFlyControl
          *  AbstractClass
          */
         virtual void Init() override;
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual void AI() override;
 
         /**
@@ -91,7 +91,7 @@ AircraftClass : public FootClass, public IFlyControl
         virtual bool entry_80() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual ExitType Exit_Object(const TechnoClass *object) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Look(bool incremental = false, bool a2 = false) override;
@@ -120,14 +120,14 @@ AircraftClass : public FootClass, public IFlyControl
         /**
          *  TechnoClass
          */
-        virtual DirStruct Turret_Facing() const override;
+        virtual DirType Turret_Facing() const override;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const override;
-        virtual DirStruct Fire_Direction() const override;
-        virtual void Player_Assign_Mission(MissionType order, TARGET target = TARGET_NULL, TARGET destination = TARGET_NULL) override;
+        virtual DirType Fire_Direction() const override;
+        virtual void Player_Assign_Mission(MissionType order, AbstractClass * target = TARGET_NULL, AbstractClass * destination = TARGET_NULL) override;
         virtual void Reduce_Ammunition() override;
-        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual const BulletClass *Fire_At(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
+        virtual void Assign_Destination(const AbstractClass * target, bool a2 = true) override;
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**
@@ -141,9 +141,9 @@ AircraftClass : public FootClass, public IFlyControl
         int Paradrop_Cargo();
         int Drop_Off_Cargo();
         int Do_Mission_Move_Carryall();
-        DirType Pose_Dir() const;
+        Dir256 Pose_Dir() const;
         CellClass *New_LZ(CellClass *oldlz);
-        CellClass *Good_Fire_Location(TARGET target) const;
+        CellClass *Good_Fire_Location(AbstractClass * target) const;
         bool Cell_Seems_Ok(Cell &cell, bool strict) const;
         CellClass *Good_LZ();
         bool On_Death(ObjectClass* source);

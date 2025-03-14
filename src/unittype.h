@@ -61,11 +61,11 @@ UnitTypeClass : public TechnoTypeClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual int entry_34() const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
-        virtual int Get_Heap_ID() const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual int Get_Object_Size_Delta() const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
+        virtual int Fetch_Heap_ID() const override;
 
         /**
          *  AbstractTypeClass
@@ -86,7 +86,7 @@ UnitTypeClass : public TechnoTypeClass
          */
 		virtual int Repair_Step() const override;
 
-        const TPoint3D<int> Turret_Adjust(DirType dir, TPoint3D<int> &pos) const;
+        const TPoint3D<int> Turret_Adjust(Dir256 dir, TPoint3D<int> &pos) const;
 
         static const UnitTypeClass &As_Reference(UnitType type);
         static const UnitTypeClass *As_Pointer(UnitType type);

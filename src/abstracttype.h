@@ -46,7 +46,7 @@ class AbstractTypeClass : public AbstractClass
         /**
          *  AbstractClass
          */
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
 
         /**
          *  AbstractTypeClass

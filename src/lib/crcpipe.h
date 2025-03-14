@@ -49,7 +49,7 @@ class CRCPipe : public Pipe
         long Result() const;
 
     protected:
-        WWCRCEngine CRC;
+        CRCEngine CRC;
 
     private:
         CRCPipe(CRCPipe &) = delete;

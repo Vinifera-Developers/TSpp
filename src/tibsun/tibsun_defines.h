@@ -89,9 +89,6 @@ class MotionLibraryClass;
 #define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
 
-// Returns the height of 'X' cells.
-#define CELL_HEIGHT(x) (LEVEL_LEPTON_H * int(x))
-
 
 // The maximum size of a cell list (occupy, etc).
 #define LIST_SIZE_MAX 24 // 24 cells, which is the largest in TibSun (foundation 6x4)
@@ -186,7 +183,7 @@ typedef enum FacingType
 } FacingType;
 DEFINE_ENUMERATION_OPERATORS(FacingType);
 
-typedef enum DirType
+typedef enum Dir256
 {
     DIR_N = 0,          // 0
     DIR_NE = 1 << 5,    // 32
@@ -200,10 +197,10 @@ typedef enum DirType
     DIR_MIN = 0,
     DIR_MAX = 255,
 
-    DIR_SW_X1 = DirType((5<<5)-8),  // 152      // Direction of harvester while unloading.
-    DIR_SW_X2 = DirType((5<<5)-16), // 144      // Direction of harvester while unloading.
-} DirType;
-DEFINE_ENUMERATION_OPERATORS(DirType);
+    DIR_SW_X1 = Dir256((5<<5)-8),  // 152      // Direction of harvester while unloading.
+    DIR_SW_X2 = Dir256((5<<5)-16), // 144      // Direction of harvester while unloading.
+} Dir256;
+DEFINE_ENUMERATION_OPERATORS(Dir256);
 
 typedef enum MPHType {} MPHType;
 
@@ -2667,8 +2664,7 @@ typedef enum DMonoType
 } DMonoType;
 
 
-typedef unsigned long LEPTON;
-typedef AbstractClass * TARGET;
+typedef int LEPTON;
 
 
 typedef struct GroundType {
@@ -3120,40 +3116,40 @@ struct ScoutStruct
 
 
 /**
- *  DirStruct is in stages of 128 (0-32768) (128*256).
+ *  DirType is in stages of 128 (0-32768) (128*256).
  */
-struct DirStruct {
+struct DirType {
 public:
-    constexpr explicit DirStruct() noexcept : Raw{0} {}
-    constexpr explicit DirStruct(int raw) noexcept : Raw{static_cast<unsigned short>(raw)} {}
-    explicit DirStruct(double rad) noexcept { Set_Radian<65536>(rad); }
-    explicit DirStruct(const DirType dir) noexcept { Set_Dir(dir); }
-    explicit DirStruct(const FacingType facing) noexcept { Set_Facing<8>(facing); }
-    explicit DirStruct(const NoInitClass& noinit) noexcept {}
+    constexpr explicit DirType() noexcept : Raw{0} {}
+    constexpr explicit DirType(int raw) noexcept : Raw{static_cast<unsigned short>(raw)} {}
+    explicit DirType(double rad) noexcept { Set_Radian<65536>(rad); }
+    explicit DirType(const Dir256 dir) noexcept { Set_Dir(dir); }
+    explicit DirType(const FacingType facing) noexcept { Set_Facing<8>(facing); }
+    explicit DirType(const NoInitClass& noinit) noexcept {}
 
-    bool Difference_Not_Greater(const DirStruct& that, const DirStruct& theta);
-    bool Turn_Towards(const DirStruct& that, const DirStruct& theta);
+    bool Difference_Not_Greater(const DirType& that, const DirType& theta);
+    bool Turn_Towards(const DirType& that, const DirType& theta);
 
-    constexpr bool operator==(const DirStruct& that) const { return Raw == that.Raw; }
-    constexpr bool operator!=(const DirStruct& that) const { return Raw != that.Raw; }
+    constexpr bool operator==(const DirType& that) const { return Raw == that.Raw; }
+    constexpr bool operator!=(const DirType& that) const { return Raw != that.Raw; }
 
-    constexpr DirStruct operator+(const DirStruct& that) const { return DirStruct(Raw + that.Raw); }
-    constexpr DirStruct operator-(const DirStruct& that) const { return DirStruct(Raw - that.Raw); }
-    constexpr DirStruct& operator+=(const DirStruct& that) { Raw += that.Raw; return *this; }
-    constexpr DirStruct& operator-=(const DirStruct& that) { Raw -= that.Raw; return *this; }
+    constexpr DirType operator+(const DirType& that) const { return DirType(Raw + that.Raw); }
+    constexpr DirType operator-(const DirType& that) const { return DirType(Raw - that.Raw); }
+    constexpr DirType& operator+=(const DirType& that) { Raw += that.Raw; return *this; }
+    constexpr DirType& operator-=(const DirType& that) { Raw -= that.Raw; return *this; }
 
-    constexpr DirStruct operator+(unsigned short raw) const { return DirStruct(Raw + raw); }
-    constexpr DirStruct operator-(unsigned short raw) const { return DirStruct(Raw - raw); }
-    constexpr DirStruct& operator+=(unsigned short raw) { Raw += raw; return *this; }
-    constexpr DirStruct& operator-=(unsigned short raw) { Raw -= raw; return *this; }
+    constexpr DirType operator+(unsigned short raw) const { return DirType(Raw + raw); }
+    constexpr DirType operator-(unsigned short raw) const { return DirType(Raw - raw); }
+    constexpr DirType& operator+=(unsigned short raw) { Raw += raw; return *this; }
+    constexpr DirType& operator-=(unsigned short raw) { Raw -= raw; return *this; }
 
-    constexpr DirStruct operator+() const { return DirStruct(Raw); }
-    constexpr DirStruct operator-() const { return DirStruct(-Raw); }
+    constexpr DirType operator+() const { return DirType(Raw); }
+    constexpr DirType operator-() const { return DirType(-Raw); }
 
-    constexpr bool operator<(const DirStruct& that) const { return Raw < that.Raw; }
-    constexpr bool operator<=(const DirStruct& that) const { return Raw <= that.Raw; }
-    constexpr bool operator>(const DirStruct& that) const { return Raw > that.Raw; }
-    constexpr bool operator>=(const DirStruct& that) const { return Raw >= that.Raw; }
+    constexpr bool operator<(const DirType& that) const { return Raw < that.Raw; }
+    constexpr bool operator<=(const DirType& that) const { return Raw <= that.Raw; }
+    constexpr bool operator>(const DirType& that) const { return Raw > that.Raw; }
+    constexpr bool operator>=(const DirType& that) const { return Raw >= that.Raw; }
 
     constexpr bool operator<(unsigned short raw) const { return Raw < raw; }
     constexpr bool operator<=(unsigned short raw) const { return Raw <= raw; }
@@ -3162,8 +3158,8 @@ public:
 
     constexpr unsigned short Get_Raw() const { return Raw; }
     constexpr void Set_Raw(unsigned short raw) { Raw = raw; }
-    constexpr DirType Get_Dir() const { return static_cast<DirType>(Raw >> 8); }
-    constexpr void Set_Dir(DirType dir) { Raw = static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8); }
+    constexpr Dir256 Get_Dir() const { return static_cast<Dir256>(Raw >> 8); }
+    constexpr void Set_Dir(Dir256 dir) { Raw = static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8); }
 
     /**
      *  Use the number of bits the facing has as the template argument.

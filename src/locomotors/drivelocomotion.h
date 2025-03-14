@@ -68,7 +68,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
-        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
+        IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(void, Unlimbo)();
         IFACEMETHOD_(void, Force_Track)(int track, Coordinate coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
@@ -100,7 +100,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
         // 0047D370
         // 0047D460
@@ -112,7 +112,7 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         bool While_Moving(bool a1 = false);
         bool Start_Of_Move(bool *a1 = nullptr, bool a2 = false, bool a3 = false);
         // 00481DC0
-        Coordinate Smooth_Turn(Coordinate &adj, DirType &dir);
+        Coordinate Smooth_Turn(Coordinate &adj, Dir256 &dir);
         bool Incoming(Cell cell); // 00481E50
         // 00481EE0
 

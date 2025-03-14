@@ -69,7 +69,7 @@ class MixFileClass : public Node<MixFileClass *>
             char filename_upper[_MAX_PATH];
             std::strcpy(filename_upper, filename);
             strupr(filename_upper);
-            long crc = WWCRCEngine()(filename_upper, std::strlen(filename_upper));
+            long crc = CRCEngine()(filename_upper, std::strlen(filename_upper));
 
             SubBlock key;
             key.CRC = crc;

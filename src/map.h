@@ -63,7 +63,7 @@ class MapClass : public GScreenClass
         virtual void Alloc_Cells();
         virtual void Free_Cells();
         virtual void Init_Cells();
-        virtual void Detach(TARGET target, bool all = true);
+        virtual void Detach(AbstractClass * target, bool all = true);
         virtual bool entry_64() const;
         virtual void Logic();
         virtual void Set_Map_Dimensions(Rect &rect, bool a2 = true, int level = 1, bool a4 = false);
@@ -167,7 +167,7 @@ class MapClass : public GScreenClass
         const Cell Pick_Random_Location();
         void Shroud_The_Map();
         void Reveal_The_Map();
-        int Get_Cell_Height(const Coordinate &coord) const;
+        int Get_Height_GL(const Coordinate &coord) const;
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         bool In_Local_Radar(Rect &rect, bool a2 = true) const;

@@ -67,10 +67,10 @@ BuildingClass : public TechnoClass
          *  AbstractClass
          */
         virtual void Init() override;
-        virtual void Detach(TARGET target, bool all = false) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = false) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual Coordinate Center_Coord() const override;
         virtual Coordinate entry_50() const override;
         virtual void AI() override;
@@ -95,7 +95,7 @@ BuildingClass : public TechnoClass
         virtual Coordinate Exit_Coord() const override;
         virtual int Sort_Y() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Detach_All(bool all = false) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
@@ -137,28 +137,28 @@ BuildingClass : public TechnoClass
         virtual bool entry_220() const override;
         virtual bool entry_23C() const override;
         virtual bool entry_240() const override;
-        virtual DirStruct Turret_Facing() const override;
+        virtual DirType Turret_Facing() const override;
         virtual int Pip_Count() const override;
-        virtual DirStruct entry_268(const ObjectClass *object) const override;
+        virtual DirType entry_268(const ObjectClass *object) const override;
         virtual int How_Many_Survivors() const override;
         virtual void entry_274() const override;
         virtual int entry_278() const override;
         virtual int Get_Z_Adjustment() const override;
         virtual Cell Find_Exit_Cell(const TechnoClass *object) const override;
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual DirStruct Fire_Direction() const override;
+        virtual DirType Fire_Direction() const override;
         virtual InfantryTypeClass *const Crew_Type() const override;
         virtual bool entry_2B8(int *a1) const override;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
-        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
-        virtual void Assign_Target(TARGET target) const;
+        virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual void Assign_Target(AbstractClass * target) const;
         virtual bool Captured(HouseClass *house = nullptr) override;
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Is_Turret_Equipped() const override;
         virtual void Cloaking_AI(bool a1 = false) const override;
         virtual int entry_344(int a1) const override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual void Assign_Destination(const AbstractClass * target, bool a2 = true) override;
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false);
         virtual void entry_358() override;
         virtual void entry_35C() override;
@@ -170,7 +170,7 @@ BuildingClass : public TechnoClass
         virtual void Grand_Opening(bool captured = false);
         virtual void Update_Buildables();
         virtual void entry_370(Point2D &point, Rect &rect);
-        virtual DirStruct entry_374(TARGET target);
+        virtual DirType entry_374(AbstractClass * target);
         virtual void entry_378(TechnoClass *a1, TechnoClass *source, bool a3, Cell *a4);
         virtual bool Toggle_Primary();
         virtual unsigned entry_380();
@@ -181,7 +181,7 @@ BuildingClass : public TechnoClass
         // 00429070
         // 00429100
         int Shape_Number() const;
-        void Drop_Debris(TARGET source);
+        void Drop_Debris(AbstractClass * source);
         void Assign_Rally_Point(Cell &cell);
         void Begin_Mode(BStateType bstate);
         // 0042FF70
@@ -263,9 +263,9 @@ BuildingClass : public TechnoClass
         BStateType BState;
         BStateType QueueBState;
         HousesType WhoLastHurtMe;
-        TARGET WhomToRepay;
+        AbstractClass * WhomToRepay;
         int LastStrength;
-        TARGET AnimToTrack;
+        AbstractClass * AnimToTrack;
         CDTimerClass<FrameTimerClass> PlacementDelay;
         AnimClass *Anims[BANIM_COUNT];
         BuildingTypeClass *Upgrades[BUILDING_UPGRADE_MAX];

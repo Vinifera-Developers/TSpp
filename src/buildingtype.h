@@ -61,11 +61,11 @@ public:
     /**
      *  AbstractClass
      */
-    virtual RTTIType Kind_Of() const override;
-    virtual int Size_Of(bool firestorm = false) const override;
-    virtual int entry_34() const override;
-    virtual void Compute_CRC(WWCRCEngine &crc) const override;
-    virtual int Get_Heap_ID() const override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual int Get_Object_Size_Delta() const override;
+    virtual void Object_CRC(CRCEngine &crc) const override;
+    virtual int Fetch_Heap_ID() const override;
 
     /**
      *  AbstractTypeClass
@@ -140,7 +140,7 @@ public:
     RTTIType ToBuild;
     Coordinate ExitCoordinate;
     Cell * ExitList;
-    DirType StartFace;
+    Dir256 StartFace;
     int Power;
     int Drain;
     BSizeType Size;
@@ -232,7 +232,7 @@ public:
     const TPoint3D<int> VoxelBarrelOffsetToBuildingPivotPoint;
     const TPoint3D<int> VoxelBarrelOffsetToBarrelEnd;
     int TurretChargeAnimRate;
-    DirType StartPitch;
+    Dir256 StartPitch;
     bool IsLimpetMine;
     bool IsMobileWar;
     bool IsMobileStealth;

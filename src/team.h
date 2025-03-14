@@ -72,13 +72,13 @@ public:
     /**
      *  AbstractClass
      */
-    virtual void Detach(TARGET target, bool all = false) override;
-    virtual RTTIType Kind_Of() const override;
-    virtual int Size_Of(bool firestorm = false) const override;
-    virtual void Compute_CRC(WWCRCEngine &crc) const override;
+    virtual void Detach(AbstractClass * target, bool all = false) override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine &crc) const override;
     virtual void AI() override;
 
-    void Assign_Mission_Target(TARGET new_target);
+    void Assign_Mission_Target(AbstractClass * new_target);
     // 00623360
     // 006233B0
     // 00623680
@@ -87,7 +87,7 @@ public:
     void Force_Active() { IsForcedActive = true; IsUnderStrength = false; }
     bool Remove(FootClass *obj, int typeindex = -1);
     int Recruit(int typeindex);
-    void Calc_Center(TARGET &center, TARGET &close_member) const;
+    void Calc_Center(AbstractClass * &center, AbstractClass * &close_member) const;
     void Took_Damage(FootClass *obj, ResultType result, TechnoClass *source);
     void Coordinate_Attack();
     bool Coordinate_Regroup();
@@ -167,10 +167,10 @@ public:
     ScriptClass *Script;
     HouseClass *House;
     HouseClass *field_20;
-    TARGET Zone;
-    TARGET ClosestMember;
-    TARGET MissionTarget;
-    TARGET Target;
+    AbstractClass * Zone;
+    AbstractClass * ClosestMember;
+    AbstractClass * MissionTarget;
+    AbstractClass * Target;
     void *field_34;
     int Total;
     int Risk;

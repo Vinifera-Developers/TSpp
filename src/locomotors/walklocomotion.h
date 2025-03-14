@@ -62,7 +62,7 @@ WalkLocomotionClass : public LocomotionClass, public IPiggyback
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
-        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
+        IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(void, Force_Immediate_Destination)(Coordinate coord);
         IFACEMETHOD_(bool, Is_Moving_Now)();
@@ -88,7 +88,7 @@ WalkLocomotionClass : public LocomotionClass, public IPiggyback
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
         void Internal_Process(bool a2 = false);
         bool func_66E170(Coordinate &coord);

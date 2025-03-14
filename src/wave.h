@@ -68,16 +68,16 @@ WaveClass : public ObjectClass
 
     public:
         WaveClass();
-        WaveClass(Coordinate &from, Coordinate &to, TARGET a3, WaveType type, TARGET source);
+        WaveClass(Coordinate &from, Coordinate &to, AbstractClass * a3, WaveType type, AbstractClass * source);
         WaveClass(const NoInitClass &noinit);
         virtual ~WaveClass();
 
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void AI() override;
 
         /**
@@ -86,7 +86,7 @@ WaveClass : public ObjectClass
         virtual LayerType In_Which_Layer() const override;
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
         void Sonic_AI();
@@ -105,7 +105,7 @@ WaveClass : public ObjectClass
         static void func_6704B0(int a1, int a2); // do wave beam colouring? (inlined in above function perhaps?)
 
     public:
-        TARGET xTarget;
+        AbstractClass * xTarget;
         WaveType Type;
         Coordinate field_54;
         Coordinate field_60;
@@ -134,7 +134,7 @@ WaveClass : public ObjectClass
         int field_12C[FACING_COUNT];
         FacingType field_14C;
         int LaserEC;
-        TARGET xObject;
+        AbstractClass * xObject;
         FacingClass field_158;
         DynamicVectorClass<CellClass *> field_170;
         int field_188[13]; // current wave effect table or intensity table?

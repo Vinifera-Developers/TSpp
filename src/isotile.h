@@ -58,15 +58,15 @@ IsometricTileClass : public ObjectClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
         /**
          *  ObjectClass
          */
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
         

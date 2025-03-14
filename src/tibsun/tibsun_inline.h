@@ -41,45 +41,45 @@ extern unsigned char const Facing16[256];
 extern unsigned char const Facing32[256];
 
 
-inline FacingType Dir_Facing(DirType facing)
+inline FacingType Dir_Facing(Dir256 facing)
 {
     return (FacingType)(((unsigned char)((int)facing + 0x10) & 255) >> 5);
 }
 
 
-inline DirType Facing_Dir(FacingType facing)
+inline Dir256 Facing_Dir(FacingType facing)
 {
-    return (DirType)((int)facing << 5);
+    return (Dir256)((int)facing << 5);
 }
 
 
-inline FacingType Dir_To_8(DirType facing)
+inline FacingType Dir_To_8(Dir256 facing)
 {
     return (FacingType)Facing8[facing];
 }
 
 
-inline FacingType Dir_To_16(DirType facing)
+inline FacingType Dir_To_16(Dir256 facing)
 {
     return (FacingType)Facing16[facing];
 }
 
 
-inline FacingType Dir_To_32(DirType facing)
+inline FacingType Dir_To_32(Dir256 facing)
 {
     return (FacingType)Facing32[facing];
 }
 
 
-inline DirType Dir_Snap(DirType facing)
+inline Dir256 Dir_Snap(Dir256 facing)
 {
     return Facing_Dir(Dir_To_8(facing));
 }
 
 
-inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
+inline DirType Desired_Facing(int x1, int y1, int x2, int y2)
 {
-    DirStruct dir;
+    DirType dir;
 
     /**
      *  Get the angle between the two points.
@@ -95,15 +95,15 @@ inline DirStruct Desired_Facing(int x1, int y1, int x2, int y2)
 }
 
 
-inline DirStruct Desired_Facing(const Point2D &point1, const Point2D &point2)
+inline DirType Desired_Facing(const Point2D &point1, const Point2D &point2)
 {
     return Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
 }
 
 
-inline DirType Desired_Facing256(const Point2D &point1, const Point2D &point2)
+inline Dir256 Desired_Facing256(const Point2D &point1, const Point2D &point2)
 {
-    DirType facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir();
+    Dir256 facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir();
     return facing;
 }
 
@@ -115,9 +115,9 @@ inline FacingType Desired_Facing8(const Point2D &point1, const Point2D &point2)
 }
 
 
-inline DirType Direction256(const Coordinate &coord1, const Coordinate &coord2)
+inline Dir256 Direction256(const Coordinate &coord1, const Coordinate &coord2)
 {
-    DirType facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir();
+    Dir256 facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir();
     return facing;
 }
 
@@ -129,9 +129,9 @@ inline FacingType Direction8(const Coordinate &coord1, const Coordinate &coord2)
 }
 
 
-inline DirType Direction256(const Cell &cell1, const Cell &cell2)
+inline Dir256 Direction256(const Cell &cell1, const Cell &cell2)
 {
-    DirType facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir();
+    Dir256 facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir();
     return facing;
 }
 
@@ -184,7 +184,7 @@ inline bool Is_Distance_Within_Range(const Cell &cell1, const Cell &cell2, int m
 }
 
 
-inline void Move_Point(Point2D &point, DirType dir, int distance)
+inline void Move_Point(Point2D &point, Dir256 dir, int distance)
 {
     double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
@@ -193,7 +193,7 @@ inline void Move_Point(Point2D &point, DirType dir, int distance)
 }
 
 
-inline void Move_Coord(Coordinate &coord, DirType dir, int distance)
+inline void Move_Coord(Coordinate &coord, Dir256 dir, int distance)
 {
     double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
@@ -202,7 +202,7 @@ inline void Move_Coord(Coordinate &coord, DirType dir, int distance)
 }
 
 
-inline void Move_Cell(Cell &cell, DirType dir, int distance)
+inline void Move_Cell(Cell &cell, Dir256 dir, int distance)
 {
     double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
 
@@ -397,7 +397,7 @@ inline Coordinate Adjacent_Cell(const Coordinate &coord, FacingType dir)
 }
 
 
-inline Coordinate Adjacent_Cell(const Coordinate &coord, DirType dir)
+inline Coordinate Adjacent_Cell(const Coordinate &coord, Dir256 dir)
 {
     return Adjacent_Cell(coord, Dir_Facing(dir));
 }
@@ -409,7 +409,7 @@ inline Cell Adjacent_Cell(const Cell &cell, FacingType dir)
 }
 
 
-inline Cell Adjacent_Cell(const Cell &cell, DirType dir)
+inline Cell Adjacent_Cell(const Cell &cell, Dir256 dir)
 {
     return Adjacent_Cell(cell, Dir_Facing(dir));
 }

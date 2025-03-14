@@ -62,7 +62,7 @@ TeleportLocomotionClass : public LocomotionClass
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
         /**
          *  TeleportLocomotionClass

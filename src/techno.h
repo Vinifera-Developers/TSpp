@@ -67,10 +67,10 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
          *  AbstractClass
          */
         virtual void Init() override;
-        virtual void Detach(TARGET target, bool all = false) override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = false) override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual HousesType Owner() const override;
-        virtual HouseClass *Owning_House() const override;
+        virtual HouseClass *Owner_HouseClass() const override;
         virtual void AI() override;
 
         /**
@@ -87,7 +87,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool Can_Player_Move() const override;
         virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Record_The_Kill(const ObjectClass *source) override;
         virtual void Do_Shimmer() override;
         virtual ExitType Exit_Object(const TechnoClass *object);
@@ -109,7 +109,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         /**
          *  MissionClass
          */
-        virtual void Override_Mission(MissionType mission, TARGET tarcom = nullptr, TARGET navcom = nullptr) override;
+        virtual void Override_Mission(MissionType mission, AbstractClass * tarcom = nullptr, AbstractClass * navcom = nullptr) override;
         virtual bool Restore_Mission() override;
 
         /**
@@ -124,7 +124,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool entry_238() const;
         virtual bool entry_23C() const;
         virtual bool entry_240() const;
-        virtual DirStruct Turret_Facing() const;
+        virtual DirType Turret_Facing() const;
         virtual bool Is_Weapon_Equipped() const;
         virtual bool Is_On_Elevation() const;
         virtual double Tiberium_Load() const;
@@ -133,7 +133,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int Refund_Amount() const;
         virtual int Risk() const;
         virtual bool Is_In_Same_Zone_As(const ObjectClass *object) const;
-        virtual DirStruct entry_268(const ObjectClass *object) const;
+        virtual DirType entry_268(const ObjectClass *object) const;
         virtual bool Is_In_Same_Zone(const Coordinate &cell) const;
         virtual int How_Many_Survivors() const;
         virtual void entry_274() const;
@@ -144,7 +144,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual Cell Find_Exit_Cell(const TechnoClass *object) const;
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const;
-        virtual DirStruct Fire_Direction() const;
+        virtual DirType Fire_Direction() const;
         virtual InfantryTypeClass *const Crew_Type() const;
         virtual bool entry_29C() const;
         virtual bool entry_2A0() const;
@@ -161,18 +161,18 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Response_Select() const;
         virtual void Response_Move() const;
         virtual void Response_Attack() const;
-        virtual void Player_Assign_Mission(MissionType order, TARGET target = TARGET_NULL, TARGET destination = TARGET_NULL);
+        virtual void Player_Assign_Mission(MissionType order, AbstractClass * target = TARGET_NULL, AbstractClass * destination = TARGET_NULL);
         virtual void Reduce_Ammunition();
         virtual bool Target_Something_Nearby(Coordinate &coord, ThreatType threat);
         virtual void Stun();
-        virtual bool In_Range_Of(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual bool In_Range_Of(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const = 0;
-        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
-        virtual void Assign_Target(TARGET target) const;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
+        virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
+        virtual void Assign_Target(AbstractClass * target) const;
+        virtual const BulletClass *Fire_At(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
         virtual bool Captured(HouseClass *house = nullptr);
-        virtual void Laser_Zap(TARGET target, int which, const WeaponTypeClass *weapontype, Coordinate &a4);
+        virtual void Laser_Zap(AbstractClass * target, int which, const WeaponTypeClass *weapontype, Coordinate &a4);
         virtual void Rock(const Coordinate &coord, float a2);
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual bool Is_Turret_Equipped() const;
@@ -191,14 +191,14 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int entry_344(int a1) const;
         virtual bool Is_Ready_To_Random_Animate() const;
         virtual bool Random_Animate();
-        virtual void Assign_Destination(const TARGET target, bool a2 = true);
+        virtual void Assign_Destination(const AbstractClass * target, bool a2 = true);
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false);
         virtual void entry_358();
         virtual void entry_35C();
         virtual void entry_360() const;
         virtual void entry_364(bool a1 = false);
 
-        WeaponSlotType What_Weapon_Should_I_Use(TARGET target) const;
+        WeaponSlotType What_Weapon_Should_I_Use(AbstractClass * target) const;
         int Combat_Damage(int which = -1) const;
         int Time_To_Build() const;
         // 0062BEA0
@@ -229,12 +229,12 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         int Anti_Infantry() const;
         Coordinate func_638AF0() const;
         // 00638C70
-        void Assign_Archive_Target(TARGET target);
+        void Assign_Archive_Target(AbstractClass * target);
         // 006391B0
         float Target_Threat(TechnoClass* target, Coordinate& firing_coord) const;
         // 00639BB0
         // 00639C60
-        static void Update_Mission_Targets(TARGET target);
+        static void Update_Mission_Targets(AbstractClass * target);
         // 00639F80
         // 0063A0C0
         // 0063A100
@@ -245,7 +245,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
             int shapenum,
             Point2D &xy,
             Rect &rect,
-            DirType rotation = DIR_N,
+            Dir256 rotation = DIR_N,
             int scale = 256,
             int a7 = 0,
             int a8 = 0,
@@ -271,14 +271,14 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         Point2D RadarPos;
         unsigned SpiedBy;
         unsigned int Group;
-        TARGET ArchiveTarget;
+        AbstractClass * ArchiveTarget;
         HouseClass *House;
         CloakType Cloak;
         StageClass CloakingDevice;
         CDTimerClass<FrameTimerClass> CloakDelay;
         float field_118;
-        TARGET TarCom;
-        TARGET SuspendedTarCom;
+        AbstractClass * TarCom;
+        AbstractClass * SuspendedTarCom;
         float PitchAngle;
         CDTimerClass<FrameTimerClass> Arm;
         int Ammo;
@@ -323,7 +323,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         bool field_209;
         bool field_20A; // is patroling?
         bool field_20B;
-        TARGET field_20C; // closet object to me?
+        AbstractClass * field_20C; // closet object to me?
         int EMPFramesRemaining;
         unsigned field_214;
         float LimpetSpeedFactor;

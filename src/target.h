@@ -55,40 +55,40 @@ class AircraftClass;
 class CellClass;
 
 
-bool Target_Legal(TARGET target, bool check_active = false);
+bool Target_Legal(AbstractClass * target, bool check_active = false);
 
-TARGET As_Target(AbstractClass *a);
+AbstractClass * As_Target(AbstractClass *a);
 
-bool Is_Target_Team(TARGET a);
-bool Is_Target_TeamType(TARGET a);
-bool Is_Target_Trigger(TARGET a);
-bool Is_Target_TriggerType(TARGET a);
-bool Is_Target_Infantry(TARGET a);
-bool Is_Target_Bullet(TARGET a);
-bool Is_Target_Terrain(TARGET a);
-bool Is_Target_Cell(TARGET a);
-bool Is_Target_Unit(TARGET a);
-bool Is_Target_Building(TARGET a);
-bool Is_Target_Aircraft(TARGET a);
-bool Is_Target_Animation(TARGET a);
-bool Is_Target_IsoTile(TARGET a);
-bool Is_Target_Object(TARGET a);
-bool Is_Target_Foot(TARGET a);
-bool Is_Target_Techno(TARGET a);
-bool Is_Target_TypeClass(TARGET a);
+bool Is_Target_Team(AbstractClass * a);
+bool Is_Target_TeamType(AbstractClass * a);
+bool Is_Target_Trigger(AbstractClass * a);
+bool Is_Target_TriggerType(AbstractClass * a);
+bool Is_Target_Infantry(AbstractClass * a);
+bool Is_Target_Bullet(AbstractClass * a);
+bool Is_Target_Terrain(AbstractClass * a);
+bool Is_Target_Cell(AbstractClass * a);
+bool Is_Target_Unit(AbstractClass * a);
+bool Is_Target_Building(AbstractClass * a);
+bool Is_Target_Aircraft(AbstractClass * a);
+bool Is_Target_Animation(AbstractClass * a);
+bool Is_Target_IsoTile(AbstractClass * a);
+bool Is_Target_Object(AbstractClass * a);
+bool Is_Target_Foot(AbstractClass * a);
+bool Is_Target_Techno(AbstractClass * a);
+bool Is_Target_TypeClass(AbstractClass * a);
 
-InfantryClass *Target_As_Infantry(TARGET a, bool use_dynamic_cast = true);
-BulletClass *Target_As_Bullet(TARGET a, bool use_dynamic_cast = true);
-TerrainClass *Target_As_Terrain(TARGET a, bool use_dynamic_cast = true);
-CellClass *Target_As_Cell(TARGET a, bool use_dynamic_cast = true);
-UnitClass *Target_As_Unit(TARGET a, bool use_dynamic_cast = true);
-BuildingClass *Target_As_Building(TARGET a, bool use_dynamic_cast = true);
-AircraftClass *Target_As_Aircraft(TARGET a, bool use_dynamic_cast = true);
-AnimClass *Target_As_Animation(TARGET a, bool use_dynamic_cast = true);
-IsometricTileClass *Target_As_IsoTile(TARGET a, bool use_dynamic_cast = true);
-TechnoClass *Target_As_Techno(TARGET a, bool use_dynamic_cast = true);
-FootClass *Target_As_Foot(TARGET a, bool use_dynamic_cast = true);
-ObjectClass *Target_As_Object(TARGET a, bool use_dynamic_cast = true);
+InfantryClass *Target_As_Infantry(AbstractClass * a, bool use_dynamic_cast = true);
+BulletClass *Target_As_Bullet(AbstractClass * a, bool use_dynamic_cast = true);
+TerrainClass *Target_As_Terrain(AbstractClass * a, bool use_dynamic_cast = true);
+CellClass *Target_As_Cell(AbstractClass * a, bool use_dynamic_cast = true);
+UnitClass *Target_As_Unit(AbstractClass * a, bool use_dynamic_cast = true);
+BuildingClass *Target_As_Building(AbstractClass * a, bool use_dynamic_cast = true);
+AircraftClass *Target_As_Aircraft(AbstractClass * a, bool use_dynamic_cast = true);
+AnimClass *Target_As_Animation(AbstractClass * a, bool use_dynamic_cast = true);
+IsometricTileClass *Target_As_IsoTile(AbstractClass * a, bool use_dynamic_cast = true);
+TechnoClass *Target_As_Techno(AbstractClass * a, bool use_dynamic_cast = true);
+FootClass *Target_As_Foot(AbstractClass * a, bool use_dynamic_cast = true);
+ObjectClass *Target_As_Object(AbstractClass * a, bool use_dynamic_cast = true);
 
 
 class xTargetClass
@@ -132,7 +132,7 @@ class xTargetClass
         AircraftClass *As_Aircraft() const;
         CellClass *As_Cell() const;
 
-        unsigned Pack_Target(TARGET t);
+        unsigned Pack_Target(AbstractClass * t);
 
     protected:
         int RTTI;
@@ -147,5 +147,5 @@ class TargetClass : public xTargetClass
         TargetClass(const NoInitClass &noinit) {}
         TargetClass(Cell &cell);
         TargetClass(Coordinate &coord);
-        TargetClass(TARGET ptr);
+        TargetClass(AbstractClass * ptr);
 };

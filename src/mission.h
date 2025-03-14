@@ -46,7 +46,7 @@ class MissionClass : public ObjectClass
         /**
          *  AbstractClass
          */
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual void AI() override;
 
         /**
@@ -83,7 +83,7 @@ class MissionClass : public ObjectClass
         virtual int Mission_Rescue();
         virtual int Mission_Patrol();
         virtual void Set_Mission(MissionType mission);
-        virtual void Override_Mission(MissionType mission, TARGET tarcom = nullptr, TARGET navcom = nullptr);
+        virtual void Override_Mission(MissionType mission, AbstractClass * tarcom = nullptr, AbstractClass * navcom = nullptr);
         virtual bool Restore_Mission();
         virtual bool Has_Suspended_Mission() const; // has suspended mission?
 

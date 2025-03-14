@@ -61,10 +61,10 @@ AnimClass : public ObjectClass, public StageClass
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual Coordinate Center_Coord() const override;
         virtual void AI() override;
 
@@ -80,7 +80,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
-        virtual int Get_Z_Coord() const override;
+        virtual int Get_Absolute_Height() const override;
 
         /**
          *  AnimClass
@@ -108,7 +108,7 @@ AnimClass : public ObjectClass, public StageClass
 
     public:
         AnimTypeClass *Class;
-        TARGET xObject;
+        AbstractClass * xObject;
         HousesType OwnerHouse;
         ConvertClass *Drawer;
         unsigned TintColor;
@@ -134,3 +134,5 @@ AnimClass : public ObjectClass, public StageClass
         bool IsInvisible;
         bool IsEnabled;
 };
+
+void Shorten_Attached_Anims();

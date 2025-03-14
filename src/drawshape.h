@@ -42,7 +42,7 @@ class Rect;
  *  All draw shape calls will route through these functions. It handles all
  *  draws for the C&C engine.	
  */
-void CC_Draw_Shape(
+void Draw_Shape(
 	XSurface *surface,						// Destination surface to draw the shape to.
 	ConvertClass *drawer,
 	const ShapeFileStruct *shapefile,		// Pointer to the shape data file. This data file contains all the embedded shapes.

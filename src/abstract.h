@@ -35,7 +35,7 @@
 
 class NoInitClass;
 class HouseClass;
-class WWCRCEngine;
+class CRCEngine;
 
 
 class AbstractClass : public IPersistStream, public IRTTITypeInfo
@@ -79,14 +79,14 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         virtual ~AbstractClass();
 
         virtual void Init();
-        virtual void Detach(TARGET target, bool all = true);
-        virtual RTTIType Kind_Of() const = 0;
-        virtual int Size_Of(bool firestorm = false) const = 0;
-        virtual int entry_34() const;
-        virtual void Compute_CRC(WWCRCEngine &crc) const;
+        virtual void Detach(AbstractClass * target, bool all = true);
+        virtual RTTIType Fetch_RTTI() const = 0;
+        virtual int Get_Object_Size(bool firestorm = false) const = 0;
+        virtual int Get_Object_Size_Delta() const;
+        virtual void Object_CRC(CRCEngine &crc) const;
         virtual HousesType Owner() const;
-        virtual HouseClass *Owning_House() const;
-        virtual int Get_Heap_ID() const;
+        virtual HouseClass *Owner_HouseClass() const;
+        virtual int Fetch_Heap_ID() const;
         virtual bool Is_Inactive() const;
         virtual Coordinate Center_Coord() const;
         virtual Coordinate entry_50() const;
@@ -98,7 +98,7 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         bool Is_Dirty() const { return Dirty; }
 
     public:
-        __declspec(property(get = Kind_Of)) RTTIType RTTI;
+        __declspec(property(get = Fetch_RTTI)) RTTIType RTTI;
 
         int ID;
         int RefCount;

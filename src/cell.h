@@ -81,8 +81,8 @@ CellClass : public AbstractClass
         /**
          *  AbstractClass
          */
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual Coordinate Center_Coord() const override;
         virtual Coordinate entry_5C() const override;
 
@@ -162,7 +162,7 @@ CellClass : public AbstractClass
         int Get_Tiberium_Value() const;
         bool Is_Tile_Water() const { return Tile >= WaterSet && Tile < (WaterSet+14); } // 0045ACB0
         // 0045ACD0
-        void Detach(TARGET target);
+        void Detach(AbstractClass * target);
         // 0045AE90
         void Attach_Tag(TagClass *tag);
         // 0045AF20

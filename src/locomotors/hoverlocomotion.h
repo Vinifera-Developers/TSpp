@@ -55,12 +55,12 @@ HoverLocomotionClass : public LocomotionClass
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
-        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
+        IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(bool, Power_Off)();
         IFACEMETHOD_(bool, Is_Powered)();
         IFACEMETHOD_(bool, Is_Ion_Sensitive)();
-        IFACEMETHOD_(bool, Push)(DirStruct dir);
-        IFACEMETHOD_(bool, Shove)(DirStruct dir);
+        IFACEMETHOD_(bool, Push)(DirType dir);
+        IFACEMETHOD_(bool, Shove)(DirType dir);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
@@ -74,7 +74,7 @@ HoverLocomotionClass : public LocomotionClass
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
     public:
         Coordinate DestinationCoord;

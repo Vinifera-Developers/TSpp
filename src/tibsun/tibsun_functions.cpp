@@ -344,7 +344,7 @@ void Unselect_All_Except(RTTIType rtti)
     int index = 0;
     while (index < CurrentObjects.Count()) {
 
-        if (CurrentObjects[index]->What_Am_I() == rtti) {
+        if (CurrentObjects[index]->Fetch_RTTI() == rtti) {
             ++index;
             continue;
         }
@@ -395,21 +395,21 @@ bool Is_Object(const AbstractClass *a, bool use_dynamic_cast)
     if (use_dynamic_cast) {
         return dynamic_cast<const ObjectClass *>(a);
     } else {
-        return (a->What_Am_I() == RTTI_UNIT
-             || a->What_Am_I() == RTTI_AIRCRAFT
-             || a->What_Am_I() == RTTI_INFANTRY
-             || a->What_Am_I() == RTTI_BUILDING
-             || a->What_Am_I() == RTTI_ANIM
-             || a->What_Am_I() == RTTI_LIGHT
-             || a->What_Am_I() == RTTI_BULLET
-             || a->What_Am_I() == RTTI_ISOTILE
-             || a->What_Am_I() == RTTI_PARTICLE
-             || a->What_Am_I() == RTTI_PARTICLESYSTEM
-             || a->What_Am_I() == RTTI_SMUDGE
-             || a->What_Am_I() == RTTI_TERRAIN
-             || a->What_Am_I() == RTTI_VOXELANIM
-             || a->What_Am_I() == RTTI_VEINHOLEMONSTER
-             || a->What_Am_I() == RTTI_WAVE);
+        return (a->Fetch_RTTI() == RTTI_UNIT
+             || a->Fetch_RTTI() == RTTI_AIRCRAFT
+             || a->Fetch_RTTI() == RTTI_INFANTRY
+             || a->Fetch_RTTI() == RTTI_BUILDING
+             || a->Fetch_RTTI() == RTTI_ANIM
+             || a->Fetch_RTTI() == RTTI_LIGHT
+             || a->Fetch_RTTI() == RTTI_BULLET
+             || a->Fetch_RTTI() == RTTI_ISOTILE
+             || a->Fetch_RTTI() == RTTI_PARTICLE
+             || a->Fetch_RTTI() == RTTI_PARTICLESYSTEM
+             || a->Fetch_RTTI() == RTTI_SMUDGE
+             || a->Fetch_RTTI() == RTTI_TERRAIN
+             || a->Fetch_RTTI() == RTTI_VOXELANIM
+             || a->Fetch_RTTI() == RTTI_VEINHOLEMONSTER
+             || a->Fetch_RTTI() == RTTI_WAVE);
     }
 }
 
@@ -419,10 +419,10 @@ bool Is_Techno(const AbstractClass *a, bool use_dynamic_cast)
     if (use_dynamic_cast) {
         return dynamic_cast<const TechnoClass *>(a);
     } else {
-        return (a->What_Am_I() == RTTI_UNIT
-             || a->What_Am_I() == RTTI_AIRCRAFT
-             || a->What_Am_I() == RTTI_INFANTRY
-             || a->What_Am_I() == RTTI_BUILDING);
+        return (a->Fetch_RTTI() == RTTI_UNIT
+             || a->Fetch_RTTI() == RTTI_AIRCRAFT
+             || a->Fetch_RTTI() == RTTI_INFANTRY
+             || a->Fetch_RTTI() == RTTI_BUILDING);
     }
 }
 
@@ -432,9 +432,9 @@ bool Is_Foot(const AbstractClass *a, bool use_dynamic_cast)
     if (use_dynamic_cast) {
         return dynamic_cast<const FootClass *>(a);
     } else {
-        return (a->What_Am_I() == RTTI_UNIT
-             || a->What_Am_I() == RTTI_AIRCRAFT
-             || a->What_Am_I() == RTTI_INFANTRY);
+        return (a->Fetch_RTTI() == RTTI_UNIT
+             || a->Fetch_RTTI() == RTTI_AIRCRAFT
+             || a->Fetch_RTTI() == RTTI_INFANTRY);
     }
 }
 
@@ -444,7 +444,7 @@ bool Is_TypeClass(const AbstractClass *a, bool use_dynamic_cast)
     if (use_dynamic_cast) {
         return dynamic_cast<const AbstractTypeClass *>(a);
     } else {
-        RTTIType rtti = (RTTIType)a->What_Am_I();
+        RTTIType rtti = a->Fetch_RTTI();
         return (rtti == RTTI_UNITTYPE
              || rtti == RTTI_AIRCRAFTTYPE
              || rtti == RTTI_INFANTRYTYPE

@@ -34,6 +34,6 @@
 /**
  *	Remove from targeting computers.
  */
-void Detach_This_From_All(TARGET target, bool all = true);
+void Detach_This_From_All(AbstractClass * target, bool all = true);
 
 void Remove_All_Inactive();

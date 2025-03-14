@@ -49,8 +49,8 @@ class RadioClass : public MissionClass
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = false) override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = false) override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
 
         /**
          *  ObjectClass

@@ -63,8 +63,8 @@ public:
     /**
      *  AbstractClass
      */
-    virtual int entry_34() const override;
-    virtual void Compute_CRC(WWCRCEngine &crc) const override;
+    virtual int Get_Object_Size_Delta() const override;
+    virtual void Object_CRC(CRCEngine &crc) const override;
 
     /**
      *  AbstractTypeClass
@@ -91,7 +91,7 @@ public:
 
     bool Is_Two_Shooter() const;
     const WeaponInfoStruct & Fetch_Weapon_Info(WeaponSlotType slot) const;
-    bool In_Range(Coordinate &coord, TARGET target, WeaponTypeClass *weapon);
+    bool In_Range(Coordinate &coord, AbstractClass * target, WeaponTypeClass *weapon);
 
     int Max_Passengers() const { return MaxPassengers; }
 

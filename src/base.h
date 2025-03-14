@@ -33,7 +33,7 @@
 
 
 class NoInitClass;
-class WWCRCEngine;
+class CRCEngine;
 class CCINIClass;
 class BuildingClass;
 
@@ -65,7 +65,7 @@ class BaseClass
         IFACEMETHOD(Load)(IStream *pStm);
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
         
-        virtual void Compute_CRC(WWCRCEngine &crc) const;
+        virtual void Object_CRC(CRCEngine &crc) const;
 
     public:
         BaseClass();

@@ -81,7 +81,7 @@ DropPodLocomotionClass : public LocomotionClass, public IPiggyback
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
     public:
         typedef enum DropPodDirType

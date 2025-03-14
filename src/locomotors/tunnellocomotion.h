@@ -60,7 +60,7 @@ TunnelLocomotionClass : public LocomotionClass
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(void, Move_To)(Coordinate to);
         IFACEMETHOD_(void, Stop_Moving)();
-        IFACEMETHOD_(void, Do_Turn)(DirStruct coord);
+        IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(FireErrorType, Can_Fire)();
@@ -74,7 +74,7 @@ TunnelLocomotionClass : public LocomotionClass
         /**
          *  LocomotionClass
          */
-        virtual int Size_Of(bool firestorm = false) const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
 
     public:
 

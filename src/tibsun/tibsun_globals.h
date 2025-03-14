@@ -430,18 +430,18 @@ struct SelectData {
     Point2D Position;
 };
 
-extern SelectData (&DirtyObjects)[500];
+extern SelectData (&SelectableObjects)[500];
 
-extern DynamicVectorClass<TARGET> &vec_80F5E0;
-extern DynamicVectorClass<TARGET> &vec_80F4C0;
-extern DynamicVectorClass<TARGET> &vec_80F588;
-extern DynamicVectorClass<TARGET> &vec_80F558;
-extern DynamicVectorClass<TARGET> &vec_80F4E0;
-extern DynamicVectorClass<TARGET> &vec_80F620;
-extern DynamicVectorClass<TARGET> &vec_80F528;
-extern DynamicVectorClass<TARGET> &vec_80F570;
-extern DynamicVectorClass<TARGET> &vec_80F4F8;
-extern DynamicVectorClass<TARGET> &vec_80F600;
+extern DynamicVectorClass<AbstractClass *> &HouseClassTracker;
+extern DynamicVectorClass<AbstractClass *> &AnimClassTracker;
+extern DynamicVectorClass<AbstractClass *> &AbstractTypeClassTracker;
+extern DynamicVectorClass<AbstractClass *> &FactoryClassTracker;
+extern DynamicVectorClass<AbstractClass *> &TeamClassTracker;
+extern DynamicVectorClass<AbstractClass *> &TriggerClassTracker;
+extern DynamicVectorClass<AbstractClass *> &TagClassTracker;
+extern DynamicVectorClass<AbstractClass *> &EventActionTracker;
+extern DynamicVectorClass<AbstractClass *> &WaypointClassTracker;
+extern DynamicVectorClass<AbstractClass *> &NeuronClassTracker;
 
 extern DynamicVectorClass<ULONG> &ClassFactories;
 

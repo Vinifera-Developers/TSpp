@@ -28,7 +28,7 @@
 #include "wwcrc.h"
 
 
-long WWCRCEngine::Value() const
+long CRCEngine::Value() const
 {
     if (Buffer_Needs_Data()) {
 

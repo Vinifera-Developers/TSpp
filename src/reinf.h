@@ -45,4 +45,4 @@ bool Do_Reinforcements(const TeamTypeClass *team, WaypointType wp = WAYPOINT_NON
 bool Pop_Group_Out_Of_Object(FootClass *group, TechnoClass *object);
 int Create_Tunnel_Reinforcement(const TeamTypeClass *teamtype, FootClass *object, Cell &cell, bool a4 = false);
 bool Create_Special_Reinforcement(HouseClass *house, const TechnoTypeClass *type, const TechnoTypeClass *another, ScriptMissionType mission = SMISSION_NONE, int argument = 0);
-int Create_Air_Reinforcement(HouseClass *house, AircraftType air, int number, MissionType mission, TARGET tarcom, TARGET navcom, InfantryType passenger = INFANTRY_NONE);
+int Create_Air_Reinforcement(HouseClass *house, AircraftType air, int number, MissionType mission, AbstractClass * tarcom, AbstractClass * navcom, InfantryType passenger = INFANTRY_NONE);

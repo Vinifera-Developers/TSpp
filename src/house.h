@@ -158,11 +158,11 @@ public:
     /**
      *  AbstractClass
      */
-    virtual void Detach(TARGET target, bool all = true) override;
-    virtual RTTIType Kind_Of() const override;
-    virtual int Size_Of(bool firestorm = false) const override;
-    virtual void Compute_CRC(WWCRCEngine &crc) const override;
-    virtual int Get_Heap_ID() const override;
+    virtual void Detach(AbstractClass * target, bool all = true) override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine &crc) const override;
+    virtual int Fetch_Heap_ID() const override;
     virtual void AI() override;
 
     operator HousesType () const;
@@ -183,7 +183,7 @@ public:
     bool Is_Ally(HousesType house) const;
     bool Is_Ally(const HouseClass *house) const;
     bool Is_Ally(const ObjectClass *object) const;
-    bool Is_Ally(const TARGET target) const;
+    bool Is_Ally(const AbstractClass * target) const;
     void Make_Ally(HousesType house);
     void Make_Ally(HouseClass *house);
     void Make_Enemy(HousesType house);
@@ -201,7 +201,7 @@ public:
     void Clobber_All();
     bool Does_Enemy_Building_Exist(BuildingType btype) const;
     const TechnoTypeClass *Suggest_New_Object(RTTIType objecttype, bool kennel = false) const;
-    bool Flag_Remove(TARGET target, bool set_home = false);
+    bool Flag_Remove(AbstractClass * target, bool set_home = false);
     bool Flag_Attach(Cell &cell, bool set_home = false);
     bool Flag_Attach(UnitClass *object, bool set_home = false);
     void MPlayer_Defeated();
@@ -237,7 +237,7 @@ public:
     ZoneType Which_Zone(Cell &cell) const;
     Cell Zone_Cell(ZoneType zone) const;
     Cell Where_To_Go(const FootClass *object) const;
-    TARGET Find_Juicy_Target(Coordinate &coord) const;
+    AbstractClass * Find_Juicy_Target(Coordinate &coord) const;
     FactoryClass *Fetch_Factory(RTTIType rtti) const;
     void Set_Factory(RTTIType rtti, FactoryClass * factory);
     int Factory_Count(RTTIType rtti) const;
@@ -339,7 +339,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Get_Heap_ID()));
+            count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -348,7 +348,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Get_Heap_ID()));
+            count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -357,7 +357,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Get_Heap_ID()));
+            count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -366,7 +366,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Get_Heap_ID()));
+            count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }

@@ -76,5 +76,5 @@ FootClass *ObjectClass::As_Foot()
  */
 ObjectClass::operator int () const
 {
-    return Class_Of()->Get_Heap_ID();
+    return Class_Of()->Fetch_Heap_ID();
 }

@@ -53,17 +53,17 @@ class ParticleSystemClass : public ObjectClass
 
     public:
         ParticleSystemClass();
-        ParticleSystemClass(const ParticleSystemTypeClass *classof, const Coordinate &a2, TARGET a3 = nullptr, TARGET a4 = nullptr, const Coordinate &a5 = Coordinate(0,0,0));
+        ParticleSystemClass(const ParticleSystemTypeClass *classof, const Coordinate &a2, AbstractClass * a3 = nullptr, AbstractClass * a4 = nullptr, const Coordinate &a5 = Coordinate(0,0,0));
         ParticleSystemClass(const NoInitClass &noinit);
         virtual ~ParticleSystemClass();
         
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual bool Is_Inactive() const override;
         virtual void AI() override;
 
@@ -92,8 +92,8 @@ class ParticleSystemClass : public ObjectClass
         Coordinate field_50;
         DynamicVectorClass<ParticleClass *> Particles;
         Coordinate SpawnCoord;
-        TARGET xObject;
-        TARGET Target;
+        AbstractClass * xObject;
+        AbstractClass * Target;
         int SpawnFrames;
         int Lifetime;
         int SparkSpawnFrames;

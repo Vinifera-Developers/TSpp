@@ -59,10 +59,10 @@ InfantryClass : public FootClass
          *  AbstractClass
          */
         virtual void Init() override;
-        virtual void Detach(TARGET target, bool all = true) override;
-        virtual RTTIType Kind_Of() const override;
-        virtual int Size_Of(bool firestorm = false) const override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = true) override;
+        virtual RTTIType Fetch_RTTI() const override;
+        virtual int Get_Object_Size(bool firestorm = false) const override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual void AI() override;
 
         /**
@@ -74,7 +74,7 @@ InfantryClass : public FootClass
         virtual ObjectTypeClass *const Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual bool Paradrop(Coordinate &coord) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
@@ -99,13 +99,13 @@ InfantryClass : public FootClass
         virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Is_Immobilized() const override;
         virtual bool Is_Renovator() const override;
-        virtual FireErrorType Can_Fire(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-        virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
-        virtual void Assign_Target(TARGET target) const override;
-        virtual const BulletClass *Fire_At(TARGET target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
+        virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+        virtual void Assign_Target(AbstractClass * target) const override;
+        virtual const BulletClass *Fire_At(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
         virtual bool Is_Ready_To_Random_Animate() const override;
         virtual bool Random_Animate() override;
-        virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+        virtual void Assign_Destination(const AbstractClass * target, bool a2 = true) override;
         virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
         /**

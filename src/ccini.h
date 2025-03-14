@@ -298,21 +298,20 @@ T* TGet_Class(CCINIClass const& ini, char const* section, char const* entry, T* 
 
 
 /**
- *  Store a type list to the INI database.
+ *  Find an object with this name in the DVC.
  * 
- *  @author: CCHyper
+ *  @author: tomsons26, ZivDero
  */
-template<class T>
-bool CCINIClass::Put_TypeList(const char *section, const char *entry, const TypeList<T *> value)
+template <class T>
+T* TFind_Or_Make(char const* name, DynamicVectorClass<T*> const& vector)
 {
-    char buffer[1024] = { '\0' };
-
-    for (int index = 0; index < value.Count(); ++index) {
-        if (buffer[0] != '\0') {
-            std::strcat(buffer, ",");
+    if (strcmpi("<none>", name) && strcmpi("none", name)) {
+        for (int index = 0; index < vector.Count(); index++) {
+            if (stricmp(vector[index]->IniName, name) == 0) {
+                return vector[index];
+            }
         }
-        std::strcat(buffer, value[index]->Name());
+        return new T(name);
     }
-
-    return Put_String(section, entry, buffer);
+    return nullptr;
 }

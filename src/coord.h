@@ -31,6 +31,6 @@
 #include "tibsun_defines.h"
 
 
-Coordinate Coord_Move(const Coordinate& start, DirStruct &facing, unsigned distance);
+Coordinate Coord_Move(const Coordinate& start, DirType &facing, unsigned distance);
 Coordinate Coord_Scatter(const Coordinate& coord, unsigned distance, bool lock = false);
 Coordinate Adjacent_Coord_With_Height(const Coordinate& coord, FacingType facing);

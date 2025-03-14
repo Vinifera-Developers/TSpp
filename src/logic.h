@@ -47,7 +47,7 @@ class LogicClass : public LayerClass
 		virtual void Init();
 		virtual void One_Time();
 
-		virtual void Detach(TARGET target, bool all = true);
+		virtual void Detach(AbstractClass * target, bool all = true);
 
 		void AI();
 		void func_507210(); // looks like an older version of AI()?

@@ -73,8 +73,8 @@ public:
     /**
      *  AbstractClass
      */
-    virtual void Detach(TARGET target, bool all = false) override;
-    virtual void Compute_CRC(WWCRCEngine &crc) const override;
+    virtual void Detach(AbstractClass * target, bool all = false) override;
+    virtual void Object_CRC(CRCEngine &crc) const override;
     virtual Coordinate entry_50() const override;
     virtual bool On_Ground() const override;
     virtual bool In_Air() const override;
@@ -91,7 +91,7 @@ public:
     virtual bool entry_BC() override;
     virtual bool entry_C0() const;
     virtual bool Limbo() override;
-    virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N) override;
+    virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
     virtual void Detach_All(bool all = false) override;
     virtual void Remove_This() override;
     virtual void Draw_It(Point2D &point, Rect &bounds) const override;
@@ -120,7 +120,7 @@ public:
     virtual int Mission_Enter() override;
     virtual int Mission_Rescue() override;
     virtual int Mission_Patrol() override;
-    virtual void Override_Mission(MissionType mission, const TARGET tarcom = nullptr, const TARGET navcom = nullptr) override;
+    virtual void Override_Mission(MissionType mission, AbstractClass * tarcom = nullptr, AbstractClass * navcom = nullptr) override;
     virtual bool Restore_Mission() override;
 
     /**
@@ -136,11 +136,11 @@ public:
     virtual void entry_2C8() const override;
     virtual void Stun() override;
     virtual void Death_Announcement(const TechnoClass *object = nullptr) const override;
-    virtual TARGET Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
+    virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const override;
     virtual bool Captured(HouseClass *house = nullptr) override;
     virtual void entry_324() const override;
     virtual void Draw_Voxel(VoxelObject &voxeldata, unsigned int frame, int key, VoxelIndexClass &index, Rect &rect, Point2D &point, Matrix3D &matrix, int color, int flags) const override;
-    virtual void Assign_Destination(const TARGET target, bool a2 = true) override;
+    virtual void Assign_Destination(const AbstractClass * target, bool a2 = true) override;
     virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 
     /**
@@ -156,7 +156,7 @@ public:
     virtual bool Stop_Driver();
     virtual bool entry_388();
     virtual void Draw_Object(const ShapeFileStruct *shapefile, int shapenum, Point2D &xy,
-        Rect &rect, DirType rotation = DIR_N, int scale = 256, int a7 = 0, int a8 = 0, bool a9 = false,
+        Rect &rect, Dir256 rotation = DIR_N, int scale = 256, int a7 = 0, int a8 = 0, bool a9 = false,
         int a10 = 0, ShapeFileStruct *z_shape = nullptr, int z_framenum = 0, int z_xoff = 0, int z_yoff = 0, ShapeFlagsType flags = SHAPE_NORMAL) const;
     virtual void entry_390();
     virtual void entry_394();
@@ -169,12 +169,12 @@ public:
     virtual void Fixup_Path(PathType *path);
     virtual void Set_Speed(double speed);
     virtual void entry_3B8();
-    virtual bool Is_LZ_Clear(TARGET);
+    virtual bool Is_LZ_Clear(AbstractClass *);
 
-    int Rescue_Mission(TARGET tarcom);
+    int Rescue_Mission(AbstractClass * tarcom);
     Cell Adjust_Dest(Cell &cell);
     void Handle_Navigation_List();
-    void Queue_Navigation_List(TARGET target);
+    void Queue_Navigation_List(AbstractClass * target);
     void Clear_Navigation_List();
     bool Is_Recruitable(const HouseClass *house) const;
     bool Is_On_Priority_Mission() const;
@@ -208,10 +208,10 @@ public:
     Coordinate field_244;
     double Speed;
     double SpeedBias;
-    DynamicVectorClass<TARGET> field_260;
-    TARGET NavCom;
-    TARGET SuspendedNavCom;
-    DynamicVectorClass<TARGET> NavQueue;
+    DynamicVectorClass<AbstractClass *> field_260;
+    AbstractClass * NavCom;
+    AbstractClass * SuspendedNavCom;
+    DynamicVectorClass<AbstractClass *> NavQueue;
     TeamClass *Team;
     FootClass *Member;
     CellClass *field_2A0;

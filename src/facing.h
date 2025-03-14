@@ -41,8 +41,8 @@ class FacingClass
     public:
         FacingClass();
         FacingClass(int rate);
-        FacingClass(DirStruct &facing);
-        FacingClass(DirType dir);
+        FacingClass(DirType &facing);
+        FacingClass(Dir256 dir);
         FacingClass(FacingClass &that) :
             DesiredFacing(that.DesiredFacing),
             StartFacing(that.StartFacing),
@@ -64,24 +64,24 @@ class FacingClass
             return *this;
         }
 
-        bool Set_Desired(DirStruct &facing);
-        bool Set(DirStruct &facing);
+        bool Set_Desired(DirType &facing);
+        bool Set(DirType &facing);
 
-        DirStruct Desired() const;
-        DirStruct Current() const;
+        DirType Desired() const;
+        DirType Current() const;
 
         bool Is_Rotating() const;
         bool Is_Rotating_CW() const;
         bool Is_Rotating_CCW() const;
 
-        DirStruct Difference() const;
-        DirStruct Difference(DirStruct &facing) const;
+        DirType Difference() const;
+        DirType Difference(DirType &facing) const;
 
         void Set_ROT(int rate);
 
     public:
-        DirStruct DesiredFacing;
-        DirStruct StartFacing; // The starting direction from which to calcuate the rotation.
+        DirType DesiredFacing;
+        DirType StartFacing; // The starting direction from which to calcuate the rotation.
         CDTimerClass<FrameTimerClass> RotationTimer;
-        DirStruct ROT;
+        DirType ROT;
 };

@@ -66,8 +66,8 @@ class ObjectClass : public AbstractClass
         /**
          *  AbstractClass
          */
-        virtual void Detach(TARGET target, bool all = false) override;
-        virtual void Compute_CRC(WWCRCEngine &crc) const override;
+        virtual void Detach(AbstractClass * target, bool all = false) override;
+        virtual void Object_CRC(CRCEngine &crc) const override;
         virtual bool Is_Inactive() const override;
         virtual Coordinate Center_Coord() const override;
         virtual bool On_Ground() const override;
@@ -102,7 +102,7 @@ class ObjectClass : public AbstractClass
         virtual bool entry_BC();
         virtual bool entry_C0() const;
         virtual bool Limbo();
-        virtual bool Unlimbo(Coordinate &coord, DirType dir = DIR_N);
+        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N);
         virtual void Detach_All(bool all = false);
         virtual void Record_The_Kill(const ObjectClass *source);
         virtual bool Paradrop(Coordinate &coord);
@@ -138,6 +138,7 @@ class ObjectClass : public AbstractClass
         virtual void Fire_Out();
         virtual int Value() const;
         virtual MissionType Get_Mission() const;
+        __declspec( property( get=Get_Mission /*put=Assign_Mission*/ ) ) MissionType Mission;
         virtual void Assign_Mission(MissionType order);
         virtual void Per_Cell_Process(PCPType why);
         virtual BuildingClass *const Who_Can_Build_Me(bool intheory = false, bool legal = false) const;
@@ -154,18 +155,21 @@ class ObjectClass : public AbstractClass
         virtual Cell Get_Cell() const;
         virtual CellClass *Get_Cell_Ptr() const;
         virtual Cell Get_Target_Cell() const;
-        virtual TARGET Get_Target_Cell_Ptr() const;
+        virtual AbstractClass * Get_Target_Cell_Ptr() const;
         virtual int Get_Height() const;
+        __declspec(property(get = Get_Height, put = Set_Height)) int Height;
         virtual void Set_Height(int a1) const;
-        virtual int Get_Z_Coord() const;
+        virtual int Get_Absolute_Height() const;
+        __declspec( property( get=Get_Absolute_Height, put=Set_Absolute_Height ) ) int AbsoluteHeight;
 
         bool Attach_Tag(TagClass *tag);
-        float Health_Ratio() const;
+        double Get_Health_Ratio() const;
         void Set_Health_Ratio(double health);
+        __declspec( property( get=Get_Health_Ratio, put=Set_Health_Ratio ) ) double HealthRatio;
         int func_586730() const;
-        void Set_Z_Coord(int z);
-        DirStruct Direction(TARGET target) const;
-        int Distance(TARGET target) const;
+        void Set_Absolute_Height(int z);
+        DirType Direction(AbstractClass * target) const;
+        int Distance(AbstractClass * target) const;
         int Distance(const AbstractClass *target) const;
         int Distance_Squared(const AbstractClass *object) const;
         int Distance_Squared(const Coordinate &coord);
@@ -173,18 +177,16 @@ class ObjectClass : public AbstractClass
         // 00586F10
         // 00586F90
 
-		bool Is_Techno() const { return What_Am_I() == RTTI_BUILDING || What_Am_I() == RTTI_UNIT || What_Am_I() == RTTI_INFANTRY || What_Am_I() == RTTI_AIRCRAFT; }
+        bool Is_Techno() const { return What_Am_I() == RTTI_BUILDING || What_Am_I() == RTTI_UNIT || What_Am_I() == RTTI_INFANTRY || What_Am_I() == RTTI_AIRCRAFT; }
         bool Is_Foot() const;
         bool Is_Infantry() const { return What_Am_I() == RTTI_INFANTRY; }
-		
+        
         bool Has_Class() const { return Class_Of() != nullptr; }
 
         TechnoClass *As_Techno();
         FootClass *As_Foot();
 
         const char *Name() const;
-
-        static void Shorten_Attached_Anims();
 
     public:
         Cell field_14;

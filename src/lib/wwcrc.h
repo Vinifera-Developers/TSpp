@@ -28,10 +28,10 @@
 #pragma once
 
 
-class WWCRCEngine
+class CRCEngine
 {
     public:
-        WWCRCEngine(long initial = 0) :
+        CRCEngine(long initial = 0) :
             CRC(initial),
             Index(0)
         {

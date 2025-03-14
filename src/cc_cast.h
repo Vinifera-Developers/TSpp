@@ -55,7 +55,7 @@ template<typename TDerived> TDerived * CC_Dynamic_Cast(AbstractClass * abstract)
     /**
      *  Invalid RTTI type, return null.
      */
-    if (abstract->What_Am_I() == RTTI_NONE || !(abstract->What_Am_I() < RTTI_COUNT)) {
+    if (abstract->Fetch_RTTI() == RTTI_NONE || !(abstract->Fetch_RTTI() < RTTI_COUNT)) {
         return nullptr;
     }
 
