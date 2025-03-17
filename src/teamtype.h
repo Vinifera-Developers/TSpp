@@ -95,7 +95,7 @@ public:
     static const TeamTypeClass *Find_Or_Make(const char *name);
 
 public:
-    TeamType ID;
+    TeamType HeapID;
     int Group;
     int VeteranLevel;
     bool IsLoadable;

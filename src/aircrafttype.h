@@ -84,9 +84,9 @@ AircraftTypeClass : public TechnoTypeClass
         static const void *&LRotorData;
         static const void *&RRotorData;
 
-	public:
-		AircraftType Type;
-		bool IsCarryall;
+    public:
+        AircraftType HeapID;
+        bool IsCarryall;
         bool IsRotorEquipped;
         bool IsRotorCustom;
         bool IsLandable;

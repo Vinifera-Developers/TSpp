@@ -175,8 +175,6 @@ BuildingClass : public TechnoClass
         virtual bool Toggle_Primary();
         virtual unsigned entry_380();
 
-        operator BuildingType () const;
-
         void Draw_Overlays(Point2D& coord, Rect& rect);
         // 00429070
         // 00429100

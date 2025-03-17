@@ -74,23 +74,23 @@ SuperWeaponTypeClass : public AbstractTypeClass
 
         static const SuperWeaponTypeClass *From_Action(ActionType action);
 
-        static const SuperWeaponTypeClass &As_Reference(SpecialWeaponType type);
-        static const SuperWeaponTypeClass *As_Pointer(SpecialWeaponType type);
+        static const SuperWeaponTypeClass &As_Reference(SuperWeaponType type);
+        static const SuperWeaponTypeClass *As_Pointer(SuperWeaponType type);
         static const SuperWeaponTypeClass &As_Reference(const char *name);
         static const SuperWeaponTypeClass *As_Pointer(const char *name);
-        static SpecialWeaponType From_Name(const char *name);
-        static const char *Name_From(SpecialWeaponType type);
+        static SuperWeaponType From_Name(const char *name);
+        static const char *Name_From(SuperWeaponType type);
         static const SuperWeaponTypeClass *Find_Or_Make(const char *name);
 
     public:
-        SpecialWeaponType Type;
+        SuperWeaponType HeapID;
         WeaponTypeClass *Weapon;
         VoxType VoxRecharge;
         VoxType VoxCharging;
         VoxType VoxImpatient;
         VoxType VoxSuspend;
         int RechargeTime;
-        SpecialWeaponType ActsLike;
+        SuperWeaponType Type;
         ShapeFileStruct *SidebarIcon;
         ActionType Action;
         BuildingTypeClass *AuxBuilding;

@@ -55,12 +55,12 @@ class AbstractTypeClass : public AbstractClass
         virtual bool Read_INI(CCINIClass &ini);
         virtual bool Write_INI(CCINIClass &ini) const;
 
-		char const * Name() const { return IniName; }
-		void Set_Name(const char * buf) const
-		{
-			std::strncpy((char *)IniName, buf, sizeof(IniName));
-			((char &)IniName[sizeof(IniName)-1]) = '\0';
-		};
+        char const * Name() const { return IniName; }
+        void Set_Name(const char * buf) const
+        {
+            std::strncpy((char *)IniName, buf, sizeof(IniName));
+            ((char &)IniName[sizeof(IniName)-1]) = '\0';
+        };
 
         char const * Full_Name() const { return FullName; }
 

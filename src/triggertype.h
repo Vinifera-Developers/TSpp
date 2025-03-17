@@ -93,7 +93,7 @@ TriggerTypeClass : public AbstractTypeClass
         static const TriggerTypeClass *Find_Or_Make(const char *name);
 
     public:
-        TriggerType Type;
+        TriggerType HeapID;
         bool Enabled;
         bool Easy;
         bool Normal;

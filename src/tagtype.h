@@ -69,13 +69,13 @@ TagTypeClass : public AbstractTypeClass
         virtual bool Read_INI(CCINIClass &ini) override;
         virtual bool Write_INI(CCINIClass &ini) const override;
 
-		// 0061F270
-		// 0061F290
-		AttachType Attaches_To() const;
-		// 0061F660
-		// 0061F690
-		// 0061F6C0
-		// 0061F6F0
+        // 0061F270
+        // 0061F290
+        AttachType Attaches_To() const;
+        // 0061F660
+        // 0061F690
+        // 0061F6C0
+        // 0061F6F0
 
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
@@ -89,7 +89,7 @@ TagTypeClass : public AbstractTypeClass
         static const TagTypeClass *Find_Or_Make(const char *name);
 
     public:
-        TagType Type;
-		PersistantType IsPersistant;
+        TagType HeapID;
+        PersistantType Persistence;
         TriggerTypeClass *TriggerType;
 };

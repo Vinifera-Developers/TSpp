@@ -84,7 +84,7 @@ UnitTypeClass : public TechnoTypeClass
         /**
          *  TechnoTypeClass
          */
-		virtual int Repair_Step() const override;
+        virtual int Repair_Step() const override;
 
         const TPoint3D<int> Turret_Adjust(Dir256 dir, TPoint3D<int> &pos) const;
 
@@ -99,7 +99,7 @@ UnitTypeClass : public TechnoTypeClass
         static void One_Time();
 
     public:
-		UnitType Type;
+        UnitType HeapID;
         LandType MovementRestrictedTo;
         TPoint3D<int> HalfDamageSmokeLocation;
         bool IsPassive;

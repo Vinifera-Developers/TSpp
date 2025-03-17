@@ -116,7 +116,7 @@ IsometricTileTypeClass : public ObjectTypeClass
         static const char *Name_From(IsometricTileType type);
 
     public:
-        IsometricTileType Type;
+        IsometricTileType HeapID;
         IsometricTileType MarbleMadness;
         IsometricTileType NonMarbleMadness;
         int field_130;

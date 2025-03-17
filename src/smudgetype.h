@@ -73,7 +73,7 @@ SmudgeTypeClass : public ObjectTypeClass
         /**
          *  SmudgeTypeClass
          */
-		virtual void Draw_It(Point2D &xy, Rect &a2, int index, int a4, Cell &cell) const;
+        virtual void Draw_It(Point2D &xy, Rect &a2, int index, int a4, Cell &cell) const;
 
         bool Can_Place_Here(Cell &cell, bool a3);
         void Place(Cell &cell);
@@ -91,9 +91,9 @@ SmudgeTypeClass : public ObjectTypeClass
         static const SmudgeTypeClass *Find_Or_Make(const char *name);
 
     public:
-		SmudgeType Type;
-		int Width;
-		int Height;
+        SmudgeType HeapID;
+        int Width;
+        int Height;
         bool IsCrater;
         bool IsScorch;
 };

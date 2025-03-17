@@ -135,8 +135,6 @@ AircraftClass : public FootClass, public IFlyControl
          */
         virtual bool entry_368() override;
 
-        operator AircraftType () const;
-
         void Draw_Rotors(Point2D &xy, Rect &rect) const;
         int Paradrop_Cargo();
         int Drop_Off_Cargo();

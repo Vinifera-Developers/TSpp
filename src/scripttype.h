@@ -64,9 +64,9 @@ class DECLSPEC_UUID("42F3A647-0789-11D2-ACA5-006008055BB5")
 ScriptTypeClass : public AbstractTypeClass
 {
     public:
-		enum ScriptTypeClassEnums {
-			MAX_SCRIPT_MISSIONS = 50
-		};
+        enum ScriptTypeClassEnums {
+            MAX_SCRIPT_MISSIONS = 50
+        };
 
     public:
         /**
@@ -111,7 +111,7 @@ ScriptTypeClass : public AbstractTypeClass
         static const ScriptTypeClass *Find_Or_Make(const char *name);
 
     public:
-        ScriptType ID;
+        ScriptType HeapID;
         int field_64;
         int MissionCount;
         ScriptMissionClass MissionList[MAX_SCRIPT_MISSIONS];

@@ -84,8 +84,6 @@ TerrainClass : public ObjectClass, public StageClass
         virtual void Fire_Out() override;
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true) override;
 
-        operator TerrainType () const;
-
         void Start_To_Crumble();
         bool Is_Animating() const;
 

@@ -104,7 +104,7 @@ class CCINIClass : public INIClass
 
         ActionType Get_ActionType(const char *section, const char *entry, const ActionType defvalue);
 
-        SpecialWeaponType Get_SpecialWeaponType(const char *section, const char *entry, const SpecialWeaponType defvalue);
+        SuperWeaponType Get_SpecialWeaponType(const char *section, const char *entry, const SuperWeaponType defvalue);
 
         VoxType Get_VoxType(const char *section, const char *entry, const VoxType defvalue);
 

@@ -91,7 +91,7 @@ AITriggerTypeClass : public AbstractTypeClass
         static const char *Name_From(AITriggerType type);
         static const AITriggerTypeClass *Find_Or_Make(const char *name);
 
-	public:
+    public:
         AITriggerEventType Type;
         int field_64;
         AITriggerHouseType OwnerHouseType;

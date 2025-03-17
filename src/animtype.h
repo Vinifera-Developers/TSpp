@@ -95,7 +95,7 @@ AnimTypeClass : public ObjectTypeClass
         static const AnimTypeClass *Find_Or_Make(const char *name);
 
     public:
-		AnimType Type;
+        AnimType HeapID;
         int Biggest;
         double Damage;
         int Delay;

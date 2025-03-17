@@ -146,7 +146,7 @@ class SidebarClass : public PowerClass
                 StripClass(const NoInitClass &);
 
                 void One_Time(int id);
-                ShapeFileStruct const *Get_Special_Cameo(SpecialWeaponType type);
+                ShapeFileStruct const *Get_Special_Cameo(SuperWeaponType type);
                 void Init_Clear();
                 void Init_IO(int id);
                 void Activate();

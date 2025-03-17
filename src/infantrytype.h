@@ -77,8 +77,8 @@ InfantryTypeClass : public TechnoTypeClass
         /**
          *  TechnoTypeClass
          */
-		virtual int Repair_Cost() const override;
-		virtual int Repair_Step() const override;
+        virtual int Repair_Cost() const override;
+        virtual int Repair_Step() const override;
 
         void Sequence_Read_INI();
 
@@ -91,7 +91,7 @@ InfantryTypeClass : public TechnoTypeClass
         static const InfantryTypeClass *Find_Or_Make(const char *name);
 
     public:
-		InfantryType Type;
+        InfantryType HeapID;
         PipType Pip;
         DoInfoStruct * DoControls;
         int FireLaunch;

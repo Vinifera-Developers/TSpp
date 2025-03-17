@@ -117,7 +117,7 @@ public:
     static void Fetch_ToTile_Types();
 
 public:
-    BuildingType Type;
+    BuildingType HeapID;
     Cell * OccupyList;
     ShapeFileStruct * BuildupData;
     TPoint3D<int> HalfDamageSmokeLocation1;
@@ -221,8 +221,8 @@ public:
     bool IsHelipad;
     bool IsGDIBarracks;
     bool IsNODBarracks;
-    SpecialWeaponType SuperWeapon;
-    SpecialWeaponType SuperWeapon2;
+    SuperWeaponType SuperWeapon;
+    SuperWeaponType SuperWeapon2;
     int GateStages;
     int PowersUpToLevel;
     char VoxelBarrelFile[12 + 4];

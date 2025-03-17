@@ -811,7 +811,7 @@ DEFINE_IMPLEMENTATION(bool CCINIClass::Put_BSizeType(const char *, const char *,
 DEFINE_IMPLEMENTATION(MZoneType CCINIClass::Get_MZoneType(const char *, const char *, const MZoneType), 0x0044AB80);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_MZoneType(const char *, const char *, MZoneType), 0x0044ABF0);
 DEFINE_IMPLEMENTATION(ActionType CCINIClass::Get_ActionType(const char *, const char *, const ActionType), 0x0044AC20);
-DEFINE_IMPLEMENTATION(SpecialWeaponType CCINIClass::Get_SpecialWeaponType(const char *, const char *, const SpecialWeaponType), 0x0044AC90);
+DEFINE_IMPLEMENTATION(SuperWeaponType CCINIClass::Get_SpecialWeaponType(const char *, const char *, const SuperWeaponType), 0x0044AC90);
 DEFINE_IMPLEMENTATION(VoxType CCINIClass::Get_VoxType(const char *, const char *, const VoxType), 0x0044ACE0);
 DEFINE_IMPLEMENTATION(RTTIType CCINIClass::Get_RTTIType(const char *, const char *, const RTTIType), 0x0044AD50);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_RTTIType(const char *, const char *, RTTIType), 0x0044AD90);
@@ -2127,7 +2127,7 @@ DEFINE_IMPLEMENTATION(bool SidebarClass::Abandon_Production(RTTIType, FactoryCla
 SidebarClass::StripClass::SelectClass::SelectClass() : ControlClass(0, 0, 0, (OBJECT_WIDTH - 1), OBJECT_HEIGHT, LEFTPRESS|RIGHTPRESS|LEFTUP), Strip(0), Index(0) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
 SidebarClass::StripClass::SelectClass::SelectClass(const NoInitClass &x) : ControlClass(x) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::One_Time(int), 0x005F4210);
-DEFINE_IMPLEMENTATION(ShapeFileStruct const * SidebarClass::StripClass::Get_Special_Cameo(SpecialWeaponType), 0x005F4230);
+DEFINE_IMPLEMENTATION(ShapeFileStruct const * SidebarClass::StripClass::Get_Special_Cameo(SuperWeaponType), 0x005F4230);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_Clear(), 0x005F4260);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_IO(int), 0x005F42A0);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Activate(), 0x005F4450);
@@ -2324,7 +2324,6 @@ DEFINE_IMPLEMENTATION(const char *SuperClass::Ready_String() const, 0x0060BEC0);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
 DEFINE_IMPLEMENTATION(void SuperClass::Place(Cell *, bool), 0x0060BF70);
-SuperClass::operator SpecialWeaponType () const { return Class->Type; }
 char const * SuperClass::Name() const { return Class->Name(); }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SuperWeaponTypeClass::GetClassID(CLSID *), 0x0060D100);
@@ -2449,8 +2448,8 @@ DEFINE_IMPLEMENTATION(void HouseClass::Adjust_Threat(int, int), 0x004BE190);
 DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Begin_Production(RTTIType, int, bool), 0x004BE200);
 DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Suspend_Production(RTTIType), 0x004BE5D0);
 DEFINE_IMPLEMENTATION(ProdFailType HouseClass::Abandon_Production(RTTIType, int), 0x004BE6A0);
-DEFINE_IMPLEMENTATION(bool HouseClass::Special_Weapon_AI(SpecialWeaponType), 0x004BE8A0);
-DEFINE_IMPLEMENTATION(bool HouseClass::Place_Special_Blast(SpecialWeaponType, Cell &), 0x004BE9E0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Special_Weapon_AI(SuperWeaponType), 0x004BE8A0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Special_Blast(SuperWeaponType, Cell &), 0x004BE9E0);
 DEFINE_IMPLEMENTATION(bool HouseClass::Place_Object(RTTIType, Cell &), 0x004BEA10);
 DEFINE_IMPLEMENTATION(void HouseClass::Just_Built(TechnoClass *), 0x004BED80);
 DEFINE_IMPLEMENTATION(bool HouseClass::Manual_Place(BuildingClass *, BuildingClass *), 0x004BEEA0);
@@ -2577,7 +2576,6 @@ DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
 DEFINE_IMPLEMENTATION(void HouseClass::Read_Scenario_INI(CCINIClass &), 0x004C2E40);
 DEFINE_IMPLEMENTATION(void HouseClass::Write_Scenario_INI(CCINIClass &), 0x004C31B0);
 DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
-HouseClass::operator HousesType () const { return Class->House; }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeClass(), 0x00643D60);
 ThemeClass::~ThemeClass() { Clear(); }
@@ -3364,7 +3362,6 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Update_Spied(HouseClass *house), 0x004
 // 0043B810
 DEFINE_IMPLEMENTATION(void BuildingClass::Read_INI(CCINIClass &), 0x004347C0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Write_INI(CCINIClass &), 0x00434D90);
-BuildingClass::operator BuildingType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeamTypeClass::GetClassID(CLSID *), 0x00628F50);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeamTypeClass::Load(IStream *), 0x00628ED0);
@@ -3738,7 +3735,6 @@ DEFINE_IMPLEMENTATION(bool AircraftClass::On_Death(ObjectClass *), 0x0040EFB0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Read_INI(CCINIClass &), 0x0040E7A0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Write_INI(CCINIClass &), 0x0040E620);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Counts_As_Civ_Evac(const ObjectClass *), 0x00408580);
-AircraftClass::operator AircraftType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE InfantryClass::GetClassID(CLSID *), 0x004D9E20);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE InfantryClass::Load(IStream *), 0x004D92F0);
@@ -3807,7 +3803,6 @@ DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Flying_JumpJet(), 0x004D9AA0);
 // 004D9B70
 DEFINE_IMPLEMENTATION(void InfantryClass::Read_INI(CCINIClass &), 0x004D7B30);
 DEFINE_IMPLEMENTATION(void InfantryClass::Write_INI(CCINIClass &), 0x004D7F50);
-InfantryClass::operator InfantryType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(void Speak(VoxType, bool), 0x00665800);
 DEFINE_IMPLEMENTATION(void Speak_AI(), 0x00665940);
@@ -3898,7 +3893,6 @@ DEFINE_IMPLEMENTATION(void AnimClass::Flaming_Guy_AI(), 0x00416820);
 // 00417270
 DEFINE_IMPLEMENTATION(void AnimClass::Init(), 0x00417340);
 DEFINE_IMPLEMENTATION(void AnimClass::Do_Atom_Damage(HousesType, Cell &), 0x004163E0);
-AnimClass::operator AnimType () const { return Class->Type; }
 DEFINE_IMPLEMENTATION(void Shorten_Attached_Anims(), 0x00414500);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimTypeClass::GetClassID(CLSID *), 0x004197B0);
@@ -4136,7 +4130,6 @@ DEFINE_IMPLEMENTATION(bool SmudgeClass::Mark(MarkType), 0x005FAB50);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Disown(Cell &), 0x005FABE0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Read_INI(CCINIClass &), 0x005FABF0);
 DEFINE_IMPLEMENTATION(void SmudgeClass::Write_INI(CCINIClass &), 0x005FAD30);
-SmudgeClass::operator SmudgeType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE OverlayClass::GetClassID(CLSID *), 0x0058CAA0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayClass::Load(IStream *), 0x0058C4D0);
@@ -4155,7 +4148,6 @@ DEFINE_IMPLEMENTATION(TiberiumType OverlayClass::To_TiberiumType(OverlayType), 0
 DEFINE_IMPLEMENTATION(void OverlayClass::Place_All_Veins(), 0x0058C980);
 DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass &), 0x0058BE30);
 DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass &), 0x0058C280);
-OverlayClass::operator OverlayType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TiberiumClass::GetClassID(CLSID *), 0x00644FD0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TiberiumClass::Load(IStream *), 0x00645010);
@@ -4313,7 +4305,6 @@ DEFINE_IMPLEMENTATION(bool UnitClass::Should_Crush_It(const TechnoClass *) const
 // 0065B400
 DEFINE_IMPLEMENTATION(void UnitClass::Read_INI(CCINIClass &), 0x006585C0);
 DEFINE_IMPLEMENTATION(void UnitClass::Write_INI(CCINIClass &), 0x00658A40);
-UnitClass::operator UnitType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(float __cdecl FastMath::Sqrt(double), 0x00497F50);
 DEFINE_IMPLEMENTATION(float __cdecl FastMath::Sin(double), 0x00497FC0);
@@ -4364,7 +4355,6 @@ DEFINE_IMPLEMENTATION(void TerrainClass::Start_To_Crumble(), 0x006401D0);
 DEFINE_IMPLEMENTATION(bool TerrainClass::Is_Animating() const, 0x006407F0);
 DEFINE_IMPLEMENTATION(void TerrainClass::Read_INI(CCINIClass &), 0x00640340);
 DEFINE_IMPLEMENTATION(void TerrainClass::Write_INI(CCINIClass &), 0x00640460);
-TerrainClass::operator TerrainType () const { return Class->Type; }
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TriggerTypeClass::GetClassID(CLSID *), 0x0064AA70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TriggerTypeClass::Load(IStream *), 0x0064AAB0);
@@ -4686,7 +4676,6 @@ DEFINE_IMPLEMENTATION(bool IsometricTileClass::Limbo(), 0x004F2300);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(Coordinate &, Dir256), 0x004F22D0);
 DEFINE_IMPLEMENTATION(void IsometricTileClass::Draw_It(Point2D &, Rect &) const, 0x004F23C0);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Mark(MarkType), 0x004F1C50);
-IsometricTileClass::operator IsometricTileType () const { return Class->Type; }
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarEventClass::RadarEventClass(RadarEventType, Cell), 0x005C1CE0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(RadarEventClass::~RadarEventClass(), 0x005C1E40);

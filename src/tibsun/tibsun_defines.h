@@ -968,21 +968,21 @@ typedef enum PrerequisiteType {} PrerequisiteType;
 
 typedef enum SpecialWeaponType
 {
-    SPECIAL_MULTI_MISSILE,        // Tactical nuclear weapon.
-    SPECIAL_EM_PULSE,
-    SPECIAL_FIRESTORM,
-    SPECIAL_ION_CANNON,           // Partical beam from satellite (Akira effect).
-    SPECIAL_HUNTER_SEEKER,
-    SPECIAL_CHEM_MISSILE,
-    SPECIAL_DROP_PODS,
+    SUPER_MULTI_MISSILE,        // Tactical nuclear weapon.
+    SUPER_EM_PULSE,
+    SUPER_FIRESTORM,
+    SUPER_ION_CANNON,           // Partical beam from satellite (Akira effect).
+    SUPER_HUNTER_SEEKER,
+    SUPER_CHEM_MISSILE,
+    SUPER_DROP_PODS,
 
-    SPECIAL_COUNT,
+    SUPER_COUNT,
 
-    SPECIAL_NONE = -1,
-    SPECIAL_FIRST = 0,
-    SPECIAL_ANY = 1
-} SpecialWeaponType;
-DEFINE_ENUMERATION_OPERATORS(SpecialWeaponType);
+    SUPER_NONE = -1,
+    SUPER_FIRST = 0,
+    SUPER_ANY = 1
+} SuperWeaponType;
+DEFINE_ENUMERATION_OPERATORS(SuperWeaponType);
 
 typedef enum LayerType
 {

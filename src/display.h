@@ -131,7 +131,7 @@ class DisplayClass : public MapClass
         bool IsSellMode;
         bool IsPowerMode;
         bool IsWaypointMode;
-        SpecialWeaponType TargettingType;
+        SuperWeaponType TargettingType;
         Coordinate *field_11C4;            // waypoint related
         Coordinate field_11C8;             // current waypoint coord (as user is moving mouse around).
         RGBStruct field_11D4;               // waypoint related, waypoint scrolling color?

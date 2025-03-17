@@ -86,7 +86,7 @@ TerrainTypeClass : public ObjectTypeClass
         static const TerrainTypeClass *Find_Or_Make(const char *name);
 
     public:
-		TerrainType Type;
+        TerrainType HeapID;
         BSizeType Size;
         RGBStruct RadarColor;
         int AnimationRate;
@@ -95,10 +95,10 @@ TerrainTypeClass : public ObjectTypeClass
         TiberiumType TiberiumToSpawn;
         unsigned TemperateOccupationBits;
         unsigned SnowOccupationBits;
-		bool IsWaterBased;
-		bool IsSpawnsTiberium;
-		bool IsFlammable;
-		bool IsAnimated;
-		bool IsVeinhole;
-		const Cell *Occupy;
+        bool IsWaterBased;
+        bool IsSpawnsTiberium;
+        bool IsFlammable;
+        bool IsAnimated;
+        bool IsVeinhole;
+        const Cell *Occupy;
 };

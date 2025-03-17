@@ -88,8 +88,6 @@ AnimClass : public ObjectClass, public StageClass
         virtual int entry_1A8();
         virtual int entry_1AC() const;
 
-        operator AnimType () const;
-
         void Attach_To(ObjectClass *obj);
         void Start();
         void Middle();

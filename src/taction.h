@@ -201,7 +201,7 @@ TActionClass : public AbstractClass
             VocType Sound;              // Sound effect.
             VoxType Speech;             // Speech identifier.
             HousesType House;           // House to be affected.
-            SpecialWeaponType Special;  // Special weapon ability.
+            SuperWeaponType Special;  // Special weapon ability.
             QuarryType Quarry;          // Preferred target for attack.
             VQType Movie;               // The movie to play.
             bool Bool;                  // Boolean value.

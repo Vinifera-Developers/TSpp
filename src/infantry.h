@@ -128,8 +128,6 @@ InfantryClass : public FootClass
          */
         virtual bool Do_Action(DoType todo, bool force = false, bool randomise = false);
 
-        operator InfantryType () const;
-
         int Shape_Number() const;
         void Tunnel_AI();
         void Fear_AI();

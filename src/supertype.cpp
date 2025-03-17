@@ -30,17 +30,17 @@
 #include "tspp_assert.h"
 
 
-const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(SpecialWeaponType type)
+const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(SuperWeaponType type)
 {
-    TSPP_ASSERT(type != SPECIAL_NONE && type < SuperWeaponTypes.Count());
+    TSPP_ASSERT(type != SUPER_NONE && type < SuperWeaponTypes.Count());
     return *SuperWeaponTypes[type];
 }
 
 
-const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(SpecialWeaponType type)
+const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(SuperWeaponType type)
 {
-    TSPP_ASSERT(type != SPECIAL_NONE && type < SuperWeaponTypes.Count());
-    return type != SPECIAL_NONE && type < SuperWeaponTypes.Count() ? SuperWeaponTypes[type] : nullptr;
+    TSPP_ASSERT(type != SUPER_NONE && type < SuperWeaponTypes.Count());
+    return type != SUPER_NONE && type < SuperWeaponTypes.Count() ? SuperWeaponTypes[type] : nullptr;
 }
 
 
@@ -56,29 +56,29 @@ const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(const char *name)
 }
 
 
-SpecialWeaponType SuperWeaponTypeClass::From_Name(const char *name)
+SuperWeaponType SuperWeaponTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return SPECIAL_NONE;
+        return SUPER_NONE;
     }
 
     if (name != nullptr) {
-        for (SpecialWeaponType index = SPECIAL_FIRST; index < SuperWeaponTypes.Count(); ++index) {
+        for (SuperWeaponType index = SUPER_FIRST; index < SuperWeaponTypes.Count(); ++index) {
             if (!strcasecmp(As_Reference(index).Name(), name)) {
                 return index;
             }
         }
     }
 
-    return SPECIAL_NONE;
+    return SUPER_NONE;
 }
 
 
-const char *SuperWeaponTypeClass::Name_From(SpecialWeaponType type)
+const char *SuperWeaponTypeClass::Name_From(SuperWeaponType type)
 {
-    return (type != SPECIAL_NONE && type < SuperWeaponTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SUPER_NONE && type < SuperWeaponTypes.Count() ? As_Reference(type).Name() : "<none>");
 }
 
 
@@ -90,7 +90,7 @@ const SuperWeaponTypeClass *SuperWeaponTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    for (SpecialWeaponType index = SPECIAL_FIRST; index < SuperWeaponTypes.Count(); ++index) {
+    for (SuperWeaponType index = SUPER_FIRST; index < SuperWeaponTypes.Count(); ++index) {
         if (!strcasecmp(SuperWeaponTypes[index]->Name(), name)) {
             return SuperWeaponTypes[index];
         }

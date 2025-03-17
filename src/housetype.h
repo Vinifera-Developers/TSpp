@@ -82,21 +82,21 @@ HouseTypeClass : public AbstractTypeClass
         static const HouseTypeClass *Find_Or_Make(const char *name);
 
     public:
-		int ID;
-		HousesType House;
-		SideType Side;
-		ColorSchemeType RemapColor;
-		double FirepowerBias;
-		double GroundspeedBias;
-		double AirspeedBias;
-		double ArmorBias;
-		double ROFBias;
-		double CostBias;
-		double BuildSpeedBias;
-		char Suffix[4];
-		char Prefix;
-		bool IsMultiplay;
-		bool IsMultiplayPassive;
-		bool IsWallOwner;
-		bool IsSmartAI;
+        HousesType HeapID;
+        HousesType House;
+        SideType Side;
+        ColorSchemeType RemapColor;
+        double FirepowerBias;
+        double GroundspeedBias;
+        double AirspeedBias;
+        double ArmorBias;
+        double ROFBias;
+        double CostBias;
+        double BuildSpeedBias;
+        char Suffix[4];
+        char Prefix;
+        bool IsMultiplay;
+        bool IsMultiplayPassive;
+        bool IsWallOwner;
+        bool IsSmartAI;
 };

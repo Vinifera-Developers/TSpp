@@ -94,7 +94,7 @@ OverlayTypeClass : public ObjectTypeClass
         static const OverlayTypeClass *Find_Or_Make(const char *name);
 
     public:
-        OverlayType Type;
+        OverlayType HeapID;
         LandType Land;
         AnimTypeClass *CellAnim;
         int DamageLevels;

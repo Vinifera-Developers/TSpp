@@ -165,8 +165,6 @@ public:
     virtual int Fetch_Heap_ID() const override;
     virtual void AI() override;
 
-    operator HousesType () const;
-
     bool Can_Make_Money() const;
     float Tiberium_Fraction() const;
     DiffType Assign_Handicap(DiffType handicap);
@@ -193,8 +191,8 @@ public:
     ProdFailType Begin_Production(RTTIType type, int id, bool a3);
     ProdFailType Suspend_Production(RTTIType type);
     ProdFailType Abandon_Production(RTTIType type, int a1);
-    bool Special_Weapon_AI(SpecialWeaponType id);
-    bool Place_Special_Blast(SpecialWeaponType id, Cell &cell);
+    bool Special_Weapon_AI(SuperWeaponType id);
+    bool Place_Special_Blast(SuperWeaponType id, Cell &cell);
     bool Place_Object(RTTIType type, Cell &cell);
     void Just_Built(TechnoClass *techno); 
     bool Manual_Place(BuildingClass *builder, BuildingClass *object);

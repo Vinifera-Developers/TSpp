@@ -137,8 +137,6 @@ UnitClass : public FootClass
         virtual void Unit_Draw_Shape(Point2D xyoff, Rect rect, int intensity);
         virtual void Unit_Blit_Voxel(Surface& surface, Point2D xyoff, Rect rect, int alpha, int tint);
 
-        operator UnitType () const;
-
         void Tunnel_AI();
         void Rotation_AI();
         bool Edge_Of_World_AI();
