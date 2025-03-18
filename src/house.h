@@ -377,7 +377,7 @@ public:
     static HouseClass *As_Pointer(HousesType house);
 
 public:
-    int ID;
+    HousesType HeapID;
     HouseTypeClass *Class;
     DynamicVectorClass<TagClass *> field_28;
     DynamicVectorClass<BuildingClass *> ConstructionYards;
