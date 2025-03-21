@@ -293,7 +293,7 @@ BuildingClass : public TechnoClass
         bool IsCaptured;
         bool HasOpened;
         bool field_309;
-        bool field_30A; // taken damage and play anim?
+        bool IsDamagedAnims;
         bool IsFogged;
         bool IsRepairing;
         bool field_30D; // buildup anim free'd?
