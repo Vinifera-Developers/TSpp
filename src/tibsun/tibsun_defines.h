@@ -1188,7 +1188,7 @@ typedef enum VoxType
     VOX_00_I176,
     VOX_00_I178,
     VOX_00_I198,
-    VOX_00_I150,
+    VOX_MISSILE_LAUNCHED,
     VOX_00_I152,
     VOX_00_I154,
     VOX_00_I156,
