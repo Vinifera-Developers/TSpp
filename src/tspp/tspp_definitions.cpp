@@ -3309,15 +3309,15 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Repair_AI(), 0x00435540);
 DEFINE_IMPLEMENTATION(void BuildingClass::Animation_AI(), 0x00435A50);
 // 00435E60
 // 00436020
-// 004360E0
-// 00436140
-// 00436200
-// 00436410
-// 004364A0
-// 00436500
-// 00436580
-// 00436610
-// 00436730
+DEFINE_IMPLEMENTATION(void BuildingClass::Play_Animation(BAnimType, bool, int), 0x004360E0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Anim_Coords(), 0x00436140);
+DEFINE_IMPLEMENTATION(void BuildingClass::Create_Animation(char const*, BAnimType, bool, int), 0x00436200);
+DEFINE_IMPLEMENTATION(void BuildingClass::Repair_Animation(AnimClass*), 0x00436410);
+DEFINE_IMPLEMENTATION(void BuildingClass::Free_Animation(BAnimType), 0x004364A0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Anim_Damage_State(bool), 0x00436500);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Anim_Drawer(ConvertClass*, int), 0x00436580);
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_Anim_Appearance(), 0x00436610);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Anim_Translucency(int), 0x00436730);
 DEFINE_IMPLEMENTATION(void BuildingClass::Turn_On(), 0x00436790);
 DEFINE_IMPLEMENTATION(void BuildingClass::Turn_Off(), 0x00436890);
 // 00436950

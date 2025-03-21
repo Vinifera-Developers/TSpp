@@ -459,7 +459,7 @@ typedef enum BAnimType
 
     BANIM_COUNT,
 
-    BANIM_M2 = -2,              // used to free all anims?
+    BANIM_ALL = -2,              // used to free all anims?
     BANIM_NONE = -1,
 
     BANIM_FIRST = 0

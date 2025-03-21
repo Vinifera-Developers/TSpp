@@ -41,6 +41,7 @@ class BuildingLightClass;
 class LightSourceClass;
 class FactoryClass;
 class AnimClass;
+class ConvertClass;
 
 
 class DECLSPEC_UUID("0E272DC6-9C0F-11D1-B709-00A024DDAFD1")
@@ -197,15 +198,15 @@ BuildingClass : public TechnoClass
         void Animation_AI();
         // 00435E60
         // 00436020
-        // 004360E0
-        // 00436140
-        // 00436200
-        // 00436410
-        // 004364A0
-        // 00436500
-        // 00436580
-        // 00436610
-        // 00436730
+        void Play_Animation(BAnimType anim, bool damaged, int delay);
+        void Set_Anim_Coords();
+        void Create_Animation(char const* name, BAnimType anim, bool damaged, int delay);
+        void Repair_Animation(AnimClass* oldanim);
+        void Free_Animation(BAnimType anim);
+        void Set_Anim_Damage_State(bool damaged);
+        void Set_Anim_Drawer(ConvertClass* drawer, int brightness);
+        void Update_Anim_Appearance();
+        void Set_Anim_Translucency(int translucency);
         void Turn_On();
         void Turn_Off();
         // 00436950
