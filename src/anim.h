@@ -91,8 +91,8 @@ AnimClass : public ObjectClass, public StageClass
         void Attach_To(ObjectClass *obj);
         void Start();
         void Middle();
-        void Enable();
         void Disable();
+        void Enable();
         void Vein_Attack_AI();
         void Flaming_Guy_AI();
         // 00416E90
@@ -130,7 +130,7 @@ AnimClass : public ObjectClass, public StageClass
         bool IsToDelete;
         bool IsBrandNew;
         bool IsInvisible;
-        bool IsEnabled;
+        bool IsDisabled;
 };
 
 void Shorten_Attached_Anims();
