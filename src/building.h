@@ -198,11 +198,11 @@ BuildingClass : public TechnoClass
         void Animation_AI();
         // 00435E60
         // 00436020
-        void Play_Animation(BAnimType anim, bool damaged, int delay);
+        void Begin_Anim(BAnimType anim, bool damaged, int delay);
         void Set_Anim_Coords();
-        void Create_Animation(char const* name, BAnimType anim, bool damaged, int delay);
-        void Repair_Animation(AnimClass* oldanim);
-        void Free_Animation(BAnimType anim);
+        void Create_Anim(char const* name, BAnimType anim, bool damaged, int delay);
+        void Detach_Anim(AnimClass* oldanim);
+        void End_Anim(BAnimType anim);
         void Set_Anim_Damage_State(bool damaged);
         void Set_Anim_Drawer(ConvertClass* drawer, int brightness);
         void Update_Anim_Appearance();
