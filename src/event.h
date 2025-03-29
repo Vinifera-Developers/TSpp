@@ -60,7 +60,7 @@ public:
 
     EventClass(EventType type, unsigned long hi, unsigned long lo)
     {
-        ID = PlayerPtr->ID;
+        ID = PlayerPtr->HeapID;
         Type = type;
         Frame = ::Frame;
         Data.LongLong.Hi = hi;
@@ -69,7 +69,7 @@ public:
 
     EventClass(EventType type, unsigned long hi, unsigned long lo, unsigned long extra)
     {
-        ID = PlayerPtr->ID;
+        ID = PlayerPtr->HeapID;
         Type = type;
         Frame = ::Frame;
         Data.LongLongExtra.Hi = hi;
