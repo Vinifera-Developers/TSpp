@@ -60,11 +60,11 @@ class VectorClass
         int Length() const { return VectorMax; }
 
     protected:
-		T * Vector;
-		int VectorMax;
-		bool IsValid;
-		bool IsAllocated;
-		bool VectorClassPad[2];
+        T * Vector;
+        int VectorMax;
+        bool IsValid;
+        bool IsAllocated;
+        bool VectorClassPad[2];
 };
 
 
@@ -294,16 +294,20 @@ class DynamicVectorClass : public VectorClass<T>
         void Set_Active(int count) { ActiveCount = count; }
 
         int Count() const { return ActiveCount; }
-
         bool Empty() const { return ActiveCount <= 0; }
 
         int Set_Growth_Step(int step) { return GrowthStep = step; }
-
         int Growth_Step() { return GrowthStep; }
 
+        T* begin() { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+        T* end() { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+
+        const T* begin() const { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+        const T* end() const { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+
     protected:
-		int ActiveCount;
-		int GrowthStep;
+        int ActiveCount;
+        int GrowthStep;
 };
 
 
@@ -862,69 +866,69 @@ template<class T, int COUNT>
 class VectorArrayClass
 {
     public:
-	    static const int CollectionCount = COUNT;
+        static const int CollectionCount = COUNT;
 
     public:
-	    VectorArrayClass() : ActiveContext(0) {}
-	    virtual ~VectorArrayClass() {}
+        VectorArrayClass() : ActiveContext(0) {}
+        virtual ~VectorArrayClass() {}
 
-	    T & operator[](unsigned index)
-	    {
-            TSPP_ASSERT(index < Count(ActiveContext));
-		    return Collection[ActiveContext][index];
-	    }
-
-	    T const & operator[](unsigned index) const
-	    {
-            TSPP_ASSERT(index < Count(ActiveContext));
-		    return Collection[ActiveContext][index];
-	    }
-
-	    VectorClass<T> & Raw()
-	    {
-		    return Collection[ActiveContext];
-	    }
-
-	    VectorClass<T> & Raw(int context)
-	    {
-		    return Collection[context];
-	    }
-
-	    void Set_Active_Context(int active)
+        T & operator[](unsigned index)
         {
-		    ActiveContext = active;
-	    }
+            TSPP_ASSERT(index < Count(ActiveContext));
+            return Collection[ActiveContext][index];
+        }
 
-	    int Active_Context_Length() const
-	    {
-		    return Collection[ActiveContext].Length();
-	    }
+        T const & operator[](unsigned index) const
+        {
+            TSPP_ASSERT(index < Count(ActiveContext));
+            return Collection[ActiveContext][index];
+        }
 
-	    void Clear_All()
-	    {
-		    for (int i = 0; i < CollectionCount; ++i) {
-			    Collection[i].Clear()
-		    }
-	    }
+        VectorClass<T> & Raw()
+        {
+            return Collection[ActiveContext];
+        }
 
-	    void Clear()
-	    {
-		    Collection[ActiveContext].Clear();
-	    }
+        VectorClass<T> & Raw(int context)
+        {
+            return Collection[context];
+        }
 
-	    void Clear(int context)
-	    {
-		    Collection[context].Clear();
-	    }
+        void Set_Active_Context(int active)
+        {
+            ActiveContext = active;
+        }
 
-	    int Length(int context) const
-	    {
-		    return Collection[context].Length();
-	    }
+        int Active_Context_Length() const
+        {
+            return Collection[ActiveContext].Length();
+        }
+
+        void Clear_All()
+        {
+            for (int i = 0; i < CollectionCount; ++i) {
+                Collection[i].Clear()
+            }
+        }
+
+        void Clear()
+        {
+            Collection[ActiveContext].Clear();
+        }
+
+        void Clear(int context)
+        {
+            Collection[context].Clear();
+        }
+
+        int Length(int context) const
+        {
+            return Collection[context].Length();
+        }
 
     private:
-	    VectorClass<T> Collection[COUNT];
-	    int ActiveContext;
+        VectorClass<T> Collection[COUNT];
+        int ActiveContext;
 };
 
 
@@ -935,128 +939,128 @@ template<class T, int COUNT, int FIRST = 0, int DEFAULT = FIRST>
 class DynamicVectorArrayClass
 {
     public:
-	    static const int CollectionCount = COUNT;
+        static const int CollectionCount = COUNT;
 
     public:
-	    DynamicVectorArrayClass() : ActiveContext(DEFAULT) {}
-	    virtual ~DynamicVectorArrayClass() {}
+        DynamicVectorArrayClass() : ActiveContext(DEFAULT) {}
+        virtual ~DynamicVectorArrayClass() {}
 
-	    T & operator[](unsigned index)
-	    {
-            TSPP_ASSERT(index < Count(ActiveContext));
-		    return Collection[ActiveContext][index];
-	    }
-
-	    T const & operator[](unsigned index) const
-	    {
-            TSPP_ASSERT(index < Count(ActiveContext));
-		    return Collection[ActiveContext][index];
-	    }
-
-	    DynamicVectorClass<T> & Raw()
-	    {
-		    return Collection[ActiveContext];
-	    }
-
-	    DynamicVectorClass<T> & Raw(int context)
-	    {
-		    return Collection[context];
-	    }
-
-	    void Set_Active_Context(int active)
+        T & operator[](unsigned index)
         {
-		    ActiveContext = active;
-	    }
+            TSPP_ASSERT(index < Count(ActiveContext));
+            return Collection[ActiveContext][index];
+        }
 
-	    int Active_Context_Count() const
-	    {
-		    return Count(ActiveContext);
-	    }
+        T const & operator[](unsigned index) const
+        {
+            TSPP_ASSERT(index < Count(ActiveContext));
+            return Collection[ActiveContext][index];
+        }
 
-	    int Add_To_Active(T const & object)
-	    {
-		    return Add(ActiveContext, object);
-	    }
+        DynamicVectorClass<T> & Raw()
+        {
+            return Collection[ActiveContext];
+        }
 
-	    int Add_To_Active_Head(T const & object)
-	    {
-		    return Add_Head(ActiveContext, object);
-	    }
+        DynamicVectorClass<T> & Raw(int context)
+        {
+            return Collection[context];
+        }
 
-	    int Delete_From_Active(T const & object)
-	    {
-		    return Delete(ActiveContext, object);
-	    }
+        void Set_Active_Context(int active)
+        {
+            ActiveContext = active;
+        }
 
-	    int Delete_From_Active(int index)
-	    {
-		    return Delete(ActiveContext, index);
-	    }
+        int Active_Context_Count() const
+        {
+            return Count(ActiveContext);
+        }
 
-	    int Delete_All(T const & object)
-	    {
-		    int count = 0;
-		    for (int i = FIRST; i < CollectionCount; ++i) {
-			    count += Delete(i, object);
-		    }
-		    return count;
-	    }
+        int Add_To_Active(T const & object)
+        {
+            return Add(ActiveContext, object);
+        }
 
-	    int Delete_All_Except(T const & object, int except)
-	    {
-		    int count = 0;
-		    for (int i = FIRST; i < CollectionCount; ++i) {
-			    if (except != i) {
-				    count += Delete(i, object);
-			    }
-		    }
-		    return count;
-	    }
+        int Add_To_Active_Head(T const & object)
+        {
+            return Add_Head(ActiveContext, object);
+        }
 
-	    void Clear_All()
-	    {
-		    for (int i = FIRST; i < CollectionCount; ++i) {
-		        Collection[i].Clear();
-		    }
-	    }
+        int Delete_From_Active(T const & object)
+        {
+            return Delete(ActiveContext, object);
+        }
 
-	    void Clear()
-	    {
-		    Clear(Active);
-	    }
+        int Delete_From_Active(int index)
+        {
+            return Delete(ActiveContext, index);
+        }
 
-	    void Clear(int context)
-	    {
-		    Collection[context].Clear();
-	    }
+        int Delete_All(T const & object)
+        {
+            int count = 0;
+            for (int i = FIRST; i < CollectionCount; ++i) {
+                count += Delete(i, object);
+            }
+            return count;
+        }
 
-	    int Count(int context) const
-	    {
-		    return Collection[context].Count();
-	    }
+        int Delete_All_Except(T const & object, int except)
+        {
+            int count = 0;
+            for (int i = FIRST; i < CollectionCount; ++i) {
+                if (except != i) {
+                    count += Delete(i, object);
+                }
+            }
+            return count;
+        }
 
-	    int Add(int context, T const & object)
-	    {
-		    return Collection[context].Add(object);
-	    }
+        void Clear_All()
+        {
+            for (int i = FIRST; i < CollectionCount; ++i) {
+                Collection[i].Clear();
+            }
+        }
 
-	    int Add_Head(int context, T const & object)
-	    {
-		    return Collection[context].Add(object);
-	    }
+        void Clear()
+        {
+            Clear(Active);
+        }
 
-	    int Delete(int context, T const & object)
-	    {
-		    return Collection[context].Delete(object);
-	    }
+        void Clear(int context)
+        {
+            Collection[context].Clear();
+        }
 
-	    int Delete(int context, int index)
-	    {
-		    return Collection[context].Delete(index);
-	    }
+        int Count(int context) const
+        {
+            return Collection[context].Count();
+        }
+
+        int Add(int context, T const & object)
+        {
+            return Collection[context].Add(object);
+        }
+
+        int Add_Head(int context, T const & object)
+        {
+            return Collection[context].Add(object);
+        }
+
+        int Delete(int context, T const & object)
+        {
+            return Collection[context].Delete(object);
+        }
+
+        int Delete(int context, int index)
+        {
+            return Collection[context].Delete(index);
+        }
 
     private:
-	    DynamicVectorClass<T> Collection[COUNT];
-	    int ActiveContext;
-	    int ActiveContextCount;
+        DynamicVectorClass<T> Collection[COUNT];
+        int ActiveContext;
+        int ActiveContextCount;
 };
