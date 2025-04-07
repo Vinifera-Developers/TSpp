@@ -2,20 +2,22 @@
 /*                     O P E N  S O U R C E  --  T S + +                      **
 /*******************************************************************************
  *
- *  @project       TS++
+ *  @project       Vinifera
  *
  *  @file          RECT.H
  *
- *  @authors       tomsons26
+ *  @author        Joe L. Bostic (see notes below)
+ *
+ *  @contributors  tomsons26, ZivDero
  *
  *  @brief         Basic rectangle class.
  *
- *  @license       TS++ is free software: you can redistribute it and/or
+ *  @license       Vinifera is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
  *                 as published by the Free Software Foundation, either version
  *                 3 of the License, or (at your option) any later version.
  *
- *                 TS++ is distributed in the hope that it will be
+ *                 Vinifera is distributed in the hope that it will be
  *                 useful, but WITHOUT ANY WARRANTY; without even the implied
  *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
  *                 PURPOSE. See the GNU General Public License for more details.
@@ -24,197 +26,270 @@
  *                 License along with this program.
  *                 If not, see <http://www.gnu.org/licenses/>.
  *
+ *  @note          This file contains modified code from the C&C Generals source code
+ *                 released by Electronic Arts under the GPL3 license. Source:
+ *                 https://github.com/electronicarts/CnC_Generals_Zero_Hour
+ *
  ******************************************************************************/
 #pragma once
 
 #include "always.h"
 #include "point.h"
-#include <algorithm>
 
 
-class Rect
+/*
+**	This class manages a rectangle. Typically, this is used for tracking regions on a surface
+**	and for clipping operations. This is a lightweight class in that it defines few support
+**	functions and exposes the member variables for direct access.
+*/
+template<class T>
+class TRect
 {
-    friend const Rect Intersect(const Rect &rect1, const Rect &rect2);
-    friend const Rect Intersect(const Rect &rect1, const Rect &rect2, int *x, int *y);
-    friend const Rect Union(const Rect &rect1, const Rect &rect2);
+public:
+    TRect() {} // Default constructor does nothing by design.
+    TRect(T x, T y, T w, T h) : X(x), Y(y), Width(w), Height(h) {}
+    TRect(TPoint2D<T> const& point, T w, T h) : X(point.X), Y(point.Y), Width(w), Height(h) {}
 
-    public:
-        Rect();
-        Rect(int x, int y, int w, int h);
-        Rect(const Point2D &xy, int w, int h);
-        Rect(const Point2D &xy, const Point2D &wh);
-        Rect(const Rect &that);
+    // Equality comparison operators.
+    bool operator == (TRect<T> const& rvalue) const { return X == rvalue.X && Y == rvalue.Y && Width == rvalue.Width && Height == rvalue.Height; }
+    bool operator != (TRect<T> const& rvalue) const { return X != rvalue.X || Y != rvalue.Y || Width != rvalue.Width || Height != rvalue.Height; }
 
-        int &operator[](int index) { return (&X)[index]; }
-        const int &operator[](int index) const { return (&X)[index]; }
+    // Addition and subtraction operators.
+    TRect<T> const& operator += (TPoint2D<T> const& point) { X += point.X; Y += point.Y; return*this; }
+    TRect<T> const& operator -= (TPoint2D<T> const& point) { X -= point.X; Y -= point.Y; return*this; }
+    TRect<T> operator + (TPoint2D<T> const& point) { return TRect<T>(Top_Left() + point, Width, Height); }
+    TRect<T> operator - (TPoint2D<T> const& point) { return TRect<T>(Top_Left() - point, Width, Height); }
 
-        Rect &operator=(const Rect &that)
-        {
-            if (this != &that) {
-                X = that.X;
-                Y = that.Y;
-                Width = that.Width;
-                Height = that.Height;
-            }
-            return *this;
-        }
+    /*
+    **	Bias this rectangle within another.
+    */
+    TRect<T> Bias_To(TRect<T> const& rect) const { return TRect<T>(Top_Left() + rect.Top_Left(), Width, Height); }
 
-        bool operator==(const Rect &that) const
-        {
-            return (that.X == X) && (that.Width == Width)
-                && (that.Y == Y) && (that.Height == Height);
-        }
+    // Assign values
+    void Set(T x, T y, T w, T h) { X = x; Y = y; Width = w; Height = h; }
 
-        bool operator!=(const Rect &that) const
-        {
-          return (that.X != X) && (that.Width != Width)
-              && (that.Y != Y) && (that.Height != Height);
-        }
+    /*
+    **	Determine if two rectangles overlap.
+    */
+    bool Is_Overlapping(TRect<T> const& rect) const { return X < rect.X + rect.Width && Y < rect.Y + rect.Height && X + Width > rect.X && Y + Height > rect.Y; }
 
-        Rect &operator|=(const Rect &that) { *this = ::Union(*this, that); return *this; }
-        Rect &operator&=(const Rect &that) { *this = ::Intersect(*this, that); return *this; }
-        Rect &operator+=(const Point2D &point) { X += point.X; Y += point.Y; return *this; }
+    /*
+    **	Determine is rectangle is valid.
+    */
+    bool Is_Valid() const { return Width > 0 && Height > 0; }
+    __declspec(property(get = Is_Valid)) bool IsValid;
 
-        Rect &operator+=(const Rect &rect)
-        {
-            X += rect.X;
-            Y += rect.Y;
-            Width += rect.Width;
-            Height += rect.Height;
-            return *this;
-        }
+    /*
+    **	Returns size of rectangle if each discrete location within it is presumed
+    **	to be of size 1.
+    */
+    int Size() const { return static_cast<int>(Width) * static_cast<int>(Height); }
 
-        Rect &operator-=(const Point2D &point) { X -= point.X; Y -= point.Y; return *this; }
+    /*
+    **	Fetch points of rectangle (used as a convenience for the programmer).
+    */
+    TPoint2D<T> Top_Left() const { return TPoint2D<T>(X, Y); }
+    __declspec(property(get = Top_Left)) TPoint2D<T> TopLeft;
 
-        Rect &operator-=(const Rect &rect)
-        {
-            X -= rect.X;
-            Y -= rect.Y;
-            Width -= rect.Width;
-            Height -= rect.Height;
-            return *this;
-        }
+    TPoint2D<T> Top_Right() const { return TPoint2D<T>(T(X + Width - 1), Y); }
+    __declspec(property(get = Top_Right)) TPoint2D<T> TopRight;
 
-        Rect operator+(const Point2D &point)
-        {
-            Rect tmp = *this;
-            tmp.X = X + point.X;
-            tmp.Y = Y + point.Y;
-            return tmp;
-        }
+    TPoint2D<T> Bottom_Left() const { return TPoint2D<T>(X, T(Y + Height - 1)); }
+    __declspec(property(get = Bottom_Left)) TPoint2D<T> BottomLeft;
 
-        Rect operator-(const Point2D &point)
-        {
-            Rect tmp = *this;
-            tmp.X = X - point.X;
-            tmp.Y = Y - point.Y;
-            return tmp;
-        }
+    TPoint2D<T> Bottom_Right() const { return TPoint2D<T>(T(X + Width - 1), T(Y + Height - 1)); }
+    __declspec(property(get = Bottom_Right)) TPoint2D<T> BottomRight;
 
-        Rect Bias_To(const Rect &rect)
-        {
-            Rect tmp;
-            Point2D xy = Top_Left() + rect.Top_Left();
-            tmp = Rect(xy, Width, Height);
-            return tmp;
-        }
 
-        bool Intersects_With(const Rect &with) const
-        {
-            return (X > with.Width) || (Width < with.X) || (Y > with.Height) || (Height < with.Y);
-        }
+    /*
+    **	Determine if a point lies within the rectangle.
+    */
+    bool Is_Point_Within(TPoint2D<T> const& point) const { return point.X >= X && point.X < X + Width && point.Y >= Y && point.Y < Y + Height; }
 
-        bool Is_Overlapping(const Rect &rect)
-        {
-            return X < rect.X + rect.Width
-                && Y < rect.Y + rect.Height
-                && X + Width > rect.X
-                && Y + Height > rect.Y;
-        }
+public:
 
-        __forceinline bool Is_Within(const Rect &rect) const { return (rect.X >= X && rect.X < (X + Width)) && (rect.Width >= Y && rect.Width < (Y + Height)); }
-        __forceinline bool Is_Within(const Point2D &point) const { return (point.X >= X && point.X < (X + Width)) && (point.Y >= Y && point.Y < (Y + Height)); }
-        __forceinline bool Is_Within(int x, int y) const { return (x >= X && x < (X + Width)) && (y >= Y && y < (Y + Height)); }
+    /*
+    **	Coordinate of upper left corner of rectangle.
+    */
+    T X;
+    T Y;
 
-        void Inflate(int w, int h, bool adjust_xy = false)
-        {
-            if (adjust_xy) {
-                X -= w;
-                Y -= h;
-            }
-            Width += w;
-            Height += h;
-        }
-        
-        void Move(int x, int y) { X += x; Y += y; }
-        void Move(const Point2D &point) { X += point.X; Y += point.Y; }
-
-        const Rect Intersect_With(const Rect &rectangle, int *x = nullptr, int *y = nullptr) const;
-
-        inline int Size() const { return Width * Height; }
-
-        inline Point2D Center_Point() const { return Point2D(X + (Width / 2), Y + (Height / 2)); }
-        inline Point2D Top_Left() const { return Point2D(X, Y); }
-        inline Point2D Top_Right() const { return Point2D(X + Width, Y); }
-        inline Point2D Bottom_Left() const { return Point2D(X, Y + Height); }
-        inline Point2D Bottom_Right() const { return Point2D(X + Width, Y + Height); }
-        inline Point2D Top_Center() const { return Point2D((X + Width) / 2, Y); }
-        inline Point2D Bottom_Center() const { return Point2D((X + Width) / 2, Height); }
-        inline Point2D Left_Center() const { return Point2D(X, (Y + Height) / 2); }
-        inline Point2D Center_Right() const { return Point2D(Width, (Y + Height) / 2); }
-
-        inline void Reset_Position() { X = 0; Y = 0; }
-
-        bool Is_Valid() const;
-
-    public:
-        int X;
-        int Y;
-        int Width;
-        int Height;
-
-    public:
-        static const Rect Invalid;
+    /*
+    **	Dimensions of rectangle. If the width or height is less than or equal to
+    **	zero, then the rectangle is in an invalid state.
+    */
+    T Width;
+    T Height;
 };
 
 
-const Rect Intersect(const Rect &rect1, const Rect &rect2, int *x, int *y);
-inline const Rect Intersect(const Rect &rect1, const Rect &rect2) { return Intersect(rect1, rect2, nullptr, nullptr); }
-
-const Rect Union(const Rect &rect1, const Rect &rect2);
-
-
-inline bool operator==(const Rect &left, const Rect &right)
+template<class T>
+TPoint2D<T> Bias_To(TPoint2D<T> const& point, TRect<T> const& rect)
 {
-    return (left.X == right.X)
-        && (left.Width == right.Width)
-        && (left.Y == right.Y)
-        && (left.Height == right.Height);
+    return TPoint2D<T>(T(point.X + rect.X), T(point.Y + rect.Y));
 }
 
 
-inline bool operator!=(const Rect &left, const Rect &right)
+/***********************************************************************************************
+ * Union -- Combines two rectangles into one larger one.                                       *
+ *                                                                                             *
+ *    This routine will combine the two specified rectangles such that a larger one is         *
+ *    returned that encompasses both rectangles.                                               *
+ *                                                                                             *
+ * INPUT:   rect1 -- One rectangle to combine.                                                 *
+ *          rect2 -- The other rectangle to combine.                                           *
+ *                                                                                             *
+ * OUTPUT:  Returns with the smallest rectangle that encompasses both specified rectangles.    *
+ *                                                                                             *
+ * WARNINGS:   none                                                                            *
+ *                                                                                             *
+ * HISTORY:                                                                                    *
+ *   06/04/1997 JLB : Created.                                                                 *
+ *=============================================================================================*/
+template<class T>
+TRect<T> Union(TRect<T> const& rect1, TRect<T> const& rect2)
 {
-    return (left.X != right.X)
-        && (left.Width != right.Width)
-        && (left.Y != right.Y)
-        && (left.Height != right.Height);
+    if (rect1.Is_Valid()) {
+        if (rect2.Is_Valid()) {
+            TRect<T> result = rect1;
+
+            if (result.X > rect2.X) {
+                result.Width += T(result.X - rect2.X);
+                result.X = rect2.X;
+            }
+            if (result.Y > rect2.Y) {
+                result.Height += T(result.Y - rect2.Y);
+                result.Y = rect2.Y;
+            }
+            if (result.X + result.Width < rect2.X + rect2.Width) {
+                result.Width = T(rect2.X + rect2.Width - result.X + 1);
+            }
+            if (result.Y + result.Height < rect2.Y + rect2.Height) {
+                result.Height = T(rect2.Y + rect2.Height - result.Y + 1);
+            }
+            return result;
+        }
+        return rect1;
+    }
+    return rect2;
 }
 
 
-inline Rect operator+(const Rect &left, const Rect &right)
+/***********************************************************************************************
+ * Intersect -- Find the intersection between two rectangles.                                  *
+ *                                                                                             *
+ *    This routine will take two rectangles and return the intersecting rectangle. It also     *
+ *    tracks how much on rectangle was clipped off of the top and left edges and returns       *
+ *    these values. It can be handy to use these returned clipping values for blit operations  *
+ *    between rectangles.                                                                      *
+ *                                                                                             *
+ * INPUT:   bounding_rect  -- The rectangle of the bounding box (clipping rectangle).          *
+ *                                                                                             *
+ *          draw_rect      -- The rectangle that will be clipped into the bounding rectangle.  *
+ *                                                                                             *
+ *          x,y            -- Place to store the clipping offset performed on the draw_rect.   *
+ *                            If this offset is applied to a subsiquent blit operation from    *
+ *                            the draw_rect source, it will appear to be properly clipped      *
+ *                            against the clipping rectangle rather than offset to the         *
+ *                            clipping rectangle.                                              *
+ *                                                                                             *
+ * OUTPUT:  Returns with the rectangle that is the intersection of the two rectangles.         *
+ *                                                                                             *
+ * WARNINGS:   The returned rectangle may be clipped into nothingness. Check for Is_Valid      *
+ *             to catch this case.                                                             *
+ *                                                                                             *
+ * HISTORY:                                                                                    *
+ *   06/04/1997 JLB : Created.                                                                 *
+ *=============================================================================================*/
+template<class T>
+TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* x, T* y)
 {
-    Rect result = left;
-    Rect tmp = right;
-    result += tmp;
-    return result;
+    TRect<T> bad_rect(0, 0, 0, 0);			// Dummy (illegal) draw_rect.
+    TRect<T> new_draw_rect = draw_rect;		// Working draw_rect.
+
+    /*
+    **	Both draw_rects must be valid or else no intersection can occur. In such
+    **	a case, return an illegal draw_rect.
+    */
+    if (!bounding_rect.Is_Valid() || !draw_rect.Is_Valid()) return bad_rect;
+
+    /*
+    **	The draw_rect spills past the left edge.
+    */
+    if (new_draw_rect.X < bounding_rect.X) {
+        new_draw_rect.Width -= T(bounding_rect.X - new_draw_rect.X);
+        new_draw_rect.X = bounding_rect.X;
+    }
+    if (new_draw_rect.Width < 1) return bad_rect;
+
+    /*
+    **	The draw_rect spills past top edge.
+    */
+    if (new_draw_rect.Y < bounding_rect.Y) {
+        new_draw_rect.Height -= T(bounding_rect.Y - new_draw_rect.Y);
+        new_draw_rect.Y = bounding_rect.Y;
+    }
+    if (new_draw_rect.Height < 1) return bad_rect;
+
+    /*
+    **	The draw_rect spills past the right edge.
+    */
+    if (new_draw_rect.X + new_draw_rect.Width > bounding_rect.X + bounding_rect.Width) {
+        new_draw_rect.Width -= T(new_draw_rect.X + new_draw_rect.Width - (bounding_rect.X + bounding_rect.Width));
+    }
+    if (new_draw_rect.Width < 1) return bad_rect;
+
+    /*
+    **	The draw_rect spills past the bottom edge.
+    */
+    if (new_draw_rect.Y + new_draw_rect.Height > bounding_rect.Y + bounding_rect.Height) {
+        new_draw_rect.Height -= T(new_draw_rect.Y + new_draw_rect.Height - (bounding_rect.Y + bounding_rect.Height));
+    }
+    if (new_draw_rect.Height < 1) return bad_rect;
+
+    /*
+    **	Adjust Height relative draw position according to Height new draw_rect
+    **	union.
+    */
+    if (x != nullptr) {
+        *x -= T(new_draw_rect.X - draw_rect.X);
+    }
+    if (y != nullptr) {
+        *y -= T(new_draw_rect.Y - draw_rect.Y);
+    }
+
+    return new_draw_rect;
 }
 
 
-inline Rect operator-(const Rect &left, const Rect &right)
+/***********************************************************************************************
+ * Intersect -- Simple intersect between two rectangles.                                       *
+ *                                                                                             *
+ *    This will return with the rectangle that represents the intersection of the two          *
+ *    rectangles specified.                                                                    *
+ *                                                                                             *
+ * INPUT:   rect1    -- The first rectangle.                                                   *
+ *                                                                                             *
+ *          rect2    -- The second rectangle.                                                  *
+ *                                                                                             *
+ * OUTPUT:  Returns with the intersecting rectangle between the two rectangles specified.      *
+ *                                                                                             *
+ * WARNINGS:   If there is no valid intersection between the two rectangles, then a rectangle  *
+ *             of illegal value is returned. Check for this case by using the Is_Valid()       *
+ *             function.                                                                       *
+ *                                                                                             *
+ * HISTORY:                                                                                    *
+ *   06/04/1997 JLB : Created.                                                                 *
+ *=============================================================================================*/
+template<class T>
+TRect<T> Intersect(TRect<T> const& rect1, TRect<T> const& rect2)
 {
-    Rect result = left;
-    Rect tmp = right;
-    result -= tmp;
-    return result;
+    return Intersect(rect1, rect2, static_cast<T*>(nullptr), static_cast<T*>(nullptr));
 }
+
+
+/*
+**	This typedef provides an uncluttered type name for a rectangle that
+**	is composed of integers.
+*/
+typedef TRect<int> Rect;

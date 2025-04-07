@@ -28,7 +28,7 @@
 #pragma once
 
 #include "rect.h"
-#include "tpoint.h"
+#include "point.h"
 
 
 class RGBClass;

@@ -32,7 +32,6 @@
 #include "tspp.h"
 
 
-class Rect;
 struct ShapeFileStruct;
 
 

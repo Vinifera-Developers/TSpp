@@ -31,7 +31,6 @@
 
 
 class XSurface;
-class Rect;
 class Buffer;
 class Blitter;
 class RLEBlitter;

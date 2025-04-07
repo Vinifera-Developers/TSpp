@@ -33,7 +33,7 @@
 #include "matrix3d.h"
 #include "search.h"
 #include "vector.h"
-#include "tpoint.h"
+#include "point.h"
 #include "wwmath.h"
 #include "staticbuffer.h"
 

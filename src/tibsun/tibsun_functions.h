@@ -33,7 +33,6 @@
 
 
 class FileClass;
-class Rect;
 class XSurface;
 class PaletteClass;
 class ObjectClass;

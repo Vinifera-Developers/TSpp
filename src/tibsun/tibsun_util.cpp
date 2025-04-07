@@ -51,7 +51,7 @@ Cell Get_Cell_Under_Mouse()
     /**
      *  If mouse position is valid, convert to world coordinates and return.
      */
-    if (mouse.Is_Valid()) {
+    if (mouse != Point2D(0, 0)) {
         screen_cell = TacticalMap->Click_Cell_Calc(mouse);
     }
 
@@ -76,7 +76,7 @@ Coordinate Get_Coord_Under_Mouse()
     /**
      *  If mouse position is valid, convert to world coordinates and return.
      */
-    if (mouse.Is_Valid()) {
+    if (mouse != Point2D(0, 0)) {
         mouse_coord = Cell_Coord(TacticalMap->Click_Cell_Calc(mouse));
     }
 

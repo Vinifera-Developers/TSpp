@@ -28,199 +28,102 @@
 #pragma once
 
 #include "always.h"
-#include "tpoint.h"
+#include "wwmath.h"
 
 
-class Rect;
-
-
-class Point2D
+template<typename T>
+class TPoint2D
 {
-    public:
-        Point2D();
-        Point2D(int x, int y);
-        Point2D(const Point2D &that);
-        Point2D(const TPoint2D<int> &that);
+public:
+    TPoint2D() = default;
+    TPoint2D(T x, T y) : X(x), Y(y) {}
 
-        Point2D &operator=(const Point2D &that)
-        {
-            if (this != &that) {
-                X = that.X;
-                Y = that.Y;
-            }
+    bool operator==(const TPoint2D& that) const { return X == that.X && Y == that.Y; }
+    bool operator!=(const TPoint2D& that) const { return X != that.X && Y != that.Y; }
+
+    TPoint2D operator+(const TPoint2D& that) const { return TPoint2D(X + that.X, Y + that.Y); }
+    TPoint2D& operator+=(const TPoint2D& that) { X += that.X; Y += that.Y; return *this; }
+
+    TPoint2D operator-(const TPoint2D& that) const { return TPoint2D(X - that.X, Y - that.Y); }
+    TPoint2D& operator-=(const TPoint2D& that) { X -= that.X; Y -= that.Y; return *this; }
+
+    TPoint2D operator*(T scalar) const { return TPoint2D(X * scalar, Y * scalar); }
+    TPoint2D& operator*=(T scalar) { X *= scalar; Y *= scalar; return *this; }
+
+    TPoint2D operator/(T scalar) const { return TPoint2D(X / scalar, Y / scalar); }
+    TPoint2D& operator/=(T scalar) { X /= scalar; Y /= scalar; return *this; }
+
+    TPoint2D operator%(T scalar) const { return TPoint2D(X % scalar, Y % scalar); }
+    TPoint2D& operator%=(T scalar) { X %= scalar; Y %= scalar; return *this; }
+
+    T Length() const
+    {
+        return WWMath::Sqrt(X * X + Y * Y);
+    }
+
+    TPoint2D Normalized() const
+    {
+        T length = Length();
+        if (length == 0) {
             return *this;
         }
 
-        Point2D &operator=(const TPoint2D<int> &that)
-        {
-            X = that.X;
-            Y = that.Y;
-            return *this;
-        }
+        return *this / length;
+    }
 
-        bool operator==(const Point2D &that) const { return X == that.X && Y == that.Y; }
-        bool operator!=(const Point2D &that) const { return X != that.X && Y != that.Y; }
-
-        Point2D operator+() const { return Point2D(+X, +Y); }
-        Point2D operator-() const { return Point2D(-X, -Y); }
-
-        Point2D operator+(const Point2D &that) const { return Point2D(X + that.X, Y + that.Y); }
-        Point2D &operator+=(const Point2D &that) { X += that.X; Y += that.Y; return *this; }
-
-        Point2D operator-(const Point2D &that) const { return Point2D(X - that.X, Y - that.Y); }
-        Point2D &operator-=(const Point2D &that) { X -= that.X; Y -= that.Y; return *this; }
-
-        Point2D operator*(const Point2D &that) const { return Point2D(X * that.X, Y * that.Y); }
-        Point2D operator*=(const Point2D &that) { X *= that.X; Y *= that.Y; return *this; }
-        Point2D operator*(int factor) const { return Point2D(X * factor, Y * factor); }
-        Point2D &operator*=(int factor) { X *= factor; Y *= factor; return *this; }
-
-        Point2D operator/(const Point2D &that) const { return Point2D(X / that.X, Y / that.Y); }
-        Point2D operator/=(const Point2D &that) { X /= that.X; Y /= that.Y; return *this; }
-        Point2D operator/(int factor) const { return Point2D(X / factor, Y / factor); }
-        Point2D &operator/=(int factor) { X /= factor; Y /= factor; return *this; }
-
-        Point2D operator%(const Point2D &that) const { return Point2D(X / that.X, Y / that.Y); }
-        Point2D operator%=(const Point2D &that) { X /= that.X; Y /= that.Y; return *this; }
-        Point2D operator%(int factor) const { return Point2D(X / factor, Y / factor); }
-        Point2D &operator%=(int factor) { X /= factor; Y /= factor; return *this; }
-
-        Point2D operator&(const Point2D &that) const { return Point2D(X & that.X, Y & that.Y); }
-        Point2D operator&=(const Point2D &that) { X &= that.X; Y &= that.Y; return *this; }
-        Point2D operator&(int factor) const { return Point2D(X & factor, Y & factor); }
-        Point2D &operator&=(int factor) { X &= factor; Y &= factor; return *this; }
-
-        bool operator>(const Point2D &that) const { return X > that.X || X == that.X && Y > that.Y; }
-        bool operator>=(const Point2D &that) const { return X >= that.X || X == that.X && Y >= that.Y; }
-
-        bool operator<(const Point2D &that) const { return X < that.X || X == that.X && Y < that.Y; }
-        bool operator<=(const Point2D &that) const { return X <= that.X || X == that.X && Y <= that.Y; }
-
-        bool Is_Valid() const { return X > 0 || Y > 0; }
-
-    public:
-        int X;
-        int Y;
+public:
+    T X;
+    T Y;
 };
 
 
-class Point3D
+template<typename T>
+class TPoint3D : public TPoint2D<T>
 {
-    public:
-        Point3D();
-        Point3D(int x, int y, int z);
-        Point3D(const Point3D &that);
-        Point3D(const TPoint3D<int> &that);
+public:
+    TPoint3D() = default;
+    TPoint3D(T x, T y, T z) : TPoint2D(x, y), Z(z) {}
 
-        Point3D &operator=(const Point3D &that)
-        {
-            if (this != &that) {
-                X = that.X;
-                Y = that.Y;
-                Z = that.Z;
-            }
+    bool operator==(const TPoint3D& that) const { return X == that.X && Y == that.Y && Z == that.Z; }
+    bool operator!=(const TPoint3D& that) const { return X != that.X && Y != that.Y && Z != that.Z; }
+
+    TPoint3D operator+(const TPoint3D& that) const { return TPoint3D(X + that.X, Y + that.Y, Z + that.Z); }
+    TPoint3D& operator+=(const TPoint3D& that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
+
+    TPoint3D operator-(const TPoint3D& that) const { return TPoint3D(X - that.X, Y - that.Y, Z - that.Z); }
+    TPoint3D& operator-=(const TPoint3D& that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
+
+    TPoint3D operator*(T scalar) const { return TPoint3D(X * scalar, Y * scalar, Z * scalar); }
+    TPoint3D& operator*=(T scalar) { X *= scalar; Y *= scalar; Z *= scalar; return *this; }
+
+    TPoint3D operator/(T scalar) const { return TPoint3D(X / scalar, Y / scalar, Z / scalar); }
+    TPoint3D& operator/=(T scalar) { X /= scalar; Y /= scalar; Z /= scalar; return *this; }
+
+    TPoint3D operator%(T scalar) const { return TPoint3D(X % scalar, Y % scalar, Z % scalar); }
+    TPoint3D& operator%=(T scalar) { X %= scalar; Y %= scalar; Z %= scalar; return *this; }
+
+    T Length() const
+    {
+        return WWMath::Sqrt(X * X + Y * Y + Z * Z);
+    }
+
+    TPoint3D Normalized() const
+    {
+        T length = Length();
+        if (length == 0) {
             return *this;
         }
 
-        Point3D &operator=(const TPoint3D<int> &that)
-        {
-            X = that.X;
-            Y = that.Y;
-            Z = that.Z;
-            return *this;
-        }
+        return *this / length;
+    }
 
-        bool operator==(const Point3D &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
-        bool operator!=(const Point3D &that) const { return X != that.X && Y != that.Y && Z != that.Z; }
-
-        Point3D operator+() const { return Point3D(+X, +Y, +Z); }
-        Point3D operator-() const { return Point3D(-X, -Y, -Z); }
-
-        Point3D operator+(const Point3D &that) const { return Point3D(X + that.X, Y + that.Y, Z + that.Z); }
-        Point3D &operator+=(const Point3D &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
-
-        Point3D operator-(const Point3D &that) const { return Point3D(X - that.X, Y - that.Y, Z - that.Z); }
-        Point3D &operator-=(const Point3D &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
-
-        Point3D operator*(const Point3D &that) const { return Point3D(X * that.X, Y * that.Y, Z * that.Z); }
-        Point3D operator*=(const Point3D &that) { X *= that.X; Y *= that.Y; Z *= that.Z; return *this; }
-        Point3D operator*(int factor) const { return Point3D(X * factor, Y * factor, Z * factor); }
-        Point3D &operator*=(int factor) { X *= factor; Y *= factor; Z *= factor; return *this; }
-
-        Point3D operator%(const Point3D &that) const { return Point3D(X / that.X, Y / that.Y, Z / that.Z); }
-        Point3D operator%=(const Point3D &that) { X /= that.X; Y /= that.Y; Z /= that.Z; return *this; }
-        Point3D operator%(int factor) const { return Point3D(X / factor, Y / factor, Z / factor); }
-        Point3D &operator%=(int factor) { X /= factor; Y /= factor; Z /= factor; return *this; }
-
-        Point3D operator&(const Point3D &that) const { return Point3D(X & that.X, Y & that.Y, Z & that.Z); }
-        Point3D operator&=(const Point3D &that) { X &= that.X; Y &= that.Y; Z &= that.Z; return *this; }
-        Point3D operator&(int factor) const { return Point3D(X & factor, Y & factor, Z & factor); }
-        Point3D &operator&=(int factor) { X &= factor; Y &= factor; Z &= factor; return *this; }
-
-        bool Is_Valid() const { return X > 0 || Y > 0 || Z > 0; }
-
-    public:
-        int X;
-        int Y;
-        int Z;
+public:
+    T Z;
 };
 
 
-inline Point2D::Point2D() :
-	X(0),
-	Y(0)
-{
-}
-
-
-inline Point2D::Point2D(int x, int y) :
-	X(x),
-	Y(y)
-{
-}
-
-
-inline Point2D::Point2D(const Point2D &that) :
-	X(that.X),
-	Y(that.Y)
-{
-}
-
-
-inline Point2D::Point2D(const TPoint2D<int> &that) :
-    X(that.X),
-    Y(that.Y)
-{
-}
-
-
-inline Point3D::Point3D() :
-	X(0),
-	Y(0),
-	Z(0)
-{
-}
-
-
-inline Point3D::Point3D(int x, int y, int z) :
-	X(x),
-	Y(y),
-	Z(z)
-{
-}
-
-
-inline Point3D::Point3D(const Point3D &that) :
-	X(that.X),
-	Y(that.Y),
-	Z(that.Z)
-{
-}
-
-
-inline Point3D::Point3D(const TPoint3D<int> &that) :
-    X(that.X),
-    Y(that.Y),
-    Z(that.Z)
-{
-}
+/**
+ *  This typedefs provides an uncluttered type name for integer points.
+ */
+typedef TPoint2D<int> Point2D;
+typedef TPoint3D<int> Point3D;

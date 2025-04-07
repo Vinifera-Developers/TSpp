@@ -31,8 +31,6 @@
 #include "tibsun_defines.h"
 
 
-class Point2D;
-class Rect;
 class WWFontClass;
 class XSurface;
 class HSVClass;

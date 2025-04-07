@@ -30,8 +30,8 @@
 #include "always.h"
 #include "listnode.h"
 #include "search.h"
-#include "trect.h"
-#include "tpoint.h"
+#include "rect.h"
+#include "point.h"
 #include "pk.h"
 #include "wstring.h"
 #include <objbase.h>

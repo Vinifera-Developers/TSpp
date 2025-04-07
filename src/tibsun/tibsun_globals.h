@@ -38,6 +38,7 @@
 #include "ccfile.h"
 #include "dsurface.h"
 #include "vector3.h"
+#include "rect.h"
 #include "mono.h"
 #include "wolapi.h"
 
@@ -148,7 +149,6 @@ class FoggedObjectClass;
 class VeinholeMonsterClass;
 class EventClass;
 class MouseClass;
-class Rect;
 class PaletteClass;
 class PKey;
 class CCINIClass;

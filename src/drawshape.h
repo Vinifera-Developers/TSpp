@@ -34,9 +34,6 @@
 class XSurface;
 class ConvertClass;
 struct ShapeFileStruct;
-class Point2D;
-class Rect;
-
 
 /**
  *  All draw shape calls will route through these functions. It handles all

@@ -34,9 +34,7 @@
 #include <unknwn.h>
 
 
-class Point2D;
 struct DirType;
-
 enum MoveType;
 enum VisualType;
 enum ZGradientType;

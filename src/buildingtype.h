@@ -28,8 +28,8 @@
 #pragma once
 
 #include "technotype.h"
-#include "trect.h"
-#include "tpoint.h"
+#include "rect.h"
+#include "point.h"
 #include "tibsun_defines.h"
 
 

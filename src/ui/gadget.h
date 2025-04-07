@@ -112,7 +112,7 @@ class GadgetClass : public LinkClass
             while (g != nullptr) {
                 if (!g->IsDisabled) {
 
-                    if (Rect(g->X, g->Y, g->Width, g->Height).Is_Within(mouse) && (g->Width * g-> Height) <= (width * height)) {
+                    if (Rect(g->X, g->Y, g->Width, g->Height).Is_Point_Within(mouse) && (g->Width * g-> Height) <= (width * height)) {
                         width = g->Width;
                         height = g->Height;
 

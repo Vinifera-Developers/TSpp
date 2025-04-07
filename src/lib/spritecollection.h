@@ -33,7 +33,6 @@
 #include "dsurface.h"
 
 
-class Rect;
 class Surface;
 class BSurface;
 

@@ -30,7 +30,6 @@
 #include "always.h"
 #include "tibsun_defines.h"
 #include "rect.h"
-#include "trect.h"
 #include "point.h"
 
 

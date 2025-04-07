@@ -28,7 +28,7 @@
 #pragma once
 
 #include "always.h"
-#include "tpoint.h"
+#include "point.h"
 
 
 class Surface;

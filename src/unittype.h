@@ -28,7 +28,7 @@
 #pragma once
 
 #include "technotype.h"
-#include "tpoint.h"
+#include "point.h"
 #include "tibsun_defines.h"
 
 
