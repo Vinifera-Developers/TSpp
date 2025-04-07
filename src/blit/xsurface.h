@@ -27,6 +27,7 @@
  ******************************************************************************/
 #pragma once
 
+#include "clipline.h"
 #include "surface.h"
 
 
@@ -72,6 +73,22 @@ class XSurface : public Surface
         bool Copy_From_Alpha(Surface &fromsurface, Surface &alphasurface, int x_offset = 0, int y_offset = 0);
         bool Copy_From_Spritesheet(Surface &fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
         bool Copy_From_Spritesheet_Alpha(Surface &fromsurface, Surface &alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
+
+        int Draw_Dashed_Line(const Rect& xcliprect, Point2D& startpoint, Point2D& endpoint, unsigned color, bool pattern[], int offset)
+        {
+            /**
+             *  Ensure that the clipping rectangle is legal.
+             */
+            Rect cliprect = Intersect(xcliprect, Get_Rect());
+
+            /**
+             *  Ensure that the line lies within the rectangle.
+             */
+            if (!Clip_Line(startpoint, endpoint, cliprect))
+                return offset;
+
+            return Draw_Dashed_Line(startpoint, endpoint, color, pattern, offset);
+        }
 
     public:
         int LockLevel;
