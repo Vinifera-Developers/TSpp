@@ -2979,7 +2979,7 @@ struct Coordinate
 
     const char *As_String() const
     {
-        static char _buffer[8+8+8];
+        static char _buffer[12+12+12];
         std::snprintf(_buffer, sizeof(_buffer), "%d,%d,%d", X, Y, Z);
         return _buffer;
     }
