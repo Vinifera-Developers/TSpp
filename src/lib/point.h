@@ -82,7 +82,11 @@ class TPoint3D : public TPoint2D<T>
 {
 public:
     TPoint3D() = default;
-    TPoint3D(T x, T y, T z) : TPoint2D(x, y), Z(z) {}
+    TPoint3D(T x, T y, T z) : TPoint2D<T>(x, y), Z(z) {}
+
+    // Shuts up Intellisense warnings.
+    using TPoint2D<T>::X;
+    using TPoint2D<T>::Y;
 
     bool operator==(const TPoint3D& that) const { return X == that.X && Y == that.Y && Z == that.Z; }
     bool operator!=(const TPoint3D& that) const { return X != that.X && Y != that.Y && Z != that.Z; }
@@ -123,7 +127,7 @@ public:
 
 
 /**
- *  This typedefs provides an uncluttered type name for integer points.
+ *  These typedefs provide uncluttered type names for integer points.
  */
 typedef TPoint2D<int> Point2D;
 typedef TPoint3D<int> Point3D;
