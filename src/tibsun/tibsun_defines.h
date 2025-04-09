@@ -2664,6 +2664,14 @@ typedef enum DMonoType
 } DMonoType;
 
 
+typedef enum GScreenRedrawFlags
+{
+    GS_REDRAW_NONE,
+    GS_REDRAW_TACTICAL,
+    GS_REDRAW_ALL,
+} GScreenRedrawFlags;
+
+
 typedef int LEPTON;
 
 

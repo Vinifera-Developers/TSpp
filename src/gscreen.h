@@ -80,8 +80,7 @@ class GScreenClass : public IGameMap
     public:
         int ScreenX;
         int ScreenY;
-        unsigned IsToRedraw:1;
-        unsigned IsToUpdate:1;
+        GScreenRedrawFlags DrawFlags;
 
     private:
         // Copy and assignment not implemented; prevent their use by declaring as private.
