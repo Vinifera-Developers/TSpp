@@ -31,6 +31,7 @@
 #include "tibsun_defines.h"
 
 
+class ShapeSet;
 class ObjectClass;
 class CCINIClass;
 class WeaponTypeClass;
@@ -91,7 +92,7 @@ SuperWeaponTypeClass : public AbstractTypeClass
         VoxType VoxSuspend;
         int RechargeTime;
         SuperWeaponType Type;
-        ShapeFileStruct *SidebarIcon;
+        ShapeSet *SidebarIcon;
         ActionType Action;
         BuildingTypeClass *AuxBuilding;
         char SidebarImage[25];

@@ -159,7 +159,7 @@ class SystemTimerClass;
 class ABuffer;
 class ZBuffer;
 class MovieClass;
-struct ShapeFileStruct;
+class ShapeSet;
 class MissionControlClass;
 class StaticBufferClass;
 
@@ -336,9 +336,9 @@ extern bool &ScoresPresent;
 extern int &TeamEvent;
 extern int &TeamNumber;
 extern HousesType &Whom;
-extern const ShapeFileStruct *&Cell_ShroudShape;
-extern const ShapeFileStruct *&Cell_FogShape;
-extern const ShapeFileStruct *&Cell_FixupFogShape;
+extern const ShapeSet *&Cell_ShroudShape;
+extern const ShapeSet *&Cell_FogShape;
+extern const ShapeSet *&Cell_FixupFogShape;
 
 extern bool &_Select_Game_fade;
 

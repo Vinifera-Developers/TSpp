@@ -68,6 +68,6 @@ AlphaShapeClass : public AbstractClass
     public:
         AbstractClass * AttachedTo;
         Rect Size;
-        ShapeFileStruct *Image;
+        ShapeSet *Image;
         bool field_2C;
 };

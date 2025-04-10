@@ -32,7 +32,7 @@
 #include "tspp.h"
 
 
-struct ShapeFileStruct;
+class ShapeSet;
 
 
 class ProgressScreenClass
@@ -59,7 +59,7 @@ class ProgressScreenClass
 		double PlayerProgress[MAX_PLAYERS];
 		double MainProgress;
 		const char *String;
-		ShapeFileStruct *ProgressShape;
+		ShapeSet *ProgressShape;
 		const char *BackgroundImage;
 		bool field_54;
 		char field_55;

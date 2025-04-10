@@ -116,7 +116,7 @@ UnitTypeClass : public TechnoTypeClass
         bool IsSmallVisceroid;
         bool IsLargeVisceroid;
         bool IsCarriesCrate;
-        ShapeFileStruct *AltImage;
+        ShapeSet *AltImage;
         bool IsNonVehicle;
         bool IsJellyfish;
         bool IsLimpetDrone;

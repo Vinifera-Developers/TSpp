@@ -2608,7 +2608,7 @@ DEFINE_ENUMERATION_OPERATORS(PassabilityType);
 /**
  *  Shape drawing flags.
  */
-typedef enum ShapeFlagsType
+typedef enum ShapeFlags_Type
 {
     SHAPE_NORMAL,                   // Standard shape
 
@@ -2632,9 +2632,9 @@ typedef enum ShapeFlagsType
     SHAPE_ZERO_ALPHA = 1 << 16,
     SHAPE_NON_ZERO_ALPHA = 1 << 17,
 
-} ShapeFlagsType;
-DEFINE_ENUMERATION_OPERATORS(ShapeFlagsType);
-DEFINE_ENUMERATION_BITWISE_OPERATORS(ShapeFlagsType);
+} ShapeFlags_Type;
+DEFINE_ENUMERATION_OPERATORS(ShapeFlags_Type);
+DEFINE_ENUMERATION_BITWISE_OPERATORS(ShapeFlags_Type);
 
 
 typedef enum SpecialDialogType
@@ -2740,72 +2740,6 @@ struct HSVStruct
     unsigned char H;
     unsigned char S;
     unsigned char V;
-};
-#pragma pack()
-
-
-/**
- *  Shape file format header.
- */
-#pragma pack(4)
-struct ShapeFileHeaderStruct
-{
-    int16_t Type; // -1, 0
-    int16_t Width; // Width of the shape in bytes.
-    int16_t Height; // Height of the shape in scan lines.
-    int16_t FrameCount; // Number of shapes in the file.
-};
-#pragma pack()
-
-
-/**
- *  Shape file format frame struct.
- */
-#pragma pack(4)
-struct ShapeFileFrameStruct
-{
-    Rect Get_Frame_Dimensions() const { return Rect(FrameXPos, FrameYPos, FrameWidth, FrameHeight); }
-
-    int16_t FrameXPos;
-    int16_t FrameYPos;
-    int16_t FrameWidth;
-    int16_t FrameHeight;
-    uint32_t Flag1:1;
-    uint32_t IsRLE:1;
-    RGBStruct Color;
-    uint8_t field_F[5];
-    int32_t FrameOffset;
-};
-#pragma pack()
-
-
-/**
- *  Shape file format struct. Define pointers to loaded shapes with this
- *  struct instead of casting raw pointers to access header information.
- */
-#pragma pack(4)
-struct ShapeFileStruct
-{
-    public:
-        operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
-
-        ShapeFileFrameStruct *Get_Frame_Data(int frame)
-        {
-            return frame < Get_Frame_Count() ? &(&FrameData)[frame * sizeof(ShapeFileFrameStruct)] : nullptr;
-        }
-
-        int Get_Width() const { return Header.Width; }
-        int Get_Height() const { return Header.Height; }
-        int Get_Frame_Count() const { return Header.FrameCount; }
-
-    private:
-        ShapeFileHeaderStruct Header;
-
-        /**
-         *  This is an instance of the first frame in the shape file, use Get_Frame_Data
-         *  to get the frame information, do not access this directly!
-         */
-        ShapeFileFrameStruct FrameData;
 };
 #pragma pack()
 

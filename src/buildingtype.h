@@ -83,7 +83,7 @@ public:
     virtual int Cost_Of(HouseClass *house = nullptr) const override;
     virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
     virtual Cell *Occupy_List(bool placement = false) const override;
-    virtual ShapeFileStruct *const Get_Image_Data() const override;
+    virtual ShapeSet *const Get_Image_Data() const override;
     
     /**
      *  TechnoTypeClass
@@ -94,7 +94,7 @@ public:
     /**
      *  BuildingTypeClass
      */
-    virtual ShapeFileStruct *const Get_Buildup_Data();
+    virtual ShapeSet *const Get_Buildup_Data();
 
     int Width() const;
     int Height(bool bib = false) const;
@@ -119,7 +119,7 @@ public:
 public:
     BuildingType HeapID;
     Cell * OccupyList;
-    ShapeFileStruct * BuildupData;
+    ShapeSet * BuildupData;
     TPoint3D<int> HalfDamageSmokeLocation1;
     TPoint3D<int> HalfDamageSmokeLocation2;
     double GateCloseDelay;
@@ -165,12 +165,12 @@ public:
     } field_580[BANIM_COUNT];
 
     int Upgrades;
-    const ShapeFileStruct *DeployingAnim;
-    const ShapeFileStruct *UnderDoorAnim;
-    const ShapeFileStruct *DoorAnim;
-    const ShapeFileStruct *SpecialZOverlay;
+    const ShapeSet *DeployingAnim;
+    const ShapeSet *UnderDoorAnim;
+    const ShapeSet *DoorAnim;
+    const ShapeSet *SpecialZOverlay;
     int SpecialZOverlayZAdjust;
-    const ShapeFileStruct *BibShape;
+    const ShapeSet *BibShape;
     int NormalZAdjust;
     int AntiAirValue;
     int AntiArmorValue;

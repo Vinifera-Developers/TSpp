@@ -78,7 +78,7 @@ public:
     virtual int Max_Pips() const override;
     virtual int Cost_Of(HouseClass *house = nullptr) const override;
     virtual int Time_To_Build() const override;
-    virtual ShapeFileStruct *const Get_Cameo_Data() const override;
+    virtual ShapeSet *const Get_Cameo_Data() const override;
 
     /**
      *  TechnoTypeClass
@@ -160,7 +160,7 @@ public:
     long Ownable;
     bool IsAllowedToStartInMultiplayer;
     char CameoFilename[21 + 4];
-    const ShapeFileStruct *CameoData;
+    const ShapeSet *CameoData;
     int Rotation;
     int ROT;
     int TurretOffset;

@@ -34,7 +34,7 @@
 #include <mmsystem.h>
 
 
-struct ShapeFileStruct;
+class ShapeSet;
 class XSurface;
 
 
@@ -44,7 +44,7 @@ class WWMouseClass
         WWMouseClass(XSurface *scr, HWND hWnd = nullptr);
         virtual ~WWMouseClass();
 
-        virtual void Set_Cursor(Point2D *hotspot, const ShapeFileStruct *cursor, int cursor_index);
+        virtual void Set_Cursor(Point2D *hotspot, const ShapeSet *cursor, int cursor_index);
         virtual bool Is_Locked() const;
         virtual void Hide_Mouse();
         virtual void Show_Mouse();
@@ -71,7 +71,7 @@ class WWMouseClass
         void Calc_Confining_Rect();
 
     private:
-        ShapeFileStruct *MouseCursor;
+        ShapeSet *MouseCursor;
         int MouseCursorIndex;
         HANDLE MouseMutex;
         int MouseLockCount;

@@ -285,6 +285,7 @@
 #include "staticbuffer.h"
 #include "voxelpal.h"
 #include "savever.h"
+#include "shapeset.h"
 
 
 /**
@@ -521,7 +522,7 @@ CCFileClass::CCFileClass(const Wstring &filename) : CDFileClass(filename), Data(
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWMouseClass::WWMouseClass(XSurface *, HWND), 0x006A5000);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(WWMouseClass::~WWMouseClass(), 0x006A5170);
-DEFINE_IMPLEMENTATION(void WWMouseClass::Set_Cursor(Point2D *, const ShapeFileStruct *, int), 0x006A52A0);
+DEFINE_IMPLEMENTATION(void WWMouseClass::Set_Cursor(Point2D *, const ShapeSet *, int), 0x006A52A0);
 DEFINE_IMPLEMENTATION(bool WWMouseClass::Is_Locked() const, 0x006A6910);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Hide_Mouse(), 0x006A6140);
 DEFINE_IMPLEMENTATION(void WWMouseClass::Show_Mouse(), 0x006A5FE0);
@@ -868,8 +869,8 @@ DEFINE_IMPLEMENTATION(int ObjectTypeClass::Cost_Of(HouseClass *) const, 0x00587A
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Time_To_Build() const, 0x00587A50);
 DEFINE_IMPLEMENTATION(Cell * ObjectTypeClass::Occupy_List(bool) const, 0x00587A70);
 DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bool, bool, bool, HouseClass *) const, 0x00587B20);
-DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
-DEFINE_IMPLEMENTATION(ShapeFileStruct * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
+DEFINE_IMPLEMENTATION(ShapeSet * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
+DEFINE_IMPLEMENTATION(ShapeSet * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
 DEFINE_IMPLEMENTATION(void ObjectTypeClass::Assign_Theater_Name(char *, TheaterType), 0x00588D00);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
 
@@ -886,7 +887,7 @@ DEFINE_IMPLEMENTATION(int TechnoTypeClass::Get_Ownable() const, 0x0063B890);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Max_Pips() const, 0x0063D460);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Cost_Of(HouseClass *) const, 0x0063B8D0);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Time_To_Build() const, 0x0063B8B0);
-DEFINE_IMPLEMENTATION(ShapeFileStruct* const TechnoTypeClass::Get_Cameo_Data() const, 0x0063B910);
+DEFINE_IMPLEMENTATION(ShapeSet* const TechnoTypeClass::Get_Cameo_Data() const, 0x0063B910);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Legal_Placement(Cell &, HouseClass *) const, 0x0063D320);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Raw_Cost() const, 0x0063B880);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Cost() const, 0x0063B920);
@@ -930,10 +931,10 @@ DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Create_And_Place(Cell &, HouseClas
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Cost_Of(HouseClass *) const, 0x00440080);
 DEFINE_IMPLEMENTATION(ObjectClass * const BuildingTypeClass::Create_One_Of(HouseClass *) const, 0x0043FED0);
 DEFINE_IMPLEMENTATION(Cell * BuildingTypeClass::Occupy_List(bool) const, 0x0043FED0);
-DEFINE_IMPLEMENTATION(ShapeFileStruct * const BuildingTypeClass::Get_Image_Data() const, 0x004402F0);
+DEFINE_IMPLEMENTATION(ShapeSet * const BuildingTypeClass::Get_Image_Data() const, 0x004402F0);
 DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Legal_Placement(Cell &, HouseClass *) const, 0x00442EA0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Raw_Cost() const, 0x00440000);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingTypeClass::Get_Buildup_Data(), 0x00443BC0);
+DEFINE_IMPLEMENTATION(ShapeSet *const BuildingTypeClass::Get_Buildup_Data(), 0x00443BC0);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Width() const, 0x0043FF40);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Height(bool) const, 0x0043FF50);
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Init_Anim(BStateType, int, int, int) const, 0x0043FB10);
@@ -1003,7 +1004,7 @@ DEFINE_IMPLEMENTATION(Coordinate IsometricTileTypeClass::Coord_Fixup(Coordinate 
 DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004F83D0);
 DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(HouseClass *) const, 0x004F8410);
 DEFINE_IMPLEMENTATION(Cell *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
+DEFINE_IMPLEMENTATION(ShapeSet *const IsometricTileTypeClass::Get_Image_Data() const, 0x004F3570);
 DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Load_Image_Data(), 0x004F5940);
 
 CommandClass::CommandClass() { *((unsigned long *)this) = (unsigned long)0x006D2AF4; }
@@ -1694,7 +1695,7 @@ DEFINE_IMPLEMENTATION(Coordinate OverlayTypeClass::Coord_Fixup(Coordinate *) con
 DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0058D2B0);
 DEFINE_IMPLEMENTATION(ObjectClass *const OverlayTypeClass::Create_One_Of(HouseClass *) const, 0x0058D2E0);
 DEFINE_IMPLEMENTATION(Cell *OverlayTypeClass::Occupy_List(bool) const, 0x0058D240);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const OverlayTypeClass::Get_Image_Data() const, 0x0058DB20);
+DEFINE_IMPLEMENTATION(ShapeSet *const OverlayTypeClass::Get_Image_Data() const, 0x0058DB20);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Draw_It(Point2D &, Rect &, int) const, 0x0058D310);
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Init(TheaterType), 0x0058D3A0);
 DEFINE_IMPLEMENTATION(RGBStruct OverlayTypeClass::Get_Radar_Color(int), 0x0058D9D0);
@@ -2127,7 +2128,7 @@ DEFINE_IMPLEMENTATION(bool SidebarClass::Abandon_Production(RTTIType, FactoryCla
 SidebarClass::StripClass::SelectClass::SelectClass() : ControlClass(0, 0, 0, (OBJECT_WIDTH - 1), OBJECT_HEIGHT, LEFTPRESS|RIGHTPRESS|LEFTUP), Strip(0), Index(0) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
 SidebarClass::StripClass::SelectClass::SelectClass(const NoInitClass &x) : ControlClass(x) { *((unsigned long *)this) = (unsigned long)0x006D682C; }
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::One_Time(int), 0x005F4210);
-DEFINE_IMPLEMENTATION(ShapeFileStruct const * SidebarClass::StripClass::Get_Special_Cameo(SuperWeaponType), 0x005F4230);
+DEFINE_IMPLEMENTATION(ShapeSet const * SidebarClass::StripClass::Get_Special_Cameo(SuperWeaponType), 0x005F4230);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_Clear(), 0x005F4260);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Init_IO(int), 0x005F42A0);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::Activate(), 0x005F4450);
@@ -2224,7 +2225,7 @@ DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char *), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 DEFINE_IMPLEMENTATION(void End_Ingame_Movie(), 0x00563C40);
 
-DEFINE_IMPLEMENTATION(void Draw_Shape(XSurface *, ConvertClass *, const ShapeFileStruct *, int, Point2D *, Rect *, ShapeFlagsType, int, int, ZGradientType, int, ShapeFileStruct *, int, int, int), 0x0047C780);
+DEFINE_IMPLEMENTATION(void Draw_Shape(Surface&, ConvertClass&, const ShapeSet*, int, const Point2D&, const Rect&, ShapeFlags_Type, const char*, int, ZGradientType, int, const ShapeSet*, int, Point2D), 0x0047C780);
 
 DEFINE_IMPLEMENTATION(int Base64_Encode(const void *, int, void *, int), 0x004208B0);
 DEFINE_IMPLEMENTATION(int Base64_Decode(const void *, int, void *, int), 0x004209D0);
@@ -2709,7 +2710,7 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::In_Air() const, 0x005872A0);
 DEFINE_IMPLEMENTATION(void ObjectClass::AI(), 0x00584C10);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Players_Army() const, 0x00417400);
 DEFINE_IMPLEMENTATION(VisualType ObjectClass::Visual_Character(bool, const HouseClass *), 0x00417410);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const ObjectClass::Get_Image_Data() const, 0x00584BD0);
+DEFINE_IMPLEMENTATION(ShapeSet *const ObjectClass::Get_Image_Data() const, 0x00584BD0);
 DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(const ObjectClass *, bool), 0x00584EF0);
 DEFINE_IMPLEMENTATION(ActionType ObjectClass::What_Action(Cell &, bool, bool) const, 0x00584F00);
 DEFINE_IMPLEMENTATION(LayerType ObjectClass::In_Which_Layer() const, 0x00584F10);
@@ -3066,7 +3067,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Update_Mission_Targets(AbstractClass *),
 // 0063A100);
 // 0063A1D0);
 // 0063A530);
-DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeFileStruct *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeFileStruct *, int, int, int, ShapeFlagsType) const, 0x00634E00);
+DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeSet *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeSet *, int, Point2D, ShapeFlags_Type) const, 0x00634E00);
 DEFINE_IMPLEMENTATION(void TechnoClass::Reset_Action_Line_Timer(), 0x00639C30);
 DEFINE_IMPLEMENTATION(void TechnoClass::Set_Action_Lines(bool), 0x00639C60);
 
@@ -3153,7 +3154,7 @@ DEFINE_IMPLEMENTATION(bool FootClass::entry_37C(), 0x0040F340);
 DEFINE_IMPLEMENTATION(bool FootClass::Start_Driver(Coordinate &), 0x004A1D90);
 DEFINE_IMPLEMENTATION(bool FootClass::Stop_Driver(), 0x004A1D60);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_388(), 0x004A6480);
-DEFINE_IMPLEMENTATION(void FootClass::Draw_Object(const ShapeFileStruct *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeFileStruct *, int, int, int, ShapeFlagsType) const, 0x0040F350);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Object(const ShapeSet *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeSet *, int, Point2D, ShapeFlags_Type) const, 0x0040F350);
 DEFINE_IMPLEMENTATION(void FootClass::entry_390(), 0x0040F3B0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_394(), 0x0040F3C0);
 DEFINE_IMPLEMENTATION(void FootClass::entry_398(), 0x0040F3D0);
@@ -3204,7 +3205,7 @@ DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Center_Coord() const, 0x0042F250
 DEFINE_IMPLEMENTATION(Coordinate BuildingClass::entry_50() const, 0x0042F3B0);
 DEFINE_IMPLEMENTATION(void BuildingClass::AI(), 0x00429A60);
 DEFINE_IMPLEMENTATION(VisualType BuildingClass::Visual_Character(bool, const HouseClass *), 0x00438450);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const BuildingClass::Get_Image_Data() const, 0x00435E40);
+DEFINE_IMPLEMENTATION(ShapeSet *const BuildingClass::Get_Image_Data() const, 0x00435E40);
 DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(const ObjectClass *, bool), 0x0042EED0);
 DEFINE_IMPLEMENTATION(ActionType BuildingClass::What_Action(Cell &, bool, bool) const, 0x0042EBD0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::entry_80() const, 0x0043AF40);
@@ -3748,7 +3749,7 @@ DEFINE_IMPLEMENTATION(RTTIType InfantryClass::Fetch_RTTI() const, 0x004D9E60);
 DEFINE_IMPLEMENTATION(int InfantryClass::Get_Object_Size(bool) const, 0x004D9E00);
 DEFINE_IMPLEMENTATION(void InfantryClass::Object_CRC(CRCEngine &) const, 0x004D9640);
 DEFINE_IMPLEMENTATION(void InfantryClass::AI(), 0x004D4EB0);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const InfantryClass::Get_Image_Data() const, 0x004D90B0);
+DEFINE_IMPLEMENTATION(ShapeSet *const InfantryClass::Get_Image_Data() const, 0x004D90B0);
 DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(const ObjectClass *, bool), 0x004D78B0);
 DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(Cell &, bool, bool) const, 0x004D6FB0);
 DEFINE_IMPLEMENTATION(ObjectTypeClass *const InfantryClass::Class_Of() const, 0x004D7B20);
@@ -3910,7 +3911,7 @@ DEFINE_IMPLEMENTATION(void AnimTypeClass::entry_64(), 0x004189E0);
 DEFINE_IMPLEMENTATION(bool AnimTypeClass::Read_INI(CCINIClass &), 0x00418C20);
 DEFINE_IMPLEMENTATION(bool AnimTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x00419BD0);
 DEFINE_IMPLEMENTATION(ObjectClass *const AnimTypeClass::Create_One_Of(HouseClass *) const, 0x00419BE0);
-DEFINE_IMPLEMENTATION(ShapeFileStruct *const AnimTypeClass::Get_Image_Data() const, 0x00419A20);
+DEFINE_IMPLEMENTATION(ShapeSet *const AnimTypeClass::Get_Image_Data() const, 0x00419A20);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(const char *), 0x00418A70);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Free_Image(), 0x0419B40);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Init(TheaterType), 0x00418890);
@@ -5078,10 +5079,10 @@ DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Background(), 0x00609070);
 DEFINE_IMPLEMENTATION(void StaticButtonClass::Draw_Text(const char *), 0x00609120);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ShapeButtonClass::ShapeButtonClass(), 0x005F15A0);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ShapeButtonClass::ShapeButtonClass(unsigned, const ShapeFileStruct *, int, int), 0x005F15E0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(ShapeButtonClass::ShapeButtonClass(unsigned, const ShapeSet *, int, int), 0x005F15E0);
 ShapeButtonClass::~ShapeButtonClass() {}
 DEFINE_IMPLEMENTATION(bool ShapeButtonClass::Draw_Me(bool), 0x005F16A0);
-DEFINE_IMPLEMENTATION(void ShapeButtonClass::Set_Shape(const ShapeFileStruct *, int, int), 0x005F1660);
+DEFINE_IMPLEMENTATION(void ShapeButtonClass::Set_Shape(const ShapeSet *, int, int), 0x005F1660);
 
 CheckBoxClass::CheckBoxClass(unsigned id, int x, int y) : ToggleClass(id, x, y, 7, 7) {}
 CheckBoxClass::~CheckBoxClass() {}
@@ -5730,11 +5731,11 @@ bool &ScoresPresent = Make_Global<bool>(0x007E4818);
 int &TeamEvent = Make_Global<int>(0x00804DC8);
 int &TeamNumber = Make_Global<int>(0x00804DCC);
 HousesType &Whom = Make_Global<HousesType>(0x007E4838);
-const ShapeFileStruct *&Cell_ShroudShape = Make_Global<const ShapeFileStruct *>(0x00760CB4);
-const ShapeFileStruct *&Cell_FogShape = Make_Global<const ShapeFileStruct *>(0x00760CB0);
-const ShapeFileStruct *&Cell_FixupFogShape = Make_Global<const ShapeFileStruct *>(0x00760C88);
+const ShapeSet *&Cell_ShroudShape = Make_Global<const ShapeSet *>(0x00760CB4);
+const ShapeSet *&Cell_FogShape = Make_Global<const ShapeSet *>(0x00760CB0);
+const ShapeSet *&Cell_FixupFogShape = Make_Global<const ShapeSet *>(0x00760C88);
 MouseClass::MouseStruct *MouseClass::MouseControl = Make_Pointer<MouseStruct>(0x00703070);
-ShapeFileStruct const *&MouseClass::MouseShapes = Make_Global<const ShapeFileStruct *>(0x00806CB4);
+ShapeSet const *&MouseClass::MouseShapes = Make_Global<const ShapeSet *>(0x00806CB4);
 CDTimerClass<SystemTimerClass> &MouseClass::Timer = Make_Global<CDTimerClass<SystemTimerClass>>(0x00806CC8);
 MonoClass *&MonoClass::Current = Make_Global<MonoClass *>(0x00806C50);
 bool &MonoClass::Enabled = Make_Global<bool>(0x00806C54);
@@ -5808,25 +5809,25 @@ bool& RedrawSidebar = Make_Global<bool>(0x0080C3BC);
 ShapeButtonClass(&SidebarClass::StripClass::UpButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080C250);
 ShapeButtonClass(&SidebarClass::StripClass::DownButton)[COLUMNS] = Make_Global<ShapeButtonClass[COLUMNS]>(0x0080B630);
 SidebarClass::StripClass::SelectClass(&SidebarClass::StripClass::SelectButton)[COLUMNS][20] = Make_Global<SidebarClass::StripClass::SelectClass[COLUMNS][20]>(0x0080B950);
-const ShapeFileStruct*& SidebarClass::StripClass::LogoShape = Make_Global<const ShapeFileStruct*>(0x0080C3B8);
-const ShapeFileStruct*& SidebarClass::StripClass::ClockShape = Make_Global<const ShapeFileStruct*>(0x0080C23C);
-const ShapeFileStruct*& SidebarClass::StripClass::RechargeClockShape = Make_Global<const ShapeFileStruct*>(0x0080B6D0);
-const ShapeFileStruct*& SidebarClass::StripClass::DarkenShape = Make_Global<const ShapeFileStruct*>(0x0080B6D4);
+const ShapeSet*& SidebarClass::StripClass::LogoShape = Make_Global<const ShapeSet*>(0x0080C3B8);
+const ShapeSet*& SidebarClass::StripClass::ClockShape = Make_Global<const ShapeSet*>(0x0080C23C);
+const ShapeSet*& SidebarClass::StripClass::RechargeClockShape = Make_Global<const ShapeSet*>(0x0080B6D0);
+const ShapeSet*& SidebarClass::StripClass::DarkenShape = Make_Global<const ShapeSet*>(0x0080B6D4);
 SidebarClass::SBGadgetClass& SidebarClass::Background = Make_Global<SidebarClass::SBGadgetClass>(0x0080C218);
 ShapeButtonClass& SidebarClass::Repair = Make_Global<ShapeButtonClass>(0x0080C358);
 ShapeButtonClass& SidebarClass::Sell = Make_Global<ShapeButtonClass>(0x0080C1C8);
 ShapeButtonClass& SidebarClass::Power = Make_Global<ShapeButtonClass>(0x0080C2F0);
 ShapeButtonClass& SidebarClass::Waypoint = Make_Global<ShapeButtonClass>(0x0080C178);
-const ShapeFileStruct*& SidebarClass::SidebarShape = Make_Global<const ShapeFileStruct*>(0x0080C3A8);
-const ShapeFileStruct*& SidebarClass::SidebarMiddleShape = Make_Global<const ShapeFileStruct*>(0x0080C3AC);
-const ShapeFileStruct*& SidebarClass::SidebarBottomShape = Make_Global<const ShapeFileStruct*>(0x0080C3B0);
-const ShapeFileStruct*& SidebarClass::SidebarAddonShape = Make_Global<const ShapeFileStruct*>(0x0080C3B4);
-const ShapeFileStruct*& BuildingClass::PowerOffShape = Make_Global<const ShapeFileStruct*>(0x00760544);
-const ShapeFileStruct*& BuildingClass::WrenchShape = Make_Global<const ShapeFileStruct*>(0x00760548);
-const ShapeFileStruct*& ObjectTypeClass::SelectShapes = Make_Global<const ShapeFileStruct*>(0x0080874C);
-const ShapeFileStruct*& ObjectTypeClass::PipShapes = Make_Global<const ShapeFileStruct*>(0x00808750);
-const ShapeFileStruct*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeFileStruct*>(0x00808754);
-const ShapeFileStruct*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeFileStruct*>(0x00808758);
+const ShapeSet*& SidebarClass::SidebarShape = Make_Global<const ShapeSet*>(0x0080C3A8);
+const ShapeSet*& SidebarClass::SidebarMiddleShape = Make_Global<const ShapeSet*>(0x0080C3AC);
+const ShapeSet*& SidebarClass::SidebarBottomShape = Make_Global<const ShapeSet*>(0x0080C3B0);
+const ShapeSet*& SidebarClass::SidebarAddonShape = Make_Global<const ShapeSet*>(0x0080C3B4);
+const ShapeSet*& BuildingClass::PowerOffShape = Make_Global<const ShapeSet*>(0x00760544);
+const ShapeSet*& BuildingClass::WrenchShape = Make_Global<const ShapeSet*>(0x00760548);
+const ShapeSet*& ObjectTypeClass::SelectShapes = Make_Global<const ShapeSet*>(0x0080874C);
+const ShapeSet*& ObjectTypeClass::PipShapes = Make_Global<const ShapeSet*>(0x00808750);
+const ShapeSet*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeSet*>(0x00808754);
+const ShapeSet*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeSet*>(0x00808758);
 bool& LightSourceClass::UpdateAllowed = Make_Global<bool>(0x00700398);
 
 

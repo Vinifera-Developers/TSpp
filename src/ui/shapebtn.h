@@ -31,21 +31,21 @@
 
 
 class ConvertClass;
-struct ShapeFileStruct;
+class ShapeSet;
 
 
 class ShapeButtonClass : public ToggleClass
 {
     public:
         ShapeButtonClass();
-        ShapeButtonClass(unsigned id, const ShapeFileStruct *shapes, int x, int y, int w = 0, int h = 0, bool alpha = false);
+        ShapeButtonClass(unsigned id, const ShapeSet *shapes, int x, int y, int w = 0, int h = 0, bool alpha = false);
         virtual ~ShapeButtonClass();
 
         virtual bool Draw_Me(bool forced = false) override;
 
-        virtual void Set_Shape(const ShapeFileStruct *data, int width = 0, int height = 0);
+        virtual void Set_Shape(const ShapeSet *data, int width = 0, int height = 0);
 
-        const ShapeFileStruct *Get_Shape_Data() { return ShapeData; }
+        const ShapeSet *Get_Shape_Data() { return ShapeData; }
 
     public:
         bool ReflectButtonState;
@@ -55,5 +55,5 @@ class ShapeButtonClass : public ToggleClass
         ConvertClass *ShapeDrawer;
         bool IsDrawn;
         bool DrawAlpha;
-        const ShapeFileStruct *ShapeData;
+        const ShapeSet *ShapeData;
 };

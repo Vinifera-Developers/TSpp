@@ -241,7 +241,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 0063A1D0
         // 0063A530
 
-        void Techno_Draw_Object(const ShapeFileStruct *shapefile,
+        void Techno_Draw_Object(const ShapeSet *shapefile,
             int shapenum,
             Point2D &xy,
             Rect &rect,
@@ -251,11 +251,10 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
             int a8 = 0,
             bool a9 = false,
             int a10 = 0,
-            ShapeFileStruct *z_shape = nullptr,
+            ShapeSet *z_shape = nullptr,
             int z_framenum = 0,
-            int z_xoff = 0,
-            int z_yoff = 0,
-            ShapeFlagsType flags = SHAPE_NORMAL) const;
+            Point2D z_off = Point2D(0, 0),
+            ShapeFlags_Type flags = SHAPE_NORMAL) const;
 
         static void Reset_Action_Line_Timer();
         static void Set_Action_Lines(bool set);

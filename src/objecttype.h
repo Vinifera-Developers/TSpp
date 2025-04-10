@@ -29,6 +29,7 @@
 
 #include "abstracttype.h"
 #include "search.h"
+#include "shapeset.h"
 #include "voxelobj.h"
 
 
@@ -72,8 +73,8 @@ class ObjectTypeClass : public AbstractTypeClass
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const = 0;
         virtual Cell *Occupy_List(bool placement = false) const;
         virtual BuildingClass *const Who_Can_Build_Me(bool in_theory = false, bool a2 = false, bool legal = false, HouseClass *house = nullptr) const;
-        virtual ShapeFileStruct *const Get_Cameo_Data() const;
-        virtual ShapeFileStruct *const Get_Image_Data() const;
+        virtual ShapeSet *const Get_Cameo_Data() const;
+        virtual ShapeSet *const Get_Image_Data() const;
 
         const char * Graphic_Name() const
         {
@@ -100,8 +101,8 @@ class ObjectTypeClass : public AbstractTypeClass
         RGBStruct RadialColor;
         ArmorType Armor;
         unsigned int MaxStrength;
-        const ShapeFileStruct *Image;
-        const ShapeFileStruct *AlphaImage;
+        const ShapeSet *Image;
+        const ShapeSet *AlphaImage;
         VoxelObject Voxel;
         VoxelObject AuxVoxel;
         VoxelObject AuxVoxel2;
@@ -133,10 +134,10 @@ class ObjectTypeClass : public AbstractTypeClass
     **	Selected objects have a special marking box around them. This is the shapes that are
     **	used for this purpose.
     */
-    static const ShapeFileStruct*& SelectShapes;
+    static const ShapeSet*& SelectShapes;
 
-    static const ShapeFileStruct*& PipShapes;
-    static const ShapeFileStruct*& Pip2Shapes;
+    static const ShapeSet*& PipShapes;
+    static const ShapeSet*& Pip2Shapes;
 
-    static const ShapeFileStruct*& TalkBubbleShapes;
+    static const ShapeSet*& TalkBubbleShapes;
 };

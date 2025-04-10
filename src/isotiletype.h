@@ -75,7 +75,7 @@ IsometricTileTypeClass : public ObjectTypeClass
 
     private:
         // Use Get_Tile_Data instead for IsometricTileTypeClass.
-        virtual ShapeFileStruct *const Get_Image_Data() const;
+        virtual ShapeSet *const Get_Image_Data() const;
 
     public:
         IsoTileFileStruct *const Get_Tile_Data() const { return (IsoTileFileStruct *)IsometricTileTypeClass::Get_Image_Data(); }

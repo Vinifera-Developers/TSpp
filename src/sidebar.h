@@ -66,10 +66,10 @@ class SidebarClass : public PowerClass
 
     public:
 
-        static const ShapeFileStruct*& SidebarShape;
-        static const ShapeFileStruct*& SidebarMiddleShape;
-        static const ShapeFileStruct*& SidebarBottomShape;
-        static const ShapeFileStruct*& SidebarAddonShape;
+        static const ShapeSet*& SidebarShape;
+        static const ShapeSet*& SidebarMiddleShape;
+        static const ShapeSet*& SidebarBottomShape;
+        static const ShapeSet*& SidebarAddonShape;
 
         SidebarClass();
         SidebarClass(const NoInitClass &x);
@@ -146,7 +146,7 @@ class SidebarClass : public PowerClass
                 StripClass(const NoInitClass &);
 
                 void One_Time(int id);
-                ShapeFileStruct const *Get_Special_Cameo(SuperWeaponType type);
+                ShapeSet const *Get_Special_Cameo(SuperWeaponType type);
                 void Init_Clear();
                 void Init_IO(int id);
                 void Activate();
@@ -228,16 +228,16 @@ class SidebarClass : public PowerClass
                 **	Pointer to the shape data for small versions of the logos. These are used as
                 **	placeholder pieces on the side bar.
                 */
-                static const ShapeFileStruct*& LogoShape;
+                static const ShapeSet*& LogoShape;
 
                 /*
                 **	This points to the animation sequence of frames used to mark the passage of time
                 **	as an object is undergoing construction.
                 */
-                static const ShapeFileStruct*& ClockShape;
-                static const ShapeFileStruct*& RechargeClockShape;
+                static const ShapeSet*& ClockShape;
+                static const ShapeSet*& RechargeClockShape;
 
-                static const ShapeFileStruct*& DarkenShape;
+                static const ShapeSet*& DarkenShape;
 
                 static ShapeButtonClass (&UpButton)[COLUMNS];
                 static ShapeButtonClass (&DownButton)[COLUMNS];

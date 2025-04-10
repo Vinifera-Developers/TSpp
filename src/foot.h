@@ -155,9 +155,9 @@ public:
     virtual bool Start_Driver(Coordinate &headto);
     virtual bool Stop_Driver();
     virtual bool entry_388();
-    virtual void Draw_Object(const ShapeFileStruct *shapefile, int shapenum, Point2D &xy,
+    virtual void Draw_Object(const ShapeSet *shapefile, int shapenum, Point2D &xy,
         Rect &rect, Dir256 rotation = DIR_N, int scale = 256, int a7 = 0, int a8 = 0, bool a9 = false,
-        int a10 = 0, ShapeFileStruct *z_shape = nullptr, int z_framenum = 0, int z_xoff = 0, int z_yoff = 0, ShapeFlagsType flags = SHAPE_NORMAL) const;
+        int a10 = 0, ShapeSet *z_shape = nullptr, int z_framenum = 0, Point2D z_off = Point2D(0, 0), ShapeFlags_Type flags = SHAPE_NORMAL) const;
     virtual void entry_390();
     virtual void entry_394();
     virtual void entry_398();

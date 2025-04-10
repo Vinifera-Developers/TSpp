@@ -74,7 +74,7 @@ OverlayTypeClass : public ObjectTypeClass
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
         virtual Cell *Occupy_List(bool placement = false) const override;
-        virtual ShapeFileStruct *const Get_Image_Data() const override;
+        virtual ShapeSet *const Get_Image_Data() const override;
 
         /**
          *  OverlayTypeClass

@@ -36,7 +36,7 @@
 class ObjectClass;
 class ObjectTypeClass;
 class LayerClass;
-struct ShapeFileStruct;
+class ShapeSet;
 
 
 class DisplayClass : public MapClass
