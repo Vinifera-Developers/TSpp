@@ -1647,7 +1647,7 @@ DEFINE_IMPLEMENTATION(int Tactical::Get_Object_Size(bool) const, 0x00618000);
 DEFINE_IMPLEMENTATION(void Tactical::AI(), 0x0060F960);
 DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0x00617CD0);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coordinate &) const, 0x0060F150);
-DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Cell &) const, 0x0060F270);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Point2D &) const, 0x0060F270);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coordinate &) const, 0x0060F350);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int), 0x0060F3C0);
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D &) const, 0x0060F4B0);
@@ -3067,7 +3067,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Update_Mission_Targets(AbstractClass *),
 // 0063A100);
 // 0063A1D0);
 // 0063A530);
-DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeSet *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeSet *, int, Point2D, ShapeFlags_Type) const, 0x00634E00);
+DEFINE_IMPLEMENTATION(void TechnoClass::Techno_Draw_Object(const ShapeSet *, int, const Point2D &, const Rect &, Dir256, int, int, int a8, bool, int, const ShapeSet *, int, Point2D, ShapeFlags_Type) const, 0x00634E00);
 DEFINE_IMPLEMENTATION(void TechnoClass::Reset_Action_Line_Timer(), 0x00639C30);
 DEFINE_IMPLEMENTATION(void TechnoClass::Set_Action_Lines(bool), 0x00639C60);
 
@@ -5829,6 +5829,7 @@ const ShapeSet*& ObjectTypeClass::PipShapes = Make_Global<const ShapeSet*>(0x008
 const ShapeSet*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeSet*>(0x00808754);
 const ShapeSet*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeSet*>(0x00808758);
 bool& LightSourceClass::UpdateAllowed = Make_Global<bool>(0x00700398);
+const ShapeSet*& BuildingTypeClass::BuildingZShape = Make_Global<const ShapeSet*>(0x0076053C);
 
 
 /**

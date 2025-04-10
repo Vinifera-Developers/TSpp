@@ -84,7 +84,7 @@ Tactical : public AbstractClass
         virtual bool entry_64(Rect &a1, Rect &a2, unsigned color, bool a4 = false);
 
         Point2D func_60F150(const Coordinate &coord) const; // Coord to Pixel (without validation)?
-        Point2D func_60F270(const Cell &cell) const; // Cell to pixel (without validation)?
+        Point2D func_60F270(const Point2D& cell) const; // Cell to pixel (without validation)?
         Point2D func_60F350(const Coordinate &coord) const;
         static int func_60F3C0(int a1);
         bool Coord_To_Pixel(const Coordinate &coord, Point2D &pixel) const;

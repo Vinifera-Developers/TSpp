@@ -43,17 +43,21 @@ class DoorClass
         bool Has_Finished() const;
         bool Is_Door_Open() const;
         bool Is_Door_Closed() const;
-		void Open_Door(double rate);
-		void Close_Door(double rate);
+        void Open_Door(double rate);
+        void Close_Door(double rate);
         void Flip_State();
         void Force_Open();
         void Force_Close();
         double Get_Percent_Complete() const;
         void AI();
 
+        bool Func1() const { return !Is_Door_Opening() && !Is_Door_Closing() && !Is_Door_Open(); }
+        bool Func2() const { return !Is_Door_Opening() && !Is_Door_Closing() && !Is_Door_Open() && !Is_Door_Closed(); }
+
+
     public:
         double Rate;
         CDRateTimerClass<FrameTimerClass> Timer;
-        bool field_18; // in transition?
-        unsigned char field_19; // 0 == close, 1 == open.
+        bool IsActive; // in transition?
+        bool IsToCountUp; // 0 == closed, 1 == open.
 };

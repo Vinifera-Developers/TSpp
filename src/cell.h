@@ -296,11 +296,15 @@ CellClass : public AbstractClass
         ObjectClass *OccupierPtr;
         ObjectClass *AltOccupierPtr;
         LandType Land;
-        unsigned field_7C;                  // intensity?
-        unsigned short field_80;            // ambient or saturation?
-        wRGBStruct field_82;                // tint lowest?
-        wRGBStruct field_88;                // tint highest?
-        short field_8E;                     // -- always "-1"
+        unsigned Intensity;
+        short Ambient;
+        short Brightness;
+        short TileBrightness;
+        short field_86;
+        short field_88;
+        short field_8A;
+        short field_8C;
+        short Tube;
         unsigned char field_90;
         unsigned char IsIceGrowthAllowed;
         unsigned char SubTile;

@@ -116,6 +116,8 @@ public:
     static const BuildingTypeClass *Find_Or_Make(const char *name);
     static void Fetch_ToTile_Types();
 
+    static const ShapeSet*& BuildingZShape;
+
 public:
     BuildingType HeapID;
     Cell * OccupyList;

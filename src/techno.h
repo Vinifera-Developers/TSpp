@@ -243,15 +243,15 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 
         void Techno_Draw_Object(const ShapeSet *shapefile,
             int shapenum,
-            Point2D &xy,
-            Rect &rect,
+            const Point2D &xy,
+            const Rect &rect,
             Dir256 rotation = DIR_N,
             int scale = 256,
             int a7 = 0,
             int a8 = 0,
             bool a9 = false,
             int a10 = 0,
-            ShapeSet *z_shape = nullptr,
+            const ShapeSet *z_shape = nullptr,
             int z_framenum = 0,
             Point2D z_off = Point2D(0, 0),
             ShapeFlags_Type flags = SHAPE_NORMAL) const;
