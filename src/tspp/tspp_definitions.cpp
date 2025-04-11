@@ -871,7 +871,8 @@ DEFINE_IMPLEMENTATION(Cell * ObjectTypeClass::Occupy_List(bool) const, 0x00587A7
 DEFINE_IMPLEMENTATION(BuildingClass * const ObjectTypeClass::Who_Can_Build_Me(bool, bool, bool, HouseClass *) const, 0x00587B20);
 DEFINE_IMPLEMENTATION(ShapeSet * const ObjectTypeClass::Get_Cameo_Data() const, 0x00587A60);
 DEFINE_IMPLEMENTATION(ShapeSet * const ObjectTypeClass::Get_Image_Data() const, 0x004101A0);
-DEFINE_IMPLEMENTATION(void ObjectTypeClass::Assign_Theater_Name(char *, TheaterType), 0x00588D00);
+DEFINE_IMPLEMENTATION(void ObjectTypeClass::Theater_Naming_Convention(char *, TheaterType), 0x00588D00);
+DEFINE_IMPLEMENTATION(void ObjectTypeClass::Fetch_Normal_Image(), 0x005888B0);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TechnoTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x0063E170);

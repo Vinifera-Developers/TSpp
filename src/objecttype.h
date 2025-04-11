@@ -92,7 +92,9 @@ class ObjectTypeClass : public AbstractTypeClass
             return Name();
         }
 
-        void Assign_Theater_Name(char *buffer, TheaterType theater);
+
+        void Theater_Naming_Convention(char *name, TheaterType theater);
+        void Fetch_Normal_Image();
 
         static const ObjectTypeClass * From_Name(const char *name);
         static const ObjectTypeClass * As_Pointer(const char *name) { return From_Name(name); }
