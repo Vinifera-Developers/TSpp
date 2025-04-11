@@ -81,7 +81,7 @@ bool CellClass::Spread_Tiberium(TiberiumType tiberium, bool forced)
 CellClass* CellClass::Get_Bridge_Owner() const
 {
     if (IsUnderBridge) {
-        return &Map[IsBridgeOwner ? Pos : BridgeOwner->Pos];
+        return &Map[IsBridgeOwner ? CellID : BridgeOwner->CellID];
     }
     return nullptr;
 }

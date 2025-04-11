@@ -75,8 +75,8 @@ CellClass : public AbstractClass
         CellClass(const NoInitClass &x);
         virtual ~CellClass();
 
-        int operator != (const CellClass & cell) const { return cell.Pos != Pos; }
-        int operator == (const CellClass & cell) const { return cell.Pos == Pos; }
+        int operator != (const CellClass & cell) const { return cell.CellID != CellID; }
+        int operator == (const CellClass & cell) const { return cell.CellID == CellID; }
 
         /**
          *  AbstractClass
@@ -111,7 +111,7 @@ CellClass : public AbstractClass
         // 00455130
         // 00455450
         // 004555E0
-        // 00455B30
+        Rect Get_Overlay_Rect() const;
         // 00455E40
         Rect Get_Rect() const;
         // 00456270
@@ -272,8 +272,10 @@ CellClass : public AbstractClass
 
         CellClass* Get_Bridge_Owner() const;
 
+        Cell Cell_Number() { return CellID; }
+
     public:
-        Cell Pos;
+        Cell CellID;
         DynamicVectorClass<FoggedObjectClass *> *FoggedObjects;
         CellClass *BridgeOwner;
         int field_20;
