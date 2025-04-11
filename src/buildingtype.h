@@ -104,6 +104,9 @@ public:
     void Set_Base_Defense_Values();
     bool Is_Deployable();
 
+    void Fetch_Building_Normal_Image(TheaterType theater);
+    void Fetch_Building_Voxel_Image();
+
     static void One_Time();
     static void Init(TheaterType theater);
 
