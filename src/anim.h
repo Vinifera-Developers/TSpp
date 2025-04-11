@@ -106,7 +106,7 @@ AnimClass : public ObjectClass, public StageClass
 
     public:
         AnimTypeClass *Class;
-        AbstractClass * xObject;
+        ObjectClass * xObject;
         HousesType OwnerHouse;
         ConvertClass *AlternativeDrawer;
         unsigned AlternativeBrightness;

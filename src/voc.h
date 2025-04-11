@@ -54,9 +54,6 @@ class VocClass
         int Play(float volume, int a2);
         int Play(float volume);
 
-        static int Play(VocType voc, int a2, float volume = 1.0f);
-        static int Play(VocType voc, float volume = 1.0f);
-        static int Play(VocType voc, const Coordinate &coord);
         static void Process(CCINIClass &ini);
         static void Clear();
         static VocType VocType_From_Voc(VocClass *voc);
@@ -78,30 +75,19 @@ class VocClass
 
 
 /**
- *  General purpose sound player.
+ *  General purpose sound player, subject to Options.SoundVolume.
  */
-inline int Play_Sound_Effect(VocType voc, float volume = 1.0f)
-{
-    return VocClass::Play(voc, volume);
-}
-
+int Sound_Effect(VocType voc, float volume = 1.0f, int a3 = 0);
 
 /**
- *  General purpose sound player with variation.
+ *  General purpose sound player, not subject to Options.SoundVolume.
  */
-inline int Sound_Effect(VocType voc, int a2 = 0, float volume = 1.0f)
-{
-    return VocClass::Play(voc, a2, volume);
-}
-
+int Voice_Sound_Effect(VocType voc, float volume = 1.0f);
 
 /**
  *  Plays a sound effect in the tactical map.
  */
-inline void Sound_Effect(VocType voc, Coordinate &coord)
-{
-    VocClass::Play(voc, coord);
-}
+void Static_Sound(VocType voc, const Coordinate& coord);
 
 
 /**

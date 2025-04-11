@@ -61,7 +61,7 @@ public:
     PaletteClass Palette;
     const char *Name;
     HSVClass HSV;
-    ConvertClass *Drawer;
+    ConvertClass *Converter;
     unsigned int field_310;
     unsigned int Color;
     unsigned int BrightColor;

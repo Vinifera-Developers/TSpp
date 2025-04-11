@@ -158,7 +158,7 @@ CellClass : public AbstractClass
         // 0045AAE0
         // 0045AB10
         // 0045ABA0
-        // 0045AC10
+        TiberiumType Tiberium_Type_Here();
         int Get_Tiberium_Value() const;
         bool Is_Tile_Water() const { return Tile >= WaterSet && Tile < (WaterSet+14); } // 0045ACB0
         // 0045ACD0
