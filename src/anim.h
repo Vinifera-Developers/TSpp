@@ -85,8 +85,8 @@ AnimClass : public ObjectClass, public StageClass
         /**
          *  AnimClass
          */
-        virtual int entry_1A8();
-        virtual int entry_1AC() const;
+        virtual int Bounce_AI();
+        virtual int Stage_Count() const;
 
         void Attach_To(ObjectClass *obj);
         void Start();
