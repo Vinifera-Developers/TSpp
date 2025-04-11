@@ -108,8 +108,8 @@ AnimClass : public ObjectClass, public StageClass
         AnimTypeClass *Class;
         AbstractClass * xObject;
         HousesType OwnerHouse;
-        ConvertClass *Drawer;
-        unsigned TintColor;
+        ConvertClass *AlternativeDrawer;
+        unsigned AlternativeBrightness;
         int ZAdjust;
         int YSortAdjust;
         Coordinate FlamingGuyCoords;
@@ -120,11 +120,11 @@ AnimClass : public ObjectClass, public StageClass
         int Delay;
         double Accum;
         int ShapeFlags;
-        bool field_FC;
+        bool IsDebris;
         unsigned char Loops;
         bool IsAttachedToCell;
         bool field_FF;
-        bool IsPlaying;
+        bool IsInert;
         bool IsFogged;
         bool field_102;
         bool IsToDelete;
