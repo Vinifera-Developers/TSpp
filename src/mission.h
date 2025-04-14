@@ -97,7 +97,7 @@ class MissionClass : public ObjectClass
         static MissionType Mission_From_Name(const char *name);
 
     public:
-        MissionType Mission;
+        MissionType CurrentMission;
         MissionType SuspendedMission;
         MissionType MissionQueue;
         int Status;
