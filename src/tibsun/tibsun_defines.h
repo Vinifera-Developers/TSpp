@@ -2836,7 +2836,7 @@ struct xCoordinate {
     int Z; // Z coordinate of the location.
 };
 
-
+struct Coordinate;
 struct Cell
 {
     Cell() = default;
@@ -2873,6 +2873,8 @@ struct Cell
     {
         return X * X + Y * Y;
     }
+
+    Coordinate As_Coord(int z) const;
 
     const char *As_String() const
     {
@@ -2917,7 +2919,7 @@ struct Coordinate
         return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
     }
 
-    Cell As_Cell() const { return Cell(X, Y); }
+    Cell As_Cell() const;
 
     const char *As_String() const
     {
@@ -2930,6 +2932,20 @@ struct Coordinate
     int Y; // Y coordinate of the location.
     int Z; // Z coordinate of the location.
 };
+
+
+inline Coordinate Cell::As_Coord(int z) const
+{
+    Coordinate coord(X * CELL_LEPTON_W + CELL_LEPTON_W / 2, Y * CELL_LEPTON_H + CELL_LEPTON_H / 2, z);
+    return coord;
+}
+
+
+inline Cell Coordinate::As_Cell() const
+{
+    Cell cell(X / CELL_LEPTON_W, Y / CELL_LEPTON_H);
+    return cell;
+}
 
 
 struct wDimensionStruct
