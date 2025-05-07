@@ -218,6 +218,22 @@ class SidebarClass : public PowerClass
 
                 typedef struct BuildType
                 {
+                    BuildType() {}
+                    BuildType(int id, RTTIType type, FactoryClass* factory = nullptr) :
+                        BuildableID(id),
+                        BuildableType(type),
+                        Factory(factory)
+                    {
+                    }
+
+                    bool operator==(const BuildType& other) const {
+                        return BuildableID == other.BuildableID && BuildableType == other.BuildableType;
+                    }
+
+                    bool operator!=(const BuildType& other) const {
+                        return BuildableID != other.BuildableID || BuildableType != other.BuildableType;
+                    }
+
                     int BuildableID;
                     RTTIType BuildableType;
                     FactoryClass *Factory;
