@@ -2327,8 +2327,9 @@ DEFINE_IMPLEMENTATION(void SuperClass::Impatient_Click() const, 0x0060BE20);
 DEFINE_IMPLEMENTATION(int SuperClass::Anim_Stage() const, 0x0060BD10);
 DEFINE_IMPLEMENTATION(bool SuperClass::Discharged(bool, Cell &), 0x0060B8E0);
 DEFINE_IMPLEMENTATION(const char *SuperClass::Ready_String() const, 0x0060BEC0);
-DEFINE_IMPLEMENTATION(bool SuperClass::Is_Ready() const, 0x0060BF40);
+DEFINE_IMPLEMENTATION(bool SuperClass::Can_Place() const, 0x0060BF40);
 DEFINE_IMPLEMENTATION(bool SuperClass::Is_Powered() const, 0x0060BEB0);
+DEFINE_IMPLEMENTATION(bool SuperClass::Needs_Redraw() const, 0x0060C730);
 DEFINE_IMPLEMENTATION(void SuperClass::Place(Cell *, bool), 0x0060BF70);
 char const * SuperClass::Name() const { return Class->Name(); }
 

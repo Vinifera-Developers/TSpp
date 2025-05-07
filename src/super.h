@@ -83,24 +83,13 @@ SuperClass : public AbstractClass
         int Anim_Stage() const;
         bool Discharged(bool player, Cell &cell = Cell());
         const char *Ready_String() const;
-        bool Is_Ready() const;
+        bool Can_Place() const;
         void Set_Readiness(bool ready) { IsReady = ready; }
+        bool Is_Ready() const { return IsReady; }
         bool Is_Present() const { return IsPresent; }
         bool Is_One_Time() const { return IsOneTime && IsPresent; }
         bool Is_Powered() const;
-        bool Needs_Redraw() const { return  Class->IsUseChargeDrain || !IsReady; }
-        /*void Set_Recharge_Time(int time)
-        {
-            if (IsPresent) {
-                if (time >= 0 && time <= 100) {
-                    int rate = Class->RechargeTime - (time * 0.010f * Class->RechargeTime);
-                    if (!rate) {
-                        IsReady = true;
-                    }
-                    Control = rate;
-                }
-            }
-        }*/
+        bool Needs_Redraw() const;
 
         void Place(Cell *cell, bool player = false);
 
