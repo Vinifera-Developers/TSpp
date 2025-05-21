@@ -94,6 +94,11 @@ inline DirType Desired_Facing(int x1, int y1, int x2, int y2)
     return dir;
 }
 
+inline DirType Direction(Coordinate const& coord1, Coordinate const& coord2)
+{
+    return Desired_Facing(coord2.X, coord2.Y, coord1.X, coord1.Y);
+}
+
 
 inline DirType Desired_Facing(const Point2D &point1, const Point2D &point2)
 {

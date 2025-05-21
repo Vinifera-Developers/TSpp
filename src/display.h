@@ -92,7 +92,7 @@ class DisplayClass : public MapClass
         void Waypoint_Mode_Control(int control, bool a2);
         void Power_Mode_Control(int control);
         void Repair_Mode_Control(int control);
-        Coordinate Closest_Free_Spot(Coordinate &coord, bool any = false) const;
+        Coordinate Closest_Free_Spot(const Coordinate &coord, bool any = false) const;
         bool Is_Spot_Free(Coordinate &coord, bool a2 = false) const;
         void Encroach_Shadow();
         void Encroach_Fog();

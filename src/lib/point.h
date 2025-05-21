@@ -61,6 +61,8 @@ public:
         return WWMath::Sqrt(X * X + Y * Y);
     }
 
+    T Distance_To(TPoint2D<T> const& point) const { return(*this - point).Length(); }
+
     TPoint2D Normalized() const
     {
         T length = Length();
@@ -110,6 +112,8 @@ public:
     {
         return WWMath::Sqrt(X * X + Y * Y + Z * Z);
     }
+
+    T Distance_To(TPoint3D<T> const& point) const { return(*this - point).Length(); }
 
     TPoint3D Normalized() const
     {

@@ -69,7 +69,7 @@ ParticleClass : public ObjectClass
          *  ObjectClass
          */
         virtual LayerType In_Which_Layer() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;

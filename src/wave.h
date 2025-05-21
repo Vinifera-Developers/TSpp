@@ -84,7 +84,7 @@ WaveClass : public ObjectClass
          *  ObjectClass
          */
         virtual LayerType In_Which_Layer() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual bool Limbo() override;
         virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;

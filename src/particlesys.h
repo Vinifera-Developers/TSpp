@@ -71,7 +71,7 @@ class ParticleSystemClass : public ObjectClass
          *  ObjectClass
          */
         virtual LayerType In_Which_Layer() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual void Remove_This() override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 

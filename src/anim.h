@@ -72,7 +72,7 @@ AnimClass : public ObjectClass, public StageClass
          *  ObjectClass
          */
         virtual LayerType In_Which_Layer() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual int Sort_Y() const override;
         virtual bool Limbo() override;
         virtual void Remove_This() override;
@@ -80,7 +80,7 @@ AnimClass : public ObjectClass, public StageClass
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
-        virtual int Get_Absolute_Height() const override;
+        virtual int Get_Height() const override;
 
         /**
          *  AnimClass

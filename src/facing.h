@@ -64,8 +64,8 @@ class FacingClass
             return *this;
         }
 
-        bool Set_Desired(DirType &facing);
-        bool Set(DirType &facing);
+        bool Set_Desired(const DirType &facing);
+        bool Set(const DirType &facing);
 
         DirType Desired() const;
         DirType Current() const;

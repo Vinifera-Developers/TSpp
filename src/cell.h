@@ -161,7 +161,7 @@ CellClass : public AbstractClass
         TiberiumType Tiberium_Type_Here();
         int Get_Tiberium_Value() const;
         bool Is_Tile_Water() const { return Tile >= WaterSet && Tile < (WaterSet+14); } // 0045ACB0
-        // 0045ACD0
+        int Occupier_Height() const; // 0045ACD0
         void Detach(AbstractClass * target);
         // 0045AE90
         void Attach_Tag(TagClass *tag);

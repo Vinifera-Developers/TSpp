@@ -80,7 +80,8 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual VisualType Visual_Character(bool flag = false, const HouseClass *house = nullptr);
         virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual TechnoTypeClass *const Techno_Type_Class() const override;
+        virtual const TechnoTypeClass * Techno_Type_Class() const override;
+        __declspec(property(get = Techno_Type_Class)) const TechnoTypeClass * TClass;
         virtual int Get_Ownable() const;
         virtual bool Can_Repair() const override;
         virtual bool Can_Player_Fire() const override;

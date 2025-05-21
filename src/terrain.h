@@ -69,7 +69,7 @@ TerrainClass : public ObjectClass, public StageClass
         /**
          *  ObjectClass
          */
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual bool Limbo() override;
         virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;

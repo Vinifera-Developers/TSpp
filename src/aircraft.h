@@ -89,7 +89,7 @@ AircraftClass : public FootClass, public IFlyControl
         virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual LayerType In_Which_Layer() const override;
         virtual bool entry_80() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual ExitType Exit_Object(const TechnoClass *object) override;

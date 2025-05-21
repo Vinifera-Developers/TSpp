@@ -84,7 +84,7 @@ BuildingClass : public TechnoClass
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
         virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
-        virtual ObjectTypeClass *const Class_Of() const override;
+        virtual const ObjectTypeClass * Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Can_Repair() const override;
         virtual bool Can_Demolish() const override;
@@ -233,7 +233,7 @@ BuildingClass : public TechnoClass
         // 00439500
         // 004396D0
         // 00439750
-        // 00439A90
+        bool Crossing_Firestorm(ObjectClass* object, bool do_damage) const;
         // 00439D40
         // 00439E90
         // 0043A180

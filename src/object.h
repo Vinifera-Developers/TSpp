@@ -86,8 +86,8 @@ class ObjectClass : public AbstractClass
         virtual LayerType In_Which_Layer() const;
         virtual bool entry_7C() const;
         virtual bool entry_80() const;
-        virtual TechnoTypeClass *const Techno_Type_Class() const;
-        virtual ObjectTypeClass *const Class_Of() const;
+        virtual const TechnoTypeClass * Techno_Type_Class() const;
+        virtual const ObjectTypeClass * Class_Of() const;
         virtual int Get_Ownable() const;
         virtual const char *Full_Name() const;
         virtual bool Can_Repair() const;
@@ -153,22 +153,24 @@ class ObjectClass : public AbstractClass
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual Coordinate Get_Coord() const;
         virtual void Set_Coord(Coordinate &coord);
+        __declspec(property(get = Get_Coord, put = Set_Coord)) Coordinate PositionCoord;
         virtual Cell Get_Cell() const;
+        __declspec(property(get = Get_Cell)) Cell PositionCell;
         virtual CellClass *Get_Cell_Ptr() const;
         virtual Cell Get_Target_Cell() const;
         virtual AbstractClass * Get_Target_Cell_Ptr() const;
+        virtual int Get_Height_AGL() const;
+        __declspec(property(get = Get_Height_AGL, put = Set_Height_AGL)) int HeightAGL;
+        virtual void Set_Height_AGL(int height) const;
         virtual int Get_Height() const;
-        __declspec(property(get = Get_Height, put = Set_Height)) int Height;
-        virtual void Set_Height(int a1) const;
-        virtual int Get_Absolute_Height() const;
-        __declspec( property( get=Get_Absolute_Height, put=Set_Absolute_Height ) ) int AbsoluteHeight;
+        __declspec(property( get=Get_Height, put=Set_Height)) int Height;
 
         bool Attach_Tag(TagClass *tag);
         double Get_Health_Ratio() const;
         void Set_Health_Ratio(double health);
         __declspec( property( get=Get_Health_Ratio, put=Set_Health_Ratio ) ) double HealthRatio;
-        int func_586730() const;
-        void Set_Absolute_Height(int z);
+        int Get_Cell_Height() const;
+        void Set_Height(int height);
         DirType Direction(AbstractClass * target) const;
         int Distance(AbstractClass * target) const;
         int Distance(const AbstractClass *target) const;
@@ -178,9 +180,9 @@ class ObjectClass : public AbstractClass
         // 00586F10
         // 00586F90
 
-        bool Is_Techno() const { return What_Am_I() == RTTI_BUILDING || What_Am_I() == RTTI_UNIT || What_Am_I() == RTTI_INFANTRY || What_Am_I() == RTTI_AIRCRAFT; }
+        bool Is_Techno() const { return RTTI == RTTI_BUILDING || RTTI == RTTI_UNIT || RTTI == RTTI_INFANTRY || RTTI == RTTI_AIRCRAFT; }
         bool Is_Foot() const;
-        bool Is_Infantry() const { return What_Am_I() == RTTI_INFANTRY; }
+        bool Is_Infantry() const { return RTTI == RTTI_INFANTRY; }
         
         bool Has_Class() const { return Class_Of() != nullptr; }
 

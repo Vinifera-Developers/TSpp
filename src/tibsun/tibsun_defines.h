@@ -85,6 +85,7 @@ class MotionLibraryClass;
 // Sub-cell dimensions.
 #define CELL_LEPTON_W 256
 #define CELL_LEPTON_H 256
+#define CELL_LEPTON CELL_LEPTON_W
 
 #define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
@@ -2874,7 +2875,7 @@ struct Cell
         return X * X + Y * Y;
     }
 
-    Coordinate As_Coord(int z) const;
+    Coordinate As_Coord(int z = 0) const;
 
     const char *As_String() const
     {
