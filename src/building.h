@@ -82,7 +82,7 @@ BuildingClass : public TechnoClass
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr) override;
         virtual ShapeSet *const Get_Image_Data() const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(const Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual const char *Full_Name() const override;
@@ -96,7 +96,7 @@ BuildingClass : public TechnoClass
         virtual Coordinate Exit_Coord() const override;
         virtual int Sort_Y() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Detach_All(bool all = false) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
@@ -104,7 +104,7 @@ BuildingClass : public TechnoClass
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual Rect entry_118() const override;
         virtual void Draw_Radial_Indicator() const override;
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;

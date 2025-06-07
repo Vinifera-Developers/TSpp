@@ -78,7 +78,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
          */
         virtual bool Is_Players_Army() const override;
         virtual VisualType Visual_Character(bool flag = false, const HouseClass *house = nullptr);
-        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(const Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
         virtual const TechnoTypeClass * Techno_Type_Class() const override;
         __declspec(property(get = Techno_Type_Class)) const TechnoTypeClass * TClass;
@@ -88,7 +88,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool Can_Player_Move() const override;
         virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Record_The_Kill(const ObjectClass *source) override;
         virtual void Do_Shimmer() override;
         virtual ExitType Exit_Object(const TechnoClass *object);
@@ -96,7 +96,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void entry_FC(Point2D &point, Rect &bounds) const;
         virtual void Hidden() override;
         virtual void Look(bool incremental = false, bool a2 = false) override;
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual void Clicked_As_Target(int flashes) override;
         virtual bool Select() override;
         virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
@@ -241,6 +241,11 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 0063A100
         // 0063A1D0
         // 0063A530
+
+        inline WeaponTypeClass* Get_Primary_Weapon(void) const { const WeaponInfoStruct* wdata = Get_Weapon(WEAPON_SLOT_PRIMARY); return const_cast<WeaponTypeClass*>(wdata->Weapon); }
+        inline WeaponTypeClass* Get_Secondary_Weapon(void) const { const WeaponInfoStruct* wdata = Get_Weapon(WEAPON_SLOT_SECONDARY); return const_cast<WeaponTypeClass*>(wdata->Weapon); }
+        __declspec(property(get = Get_Primary_Weapon)) WeaponTypeClass* PrimaryWeapon;
+        __declspec(property(get = Get_Secondary_Weapon)) WeaponTypeClass* SecondaryWeapon;
 
         void Techno_Draw_Object(const ShapeSet *shapefile,
             int shapenum,

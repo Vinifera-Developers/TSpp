@@ -92,8 +92,8 @@ class MapClass : public GScreenClass
         // 00510900
         // 00510A20
         void Sight_From(Coordinate &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
-        bool In_Radar(Cell &cell) const;
-        bool In_Radar(Coordinate &coord) const;
+        bool In_Radar(const Cell &cell) const;
+        bool In_Radar(const Coordinate &coord) const;
         void Place_Down(Cell &cell, ObjectClass *object);
         void Pick_Up(Cell &cell, ObjectClass *object);
         long Overpass();
@@ -133,7 +133,7 @@ class MapClass : public GScreenClass
         // 00515F90
         // 00516060
         // 005160F0
-        Cell Nearby_Location(const Cell &cell, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, bool check_flagged = false, int width = 1, int height = 1, bool a8 = false, bool a9 = false, bool a10 = false, bool a11 = true, const Cell &a12 = CELL_NONE) const;
+        Cell Nearby_Location(Cell const& cell, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, bool checkbridge = false, Point2D dimensions = Point2D(1, 1), bool = false, bool = false, bool = false, bool = true, Cell const& = Cell(0, 0)) const;
         bool Is_Area_Clear(const Cell &cell, int width, int height, SpeedType speed, int zone = -1, MZoneType check = MZONE_NORMAL, int a7 = -1, bool a8 = false, bool a9 = false) const;
         bool Base_Region(const Cell &cell, HousesType &house, ZoneType &zone) const;
         // 00516DA0
@@ -171,9 +171,9 @@ class MapClass : public GScreenClass
         CellClass *Iterator_Next_Cell();
         void Iterator_Reset();
         bool In_Local_Radar(Rect &rect, bool a2 = true) const;
-        bool In_Local_Radar(Cell &cell, bool a2 = true) const;
+        bool In_Local_Radar(const Cell &cell, bool a2 = true) const;
         bool In_Local_Radar(CellClass &cell, bool a2 = true) const;
-        bool In_Local_Radar(Coordinate &coord) const;
+        bool In_Local_Radar(const Coordinate &coord) const;
         // 0051E560
         CellClass *Horizontal_Iterator_Next_Cell();
         void Horizontal_Iterator_Reset();
@@ -260,9 +260,12 @@ class MapClass : public GScreenClass
         // 0052C900
         // 0052CE90
         // 0052D2E0
-        void Building_To_Overlay(Cell& cell, HouseClass& house, BuildingTypeClass* type);
-        void Building_To_Wall(Cell& cell, HouseClass& house, BuildingTypeClass* type);
+        void Place_Firestorm_Wall(const Cell& cell, HouseClass* house, BuildingTypeClass* type);
+        void Place_Wall(const Cell& cell, HouseClass* house, BuildingTypeClass* type);
         // 0052DBC0
+
+        bool Is_Same_Zone(Cell const& from, Cell const& to, MZoneType mzone = MZONE_NORMAL, bool isbridge1 = false, bool isbridge2 = false, bool leavemap = false);
+        int Get_Cell_Zone(Cell const& cell, MZoneType mzone = MZONE_NORMAL, bool bridge = false);
 
         bool Place_Crate(Cell where);
 

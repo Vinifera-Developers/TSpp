@@ -33,6 +33,7 @@
 #include "vector3.h"
 #include "tibsun_defines.h"
 #include "wstring.h"
+#include "buildingtype.h"
 
 
 
@@ -259,12 +260,12 @@ class CCINIClass : public INIClass
  *  @author: CCHyper
  */
 template<class T>
-TypeList<T *> TGet_TypeList(CCINIClass const & ini, const char *section, const char *entry, const TypeList<T *> defvalue, const DynamicVectorClass<T *> &heap)
+TypeList<T *> TGet_TypeList(CCINIClass const & ini, const char *section, const char *entry, const TypeList<T *> defvalue)
 {
     char buffer[1024];
 
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
-        TypeList<T> list;
+        TypeList<T *> list;
         char *token = std::strtok(buffer, ",");
         while (token) {
             T * ptr = const_cast<T *>(T::Find_Or_Make(token));

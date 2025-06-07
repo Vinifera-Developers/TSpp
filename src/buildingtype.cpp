@@ -30,17 +30,17 @@
 #include "tspp_assert.h"
 
 
-const BuildingTypeClass &BuildingTypeClass::As_Reference(BuildingType type)
+const BuildingTypeClass &BuildingTypeClass::As_Reference(StructType type)
 {
-    TSPP_ASSERT(type != BUILDING_NONE && type < BuildingTypes.Count());
+    TSPP_ASSERT(type != STRUCT_NONE && type < BuildingTypes.Count());
     return *BuildingTypes[type];
 }
 
 
-const BuildingTypeClass *BuildingTypeClass::As_Pointer(BuildingType type)
+const BuildingTypeClass *BuildingTypeClass::As_Pointer(StructType type)
 {
-    TSPP_ASSERT(type != BUILDING_NONE && type < BuildingTypes.Count());
-    return type != BUILDING_NONE && type < BuildingTypes.Count() ? BuildingTypes[type] : nullptr;
+    TSPP_ASSERT(type != STRUCT_NONE && type < BuildingTypes.Count());
+    return type != STRUCT_NONE && type < BuildingTypes.Count() ? BuildingTypes[type] : nullptr;
 }
 
 
@@ -56,29 +56,29 @@ const BuildingTypeClass *BuildingTypeClass::As_Pointer(const char *name)
 }
 
 
-BuildingType BuildingTypeClass::From_Name(const char *name)
+StructType BuildingTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
     if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return BUILDING_NONE;
+        return STRUCT_NONE;
     }
 
     if (name != nullptr) {
-        for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
+        for (StructType index = STRUCT_FIRST; index < BuildingTypes.Count(); ++index) {
             if (!strcasecmp(As_Reference(index).Name(), name)) {
                 return index;
             }
         }
     }
 
-    return BUILDING_NONE;
+    return STRUCT_NONE;
 }
 
 
-const char *BuildingTypeClass::Name_From(BuildingType type)
+const char *BuildingTypeClass::Name_From(StructType type)
 {
-    return (type != BUILDING_NONE && type < BuildingTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != STRUCT_NONE && type < BuildingTypes.Count() ? As_Reference(type).Name() : "<none>");
 }
 
 
@@ -90,7 +90,7 @@ const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
         return nullptr;
     }
 
-    for (BuildingType index = BUILDING_FIRST; index < BuildingTypes.Count(); ++index) {
+    for (StructType index = STRUCT_FIRST; index < BuildingTypes.Count(); ++index) {
         if (!strcasecmp(BuildingTypes[index]->Name(), name)) {
             return BuildingTypes[index];
         }

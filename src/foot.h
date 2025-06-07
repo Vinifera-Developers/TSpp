@@ -84,18 +84,18 @@ public:
      *  ObjectClass
      */
     virtual VisualType Visual_Character(bool flag = false, const HouseClass *house = nullptr) override;
-    virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
+    virtual ActionType What_Action(const Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
     virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
     virtual LayerType In_Which_Layer() const override;
     virtual bool Can_Demolish() const override;
     virtual bool entry_BC() override;
     virtual bool entry_C0() const;
     virtual bool Limbo() override;
-    virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
+    virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
     virtual void Detach_All(bool all = false) override;
     virtual void Remove_This() override;
     virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-    virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+    virtual bool Mark(MarkType mark = MARK_CHANGE) override;
     virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
     virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false) override;
     virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;

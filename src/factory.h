@@ -106,5 +106,5 @@ FactoryClass : public AbstractClass, public StageClass
         int SpecialItem;
         HouseClass *House;
         bool IsSuspended;
-        bool IsPlayerSuspended; // needs renaming. is able to un-suspend?
+        bool IsOnHold;
 };

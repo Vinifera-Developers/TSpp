@@ -71,13 +71,13 @@ TerrainClass : public ObjectClass, public StageClass
          */
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
         virtual bool Render(Rect &rect, bool force = false, bool a3 = false) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual Rect entry_118() const override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
         virtual bool Catch_Fire() override;

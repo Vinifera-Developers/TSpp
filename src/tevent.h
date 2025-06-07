@@ -99,7 +99,7 @@ TEventClass : public AbstractClass
         TeamTypeClass *Team;
 
         union {
-            BuildingType Structure;
+            StructType Structure;
             UnitType Unit;
             InfantryType Infantry;
             AircraftType Aircraft;

@@ -96,14 +96,14 @@ BulletClass :	public ObjectClass
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual Cell *Occupy_List(bool placement = false) const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
 
         /**
          *  BulletClass
          */
         virtual int Shape_Number() const;
         virtual void Assign_Target(AbstractClass * target);
-        virtual bool Unlimbo(Coordinate &coord, TVelocity3D &flyer);
+        virtual bool Unlimbo(const Coordinate &coord, TVelocity3D &flyer);
 
         // 00444580
         bool Is_Forced_To_Explode(Coordinate &coord) const;

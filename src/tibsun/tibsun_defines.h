@@ -932,12 +932,12 @@ typedef enum CloakType
     UNCLOAKING      // In process of uncloaking.
 } CloakType;
 
-typedef enum BuildingType
+typedef enum StructType
 {
-    BUILDING_FIRST = 0,
-    BUILDING_NONE = -1
-} BuildingType;
-DEFINE_ENUMERATION_OPERATORS(BuildingType);
+    STRUCT_FIRST = 0,
+    STRUCT_NONE = -1
+} StructType;
+DEFINE_ENUMERATION_OPERATORS(StructType);
 
 typedef enum SpeedType
 {
@@ -1061,7 +1061,7 @@ typedef enum MarkType
 {
     MARK_UP,              // Removed from the map.
     MARK_DOWN,            // Placed on the map.
-    MARK_UP_FORCED,
+    MARK_CHANGE,
     MARK_DOWN_FORCED,
 } MarkType;
 
@@ -3148,7 +3148,7 @@ public:
         Set_Value<Bits>(value, offset);
     }
 
-    template <size_t FacingCount> double Get_Radian() const {
+    template <size_t FacingCount = 65536> double Get_Radian() const {
         static_assert(std::has_single_bit(FacingCount), "FacingCount must be a power of two");
 
         constexpr size_t Bits = std::bit_width(FacingCount - 1);

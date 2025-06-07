@@ -458,7 +458,9 @@ extern unsigned long &GameCRC;
 extern unsigned long &ScenarioCRC;
 extern int &IsMono;
 
-extern const TheaterDataType *Theaters; 
+extern Cell& LastRadarEventCell;
+
+extern const TheaterDataType *Theaters;
 
 extern SpriteCollectionClass &SpriteCollection;
 

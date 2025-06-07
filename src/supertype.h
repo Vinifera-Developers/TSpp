@@ -71,7 +71,7 @@ SuperWeaponTypeClass : public AbstractTypeClass
          */
         virtual bool Read_INI(CCINIClass &ini) override;
 
-        virtual ActionType What_Action(Cell& cell, ObjectClass* object) const;
+        virtual ActionType What_Action(const Cell& cell, ObjectClass* object) const;
 
         static const SuperWeaponTypeClass *From_Action(ActionType action);
 

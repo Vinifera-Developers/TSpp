@@ -82,7 +82,7 @@ class ObjectClass : public AbstractClass
         virtual VisualType Visual_Character(bool raw = false, const HouseClass *house = nullptr);
         virtual ShapeSet* const Get_Image_Data() const;
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false);
-        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const;
+        virtual ActionType What_Action(const Cell &cell, bool check_fog = false, bool disallow_force = false) const;
         virtual LayerType In_Which_Layer() const;
         virtual bool entry_7C() const;
         virtual bool entry_80() const;
@@ -103,7 +103,7 @@ class ObjectClass : public AbstractClass
         virtual bool entry_BC();
         virtual bool entry_C0() const;
         virtual bool Limbo();
-        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N);
+        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N);
         virtual void Detach_All(bool all = false);
         virtual void Record_The_Kill(const ObjectClass *source);
         virtual bool Paradrop(Coordinate &coord);
@@ -121,7 +121,7 @@ class ObjectClass : public AbstractClass
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const;
         virtual void Hidden();
         virtual void Look(bool incremental = false, bool a2 = false);
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED);
+        virtual bool Mark(MarkType mark = MARK_CHANGE);
         virtual Rect entry_114() const;
         virtual Rect entry_118() const;
         virtual void Draw_Radial_Indicator() const;
@@ -134,7 +134,7 @@ class ObjectClass : public AbstractClass
         virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual int Weapon_Range(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false);
-        virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false);
+        virtual void Scatter(const Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false);
         virtual bool Catch_Fire();
         virtual void Fire_Out();
         virtual int Value() const;

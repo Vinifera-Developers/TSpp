@@ -110,19 +110,19 @@ public:
     static void One_Time();
     static void Init(TheaterType theater);
 
-    static const BuildingTypeClass &As_Reference(BuildingType type);
-    static const BuildingTypeClass *As_Pointer(BuildingType type);
+    static const BuildingTypeClass &As_Reference(StructType type);
+    static const BuildingTypeClass *As_Pointer(StructType type);
     static const BuildingTypeClass &As_Reference(const char *name);
     static const BuildingTypeClass *As_Pointer(const char *name);
-    static BuildingType From_Name(const char *name);
-    static const char *Name_From(BuildingType type);
+    static StructType From_Name(const char *name);
+    static const char *Name_From(StructType type);
     static const BuildingTypeClass *Find_Or_Make(const char *name);
     static void Fetch_ToTile_Types();
 
     static const ShapeSet*& BuildingZShape;
 
 public:
-    BuildingType HeapID;
+    StructType HeapID;
     Cell * OccupyList;
     ShapeSet * BuildupData;
     TPoint3D<int> HalfDamageSmokeLocation1;

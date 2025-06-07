@@ -197,7 +197,7 @@ public:
     void Just_Built(TechnoClass *techno); 
     bool Manual_Place(BuildingClass *builder, BuildingClass *object);
     void Clobber_All();
-    bool Does_Enemy_Building_Exist(BuildingType btype) const;
+    bool Does_Enemy_Building_Exist(StructType btype) const;
     const TechnoTypeClass *Suggest_New_Object(RTTIType objecttype, bool kennel = false) const;
     bool Flag_Remove(AbstractClass * target, bool set_home = false);
     bool Flag_Attach(Cell &cell, bool set_home = false);
@@ -212,7 +212,7 @@ public:
     float Power_Fraction() const;
     void Sell_Wall(Cell &cell, bool quiet = true);
     const BuildingTypeClass * Suggest_New_Building() const;
-    BuildingClass * Find_Building(BuildingType type, ZoneType zone = ZONE_NONE) const;
+    BuildingClass * Find_Building(StructType type, ZoneType zone = ZONE_NONE) const;
     Coordinate Find_Build_Location(BuildingClass *building) const;
     void Recalc_Center();
     int Expert_AI();
@@ -305,7 +305,7 @@ public:
     // 004CB5B0
     // 004CB720
     bool Is_Player_Control() const;
-    bool Is_Human_Control() const;
+    bool Is_Human_Player() const;
     // 004CB9C0
     void Init_Remap_Color();
     void Super_Weapon_Drop_Pods(SuperClass *super);
@@ -337,7 +337,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += BQuantity.Count_Of(static_cast<BuildingType>(list[i]->Fetch_Heap_ID()));
+            count += BQuantity.Count_Of(static_cast<StructType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -428,7 +428,7 @@ public:
     int IQ;
     StateType State;
     DynamicVectorClass<SuperClass *> SuperWeapon;
-    BuildingType JustBuiltStructure;
+    StructType JustBuiltStructure;
     InfantryType JustBuiltInfantry;
     UnitType JustBuiltUnit;
     AircraftType JustBuiltAircraft;
@@ -490,15 +490,15 @@ public:
     int RadarSpied;
     int PointTotal;
     QuarryType PreferredTarget;
-    TCounterClass<BuildingType> BQuantity;
+    TCounterClass<StructType> BQuantity;
     TCounterClass<UnitType> UQuantity;
     TCounterClass<InfantryType> IQuantity;
     TCounterClass<AircraftType> AQuantity;
-    TCounterClass<BuildingType> ActiveBQuantity;
+    TCounterClass<StructType> ActiveBQuantity;
     TCounterClass<UnitType> ActiveUQuantity;
     TCounterClass<InfantryType> ActiveIQuantity;
     TCounterClass<AircraftType> ActiveAQuantity;
-    TCounterClass<BuildingType> FactoryBQuantity;
+    TCounterClass<StructType> FactoryBQuantity;
     TCounterClass<UnitType> FactoryUQuantity;
     TCounterClass<InfantryType> FactoryIQuantity;
     TCounterClass<AircraftType> FactoryAQuantity;
@@ -509,7 +509,7 @@ public:
     DynamicVectorClass<ScoutStruct> ScoutNodes;
     CDTimerClass<FrameTimerClass> AITimer;
     CDTimerClass<FrameTimerClass> ExpertAITimer;
-    BuildingType BuildStructure;
+    StructType BuildStructure;
     UnitType BuildUnit;
     InfantryType BuildInfantry;
     AircraftType BuildAircraft;

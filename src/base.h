@@ -41,13 +41,13 @@ class BuildingClass;
 class BaseNodeClass
 {
     public:
-        BaseNodeClass() : Type(BUILDING_NONE), Where(-1, -1) {}
-        BaseNodeClass(BuildingType building, Cell cell) : Type(building), Where(cell) {}
+        BaseNodeClass() : Type(STRUCT_NONE), Where(-1, -1) {}
+        BaseNodeClass(StructType building, Cell cell) : Type(building), Where(cell) {}
         bool operator == (const BaseNodeClass & node) const { return Type == node.Type && Where == node.Where; }
         bool operator != (const BaseNodeClass & node) const { return Type != node.Type && Where != node.Where; }
         bool operator > (const BaseNodeClass & node) const { return true; }
 
-        BuildingType Type;
+        StructType Type;
         Cell Where;
 };
 
@@ -79,8 +79,8 @@ class BaseClass
         bool Is_Node(const BuildingClass * obj);
         BaseNodeClass * Get_Node(const BuildingClass * obj);
         BaseNodeClass * Get_Node(Cell &cell);
-        BaseNodeClass * Next_Buildable(BuildingType type = BUILDING_NONE);
-        int Next_Buildable_Index(BuildingType type = BUILDING_NONE);
+        BaseNodeClass * Next_Buildable(StructType type = STRUCT_NONE);
+        int Next_Buildable_Index(StructType type = STRUCT_NONE);
 
         void Read_INI(CCINIClass &ini, const char *section);
         void Write_INI(const CCINIClass &ini, const char *section);

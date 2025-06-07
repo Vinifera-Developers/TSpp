@@ -67,7 +67,7 @@ OverlayClass : public ObjectClass
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
         virtual void Placement_Draw_It(Point2D &point, Rect &bounds) const override;
-        virtual bool Mark(MarkType mark = MARK_UP_FORCED) override;
+        virtual bool Mark(MarkType mark = MARK_CHANGE) override;
 
         // 0058C850
         static TiberiumType To_TiberiumType(OverlayType overlay);

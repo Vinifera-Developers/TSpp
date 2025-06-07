@@ -154,7 +154,7 @@ public:
     void TMission_Talk_Bubble(ScriptMissionClass *mission, bool a3);
     void Flash_For(int count);
     bool Has_Air_Transport();
-    void func_627800(DynamicVectorClass<const TechnoTypeClass *> &vec);
+    void Team_Members(DynamicVectorClass<const TechnoTypeClass *> &vec);
     bool func_627A20();
 
     const char *Name() const;

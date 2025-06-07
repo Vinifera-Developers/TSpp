@@ -102,27 +102,27 @@ inline DirType Direction(Coordinate const& coord1, Coordinate const& coord2)
 
 inline DirType Desired_Facing(const Point2D &point1, const Point2D &point2)
 {
-    return Desired_Facing(point1.X, point1.Y, point2.X, point2.Y);
+    return Desired_Facing(point2.X, point2.Y, point1.X, point1.Y);
 }
 
 
 inline Dir256 Desired_Facing256(const Point2D &point1, const Point2D &point2)
 {
-    Dir256 facing = Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir();
+    Dir256 facing = Desired_Facing(point2.X, point2.Y, point1.X, point1.Y).Get_Dir();
     return facing;
 }
 
 
 inline FacingType Desired_Facing8(const Point2D &point1, const Point2D &point2)
 {
-    FacingType facing = Dir_Facing(Desired_Facing(point1.X, point1.Y, point2.X, point2.Y).Get_Dir());
+    FacingType facing = Dir_Facing(Desired_Facing(point2.X, point2.Y, point1.X, point1.Y).Get_Dir());
     return facing;
 }
 
 
 inline Dir256 Direction256(const Coordinate &coord1, const Coordinate &coord2)
 {
-    Dir256 facing = Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir();
+    Dir256 facing = Desired_Facing(coord2.X, coord2.Y, coord1.X, coord1.Y).Get_Dir();
     return facing;
 }
 
@@ -425,6 +425,13 @@ inline T Random_Pick(T a, T b)
 {
     return Scen->RandomNumber(a, b);
 };
+
+
+inline double Random_Pick2(int a, int b)
+{
+    int num = Scen->RandomNumber(a, b);
+    return (num * double(a + 1) / double(b));
+}
 
 
 inline float Random_Pick_Float(float a, float b)

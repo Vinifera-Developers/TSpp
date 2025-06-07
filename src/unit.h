@@ -70,12 +70,12 @@ UnitClass : public FootClass
          *  ObjectClass
          */
         virtual ActionType What_Action(const ObjectClass *object, bool disallow_force = false) override;
-        virtual ActionType What_Action(Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
+        virtual ActionType What_Action(const Cell &cell, bool check_fog = false, bool disallow_force = false) const override;
         virtual bool entry_80() const override;
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual const char *Full_Name() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
         virtual void Record_The_Kill(const ObjectClass *source) override;
         virtual void Set_Occupy_Bit(Coordinate &coord) override;
         virtual void Clear_Occupy_Bit(Coordinate &coord) override;
@@ -84,7 +84,7 @@ UnitClass : public FootClass
         virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
         virtual bool Active_Click_With(ActionType action, Cell &cell, bool a3 = false) override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool forced = false, bool a6 = false) override;
-        virtual void Scatter(Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
+        virtual void Scatter(const Coordinate &coord = Coordinate{-1, -1, -1}, bool forced = false, bool nokidding = false) override;
         virtual void Per_Cell_Process(PCPType why) override;
         virtual RadioMessageType Receive_Message(RadioClass *from, RadioMessageType message, long &param) override;
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true) override;
