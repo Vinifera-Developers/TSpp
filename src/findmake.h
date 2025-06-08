@@ -58,14 +58,14 @@ T * TFind_Or_Make(const char * name, const DynamicVectorClass<T *>& vector)
  *  @author: CCHyper
  */
 template<class T>
-TypeList<T const *> TGet_TypeList(CCINIClass const & ini, char const * section, char const * entry, TypeList<T const *> const & defvalue)
+TypeList<T *> TGet_TypeList(CCINIClass const & ini, char const * section, char const * entry, TypeList<T *> const & defvalue)
 {
     char buffer[128];
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
-        TypeList<T const *> list;
+        TypeList<T *> list;
         const char * token = strtok(buffer, ",");
         while (token != nullptr && token[0] != '\0') {
-            const T* ptr = T::Find_Or_Make(token);
+            T* ptr = const_cast<T*>(T::Find_Or_Make(token));
             if (ptr) {
                 list.Add(ptr);
             }
