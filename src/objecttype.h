@@ -133,8 +133,8 @@ class ObjectTypeClass : public AbstractTypeClass
     public:
 
     /*
-    **	Selected objects have a special marking box around them. This is the shapes that are
-    **	used for this purpose.
+    **  Selected objects have a special marking box around them. This is the shapes that are
+    **  used for this purpose.
     */
     static const ShapeSet*& SelectShapes;
 

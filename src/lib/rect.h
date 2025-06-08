@@ -38,9 +38,9 @@
 
 
 /*
-**	This class manages a rectangle. Typically, this is used for tracking regions on a surface
-**	and for clipping operations. This is a lightweight class in that it defines few support
-**	functions and exposes the member variables for direct access.
+**  This class manages a rectangle. Typically, this is used for tracking regions on a surface
+**  and for clipping operations. This is a lightweight class in that it defines few support
+**  functions and exposes the member variables for direct access.
 */
 template<class T>
 class TRect
@@ -61,7 +61,7 @@ public:
     TRect<T> operator - (TPoint2D<T> const& point) { return TRect<T>(Top_Left() - point, Width, Height); }
 
     /*
-    **	Bias this rectangle within another.
+    **  Bias this rectangle within another.
     */
     TRect<T> Bias_To(TRect<T> const& rect) const { return TRect<T>(Top_Left() + rect.Top_Left(), Width, Height); }
 
@@ -69,24 +69,24 @@ public:
     void Set(T x, T y, T w, T h) { X = x; Y = y; Width = w; Height = h; }
 
     /*
-    **	Determine if two rectangles overlap.
+    **  Determine if two rectangles overlap.
     */
     bool Is_Overlapping(TRect<T> const& rect) const { return X < rect.X + rect.Width && Y < rect.Y + rect.Height && X + Width > rect.X && Y + Height > rect.Y; }
 
     /*
-    **	Determine is rectangle is valid.
+    **  Determine is rectangle is valid.
     */
     bool Is_Valid() const { return Width > 0 && Height > 0; }
     __declspec(property(get = Is_Valid)) bool IsValid;
 
     /*
-    **	Returns size of rectangle if each discrete location within it is presumed
-    **	to be of size 1.
+    **  Returns size of rectangle if each discrete location within it is presumed
+    **  to be of size 1.
     */
     int Size() const { return static_cast<int>(Width) * static_cast<int>(Height); }
 
     /*
-    **	Fetch points of rectangle (used as a convenience for the programmer).
+    **  Fetch points of rectangle (used as a convenience for the programmer).
     */
     TPoint2D<T> Top_Left() const { return TPoint2D<T>(X, Y); }
     __declspec(property(get = Top_Left)) TPoint2D<T> TopLeft;
@@ -102,21 +102,21 @@ public:
 
 
     /*
-    **	Determine if a point lies within the rectangle.
+    **  Determine if a point lies within the rectangle.
     */
     bool Is_Point_Within(TPoint2D<T> const& point) const { return point.X >= X && point.X < X + Width && point.Y >= Y && point.Y < Y + Height; }
 
 public:
 
     /*
-    **	Coordinate of upper left corner of rectangle.
+    **  Coordinate of upper left corner of rectangle.
     */
     T X;
     T Y;
 
     /*
-    **	Dimensions of rectangle. If the width or height is less than or equal to
-    **	zero, then the rectangle is in an invalid state.
+    **  Dimensions of rectangle. If the width or height is less than or equal to
+    **  zero, then the rectangle is in an invalid state.
     */
     T Width;
     T Height;
@@ -208,13 +208,13 @@ TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* 
     TRect<T> new_draw_rect = draw_rect;		// Working draw_rect.
 
     /*
-    **	Both draw_rects must be valid or else no intersection can occur. In such
-    **	a case, return an illegal draw_rect.
+    **  Both draw_rects must be valid or else no intersection can occur. In such
+    **  a case, return an illegal draw_rect.
     */
     if (!bounding_rect.Is_Valid() || !draw_rect.Is_Valid()) return bad_rect;
 
     /*
-    **	The draw_rect spills past the left edge.
+    **  The draw_rect spills past the left edge.
     */
     if (new_draw_rect.X < bounding_rect.X) {
         new_draw_rect.Width -= T(bounding_rect.X - new_draw_rect.X);
@@ -223,7 +223,7 @@ TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* 
     if (new_draw_rect.Width < 1) return bad_rect;
 
     /*
-    **	The draw_rect spills past top edge.
+    **  The draw_rect spills past top edge.
     */
     if (new_draw_rect.Y < bounding_rect.Y) {
         new_draw_rect.Height -= T(bounding_rect.Y - new_draw_rect.Y);
@@ -232,7 +232,7 @@ TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* 
     if (new_draw_rect.Height < 1) return bad_rect;
 
     /*
-    **	The draw_rect spills past the right edge.
+    **  The draw_rect spills past the right edge.
     */
     if (new_draw_rect.X + new_draw_rect.Width > bounding_rect.X + bounding_rect.Width) {
         new_draw_rect.Width -= T(new_draw_rect.X + new_draw_rect.Width - (bounding_rect.X + bounding_rect.Width));
@@ -240,7 +240,7 @@ TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* 
     if (new_draw_rect.Width < 1) return bad_rect;
 
     /*
-    **	The draw_rect spills past the bottom edge.
+    **  The draw_rect spills past the bottom edge.
     */
     if (new_draw_rect.Y + new_draw_rect.Height > bounding_rect.Y + bounding_rect.Height) {
         new_draw_rect.Height -= T(new_draw_rect.Y + new_draw_rect.Height - (bounding_rect.Y + bounding_rect.Height));
@@ -248,8 +248,8 @@ TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* 
     if (new_draw_rect.Height < 1) return bad_rect;
 
     /*
-    **	Adjust Height relative draw position according to Height new draw_rect
-    **	union.
+    **  Adjust Height relative draw position according to Height new draw_rect
+    **  union.
     */
     if (x != nullptr) {
         *x -= T(new_draw_rect.X - draw_rect.X);
@@ -289,7 +289,7 @@ TRect<T> Intersect(TRect<T> const& rect1, TRect<T> const& rect2)
 
 
 /*
-**	This typedef provides an uncluttered type name for a rectangle that
-**	is composed of integers.
+**  This typedef provides an uncluttered type name for a rectangle that
+**  is composed of integers.
 */
 typedef TRect<int> Rect;

@@ -241,14 +241,14 @@ class SidebarClass : public PowerClass
                 BuildType Buildables[MAX_BUILDABLES];
 
                 /*
-                **	Pointer to the shape data for small versions of the logos. These are used as
-                **	placeholder pieces on the side bar.
+                **  Pointer to the shape data for small versions of the logos. These are used as
+                **  placeholder pieces on the side bar.
                 */
                 static const ShapeSet*& LogoShape;
 
                 /*
-                **	This points to the animation sequence of frames used to mark the passage of time
-                **	as an object is undergoing construction.
+                **  This points to the animation sequence of frames used to mark the passage of time
+                **  as an object is undergoing construction.
                 */
                 static const ShapeSet*& ClockShape;
                 static const ShapeSet*& RechargeClockShape;

@@ -38,22 +38,22 @@
 
 
  /*
- **	This is the header that appears at the beginning of the ShapeSet file. The header
- **	is a multiple of 8 bytes long to facilitate data alignment. The shape header is
- **	immediately followed by an N length array of ShapeRecord objects. The actual
- **	shape data follows this array.
+ **  This is the header that appears at the beginning of the ShapeSet file. The header
+ **  is a multiple of 8 bytes long to facilitate data alignment. The shape header is
+ **  immediately followed by an N length array of ShapeRecord objects. The actual
+ **  shape data follows this array.
  */
 #pragma pack(push, 4)
 class ShapeSet
 {
 public:
     /*
-    **	Fetch pointer to raw shape data (NULL if not present or empty).
+    **  Fetch pointer to raw shape data (NULL if not present or empty).
     */
     void* Get_Data(int shape) const;
 
     /*
-    **	Fetch sub-rectangle that the shape data represents.
+    **  Fetch sub-rectangle that the shape data represents.
     */
     Rect Get_Rect(int shape) const;
 
@@ -61,44 +61,44 @@ public:
     RGBClass Get_Color(int shape) const;
 
     /*
-    **	Are there any transparent pixels within the shape?
+    **  Are there any transparent pixels within the shape?
     */
     bool Is_Transparent(int shape) const;
 
     /*
-    **	Determines if the specified shape is RLE compressed.
+    **  Determines if the specified shape is RLE compressed.
     */
     bool Is_RLE_Compressed(int shape) const;
 
     /*
-    **	Logical width of the shape set.
+    **  Logical width of the shape set.
     */
     int Get_Width() const { return Width; }
 
     /*
-    **	Logical height of the shape set.
+    **  Logical height of the shape set.
     */
     int Get_Height() const { return Height; }
 
     /*
-    **	Number of shapes in this shape set.
+    **  Number of shapes in this shape set.
     */
     int Get_Count() const { return Count; }
 
 protected:
     /*
-    **	QShape information flags.
+    **  QShape information flags.
     */
     short Flags;
 
     /*
-    **	The nominal width and height of the shape (in pixels).
+    **  The nominal width and height of the shape (in pixels).
     */
     short Width;
     short Height;
 
     /*
-    **	The total number of shapes in the file.
+    **  The total number of shapes in the file.
     */
     short Count;
 
@@ -106,20 +106,20 @@ protected:
     {
     public:
         /*
-        **	The sub-offset (relative to logical 0,0 at upper left corner) for this
-        **	shape's data.
+        **  The sub-offset (relative to logical 0,0 at upper left corner) for this
+        **  shape's data.
         */
         short X;
         short Y;
 
         /*
-        **	The dimensions of this shape's data.
+        **  The dimensions of this shape's data.
         */
         short Width;
         short Height;
 
         /*
-        **	Flags that indicate some aspect of this particular shape image.
+        **  Flags that indicate some aspect of this particular shape image.
         */
         short Flags;
         enum {
@@ -152,7 +152,7 @@ protected:
 public:
 
     /*
-    **	Prevents a shape object from being constructed illegally.
+    **  Prevents a shape object from being constructed illegally.
     */
     ShapeSet() = delete;
     ShapeSet(ShapeSet const& rvalue) = delete;

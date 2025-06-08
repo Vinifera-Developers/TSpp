@@ -37,7 +37,7 @@
 
 
 /***************************************************************************
-**	These are the text representations of the radio messages that can be transmitted.
+**  These are the text representations of the radio messages that can be transmitted.
 */
 static const char * const RadioMessages[RADIO_COUNT] =
 {
@@ -80,7 +80,7 @@ static const char * const RadioMessages[RADIO_COUNT] =
 
 
 /***************************************************************************
-**	These are the ASCII names for the cell land types.
+**  These are the ASCII names for the cell land types.
 */
 static const char * const LandName[LAND_COUNT] =
 {
@@ -100,7 +100,7 @@ static const char * const LandName[LAND_COUNT] =
 
 
 /***************************************************************************
-**	These are the ASCII names for the display drawing layer types.
+**  These are the ASCII names for the display drawing layer types.
 */
 static const char * const LayerName[LAYER_COUNT] =
 {
@@ -113,7 +113,7 @@ static const char * const LayerName[LAYER_COUNT] =
 
 
 /***************************************************************************
-**	These are the ASCII names for the basic unit facing types.
+**  These are the ASCII names for the basic unit facing types.
 */
 static const char * const FacingName[FACING_COUNT] =
 {
