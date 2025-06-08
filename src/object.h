@@ -153,7 +153,7 @@ class ObjectClass : public AbstractClass
         virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true);
         virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr);
         virtual Coordinate Get_Coord() const;
-        virtual void Set_Coord(Coordinate &coord);
+        virtual void Set_Coord(const Coordinate &coord);
         __declspec(property(get = Get_Coord, put = Set_Coord)) Coordinate PositionCoord;
         virtual Cell Get_Cell() const;
         __declspec(property(get = Get_Cell)) Cell PositionCell;

@@ -105,7 +105,7 @@ public:
     virtual void entry_174(int a1, int a2) override;
     virtual MoveType Can_Enter_Cell(const CellClass *cell, FacingType facing = FACING_NONE, int cell_level = -1, const CellClass *a4 = nullptr, bool a5 = true) override;
     virtual MoveType entry_180(const CellClass *cell, FacingType facing = FACING_NONE, int *cell_level = nullptr, bool *a4 = nullptr, const CellClass *a5 = nullptr) override;
-    virtual void Set_Coord(Coordinate &coord) override;
+    virtual void Set_Coord(const Coordinate &coord) override;
 
     /**
      *  MissionClass
