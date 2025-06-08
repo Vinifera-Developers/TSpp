@@ -87,6 +87,7 @@ class ObjectClass : public AbstractClass
         virtual bool entry_7C() const;
         virtual bool entry_80() const;
         virtual const TechnoTypeClass * Techno_Type_Class() const;
+        __declspec(property(get = Techno_Type_Class)) const TechnoTypeClass* TClass;
         virtual const ObjectTypeClass * Class_Of() const;
         virtual int Get_Ownable() const;
         virtual const char *Full_Name() const;
