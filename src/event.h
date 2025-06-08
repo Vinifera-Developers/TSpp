@@ -45,18 +45,19 @@ class EventClass
 {
 public:
     EventClass();
-    EventClass(unsigned int house_id, SpecialClass data);
-    EventClass(unsigned int house_id, EventType type, TargetClass target);
-    EventClass(unsigned int house_id, EventType type);
-    EventClass(unsigned int house_id, EventType type, Cell const & cell);
-    EventClass(unsigned int house_id, EventType type, TargetClass src, TargetClass dest);
-    EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target = TARGET_NONE, TargetClass destination = TARGET_NONE);
-    EventClass(unsigned int house_id, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
-    EventClass(unsigned int house_id, EventType type, RTTIType object, int id);
-    EventClass(unsigned int house_id, EventType type, RTTIType object, Cell const & cell);
-    EventClass(unsigned int house_id, EventType type, int id, Cell const & cell);
-    EventClass(unsigned int house_id, AnimType anim, HousesType owner, Coordinate *coord);
-    EventClass(unsigned int house_id, void *ptr, unsigned long size);
+    EventClass(int index, SpecialClass data);
+    EventClass(int index, EventType type, TargetClass target);
+    EventClass(int index, EventType type);
+    EventClass(int index, EventType type, int val);
+    EventClass(int index, EventType type, const Cell& cell);
+    EventClass(int index, EventType type, TargetClass src, TargetClass dest);
+    EventClass(int index, TargetClass src, MissionType mission, TargetClass target=TargetClass(), TargetClass destination = TargetClass());
+    EventClass(int index, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
+    EventClass(int index, EventType type, RTTIType object, int id);
+    EventClass(int index, EventType type, RTTIType object, Cell const& cell);
+    EventClass(int index, EventType type, int id, const Cell& cell);
+    EventClass(int index, AnimType anim, HousesType owner, const Coordinate& coord);
+    EventClass(int index, EventType type, void* ptr, unsigned long size);
 
     EventClass(EventType type, unsigned long hi, unsigned long lo)
     {

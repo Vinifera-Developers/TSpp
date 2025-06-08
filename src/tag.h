@@ -64,7 +64,7 @@ TagClass : public AbstractClass
         virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void Object_CRC(CRCEngine &crc) const override;
 
-        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, Cell cell = INVALID_CELL, bool a4 = false, ObjectClass *source = nullptr);
+        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, Cell cell = CELL_NONE, bool a4 = false, ObjectClass *source = nullptr);
         // 0061E750
         // 0061E7B0
         Cell Get_Cell() const; // 0061E810

@@ -162,7 +162,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Response_Select() const;
         virtual void Response_Move() const;
         virtual void Response_Attack() const;
-        virtual void Player_Assign_Mission(MissionType order, AbstractClass * target = TARGET_NULL, AbstractClass * destination = TARGET_NULL);
+        virtual void Player_Assign_Mission(MissionType order, AbstractClass * target = nullptr, AbstractClass * destination = nullptr);
         virtual void Reduce_Ammunition();
         virtual bool Target_Something_Nearby(Coordinate &coord, ThreatType threat);
         virtual void Stun();

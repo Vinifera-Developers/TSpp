@@ -77,7 +77,7 @@ class DisplayClass : public MapClass
         void Set_Cursor_Shape(Cell const *list);
         bool Passes_Proximity_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
         bool Passes_Shroud_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
-        Cell Set_Cursor_Pos(Cell &pos = INVALID_CELL);
+        Cell Set_Cursor_Pos(Cell &pos = CELL_NONE);
         wDimensionStruct Get_Occupy_Dimensions(Cell const *list) const;
         void Cursor_Mark(Cell &pos, bool on);
         void Submit(ObjectClass const *object);
@@ -85,7 +85,7 @@ class DisplayClass : public MapClass
         ObjectClass *Cell_Object(Cell &cell, Point2D &xy = Point2D());
         ObjectClass *Next_Object(ObjectClass *object) const;
         ObjectClass *Prev_Object(ObjectClass *object) const;
-        Cell Calculated_Cell(SourceType dir, Cell &waypoint = INVALID_CELL, Cell &cell = INVALID_CELL, SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
+        Cell Calculated_Cell(SourceType dir, Cell &waypoint = CELL_NONE, Cell &cell = CELL_NONE, SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;
         bool Good_Reinforcement_Cell(Cell &outcell, Cell &incell, SpeedType loco, int zone, MZoneType mzone) const;
         void Compute_Start_Pos();
         void Sell_Mode_Control(int control);
