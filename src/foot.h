@@ -93,7 +93,7 @@ public:
     virtual bool Limbo() override;
     virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
     virtual void Detach_All(bool all = false) override;
-    virtual void Remove_This() override;
+    virtual void Delete_Me() override;
     virtual void Draw_It(Point2D &point, Rect &bounds) const override;
     virtual bool Mark(MarkType mark = MARK_CHANGE) override;
     virtual bool Active_Click_With(ActionType action, ObjectClass *target, bool a3 = false) override;
