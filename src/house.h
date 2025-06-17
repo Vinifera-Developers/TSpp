@@ -315,22 +315,57 @@ public:
 
     BuildingTypeClass *Get_First_Ownable(TypeList<BuildingTypeClass *> &list) const
     {
-        return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        return reinterpret_cast<BuildingTypeClass *>(Get_First_Ownable(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
     }
 
     UnitTypeClass* Get_First_Ownable(TypeList<UnitTypeClass*>& list) const
     {
-        return reinterpret_cast<UnitTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+        return reinterpret_cast<UnitTypeClass*>(Get_First_Ownable(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
     }
 
     InfantryTypeClass *Get_First_Ownable(TypeList<InfantryTypeClass *> &list) const
     {
-        return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable((TypeList<TechnoTypeClass *> &)list));
+        return reinterpret_cast<InfantryTypeClass *>(Get_First_Ownable(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
     }
 
     AircraftTypeClass* Get_First_Ownable(TypeList<AircraftTypeClass*>& list) const
     {
-        return reinterpret_cast<AircraftTypeClass*>(Get_First_Ownable((TypeList<TechnoTypeClass*> &)list));
+        return reinterpret_cast<AircraftTypeClass*>(Get_First_Ownable(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
+    }
+
+    /**
+     *  Same as the vanilla implementation but uses ActLike instead
+     */
+    TechnoTypeClass* Get_First_ActLike(TypeList<TechnoTypeClass*>& list) const
+    {
+        int owners = 1 << ActLike;
+        for (int i = 0; i < list.Count(); i++) {
+            if (owners & list[i]->Ownable) {
+                return list[i];
+            }
+        }
+
+        return nullptr;
+    }
+
+    BuildingTypeClass* Get_First_ActLike(TypeList<BuildingTypeClass*>& list) const
+    {
+        return reinterpret_cast<BuildingTypeClass*>(Get_First_ActLike(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
+    }
+
+    UnitTypeClass* Get_First_ActLike(TypeList<UnitTypeClass*>& list) const
+    {
+        return reinterpret_cast<UnitTypeClass*>(Get_First_ActLike(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
+    }
+
+    InfantryTypeClass* Get_First_ActLike(TypeList<InfantryTypeClass*>& list) const
+    {
+        return reinterpret_cast<InfantryTypeClass*>(Get_First_ActLike(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
+    }
+
+    AircraftTypeClass* Get_First_ActLike(TypeList<AircraftTypeClass*>& list) const
+    {
+        return reinterpret_cast<AircraftTypeClass*>(Get_First_ActLike(reinterpret_cast<TypeList<TechnoTypeClass*>&>(list)));
     }
 
     int Count_Owned(TypeList<BuildingTypeClass*>& list)
