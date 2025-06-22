@@ -136,7 +136,7 @@ InfantryClass : public FootClass
         void Firing_AI();
         void Doing_AI();
         void Movement_AI();
-        bool Is_Flying_JumpJet();
+        bool Is_JumpJet();
         // 004D9B70
 
         static void Read_INI(CCINIClass &ini);
