@@ -299,7 +299,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         FacingClass BarrelFacing;
         FacingClass PrimaryFacing;
         FacingClass SecondaryFacing;
-        int CurrentBurstIndex;
+        int BurstIndex;
         CDTimerClass<FrameTimerClass> TargetingLaserTimer;
         unsigned short SoundRandomSeed;
         short SinkingYOffset;
