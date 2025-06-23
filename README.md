@@ -31,13 +31,19 @@ No assets, texts, artwork or other media from the original game(s) is included i
 *Westwood Studios is a trademark or registered trademark of Electronic Arts in the U.S. and/or other countries. All rights reserved.*
 
 # License
-The source code provided in this repository is licenced under the [GNU General Public License version 3](<https://www.gnu.org/licenses/gpl-3.0.html>). Please see the accompanying LICENSE file.
+The source code in this repository is licensed under the [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.html).  
+Please refer to the accompanying `LICENSE` file for full details.
 
-Some source code released by Electronic Arts Inc. for the [C&C Remastered Collection](<https://github.com/electronicarts/CnC_Remastered_Collection>)
-is used in this project and is licenced under the [GNU General Public License version 3](<https://www.gnu.org/licenses/gpl-3.0.html>).
-These source files are marked in the headers for easy identification and are applied
-with the following additional terms below, copied from the LICENSE file included in
-the C&C Remastered Collection source code repository.
+This project also incorporates source code released by Electronic Arts Inc. under the same [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) license.  
+These contributions originate from the following official repositories:
+
+- [C&C Remastered Collection](https://github.com/electronicarts/CnC_Remastered_Collection)  
+- [C&C Red Alert](https://github.com/electronicarts/CnC_Red_Alert)  
+- [C&C Tiberian Dawn](https://github.com/electronicarts/CnC_Tiberian_Dawn)  
+- [C&C Renegade](https://github.com/electronicarts/CnC_Renegade)  
+- [C&C Generals: Zero Hour](https://github.com/electronicarts/CnC_Generals_Zero_Hour)
+
+They are used in accordance with the original license terms and include additional terms as permitted under [Section 7 of the GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html#section7):
 
 <sub><i>Code within this repository can not be used for commercial or financial software as
 dictated by the license released by Electronic Arts Inc. (see ADDITIONAL TERMS - SECTION 7 of LICENSE)</i></sub>
