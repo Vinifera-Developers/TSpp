@@ -160,7 +160,7 @@ CellClass : public AbstractClass
         // 0045ABA0
         TiberiumType Tiberium_Type_Here();
         int Get_Tiberium_Value() const;
-        bool Is_Tile_Water() const { return Tile >= WaterSet && Tile < (WaterSet+14); } // 0045ACB0
+        bool Is_Tile_Water() const { return ITType >= WaterSet && ITType < (WaterSet+14); } // 0045ACB0
         int Occupier_Height() const; // 0045ACD0
         void Detach(AbstractClass * target);
         // 0045AE90
@@ -170,32 +170,32 @@ CellClass : public AbstractClass
         // 0045B0D0
         // 0045B200
         // 0045B760
-        bool Is_Tile_Clear() const { return Tile == ISOTILE_NONE || Tile == ISOTILE_CLEAR; } // 0045BFF0
-        bool Is_Tile_Ramp() const { return (Tile >= RampBase && Tile < (RampBase+20)) || (Tile >= RampSmooth && Tile < (RampSmooth+12)); } // 0045C010
+        bool Is_Tile_Clear() const { return ITType == ISOTILE_NONE || ITType == ISOTILE_CLEAR; } // 0045BFF0
+        bool Is_Tile_Ramp() const { return (ITType >= RampBase && ITType < (RampBase+20)) || (ITType >= RampSmooth && ITType < (RampSmooth+12)); } // 0045C010
         //bool Is_() const { return ; } // 0045C040     <- cliffset, water cliffs, waterfall, bridges, destroyable cliffs
-        bool Is_Tile_Shore() const { return Tile >= ShorePieces && Tile < (ShorePieces+42); } // 0045C220
+        bool Is_Tile_Shore() const { return ITType >= ShorePieces && ITType < (ShorePieces+42); } // 0045C220
         //bool Is_() const { return ; } // 0045C240     <- shore and waterfalls
         //bool Is_() const { return ; } // 0045C2C0     <- swamp and water LAT
-        bool Is_Tile_Misc_Pavement() const { return Tile >= MiscPaveTile && Tile < (MiscPaveTile+14); } // 0045C2F0
-        bool Is_Tile_Pavement() const { return Tile >= PaveTile && Tile < (PaveTile+16); } // 0045C310
+        bool Is_Tile_Misc_Pavement() const { return ITType >= MiscPaveTile && ITType < (MiscPaveTile+14); } // 0045C2F0
+        bool Is_Tile_Pavement() const { return ITType >= PaveTile && ITType < (PaveTile+16); } // 0045C310
         bool Is_Tile_Dirt_Road() const // 0045C330
         {
-            return Tile >= DirtRoadJunction && Tile < (DirtRoadJunction+11)
-                || Tile >= DirtRoadCurve && Tile < (DirtRoadCurve+24)
-                || Tile >= DirtRoadStraight && Tile < (DirtRoadStraight+66);
+            return ITType >= DirtRoadJunction && ITType < (DirtRoadJunction+11)
+                || ITType >= DirtRoadCurve && ITType < (DirtRoadCurve+24)
+                || ITType >= DirtRoadStraight && ITType < (DirtRoadStraight+66);
         }
-        bool Is_Tile_Paved_Road() const { return Tile >= PavedRoads && Tile < (PavedRoads+15); } // 0045C370
-        bool Is_Tile_Paved_Road_End() const { return Tile >= PavedRoadEnds && Tile < (PavedRoadEnds+4); } // 0045C390
-        bool Is_Tile_Paved_Road_Slope() const { return Tile >= PavedRoadSlopes && Tile < (PavedRoadSlopes+4); } // 0045C3B0
-        bool Is_Tile_Paved_Road_Median() const { return Tile >= Medians && Tile < (Medians+14); } // 0045C3D0
+        bool Is_Tile_Paved_Road() const { return ITType >= PavedRoads && ITType < (PavedRoads+15); } // 0045C370
+        bool Is_Tile_Paved_Road_End() const { return ITType >= PavedRoadEnds && ITType < (PavedRoadEnds+4); } // 0045C390
+        bool Is_Tile_Paved_Road_Slope() const { return ITType >= PavedRoadSlopes && ITType < (PavedRoadSlopes+4); } // 0045C3B0
+        bool Is_Tile_Paved_Road_Median() const { return ITType >= Medians && ITType < (Medians+14); } // 0045C3D0
         //bool Is_() const { return ; } // 0045C3F0     <- ice1 and ice2 sets
-        bool Is_Tile_Bridge() const { return Tile >= BridgeSet && Tile < (BridgeSet+16); } // 0045C410
-        bool Is_Tile_Train_Bridge() const { return Tile >= TrainBridgeSet && Tile < (TrainBridgeSet+16); } // 0045C430
+        bool Is_Tile_Bridge() const { return ITType >= BridgeSet && ITType < (BridgeSet+16); } // 0045C410
+        bool Is_Tile_Train_Bridge() const { return ITType >= TrainBridgeSet && ITType < (TrainBridgeSet+16); } // 0045C430
         //bool Is_() const { return ; } // 0045C450     <- clear to sand LAT
         // 0045C470      <- clear to green LAT
-        bool Is_Tile_Destroyable_Cliff() const { return Tile == DestroyableCliff || Tile == (DestroyableCliff+1); } // 0045C5A0
+        bool Is_Tile_Destroyable_Cliff() const { return ITType == DestroyableCliff || ITType == (DestroyableCliff+1); } // 0045C5A0
         bool Is_Tile_Bridge_Middle() const {
-            const IsometricTileType ttype = Tile - BridgeSet + 1;
+            const IsometricTileType ttype = ITType - BridgeSet + 1;
             return (ttype == BridgeMiddle1 + 0 || ttype == BridgeMiddle1 + 1 ||
                     ttype == BridgeMiddle1 + 2 || ttype == BridgeMiddle1 + 3 ||
                     ttype == BridgeMiddle2 + 0 || ttype == BridgeMiddle2 + 1 ||
@@ -203,7 +203,7 @@ CellClass : public AbstractClass
         }
 
         bool Is_Tile_Train_Bridge_Middle() const {
-            const IsometricTileType ttype = Tile - TrainBridgeSet + 1;
+            const IsometricTileType ttype = ITType - TrainBridgeSet + 1;
             return (ttype == BridgeMiddle1 + 0 || ttype == BridgeMiddle1 + 1 ||
                     ttype == BridgeMiddle1 + 2 || ttype == BridgeMiddle1 + 3 ||
                     ttype == BridgeMiddle2 + 0 || ttype == BridgeMiddle2 + 1 ||
@@ -261,9 +261,9 @@ CellClass : public AbstractClass
 
         bool Spread_Tiberium(TiberiumType tiberium, bool forced = false);
 
-        bool Is_Tile_Ice_Shore() const { return Tile >= IceShoreSet && Tile < (IceShoreSet+48); }
-        bool Is_Tile_Dirt_Road_Slope() const { return Tile >= DirtRoadSlopes && Tile < (DirtRoadSlopes+8); }
-        bool Is_Tile_Black() const { return Tile == BlackTile; }
+        bool Is_Tile_Ice_Shore() const { return ITType >= IceShoreSet && ITType < (IceShoreSet+48); }
+        bool Is_Tile_Dirt_Road_Slope() const { return ITType >= DirtRoadSlopes && ITType < (DirtRoadSlopes+8); }
+        bool Is_Tile_Black() const { return ITType == BlackTile; }
 
         bool Is_Overlay_Low_Bridge() const { return Overlay >= OVERLAY_LOWBRIDGE_BEGIN && Overlay <= OVERLAY_LOWBRIDGE_END; }
         bool Is_Overlay_Train_Tracks() const { return Overlay >= OVERLAY_TRACK_BEGIN && Overlay <= OVERLAY_TRACK_END; }
@@ -280,7 +280,7 @@ CellClass : public AbstractClass
         CellClass *BridgeOwner;
         int field_20;
         LightConvertClass *Drawer;
-        IsometricTileType Tile;
+        IsometricTileType ITType;
         TagClass *CellTag;
         OverlayType Overlay;
         SmudgeType Smudge;
@@ -361,7 +361,7 @@ CellClass : public AbstractClass
         unsigned IsToFog:1;
         unsigned IsBridgeOwner:1;       // is the starting point of a bridge connection? (from start to end?)
         unsigned IsUnderBridge:1;            // is covered by bridge overlay?
-        unsigned Bit2_32:1;             // is covered by bridge overlay? also
+        unsigned WasUnderBridge:1;             // is covered by bridge overlay? also
         unsigned Bit2_64:1;             // unrepaired/repairable bridge connection.
         unsigned Bit2_128:1;            // draws on cells that are the length of the bridge body. (low down?)
 

@@ -96,7 +96,7 @@ TerrainTypeClass : public ObjectTypeClass
         unsigned TemperateOccupationBits;
         unsigned SnowOccupationBits;
         bool IsWaterBased;
-        bool IsSpawnsTiberium;
+        bool IsTiberiumSpawn;
         bool IsFlammable;
         bool IsAnimated;
         bool IsVeinhole;
