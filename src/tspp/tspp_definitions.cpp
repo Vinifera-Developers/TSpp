@@ -1835,7 +1835,7 @@ DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Cell &), 0x0050F2
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) const, 0x0050F280);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coordinate &), 0x0050F210);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coordinate &) const, 0x0050F210);
-DEFINE_IMPLEMENTATION(void MapClass::Sight_From(Coordinate &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(void MapClass::Sight_From(const Coordinate &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Cell &) const, 0x00510FB0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Coordinate &) const, 0x00511000);
 DEFINE_IMPLEMENTATION(void MapClass::Place_Down(Cell &, ObjectClass *), 0x00511070);
@@ -1855,14 +1855,14 @@ DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
 DEFINE_IMPLEMENTATION(int MapClass::Get_Height_GL(const Coordinate &) const, 0x0051E130);
-DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterator_Next_Cell(), 0x0051E1B0);
-DEFINE_IMPLEMENTATION(void MapClass::Iterator_Reset(), 0x0051E270);
+DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterate(), 0x0051E1B0);
+DEFINE_IMPLEMENTATION(void MapClass::Reset_Iterator(), 0x0051E270);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Rect &, bool) const, 0x0051E2B0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(const Cell &, bool) const, 0x0051E380);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(CellClass &, bool) const, 0x0051E460);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(const Coordinate &) const, 0x0051E510);
-DEFINE_IMPLEMENTATION(CellClass *MapClass::Horizontal_Iterator_Next_Cell(), 0x0051E630);
-DEFINE_IMPLEMENTATION(void MapClass::Horizontal_Iterator_Reset(), 0x0051E770);
+DEFINE_IMPLEMENTATION(CellClass *MapClass::Local_Iterate(), 0x0051E630);
+DEFINE_IMPLEMENTATION(void MapClass::Reset_Local_Iterator(), 0x0051E770);
 DEFINE_IMPLEMENTATION(bool MapClass::Deform(const Cell&, bool), 0x0051E9E0);
 DEFINE_IMPLEMENTATION(bool MapClass::Crack_Ice(CellClass&, ObjectClass*), 0x00520700);
 DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Low_Bridge_At(const Cell&), 0x005241B0);
@@ -2521,7 +2521,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass *), 0x004C3FA0);
 // 004C3FC0
 // 004C40F0
 // 004C4150
-DEFINE_IMPLEMENTATION(Coordinate *HouseClass::Get_Waypoint_Coord(Cell &), 0x004C4210);
+DEFINE_IMPLEMENTATION(Coordinate *HouseClass::Waypoint_Coord(Cell &), 0x004C4210);
 DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bool &), 0x004C42C0);
 // 004C4450
 // 004C45D0
@@ -4458,10 +4458,10 @@ DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_INI(CCINIClass &), 0x005E0950);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Global_INI(CCINIClass &), 0x005DF930);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Local_INI(CCINIClass &), 0x005DFBD0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_Local_INI(CCINIClass &), 0x005DFD10);
-DEFINE_IMPLEMENTATION(Cell ScenarioClass::Get_Waypoint_Location(int) const, 0x005E1460);
-DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Get_Waypoint_Cell(int) const, 0x005E1480);
-DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Get_Waypoint_Coord(int) const, 0x005E14A0);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Valid_Waypoint(int) const, 0x005E1520);
+DEFINE_IMPLEMENTATION(Cell ScenarioClass::Waypoint_Cell(int) const, 0x005E1460);
+DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Waypoint_CellClass(int) const, 0x005E1480);
+DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Waypoint_Coord(int) const, 0x005E14A0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Waypoint_Valid(int) const, 0x005E1520);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoint_INI(CCINIClass &), 0x005E1560);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoint_INI(CCINIClass &), 0x005E1630);
 DEFINE_IMPLEMENTATION(bool Start_Scenario(char *, bool, CampaignType), 0x005DB170);

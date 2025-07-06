@@ -90,6 +90,9 @@ class MotionLibraryClass;
 #define PIXEL_LEPTON_W  (CELL_LEPTON_W / CELL_PIXEL_W)
 #define PIXEL_LEPTON_H  (CELL_LEPTON_H / CELL_PIXEL_H)
 
+// The height of a bridge in cells.
+#define BRIDGE_CELL_HEIGHT 4
+
 
 // The maximum size of a cell list (occupy, etc).
 #define LIST_SIZE_MAX 24 // 24 cells, which is the largest in TibSun (foundation 6x4)

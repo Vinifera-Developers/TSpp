@@ -58,31 +58,31 @@ public:
     bool Read_Local_INI(CCINIClass &ini);
     bool Write_Local_INI(CCINIClass &ini);
 
-    Cell Get_Waypoint_Location(int wp) const;
-    CellClass *Get_Waypoint_Cell(int wp) const;
-    Coordinate Get_Waypoint_Coord(int wp) const;
-    bool Is_Valid_Waypoint(int wp) const;
+    Cell Waypoint_Cell(int wp) const;
+    CellClass *Waypoint_CellClass(int wp) const;
+    Coordinate Waypoint_Coord(int wp) const;
+    bool Is_Waypoint_Valid(int wp) const;
 
     void Read_Waypoint_INI(CCINIClass& ini);
     void Write_Waypoint_INI(CCINIClass& ini);
 
 public:
-    SpecialClass SpecialFlags;
-    char NextScenario[PATH_MAX];
-    char AltNextScenario[PATH_MAX];
-    int HomeCell;                           // These are waypoint indices, not Cell coordinates
-    int AltHomeCell;
+    SpecialClass Special;
+    char NextScenarioName[PATH_MAX];
+    char AltNextScenarioName[PATH_MAX];
+    int Home;                               // These are waypoint indices, not Cell coordinates
+    int AltHome;
     int UniqueID;
     Random2Class RandomNumber;
-    DiffType Difficulty;			        // For human player.
-    DiffType CDifficulty;		            // For computer players.
+    DiffType Difficulty;                    // For human player.
+    DiffType CDifficulty;                   // For computer players.
     TTimerClass<SystemTimerClass> ElapsedTimer;
     Cell Waypoint[WAYPT_COUNT];
     CDTimerClass<FrameTimerClass> MissionTimer;
     CDTimerClass<FrameTimerClass> ShroudTimer;
     CDTimerClass<FrameTimerClass> FogTimer;
-    CDTimerClass<FrameTimerClass> IceTimer;
-    CDTimerClass<FrameTimerClass> field_7E0;
+    CDTimerClass<FrameTimerClass> IceGrowthTimer;
+    CDTimerClass<FrameTimerClass> VeinGrowthTimer;
     CDTimerClass<FrameTimerClass> AmbientChangeTimer;
     int Scenario;
     TheaterType Theater;
@@ -107,7 +107,7 @@ public:
     int BridgeCount;
     bool IsFreeRadar;
     bool IsTrainCrate;
-    bool IsTiberiumGrowth;
+    bool IsTibGrowth;
     bool IsVeinGrowth;
     bool IsIceGrowth;
     bool IsBridgeChanged;
@@ -125,33 +125,33 @@ public:
     bool IsGDI;
     bool IsMultiplayerOnly;
     bool IsRandom;
-    bool CratePickedUp;
+    bool IsCratePickup;
     CDTimerClass<FrameTimerClass> FadeTimer;
-    CampaignType CampaignID;
+    CampaignType Campaign;
     int StartingDropships;
     TypeList<TechnoTypeClass *> AllowableUnits;
     TypeList<int> AllowableUnitMaximums;
-    TypeList<int> DropshipUnitCounts;
-    int AmbientOriginal;
-    int AmbientCurrent;
-    int AmbientTarget;
-    int Red;
-    int Green;
-    int Blue;
-    int Ground;
-    int Level;
-    int IonAmbient;
-    int IonRed;
-    int IonGreen;
-    int IonBlue;
-    int IonGround;
-    int IonLevel;
+    TypeList<int> AllowableUnitUsage;
+    int AmbientLight;
+    int CurrentAmbientLight;
+    int DesiredAmbientLight;
+    int RedTint;
+    int GreenTint;
+    int BlueTint;
+    int GroundLight;
+    int LevelLight;
+    int IonAmbientLight;
+    int IonRedTint;
+    int IonGreenTint;
+    int IonBlueTint;
+    int IonGroundLight;
+    int IonLevelLight;
     bool field_1E38;                    // Currently reading scenario ini?
     int InitTime;
     AddonType RequiredAddOn;
     SideType SpeechSide;
     unsigned short Stage;
-    bool UserInputLocked;
+    bool InputLock;
 };
 
 

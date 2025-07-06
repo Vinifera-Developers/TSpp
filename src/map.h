@@ -91,7 +91,7 @@ class MapClass : public GScreenClass
         // 0050F2C0
         // 00510900
         // 00510A20
-        void Sight_From(Coordinate &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
+        void Sight_From(const Coordinate &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
         bool In_Radar(const Cell &cell) const;
         bool In_Radar(const Coordinate &coord) const;
         void Place_Down(Cell &cell, ObjectClass *object);
@@ -168,15 +168,15 @@ class MapClass : public GScreenClass
         void Shroud_The_Map();
         void Reveal_The_Map();
         int Get_Height_GL(const Coordinate &coord) const;
-        CellClass *Iterator_Next_Cell();
-        void Iterator_Reset();
+        CellClass *Iterate();
+        void Reset_Iterator();
         bool In_Local_Radar(Rect &rect, bool a2 = true) const;
         bool In_Local_Radar(const Cell &cell, bool a2 = true) const;
         bool In_Local_Radar(CellClass &cell, bool a2 = true) const;
         bool In_Local_Radar(const Coordinate &coord) const;
         // 0051E560
-        CellClass *Horizontal_Iterator_Next_Cell();
-        void Horizontal_Iterator_Reset();
+        CellClass *Local_Iterate();
+        void Reset_Local_Iterator();
         // 0051E7A0
         bool Deform(const Cell& cell, bool forced); // 0051E9E0
         // 0051EAE0
