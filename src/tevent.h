@@ -86,14 +86,11 @@ TEventClass : public AbstractClass
         void Read_INI();
         void Build_INI_Entry(char *buffer) const;
 
-        static NeedType Needs(TEventType event);
-        static AttachType Attaches_To(TEventType event);
-
         static const char *Event_Name(TEventType event);
         static const char *Event_Description(TEventType event);
 
     public:
-        int ID;
+        int HeapID;
         TEventClass *Next;
         TEventType Event;
         TeamTypeClass *Team;
@@ -117,3 +114,7 @@ TEventClass : public AbstractClass
 
         static EventDescriptionStruct EventDescriptions[TEVENT_COUNT];
 };
+
+NeedType Event_Needs(TEventType event);
+AttachType Attaches_To(TEventType event);
+
