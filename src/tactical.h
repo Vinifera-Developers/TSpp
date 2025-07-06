@@ -189,8 +189,8 @@ Tactical : public AbstractClass
         IsoCoordinate MoveTo;
         float MoveRate;
         float MoveFactor;
-        int field_94;
-        CellClass *field_98[800];
+        int CellRedrawCount;
+        CellClass *CellRedraw[800];
         IsoCoordinate field_D18;
         IsoCoordinate field_D20;
         IsoCoordinate field_D28;
