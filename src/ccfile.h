@@ -68,4 +68,4 @@ class CCFileClass : public CDFileClass
 /**
  *  Shorthand typedef to aid the programmer.
  */
-typedef MixFileClass MFCC;
+typedef MixFileClass MFCD;

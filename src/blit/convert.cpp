@@ -40,7 +40,7 @@
  */
 ConvertClass *ConvertClass::Create_Drawer(const char *pal_filename, PaletteClass *pal, XSurface *surface)
 {
-	const void *palfile = MFCC::Retrieve(pal_filename);
+	const void *palfile = MFCD::Retrieve(pal_filename);
 	if (!palfile) {
 		return nullptr;
 	}

@@ -44,7 +44,7 @@ class NewMenuClass
         const char *Background_Image() const { return BackgroundImage; }
 
     public:
-        MFCC *Mix;
+        MFCD *Mix;
         int GameMode;
         const char * BackgroundImage;
 };

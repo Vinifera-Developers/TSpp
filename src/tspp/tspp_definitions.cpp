@@ -969,7 +969,7 @@ DEFINE_IMPLEMENTATION(int HSVClass::Difference(const HSVClass &) const, 0x004D1C
 PaletteClass::PaletteClass() : Palette() {}
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const RGBClass &), 0x005A2810);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(PaletteClass::PaletteClass(const PaletteClass &), 0x005A2860);
-PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCC::Retrieve(filename), sizeof(*this)); for (int i = 0; i < COLOR_COUNT; ++i) { Palette[i].Red *= 4; Palette[i].Green *= 4; Palette[i].Blue *= 4; } }
+PaletteClass::PaletteClass(const char *filename) : Palette() { std::memcpy(this, (void *)MFCD::Retrieve(filename), sizeof(*this)); for (int i = 0; i < COLOR_COUNT; ++i) { Palette[i].Red *= 4; Palette[i].Green *= 4; Palette[i].Blue *= 4; } }
 PaletteClass::~PaletteClass() {}
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int), 0x005A28E0);
 DEFINE_IMPLEMENTATION(void PaletteClass::Adjust(int, const PaletteClass &), 0x005A2910);
@@ -5629,27 +5629,28 @@ CCINIClass &FSRuleINI = Make_Global<CCINIClass>(0x0074C4F0);
 CDTimerClass<SystemTimerClass> &NetFrameTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0074C5F8);
 TTimerClass<SystemTimerClass> &TickCount = Make_Global<TTimerClass<SystemTimerClass>>(0x0074C608);
 CDTimerClass<SystemTimerClass> &FrameTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0074C618);
-DynamicVectorClass<MFCC *> &ExpansionMixFiles = Make_Global<DynamicVectorClass<MFCC *>>(0x0074A098);
-DynamicVectorClass<MFCC *> &SideMixFiles = Make_Global<DynamicVectorClass<MFCC *>>(0x0074A0B0);
-MFCC *&MultiMix = Make_Global<MFCC *>(0x0074A0C8);
-MFCC *&TibSunMix = Make_Global<MFCC *>(0x0074A0E8);
-MFCC *&TheaterMix = Make_Global<MFCC *>(0x0074A0EC);
-MFCC *&TheaterCachedMix = Make_Global<MFCC *>(0x0074A0F0);
-MFCC *&TheaterIsoMix = Make_Global<MFCC *>(0x0074A0F4);
-MFCC *&MoviesMix = Make_Global<MFCC *>(0x0074A0F8);
-MFCC *&ScoreMix = Make_Global<MFCC *>(0x0074A0FC);
-MFCC *&MainMix = Make_Global<MFCC *>(0x0074A100);
-MFCC *&ConquerMix = Make_Global<MFCC *>(0x0074A104);
-MFCC *&CacheMix = Make_Global<MFCC *>(0x0074A108);
-MFCC *&LocalMix = Make_Global<MFCC *>(0x0074A10C);
-MFCC *&MapsMix = Make_Global<MFCC *>(0x0074A110);
-MFCC *&SpeechMix = Make_Global<MFCC *>(0x0074A114);
-MFCC *&SoundsMix = Make_Global<MFCC *>(0x0074A118);
-MFCC *&FSSoundsMix = Make_Global<MFCC *>(0x0074A11C);
-MFCC *&FSScoresMix = Make_Global<MFCC *>(0x0074A120);
-MFCC *&SideCachedMix = Make_Global<MFCC *>(0x0074A124);
-MFCC *&SideNotCachedMix = Make_Global<MFCC *>(0x0074A128);
-MFCC *&SideCDMix = Make_Global<MFCC *>(0x0074A12C);
+DynamicVectorClass<MFCD *> &ExpandMix = Make_Global<DynamicVectorClass<MFCD *>>(0x0074A098);
+DynamicVectorClass<MFCD *> &ExpandSpeechMix = Make_Global<DynamicVectorClass<MFCD *>>(0x0074A0B0);
+DynamicVectorClass<MFCD *> &ExpandSideMix = Make_Global<DynamicVectorClass<MFCD *>>(0x0074A0D0);
+MFCD *&MultiMix = Make_Global<MFCD *>(0x0074A0C8);
+MFCD *&TibSunMix = Make_Global<MFCD *>(0x0074A0E8);
+MFCD *&TheaterMix = Make_Global<MFCD *>(0x0074A0EC);
+MFCD *&TheaterCachedMix = Make_Global<MFCD *>(0x0074A0F0);
+MFCD *&TheaterIsoMix = Make_Global<MFCD *>(0x0074A0F4);
+MFCD *&MoviesMix = Make_Global<MFCD *>(0x0074A0F8);
+MFCD *&ScoreMix = Make_Global<MFCD *>(0x0074A0FC);
+MFCD *&MainMix = Make_Global<MFCD *>(0x0074A100);
+MFCD *&ConquerMix = Make_Global<MFCD *>(0x0074A104);
+MFCD *&CacheMix = Make_Global<MFCD *>(0x0074A108);
+MFCD *&LocalMix = Make_Global<MFCD *>(0x0074A10C);
+MFCD *&MapsMix = Make_Global<MFCD *>(0x0074A110);
+MFCD *&SpeechMix = Make_Global<MFCD *>(0x0074A114);
+MFCD *&SoundsMix = Make_Global<MFCD *>(0x0074A118);
+MFCD *&FSSoundsMix = Make_Global<MFCD *>(0x0074A11C);
+MFCD *&FSScoresMix = Make_Global<MFCD *>(0x0074A120);
+MFCD *&SideCMix = Make_Global<MFCD *>(0x0074A124);
+MFCD *&SideNCMix = Make_Global<MFCD *>(0x0074A128);
+MFCD *&SideCDMix = Make_Global<MFCD *>(0x0074A12C);
 bool &Cheat_Pengo = Make_Global<bool>(0x007E4930);
 bool &Cheat_TheTeam = Make_Global<bool>(0x007E4931);
 int &NewINIFormat = Make_Global<int>(0x007E491C);
