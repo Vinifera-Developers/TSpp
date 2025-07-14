@@ -34,6 +34,10 @@
 class FileClass;
 
 
-void Init_Voxel_Lighting(float theta);
-void Init_Voxel_Projections();
+void Set_Voxel_Light_Angle(float theta);
+void Init_Voxel_Matrices();
 bool Init_Voxel_Palette(FileClass *file);
+
+extern float& VoxelLightAngle;
+extern Vector3& VoxelLightSource;
+extern Vector3& VoxelShadowLightSource;

@@ -53,4 +53,4 @@ typedef enum VoxelNormalType
 void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3 &voxel, int normal_type);
 void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3 &light, const Vector3 &voxel, float value, int normal_type);
 int Voxel_Find_Best_Normal_Index(const Vector3 &voxel, int normal_type);
-void Init_Voxel_Normal_Indexes();
+void Init_Normal_Lookup();

@@ -99,6 +99,8 @@ class ObjectTypeClass : public AbstractTypeClass
         static const ObjectTypeClass * From_Name(const char *name);
         static const ObjectTypeClass * As_Pointer(const char *name) { return From_Name(name); }
 
+        static void Clear_Voxel_Indexes();
+
     public:
         RGBStruct RadialColor;
         ArmorType Armor;

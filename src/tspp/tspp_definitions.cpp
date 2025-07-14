@@ -874,6 +874,7 @@ DEFINE_IMPLEMENTATION(ShapeSet * const ObjectTypeClass::Get_Image_Data() const, 
 DEFINE_IMPLEMENTATION(void ObjectTypeClass::Theater_Naming_Convention(char *, TheaterType), 0x00588D00);
 DEFINE_IMPLEMENTATION(void ObjectTypeClass::Fetch_Normal_Image(), 0x005888B0);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * ObjectTypeClass::From_Name(const char *), 0x00588FE0);
+DEFINE_IMPLEMENTATION(void ObjectTypeClass::Clear_Voxel_Indexes(), 0x00589030);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TechnoTypeClass::GetSizeMax(ULARGE_INTEGER *), 0x0063E170);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TechnoTypeClass::Load(IStream *), 0x0063D8F0);
@@ -5477,9 +5478,9 @@ DEFINE_IMPLEMENTATION(Matrix3D Get_Voxel_Ramp_Matrix(TileRampType), 0x00667B50);
 DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, int), 0x0066A660);
 DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, const Vector3&, float, int), 0x0066A6E0);
 DEFINE_IMPLEMENTATION(int Voxel_Find_Best_Normal_Index(const Vector3&, int), 0x0066A870);
-DEFINE_IMPLEMENTATION(void Init_Voxel_Normal_Indexes(), 0x0066A920);
-DEFINE_IMPLEMENTATION(void Init_Voxel_Lighting(float theta), 0x004E8AE0);
-DEFINE_IMPLEMENTATION(void Init_Voxel_Projections(), 0x00666E50);
+DEFINE_IMPLEMENTATION(void Init_Normal_Lookup(), 0x0066A920);
+DEFINE_IMPLEMENTATION(void Set_Voxel_Light_Angle(float theta), 0x004E8AE0);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Matrices(), 0x00666E50);
 DEFINE_IMPLEMENTATION(void Init_Voxel_Palette(FileClass* file), 0x00665DA0);
 
 
@@ -5681,6 +5682,9 @@ int &VPL_field_C = Make_Global<int>(0x00835640);
 RGBStruct (&Voxel_Palette)[VOXEL_PALETTE_SIZE] = Make_Global<RGBStruct[VOXEL_PALETTE_SIZE]>(0x00822340);
 unsigned char (&Voxel_PaletteLookup)[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE] = Make_Global<unsigned char[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE]>(0x00833640);
 unsigned& GameVersion = Make_Global<unsigned>(0x0070BC58);
+extern float& VoxelLightAngle = Make_Global<float>(0x0074C734);
+extern Vector3& VoxelLightSource = Make_Global<Vector3>(0x0074C738);
+extern Vector3& VoxelShadowLightSource = Make_Global<Vector3>(0x0074C6E8);
 
 
 /**
