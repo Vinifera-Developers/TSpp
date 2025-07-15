@@ -3529,7 +3529,7 @@ DEFINE_IMPLEMENTATION(RTTIType TEventClass::Fetch_RTTI() const, 0x00642EF0);
 DEFINE_IMPLEMENTATION(int TEventClass::Get_Object_Size(bool) const, 0x00642EE0);
 DEFINE_IMPLEMENTATION(void TEventClass::Object_CRC(CRCEngine &) const, 0x00642D00);
 DEFINE_IMPLEMENTATION(int TEventClass::Fetch_Heap_ID() const, 0x00642F00);
-DEFINE_IMPLEMENTATION(bool TEventClass::operator () (TEventType, HouseClass *, const ObjectClass *, TDEventClass &, bool &, TechnoClass *), 0x00642310);
+DEFINE_IMPLEMENTATION(bool TEventClass::operator () (TEventType, HouseClass *, const ObjectClass *, CDTimerClass<FrameTimerClass> &, bool &, TechnoClass *), 0x00642310);
 // 00642E20
 // 00642E80
 DEFINE_IMPLEMENTATION(void TEventClass::Read_INI(), 0x00642A60);
@@ -4403,23 +4403,24 @@ DEFINE_IMPLEMENTATION(void TriggerClass::Detach(AbstractClass *, bool), 0x006496
 DEFINE_IMPLEMENTATION(RTTIType TriggerClass::Fetch_RTTI() const, 0x00649920);
 DEFINE_IMPLEMENTATION(int TriggerClass::Get_Object_Size(bool) const, 0x00649910);
 DEFINE_IMPLEMENTATION(void TriggerClass::Object_CRC(CRCEngine &) const, 0x006497A0);
-DEFINE_IMPLEMENTATION(bool TriggerClass::Spring(TEventType, ObjectClass *, bool, bool, ObjectClass *), 0x00649500);
-DEFINE_IMPLEMENTATION(void TriggerClass::Reset(), 0x00649440);
-// 006495E0
-// 00649290
-// 006492D0
-// 00649310
-// 00649350
-// 00649390
-// 006493E0
-// 00649410
-DEFINE_IMPLEMENTATION(void TriggerClass::Set_Tripped(int), 0x006496D0);
-DEFINE_IMPLEMENTATION(void TriggerClass::Clear_Tripped(int), 0x006496F0);
-DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Tripped(int), 0x00649710);
-// 00649730
-// 00649790
+DEFINE_IMPLEMENTATION(bool TriggerClass::Fire(ObjectClass*, Cell), 0x006495E0);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Triggered(TEventType, ObjectClass*, bool, bool, TechnoClass*), 0x00649500);
 DEFINE_IMPLEMENTATION(void TriggerClass::Enable(), 0x006498F0);
 DEFINE_IMPLEMENTATION(void TriggerClass::Disable(), 0x00649900);
+DEFINE_IMPLEMENTATION(void TriggerClass::Draw_It(int, int, int, int, int, bool, TextPrintType) const, 0x00);
+DEFINE_IMPLEMENTATION(void TriggerClass::Timer_Global_Reset(int), 0x006493E0);
+DEFINE_IMPLEMENTATION(void TriggerClass::Timer_Local_Reset(int), 0x00649410);
+DEFINE_IMPLEMENTATION(void TriggerClass::Reset_Timer_Events(), 0x00649440);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Horizontal_Cross() const, 0x00649290);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Vertical_Cross() const, 0x006492D0);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Enters_Zone() const, 0x00649310);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Allow_Win() const, 0x00649350);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Tied_To_Global(int) const, 0x00649390);
+DEFINE_IMPLEMENTATION(void TriggerClass::Mark_Event_Sprung(int), 0x006496D0);
+DEFINE_IMPLEMENTATION(void TriggerClass::Mark_Event_Unsprung(int), 0x006496F0);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Event_Sprung(int), 0x00649710);
+DEFINE_IMPLEMENTATION(void TriggerClass::Mark_To_Die(), 0x00649730);
+DEFINE_IMPLEMENTATION(bool TriggerClass::Is_Marked_To_Die() const, 0x00649790);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TagClass::GetClassID(CLSID *), 0x0061EB50);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TagClass::Load(IStream *), 0x0061EBE0);
@@ -5363,7 +5364,7 @@ DEFINE_IMPLEMENTATION(void FoggedObjectClass::Draw_All(), 0x0049E7B0);
 DEFINE_IMPLEMENTATION(void FoggedObjectClass::Update_All(), 0x0049F280);
 
 DEFINE_IMPLEMENTATION(bool Need_To_Take(const AircraftClass *), 0x005BF040);
-DEFINE_IMPLEMENTATION(bool Do_Reinforcements(const TeamTypeClass *, WaypointType), 0x005BF050);
+DEFINE_IMPLEMENTATION(bool Do_Reinforcements(const TeamTypeClass *, WAYPOINT), 0x005BF050);
 DEFINE_IMPLEMENTATION(bool Pop_Group_Out_Of_Object(FootClass *, TechnoClass *), 0x005BF690);
 DEFINE_IMPLEMENTATION(int Create_Tunnel_Reinforcement(const TeamTypeClass *, FootClass *, Cell &, bool), 0x005BF740);
 DEFINE_IMPLEMENTATION(bool Create_Special_Reinforcement(HouseClass *, const TechnoTypeClass *, const TechnoTypeClass *, ScriptMissionType, int), 0x005BFD80);

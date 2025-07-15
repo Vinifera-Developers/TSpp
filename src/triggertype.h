@@ -95,9 +95,9 @@ TriggerTypeClass : public AbstractTypeClass
     public:
         TriggerType HeapID;
         bool Enabled;
-        bool Easy;
-        bool Normal;
-        bool Hard;
+        bool IsEnabledEasy;
+        bool IsEnabledMedium;
+        bool IsEnabledHard;
         PersistantType IsPersistant;
         HouseTypeClass *House;
         TriggerTypeClass *Next;

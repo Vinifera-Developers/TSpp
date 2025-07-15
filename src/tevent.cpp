@@ -29,13 +29,13 @@
 #include "tibsun_inline.h"
 
 
-void TEventClass::Reset(TDEventClass &td) const
+void TEventClass::Reset(CDTimerClass<FrameTimerClass> &timer) const
 {
     if (Event == TEVENT_TIME) {
-        td.Timer = Data.Value * TICKS_PER_SECOND;
+        timer = Data.Value * TICKS_PER_SECOND;
     }
     if (Event == TEVENT_RANDOM_TIME) {
-        td.Timer = Data.Value / 2 + Random_Pick(0, (int)Data.Value) * TICKS_PER_SECOND;
+        timer = Data.Value / 2 + Random_Pick(0, (int)Data.Value) * TICKS_PER_SECOND;
     }
 }
 

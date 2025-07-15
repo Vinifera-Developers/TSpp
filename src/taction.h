@@ -189,7 +189,7 @@ TActionClass : public AbstractClass
         TActionType Action;
         TeamTypeClass *Team;
         Rect TriggerRect;
-        WaypointType EffectLocation;
+        WAYPOINT EffectLocation;
         TagTypeClass *Tag;
         TriggerTypeClass *Trigger;
 

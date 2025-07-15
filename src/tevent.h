@@ -39,15 +39,6 @@ class TechnoClass;
 class TeamTypeClass;
 
 
-struct TDEventClass
-{
-    TDEventClass() : Timer(0) {}
-    TDEventClass(const NoInitClass &x) : Timer(x) {}
-    
-    CDTimerClass<FrameTimerClass> Timer;
-};
-
-
 class DECLSPEC_UUID("4F0EC393-0A55-11D2-ACA7-006008055BB5")
 TEventClass : public AbstractClass
 {
@@ -78,11 +69,11 @@ TEventClass : public AbstractClass
         virtual void Object_CRC(CRCEngine &crc) const override;
         virtual int Fetch_Heap_ID() const override;
 
-        bool operator () (TEventType event, HouseClass *house, const ObjectClass *object, TDEventClass &td, bool &tripped, TechnoClass *source = nullptr);
+        bool operator () (TEventType event, HouseClass *house, const ObjectClass *object, CDTimerClass<FrameTimerClass> &timer, bool &tripped, TechnoClass *source = nullptr);
         
         // 00642E20
         // 00642E80
-        void Reset(TDEventClass &td) const;
+        void Reset(CDTimerClass<FrameTimerClass> &timer) const;
         void Read_INI();
         void Build_INI_Entry(char *buffer) const;
 

@@ -401,8 +401,8 @@ typedef enum WaypointType
 
     WAYPOINT_NONE = -1,
     WAYPOINT_FIRST = 0,
-} WaypointType;
-DEFINE_ENUMERATION_OPERATORS(WaypointType);
+} WAYPOINT;
+DEFINE_ENUMERATION_OPERATORS(WAYPOINT);
 
 typedef enum TubeType : char
 {
