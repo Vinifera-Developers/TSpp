@@ -139,7 +139,7 @@ typedef struct MPStatsType
 typedef struct GameOptionsType
 {
     int ScenarioIndex;
-    int Bases;
+    bool Bases;
     int Credits;
     bool BridgeDestruction;
     bool Goodies;
