@@ -80,7 +80,7 @@ public:
 
 public:
     LightSourceClass();
-    LightSourceClass(Coordinate coord, int visibility, int intensity, int red, int green, int blue);
+    LightSourceClass(Coord coord, int visibility, int intensity, int red, int green, int blue);
     LightSourceClass(const NoInitClass &noinit);
     virtual ~LightSourceClass();
     
@@ -105,7 +105,7 @@ public:
     int RedTint;
     int GreenTint;
     int BlueTint;
-    Coordinate Where;
+    Coord Where;
     int Visibility;
     bool IsEnabled;
 

@@ -87,7 +87,7 @@ int Voice_Sound_Effect(VocType voc, float volume = 1.0f);
 /**
  *  Plays a sound effect in the tactical map.
  */
-void Static_Sound(VocType voc, const Coordinate& coord);
+void Static_Sound(VocType voc, const Coord& coord);
 
 
 /**

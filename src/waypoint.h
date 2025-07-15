@@ -39,11 +39,11 @@ class WaypointClass
         WaypointClass();
         ~WaypointClass();
 
-        bool operator==(const WaypointClass &that) const { return Coord == that.Coord; }
-        bool operator!=(const WaypointClass &that) const { return Coord != that.Coord; }
+        bool operator==(const WaypointClass &that) const { return Location == that.Location; }
+        bool operator!=(const WaypointClass &that) const { return Location != that.Location; }
 
     public:
-        Coordinate Coord;
+        Coord Location;
 };
 
 

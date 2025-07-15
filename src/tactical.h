@@ -83,14 +83,14 @@ Tactical : public AbstractClass
          */
         virtual bool entry_64(Rect &a1, Rect &a2, unsigned color, bool a4 = false);
 
-        Point2D func_60F150(const Coordinate &coord) const; // Coord to Pixel (without validation)?
+        Point2D func_60F150(const Coord &coord) const; // Coord to Pixel (without validation)?
         Point2D func_60F270(const Point2D& cell) const; // Cell to pixel (without validation)?
-        Point2D func_60F350(const Coordinate &coord) const;
+        Point2D func_60F350(const Coord &coord) const;
         static int func_60F3C0(int a1);
-        bool Coord_To_Pixel(const Coordinate &coord, Point2D &pixel) const;
-        Coordinate Pixel_To_Coord(const Point2D &pixel) const;
-        Coordinate func_60F740(const Point2D &pixel) const;
-        void func_60F800(const Coordinate &coord, int a2);
+        bool Coord_To_Pixel(const Coord &coord, Point2D &pixel) const;
+        Coord Pixel_To_Coord(const Point2D &pixel) const;
+        Coord func_60F740(const Point2D &pixel) const;
+        void func_60F800(const Coord &coord, int a2);
         void Register_Dirty_Area(Rect rect, bool a5 = false); // 0060FBB0
         static int Z_Lepton_To_Pixel(LEPTON z);
         static LEPTON Pixel_To_Z_Lepton(int a1);
@@ -114,7 +114,7 @@ Tactical : public AbstractClass
         // 00612B10
         void Set_Tactical_Dimensions(const Rect & rect);
         void Set_Tactical_Center_Position(const Point2D &point);
-        void Set_Tactical_Position(const Coordinate &coord);
+        void Set_Tactical_Position(const Coord &coord);
         Point2D Get_Tactical_Center_Position() const;
         Point2D Get_Tactical_Position() const;
         // 00612DA0

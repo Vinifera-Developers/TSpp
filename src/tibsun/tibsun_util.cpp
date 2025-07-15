@@ -64,9 +64,9 @@ Cell Get_Cell_Under_Mouse()
  * 
  *  @author: CCHyper
  */
-Coordinate Get_Coord_Under_Mouse()
+Coord Get_Coord_Under_Mouse()
 {
-    Coordinate mouse_coord(-1, -1, -1);
+    Coord mouse_coord(-1, -1, -1);
 
     /**
      *  Fetch the mouse position.
@@ -77,7 +77,7 @@ Coordinate Get_Coord_Under_Mouse()
      *  If mouse position is valid, convert to world coordinates and return.
      */
     if (mouse != Point2D(0, 0)) {
-        mouse_coord = Cell_Coord(TacticalMap->Click_Cell_Calc(mouse));
+        mouse_coord = TacticalMap->Click_Cell_Calc(mouse).As_Coord();
     }
 
     return mouse_coord;

@@ -43,7 +43,7 @@ class BounceClass
 
         // 004245B0
         // 00424700
-        Coordinate Get_Coord() const;
+        Coord Get_Coord() const;
         // 00424900
         // 00424930
         // 00424A20

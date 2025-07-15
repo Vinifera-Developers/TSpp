@@ -62,8 +62,8 @@ FoggedObjectClass : public AbstractClass
 
     public:
         FoggedObjectClass();
-        FoggedObjectClass(Coordinate &coord, OverlayType overlay, int overlay_data);
-        FoggedObjectClass(Coordinate &coord, SmudgeType smudge, int smudge_data);
+        FoggedObjectClass(Coord &coord, OverlayType overlay, int overlay_data);
+        FoggedObjectClass(Coord &coord, SmudgeType smudge, int smudge_data);
         FoggedObjectClass(const BuildingClass *building, bool to_draw = false);
         FoggedObjectClass(const TerrainClass *terrain);
         FoggedObjectClass(NoInitClass &noinit);
@@ -89,7 +89,7 @@ FoggedObjectClass : public AbstractClass
         HouseClass *Owner;
         int OverlayData;
         RTTIType RTTI;
-        Coordinate Coord;
+        Coord Position;
         Rect BoundingRect;
         int CellLevel;
         SmudgeType Smudge;

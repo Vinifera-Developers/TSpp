@@ -62,12 +62,12 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Fetches destination coordinate.
      */
-    STDMETHOD_(Coordinate, Destination)() PURE;
+    STDMETHOD_(Coord, Destination)() PURE;
 
     /**
      *  Fetches immediate (next cell) destination coordinate.
      */
-    STDMETHOD_(Coordinate, Head_To_Coord)() PURE;
+    STDMETHOD_(Coord, Head_To_Coord)() PURE;
 
     /**
      *  Determine if specific cell can be entered.
@@ -122,7 +122,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Instruct to move to location specified.
      */
-    STDMETHOD_(void, Move_To)(Coordinate to) PURE;
+    STDMETHOD_(void, Move_To)(Coord to) PURE;
 
     /**
      *  Stop moving at first opportunity.
@@ -177,7 +177,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Force drive track -- special case only.
      */
-    STDMETHOD_(void, Force_Track)(int track, Coordinate coord) PURE;
+    STDMETHOD_(void, Force_Track)(int track, Coord coord) PURE;
 
     /**
      *  What display layer is it located in.
@@ -187,7 +187,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Force object to destination (no processing). NOTE: Don't use this function!
      */
-    STDMETHOD_(void, Force_Immediate_Destination)(Coordinate coord) PURE;
+    STDMETHOD_(void, Force_Immediate_Destination)(Coord coord) PURE;
 
     /**
      *  Force a voxel unit to a given slope. Used in cratering.
@@ -237,7 +237,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Is this object in the process of moving into this coord.
      */
-    STDMETHOD_(bool, Is_Moving_Here)(Coordinate to) PURE;
+    STDMETHOD_(bool, Is_Moving_Here)(Coord to) PURE;
 
     /**
      *  Will this object jump tracks?

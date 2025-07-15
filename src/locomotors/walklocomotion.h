@@ -57,17 +57,17 @@ WalkLocomotionClass : public LocomotionClass, public IPiggyback
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(Coord, Destination)();
+        IFACEMETHOD_(Coord, Head_To_Coord)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
-        IFACEMETHOD_(void, Force_Immediate_Destination)(Coordinate coord);
+        IFACEMETHOD_(void, Force_Immediate_Destination)(Coord coord);
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
-        IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
+        IFACEMETHOD_(bool, Is_Moving_Here)(Coord to);
         IFACEMETHOD_(bool, Is_Really_Moving_Now)();
         IFACEMETHOD_(void, Stop_Movement_Animation)();
 
@@ -91,11 +91,11 @@ WalkLocomotionClass : public LocomotionClass, public IPiggyback
         virtual int Get_Object_Size(bool firestorm = false) const override;
 
         void Internal_Process(bool a2 = false);
-        bool func_66E170(Coordinate &coord);
+        bool func_66E170(Coord &coord);
 
     public:
-        Coordinate DestinationCoord;
-        Coordinate HeadToCoord;
+        Coord DestinationCoord;
+        Coord HeadToCoord;
         bool IsMoving;
         bool field_31; // flagged when "processing" walking.
         bool IsReallyMoving;

@@ -213,7 +213,7 @@ public:
     void Sell_Wall(Cell &cell, bool quiet = true);
     const BuildingTypeClass * Suggest_New_Building() const;
     BuildingClass * Find_Building(StructType type, ZoneType zone = ZONE_NONE) const;
-    Coordinate Find_Build_Location(BuildingClass *building) const;
+    Coord Find_Build_Location(BuildingClass *building) const;
     void Recalc_Center();
     int Expert_AI();
     UrgencyType Check_Fire_Sale() const;
@@ -230,12 +230,12 @@ public:
     int * Factory_Counter(RTTIType rtti);
     void Active_Remove(const TechnoClass *techno);
     void Active_Add(const TechnoClass *techno);
-    ZoneType Which_Zone(Coordinate &coord) const;
+    ZoneType Which_Zone(Coord &coord) const;
     ZoneType Which_Zone(const ObjectClass * object) const;
     ZoneType Which_Zone(Cell &cell) const;
     Cell Zone_Cell(ZoneType zone) const;
     Cell Where_To_Go(const FootClass *object) const;
-    AbstractClass * Find_Juicy_Target(Coordinate &coord) const;
+    AbstractClass * Find_Juicy_Target(Coord &coord) const;
     FactoryClass *Fetch_Factory(RTTIType rtti) const;
     void Set_Factory(RTTIType rtti, FactoryClass * factory);
     int Factory_Count(RTTIType rtti) const;
@@ -252,8 +252,8 @@ public:
     // 004C3FC0
     // 004C40F0
     // 004C4150
-    Coordinate *Waypoint_Coord(Cell &coord); // 004C4210
-    bool Place_Waypoint_At(Coordinate &coord, int &index, bool &a3); // 004C42C0
+    Coord *Waypoint_Coord(Cell &coord); // 004C4210
+    bool Place_Waypoint_At(Coord &coord, int &index, bool &a3); // 004C42C0
     // 004C4450
     // 004C45D0
     // 004C5320
@@ -510,7 +510,7 @@ public:
     unsigned BuildingsKilled[20];
     unsigned BuildingsLost;
     HousesType WhoLastHurtMe;
-    Coordinate Center;
+    Coord Center;
     int Radius;
 
     struct {

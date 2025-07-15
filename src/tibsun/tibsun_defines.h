@@ -2835,115 +2835,121 @@ struct xCoordinate {
     int Z; // Z coordinate of the location.
 };
 
-struct Coordinate;
-struct Cell
+class Coord;
+class Cell : public TPoint2D<short>
 {
+public:
+    using TPoint2D::X;
+    using TPoint2D::Y;
+
     Cell() = default;
-    Cell(const xCell& x) : X(x.X), Y(x.Y) {}
-    Cell(short x, short y) : X(x), Y(y) {}
-    Cell(const Cell &that) : X(that.X), Y(that.Y) {}
+    Cell(short x, short y) : TPoint2D(x, y) {}
+    Cell(const xCell& x) : Cell(x.X, x.Y) {}
+    explicit Cell(const Coord& coord);
 
-    bool operator==(const Cell &that) const { return X == that.X && Y == that.Y; }
-    bool operator!=(const Cell &that) const { return X != that.X || Y != that.Y; }
+    bool operator==(const Cell& that) const { return X == that.X && Y == that.Y; }
+    bool operator!=(const Cell& that) const { return X != that.X || Y != that.Y; }
 
-    Cell operator+(const Cell &that) const { return Cell(X + that.X, Y + that.Y); }
-    Cell &operator+=(const Cell &that) { X += that.X; Y += that.Y; return *this; }
+    Cell operator+(const Cell& that) const { return Cell(X + that.X, Y + that.Y); }
+    Cell& operator+=(const Cell& that) { X += that.X; Y += that.Y; return *this; }
 
-    Cell operator-(const Cell &that) const { return Cell(X - that.X, Y - that.Y); }
-    Cell &operator-=(const Cell &that) { X -= that.X; Y -= that.Y; return *this; }
+    Cell operator-(const Cell& that) const { return Cell(X - that.X, Y - that.Y); }
+    Cell& operator-=(const Cell& that) { X -= that.X; Y -= that.Y; return *this; }
 
     Cell operator*(short scalar) const { return Cell(X * scalar, Y * scalar); }
-    Cell &operator*=(short scalar) { X *= scalar; Y *= scalar; return *this; }
+    Cell& operator*=(short scalar) { X *= scalar; Y *= scalar; return *this; }
 
     Cell operator/(short scalar) const { return Cell(X / scalar, Y / scalar); }
-    Cell &operator/=(short scalar) { X /= scalar; Y /= scalar; return *this; }
+    Cell& operator/=(short scalar) { X /= scalar; Y /= scalar; return *this; }
 
     Cell operator%(short scalar) const { return Cell(X % scalar, Y % scalar); }
-    Cell &operator%=(short scalar) { X %= scalar; Y %= scalar; return *this; }
+    Cell& operator%=(short scalar) { X %= scalar; Y %= scalar; return *this; }
 
     int As_Cell_Number() const { return X + (Y << 9); }
 
-    short Length() const
+    int Relative_Distance_To(const Cell& that) const
     {
-        return (short)WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y);
+        return (that.X - X) * (that.X - X) + (that.Y - Y) * (that.Y - Y);
     }
 
-    short Length2() const
-    {
-        return X * X + Y * Y;
-    }
+    Coord As_Coord(int z = 0) const;
 
-    Coordinate As_Coord(int z = 0) const;
-
-    const char *As_String() const
+    const char* As_String() const
     {
-        static char _buffer[8+8];
+        static char _buffer[8 + 8];
         std::snprintf(_buffer, sizeof(_buffer), "%d,%d", X, Y);
         return _buffer;
     }
-
-    short X; // X component of location.
-    short Y; // Y component of location.
 };
 
 
-struct Coordinate
+class Coord : public Point3D
 {
-    Coordinate() = default;
-    Coordinate(const xCoordinate& x) : X(x.X), Y(x.Y), Z(x.Z) {}
-    Coordinate(int x, int y, int z) : X(x), Y(y), Z(z) {}
-    Coordinate(const Coordinate &that) : X(that.X), Y(that.Y), Z(that.Z) {}
+public:
+    using Point3D::X;
+    using Point3D::Y;
+    using Point3D::Z;
 
-    bool operator==(const Coordinate &that) const { return X == that.X && Y == that.Y && Z == that.Z; }
-    bool operator!=(const Coordinate &that) const { return X != that.X || Y != that.Y || Z != that.Z; }
+    Coord() = default;
+    Coord(int x, int y, int z = 0) : Point3D(x, y, z) {}
+    Coord(const xCoordinate& x) : Coord(x.X, x.Y, x.Z) {}
+    explicit Coord(const Cell& cell, int z = 0);
 
-    Coordinate operator+(const Coordinate &that) const { return Coordinate(X + that.X, Y + that.Y, Z + that.Z); }
-    Coordinate &operator+=(const Coordinate &that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
+    bool operator==(const Coord& that) const { return X == that.X && Y == that.Y && Z == that.Z; }
+    bool operator!=(const Coord& that) const { return X != that.X || Y != that.Y || Z != that.Z; }
 
-    Coordinate operator-(const Coordinate &that) const { return Coordinate(X - that.X, Y - that.Y, Z - that.Z); }
-    Coordinate &operator-=(const Coordinate &that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
+    Coord operator+(const Coord& that) const { return Coord(X + that.X, Y + that.Y, Z + that.Z); }
+    Coord& operator+=(const Coord& that) { X += that.X; Y += that.Y; Z += that.Z; return *this; }
 
-    Coordinate operator*(int scalar) const { return Coordinate(X * scalar, Y * scalar, Z * scalar); }
-    Coordinate &operator*=(int scalar) { X *= scalar; Y *= scalar; Z *= scalar; return *this; }
+    Coord operator-(const Coord& that) const { return Coord(X - that.X, Y - that.Y, Z - that.Z); }
+    Coord& operator-=(const Coord& that) { X -= that.X; Y -= that.Y; Z -= that.Z; return *this; }
 
-    Coordinate operator/(int scalar) const { return Coordinate(X / scalar, Y / scalar, Z / scalar); }
-    Coordinate &operator/=(int scalar) { X /= scalar; Y /= scalar; Z /= scalar; return *this; }
+    Coord operator*(int scalar) const { return Coord(X * scalar, Y * scalar, Z * scalar); }
+    Coord& operator*=(int scalar) { X *= scalar; Y *= scalar; Z *= scalar; return *this; }
 
-    Coordinate operator%(int scalar) const { return Coordinate(X % scalar, Y % scalar, Z % scalar); }
-    Coordinate &operator%=(int scalar) { X %= scalar; Y %= scalar; Z %= scalar; return *this; }
+    Coord operator/(int scalar) const { return Coord(X / scalar, Y / scalar, Z / scalar); }
+    Coord& operator/=(int scalar) { X /= scalar; Y /= scalar; Z /= scalar; return *this; }
 
+    Coord operator%(int scalar) const { return Coord(X % scalar, Y % scalar, Z % scalar); }
+    Coord& operator%=(int scalar) { X %= scalar; Y %= scalar; Z %= scalar; return *this; }
 
-    int Length() const
+    int Relative_Distance_To(const Coord& that) const
     {
-        return WWMath::Sqrt((double)X * (double)X + (double)Y * (double)Y + (double)Z * (double)Z);
+        return (that.X - X) * (that.X - X) + (that.Y - Y) * (that.Y - Y) + (that.Z - Z) * (that.Z - Z);
     }
 
     Cell As_Cell() const;
 
-    const char *As_String() const
+    const char* As_String() const
     {
-        static char _buffer[12+12+12];
+        static char _buffer[12 + 12 + 12];
         std::snprintf(_buffer, sizeof(_buffer), "%d,%d,%d", X, Y, Z);
         return _buffer;
     }
-
-    int X; // X coordinate of the location.
-    int Y; // Y coordinate of the location.
-    int Z; // Z coordinate of the location.
 };
 
 
-inline Coordinate Cell::As_Coord(int z) const
+inline Coord::Coord(const Cell& cell, int z)
 {
-    Coordinate coord(X * CELL_LEPTON_W + CELL_LEPTON_W / 2, Y * CELL_LEPTON_H + CELL_LEPTON_H / 2, z);
-    return coord;
+    *this = cell.As_Coord(z);
 }
 
 
-inline Cell Coordinate::As_Cell() const
+inline Coord Cell::As_Coord(int z) const
 {
-    Cell cell(X / CELL_LEPTON_W, Y / CELL_LEPTON_H);
-    return cell;
+    return Coord(X * CELL_LEPTON_W + CELL_LEPTON_W / 2, Y * CELL_LEPTON_H + CELL_LEPTON_H / 2, z);
+}
+
+
+inline Cell::Cell(const Coord& coord)
+{
+    *this = coord.As_Cell();
+}
+
+
+inline Cell Coord::As_Cell() const
+{
+    return Cell(X / CELL_LEPTON_W, Y / CELL_LEPTON_H);
 }
 
 

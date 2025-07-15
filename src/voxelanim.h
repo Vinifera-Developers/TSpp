@@ -53,7 +53,7 @@ VoxelAnimClass : public ObjectClass
 
     public:
         VoxelAnimClass();
-        VoxelAnimClass(const VoxelAnimTypeClass *classof, const Coordinate &coord, HouseClass *house = nullptr);
+        VoxelAnimClass(const VoxelAnimTypeClass *classof, const Coord &coord, HouseClass *house = nullptr);
         VoxelAnimClass(const NoInitClass &noinit);
         virtual ~VoxelAnimClass();
 

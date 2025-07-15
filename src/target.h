@@ -146,6 +146,6 @@ class TargetClass : public xTargetClass
         TargetClass() { Invalidate(); }
         TargetClass(const NoInitClass &noinit) {}
         TargetClass(Cell &cell);
-        TargetClass(Coordinate &coord);
+        TargetClass(Coord &coord);
         TargetClass(AbstractClass * ptr);
 };

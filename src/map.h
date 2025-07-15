@@ -71,8 +71,8 @@ class MapClass : public GScreenClass
 
         CellClass & operator [] (const Cell &cell);
         const CellClass & operator [] (const Cell &cell) const;
-        CellClass & operator [] (const Coordinate &coord);
-        const CellClass & operator [] (const Coordinate &coord) const;
+        CellClass & operator [] (const Coord &coord);
+        const CellClass & operator [] (const Coord &coord) const;
 
         int ID(CellClass *ptr) { return Array.ID(ptr); }
         int ID(CellClass &ptr) { return Array.ID(&ptr); }
@@ -91,9 +91,9 @@ class MapClass : public GScreenClass
         // 0050F2C0
         // 00510900
         // 00510A20
-        void Sight_From(const Coordinate &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
+        void Sight_From(const Coord &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true);
         bool In_Radar(const Cell &cell) const;
-        bool In_Radar(const Coordinate &coord) const;
+        bool In_Radar(const Coord &coord) const;
         void Place_Down(Cell &cell, ObjectClass *object);
         void Pick_Up(Cell &cell, ObjectClass *object);
         long Overpass();
@@ -117,7 +117,7 @@ class MapClass : public GScreenClass
         bool Place_Random_Crate();
         bool Remove_Crate(Cell &cell);
         int Validate();
-        ObjectClass *Close_Object(Coordinate &coord) const;
+        ObjectClass *Close_Object(Coord &coord) const;
         // 00514AF0
         // 00514B00
         // 00515160
@@ -167,13 +167,13 @@ class MapClass : public GScreenClass
         const Cell Pick_Random_Location();
         void Shroud_The_Map();
         void Reveal_The_Map();
-        int Get_Height_GL(const Coordinate &coord) const;
+        int Get_Height_GL(const Coord &coord) const;
         CellClass *Iterate();
         void Reset_Iterator();
         bool In_Local_Radar(Rect &rect, bool a2 = true) const;
         bool In_Local_Radar(const Cell &cell, bool a2 = true) const;
         bool In_Local_Radar(CellClass &cell, bool a2 = true) const;
-        bool In_Local_Radar(const Coordinate &coord) const;
+        bool In_Local_Radar(const Coord &coord) const;
         // 0051E560
         CellClass *Local_Iterate();
         void Reset_Local_Iterator();
@@ -243,8 +243,8 @@ class MapClass : public GScreenClass
         // 0052B220
         // 0052B460
         // 0052B7E0
-        bool Is_Shrouded(Coordinate& coord);
-        bool Is_Fogged(Coordinate& coord);
+        bool Is_Shrouded(Coord& coord);
+        bool Is_Fogged(Coord& coord);
         // 0052BB10
         void Fog_Map();
         // 0052BC40
@@ -268,11 +268,6 @@ class MapClass : public GScreenClass
         int Get_Cell_Zone(Cell const& cell, MZoneType mzone = MZONE_NORMAL, bool bridge = false);
 
         bool Place_Crate(Cell where);
-
-        void Sight_From(Cell &coord, int sight_range, HouseClass *house, bool incremental = false, bool a5 = false, bool a6 = false, bool a7 = true)
-        {
-            Sight_From(Cell_Coord(coord), sight_range, house, incremental, a5, a6, a7);
-        }
 
     public:
         void *field_10;

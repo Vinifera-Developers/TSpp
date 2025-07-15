@@ -50,8 +50,8 @@ LevitateLocomotionClass : public LocomotionClass
          */
         IFACEMETHOD(Link_To_Object)(void *object);
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(Coord, Destination)();
+        IFACEMETHOD_(Coord, Head_To_Coord)();
         IFACEMETHOD_(bool, Process)();
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();

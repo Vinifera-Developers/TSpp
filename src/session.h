@@ -291,7 +291,7 @@ class SessionClass
         long TrapFrame;
         RTTIType TrapObjType;
         TrapObjectType TrapObject;
-        Coordinate TrapCoord;
+        Coord TrapCoord;
         int TrapThis;
         AbstractClass * TrapTarget;
         CellClass * TrapCell;

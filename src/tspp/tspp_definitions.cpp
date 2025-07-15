@@ -666,11 +666,11 @@ DEFINE_IMPLEMENTATION(HousesType AbstractClass::Owner() const, 0x00405E50);
 DEFINE_IMPLEMENTATION(HouseClass *AbstractClass::Owner_HouseClass() const, 0x00405E60);
 DEFINE_IMPLEMENTATION(int AbstractClass::Fetch_Heap_ID() const, 0x00405E70);
 DEFINE_IMPLEMENTATION(bool AbstractClass::Is_Inactive() const, 0x00405DE0);
-DEFINE_IMPLEMENTATION(Coordinate AbstractClass::Center_Coord() const, 0x00405E80);
-DEFINE_IMPLEMENTATION(Coordinate AbstractClass::entry_50() const, 0x00405EB0);
+DEFINE_IMPLEMENTATION(Coord AbstractClass::Center_Coord() const, 0x00405E80);
+DEFINE_IMPLEMENTATION(Coord AbstractClass::entry_50() const, 0x00405EB0);
 DEFINE_IMPLEMENTATION(bool AbstractClass::On_Ground() const, 0x00405EE0);
 DEFINE_IMPLEMENTATION(bool AbstractClass::In_Air() const, 0x00405EF0);
-DEFINE_IMPLEMENTATION(Coordinate AbstractClass::entry_5C() const, 0x00405F00);
+DEFINE_IMPLEMENTATION(Coord AbstractClass::entry_5C() const, 0x00405F00);
 DEFINE_IMPLEMENTATION(void AbstractClass::AI(), 0x00405F30);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AbstractTypeClass::AbstractTypeClass(const char *), AbstractClass, 0x004061D0);
@@ -792,7 +792,7 @@ DEFINE_IMPLEMENTATION(unsigned CCINIClass::Get_Degree(const char *, const char *
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Degree(const char *, const char *, unsigned), 0x0044A3D0);
 DEFINE_IMPLEMENTATION(Cell CCINIClass::Get_Cell(const char *, const char *, const Cell &), 0x0044A480);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_Cell(const char *, const char *, Cell &), 0x0044A500);
-DEFINE_IMPLEMENTATION(Coordinate CCINIClass::Get_Coord(const char *, const char *, const Coordinate &), 0x0044BDE0);
+DEFINE_IMPLEMENTATION(Coord CCINIClass::Get_Coord(const char *, const char *, const Coord &), 0x0044BDE0);
 DEFINE_IMPLEMENTATION(MPHType CCINIClass::Get_MPHType(const char *, const char *, const MPHType), 0x0044A550);
 DEFINE_IMPLEMENTATION(bool CCINIClass::Put_MPHType(const char *, const char *, MPHType), 0x0044A5B0);
 DEFINE_IMPLEMENTATION(PipScaleType CCINIClass::Get_PipType(const char *, const char *, const PipType), 0x0044A5E0);
@@ -860,7 +860,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ObjectTypeClass::Save(IStream *,
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ObjectTypeClass::ObjectTypeClass(const NoInitClass &), AbstractTypeClass, 0x00587810);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(ObjectTypeClass::~ObjectTypeClass(), 0x005878B0);
 DEFINE_IMPLEMENTATION(bool ObjectTypeClass::Read_INI(CCINIClass &), 0x00588A20);
-DEFINE_IMPLEMENTATION(Coordinate ObjectTypeClass::Coord_Fixup(Coordinate *) const, 0x00410180);
+DEFINE_IMPLEMENTATION(Coord ObjectTypeClass::Coord_Fixup(Coord *) const, 0x00410180);
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Get_Ownable() const, 0x00419B90);
 DEFINE_IMPLEMENTATION(int ObjectTypeClass::Max_Pips() const, 0x005879E0);
 DEFINE_IMPLEMENTATION(Point3D ObjectTypeClass::Pixel_Dimensions() const, 0x005879F0);
@@ -897,7 +897,7 @@ DEFINE_IMPLEMENTATION(int TechnoTypeClass::Repair_Step() const, 0x0063B970);
 DEFINE_IMPLEMENTATION(int TechnoTypeClass::Flight_Level() const, 0x0063E700);
 DEFINE_IMPLEMENTATION(bool TechnoTypeClass::Is_Two_Shooter() const, 0x0063B980);
 DEFINE_IMPLEMENTATION(const WeaponInfoStruct & TechnoTypeClass::Fetch_Weapon_Info(WeaponSlotType) const, 0x0063E6B0);
-DEFINE_IMPLEMENTATION(bool TechnoTypeClass::In_Range(Coordinate &, AbstractClass *, WeaponTypeClass *), 0x0063D4C0);
+DEFINE_IMPLEMENTATION(bool TechnoTypeClass::In_Range(Coord &, AbstractClass *, WeaponTypeClass *), 0x0063D4C0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SwizzleManagerClass::QueryInterface(REFIID, LPVOID *), 0x0060DC60);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE SwizzleManagerClass::AddRef(), 0x0060DCE0);
@@ -925,7 +925,7 @@ DEFINE_IMPLEMENTATION(int BuildingTypeClass::Get_Object_Size_Delta() const, 0x00
 DEFINE_IMPLEMENTATION(void BuildingTypeClass::Object_CRC(CRCEngine &) const, 0x00442F20);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Fetch_Heap_ID() const, 0x00444010);
 DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Read_INI(CCINIClass &), 0x00440AD0);
-DEFINE_IMPLEMENTATION(Coordinate BuildingTypeClass::Coord_Fixup(Coordinate *) const, 0x00442E50);
+DEFINE_IMPLEMENTATION(Coord BuildingTypeClass::Coord_Fixup(Coord *) const, 0x00442E50);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Max_Pips() const, 0x0043FF90);
 DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Pixel_Dimensions() const, 0x0043FE50);
 DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Lepton_Dimensions() const, 0x00442ED0);
@@ -1004,7 +1004,7 @@ DEFINE_IMPLEMENTATION(RTTIType IsometricTileTypeClass::Fetch_RTTI() const, 0x004
 DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Get_Object_Size(bool) const, 0x004F8AA0);
 DEFINE_IMPLEMENTATION(void IsometricTileTypeClass::Object_CRC(CRCEngine &) const, 0x004F84A0);
 DEFINE_IMPLEMENTATION(int IsometricTileTypeClass::Fetch_Heap_ID() const, 0x004F8AB0);
-DEFINE_IMPLEMENTATION(Coordinate IsometricTileTypeClass::Coord_Fixup(Coordinate *) const, 0x004F8480);
+DEFINE_IMPLEMENTATION(Coord IsometricTileTypeClass::Coord_Fixup(Coord *) const, 0x004F8480);
 DEFINE_IMPLEMENTATION(bool IsometricTileTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004F83D0);
 DEFINE_IMPLEMENTATION(ObjectClass *const IsometricTileTypeClass::Create_One_Of(HouseClass *) const, 0x004F8410);
 DEFINE_IMPLEMENTATION(Cell *IsometricTileTypeClass::Occupy_List(bool) const, 0x004F35E0);
@@ -1155,7 +1155,7 @@ DEFINE_IMPLEMENTATION(int UnitTypeClass::Get_Object_Size_Delta() const, 0x0065C7
 DEFINE_IMPLEMENTATION(void UnitTypeClass::Object_CRC(CRCEngine &) const, 0x0065C470);
 DEFINE_IMPLEMENTATION(int UnitTypeClass::Fetch_Heap_ID() const, 0x0065C770);
 DEFINE_IMPLEMENTATION(bool UnitTypeClass::Read_INI(CCINIClass &), 0x0065BDD0);
-DEFINE_IMPLEMENTATION(Coordinate UnitTypeClass::Coord_Fixup(Coordinate *) const, 0x0065C3B0);
+DEFINE_IMPLEMENTATION(Coord UnitTypeClass::Coord_Fixup(Coord *) const, 0x0065C3B0);
 DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Pixel_Dimensions() const, 0x0065BD30);
 DEFINE_IMPLEMENTATION(Point3D UnitTypeClass::Lepton_Dimensions() const, 0x0065BD70);
 DEFINE_IMPLEMENTATION(bool UnitTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0065BC50);
@@ -1175,7 +1175,7 @@ DEFINE_IMPLEMENTATION(int InfantryTypeClass::Get_Object_Size(bool) const, 0x004D
 DEFINE_IMPLEMENTATION(void InfantryTypeClass::Object_CRC(CRCEngine &) const, 0x004DAD10);
 DEFINE_IMPLEMENTATION(int InfantryTypeClass::Fetch_Heap_ID() const, 0x004DB110);
 DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Read_INI(CCINIClass &), 0x004DA960);
-DEFINE_IMPLEMENTATION(Coordinate InfantryTypeClass::Coord_Fixup(Coordinate *) const, 0x004DACA0);
+DEFINE_IMPLEMENTATION(Coord InfantryTypeClass::Coord_Fixup(Coord *) const, 0x004DACA0);
 DEFINE_IMPLEMENTATION(Point3D InfantryTypeClass::Lepton_Dimensions() const, 0x004DAC50);
 DEFINE_IMPLEMENTATION(bool InfantryTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004DA490);
 DEFINE_IMPLEMENTATION(ObjectClass *const InfantryTypeClass::Create_One_Of(HouseClass *) const, 0x004DA460);
@@ -1202,11 +1202,11 @@ DEFINE_IMPLEMENTATION(Cell *AircraftTypeClass::Occupy_List(bool) const, 0x0040FD
 
 DEFINE_IMPLEMENTATION(int Modify_Damage(int, const WarheadTypeClass *, ArmorType, int), 0x0045EB60);
 DEFINE_IMPLEMENTATION(void Chain_Reaction_Damage(const Cell &), 0x0045EC30);
-DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coordinate &, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
-DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coordinate *), 0x00460340);
-DEFINE_IMPLEMENTATION(void Combat_Lighting(Coordinate, int, const WarheadTypeClass*, bool), 0x00460460);
-DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coordinate &, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
-DEFINE_IMPLEMENTATION(int Get_Explosion_Z(Coordinate), 0x00460B40);
+DEFINE_IMPLEMENTATION(void Explosion_Damage(const Coord &, int, TechnoClass *, const WarheadTypeClass *, bool), 0x0045EEB0);
+DEFINE_IMPLEMENTATION(const AnimTypeClass * Combat_Anim(int, const WarheadTypeClass *, LandType, const Coord *), 0x00460340);
+DEFINE_IMPLEMENTATION(void Combat_Lighting(Coord, int, const WarheadTypeClass*, bool), 0x00460460);
+DEFINE_IMPLEMENTATION(void Wide_Area_Damage(const Coord &, LEPTON, int, TechnoClass *, const WarheadTypeClass *), 0x004604D0);
+DEFINE_IMPLEMENTATION(int Get_Explosion_Z(Coord), 0x00460B40);
 
 DEFINE_IMPLEMENTATION(bool Save_Game(const char *, const char *, bool), 0x005D4FE0);
 DEFINE_IMPLEMENTATION(bool Load_Game(const char *), 0x005D6910);
@@ -1255,7 +1255,7 @@ DEFINE_IMPLEMENTATION(RTTIType BulletTypeClass::Fetch_RTTI() const, 0x004486C0);
 DEFINE_IMPLEMENTATION(int BulletTypeClass::Get_Object_Size(bool) const, 0x004486D0);
 DEFINE_IMPLEMENTATION(void BulletTypeClass::Object_CRC(CRCEngine &) const, 0x004483B0);
 DEFINE_IMPLEMENTATION(bool BulletTypeClass::Read_INI(CCINIClass &), 0x00447E70);
-DEFINE_IMPLEMENTATION(Coordinate BulletTypeClass::Coord_Fixup(Coordinate *) const, 0x00448340);
+DEFINE_IMPLEMENTATION(Coord BulletTypeClass::Coord_Fixup(Coord *) const, 0x00448340);
 DEFINE_IMPLEMENTATION(bool BulletTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x004486F0);
 DEFINE_IMPLEMENTATION(ObjectClass *const BulletTypeClass::Create_One_Of(HouseClass *) const, 0x00448700);
 
@@ -1270,8 +1270,8 @@ LocomotionClass::LocomotionClass(const NoInitClass &) {}
 LocomotionClass::~LocomotionClass() {}
 DEFINE_IMPLEMENTATION(HRESULT LocomotionClass::Link_To_Object(void *), 0x00506250);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving(), 0x00506800);
-DEFINE_IMPLEMENTATION(Coordinate LocomotionClass::Destination(), 0x00506790);
-DEFINE_IMPLEMENTATION(Coordinate LocomotionClass::Head_To_Coord(), 0x005067C0);
+DEFINE_IMPLEMENTATION(Coord LocomotionClass::Destination(), 0x00506790);
+DEFINE_IMPLEMENTATION(Coord LocomotionClass::Head_To_Coord(), 0x005067C0);
 DEFINE_IMPLEMENTATION(MoveType LocomotionClass::Can_Enter_Cell(Cell), 0x00506710);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_To_Have_Shadow(), 0x00506700);
 DEFINE_IMPLEMENTATION(Matrix3D LocomotionClass::Draw_Matrix(int *), 0x00506260);
@@ -1282,7 +1282,7 @@ DEFINE_IMPLEMENTATION(VisualType LocomotionClass::Visual_Character(bool), 0x0050
 DEFINE_IMPLEMENTATION(int LocomotionClass::Z_Adjust(), 0x005066C0);
 DEFINE_IMPLEMENTATION(ZGradientType LocomotionClass::Z_Gradient(), 0x5066D0);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Process(), 0x00506780);
-DEFINE_IMPLEMENTATION(void LocomotionClass::Move_To(Coordinate), 0x00506770);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Move_To(Coord), 0x00506770);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Stop_Moving(), 0x00506760);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Do_Turn(DirType), 0x00506750);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Unlimbo(), 0x00506740);
@@ -1293,8 +1293,8 @@ DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Powered(), 0x00506460);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Ion_Sensitive(), 0x00506470);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Push(DirType), 0x00506690);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Shove(DirType), 0x005066A0);
-DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Track(int, Coordinate), 0x00506730);
-DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Immediate_Destination(Coordinate), 0x00506720);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Track(int, Coord), 0x00506730);
+DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Immediate_Destination(Coord), 0x00506720);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Force_New_Slope(TileRampType), 0x00506810);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Now(), 0x00483C60);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Apparent_Speed(), 0x00483C60);
@@ -1304,7 +1304,7 @@ DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Status(), 0x004822B0);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Acquire_Hunter_Seeker_Target(), 0x004822C0);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Surfacing(), 0x004822D0);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Mark_All_Occupation_Bits(MarkType), 0x00483C70);
-DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Here(Coordinate), 0x00483C80);
+DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Here(Coord), 0x00483C80);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Will_Jump_Tracks(), 0x00483C90);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Really_Moving_Now(), 0x004822A0);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Stop_Movement_Animation(), 0x004822E0);
@@ -1436,9 +1436,9 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE DropPodLocomotionClass::GetClassID(
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Load(IStream *), 0x004838A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DropPodLocomotionClass::Save(IStream *, BOOL), 0x00483920);
 DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Is_Moving(), 0x00483170);
-DEFINE_IMPLEMENTATION(Coordinate DropPodLocomotionClass::Destination(), 0x00483180);
+DEFINE_IMPLEMENTATION(Coord DropPodLocomotionClass::Destination(), 0x00483180);
 DEFINE_IMPLEMENTATION(bool DropPodLocomotionClass::Process(), 0x004831B0);
-DEFINE_IMPLEMENTATION(void DropPodLocomotionClass::Move_To(Coordinate), 0x00483620);
+DEFINE_IMPLEMENTATION(void DropPodLocomotionClass::Move_To(Coord), 0x00483620);
 DEFINE_IMPLEMENTATION(void DropPodLocomotionClass::Stop_Moving(), 0x00483A00);
 DEFINE_IMPLEMENTATION(LayerType DropPodLocomotionClass::In_Which_Layer(), 0x00483B30);
 DEFINE_IMPLEMENTATION(int DropPodLocomotionClass::Drawing_Code(), 0x00483C50);
@@ -1571,9 +1571,9 @@ DEFINE_IMPLEMENTATION(int STDMETHODCALLTYPE CellClass::What_Am_I(), 0x0045D770);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(CellClass::~CellClass(), 0x00451750);
 DEFINE_IMPLEMENTATION(RTTIType CellClass::Fetch_RTTI() const, 0x0045D780);
 DEFINE_IMPLEMENTATION(int CellClass::Get_Object_Size(bool) const, 0x0045D790);
-DEFINE_IMPLEMENTATION(Coordinate CellClass::Center_Coord() const, 0x0045C4E0);
-DEFINE_IMPLEMENTATION(Coordinate CellClass::entry_5C() const, 0x0045C530);
-DEFINE_IMPLEMENTATION(int CellClass::Get_Height(const Coordinate &) const, 0x00450F90);
+DEFINE_IMPLEMENTATION(Coord CellClass::Center_Coord() const, 0x0045C4E0);
+DEFINE_IMPLEMENTATION(Coord CellClass::entry_5C() const, 0x0045C530);
+DEFINE_IMPLEMENTATION(int CellClass::Get_Height(const Coord &) const, 0x00450F90);
 DEFINE_IMPLEMENTATION(int CellClass::Preview_Cell_Color(void *, bool), 0x00451900);
 DEFINE_IMPLEMENTATION(void CellClass::Cell_Color(RGBClass &, RGBClass &), 0x00451AF0);
 DEFINE_IMPLEMENTATION(ObjectClass *CellClass::Cell_Find_Object(RTTIType, bool) const, 0x00452110);
@@ -1591,14 +1591,14 @@ DEFINE_IMPLEMENTATION(void CellClass::Occupy_Up(ObjectClass *, bool), 0x004549D0
 DEFINE_IMPLEMENTATION(Rect CellClass::Get_Overlay_Rect() const, 0x00455B30);
 DEFINE_IMPLEMENTATION(Rect CellClass::Get_Rect() const, 0x004560B0);
 DEFINE_IMPLEMENTATION(void CellClass::Wall_Update(bool), 0x004567A0);
-DEFINE_IMPLEMENTATION(Coordinate CellClass::Cell_Coord() const, 0x00456BA0);
+DEFINE_IMPLEMENTATION(Coord CellClass::Cell_Coord() const, 0x00456BA0);
 DEFINE_IMPLEMENTATION(int CellClass::Reduce_Tiberium(int), 0x00456BF0);
 DEFINE_IMPLEMENTATION(int CellClass::Reduce_Wall(int), 0x00456E90);
-DEFINE_IMPLEMENTATION(int CellClass::Spot_Index(Coordinate &), 0x00457280);
+DEFINE_IMPLEMENTATION(int CellClass::Spot_Index(Coord &), 0x00457280);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Spot_Free(int, bool) const, 0x00457310);
-DEFINE_IMPLEMENTATION(Coordinate CellClass::Closest_Free_Spot(Coordinate &, bool, bool) const, 0x00457360);
+DEFINE_IMPLEMENTATION(Coord CellClass::Closest_Free_Spot(Coord &, bool, bool) const, 0x00457360);
 DEFINE_IMPLEMENTATION(int CellClass::Clear_Icon(IsometricTileType, int), 0x00457650);
-DEFINE_IMPLEMENTATION(void CellClass::Incoming(Coordinate &, bool, bool, bool), 0x004577D0);
+DEFINE_IMPLEMENTATION(void CellClass::Incoming(Coord &, bool, bool, bool), 0x004577D0);
 DEFINE_IMPLEMENTATION(CellClass &CellClass::Adjacent_Cell(FacingType) const, 0x00457970);
 DEFINE_IMPLEMENTATION(void CellClass::Adjust_Threat(HousesType, int), 0x004579D0);
 DEFINE_IMPLEMENTATION(long CellClass::Tiberium_Adjust(bool), 0x00457A50);
@@ -1653,14 +1653,14 @@ DEFINE_IMPLEMENTATION(RTTIType Tactical::Fetch_RTTI() const, 0x00617FF0);
 DEFINE_IMPLEMENTATION(int Tactical::Get_Object_Size(bool) const, 0x00618000);
 DEFINE_IMPLEMENTATION(void Tactical::AI(), 0x0060F960);
 DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0x00617CD0);
-DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coordinate &) const, 0x0060F150);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coord &) const, 0x0060F150);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Point2D &) const, 0x0060F270);
-DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coordinate &) const, 0x0060F350);
+DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coord &) const, 0x0060F350);
 DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int), 0x0060F3C0);
-DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coordinate &, Point2D &) const, 0x0060F4B0);
-DEFINE_IMPLEMENTATION(Coordinate Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
-DEFINE_IMPLEMENTATION(Coordinate Tactical::func_60F740(const Point2D &) const, 0x0060F740);
-DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coordinate &, int), 0x0060F800);
+DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coord &, Point2D &) const, 0x0060F4B0);
+DEFINE_IMPLEMENTATION(Coord Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
+DEFINE_IMPLEMENTATION(Coord Tactical::func_60F740(const Point2D &) const, 0x0060F740);
+DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coord &, int), 0x0060F800);
 DEFINE_IMPLEMENTATION(int Tactical::Z_Lepton_To_Pixel(LEPTON), 0x0060F3C0);
 DEFINE_IMPLEMENTATION(LEPTON Tactical::Pixel_To_Z_Lepton(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface &surface, bool full_redraw, RenderPassEnum render_pass), 0x006111E0);
@@ -1669,7 +1669,7 @@ DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char *), 0x00611C60);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Dimensions(const Rect &), 0x00612B40);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Center_Position(const Point2D &), 0x00612BE0);
-DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Position(const Coordinate &), 0x00612C50);
+DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Position(const Coord &), 0x00612C50);
 DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Center_Position() const, 0x00612D50);
 DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Position() const, 0x00612D70);
 DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
@@ -1684,8 +1684,8 @@ DEFINE_IMPLEMENTATION(void Tactical::Draw_Radial_Indicators() const, 0x00617FA0)
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FuseClass::FuseClass(), 0x004A99F0);
 FuseClass::FuseClass(const NoInitClass &) {}
 FuseClass::~FuseClass() {}
-DEFINE_IMPLEMENTATION(void FuseClass::Arm_Fuse(Coordinate &, Coordinate &, int, int), 0x004A9A20);
-DEFINE_IMPLEMENTATION(FuseResultType FuseClass::Fuse_Checkup(Coordinate &), 0x004A9AE0);
+DEFINE_IMPLEMENTATION(void FuseClass::Arm_Fuse(Coord &, Coord &, int, int), 0x004A9A20);
+DEFINE_IMPLEMENTATION(FuseResultType FuseClass::Fuse_Checkup(Coord &), 0x004A9AE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE OverlayTypeClass::GetClassID(CLSID *), 0x0058D900);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE OverlayTypeClass::Load(IStream *), 0x0058D7F0);
@@ -1698,7 +1698,7 @@ DEFINE_IMPLEMENTATION(int OverlayTypeClass::Get_Object_Size(bool) const, 0x0058D
 DEFINE_IMPLEMENTATION(void OverlayTypeClass::Object_CRC(CRCEngine &) const, 0x0058D750);
 DEFINE_IMPLEMENTATION(int OverlayTypeClass::Fetch_Heap_ID() const, 0x0058DC40);
 DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Read_INI(CCINIClass &), 0x0058D490);
-DEFINE_IMPLEMENTATION(Coordinate OverlayTypeClass::Coord_Fixup(Coordinate *) const, 0x0058D730);
+DEFINE_IMPLEMENTATION(Coord OverlayTypeClass::Coord_Fixup(Coord *) const, 0x0058D730);
 DEFINE_IMPLEMENTATION(bool OverlayTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0058D2B0);
 DEFINE_IMPLEMENTATION(ObjectClass *const OverlayTypeClass::Create_One_Of(HouseClass *) const, 0x0058D2E0);
 DEFINE_IMPLEMENTATION(Cell *OverlayTypeClass::Occupy_List(bool) const, 0x0058D240);
@@ -1739,7 +1739,7 @@ EventClass::EventClass() : ID(-1), Type(EVENT_EMPTY) {}
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, RTTIType, int), 0x004940A0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, RTTIType, Cell *), 0x00494110);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, EventType, int, Cell *), 0x00494190);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, AnimType, HousesType, Coordinate *), 0x00493F30);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, AnimType, HousesType, Coord *), 0x00493F30);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(EventClass::EventClass(unsigned int, void *, unsigned long), 0x00494210);
 DEFINE_IMPLEMENTATION(void EventClass::Execute(), 0x00494280);
 
@@ -1748,7 +1748,7 @@ DEFINE_IMPLEMENTATION(int WWMessageBox::Process(const char *, int, const char *,
 DEFINE_IMPLEMENTATION(int WWMessageBox::Process(int, int, int, int, int, bool), 0x00572B20);
 DEFINE_IMPLEMENTATION(int WWMessageBox::Process(char const *, int, int, int, int, bool), 0x00572B70);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(Coordinate, int), 0x0058DFD0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(SpotlightClass::SpotlightClass(Coord, int), 0x0058DFD0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(SpotlightClass::~SpotlightClass(), 0x0058E050);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Remove_If_Large(), 0x0058E0A0);
 DEFINE_IMPLEMENTATION(void SpotlightClass::Update_All(), 0x0058E110);
@@ -1834,11 +1834,11 @@ DEFINE_IMPLEMENTATION(void MapClass::Set_Map_Dimensions(Rect &, bool, int, bool)
 DEFINE_IMPLEMENTATION(void MapClass::entry_70(Rect &), 0x00510A20);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Cell &), 0x0050F280);
 DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) const, 0x0050F280);
-DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coordinate &), 0x0050F210);
-DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coordinate &) const, 0x0050F210);
-DEFINE_IMPLEMENTATION(void MapClass::Sight_From(const Coordinate &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
+DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coord &), 0x0050F210);
+DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coord &) const, 0x0050F210);
+DEFINE_IMPLEMENTATION(void MapClass::Sight_From(const Coord &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Cell &) const, 0x00510FB0);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Coordinate &) const, 0x00511000);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Coord &) const, 0x00511000);
 DEFINE_IMPLEMENTATION(void MapClass::Place_Down(Cell &, ObjectClass *), 0x00511070);
 DEFINE_IMPLEMENTATION(void MapClass::Pick_Up(Cell &, ObjectClass *), 0x005111B0);
 DEFINE_IMPLEMENTATION(long MapClass::Overpass(), 0x005112F0);
@@ -1847,7 +1847,7 @@ DEFINE_IMPLEMENTATION(int MapClass::Cell_Threat(Cell &, HouseClass *), 0x0051449
 DEFINE_IMPLEMENTATION(bool MapClass::Place_Random_Crate(), 0x00514500);
 DEFINE_IMPLEMENTATION(bool MapClass::Remove_Crate(Cell &), 0x005145D0);
 DEFINE_IMPLEMENTATION(int MapClass::MapClass::Validate(), 0x005147E0);
-DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(Coordinate &) const, 0x005147F0);
+DEFINE_IMPLEMENTATION(ObjectClass *MapClass::Close_Object(Coord &) const, 0x005147F0);
 DEFINE_IMPLEMENTATION(void MapClass::Update_Cell_Zone(const Cell &), 0x00515A00);
 DEFINE_IMPLEMENTATION(Cell MapClass::Nearby_Location(Cell const&, SpeedType, int zone, MZoneType, bool, Point2D, bool, bool, bool, bool, Cell const&) const, 0x005161A0);
 DEFINE_IMPLEMENTATION(bool MapClass::Is_Area_Clear(const Cell &, int, int, SpeedType, int, MZoneType, int, bool, bool) const, 0x00516BE0);
@@ -1855,13 +1855,13 @@ DEFINE_IMPLEMENTATION(bool MapClass::Base_Region(const Cell &, HousesType &, Zon
 DEFINE_IMPLEMENTATION(const Cell MapClass::Pick_Random_Location(), 0x0051DFB0);
 DEFINE_IMPLEMENTATION(void MapClass::Shroud_The_Map(), 0x0051E010);
 DEFINE_IMPLEMENTATION(void MapClass::Reveal_The_Map(), 0x0051E0A0);
-DEFINE_IMPLEMENTATION(int MapClass::Get_Height_GL(const Coordinate &) const, 0x0051E130);
+DEFINE_IMPLEMENTATION(int MapClass::Get_Height_GL(const Coord &) const, 0x0051E130);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Iterate(), 0x0051E1B0);
 DEFINE_IMPLEMENTATION(void MapClass::Reset_Iterator(), 0x0051E270);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(Rect &, bool) const, 0x0051E2B0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(const Cell &, bool) const, 0x0051E380);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(CellClass &, bool) const, 0x0051E460);
-DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(const Coordinate &) const, 0x0051E510);
+DEFINE_IMPLEMENTATION(bool MapClass::In_Local_Radar(const Coord &) const, 0x0051E510);
 DEFINE_IMPLEMENTATION(CellClass *MapClass::Local_Iterate(), 0x0051E630);
 DEFINE_IMPLEMENTATION(void MapClass::Reset_Local_Iterator(), 0x0051E770);
 DEFINE_IMPLEMENTATION(bool MapClass::Deform(const Cell&, bool), 0x0051E9E0);
@@ -1870,8 +1870,8 @@ DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Low_Bridge_At(const Cell&), 0x00524
 DEFINE_IMPLEMENTATION(void MapClass::Collapse_Cliff(CellClass&), 0x00526C50);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
 DEFINE_IMPLEMENTATION(void MapClass::Update_Cell_Subzones(const Cell&), 0x00529AC0);
-DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coordinate&), 0x0052B870);
-DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coordinate&), 0x0052B9B0);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coord&), 0x0052B870);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coord&), 0x0052B9B0);
 DEFINE_IMPLEMENTATION(void MapClass::Fog_Map(), 0x0052BBE0);
 DEFINE_IMPLEMENTATION(void MapClass::Recalc_Ice(), 0x0052C610);
 DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Bridge_At(const Cell&), 0x0052C690);
@@ -2020,15 +2020,15 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Sell_Mode_Control(int), 0x004794E0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Waypoint_Mode_Control(int, bool), 0x00479580);
 DEFINE_IMPLEMENTATION(void DisplayClass::Power_Mode_Control(int), 0x00479690);
 DEFINE_IMPLEMENTATION(void DisplayClass::Repair_Mode_Control(int), 0x00479730);
-DEFINE_IMPLEMENTATION(Coordinate DisplayClass::Closest_Free_Spot(const Coordinate &, bool) const, 0x004797D0);
-DEFINE_IMPLEMENTATION(bool DisplayClass::Is_Spot_Free(Coordinate &, bool) const, 0x00479850);
+DEFINE_IMPLEMENTATION(Coord DisplayClass::Closest_Free_Spot(const Coord &, bool) const, 0x004797D0);
+DEFINE_IMPLEMENTATION(bool DisplayClass::Is_Spot_Free(Coord &, bool) const, 0x00479850);
 DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Shadow(), 0x00479880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Encroach_Fog(), 0x00479970);
 DEFINE_IMPLEMENTATION(void DisplayClass::Fog_Cell(Cell &), 0x00479A00);
 DEFINE_IMPLEMENTATION(void DisplayClass::Shroud_Cell(Cell &), 0x00479B40);
 DEFINE_IMPLEMENTATION(void DisplayClass::Write_INI(CCINIClass &), 0x0047A540);
 DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
-DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(Coordinate &, LEPTON), 0x0047AAF0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(Coord &, LEPTON), 0x0047AAF0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Center_On_Selection(), 0x0047ACD0);
 DEFINE_IMPLEMENTATION(ObjectClass *DisplayClass::Following_What() const, 0x0047C0C0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass *), 0x0047C0E0);
@@ -2083,7 +2083,7 @@ DEFINE_IMPLEMENTATION(HRESULT RadarClass::Save(IStream *), 0x005BBDA0);
 DEFINE_IMPLEMENTATION(void RadarClass::Set_Dimensions(), 0x005B9980);
 DEFINE_IMPLEMENTATION(bool RadarClass::Map_Cell(Cell &, HouseClass *), 0x005B9110);
 DEFINE_IMPLEMENTATION(Cell RadarClass::Click_Cell_Calc(Point2D &), 0x005B9060);
-DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coordinate &), 0x005B95A0);
+DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coord &), 0x005B95A0);
 DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
 DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell &) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
@@ -2481,7 +2481,7 @@ DEFINE_IMPLEMENTATION(float HouseClass::Power_Fraction() const, 0x004C0020);
 DEFINE_IMPLEMENTATION(void HouseClass::Sell_Wall(Cell &, bool), 0x004C0070);
 DEFINE_IMPLEMENTATION(const BuildingTypeClass * HouseClass::Suggest_New_Building() const, 0x004C0220);
 DEFINE_IMPLEMENTATION(BuildingClass * HouseClass::Find_Building(StructType, ZoneType) const, 0x004C0240);
-DEFINE_IMPLEMENTATION(Coordinate HouseClass::Find_Build_Location(BuildingClass *) const, 0x004C0310);
+DEFINE_IMPLEMENTATION(Coord HouseClass::Find_Build_Location(BuildingClass *) const, 0x004C0310);
 DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Center(), 0x004C0340);
 DEFINE_IMPLEMENTATION(int HouseClass::Expert_AI(), 0x004C0630);
 DEFINE_IMPLEMENTATION(UrgencyType HouseClass::Check_Fire_Sale() const, 0x004C09D0);
@@ -2498,12 +2498,12 @@ DEFINE_IMPLEMENTATION(void HouseClass::Tracking_Add(const TechnoClass *), 0x004C
 DEFINE_IMPLEMENTATION(int *HouseClass::Factory_Counter(RTTIType), 0x004C2330);
 DEFINE_IMPLEMENTATION(void HouseClass::Active_Remove(const TechnoClass *), 0x004C23B0);
 DEFINE_IMPLEMENTATION(void HouseClass::Active_Add(const TechnoClass *), 0x004C2450);
-DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(Coordinate &) const, 0x004C24F0);
+DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(Coord &) const, 0x004C24F0);
 DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(const ObjectClass *) const, 0x004C2660);
 DEFINE_IMPLEMENTATION(ZoneType HouseClass::Which_Zone(Cell &) const, 0x004C26A0);
 DEFINE_IMPLEMENTATION(Cell HouseClass::Zone_Cell(ZoneType) const, 0x004C26E0);
 DEFINE_IMPLEMENTATION(Cell HouseClass::Where_To_Go(const FootClass *) const, 0x004C2A20);
-DEFINE_IMPLEMENTATION(AbstractClass * HouseClass::Find_Juicy_Target(Coordinate &) const, 0x004C2B20);
+DEFINE_IMPLEMENTATION(AbstractClass * HouseClass::Find_Juicy_Target(Coord &) const, 0x004C2B20);
 DEFINE_IMPLEMENTATION(FactoryClass *HouseClass::Fetch_Factory(RTTIType) const, 0x004C2CA0);
 DEFINE_IMPLEMENTATION(void HouseClass::Set_Factory(RTTIType, FactoryClass *), 0x004C2D20);
 DEFINE_IMPLEMENTATION(int HouseClass::Factory_Count(RTTIType) const, 0x004C2DB0);
@@ -2522,8 +2522,8 @@ DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass *), 0x004C3FA0);
 // 004C3FC0
 // 004C40F0
 // 004C4150
-DEFINE_IMPLEMENTATION(Coordinate *HouseClass::Waypoint_Coord(Cell &), 0x004C4210);
-DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coordinate &, int &, bool &), 0x004C42C0);
+DEFINE_IMPLEMENTATION(Coord *HouseClass::Waypoint_Coord(Cell &), 0x004C4210);
+DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coord &, int &, bool &), 0x004C42C0);
 // 004C4450
 // 004C45D0
 // 004C5320
@@ -2714,7 +2714,7 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::operator > (const ObjectClass &) const, 
 DEFINE_IMPLEMENTATION(void ObjectClass::Detach(AbstractClass *, bool), 0x00585EF0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Object_CRC(CRCEngine &) const, 0x00586A30);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Inactive() const, 0x00586E20);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Center_Coord() const, 0x00586D60);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Center_Coord() const, 0x00586D60);
 DEFINE_IMPLEMENTATION(bool ObjectClass::On_Ground() const, 0x00587280);
 DEFINE_IMPLEMENTATION(bool ObjectClass::In_Air() const, 0x005872A0);
 DEFINE_IMPLEMENTATION(void ObjectClass::AI(), 0x00584C10);
@@ -2734,22 +2734,22 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Repair() const, 0x00584F60);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Demolish() const, 0x00584F70);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Fire() const, 0x00584F80);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Can_Player_Move() const, 0x00584F90);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Target_Coord() const, 0x0040F140);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Docking_Coord() const, 0x0040F170);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Render_Coord() const, 0x0040F1A0);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Fire_Coord(WeaponSlotType) const, 0x00417440);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Exit_Coord() const, 0x0040F1D0);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Target_Coord() const, 0x0040F140);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Docking_Coord() const, 0x0040F170);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Render_Coord() const, 0x0040F1A0);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Fire_Coord(WeaponSlotType) const, 0x00417440);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Exit_Coord() const, 0x0040F1D0);
 DEFINE_IMPLEMENTATION(int ObjectClass::Sort_Y() const, 0x005872D0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_BC(), 0x005871B0);
 DEFINE_IMPLEMENTATION(bool ObjectClass::entry_C0() const, 0x00417480);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Limbo(), 0x00585A50);
-DEFINE_IMPLEMENTATION(bool ObjectClass::Unlimbo(const Coordinate &, Dir256), 0x00585BE0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Unlimbo(const Coord &, Dir256), 0x00585BE0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Detach_All(bool), 0x00585F30);
 DEFINE_IMPLEMENTATION(void ObjectClass::Record_The_Kill(const ObjectClass *), 0x00584FA0);
-DEFINE_IMPLEMENTATION(bool ObjectClass::Paradrop(Coordinate &), 0x005864C0);
+DEFINE_IMPLEMENTATION(bool ObjectClass::Paradrop(Coord &), 0x005864C0);
 DEFINE_IMPLEMENTATION(void ObjectClass::entry_D8(), 0x00584E20);
-DEFINE_IMPLEMENTATION(void ObjectClass::Set_Occupy_Bit(Coordinate &), 0x00586880);
-DEFINE_IMPLEMENTATION(void ObjectClass::Clear_Occupy_Bit(Coordinate &), 0x00586900);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Occupy_Bit(Coord &), 0x00586880);
+DEFINE_IMPLEMENTATION(void ObjectClass::Clear_Occupy_Bit(Coord &), 0x00586900);
 DEFINE_IMPLEMENTATION(void ObjectClass::Delete_Me(), 0x00586DB0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Do_Shimmer(), 0x00584FB0);
 DEFINE_IMPLEMENTATION(ExitType ObjectClass::Exit_Object(const TechnoClass *), 0x00584FC0);
@@ -2771,10 +2771,10 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::Active_Click_With(ActionType, Cell &, bo
 DEFINE_IMPLEMENTATION(void ObjectClass::Clicked_As_Target(int), 0x00585010);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Select(), 0x005851D0);
 DEFINE_IMPLEMENTATION(void ObjectClass::Unselect(), 0x00585150);
-DEFINE_IMPLEMENTATION(bool ObjectClass::In_Range(Coordinate &, WeaponSlotType) const, 0x00585020);
+DEFINE_IMPLEMENTATION(bool ObjectClass::In_Range(Coord &, WeaponSlotType) const, 0x00585020);
 DEFINE_IMPLEMENTATION(int ObjectClass::Weapon_Range(WeaponSlotType) const, 0x00585030);
 DEFINE_IMPLEMENTATION(ResultType ObjectClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x00585FD0);
-DEFINE_IMPLEMENTATION(void ObjectClass::Scatter(const Coordinate &, bool, bool), 0x00585040);
+DEFINE_IMPLEMENTATION(void ObjectClass::Scatter(const Coord &, bool, bool), 0x00585040);
 DEFINE_IMPLEMENTATION(bool ObjectClass::Catch_Fire(), 0x00585050);
 DEFINE_IMPLEMENTATION(void ObjectClass::Fire_Out(), 0x00585060);
 DEFINE_IMPLEMENTATION(int ObjectClass::Value() const, 0x00585070);
@@ -2790,8 +2790,8 @@ DEFINE_IMPLEMENTATION(void ObjectClass::entry_174(int, int), 0x00587270);
 DEFINE_IMPLEMENTATION(void ObjectClass::Move(FacingType), 0x005850B0);
 DEFINE_IMPLEMENTATION(MoveType ObjectClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004174D0);
 DEFINE_IMPLEMENTATION(MoveType ObjectClass::entry_180(const CellClass *, FacingType, int *, bool *, const CellClass *), 0x004174E0);
-DEFINE_IMPLEMENTATION(Coordinate ObjectClass::Get_Coord() const, 0x0040F210);
-DEFINE_IMPLEMENTATION(void ObjectClass::Set_Coord(const Coordinate &), 0x005870C0);
+DEFINE_IMPLEMENTATION(Coord ObjectClass::Get_Coord() const, 0x0040F210);
+DEFINE_IMPLEMENTATION(void ObjectClass::Set_Coord(const Coord &), 0x005870C0);
 DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Cell() const, 0x0040F230);
 DEFINE_IMPLEMENTATION(CellClass *ObjectClass::Get_Cell_Ptr() const, 0x005870E0);
 DEFINE_IMPLEMENTATION(Cell ObjectClass::Get_Target_Cell() const, 0x00587100);
@@ -2808,8 +2808,8 @@ DEFINE_IMPLEMENTATION(bool ObjectClass::Is_Foot() const, 0x00584BF0);
 DEFINE_IMPLEMENTATION(DirType ObjectClass::Direction(AbstractClass *) const, 0x00584B50);
 DEFINE_IMPLEMENTATION(int ObjectClass::Distance(AbstractClass *) const, 0x00586B20);
 DEFINE_IMPLEMENTATION(int ObjectClass::Distance(const AbstractClass *) const, 0x00586C00);
-DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const AbstractClass *) const, 0x00586CC0);
-DEFINE_IMPLEMENTATION(int ObjectClass::Distance_Squared(const Coordinate &), 0x00586D20);
+DEFINE_IMPLEMENTATION(int ObjectClass::Relative_Distance(const AbstractClass *) const, 0x00586CC0);
+DEFINE_IMPLEMENTATION(int ObjectClass::Relative_Distance(const Coord &), 0x00586D20);
 // 00586E30
 // 00586F10
 // 00586F90
@@ -2931,9 +2931,9 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Get_Ownable() const, 0x00637200);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Repair() const, 0x00632380);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Player_Fire() const, 0x00632310);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Player_Move() const, 0x00631FF0);
-DEFINE_IMPLEMENTATION(Coordinate TechnoClass::Fire_Coord(WeaponSlotType) const, 0x0062A3D0);
+DEFINE_IMPLEMENTATION(Coord TechnoClass::Fire_Coord(WeaponSlotType) const, 0x0062A3D0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Limbo(), 0x0062CA90);
-DEFINE_IMPLEMENTATION(bool TechnoClass::Unlimbo(const Coordinate &, Dir256), 0x0062CB30);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Unlimbo(const Coord &, Dir256), 0x0062CB30);
 DEFINE_IMPLEMENTATION(void TechnoClass::Record_The_Kill(const ObjectClass *), 0x006336F0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Do_Shimmer(), 0x00633CA0);
 DEFINE_IMPLEMENTATION(ExitType TechnoClass::Exit_Object(const TechnoClass *), 0x006374D0);
@@ -2944,7 +2944,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Look(bool, bool), 0x00638310);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Mark(MarkType), 0x0062AC00);
 DEFINE_IMPLEMENTATION(void TechnoClass::Clicked_As_Target(int), 0x0062E710);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Select(), 0x0062F900);
-DEFINE_IMPLEMENTATION(bool TechnoClass::In_Range(Coordinate &, WeaponSlotType) const, 0x0062CDB0);
+DEFINE_IMPLEMENTATION(bool TechnoClass::In_Range(Coord &, WeaponSlotType) const, 0x0062CDB0);
 DEFINE_IMPLEMENTATION(int TechnoClass::Weapon_Range(WeaponSlotType) const, 0x006323D0);
 DEFINE_IMPLEMENTATION(ResultType TechnoClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x00632750);
 DEFINE_IMPLEMENTATION(int TechnoClass::Value() const, 0x00636520);
@@ -2972,7 +2972,7 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Refund_Amount() const, 0x00638090);
 DEFINE_IMPLEMENTATION(int TechnoClass::Risk() const, 0x00637210);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_In_Same_Zone_As(const ObjectClass *) const, 0x0043B8E0);
 DEFINE_IMPLEMENTATION(DirType TechnoClass::entry_268(const ObjectClass *) const, 0x00428B70);
-DEFINE_IMPLEMENTATION(bool TechnoClass::Is_In_Same_Zone(const Coordinate &) const, 0x006366B0);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Is_In_Same_Zone(const Coord &) const, 0x006366B0);
 DEFINE_IMPLEMENTATION(int TechnoClass::How_Many_Survivors() const, 0x0062A300);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_274() const, 0x0063A250);
 DEFINE_IMPLEMENTATION(int TechnoClass::entry_278() const, 0x0063A090);
@@ -2980,7 +2980,7 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Get_Z_Adjustment() const, 0x00634790);
 DEFINE_IMPLEMENTATION(ZGradientType TechnoClass::Get_Z_Gradient() const, 0x0043B8F0);
 DEFINE_IMPLEMENTATION(BuildingClass *const TechnoClass::Find_Docking_Bay(const BuildingTypeClass *, bool, bool) const, 0x00637E60);
 DEFINE_IMPLEMENTATION(Cell TechnoClass::Find_Exit_Cell(const TechnoClass *) const, 0x00638040);
-DEFINE_IMPLEMENTATION(Coordinate TechnoClass::entry_28C(WeaponSlotType) const, 0x0062A5A0);
+DEFINE_IMPLEMENTATION(Coord TechnoClass::entry_28C(WeaponSlotType) const, 0x0062A5A0);
 DEFINE_IMPLEMENTATION(FacingType TechnoClass::Desired_Load_Dir(const ObjectClass *, Cell &) const, 0x00637240);
 DEFINE_IMPLEMENTATION(DirType TechnoClass::Fire_Direction() const, 0x00637310);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const TechnoClass::Crew_Type() const, 0x006364A0);
@@ -3001,16 +3001,16 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Response_Move() const, 0x00637390);
 DEFINE_IMPLEMENTATION(void TechnoClass::Response_Attack() const, 0x006373F0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Player_Assign_Mission(MissionType, AbstractClass *, AbstractClass *), 0x00631650);
 DEFINE_IMPLEMENTATION(void TechnoClass::Reduce_Ammunition(), 0x0063A070);
-DEFINE_IMPLEMENTATION(bool TechnoClass::Target_Something_Nearby(Coordinate &, ThreatType), 0x00637450);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Target_Something_Nearby(Coord &, ThreatType), 0x00637450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Stun(), 0x0062FD20);
 DEFINE_IMPLEMENTATION(bool TechnoClass::In_Range_Of(AbstractClass *, WeaponSlotType) const, 0x0062CD20);
 DEFINE_IMPLEMENTATION(FireErrorType TechnoClass::Can_Fire(AbstractClass *, WeaponSlotType) const, 0x0062F980);
-DEFINE_IMPLEMENTATION(AbstractClass * TechnoClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0062DC80);
+DEFINE_IMPLEMENTATION(AbstractClass * TechnoClass::Greatest_Threat(ThreatType, Coord &, bool) const, 0x0062DC80);
 DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Target(AbstractClass *) const, 0x0062FD70);
 DEFINE_IMPLEMENTATION(const BulletClass *TechnoClass::Fire_At(AbstractClass *, WeaponSlotType), 0x00630350);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Captured(HouseClass *), 0x006324D0);
-DEFINE_IMPLEMENTATION(void TechnoClass::Laser_Zap(AbstractClass *, int, const WeaponTypeClass *, Coordinate &), 0x0062FFD0);
-DEFINE_IMPLEMENTATION(void TechnoClass::Rock(const Coordinate &, float), 0x006384A0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Laser_Zap(AbstractClass *, int, const WeaponTypeClass *, Coord &), 0x0062FFD0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Rock(const Coord &, float), 0x006384A0);
 DEFINE_IMPLEMENTATION(WeaponInfoStruct *const TechnoClass::Get_Weapon(WeaponSlotType) const, 0x0040F2A0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Turret_Equipped() const, 0x0040F2F0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Renovate() const, 0x00632460);
@@ -3044,7 +3044,7 @@ DEFINE_IMPLEMENTATION(double TechnoClass::Area_Modify(Cell &) const, 0x0062CDE0)
 // 0062D0F0);
 // 0062D8D0);
 DEFINE_IMPLEMENTATION(int TechnoClass::Evaluate_Just_Cell(Cell &) const, 0x0062DA70);
-DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Object(ThreatType, int, int, const TechnoClass *, int &, int, Coordinate &) const, 0x0062D0F0);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Object(ThreatType, int, int, const TechnoClass *, int &, int, Coord &) const, 0x0062D0F0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Evaluate_Cell(ThreatType, int, Cell &, int, const TechnoClass **, int &, int) const, 0x0062D8D0);
 DEFINE_IMPLEMENTATION(Cell TechnoClass::Nearby_Location(const TechnoClass *) const, 0x00633A00);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Z_Fudge_Bridge() const, 0x00633F60);
@@ -3063,11 +3063,11 @@ DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Allowed_To_Retaliate(const TechnoClas
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Air() const, 0x006380F0);
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Armor() const, 0x00638170);
 DEFINE_IMPLEMENTATION(int TechnoClass::Anti_Infantry() const, 0x00638240);
-DEFINE_IMPLEMENTATION(Coordinate TechnoClass::func_638AF0() const, 0x00638AF0);
+DEFINE_IMPLEMENTATION(Coord TechnoClass::func_638AF0() const, 0x00638AF0);
 // 00638C70);
 DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Archive_Target(AbstractClass *), 0x00639130);
 // 006391B0);
-DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coordinate&) const, 0x00639810);
+DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coord&) const, 0x00639810);
 // 00639BB0);
 // 00639C30);
 // 00639C60);
@@ -3100,7 +3100,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FootClass::Save(IStream *, BOOL)
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(FootClass::~FootClass(), 0x004A03D0);
 DEFINE_IMPLEMENTATION(void FootClass::Detach(AbstractClass *, bool), 0x004A4E50);
 DEFINE_IMPLEMENTATION(void FootClass::Object_CRC(CRCEngine &) const, 0x004A6580);
-DEFINE_IMPLEMENTATION(Coordinate FootClass::entry_50() const, 0x004A68A0);
+DEFINE_IMPLEMENTATION(Coord FootClass::entry_50() const, 0x004A68A0);
 DEFINE_IMPLEMENTATION(bool FootClass::On_Ground() const, 0x004A8CC0);
 DEFINE_IMPLEMENTATION(bool FootClass::In_Air() const, 0x004A8BF0);
 DEFINE_IMPLEMENTATION(void FootClass::AI(), 0x004A5890);
@@ -3112,7 +3112,7 @@ DEFINE_IMPLEMENTATION(bool FootClass::Can_Demolish() const, 0x004A5230);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_BC(), 0x004A82E0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_C0() const, 0x0040F330);
 DEFINE_IMPLEMENTATION(bool FootClass::Limbo(), 0x004A5E80);
-DEFINE_IMPLEMENTATION(bool FootClass::Unlimbo(const Coordinate &, Dir256), 0x004A2C70);
+DEFINE_IMPLEMENTATION(bool FootClass::Unlimbo(const Coord &, Dir256), 0x004A2C70);
 DEFINE_IMPLEMENTATION(void FootClass::Detach_All(bool), 0x004A4BC0);
 DEFINE_IMPLEMENTATION(void FootClass::Delete_Me(), 0x004A8BD0);
 DEFINE_IMPLEMENTATION(void FootClass::Draw_It(Point2D &, Rect &) const, 0x004A5E70);
@@ -3126,7 +3126,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Sell_Back(int), 0x004A5310);
 DEFINE_IMPLEMENTATION(void FootClass::entry_174(int, int), 0x004A6E90);
 DEFINE_IMPLEMENTATION(MoveType FootClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004A4FD0);
 DEFINE_IMPLEMENTATION(MoveType FootClass::entry_180(const CellClass *, FacingType, int *, bool *, const CellClass *), 0x004A5020);
-DEFINE_IMPLEMENTATION(void FootClass::Set_Coord(const Coordinate &), 0x004A6330);
+DEFINE_IMPLEMENTATION(void FootClass::Set_Coord(const Coord &), 0x004A6330);
 DEFINE_IMPLEMENTATION(int FootClass::Mission_Attack(), 0x004A1A30);
 DEFINE_IMPLEMENTATION(int FootClass::Mission_Capture(), 0x004A18E0);
 DEFINE_IMPLEMENTATION(int FootClass::Mission_Guard(), 0x004A1A90);
@@ -3142,14 +3142,14 @@ DEFINE_IMPLEMENTATION(bool FootClass::Restore_Mission(), 0x004A4530);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Recloak() const, 0x004A6850);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_22C() const, 0x0040F310);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone_As(const ObjectClass *) const, 0x004A6500);
-DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone(const Coordinate &) const, 0x004A0620);
+DEFINE_IMPLEMENTATION(bool FootClass::Is_In_Same_Zone(const Coord &) const, 0x004A0620);
 DEFINE_IMPLEMENTATION(int FootClass::Get_Z_Adjustment() const, 0x004A5C00);
 DEFINE_IMPLEMENTATION(ZGradientType FootClass::Get_Z_Gradient() const, 0x004A5CE0);
 DEFINE_IMPLEMENTATION(bool FootClass::Is_Allowed_To_Leave_Map() const, 0x004A5560);
 DEFINE_IMPLEMENTATION(void FootClass::entry_2C8() const, 0x004A8B80);
 DEFINE_IMPLEMENTATION(void FootClass::Stun(), 0x004A1E00);
 DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass *) const, 0x004A4D60);
-DEFINE_IMPLEMENTATION(AbstractClass * FootClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004A4DC0);
+DEFINE_IMPLEMENTATION(AbstractClass * FootClass::Greatest_Threat(ThreatType, Coord &, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass *), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
 DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelObject &, unsigned int, int, VoxelIndexClass &, Rect &, Point2D &, Matrix3D &, int, int) const, 0x004A5B50);
@@ -3158,10 +3158,10 @@ DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool), 0x004A3AA0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_36C(), 0x004A69C0);
 DEFINE_IMPLEMENTATION(bool FootClass::Deploy_To_Fire(), 0x0040F320);
-DEFINE_IMPLEMENTATION(Coordinate FootClass::Likely_Coord() const, 0x004A5390);
+DEFINE_IMPLEMENTATION(Coord FootClass::Likely_Coord() const, 0x004A5390);
 DEFINE_IMPLEMENTATION(void FootClass::entry_378(), 0x004A6A10);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_37C(), 0x0040F340);
-DEFINE_IMPLEMENTATION(bool FootClass::Start_Driver(Coordinate &), 0x004A1D90);
+DEFINE_IMPLEMENTATION(bool FootClass::Start_Driver(Coord &), 0x004A1D90);
 DEFINE_IMPLEMENTATION(bool FootClass::Stop_Driver(), 0x004A1D60);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_388(), 0x004A6480);
 DEFINE_IMPLEMENTATION(void FootClass::Draw_Object(const ShapeSet *, int, Point2D &, Rect &, Dir256, int, int, int a8, bool, int, ShapeSet *, int, Point2D, ShapeFlags_Type) const, 0x0040F350);
@@ -3211,8 +3211,8 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Detach(AbstractClass *, bool), 0x00433
 DEFINE_IMPLEMENTATION(RTTIType BuildingClass::Fetch_RTTI() const, 0x0043B990);
 DEFINE_IMPLEMENTATION(int BuildingClass::Get_Object_Size(bool) const, 0x0043B930);
 DEFINE_IMPLEMENTATION(void BuildingClass::Object_CRC(CRCEngine &) const, 0x00438240);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Center_Coord() const, 0x0042F250);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::entry_50() const, 0x0042F3B0);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Center_Coord() const, 0x0042F250);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::entry_50() const, 0x0042F3B0);
 DEFINE_IMPLEMENTATION(void BuildingClass::AI(), 0x00429A60);
 DEFINE_IMPLEMENTATION(VisualType BuildingClass::Visual_Character(bool, const HouseClass *), 0x00438450);
 DEFINE_IMPLEMENTATION(ShapeSet *const BuildingClass::Get_Image_Data() const, 0x00435E40);
@@ -3224,17 +3224,17 @@ DEFINE_IMPLEMENTATION(const char *BuildingClass::Full_Name() const, 0x0043B9A0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Repair() const, 0x00436B60);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Demolish() const, 0x0042FEF0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Can_Player_Move() const, 0x00434520);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Target_Coord() const, 0x00434FB0);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Docking_Coord() const, 0x0042F2C0);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Render_Coord() const, 0x0043B9C0);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Fire_Coord(WeaponSlotType) const, 0x00437BD0);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::Exit_Coord() const, 0x00434580);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Target_Coord() const, 0x00434FB0);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Docking_Coord() const, 0x0042F2C0);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Render_Coord() const, 0x0043B9C0);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Fire_Coord(WeaponSlotType) const, 0x00437BD0);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::Exit_Coord() const, 0x00434580);
 DEFINE_IMPLEMENTATION(int BuildingClass::Sort_Y() const, 0x0042FE40);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Limbo(), 0x0042DB50);
-DEFINE_IMPLEMENTATION(bool BuildingClass::Unlimbo(const Coordinate &, Dir256), 0x00429E20);
+DEFINE_IMPLEMENTATION(bool BuildingClass::Unlimbo(const Coord &, Dir256), 0x00429E20);
 DEFINE_IMPLEMENTATION(void BuildingClass::Detach_All(bool), 0x00434000);
-DEFINE_IMPLEMENTATION(void BuildingClass::Set_Occupy_Bit(Coordinate &), 0x00437FA0);
-DEFINE_IMPLEMENTATION(void BuildingClass::Clear_Occupy_Bit(Coordinate &), 0x00438000);
+DEFINE_IMPLEMENTATION(void BuildingClass::Set_Occupy_Bit(Coord &), 0x00437FA0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Clear_Occupy_Bit(Coord &), 0x00438000);
 DEFINE_IMPLEMENTATION(ExitType BuildingClass::Exit_Object(const TechnoClass *), 0x0042C640);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Render(Rect &, bool, bool), 0x00427210);
 DEFINE_IMPLEMENTATION(void BuildingClass::Draw_It(Point2D &, Rect &) const, 0x004275B0);
@@ -3273,13 +3273,13 @@ DEFINE_IMPLEMENTATION(void BuildingClass::entry_274() const, 0x0043B020);
 DEFINE_IMPLEMENTATION(int BuildingClass::entry_278() const, 0x0043AED0);
 DEFINE_IMPLEMENTATION(int BuildingClass::Get_Z_Adjustment() const, 0x00428B20);
 DEFINE_IMPLEMENTATION(Cell BuildingClass::Find_Exit_Cell(const TechnoClass *) const, 0x00434140);
-DEFINE_IMPLEMENTATION(Coordinate BuildingClass::entry_28C(WeaponSlotType) const, 0x00437D00);
+DEFINE_IMPLEMENTATION(Coord BuildingClass::entry_28C(WeaponSlotType) const, 0x00437D00);
 DEFINE_IMPLEMENTATION(DirType BuildingClass::Fire_Direction() const, 0x00433490);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const BuildingClass::Crew_Type() const, 0x00433FB0);
 DEFINE_IMPLEMENTATION(bool BuildingClass::entry_2B8(int *) const, 0x0043AC70);
 DEFINE_IMPLEMENTATION(void BuildingClass::Death_Announcement(const TechnoClass *) const, 0x00433420);
 DEFINE_IMPLEMENTATION(FireErrorType BuildingClass::Can_Fire(AbstractClass *, WeaponSlotType) const, 0x0042F400);
-DEFINE_IMPLEMENTATION(AbstractClass * BuildingClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x0042E0E0);
+DEFINE_IMPLEMENTATION(AbstractClass * BuildingClass::Greatest_Threat(ThreatType, Coord &, bool) const, 0x0042E0E0);
 DEFINE_IMPLEMENTATION(void BuildingClass::Assign_Target(AbstractClass *) const, 0x0042C570);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Captured(HouseClass *), 0x0042F660);
 DEFINE_IMPLEMENTATION(WeaponInfoStruct *const BuildingClass::Get_Weapon(WeaponSlotType) const, 0x00436C10);
@@ -3492,7 +3492,7 @@ DEFINE_IMPLEMENTATION(void TeamClass::Suspend_Teams(int, const HouseClass *), 0x
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(AbstractClass *), 0x0061FEE0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(Cell &), 0x0061FF60);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(Coordinate &), 0x0061FFB0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(TargetClass::TargetClass(Coord &), 0x0061FFB0);
 DEFINE_IMPLEMENTATION(AbstractTypeClass *xTargetClass::As_TypeClass() const, 0x0061FFF0);
 DEFINE_IMPLEMENTATION(TagClass *xTargetClass::As_Tag() const, 0x006200D0);
 DEFINE_IMPLEMENTATION(TagTypeClass *xTargetClass::As_TagType() const, 0x006201B0);
@@ -3551,7 +3551,7 @@ DEFINE_IMPLEMENTATION(int TActionClass::Fetch_Heap_ID() const, 0x0061DAB0);
 DEFINE_IMPLEMENTATION(bool TActionClass::operator() (HouseClass *, ObjectClass *, TriggerClass *, const Cell &), 0x00619110);
 DEFINE_IMPLEMENTATION(void TActionClass::Read_INI(), 0x00618F70);
 DEFINE_IMPLEMENTATION(void TActionClass::Build_INI_Entry(char *) const, 0x00618E30);
-DEFINE_IMPLEMENTATION(Coordinate TActionClass::Get_Adjusted_Waypoint(), 0x0061DA50);
+DEFINE_IMPLEMENTATION(Coord TActionClass::Get_Adjusted_Waypoint(), 0x0061DA50);
 DEFINE_IMPLEMENTATION(bool TActionClass::Do_DEACTIVATE_FIRESTORM(HouseClass *, ObjectClass *, TriggerClass *, const Cell &), 0x0061AB80);
 DEFINE_IMPLEMENTATION(bool TActionClass::Do_ACTIVATE_FIRESTORM(HouseClass *, ObjectClass *, TriggerClass *, const Cell &), 0x0061ABF0);
 DEFINE_IMPLEMENTATION(bool TActionClass::Do_ION_LIGHTNING_STRIKE(HouseClass *, ObjectClass *, TriggerClass *, const Cell &), 0x0061AC60);
@@ -3702,14 +3702,14 @@ DEFINE_IMPLEMENTATION(LayerType AircraftClass::In_Which_Layer() const, 0x0040E52
 DEFINE_IMPLEMENTATION(bool AircraftClass::entry_80() const, 0x0040EFA0);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * AircraftClass::Class_Of() const, 0x0040F4B0);
 DEFINE_IMPLEMENTATION(const char *AircraftClass::Full_Name() const, 0x0040F480);
-DEFINE_IMPLEMENTATION(bool AircraftClass::Unlimbo(const Coordinate &, Dir256), 0x00408940);
+DEFINE_IMPLEMENTATION(bool AircraftClass::Unlimbo(const Coord &, Dir256), 0x00408940);
 DEFINE_IMPLEMENTATION(ExitType AircraftClass::Exit_Object(const TechnoClass *), 0x00409920);
 DEFINE_IMPLEMENTATION(void AircraftClass::Draw_It(Point2D &, Rect &) const, 0x00408AD0);
 DEFINE_IMPLEMENTATION(void AircraftClass::Look(bool, bool), 0x0040E550);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x0040B740);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Active_Click_With(ActionType, Cell &, bool), 0x0040B690);
 DEFINE_IMPLEMENTATION(ResultType AircraftClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0040A1E0);
-DEFINE_IMPLEMENTATION(void AircraftClass::Scatter(const Coordinate &, bool, bool), 0x0040DCE0);
+DEFINE_IMPLEMENTATION(void AircraftClass::Scatter(const Coord &, bool, bool), 0x0040DCE0);
 DEFINE_IMPLEMENTATION(RadioMessageType AircraftClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x0040C8A0);
 DEFINE_IMPLEMENTATION(MoveType AircraftClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x0040CDF0);
 DEFINE_IMPLEMENTATION(bool AircraftClass::Commence(), 0x0040EF40);
@@ -3765,25 +3765,25 @@ DEFINE_IMPLEMENTATION(ActionType InfantryClass::What_Action(const Cell &, bool, 
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * InfantryClass::Class_Of() const, 0x004D7B20);
 DEFINE_IMPLEMENTATION(const char *InfantryClass::Full_Name() const, 0x004D77A0);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Limbo(), 0x004D6B20);
-DEFINE_IMPLEMENTATION(bool InfantryClass::Unlimbo(const Coordinate &, Dir256), 0x004D6BD0);
-DEFINE_IMPLEMENTATION(bool InfantryClass::Paradrop(Coordinate &), 0x004D9180);
-DEFINE_IMPLEMENTATION(void InfantryClass::Set_Occupy_Bit(Coordinate &), 0x004D91D0);
-DEFINE_IMPLEMENTATION(void InfantryClass::Clear_Occupy_Bit(Coordinate &), 0x004D9260);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Unlimbo(const Coord &, Dir256), 0x004D6BD0);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Paradrop(Coord &), 0x004D9180);
+DEFINE_IMPLEMENTATION(void InfantryClass::Set_Occupy_Bit(Coord &), 0x004D91D0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Clear_Occupy_Bit(Coord &), 0x004D9260);
 DEFINE_IMPLEMENTATION(void InfantryClass::Draw_It(Point2D &, Rect &) const, 0x004D2D50);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x004D9E70);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Active_Click_With(ActionType, Cell &, bool), 0x004D7710);
 DEFINE_IMPLEMENTATION(ResultType InfantryClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x004D2400);
-DEFINE_IMPLEMENTATION(void InfantryClass::Scatter(const Coordinate &, bool, bool), 0x004D60A0);
+DEFINE_IMPLEMENTATION(void InfantryClass::Scatter(const Coord &, bool, bool), 0x004D60A0);
 DEFINE_IMPLEMENTATION(void InfantryClass::Per_Cell_Process(PCPType), 0x004D3240);
 DEFINE_IMPLEMENTATION(MoveType InfantryClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x004D5210);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Ready_To_Commence() const, 0x004D9510);
 DEFINE_IMPLEMENTATION(int InfantryClass::Mission_Attack(), 0x004D7800);
 DEFINE_IMPLEMENTATION(int InfantryClass::Mission_Guard(), 0x004D9D30);
-DEFINE_IMPLEMENTATION(Coordinate InfantryClass::entry_28C(WeaponSlotType) const, 0x004D96E0);
+DEFINE_IMPLEMENTATION(Coord InfantryClass::entry_28C(WeaponSlotType) const, 0x004D96E0);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Immobilized() const, 0x004D5B90);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Renovator() const, 0x004D9D20);
 DEFINE_IMPLEMENTATION(FireErrorType InfantryClass::Can_Fire(AbstractClass *, WeaponSlotType) const, 0x004D5AA0);
-DEFINE_IMPLEMENTATION(AbstractClass * InfantryClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x004D6D10);
+DEFINE_IMPLEMENTATION(AbstractClass * InfantryClass::Greatest_Threat(ThreatType, Coord &, bool) const, 0x004D6D10);
 DEFINE_IMPLEMENTATION(void InfantryClass::Assign_Target(AbstractClass *) const, 0x004D4770);
 DEFINE_IMPLEMENTATION(const BulletClass *InfantryClass::Fire_At(AbstractClass *, WeaponSlotType), 0x004D6B50);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_Ready_To_Random_Animate() const, 0x004D9110);
@@ -3792,7 +3792,7 @@ DEFINE_IMPLEMENTATION(void InfantryClass::Assign_Destination(const AbstractClass
 DEFINE_IMPLEMENTATION(bool InfantryClass::Enter_Idle_Mode(bool, bool), 0x004D5BD0);
 DEFINE_IMPLEMENTATION(void InfantryClass::entry_378(), 0x004D9770);
 DEFINE_IMPLEMENTATION(bool InfantryClass::entry_37C(), 0x004D9850);
-DEFINE_IMPLEMENTATION(bool InfantryClass::Start_Driver(Coordinate &), 0x004D6800);
+DEFINE_IMPLEMENTATION(bool InfantryClass::Start_Driver(Coord &), 0x004D6800);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Stop_Driver(), 0x004D6750);
 DEFINE_IMPLEMENTATION(void InfantryClass::entry_390(), 0x004D9A90);
 DEFINE_IMPLEMENTATION(void InfantryClass::entry_394(), 0x004D95C0);
@@ -3829,7 +3829,7 @@ DEFINE_IMPLEMENTATION(int VocClass::Play(float, int), 0x00664A50);
 DEFINE_IMPLEMENTATION(int VocClass::Play(float), 0x00664B00);
 DEFINE_IMPLEMENTATION(int Sound_Effect(VocType, float, int), 0x00664BA0);
 DEFINE_IMPLEMENTATION(int Voice_Sound_Effect(VocType, float), 0x00664C60);
-DEFINE_IMPLEMENTATION(void Static_Sound(VocType, const Coordinate &), 0x00664D10);
+DEFINE_IMPLEMENTATION(void Static_Sound(VocType, const Coord &), 0x00664D10);
 DEFINE_IMPLEMENTATION(void VocClass::Process(CCINIClass &), 0x00664EC0);
 DEFINE_IMPLEMENTATION(void VocClass::Clear(), 0x00665080);
 DEFINE_IMPLEMENTATION(VocType VocClass::VocType_From_Voc(VocClass *), 0x006651C0);
@@ -3849,7 +3849,7 @@ DEFINE_IMPLEMENTATION(void IonStorm_Lightning_Strike_At(Cell), 0x004ECEC0);
 DEFINE_IMPLEMENTATION(void IonStorm_AI(), 0x004ED280);
 DEFINE_IMPLEMENTATION(void IonStorm_Init(bool), 0x004ED5F0);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IonBlastClass::IonBlastClass(Coordinate), 0x004EDC20);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(IonBlastClass::IonBlastClass(Coord), 0x004EDC20);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(IonBlastClass::~IonBlastClass(), 0x004EDCA0);
 DEFINE_IMPLEMENTATION(void IonBlastClass::AI(), 0x004EDCF0);
 DEFINE_IMPLEMENTATION(void IonBlastClass::Draw_It(), 0x004EE7F0);
@@ -3863,7 +3863,7 @@ BounceClass::BounceClass(const NoInitClass &) {}
 BounceClass::~BounceClass() {}
 // 004245B0
 // 00424700
-DEFINE_IMPLEMENTATION(Coordinate BounceClass::Get_Coord() const, 0x00004248C0);
+DEFINE_IMPLEMENTATION(Coord BounceClass::Get_Coord() const, 0x00004248C0);
 // 00424900
 // 00424930
 // 00424A20
@@ -3872,14 +3872,14 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AnimClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Load(IStream *), 0x004164B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AnimClass::Save(IStream *, BOOL), 0x00416510);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AnimClass::AnimClass(), ObjectClass, 0x00414170);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AnimClass::AnimClass(const AnimTypeClass *, Coordinate &, unsigned, unsigned, unsigned, int), ObjectClass, 0x00413AE0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(AnimClass::AnimClass(const AnimTypeClass *, Coord &, unsigned, unsigned, unsigned, int), ObjectClass, 0x00413AE0);
 AnimClass::AnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006CB948; *((unsigned long *)this+1) = (unsigned long)0x006CB92C; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(AnimClass::~AnimClass(), 0x004142B0);
 DEFINE_IMPLEMENTATION(void AnimClass::Detach(AbstractClass *, bool), 0x00416390);
 DEFINE_IMPLEMENTATION(RTTIType AnimClass::Fetch_RTTI() const, 0x00417540);
 DEFINE_IMPLEMENTATION(int AnimClass::Get_Object_Size(bool) const, 0x004174F0);
 DEFINE_IMPLEMENTATION(void AnimClass::Object_CRC(CRCEngine &) const, 0x00416530);
-DEFINE_IMPLEMENTATION(Coordinate AnimClass::Center_Coord() const, 0x00414540);
+DEFINE_IMPLEMENTATION(Coord AnimClass::Center_Coord() const, 0x00414540);
 DEFINE_IMPLEMENTATION(void AnimClass::AI(), 0x00414E80);
 DEFINE_IMPLEMENTATION(LayerType AnimClass::In_Which_Layer() const, 0x00415D30);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * AnimClass::Class_Of() const, 0x00416640);
@@ -3937,7 +3937,7 @@ DEFINE_IMPLEMENTATION(int TerrainTypeClass::Get_Object_Size(bool) const, 0x00641
 DEFINE_IMPLEMENTATION(void TerrainTypeClass::Object_CRC(CRCEngine &) const, 0x00641AF0);
 DEFINE_IMPLEMENTATION(int TerrainTypeClass::Fetch_Heap_ID() const, 0x00641D60);
 DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Read_INI(CCINIClass &), 0x00641840);
-DEFINE_IMPLEMENTATION(Coordinate TerrainTypeClass::Coord_Fixup(Coordinate *) const, 0x00641A80);
+DEFINE_IMPLEMENTATION(Coord TerrainTypeClass::Coord_Fixup(Coord *) const, 0x00641A80);
 DEFINE_IMPLEMENTATION(bool TerrainTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x00641780);
 DEFINE_IMPLEMENTATION(ObjectClass *const TerrainTypeClass::Create_One_Of(HouseClass *) const, 0x006417B0);
 DEFINE_IMPLEMENTATION(Cell *TerrainTypeClass::Occupy_List(bool) const, 0x006417E0);
@@ -3974,7 +3974,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE VoxelAnimClass::GetClassID(CLSID *)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Load(IStream *), 0x0065EF90);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE VoxelAnimClass::Save(IStream *, BOOL), 0x0065F000);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(VoxelAnimClass::VoxelAnimClass(), ObjectClass, 0x0065DE30);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(VoxelAnimClass::VoxelAnimClass(const VoxelAnimTypeClass *, Coordinate &, HouseClass *), ObjectClass, 0x0065D950);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(VoxelAnimClass::VoxelAnimClass(const VoxelAnimTypeClass *, Coord &, HouseClass *), ObjectClass, 0x0065D950);
 VoxelAnimClass::VoxelAnimClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D9050; *((unsigned long *)this+1) = (unsigned long)0x006D9034; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(VoxelAnimClass::~VoxelAnimClass(), 0x0065DF10);
 DEFINE_IMPLEMENTATION(RTTIType VoxelAnimClass::Fetch_RTTI() const, 0x0065F110);
@@ -4050,7 +4050,7 @@ DEFINE_IMPLEMENTATION(void BuildingLightClass::AI(), 0x004223D0);
 DEFINE_IMPLEMENTATION(LayerType BuildingLightClass::In_Which_Layer() const, 0x00422B50);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * BuildingLightClass::Class_Of() const, 0x00422B40);
 DEFINE_IMPLEMENTATION(bool BuildingLightClass::Limbo(), 0x00423150);
-DEFINE_IMPLEMENTATION(bool BuildingLightClass::Unlimbo(const Coordinate &, Dir256), 0x00423170);
+DEFINE_IMPLEMENTATION(bool BuildingLightClass::Unlimbo(const Coord &, Dir256), 0x00423170);
 DEFINE_IMPLEMENTATION(void BuildingLightClass::Draw_It(Point2D &, Rect &) const, 0x00421DF0);
 // 00422BA0
 DEFINE_IMPLEMENTATION(void BuildingLightClass::Set_Behavior(SpotlightBehaviorType), 0x00422D40);
@@ -4061,7 +4061,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE LightSourceClass::GetClassID(CLSID 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Load(IStream *), 0x00501D10);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LightSourceClass::Save(IStream *, BOOL), 0x00501D50);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(LightSourceClass::LightSourceClass(), AbstractClass, 0x00501510);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(LightSourceClass::LightSourceClass(Coordinate, int, int, int, int, int), AbstractClass, 0x00501460);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(LightSourceClass::LightSourceClass(Coord, int, int, int, int, int), AbstractClass, 0x00501460);
 LightSourceClass::LightSourceClass(const NoInitClass &noinit) : AbstractClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D38D8; *((unsigned long *)this+1) = (unsigned long)0x006D38BC; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(LightSourceClass::~LightSourceClass(), 0x005015B0);
 DEFINE_IMPLEMENTATION(RTTIType LightSourceClass::Fetch_RTTI() const, 0x00501D80);
@@ -4089,13 +4089,13 @@ DEFINE_IMPLEMENTATION(ObjectClass *const SmudgeTypeClass::Create_One_Of(HouseCla
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Draw_It(Point2D &, Rect &, int, int, Cell &) const, 0x005FB4E0);
 DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Can_Place_Here(Cell &, bool), 0x005FBE30);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Place(Cell &), 0x005FBF30);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(const Coordinate &, int, int, bool), 0x005FB870);
-DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(const Coordinate &, int, int, bool), 0x005FBB50);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Scorch(const Coord &, int, int, bool), 0x005FB870);
+DEFINE_IMPLEMENTATION(bool SmudgeTypeClass::Create_Crater(const Coord &, int, int, bool), 0x005FBB50);
 DEFINE_IMPLEMENTATION(void SmudgeTypeClass::Init(TheaterType), 0x005FB3C0);
 
-DEFINE_IMPLEMENTATION(Coordinate Coord_Move(const Coordinate &, DirType &, unsigned), 0x004231B0);
-DEFINE_IMPLEMENTATION(Coordinate Coord_Scatter(const Coordinate &, unsigned, bool), 0x0046E850);
-DEFINE_IMPLEMENTATION(Coordinate Adjacent_Coord_With_Height(const Coordinate&, FacingType), 0x0046E980);
+DEFINE_IMPLEMENTATION(Coord Coord_Move(const Coord &, DirType &, unsigned), 0x004231B0);
+DEFINE_IMPLEMENTATION(Coord Coord_Scatter(const Coord &, unsigned, bool), 0x0046E850);
+DEFINE_IMPLEMENTATION(Coord Adjacent_Coord_With_Height(const Coord&, FacingType), 0x0046E980);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FactoryClass::GetClassID(CLSID *), 0x00497570);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FactoryClass::Load(IStream *), 0x004975B0);
@@ -4130,7 +4130,7 @@ DEFINE_IMPLEMENTATION(void FactoryClass::Recalculate_Times(HouseClass *), 0x0049
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE SmudgeClass::GetClassID(CLSID *), 0x005FAEA0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Load(IStream *), 0x005FAE00);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE SmudgeClass::Save(IStream *, BOOL), 0x005FAE50);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(SmudgeClass::SmudgeClass(SmudgeTypeClass *, Coordinate &, HousesType), ObjectClass, 0x005FA9E0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(SmudgeClass::SmudgeClass(SmudgeTypeClass *, Coord &, HousesType), ObjectClass, 0x005FA9E0);
 SmudgeClass::SmudgeClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D69F4; *((unsigned long *)this+1) = (unsigned long)0x006D69D8; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(SmudgeClass::~SmudgeClass(), 0x005FAAC0);
 DEFINE_IMPLEMENTATION(RTTIType SmudgeClass::Fetch_RTTI() const, 0x005FAE90);
@@ -4213,9 +4213,9 @@ DEFINE_IMPLEMENTATION(void BulletClass::Draw_It(Point2D &, Rect &) const, 0x0044
 DEFINE_IMPLEMENTATION(bool BulletClass::Mark(MarkType), 0x004446D0);
 DEFINE_IMPLEMENTATION(int BulletClass::Shape_Number() const, 0x00445B70);
 DEFINE_IMPLEMENTATION(void BulletClass::Assign_Target(AbstractClass *), 0x004474A0);
-DEFINE_IMPLEMENTATION(bool BulletClass::Unlimbo(const Coordinate &, TVelocity3D &), 0x00445F40);
+DEFINE_IMPLEMENTATION(bool BulletClass::Unlimbo(const Coord &, TVelocity3D &), 0x00445F40);
 // 00444580
-DEFINE_IMPLEMENTATION(bool BulletClass::Is_Forced_To_Explode(Coordinate &coord) const, 0x004462C0);
+DEFINE_IMPLEMENTATION(bool BulletClass::Is_Forced_To_Explode(Coord &coord) const, 0x004462C0);
 DEFINE_IMPLEMENTATION(void BulletClass::Bullet_Explodes(bool forced), 0x004463D0);
 // 00446640
 DEFINE_IMPLEMENTATION(bool BulletClass::Homes_In() const, 0x00447210);
@@ -4230,7 +4230,7 @@ DEFINE_IMPLEMENTATION(void TVelocity3D::Update_Position(DirType &), 0x00558A90);
 DEFINE_IMPLEMENTATION(void TVelocity3D::If_XYZ_0_Set_X_100(), 0x0040F6F0);
 DEFINE_IMPLEMENTATION(void TVelocity3D::If_XY_0_Set_X_100(), 0x0040F760);
 
-DEFINE_IMPLEMENTATION(int Projectile_Motion(Coordinate &, TVelocity3D &, Coordinate &, DirType &, bool, bool, bool), 0x00558230);
+DEFINE_IMPLEMENTATION(int Projectile_Motion(Coord &, TVelocity3D &, Coord &, DirType &, bool, bool, bool), 0x00558230);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitClass::GetClassID(CLSID *), 0x0065B5D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitClass::Load(IStream *), 0x00659580);
@@ -4249,16 +4249,16 @@ DEFINE_IMPLEMENTATION(bool UnitClass::entry_80() const, 0x0065B2D0);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * UnitClass::Class_Of() const, 0x00657190);
 DEFINE_IMPLEMENTATION(const char *UnitClass::Full_Name() const, 0x0065B620);
 DEFINE_IMPLEMENTATION(bool UnitClass::Limbo(), 0x00659270);
-DEFINE_IMPLEMENTATION(bool UnitClass::Unlimbo(const Coordinate &, Dir256), 0x0064F940);
+DEFINE_IMPLEMENTATION(bool UnitClass::Unlimbo(const Coord &, Dir256), 0x0064F940);
 DEFINE_IMPLEMENTATION(void UnitClass::Record_The_Kill(const ObjectClass *), 0x00659870);
-DEFINE_IMPLEMENTATION(void UnitClass::Set_Occupy_Bit(Coordinate &), 0x00659300);
-DEFINE_IMPLEMENTATION(void UnitClass::Clear_Occupy_Bit(Coordinate &), 0x00659360);
+DEFINE_IMPLEMENTATION(void UnitClass::Set_Occupy_Bit(Coord &), 0x00659300);
+DEFINE_IMPLEMENTATION(void UnitClass::Clear_Occupy_Bit(Coord &), 0x00659360);
 DEFINE_IMPLEMENTATION(bool UnitClass::Render(Rect &, bool, bool), 0x00651EC0);
 DEFINE_IMPLEMENTATION(void UnitClass::Draw_It(Point2D &, Rect &) const, 0x00653A70);
 DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, ObjectClass *, bool), 0x00650330);
 DEFINE_IMPLEMENTATION(bool UnitClass::Active_Click_With(ActionType, Cell &, bool), 0x006503A0);
 DEFINE_IMPLEMENTATION(ResultType UnitClass::Take_Damage(int &, int, const WarheadTypeClass *, const ObjectClass *, bool, bool), 0x0064FA70);
-DEFINE_IMPLEMENTATION(void UnitClass::Scatter(const Coordinate &, bool, bool), 0x00658D80);
+DEFINE_IMPLEMENTATION(void UnitClass::Scatter(const Coord &, bool, bool), 0x00658D80);
 DEFINE_IMPLEMENTATION(void UnitClass::Per_Cell_Process(PCPType), 0x006511B0);
 DEFINE_IMPLEMENTATION(RadioMessageType UnitClass::Receive_Message(RadioClass *, RadioMessageType, long &), 0x0064F440);
 DEFINE_IMPLEMENTATION(MoveType UnitClass::Can_Enter_Cell(const CellClass *, FacingType, int, const CellClass *, bool), 0x00655330);
@@ -4283,7 +4283,7 @@ DEFINE_IMPLEMENTATION(InfantryTypeClass *const UnitClass::Crew_Type() const, 0x0
 DEFINE_IMPLEMENTATION(bool UnitClass::Is_Immobilized() const, 0x0065B590);
 DEFINE_IMPLEMENTATION(int UnitClass::Get_Max_Speed() const, 0x00659940);
 DEFINE_IMPLEMENTATION(FireErrorType UnitClass::Can_Fire(AbstractClass *, WeaponSlotType) const, 0x00656E10);
-DEFINE_IMPLEMENTATION(AbstractClass * UnitClass::Greatest_Threat(ThreatType, Coordinate &, bool) const, 0x00658520);
+DEFINE_IMPLEMENTATION(AbstractClass * UnitClass::Greatest_Threat(ThreatType, Coord &, bool) const, 0x00658520);
 DEFINE_IMPLEMENTATION(const BulletClass *UnitClass::Fire_At(AbstractClass *, WeaponSlotType), 0x00657070);
 DEFINE_IMPLEMENTATION(bool UnitClass::Captured(HouseClass *), 0x0065B280);
 DEFINE_IMPLEMENTATION(void UnitClass::Assign_Destination(const AbstractClass *, bool), 0x00657520);
@@ -4350,9 +4350,9 @@ DEFINE_IMPLEMENTATION(void TerrainClass::Object_CRC(CRCEngine &) const, 0x006408
 DEFINE_IMPLEMENTATION(void TerrainClass::AI(), 0x0063FFB0);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * TerrainClass::Class_Of() const, 0x006409E0);
 DEFINE_IMPLEMENTATION(bool TerrainClass::Limbo(), 0x00640210);
-DEFINE_IMPLEMENTATION(bool TerrainClass::Unlimbo(const Coordinate &, Dir256), 0x006408B0);
-DEFINE_IMPLEMENTATION(void TerrainClass::Set_Occupy_Bit(Coordinate &), 0x0063F9A0);
-DEFINE_IMPLEMENTATION(void TerrainClass::Clear_Occupy_Bit(Coordinate &), 0x0063F910);
+DEFINE_IMPLEMENTATION(bool TerrainClass::Unlimbo(const Coord &, Dir256), 0x006408B0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Set_Occupy_Bit(Coord &), 0x0063F9A0);
+DEFINE_IMPLEMENTATION(void TerrainClass::Clear_Occupy_Bit(Coord &), 0x0063F910);
 DEFINE_IMPLEMENTATION(bool TerrainClass::Render(Rect &, bool, bool), 0x00640510);
 DEFINE_IMPLEMENTATION(void TerrainClass::Draw_It(Point2D &, Rect &) const, 0x0063FA30);
 DEFINE_IMPLEMENTATION(void TerrainClass::Placement_Draw_It(Point2D &, Rect &) const, 0x0063FC00);
@@ -4461,7 +4461,7 @@ DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Local_INI(CCINIClass &), 0x005DFB
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_Local_INI(CCINIClass &), 0x005DFD10);
 DEFINE_IMPLEMENTATION(Cell ScenarioClass::Waypoint_Cell(int) const, 0x005E1460);
 DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Waypoint_CellClass(int) const, 0x005E1480);
-DEFINE_IMPLEMENTATION(Coordinate ScenarioClass::Waypoint_Coord(int) const, 0x005E14A0);
+DEFINE_IMPLEMENTATION(Coord ScenarioClass::Waypoint_Coord(int) const, 0x005E14A0);
 DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Waypoint_Valid(int) const, 0x005E1520);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoint_INI(CCINIClass &), 0x005E1560);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoint_INI(CCINIClass &), 0x005E1630);
@@ -4488,7 +4488,7 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Save(IStream 
 DEFINE_IMPLEMENTATION(RTTIType WaypointPathClass::Fetch_RTTI() const, 0x00673A80);
 DEFINE_IMPLEMENTATION(int WaypointPathClass::Get_Object_Size(bool) const, 0x00673A70);
 DEFINE_IMPLEMENTATION(void WaypointPathClass::Object_CRC(CRCEngine &) const, 0x00673880);
-DEFINE_IMPLEMENTATION(Coordinate *WaypointPathClass::Get_Waypoint_Coord(int) const, 0x00673600);
+DEFINE_IMPLEMENTATION(Coord *WaypointPathClass::Get_Waypoint_Coord(int) const, 0x00673600);
 // 00673620
 // 006736D0
 // 00673770
@@ -4518,7 +4518,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaveClass::GetClassID(CLSID *), 0x0
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Load(IStream *), 0x00670B50);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaveClass::Save(IStream *, BOOL), 0x00670CA0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(WaveClass::WaveClass(), ObjectClass, 0x006700B0);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(WaveClass::WaveClass(Coordinate &, Coordinate &, AbstractClass *, WaveType, AbstractClass *), ObjectClass, 0x0066FDE0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(WaveClass::WaveClass(Coord &, Coord &, AbstractClass *, WaveType, AbstractClass *), ObjectClass, 0x0066FDE0);
 WaveClass::WaveClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D97C8; *((unsigned long *)this+1) = (unsigned long)0x006D97AC; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(WaveClass::~WaveClass(), 0x006702C0);
 DEFINE_IMPLEMENTATION(void WaveClass::Detach(AbstractClass *, bool), 0x00670B10);
@@ -4528,7 +4528,7 @@ DEFINE_IMPLEMENTATION(void WaveClass::AI(), 0x00671B00);
 DEFINE_IMPLEMENTATION(LayerType WaveClass::In_Which_Layer() const, 0x00670D60);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * WaveClass::Class_Of() const, 0x00670D70);
 DEFINE_IMPLEMENTATION(bool WaveClass::Limbo(), 0x00670E40);
-DEFINE_IMPLEMENTATION(bool WaveClass::Unlimbo(const Coordinate &, Dir256), 0x00670D80);
+DEFINE_IMPLEMENTATION(bool WaveClass::Unlimbo(const Coord &, Dir256), 0x00670D80);
 DEFINE_IMPLEMENTATION(void WaveClass::Draw_It(Point2D &, Rect &) const, 0x00670EA0);
 DEFINE_IMPLEMENTATION(void WaveClass::Sonic_AI(), 0x00671BB0);
 DEFINE_IMPLEMENTATION(void WaveClass::Laser_AI(), 0x00671C20);
@@ -4537,10 +4537,10 @@ DEFINE_IMPLEMENTATION(void WaveClass::Sonic_Draw_It(Point2D &, Rect &) const, 0x
 DEFINE_IMPLEMENTATION(void WaveClass::Laser_Draw_It(Point2D &, Rect &) const, 0x006715F0);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670370(int, int, int, unsigned short *), 0x00670370);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670650(), 0x00670650);
-DEFINE_IMPLEMENTATION(void WaveClass::func_670840(Coordinate &), 0x00670840);
+DEFINE_IMPLEMENTATION(void WaveClass::func_670840(Coord &), 0x00670840);
 DEFINE_IMPLEMENTATION(void WaveClass::func_671C40(), 0x00671C40);
 DEFINE_IMPLEMENTATION(void WaveClass::func_672AA0(), 0x00672AA0);
-DEFINE_IMPLEMENTATION(void WaveClass::func_672160(Coordinate &, Coordinate &), 0x00672160);
+DEFINE_IMPLEMENTATION(void WaveClass::func_672160(Coord &, Coord &), 0x00672160);
 DEFINE_IMPLEMENTATION(void WaveClass::func_670580(), 0x00670580);
 DEFINE_IMPLEMENTATION(void WaveClass::func_6704B0(int, int), 0x6704B0);
 
@@ -4581,7 +4581,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleClass::GetClassID(CLSID *),
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Load(IStream *), 0x005A4E30);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Save(IStream *, BOOL), 0x005A4E90);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleClass::ParticleClass(), ObjectClass, 0x005A3170);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleClass::ParticleClass(ParticleTypeClass *, Coordinate &, Coordinate &, ParticleSystemClass *), ObjectClass, 0x005A2C90);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleClass::ParticleClass(ParticleTypeClass *, Coord &, Coord &, ParticleSystemClass *), ObjectClass, 0x005A2C90);
 ParticleClass::ParticleClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D52CC; *((unsigned long *)this+1) = (unsigned long)0x006D52B0; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(ParticleClass::~ParticleClass(), 0x005A32E0);
 DEFINE_IMPLEMENTATION(RTTIType ParticleClass::Fetch_RTTI() const, 0x005A5000);
@@ -4608,7 +4608,7 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleSystemClass::GetClassID(CLS
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Load(IStream *), 0x005A75E0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleSystemClass::Save(IStream *, BOOL), 0x005A7730);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(), ObjectClass, 0x005A5580);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(const ParticleSystemTypeClass *, Coordinate &, AbstractClass *, AbstractClass *, Coordinate &), ObjectClass, 0x005A5300);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleSystemClass::ParticleSystemClass(const ParticleSystemTypeClass *, Coord &, AbstractClass *, AbstractClass *, Coord &), ObjectClass, 0x005A5300);
 ParticleSystemClass::ParticleSystemClass(const NoInitClass &noinit) : ObjectClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D54B4; *((unsigned long *)this+1) = (unsigned long)0x006D5498; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(ParticleSystemClass::~ParticleSystemClass(), 0x005A56C0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Detach(AbstractClass *, bool), 0x005A7550);
@@ -4621,9 +4621,9 @@ DEFINE_IMPLEMENTATION(LayerType ParticleSystemClass::In_Which_Layer() const, 0x0
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * ParticleSystemClass::Class_Of() const, 0x005A78B0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Delete_Me(), 0x005A7880);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Draw_It(Point2D &, Rect &) const, 0x005A58A0);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle(const Coordinate &, const Coordinate &), 0x005A59B0);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Particle(ParticleTypeClass *, const Coordinate &), 0x005A5A50);
-DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle_Random(const Coordinate &, const Coordinate &, int), 0x005A5AD0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle(const Coord &, const Coord &), 0x005A59B0);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Particle(ParticleTypeClass *, const Coord &), 0x005A5A50);
+DEFINE_IMPLEMENTATION(ParticleClass *ParticleSystemClass::Spawn_Held_Particle_Random(const Coord &, const Coord &, int), 0x005A5AD0);
 DEFINE_IMPLEMENTATION(bool ParticleSystemClass::Delete_Particle(int), 0x005A5BD0);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Delete_All_Particles(), 0x005A5C40);
 DEFINE_IMPLEMENTATION(void ParticleSystemClass::Gas_AI(), 0x005A5CB0);
@@ -4684,7 +4684,7 @@ DEFINE_IMPLEMENTATION(RTTIType IsometricTileClass::Fetch_RTTI() const, 0x004F236
 DEFINE_IMPLEMENTATION(int IsometricTileClass::Get_Object_Size(bool) const, 0x004F2350);
 DEFINE_IMPLEMENTATION(const ObjectTypeClass * IsometricTileClass::Class_Of() const, 0x004F23B0);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Limbo(), 0x004F2300);
-DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(const Coordinate &, Dir256), 0x004F22D0);
+DEFINE_IMPLEMENTATION(bool IsometricTileClass::Unlimbo(const Coord &, Dir256), 0x004F22D0);
 DEFINE_IMPLEMENTATION(void IsometricTileClass::Draw_It(Point2D &, Rect &) const, 0x004F23C0);
 DEFINE_IMPLEMENTATION(bool IsometricTileClass::Mark(MarkType), 0x004F1C50);
 
@@ -4714,9 +4714,9 @@ DEFINE_IMPLEMENTATION(bool RadarEventClass::Load_All(IStream *), 0x005C28A0);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TeleportLocomotionClass::GetClassID(CLSID *), 0x0063EE70);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TeleportLocomotionClass::Load(IStream *), 0x0063EEB0);
 DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Is_Moving(), 0x0063ED00);
-DEFINE_IMPLEMENTATION(Coordinate TeleportLocomotionClass::Destination(), 0x0063ED50);
+DEFINE_IMPLEMENTATION(Coord TeleportLocomotionClass::Destination(), 0x0063ED50);
 DEFINE_IMPLEMENTATION(bool TeleportLocomotionClass::Process(), 0x0063EE10);
-DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Move_To(Coordinate), 0x0063EDC0);
+DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Move_To(Coord), 0x0063EDC0);
 DEFINE_IMPLEMENTATION(void TeleportLocomotionClass::Stop_Moving(), 0x0063EDE0);
 DEFINE_IMPLEMENTATION(LayerType TeleportLocomotionClass::In_Which_Layer(), 0x0063EEE0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(TeleportLocomotionClass::TeleportLocomotionClass(), 0x0063ECC0);
@@ -4732,17 +4732,17 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WalkLocomotionClass::GetClassID(CLS
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WalkLocomotionClass::Load(IStream *), 0x0066E500);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WalkLocomotionClass::Save(IStream *, BOOL), 0x0066E580);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving(), 0x0066CB00);
-DEFINE_IMPLEMENTATION(Coordinate WalkLocomotionClass::Destination(), 0x0066CB70);
-DEFINE_IMPLEMENTATION(Coordinate WalkLocomotionClass::Head_To_Coord(), 0x0066CBD0);
+DEFINE_IMPLEMENTATION(Coord WalkLocomotionClass::Destination(), 0x0066CB70);
+DEFINE_IMPLEMENTATION(Coord WalkLocomotionClass::Head_To_Coord(), 0x0066CBD0);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Process(), 0x0066CC40);
-DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Move_To(Coordinate), 0x0066CC70);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Move_To(Coord), 0x0066CC70);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Stop_Moving(), 0x0066CD30);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Do_Turn(DirType), 0x0066CD80);
 DEFINE_IMPLEMENTATION(LayerType WalkLocomotionClass::In_Which_Layer(), 0x0066E660);
-DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Force_Immediate_Destination(Coordinate), 0x0066CDB0);
+DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Force_Immediate_Destination(Coord), 0x0066CDB0);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving_Now(), 0x0066CB10);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Mark_All_Occupation_Bits(MarkType), 0x0066E8A0);
-DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving_Here(Coordinate), 0x0066E8F0);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Moving_Here(Coord), 0x0066E8F0);
 DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::Is_Really_Moving_Now(), 0x0066E990);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Stop_Movement_Animation(), 0x0066E9E0);
 DEFINE_IMPLEMENTATION(HRESULT WalkLocomotionClass::Begin_Piggyback(ILocomotion *), 0x0066E6D0);
@@ -4755,7 +4755,7 @@ WalkLocomotionClass::WalkLocomotionClass(const NoInitClass &noinit) : Locomotion
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(WalkLocomotionClass::~WalkLocomotionClass(), 0x0066CAD0);
 DEFINE_IMPLEMENTATION(int WalkLocomotionClass::Get_Object_Size(bool) const, 0x0066E9F0);
 DEFINE_IMPLEMENTATION(void WalkLocomotionClass::Internal_Process(bool), 0x0066CE10);
-DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::func_66E170(Coordinate &), 0x0066E170);
+DEFINE_IMPLEMENTATION(bool WalkLocomotionClass::func_66E170(Coord &), 0x0066E170);
 
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DriveLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x0047D0F0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE DriveLocomotionClass::AddRef(), 0x004822F0);
@@ -4764,22 +4764,22 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE DriveLocomotionClass::GetClassID(CL
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DriveLocomotionClass::Load(IStream *), 0x0047D150);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE DriveLocomotionClass::Save(IStream *, BOOL), 0x0047D1D0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Moving(), 0x0047D540);
-DEFINE_IMPLEMENTATION(Coordinate DriveLocomotionClass::Destination(), 0x0047D640);
-DEFINE_IMPLEMENTATION(Coordinate DriveLocomotionClass::Head_To_Coord(), 0x0047D670);
+DEFINE_IMPLEMENTATION(Coord DriveLocomotionClass::Destination(), 0x0047D640);
+DEFINE_IMPLEMENTATION(Coord DriveLocomotionClass::Head_To_Coord(), 0x0047D670);
 DEFINE_IMPLEMENTATION(Matrix3D DriveLocomotionClass::Draw_Matrix(int *), 0x0047D8C0);
 DEFINE_IMPLEMENTATION(int DriveLocomotionClass::Z_Adjust(), 0x00481EC0);
 DEFINE_IMPLEMENTATION(ZGradientType DriveLocomotionClass::Z_Gradient(), 0x00481ED0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Process(), 0x0047DDA0);
-DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Move_To(Coordinate), 0x0047D6E0);
+DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Move_To(Coord), 0x0047D6E0);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Stop_Moving(), 0x0047D760);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Do_Turn(DirType), 0x0047E710);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Unlimbo(), 0x0047DD70);
-DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Force_Track(int, Coordinate), 0x0047E470);
+DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Force_Track(int, Coord), 0x0047E470);
 DEFINE_IMPLEMENTATION(LayerType DriveLocomotionClass::In_Which_Layer(), 0x00481E70);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Force_New_Slope(TileRampType), 0x0047D500);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Moving_Now(), 0x0047D5D0);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Mark_All_Occupation_Bits(MarkType), 0x00481F20);
-DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Moving_Here(Coordinate), 0x00481F70);
+DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Is_Moving_Here(Coord), 0x00481F70);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Will_Jump_Tracks(), 0x00482150);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Lock(), 0x00482230);
 DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Unlock(), 0x00482240);
@@ -4799,13 +4799,13 @@ DEFINE_IMPLEMENTATION(int DriveLocomotionClass::Get_Object_Size(bool) const, 0x0
 // 0047D460
 // 0047D4C0
 // 0047D830
-DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Mark_Track(Coordinate &, MarkType), 0x0047E300);
+DEFINE_IMPLEMENTATION(void DriveLocomotionClass::Mark_Track(Coord &, MarkType), 0x0047E300);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Stop_Driver(), 0x0047E5D0);
-DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Start_Driver(Coordinate &), 0x0047E620);
+DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Start_Driver(Coord &), 0x0047E620);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::While_Moving(bool), 0x0047E740);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Start_Of_Move(bool *, bool, bool), 0x0047FD60);
 // 00481DC0
-DEFINE_IMPLEMENTATION(Coordinate DriveLocomotionClass::Smooth_Turn(Coordinate &, Dir256 &), 0x00481DD0);
+DEFINE_IMPLEMENTATION(Coord DriveLocomotionClass::Smooth_Turn(Coord &, Dir256 &), 0x00481DD0);
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Incoming(Cell), 0x00481E50);
 // 00481EE0
 
@@ -4815,13 +4815,13 @@ DEFINE_IMPLEMENTATION(ULONG FlyLocomotionClass::Release(), 0x005064A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::GetClassID(CLSID *), 0x0049CD20);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::Load(IStream *), 0x0049CD60);
 DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Moving(), 0x00499550);
-DEFINE_IMPLEMENTATION(Coordinate FlyLocomotionClass::Destination(), 0x004995A0);
+DEFINE_IMPLEMENTATION(Coord FlyLocomotionClass::Destination(), 0x004995A0);
 DEFINE_IMPLEMENTATION(Matrix3D FlyLocomotionClass::Draw_Matrix(int *), 0x0049C640);
 DEFINE_IMPLEMENTATION(Matrix3D FlyLocomotionClass::Shadow_Matrix(int *), 0x0049CBB0);
 DEFINE_IMPLEMENTATION(Point2D FlyLocomotionClass::Draw_Point(), 0x0049C9E0);
 DEFINE_IMPLEMENTATION(Point2D FlyLocomotionClass::Shadow_Point(), 0x0049CAF0);
 DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Process(), 0x00499600);
-DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Move_To(Coordinate), 0x004997C0);
+DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Move_To(Coord), 0x004997C0);
 DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Stop_Moving(), 0x00499AB0);
 DEFINE_IMPLEMENTATION(void FlyLocomotionClass::Do_Turn(DirType), 0x0049CCB0);
 DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Power_Off(), 0x0049CDC0);
@@ -4840,17 +4840,17 @@ DEFINE_IMPLEMENTATION(int FlyLocomotionClass::Get_Object_Size(bool) const, 0x004
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE MechLocomotionClass::GetClassID(CLSID *), 0x005579F0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE MechLocomotionClass::Load(IStream *), 0x00557A30);
 DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving(), 0x005560C0);
-DEFINE_IMPLEMENTATION(Coordinate MechLocomotionClass::Destination(), 0x005560D0);
-DEFINE_IMPLEMENTATION(Coordinate MechLocomotionClass::Head_To_Coord(), 0x00556130);
+DEFINE_IMPLEMENTATION(Coord MechLocomotionClass::Destination(), 0x005560D0);
+DEFINE_IMPLEMENTATION(Coord MechLocomotionClass::Head_To_Coord(), 0x00556130);
 DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Process(), 0x005561A0);
-DEFINE_IMPLEMENTATION(void MechLocomotionClass::Move_To(Coordinate), 0x005561C0);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Move_To(Coord), 0x005561C0);
 DEFINE_IMPLEMENTATION(void MechLocomotionClass::Stop_Moving(), 0x00556240);
 DEFINE_IMPLEMENTATION(void MechLocomotionClass::Do_Turn(DirType), 0x00556290);
 DEFINE_IMPLEMENTATION(LayerType MechLocomotionClass::In_Which_Layer(), 0x00557A60);
-DEFINE_IMPLEMENTATION(void MechLocomotionClass::Force_Immediate_Destination(Coordinate), 0x005562C0);
+DEFINE_IMPLEMENTATION(void MechLocomotionClass::Force_Immediate_Destination(Coord), 0x005562C0);
 DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving_Now(), 0x00557A70);
 DEFINE_IMPLEMENTATION(void MechLocomotionClass::Mark_All_Occupation_Bits(MarkType), 0x00557AE0);
-DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving_Here(Coordinate), 0x00557B60);
+DEFINE_IMPLEMENTATION(bool MechLocomotionClass::Is_Moving_Here(Coord), 0x00557B60);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MechLocomotionClass::MechLocomotionClass(), 0x00556040);
 MechLocomotionClass::MechLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D43EC; *((unsigned long *)this+1) = (unsigned long)0x006D4324; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(MechLocomotionClass::~MechLocomotionClass(), 0x005560A0);
@@ -4859,11 +4859,11 @@ DEFINE_IMPLEMENTATION(int MechLocomotionClass::Get_Object_Size(bool) const, 0x00
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE HoverLocomotionClass::GetClassID(CLSID *), 0x004D1860);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE HoverLocomotionClass::Load(IStream *), 0x004D18A0);
 DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving(), 0x004CF510);
-DEFINE_IMPLEMENTATION(Coordinate HoverLocomotionClass::Destination(), 0x004CF590);
-DEFINE_IMPLEMENTATION(Coordinate HoverLocomotionClass::Head_To_Coord(), 0x004CF5F0);
+DEFINE_IMPLEMENTATION(Coord HoverLocomotionClass::Destination(), 0x004CF590);
+DEFINE_IMPLEMENTATION(Coord HoverLocomotionClass::Head_To_Coord(), 0x004CF5F0);
 DEFINE_IMPLEMENTATION(Matrix3D HoverLocomotionClass::Draw_Matrix(int *), 0x004CEC00);
 DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Process(), 0x004CED20);
-DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Move_To(Coordinate), 0x004CF660);
+DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Move_To(Coord), 0x004CF660);
 DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Stop_Moving(), 0x004D0B70);
 DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Do_Turn(DirType), 0x004D0BC0);
 DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Power_Off(), 0x004D1410);
@@ -4874,7 +4874,7 @@ DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Shove(DirType), 0x004D17B0);
 DEFINE_IMPLEMENTATION(LayerType HoverLocomotionClass::In_Which_Layer(), 0x004D18F0);
 DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving_Now(), 0x004CF560);
 DEFINE_IMPLEMENTATION(void HoverLocomotionClass::Mark_All_Occupation_Bits(MarkType), 0x004D19B0);
-DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving_Here(Coordinate), 0x004D1A30);
+DEFINE_IMPLEMENTATION(bool HoverLocomotionClass::Is_Moving_Here(Coord), 0x004D1A30);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(HoverLocomotionClass::HoverLocomotionClass(), 0x004CE8F0);
 HoverLocomotionClass::HoverLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D1EEC; *((unsigned long *)this+1) = (unsigned long)0x006D1F24; }
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(HoverLocomotionClass::~HoverLocomotionClass(), 0x004CE9D0);
@@ -4973,8 +4973,8 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LevitateLocomotionClass::GetClas
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE LevitateLocomotionClass::Load(IStream *), 0x00500D50);
 DEFINE_IMPLEMENTATION(HRESULT LevitateLocomotionClass::Link_To_Object(void *), 0x004FDF40);
 DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Is_Moving(), 0x00500C30);
-DEFINE_IMPLEMENTATION(Coordinate LevitateLocomotionClass::Destination(), 0x00500C70);
-DEFINE_IMPLEMENTATION(Coordinate LevitateLocomotionClass::Head_To_Coord(), 0x00500CA0);
+DEFINE_IMPLEMENTATION(Coord LevitateLocomotionClass::Destination(), 0x00500C70);
+DEFINE_IMPLEMENTATION(Coord LevitateLocomotionClass::Head_To_Coord(), 0x00500CA0);
 DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Process(), 0x00500990);
 DEFINE_IMPLEMENTATION(LayerType LevitateLocomotionClass::In_Which_Layer(), 0x00500D80);
 DEFINE_IMPLEMENTATION(bool LevitateLocomotionClass::Is_Moving_Now(), 0x00500C50);
@@ -4991,10 +4991,10 @@ DEFINE_IMPLEMENTATION(NewMenuClass *NewMenuClass::Get(), 0x0057FB40);
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE JumpjetLocomotionClass::GetClassID(CLSID *), 0x004F9CE0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE JumpjetLocomotionClass::Load(IStream *), 0x004F9D20);
 DEFINE_IMPLEMENTATION(bool JumpjetLocomotionClass::Is_Moving(), 0x004F9620);
-DEFINE_IMPLEMENTATION(Coordinate JumpjetLocomotionClass::Destination(), 0x004F9630);
-DEFINE_IMPLEMENTATION(Coordinate JumpjetLocomotionClass::Head_To_Coord(), 0x004FAD00);
+DEFINE_IMPLEMENTATION(Coord JumpjetLocomotionClass::Destination(), 0x004F9630);
+DEFINE_IMPLEMENTATION(Coord JumpjetLocomotionClass::Head_To_Coord(), 0x004FAD00);
 DEFINE_IMPLEMENTATION(bool JumpjetLocomotionClass::Process(), 0x004F9690);
-DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Move_To(Coordinate), 0x004F9890);
+DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Move_To(Coord), 0x004F9890);
 DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Stop_Moving(), 0x004F9AE0);
 DEFINE_IMPLEMENTATION(void JumpjetLocomotionClass::Do_Turn(DirType), 0x004F9CB0);
 DEFINE_IMPLEMENTATION(LayerType JumpjetLocomotionClass::In_Which_Layer(), 0x004F9D50);
@@ -5208,7 +5208,7 @@ DEFINE_IMPLEMENTATION(void TextLabelClass::Set_Text(const char *), 0x0064D200);
 
 DEFINE_IMPLEMENTATION(void MultiScore::Presentation(), 0x00568060);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LaserDrawClass::LaserDrawClass(Coordinate, Coordinate, int, bool, RGBClass, RGBClass, RGBClass, int, bool, bool, float, float), 0x004FBC80);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(LaserDrawClass::LaserDrawClass(Coord, Coord, int, bool, RGBClass, RGBClass, RGBClass, int, bool, bool, float, float), 0x004FBC80);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(LaserDrawClass::~LaserDrawClass(), 0x004FBDC0);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::Draw_It(), 0x004FC050);
 DEFINE_IMPLEMENTATION(void LaserDrawClass::AI(), 0x004FBE90);
@@ -5348,8 +5348,8 @@ DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FoggedObjectClass::GetClassID(CLSID
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Load(IStream *), 0x0049F420);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Save(IStream *, BOOL), 0x0049F3B0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(), 0x0049D850);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coordinate &, OverlayType, int), 0x0049D910);
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coordinate &, SmudgeType, int), 0x0049DBB0);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coord &, OverlayType, int), 0x0049D910);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(Coord &, SmudgeType, int), 0x0049DBB0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(const BuildingClass *, bool), 0x0049DE60);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(const TerrainClass *), 0x0049E2C0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(FoggedObjectClass::FoggedObjectClass(NoInitClass &), 0x0049D810);
@@ -5505,7 +5505,7 @@ DEFINE_IMPLEMENTATION(Vector3 operator*(const Matrix3D&, const Vector3&), 0x0055
  */
 Rect& RECT_NONE = Make_Global<Rect>(0x00748138);
 Cell& CELL_NONE = Make_Global<Cell>(0x00748158);
-Coordinate& COORD_NONE = Make_Global<Coordinate>(0x00748178);
+Coord& COORD_NONE = Make_Global<Coord>(0x00748178);
 
 double& CELL_LEPTON_DIAG = Make_Global<double>(0x00748160);
 
@@ -5978,15 +5978,15 @@ CDTimerClass<FrameTimerClass> &ActionLineTimer = Make_Global<CDTimerClass<FrameT
 /**
  *  Various global definitions, constants and strings.
  */
-const Coordinate AdjacentCoord[FACING_COUNT] = { // 0x007611A8
-    Coordinate(0,    -256, 0),  // NORTH
-    Coordinate(256,  -256, 0),  // NORTH EAST
-    Coordinate(256,  0,    0),  // EAST
-    Coordinate(256,  256,  0),  // SOUTH EAST
-    Coordinate(0,    256,  0),  // SOUTH
-    Coordinate(-256, 256,  0),  // SOUTH WEST
-    Coordinate(-256, 0,    0),  // WEST
-    Coordinate(-256, -256, 0),  // NORTH WEST
+const Coord AdjacentCoord[FACING_COUNT] = { // 0x007611A8
+    Coord(0,    -256, 0),  // NORTH
+    Coord(256,  -256, 0),  // NORTH EAST
+    Coord(256,  0,    0),  // EAST
+    Coord(256,  256,  0),  // SOUTH EAST
+    Coord(0,    256,  0),  // SOUTH
+    Coord(-256, 256,  0),  // SOUTH WEST
+    Coord(-256, 0,    0),  // WEST
+    Coord(-256, -256, 0),  // NORTH WEST
 };
 
 const Cell AdjacentCell[FACING_COUNT] = { // 0x00761148

@@ -62,7 +62,7 @@ class ObjectTypeClass : public AbstractTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual Coordinate Coord_Fixup(Coordinate *coord) const;
+        virtual Coord Coord_Fixup(Coord *coord) const;
         virtual int Get_Ownable() const;
         virtual int Max_Pips() const;
         virtual Point3D Pixel_Dimensions() const;

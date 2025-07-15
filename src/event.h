@@ -56,7 +56,7 @@ public:
     EventClass(int index, EventType type, RTTIType object, int id);
     EventClass(int index, EventType type, RTTIType object, Cell const& cell);
     EventClass(int index, EventType type, int id, const Cell& cell);
-    EventClass(int index, AnimType anim, HousesType owner, const Coordinate& coord);
+    EventClass(int index, AnimType anim, HousesType owner, const Coord& coord);
     EventClass(int index, EventType type, void* ptr, unsigned long size);
 
     EventClass(EventType type, unsigned long hi, unsigned long lo)

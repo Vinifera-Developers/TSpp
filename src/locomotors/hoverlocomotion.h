@@ -49,11 +49,11 @@ HoverLocomotionClass : public LocomotionClass
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(Coord, Destination)();
+        IFACEMETHOD_(Coord, Head_To_Coord)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(bool, Power_Off)();
@@ -64,7 +64,7 @@ HoverLocomotionClass : public LocomotionClass
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
-        IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
+        IFACEMETHOD_(bool, Is_Moving_Here)(Coord to);
 
     public:
         HoverLocomotionClass();
@@ -77,8 +77,8 @@ HoverLocomotionClass : public LocomotionClass
         virtual int Get_Object_Size(bool firestorm = false) const override;
 
     public:
-        Coordinate DestinationCoord;
-        Coordinate HeadToCoord;
+        Coord DestinationCoord;
+        Coord HeadToCoord;
         FacingClass Facing;
         double field_48;
         double field_50;

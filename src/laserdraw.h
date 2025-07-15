@@ -36,7 +36,7 @@
 class LaserDrawClass
 {
     public:
-        LaserDrawClass(Coordinate source, Coordinate target, int z_adjust, bool a9, RGBClass inner, RGBClass outer, RGBClass outer_spread, int duration, bool blinks = false, bool fades = true, float start_int = 0.5f, float end_int = 1.0f);
+        LaserDrawClass(Coord source, Coord target, int z_adjust, bool a9, RGBClass inner, RGBClass outer, RGBClass outer_spread, int duration, bool blinks = false, bool fades = true, float start_int = 0.5f, float end_int = 1.0f);
         ~LaserDrawClass();
 
         void Draw_It();
@@ -48,8 +48,8 @@ class LaserDrawClass
 
     public:
         StageClass DrawStage;
-        Coordinate Source;
-        Coordinate Target;
+        Coord Source;
+        Coord Target;
         int ZAdjust;
         bool field_34;
         RGBClass InnerColor;

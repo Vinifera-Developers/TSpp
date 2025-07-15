@@ -75,7 +75,7 @@ public:
     /**
      *  ObjectTypeClass
      */
-    virtual Coordinate Coord_Fixup(Coordinate *coord) const override;
+    virtual Coord Coord_Fixup(Coord *coord) const override;
     virtual int Max_Pips() const override;
     virtual Point3D Pixel_Dimensions() const override;
     virtual Point3D Lepton_Dimensions() const override;
@@ -143,7 +143,7 @@ public:
     FacingType FoundationFace;
     int Adjacent;
     RTTIType ToBuild;
-    Coordinate ExitCoordinate;
+    Coord ExitCoordinate;
     Cell * ExitList;
     Dir256 StartFace;
     int Power;

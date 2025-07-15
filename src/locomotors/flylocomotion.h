@@ -57,13 +57,13 @@ FlyLocomotionClass : public LocomotionClass
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
+        IFACEMETHOD_(Coord, Destination)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
         IFACEMETHOD_(Matrix3D, Shadow_Matrix)(int *key);
         IFACEMETHOD_(Point2D, Draw_Point)();
         IFACEMETHOD_(Point2D, Shadow_Point)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(bool, Power_Off)();
@@ -101,8 +101,8 @@ FlyLocomotionClass : public LocomotionClass
         // 0049D2D0
 
     public:
-        Coordinate DestinationCoord;
-        Coordinate HeadToCoord;
+        Coord DestinationCoord;
+        Coord HeadToCoord;
         bool IsMoving;
         int FlightLevel;
         double TargetSpeed;

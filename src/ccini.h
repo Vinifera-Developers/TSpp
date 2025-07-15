@@ -74,7 +74,7 @@ class CCINIClass : public INIClass
         Cell Get_Cell(const char *section, const char *entry, const Cell &defvalue);
         bool Put_Cell(const char *section, const char *entry, Cell &value);
 
-        Coordinate Get_Coord(const char *section, const char *entry, const Coordinate &defvalue);
+        Coord Get_Coord(const char *section, const char *entry, const Coord &defvalue);
 
         MPHType Get_MPHType(const char *section, const char *entry, const MPHType defvalue);
         bool Put_MPHType(const char *section, const char *entry, MPHType value);

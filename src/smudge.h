@@ -51,7 +51,7 @@ SmudgeClass : public ObjectClass
         IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
 
     public:
-        SmudgeClass(SmudgeTypeClass *classof = nullptr, Coordinate &pos = Coordinate(-1,-1,-1), HousesType house = HOUSE_NONE);
+        SmudgeClass(SmudgeTypeClass *classof = nullptr, Coord &pos = Coord(-1,-1,-1), HousesType house = HOUSE_NONE);
         SmudgeClass(const NoInitClass &noinit);
         virtual ~SmudgeClass();
 

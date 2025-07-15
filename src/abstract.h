@@ -88,11 +88,11 @@ class AbstractClass : public IPersistStream, public IRTTITypeInfo
         virtual HouseClass *Owner_HouseClass() const;
         virtual int Fetch_Heap_ID() const;
         virtual bool Is_Inactive() const;
-        virtual Coordinate Center_Coord() const;
-        virtual Coordinate entry_50() const;
+        virtual Coord Center_Coord() const;
+        virtual Coord entry_50() const;
         virtual bool On_Ground() const;
         virtual bool In_Air() const;
-        virtual Coordinate entry_5C() const;
+        virtual Coord entry_5C() const;
         virtual void AI();
 
         bool Is_Dirty() const { return Dirty; }

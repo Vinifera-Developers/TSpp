@@ -60,7 +60,7 @@ public:
 
     Cell Waypoint_Cell(int wp) const;
     CellClass *Waypoint_CellClass(int wp) const;
-    Coordinate Waypoint_Coord(int wp) const;
+    Coord Waypoint_Coord(int wp) const;
     bool Is_Waypoint_Valid(int wp) const;
 
     void Read_Waypoint_INI(CCINIClass& ini);

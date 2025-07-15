@@ -51,10 +51,10 @@ JumpjetLocomotionClass : public LocomotionClass
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(Coord, Destination)();
+        IFACEMETHOD_(Coord, Head_To_Coord)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
@@ -82,7 +82,7 @@ JumpjetLocomotionClass : public LocomotionClass
             DESCENDING,
         } ProcessStateType;
 
-        Coordinate HeadToCoord;
+        Coord HeadToCoord;
         bool IsMoving;
         ProcessStateType CurrentState;
         FacingClass Facing;

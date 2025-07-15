@@ -75,7 +75,7 @@ UnitTypeClass : public TechnoTypeClass
         /**
          *  ObjectTypeClass
          */
-        virtual Coordinate Coord_Fixup(Coordinate *coord) const override;
+        virtual Coord Coord_Fixup(Coord *coord) const override;
         virtual Point3D Pixel_Dimensions() const override;
         virtual Point3D Lepton_Dimensions() const override;
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;

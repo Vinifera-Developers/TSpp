@@ -69,7 +69,7 @@ class RadarClass : public DisplayClass
         virtual bool Map_Cell(Cell &cell, HouseClass *house) override;
 
         virtual Cell Click_Cell_Calc(Point2D &cell);
-        virtual void Set_Tactical_Position(Coordinate &coord);
+        virtual void Set_Tactical_Position(Coord &coord);
         virtual void Init_For_House();
 
         // 005B9050

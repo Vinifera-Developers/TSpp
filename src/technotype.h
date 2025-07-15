@@ -91,7 +91,7 @@ public:
 
     bool Is_Two_Shooter() const;
     const WeaponInfoStruct & Fetch_Weapon_Info(WeaponSlotType slot) const;
-    bool In_Range(Coordinate &coord, AbstractClass * target, WeaponTypeClass *weapon);
+    bool In_Range(Coord &coord, AbstractClass * target, WeaponTypeClass *weapon);
 
     int Max_Passengers() const { return MaxPassengers; }
 

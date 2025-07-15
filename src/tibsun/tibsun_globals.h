@@ -171,7 +171,7 @@ enum KeyNumType;
  */
 extern Rect& RECT_NONE;
 extern Cell& CELL_NONE;
-extern Coordinate& COORD_NONE;
+extern Coord& COORD_NONE;
 
 extern double& CELL_LEPTON_DIAG;
 

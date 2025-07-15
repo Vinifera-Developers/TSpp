@@ -50,7 +50,7 @@ TunnelLocomotionClass : public LocomotionClass
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
+        IFACEMETHOD_(Coord, Destination)();
         IFACEMETHOD_(MoveType, Can_Enter_Cell)(Cell cell);
         IFACEMETHOD_(bool, Is_To_Have_Shadow)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
@@ -58,7 +58,7 @@ TunnelLocomotionClass : public LocomotionClass
         IFACEMETHOD_(int, Z_Adjust)();
         IFACEMETHOD_(ZGradientType, Z_Gradient)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
@@ -91,7 +91,7 @@ TunnelLocomotionClass : public LocomotionClass
         } ProcessStateType;
 
         ProcessStateType CurrentState;
-        Coordinate DestinationCoord;
+        Coord DestinationCoord;
         CDRateTimerClass<FrameTimerClass> DigTimer;
         bool IsMoving;
 

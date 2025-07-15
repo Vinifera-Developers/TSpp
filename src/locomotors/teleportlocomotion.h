@@ -48,9 +48,9 @@ TeleportLocomotionClass : public LocomotionClass
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
+        IFACEMETHOD_(Coord, Destination)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(LayerType, In_Which_Layer)();
 
@@ -70,7 +70,7 @@ TeleportLocomotionClass : public LocomotionClass
         virtual bool Is_Stationary() const;
 
     public:
-        Coordinate DestinationCoord;
+        Coord DestinationCoord;
 
     private:
         // copy and assignment not implemented; prevent their use by declaring as private.

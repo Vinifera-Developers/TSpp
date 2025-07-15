@@ -83,10 +83,10 @@ CellClass : public AbstractClass
          */
         virtual RTTIType Fetch_RTTI() const override;
         virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual Coordinate Center_Coord() const override;
-        virtual Coordinate entry_5C() const override;
+        virtual Coord Center_Coord() const override;
+        virtual Coord entry_5C() const override;
 
-        int Get_Height(const Coordinate &coord) const;
+        int Get_Height(const Coord &coord) const;
         int Preview_Cell_Color(void *a1, bool a2 = false);
         void Cell_Color(RGBClass &a1, RGBClass &a2);
         ObjectClass *Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
@@ -121,14 +121,14 @@ CellClass : public AbstractClass
         // 004564D0
         // 00456690
         void Wall_Update(bool a1 = false);
-        Coordinate Cell_Coord() const;
+        Coord Cell_Coord() const;
         int Reduce_Tiberium(int levels);
         int Reduce_Wall(int damage);
         bool Is_Spot_Free(int spot_index, bool a2 = false) const;
-        Coordinate Closest_Free_Spot(Coordinate &coord, bool a2 = false, bool a3 = false) const;
+        Coord Closest_Free_Spot(Coord &coord, bool a2 = false, bool a3 = false) const;
         // 00457600
         int Clear_Icon(IsometricTileType tile, int tile_sequence_count);
-        void Incoming(Coordinate &threat = Coordinate(), bool forced = false, bool no_kidding = false, bool a4 = false);
+        void Incoming(Coord &threat = Coord(), bool forced = false, bool no_kidding = false, bool a4 = false);
         CellClass &Adjacent_Cell(FacingType facing) const;
         void Adjust_Threat(HousesType house, int threat_value);
         long Tiberium_Adjust(bool pre_game = false);
@@ -257,7 +257,7 @@ CellClass : public AbstractClass
 
         LandType Land_Type() const { return Land; }
 
-        static int Spot_Index(Coordinate &coord);
+        static int Spot_Index(Coord &coord);
 
         bool Spread_Tiberium(TiberiumType tiberium, bool forced = false);
 

@@ -60,22 +60,22 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
          *  ILocomotion
          */
         IFACEMETHOD_(bool, Is_Moving)();
-        IFACEMETHOD_(Coordinate, Destination)();
-        IFACEMETHOD_(Coordinate, Head_To_Coord)();
+        IFACEMETHOD_(Coord, Destination)();
+        IFACEMETHOD_(Coord, Head_To_Coord)();
         IFACEMETHOD_(Matrix3D, Draw_Matrix)(int *key);
         IFACEMETHOD_(int, Z_Adjust)();
         IFACEMETHOD_(ZGradientType, Z_Gradient)();
         IFACEMETHOD_(bool, Process)();
-        IFACEMETHOD_(void, Move_To)(Coordinate to);
+        IFACEMETHOD_(void, Move_To)(Coord to);
         IFACEMETHOD_(void, Stop_Moving)();
         IFACEMETHOD_(void, Do_Turn)(DirType coord);
         IFACEMETHOD_(void, Unlimbo)();
-        IFACEMETHOD_(void, Force_Track)(int track, Coordinate coord);
+        IFACEMETHOD_(void, Force_Track)(int track, Coord coord);
         IFACEMETHOD_(LayerType, In_Which_Layer)();
         IFACEMETHOD_(void, Force_New_Slope)(TileRampType ramp);
         IFACEMETHOD_(bool, Is_Moving_Now)();
         IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
-        IFACEMETHOD_(bool, Is_Moving_Here)(Coordinate to);
+        IFACEMETHOD_(bool, Is_Moving_Here)(Coord to);
         IFACEMETHOD_(bool, Will_Jump_Tracks)();
         IFACEMETHOD_(void, Lock)();
         IFACEMETHOD_(void, Unlock)();
@@ -106,13 +106,13 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
         // 0047D460
         // 0047D4C0
         // 0047D830
-        void Mark_Track(Coordinate &headto, MarkType type);
+        void Mark_Track(Coord &headto, MarkType type);
         bool Stop_Driver();
-        bool Start_Driver(Coordinate &headto);
+        bool Start_Driver(Coord &headto);
         bool While_Moving(bool a1 = false);
         bool Start_Of_Move(bool *a1 = nullptr, bool a2 = false, bool a3 = false);
         // 00481DC0
-        Coordinate Smooth_Turn(Coordinate &adj, Dir256 &dir);
+        Coord Smooth_Turn(Coord &adj, Dir256 &dir);
         bool Incoming(Cell cell); // 00481E50
         // 00481EE0
 
@@ -120,8 +120,8 @@ DriveLocomotionClass : public LocomotionClass, public IPiggyback
 		TileRampType CurrentRamp;
         TileRampType PreviousRamp;
         CDRateTimerClass<FrameTimerClass> RampTransitionTimer;
-        Coordinate DestinationCoord;
-        Coordinate HeadToCoord;
+        Coord DestinationCoord;
+        Coord HeadToCoord;
         int SpeedAccum;
         double field_50; // slope related, speed adjuster/multiplier?
         int TrackNumber;

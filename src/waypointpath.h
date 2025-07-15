@@ -65,7 +65,7 @@ WaypointPathClass : public AbstractClass
         virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void Object_CRC(CRCEngine &crc) const override;
 
-        Coordinate *Get_Waypoint_Coord(int index) const; // 00673600
+        Coord *Get_Waypoint_Coord(int index) const; // 00673600
         // 00673620
         // 006736D0
         // 00673770

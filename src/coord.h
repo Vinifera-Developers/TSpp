@@ -31,9 +31,9 @@
 #include "tibsun_defines.h"
 
 
-Coordinate Coord_Move(const Coordinate& start, DirType &facing, unsigned distance);
-Coordinate Coord_Scatter(const Coordinate& coord, unsigned distance, bool lock = false);
-Coordinate Adjacent_Coord_With_Height(const Coordinate& coord, FacingType facing);
+Coord Coord_Move(const Coord& start, DirType &facing, unsigned distance);
+Coord Coord_Scatter(const Coord& coord, unsigned distance, bool lock = false);
+Coord Adjacent_Coord_With_Height(const Coord& coord, FacingType facing);
 
 inline Cell Cell_Move(Cell const& start, DirType const& dir, short distance)
 {

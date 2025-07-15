@@ -85,9 +85,9 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool Can_Repair() const override;
         virtual bool Can_Player_Fire() const override;
         virtual bool Can_Player_Move() const override;
-        virtual Coordinate Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual Coord Fire_Coord(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coord &coord, Dir256 dir = DIR_N) override;
         virtual void Record_The_Kill(const ObjectClass *source) override;
         virtual void Do_Shimmer() override;
         virtual ExitType Exit_Object(const TechnoClass *object);
@@ -98,7 +98,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual bool Mark(MarkType mark = MARK_CHANGE) override;
         virtual void Clicked_As_Target(int flashes) override;
         virtual bool Select() override;
-        virtual bool In_Range(Coordinate &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
+        virtual bool In_Range(Coord &coord, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual int Weapon_Range(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
         virtual ResultType Take_Damage(int &damage, int distance, const WarheadTypeClass *warhead, const ObjectClass *source, bool a5 = false, bool a6 = false) override;
         virtual int Value() const override;
@@ -134,7 +134,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual int Risk() const;
         virtual bool Is_In_Same_Zone_As(const ObjectClass *object) const;
         virtual DirType entry_268(const ObjectClass *object) const;
-        virtual bool Is_In_Same_Zone(const Coordinate &cell) const;
+        virtual bool Is_In_Same_Zone(const Coord &cell) const;
         virtual int How_Many_Survivors() const;
         virtual void entry_274() const;
         virtual int entry_278() const;
@@ -142,7 +142,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual ZGradientType Get_Z_Gradient() const;
         virtual BuildingClass *const Find_Docking_Bay(const BuildingTypeClass *buildingtype, bool friendly = false, bool evenoccupied = false) const;
         virtual Cell Find_Exit_Cell(const TechnoClass *object) const;
-        virtual Coordinate entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
+        virtual Coord entry_28C(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual FacingType Desired_Load_Dir(const ObjectClass *object, Cell &cell) const;
         virtual DirType Fire_Direction() const;
         virtual InfantryTypeClass *const Crew_Type() const;
@@ -163,17 +163,17 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual void Response_Attack() const;
         virtual void Player_Assign_Mission(MissionType order, AbstractClass * target = nullptr, AbstractClass * destination = nullptr);
         virtual void Reduce_Ammunition();
-        virtual bool Target_Something_Nearby(Coordinate &coord, ThreatType threat);
+        virtual bool Target_Something_Nearby(Coord &coord, ThreatType threat);
         virtual void Stun();
         virtual bool In_Range_Of(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual void Death_Announcement(const TechnoClass *object = nullptr) const = 0;
         virtual FireErrorType Can_Fire(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-        virtual AbstractClass * Greatest_Threat(ThreatType method, Coordinate &coord, bool a3 = false) const;
+        virtual AbstractClass * Greatest_Threat(ThreatType method, Coord &coord, bool a3 = false) const;
         virtual void Assign_Target(AbstractClass * target) const;
         virtual const BulletClass *Fire_At(AbstractClass * target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
         virtual bool Captured(HouseClass *house = nullptr);
-        virtual void Laser_Zap(AbstractClass * target, int which, const WeaponTypeClass *weapontype, Coordinate &a4);
-        virtual void Rock(const Coordinate &coord, float a2);
+        virtual void Laser_Zap(AbstractClass * target, int which, const WeaponTypeClass *weapontype, Coord &a4);
+        virtual void Rock(const Coord &coord, float a2);
         virtual WeaponInfoStruct *const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
         virtual bool Is_Turret_Equipped() const;
         virtual void Renovate() const;
@@ -205,7 +205,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         // 0062BFE0
         // 0062CD00
         double Area_Modify(Cell &cell) const;
-        bool Evaluate_Object(ThreatType method, int mask, int range, const TechnoClass *object, int &value, int zone, Coordinate &coord) const;
+        bool Evaluate_Object(ThreatType method, int mask, int range, const TechnoClass *object, int &value, int zone, Coord &coord) const;
         bool Evaluate_Cell(ThreatType method, int mask, Cell &cell, int range, const TechnoClass **object, int &value, int zone) const;
         int Evaluate_Just_Cell(Cell &cell) const;
         // 006313D0
@@ -227,11 +227,11 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         int Anti_Air() const;
         int Anti_Armor() const;
         int Anti_Infantry() const;
-        Coordinate func_638AF0() const;
+        Coord func_638AF0() const;
         // 00638C70
         void Assign_Archive_Target(AbstractClass * target);
         // 006391B0
-        float Target_Threat(TechnoClass* target, Coordinate& firing_coord) const;
+        float Target_Threat(TechnoClass* target, Coord& firing_coord) const;
         // 00639BB0
         // 00639C60
         static void Update_Mission_Targets(AbstractClass * target);

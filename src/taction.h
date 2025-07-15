@@ -73,7 +73,7 @@ TActionClass : public AbstractClass
         void Read_INI();
         void Build_INI_Entry(char *buffer) const;
 
-        Coordinate Get_Adjusted_Waypoint();
+        Coord Get_Adjusted_Waypoint();
 
         bool Do_DEACTIVATE_FIRESTORM(HouseClass *house, ObjectClass *object, TriggerClass *trig, const Cell &cell);
         bool Do_ACTIVATE_FIRESTORM(HouseClass *house, ObjectClass *object, TriggerClass *trig, const Cell &cell);

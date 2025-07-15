@@ -68,7 +68,7 @@ WaveClass : public ObjectClass
 
     public:
         WaveClass();
-        WaveClass(Coordinate &from, Coordinate &to, AbstractClass * a3, WaveType type, AbstractClass * source);
+        WaveClass(Coord &from, Coord &to, AbstractClass * a3, WaveType type, AbstractClass * source);
         WaveClass(const NoInitClass &noinit);
         virtual ~WaveClass();
 
@@ -86,7 +86,7 @@ WaveClass : public ObjectClass
         virtual LayerType In_Which_Layer() const override;
         virtual const ObjectTypeClass * Class_Of() const override;
         virtual bool Limbo() override;
-        virtual bool Unlimbo(const Coordinate &coord, Dir256 dir = DIR_N) override;
+        virtual bool Unlimbo(const Coord &coord, Dir256 dir = DIR_N) override;
         virtual void Draw_It(Point2D &point, Rect &bounds) const override;
 
         void Sonic_AI();
@@ -96,10 +96,10 @@ WaveClass : public ObjectClass
         void Laser_Draw_It(Point2D &xy, Rect &rect) const; // draw laser beam?
         void func_670370(int a1, int a2, int a3, unsigned short *buffer); // blend sonic beam?
         void func_670650(); // default sonic beam colour?
-        void func_670840(Coordinate &coord); // sonic beam damage update/ai?
+        void func_670840(Coord &coord); // sonic beam damage update/ai?
         void func_671C40(); // update cells under sonic beam? or start and end cells?
         void func_672AA0(); // update sonic beam/beam ai?
-        void func_672160(Coordinate &a1, Coordinate &a2);
+        void func_672160(Coord &a1, Coord &a2);
 
         static void func_670580(); // recalc tables?
         static void func_6704B0(int a1, int a2); // do wave beam colouring? (inlined in above function perhaps?)
@@ -107,18 +107,18 @@ WaveClass : public ObjectClass
     public:
         AbstractClass * xTarget;
         WaveType Type;
-        Coordinate field_54;
-        Coordinate field_60;
+        Coord field_54;
+        Coord field_60;
         Point2D field_6C; // initial wave pixel start
         Point2D field_74; // initial wave pixel end
         Point2D field_7C; // initial wave pixel end left
         Point2D field_84; // initial wave pixel end right
         Point2D field_8C; // initial wave pixel start left
         Point2D field_94; // initial wave pixel start right
-        Coordinate field_9C;
-        Coordinate field_A8;
-        Coordinate field_B4;
-        Coordinate field_C0;
+        Coord field_9C;
+        Coord field_A8;
+        Coord field_B4;
+        Coord field_C0;
         bool field_CC;
         int SonicEC;
         double field_D8; // sonic starting percent
