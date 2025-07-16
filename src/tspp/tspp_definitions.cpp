@@ -2030,6 +2030,7 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Write_INI(CCINIClass &), 0x0047A540);
 DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
 DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(Coord &, LEPTON), 0x0047AAF0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Center_On_Selection(), 0x0047ACD0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Update_Cell_Colors(), 0x0047AEF0);
 DEFINE_IMPLEMENTATION(ObjectClass *DisplayClass::Following_What() const, 0x0047C0C0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass *), 0x0047C0E0);
 DisplayClass::TacticalClass::TacticalClass() : GadgetClass(0, 0, 0, 0, LEFTPRESS|LEFTRELEASE|LEFTHELD|LEFTUP|RIGHTPRESS|RIGHTRELEASE|RIGHTHELD, true) { *((unsigned long *)this) = (unsigned long)0x006CDB08; }

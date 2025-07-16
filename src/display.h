@@ -105,7 +105,7 @@ class DisplayClass : public MapClass
         void Constrained_Look(Coord &coord, LEPTON distance);
         void Center_On_Selection();
         // 0047AE80
-        // 0047AEF0
+        void Update_Cell_Colors();
         // 0047B170
         // 0047B190
         // 0047B210
