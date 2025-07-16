@@ -86,7 +86,6 @@ Tactical : public AbstractClass
         Point2D func_60F150(const Coord &coord) const; // Coord to Pixel (without validation)?
         Point2D func_60F270(const Point2D& cell) const; // Cell to pixel (without validation)?
         Point2D func_60F350(const Coord &coord) const;
-        static int func_60F3C0(int a1);
         bool Coord_To_Pixel(const Coord &coord, Point2D &pixel) const;
         Coord Pixel_To_Coord(const Point2D &pixel) const;
         Coord func_60F740(const Point2D &pixel) const;
@@ -173,7 +172,6 @@ Tactical : public AbstractClass
         void Draw_Radial_Indicators() const; // 00617FA0
         
         static Point2D func_60F0F0(Point2D point);
-        static int func_60F450(int a1);
 
     public:
         char ScreenText[64];

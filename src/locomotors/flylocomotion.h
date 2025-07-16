@@ -37,13 +37,6 @@ FlyLocomotionClass : public LocomotionClass
 {
     public:
         /**
-         *  IUnknown
-         */
-        IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID *ppvObj);
-        IFACEMETHOD_(ULONG, AddRef)();
-        IFACEMETHOD_(ULONG, Release)();
-
-        /**
          *  IPersist
          */
         IFACEMETHOD(GetClassID)(CLSID *pClassID);

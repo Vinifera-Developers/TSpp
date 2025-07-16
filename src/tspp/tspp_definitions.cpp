@@ -931,7 +931,7 @@ DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Pixel_Dimensions() const, 0x004
 DEFINE_IMPLEMENTATION(Point3D BuildingTypeClass::Lepton_Dimensions() const, 0x00442ED0);
 DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Create_And_Place(Cell &, HouseClass *) const, 0x0043FA60);
 DEFINE_IMPLEMENTATION(int BuildingTypeClass::Cost_Of(HouseClass *) const, 0x00440080);
-DEFINE_IMPLEMENTATION(ObjectClass * const BuildingTypeClass::Create_One_Of(HouseClass *) const, 0x0043FED0);
+DEFINE_IMPLEMENTATION(ObjectClass * const BuildingTypeClass::Create_One_Of(HouseClass *) const, 0x0043FAE0);
 DEFINE_IMPLEMENTATION(Cell * BuildingTypeClass::Occupy_List(bool) const, 0x0043FED0);
 DEFINE_IMPLEMENTATION(ShapeSet * const BuildingTypeClass::Get_Image_Data() const, 0x004402F0);
 DEFINE_IMPLEMENTATION(bool BuildingTypeClass::Legal_Placement(Cell &, HouseClass *) const, 0x00442EA0);
@@ -1297,7 +1297,7 @@ DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Track(int, Coord), 0x00506730)
 DEFINE_IMPLEMENTATION(void LocomotionClass::Force_Immediate_Destination(Coord), 0x00506720);
 DEFINE_IMPLEMENTATION(void LocomotionClass::Force_New_Slope(TileRampType), 0x00506810);
 DEFINE_IMPLEMENTATION(bool LocomotionClass::Is_Moving_Now(), 0x00483C60);
-DEFINE_IMPLEMENTATION(int LocomotionClass::Apparent_Speed(), 0x00483C60);
+DEFINE_IMPLEMENTATION(int LocomotionClass::Apparent_Speed(), 0x00506840);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Drawing_Code(), 0x00506820);
 DEFINE_IMPLEMENTATION(FireErrorType LocomotionClass::Can_Fire(), 0x00506830);
 DEFINE_IMPLEMENTATION(int LocomotionClass::Get_Status(), 0x004822B0);
@@ -1656,7 +1656,6 @@ DEFINE_IMPLEMENTATION(bool Tactical::entry_64(Rect &, Rect &, unsigned, bool), 0
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F150(const Coord &) const, 0x0060F150);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F270(const Point2D &) const, 0x0060F270);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coord &) const, 0x0060F350);
-DEFINE_IMPLEMENTATION(int Tactical::func_60F3C0(int), 0x0060F3C0);
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coord &, Point2D &) const, 0x0060F4B0);
 DEFINE_IMPLEMENTATION(Coord Tactical::Pixel_To_Coord(const Point2D &) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coord Tactical::func_60F740(const Point2D &) const, 0x0060F740);
@@ -1675,7 +1674,6 @@ DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Position() const, 0x00612D7
 DEFINE_IMPLEMENTATION(Cell Tactical::Click_Cell_Calc(Point2D &) const, 0x006131C0);
 DEFINE_IMPLEMENTATION(int Tactical::Cell_Shadow(Cell &, bool), 0x00614F90);
 DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F0F0(Point2D), 0x0060F0F0);
-DEFINE_IMPLEMENTATION(int Tactical::func_60F450(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::Register_Dirty_Area(Rect, bool), 0x0060FBB0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers(), 0x006173B0);
 DEFINE_IMPLEMENTATION(void Tactical::Debug_Draw_Occupiers_Flags(), 0x006177A0);
@@ -1813,11 +1811,6 @@ DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-(StorageClass &) const
 DEFINE_IMPLEMENTATION(StorageClass StorageClass::operator-=(StorageClass &), 0x0060AF50);
 DEFINE_IMPLEMENTATION(int StorageClass::First_Used_Slot() const, 0x0060AFA0);
 
-DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char *, bool), 0x005DD100);
-DEFINE_IMPLEMENTATION(bool Load_Scenario(CCINIClass &, bool), 0x005DD4C0);
-DEFINE_IMPLEMENTATION(void Scenario_MP_Fixups(bool), 0x005DD290);
-DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char *, bool), 0x005DDFE0);
-
 DEFINE_IMPLEMENTATION(BOOL STDMETHODCALLTYPE MapClass::Is_Visible(Cell), 0x0050F1B0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(), 0x0050EAD0);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MapClass::MapClass(const NoInitClass &), 0x0050EBE0);
@@ -1833,9 +1826,7 @@ DEFINE_IMPLEMENTATION(void MapClass::Logic(), 0x00514300);
 DEFINE_IMPLEMENTATION(void MapClass::Set_Map_Dimensions(Rect &, bool, int, bool), 0x0050F700);
 DEFINE_IMPLEMENTATION(void MapClass::entry_70(Rect &), 0x00510A20);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Cell &), 0x0050F280);
-DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Cell &) const, 0x0050F280);
 DEFINE_IMPLEMENTATION(CellClass & MapClass::operator [] (const Coord &), 0x0050F210);
-DEFINE_IMPLEMENTATION(const CellClass & MapClass::operator [] (const Coord &) const, 0x0050F210);
 DEFINE_IMPLEMENTATION(void MapClass::Sight_From(const Coord &, int, HouseClass *, bool, bool, bool, bool), 0x00510B60);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Cell &) const, 0x00510FB0);
 DEFINE_IMPLEMENTATION(bool MapClass::In_Radar(const Coord &) const, 0x00511000);
@@ -1883,11 +1874,8 @@ DEFINE_IMPLEMENTATION(int MapClass::Get_Cell_Zone(Cell const&, MZoneType, bool),
 LayerClass::LayerClass() : DynamicVectorClass() { *((unsigned long *)this) = (unsigned long)0x006CDAE0; }
 LayerClass::~LayerClass() {}
 DEFINE_IMPLEMENTATION(bool LayerClass::Submit(ObjectClass const *, bool), 0x004FCD70);
-DEFINE_IMPLEMENTATION(void LayerClass::Init(), 0x00402480);
-DEFINE_IMPLEMENTATION(void LayerClass::One_Time(), 0x00402490);
 DEFINE_IMPLEMENTATION(void LayerClass::Sort(), 0x004FCDF0);
 DEFINE_IMPLEMENTATION(bool LayerClass::Sorted_Add(ObjectClass const *), 0x004FCE50);
-void LayerClass::Remove(ObjectClass *object) { DynamicVectorClass<ObjectClass *>::Delete(object); }
 DEFINE_IMPLEMENTATION(HRESULT LayerClass::Save(IStream *), 0x004FCEE0);
 DEFINE_IMPLEMENTATION(HRESULT LayerClass::Load(IStream *), 0x004FCF50);
 
@@ -2610,8 +2598,7 @@ DEFINE_IMPLEMENTATION(const char *ThemeClass::Theme_File_Name(ThemeType), 0x0064
 DEFINE_IMPLEMENTATION(void ThemeClass::Scan(), 0x00643C70);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeControl::ThemeControl(), 0x006439B0);
 ThemeClass::ThemeControl::~ThemeControl() {}
-DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Read_INI(CCINIClass &), 0x006439F0);
-DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Fill_In(CCINIClass &), 0x00643AC0);
+DEFINE_IMPLEMENTATION(bool ThemeClass::ThemeControl::Fill_In(CCINIClass &), 0x006439F0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(IPXInterfaceClass::IPXInterfaceClass(), 0x006A02F0);
 IPXInterfaceClass::~IPXInterfaceClass() {}
@@ -2972,7 +2959,7 @@ DEFINE_IMPLEMENTATION(int TechnoClass::Pip_Count() const, 0x00637260);
 DEFINE_IMPLEMENTATION(int TechnoClass::Refund_Amount() const, 0x00638090);
 DEFINE_IMPLEMENTATION(int TechnoClass::Risk() const, 0x00637210);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_In_Same_Zone_As(const ObjectClass *) const, 0x0043B8E0);
-DEFINE_IMPLEMENTATION(DirType TechnoClass::entry_268(const ObjectClass *) const, 0x00428B70);
+DEFINE_IMPLEMENTATION(DirType TechnoClass::entry_268(const ObjectClass *) const, 0x00630210);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_In_Same_Zone(const Coord &) const, 0x006366B0);
 DEFINE_IMPLEMENTATION(int TechnoClass::How_Many_Survivors() const, 0x0062A300);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_274() const, 0x0063A250);
@@ -3680,9 +3667,9 @@ DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass &, int)
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::QueryInterface(REFIID, LPVOID *), 0x004088C0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AircraftClass::AddRef(), 0x00408920);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AircraftClass::Release(), 0x00408930);
-DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AircraftClass::GetClassID(CLSID *), 0x00621D70);
-DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Load(IStream *), 0x00621D10);
-DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Save(IStream *, BOOL), 0x00621CF0);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AircraftClass::GetClassID(CLSID *), 0x0040F440);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Load(IStream *), 0x0040EAD0);
+DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE AircraftClass::Save(IStream *, BOOL), 0x0040ECD0);
 DEFINE_IMPLEMENTATION(LONG AircraftClass::Landing_Altitude(), 0x0040EDD0);
 DEFINE_IMPLEMENTATION(LONG AircraftClass::Landing_Direction(), 0x0040EE70);
 DEFINE_IMPLEMENTATION(BOOL AircraftClass::Is_Loaded(), 0x0040EEC0);
@@ -4474,11 +4461,14 @@ DEFINE_IMPLEMENTATION(void Do_Win(), 0x005DC8D0);
 DEFINE_IMPLEMENTATION(void Do_Lose(), 0x005DCC20);
 DEFINE_IMPLEMENTATION(void Do_Restart(), 0x005DCE60);
 DEFINE_IMPLEMENTATION(void Do_Abort(), 0x005DCF70);
-DEFINE_IMPLEMENTATION(void Remove_AI_Players(), 0x005DD290);
 DEFINE_IMPLEMENTATION(void Assign_Houses(), 0x005DE210);
 DEFINE_IMPLEMENTATION(void Pause_Scenario_Timer(), 0x005DB4C0);
 DEFINE_IMPLEMENTATION(void Resume_Scenario_Timer(), 0x005DB590);
 DEFINE_IMPLEMENTATION(bool Change_Video_Mode(int, int), 0x0050AC30);
+DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char*, bool), 0x005DD100);
+DEFINE_IMPLEMENTATION(bool Load_Scenario(CCINIClass&, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(void Scenario_MP_Fixups(bool), 0x005DD290);
+DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char*, bool), 0x005DDFE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Load(IStream *), 0x006738F0);
@@ -4579,7 +4569,7 @@ DEFINE_IMPLEMENTATION(void MultiMission::Set_Filename(const char *), 0x005EF860)
 DEFINE_IMPLEMENTATION(void MultiMission::Set_Digest(const char *), 0x005EF8C0);
 DEFINE_IMPLEMENTATION(void MultiMission::Set_Official(bool), 0x005EF920);
 
-DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleClass::GetClassID(CLSID *), 0x00670D10);
+DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE ParticleClass::GetClassID(CLSID *), 0x005A4FB0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Load(IStream *), 0x005A4E30);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE ParticleClass::Save(IStream *, BOOL), 0x005A4E90);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(ParticleClass::ParticleClass(), ObjectClass, 0x005A3170);
@@ -4811,9 +4801,6 @@ DEFINE_IMPLEMENTATION(Coord DriveLocomotionClass::Smooth_Turn(Coord &, Dir256 &)
 DEFINE_IMPLEMENTATION(bool DriveLocomotionClass::Incoming(Cell), 0x00481E50);
 // 00481EE0
 
-DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::QueryInterface(REFIID, LPVOID *), 0x005064E0);
-DEFINE_IMPLEMENTATION(ULONG FlyLocomotionClass::AddRef(), 0x00506480);
-DEFINE_IMPLEMENTATION(ULONG FlyLocomotionClass::Release(), 0x005064A0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::GetClassID(CLSID *), 0x0049CD20);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FlyLocomotionClass::Load(IStream *), 0x0049CD60);
 DEFINE_IMPLEMENTATION(bool FlyLocomotionClass::Is_Moving(), 0x00499550);
@@ -4955,7 +4942,7 @@ DEFINE_IMPLEMENTATION(RTTIType TubeClass::Fetch_RTTI() const, 0x0064B5A0);
 DEFINE_IMPLEMENTATION(int TubeClass::Get_Object_Size(bool) const, 0x0064B590);
 DEFINE_IMPLEMENTATION(void TubeClass::Object_CRC(CRCEngine &) const, 0x0064B510);
 DEFINE_IMPLEMENTATION(void TubeClass::Add_Direction(FacingType), 0x0064B4B0);
-DEFINE_IMPLEMENTATION(bool TubeClass::Is_Next_Cell(Cell &), 0x0064B0E0);
+DEFINE_IMPLEMENTATION(bool TubeClass::Is_Next_Cell(Cell &), 0x0064B420);
 DEFINE_IMPLEMENTATION(void TubeClass::Assign_Tubes(), 0x0064B0E0);
 DEFINE_IMPLEMENTATION(void TubeClass::Read_Scenario_INI(CCINIClass &), 0x0064B2A0);
 DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass &), 0x0064B160);

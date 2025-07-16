@@ -70,9 +70,7 @@ class MapClass : public GScreenClass
         virtual void entry_70(Rect &rect);
 
         CellClass & operator [] (const Cell &cell);
-        const CellClass & operator [] (const Cell &cell) const;
         CellClass & operator [] (const Coord &coord);
-        const CellClass & operator [] (const Coord &coord) const;
 
         int ID(CellClass *ptr) { return Array.ID(ptr); }
         int ID(CellClass &ptr) { return Array.ID(&ptr); }

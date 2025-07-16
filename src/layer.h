@@ -39,22 +39,18 @@ class ObjectClass;
 
 class LayerClass : public DynamicVectorClass<ObjectClass *>
 {
-	using VectorClass<ObjectClass *>::Vector;
-	using VectorClass<ObjectClass *>::VectorMax;
-	using VectorClass<ObjectClass *>::IsAllocated;
+    using VectorClass<ObjectClass *>::Vector;
+    using VectorClass<ObjectClass *>::VectorMax;
+    using VectorClass<ObjectClass *>::IsAllocated;
 
-	public:
-		LayerClass();
-		virtual ~LayerClass();
+    public:
+        LayerClass();
+        virtual ~LayerClass();
 
-		virtual bool Submit(ObjectClass const *object, bool sort = false);
-		virtual void Init();
-		virtual void One_Time();
+        void Sort();
+        virtual bool Submit(ObjectClass const *object, bool sort = false);
+        bool Sorted_Add(ObjectClass const* object);
 
-		void Sort();
-		bool Sorted_Add(ObjectClass const *object);
-		void Remove(ObjectClass *object);
-
-		HRESULT Save(IStream *pStm);
-		HRESULT Load(IStream *pStm);
+        HRESULT Save(IStream *pStm);
+        HRESULT Load(IStream *pStm);
 };
