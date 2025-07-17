@@ -1993,7 +1993,7 @@ DEFINE_IMPLEMENTATION(void DisplayClass::Set_Cursor_Shape(Cell const *), 0x00476
 DEFINE_IMPLEMENTATION(Cell DisplayClass::Set_Cursor_Pos(Cell &), 0x00476490);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Proximity_Check(const ObjectTypeClass *, HousesType, const Cell *, Cell &), 0x004761A0);
 DEFINE_IMPLEMENTATION(bool DisplayClass::Passes_Shroud_Check(const ObjectTypeClass *, HousesType, const Cell *, Cell &), 0x00476350);
-DEFINE_IMPLEMENTATION(wDimensionStruct DisplayClass::Get_Occupy_Dimensions(Cell const *) const, 0x004767D0);
+DEFINE_IMPLEMENTATION(Cell DisplayClass::Get_Occupy_Dimensions(Cell const *) const, 0x004767D0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Cursor_Mark(Cell &, bool), 0x00476880);
 DEFINE_IMPLEMENTATION(void DisplayClass::Submit(ObjectClass const *), 0x00476950);
 DEFINE_IMPLEMENTATION(void DisplayClass::Remove(ObjectClass const *), 0x004769A0);

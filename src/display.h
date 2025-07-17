@@ -78,7 +78,7 @@ class DisplayClass : public MapClass
         bool Passes_Proximity_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
         bool Passes_Shroud_Check(const ObjectTypeClass *object, HousesType house, const Cell *list, Cell &trycell);
         Cell Set_Cursor_Pos(Cell &pos = CELL_NONE);
-        wDimensionStruct Get_Occupy_Dimensions(Cell const *list) const;
+        Cell Get_Occupy_Dimensions(Cell const *list) const;
         void Cursor_Mark(Cell &pos, bool on);
         void Submit(ObjectClass const *object);
         void Remove(ObjectClass const *object);

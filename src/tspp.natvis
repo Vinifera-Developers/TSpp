@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+    <!-- VectorClass<T> -->
+    <Type Name="VectorClass&lt;*&gt;">
+        <DisplayString>{{ size={VectorMax} }}</DisplayString>
+        <Expand>
+            <ArrayItems>
+                <Size>VectorMax</Size>
+                <ValuePointer>Vector</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <!-- DynamicVectorClass<T> -->
+    <Type Name="DynamicVectorClass&lt;*&gt;">
+        <DisplayString>{{ size={ActiveCount} }}</DisplayString>
+        <Expand>
+            <Item Name="[capacity]" ExcludeView="simple">VectorMax</Item>
+            <ArrayItems>
+                <Size>ActiveCount</Size>
+                <ValuePointer>Vector</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+
+    <!-- TPoint2D<T> -->
+    <Type Name="TPoint2D&lt;*&gt;">
+        <DisplayString>{{ X={X}, Y={Y} }}</DisplayString>
+        <Expand>
+            <Item Name="X">X</Item>
+            <Item Name="Y">Y</Item>
+        </Expand>
+    </Type>
+
+    <!-- TPoint3D<T> -->
+    <Type Name="TPoint3D&lt;*&gt;">
+        <DisplayString>{{ X={X}, Y={Y}, Z={Z} }</DisplayString>
+        <Expand>
+            <Item Name="X">X</Item>
+            <Item Name="Y">Y</Item>
+            <Item Name="Z">Z</Item>
+        </Expand>
+    </Type>
+
+    <!-- TRect<T> -->
+    <Type Name="TRect&lt;*&gt;">
+        <Intrinsic Name="isValid" Expression="Width &gt; 0 &amp;&amp; Height &gt; 0" />
+        <DisplayString> {{ X={X}, Y={Y}, Width={Width}, Height={Height} }} </DisplayString>
+        <Expand>
+            <Item Name="IsValid">isValid()</Item>
+        </Expand>
+    </Type>
+
+    <!-- xCell -->
+    <Type Name="xCell">
+        <DisplayString>{{ X={X}, Y={Y} }}</DisplayString>
+        <Expand>
+            <Item Name="X">X</Item>
+            <Item Name="Y">Y</Item>
+        </Expand>
+    </Type>
+
+    <!-- xCoordinate -->
+    <Type Name="xCoordinate">
+        <DisplayString>{{ X={X}, Y={Y}, Z={Z} }}</DisplayString>
+        <Expand>
+            <Item Name="X">X</Item>
+            <Item Name="Y">Y</Item>
+            <Item Name="Z">Z</Item>
+        </Expand>
+    </Type>
+
+    <!-- AbilitiesStruct -->
+    <Type Name="AbilitiesStruct">
+        <DisplayString>Abilities</DisplayString>
+        <Expand>
+            <Item Name="FASTER">AbilitiesFlag[0]</Item>
+            <Item Name="STRONGER">AbilitiesFlag[1]</Item>
+            <Item Name="FIREPOWER">AbilitiesFlag[2]</Item>
+            <Item Name="SCATTER">AbilitiesFlag[3]</Item>
+            <Item Name="ABILITY_ROF">AbilitiesFlag[4]</Item>
+            <Item Name="SIGHT">AbilitiesFlag[5]</Item>
+            <Item Name="CLOAK">AbilitiesFlag[6]</Item>
+            <Item Name="TIBERIUM_PROOF">AbilitiesFlag[7]</Item>
+            <Item Name="VEIN_PROOF">AbilitiesFlag[8]</Item>
+            <Item Name="SELF_HEAL">AbilitiesFlag[9]</Item>
+            <Item Name="EXPLODES">AbilitiesFlag[10]</Item>
+            <Item Name="RADAR_INVISIBLE">AbilitiesFlag[11]</Item>
+            <Item Name="SENSORS">AbilitiesFlag[12]</Item>
+            <Item Name="FEARLESS">AbilitiesFlag[13]</Item>
+            <Item Name="C4">AbilitiesFlag[14]</Item>
+            <Item Name="TIBERIUM_HEAL">AbilitiesFlag[15]</Item>
+            <Item Name="GUARD_AREA">AbilitiesFlag[16]</Item>
+            <Item Name="CRUSHER">AbilitiesFlag[17]</Item>
+        </Expand>
+    </Type>
+
+</AutoVisualizer>

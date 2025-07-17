@@ -329,3 +329,8 @@ target_compile_options(${PROJECT_NAME} PUBLIC
 
 # Build with multiple processes.
 target_compile_options(${PROJECT_NAME} PUBLIC /MP2)
+
+# Add the .natvis file for Visual Studio debugging
+set(NATVIS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp.natvis")
+source_group("Natvis Files" FILES ${NATVIS_FILE})
+target_sources(${PROJECT_NAME} PRIVATE ${NATVIS_FILE})

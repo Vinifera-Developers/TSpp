@@ -2953,13 +2953,6 @@ inline Cell Coord::As_Cell() const
 }
 
 
-struct wDimensionStruct
-{
-    short W;
-    short H;
-};
-
-
 struct AbilitiesStruct
 {
     public:
