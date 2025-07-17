@@ -105,7 +105,7 @@ class Wstring
         bool Set(int length, const char *string);
         bool Set(int length, const Wstring &that);
         char Get_Char(int index);
-        const char Get_Char(int index) const;
+        const char& Get_Char(int index) const;
         bool Set_Char(char c, int index);
         bool Concat(const char *string);
         bool Concat(int length, const char *string);

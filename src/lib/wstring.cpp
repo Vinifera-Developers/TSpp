@@ -446,7 +446,7 @@ bool Wstring::Set(int length, const Wstring &that)
 }
 
 
-const char Wstring::Get_Char(int index) const
+const char& Wstring::Get_Char(int index) const
 {
     TSPP_ASSERT(index >= 0);
     TSPP_ASSERT(index < Get_Length());
