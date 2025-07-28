@@ -198,7 +198,7 @@ BuildingClass : public TechnoClass
         void Animation_AI();
         // 00435E60
         // 00436020
-        void Begin_Anim(BAnimType anim, bool damaged, int delay);
+        void Begin_Anim(BAnimType anim, bool damaged, int delay = 0);
         void Set_Anim_Coords();
         void Create_Anim(char const* name, BAnimType anim, bool damaged, int delay);
         void Detach_Anim(AnimClass* oldanim);
@@ -279,7 +279,7 @@ BuildingClass : public TechnoClass
         TRect<int> field_2D8;
         Coord field_2E8;
         TPoint2D<int> field_2F4; // some radar pos.
-        bool IsPowerOn; // energy support?
+        bool IsOn; // energy support?
         bool IsNominal;
         bool IsToRebuild;
         bool IsToRepair;

@@ -197,8 +197,8 @@ public:
     bool IsRadar;
     bool IsHasChargeAnim;
     bool IsSiloDamage;
-    bool CanUnitRepair;
-    bool CanUnitReload;
+    bool IsCanUnitRepair;
+    bool IsCanUnitReload;
     bool IsFlat;
     bool IsDockUnload;
     bool IsRecoilless;

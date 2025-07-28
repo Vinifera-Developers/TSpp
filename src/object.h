@@ -175,6 +175,8 @@ class ObjectClass : public AbstractClass
         DirType Direction(AbstractClass * target) const;
         int Distance(AbstractClass * target) const;
         int Distance(const AbstractClass *target) const;
+        int Distance(Coord const& coord) const { return Center_Coord().Distance_To(coord); }
+        int Distance_To(AbstractClass const* obj) const { return Center_Coord().Distance_To(obj->Center_Coord()); }
         int Relative_Distance(const AbstractClass *object) const;
         int Relative_Distance(const Coord &coord);
         // 00586E30
