@@ -151,9 +151,9 @@ CellClass : public AbstractClass
         // 0045A4A0
         // 0045A670
         // 0045A680
-        // 0045A6A0
-        // 0045A6D0
-        // 0045A930
+        bool CellClass::Has_Tunnel(void) const;
+        bool CellClass::Is_Near_Tunnel_NW(void) const;
+        bool CellClass::Is_Near_Tunnel_ES(void) const;
         // 0045AAD0
         // 0045AAE0
         // 0045AB10

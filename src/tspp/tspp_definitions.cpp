@@ -1617,6 +1617,9 @@ DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Spread() const, 0x00459300);
 DEFINE_IMPLEMENTATION(bool CellClass::Grow_Tiberium(), 0x004593C0);
 DEFINE_IMPLEMENTATION(bool CellClass::Spread_Tiberium(bool), 0x004594D0);
 DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Germinate(TiberiumClass *) const, 0x004596C0);
+DEFINE_IMPLEMENTATION(bool CellClass::Has_Tunnel(void) const, 0x0045A6A0);
+DEFINE_IMPLEMENTATION(bool CellClass::Is_Near_Tunnel_NW(void) const, 0x0045A6D0);
+DEFINE_IMPLEMENTATION(bool CellClass::Is_Near_Tunnel_ES(void) const, 0x0045A930);
 DEFINE_IMPLEMENTATION(TiberiumType CellClass::Tiberium_Type_Here(), 0x0045AC10);
 DEFINE_IMPLEMENTATION(int CellClass::Get_Tiberium_Value() const, 0x0045AC70)
 DEFINE_IMPLEMENTATION(int CellClass::Occupier_Height() const, 0x0045ACD0);
