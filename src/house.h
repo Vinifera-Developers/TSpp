@@ -205,8 +205,8 @@ public:
     void MPlayer_Defeated();
     void Blowup_All();
     bool Flag_To_Die();
-    bool Flag_To_Win(bool a1 = true);
-    bool Flag_To_Lose(bool a1 = true);
+    bool Flag_To_Win(bool silent = false);
+    bool Flag_To_Lose(bool silent = false);
     // 004BFFB0
     void Init_Data(PlayerColorType color, HousesType house, int credits);
     float Power_Fraction() const;
