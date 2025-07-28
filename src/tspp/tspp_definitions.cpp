@@ -2977,7 +2977,7 @@ DEFINE_IMPLEMENTATION(FacingType TechnoClass::Desired_Load_Dir(const ObjectClass
 DEFINE_IMPLEMENTATION(DirType TechnoClass::Fire_Direction() const, 0x00637310);
 DEFINE_IMPLEMENTATION(InfantryTypeClass *const TechnoClass::Crew_Type() const, 0x006364A0);
 DEFINE_IMPLEMENTATION(bool TechnoClass::entry_29C() const, 0x00632020);
-DEFINE_IMPLEMENTATION(bool TechnoClass::entry_2A0() const, 0x00632070);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Can_Deploy_Now() const, 0x00632070);
 DEFINE_IMPLEMENTATION(bool TechnoClass::Is_Immobilized() const, 0x00632350);
 DEFINE_IMPLEMENTATION(int TechnoClass::Get_Max_Speed() const, 0x0063A510);
 DEFINE_IMPLEMENTATION(int TechnoClass::Rearm_Delay(WeaponSlotType) const, 0x0062FE30);

@@ -147,7 +147,7 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
         virtual DirType Fire_Direction() const;
         virtual InfantryTypeClass *const Crew_Type() const;
         virtual bool entry_29C() const;
-        virtual bool entry_2A0() const;
+        virtual bool Can_Deploy_Now() const;
         virtual bool Is_Immobilized() const;
         virtual int Get_Max_Speed() const;
         virtual int Rearm_Delay(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
