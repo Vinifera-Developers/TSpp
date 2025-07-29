@@ -4,7 +4,7 @@
  *
  *  @project       TS++
  *
- *  @file          ENDGAME.H
+ *  @file          ENVIRONMENT.H
  *
  *  @author        CCHyper
  *
@@ -34,21 +34,21 @@
 struct IStream;
 
 
-class EndGameClass
+class EnvironmentClass
 {
     public:
-        EndGameClass();
-        ~EndGameClass();
+        EnvironmentClass();
+        ~EnvironmentClass();
 
-        void Record();
-        void Apply();
+        void Snapshot_Game_State();
+        void Apply_To_Game_State();
 
         void Load(IStream *pStm);
         void Save(IStream *pStm);
 
     public:
         bool Globals[50];
-        int Credits;
+        int CarryOverMoney;
         int MissionTimer;
         int Difficulty;
         unsigned short Stage;

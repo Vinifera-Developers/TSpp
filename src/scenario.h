@@ -140,7 +140,7 @@ public:
     bool IsVeinGrowth;
     bool IsIceGrowth;
     bool IsBridgeChanged;
-    bool IsFlagChanged;
+    bool IsGlobalChanged;
     bool IsAmbientChanged;
     bool IsEndOfGame;
     bool IsInheritTimer;

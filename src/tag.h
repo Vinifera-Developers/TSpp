@@ -64,35 +64,46 @@ TagClass : public AbstractClass
         virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void Object_CRC(CRCEngine &crc) const override;
 
-        bool Spring(TEventType event = TEVENT_ANY, ObjectClass *object = nullptr, Cell cell = CELL_NONE, bool a4 = false, ObjectClass *source = nullptr);
-        // 0061E750
-        // 0061E7B0
-        Cell Get_Cell() const; // 0061E810
-        // 0061E820
-        // 0061E830
-        // 0061E840
-        // 0061E850
-        bool Is_Trigger_Attached(TriggerClass* trig);
-        void Set_Cell(Cell cell); // 0061EA10
-        // 0061EA20
-        // 0061EA50
-        // 0061EA60
-        void Link_Trigger(TriggerClass *trig); // 0061EA70
-        bool Unlink_Trigger(TriggerClass *trig); // 0061EA80
-        // 0061EC60
-        // 0061EC80
-        // 0061ECB0
-        // 0061ECE0
+        void Mark_To_Die();
+        bool Is_Marked_To_Die() const;
 
-        TagTypeClass *const Class_Of() const { return Class; }
-        
-        const char *Name() const;
+        bool Is_Horizontal_Cross() const;
+        __declspec(property(get = Is_Horizontal_Cross)) bool IsHorizontalCross;
+
+        bool Is_Vertical_Cross() const;
+        __declspec(property(get = Is_Vertical_Cross)) bool IsVerticalCross;
+
+        bool Is_Enters_Zone() const;
+        __declspec(property(get = Is_Enters_Zone)) bool IsEntersZone;
+
+        bool Is_Allow_Win() const;
+        __declspec(property(get = Is_Allow_Win)) bool IsAllowWin;
+
+        bool Is_Transferable() const;
+        __declspec(property(get = Is_Transferable)) bool IsTransferable;
+
+        void Timer_Global_Reset(int global);
+        void Timer_Local_Reset(int local);
+
+        bool Is_Trigger_Attached(TriggerClass* trig) const;
+        bool Spring(TEventType event = TEVENT_ANY, ObjectClass* object = nullptr, Cell cell = CELL_NONE, bool forced = false, TechnoClass* source = nullptr);
+
+        Cell Get_Position() const;
+        void Set_Position(Cell cell);
+
+        static void All_Timer_Global_Reset(int global);
+        static void All_Timer_Local_Reset(int local);
+
+        void Link(TriggerClass* trigger);
+        bool Unlink(TriggerClass* trigger);
+
+        bool Is_One_Of_A_Kind();
 
     public:
         TagTypeClass *Class;
-        TriggerClass *AttachedTrigger;
+        TriggerClass *Trigger;
         int AttachCount;
-        Cell Location;
-        bool IsDestroyed;
+        Cell CellID;
+        bool IsToDie;
         bool IsSprung;
 };

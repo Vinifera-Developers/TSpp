@@ -234,7 +234,7 @@
 #include "cd.h"
 #include "vqa.h"
 #include "progressscreen.h"
-#include "endgame.h"
+#include "environment.h"
 #include "tube.h"
 #include "restate.h"
 #include "addon.h"
@@ -4425,26 +4425,24 @@ DEFINE_IMPLEMENTATION(void TagClass::Detach(AbstractClass *, bool), 0x0061EAC0);
 DEFINE_IMPLEMENTATION(RTTIType TagClass::Fetch_RTTI() const, 0x0061ED30);
 DEFINE_IMPLEMENTATION(int TagClass::Get_Object_Size(bool) const, 0x0061ED20);
 DEFINE_IMPLEMENTATION(void TagClass::Object_CRC(CRCEngine &) const, 0x0061EB90);
-DEFINE_IMPLEMENTATION(bool TagClass::Spring(TEventType, ObjectClass *, Cell, bool, ObjectClass *), 0x0061E880);
-// 0061E750
-// 0061E7B0
-DEFINE_IMPLEMENTATION(Cell TagClass::Get_Cell() const, 0x0061E810);
-// 0061E820
-// 0061E830
-// 0061E840
-// 0061E850
-DEFINE_IMPLEMENTATION(bool TagClass::Is_Trigger_Attached(TriggerClass*), 0x0061E860);
-DEFINE_IMPLEMENTATION(void TagClass::Set_Cell(Cell), 0x0061EA10);
-// 0061EA20
-// 0061EA50
-// 0061EA60
-DEFINE_IMPLEMENTATION(void TagClass::Link_Trigger(TriggerClass *), 0x0061EA70);
-DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80);
-// 0061EC60
-// 0061EC80
-// 0061ECB0
-// 0061ECE0
-const char *TagClass::Name() const { return Class->Name(); }
+DEFINE_IMPLEMENTATION(void TagClass::Mark_To_Die(), 0x0061E750);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Marked_To_Die() const, 0x0061E7B0);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Horizontal_Cross() const, 0x0061E830);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Vertical_Cross() const, 0x0061E820);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Enters_Zone() const, 0x0061E840);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Allow_Win() const, 0x0061E850);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Transferable() const, 0x0061EC60);
+DEFINE_IMPLEMENTATION(void TagClass::Timer_Global_Reset(int), 0x0061EA50);
+DEFINE_IMPLEMENTATION(void TagClass::Timer_Local_Reset(int), 0x0061EA60);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_Trigger_Attached(TriggerClass*) const, 0x0061E860);
+DEFINE_IMPLEMENTATION(bool TagClass::Spring(TEventType, ObjectClass*, Cell, bool, TechnoClass*), 0x0061E880);
+DEFINE_IMPLEMENTATION(Cell TagClass::Get_Position() const, 0x0061E810);
+DEFINE_IMPLEMENTATION(void TagClass::Set_Position(Cell), 0x0061EA10);
+DEFINE_IMPLEMENTATION(void TagClass::All_Timer_Global_Reset(int), 0x0061EC80);
+DEFINE_IMPLEMENTATION(void TagClass::All_Timer_Local_Reset(int), 0x0061ECB0);
+DEFINE_IMPLEMENTATION(void TagClass::Link(TriggerClass*), 0x0061EA70);
+DEFINE_IMPLEMENTATION(bool TagClass::Unlink(TriggerClass*), 0x0061EA80);
+DEFINE_IMPLEMENTATION(bool TagClass::Is_One_Of_A_Kind(), 0x0061ECE0);
 
 DEFINE_IMPLEMENTATION(void ScenarioClass::Reset(), 0x005DAE90);
 DEFINE_IMPLEMENTATION(void ScenarioClass::Set_Scenario_Name(char const*), 0x005DD0D0);
@@ -4951,12 +4949,12 @@ DEFINE_IMPLEMENTATION(void ProgressScreenClass::Init_Dialog(), 0x005AE0F0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Destroy_Dialog(), 0x005AE130);
 DEFINE_IMPLEMENTATION(LRESULT CALLBACK ProgressScreenClass::Dialog_Proc(HWND, UINT, WPARAM, LPARAM), 0x005AE150);
 
-//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EndGameClass::EndGameClass(), 0x00493860);
-//DEFINE_IMPLEMENTATION_DESTRUCTOR(EndGameClass::~EndGameClass(), 0x00493890);
-DEFINE_IMPLEMENTATION(void EndGameClass::Record(), 0x004938A0);
-DEFINE_IMPLEMENTATION(void EndGameClass::Apply(), 0x00493920);
-DEFINE_IMPLEMENTATION(void EndGameClass::Load(IStream *), 0x00493A30);
-DEFINE_IMPLEMENTATION(void EndGameClass::Save(IStream *), 0x00493A50);
+//DEFINE_IMPLEMENTATION_CONSTRUCTOR(EnvironmentClass::EnvironmentClass(), 0x00493860);
+//DEFINE_IMPLEMENTATION_DESTRUCTOR(EnvironmentClass::~EnvironmentClass(), 0x00493890);
+DEFINE_IMPLEMENTATION(void EnvironmentClass::Snapshot_Game_State(), 0x004938A0);
+DEFINE_IMPLEMENTATION(void EnvironmentClass::Apply_To_Game_State(), 0x00493920);
+DEFINE_IMPLEMENTATION(void EnvironmentClass::Load(IStream *), 0x00493A30);
+DEFINE_IMPLEMENTATION(void EnvironmentClass::Save(IStream *), 0x00493A50);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TubeClass::GetClassID(CLSID *), 0x0064B5B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TubeClass::Load(IStream *), 0x0064B080);
@@ -5673,7 +5671,7 @@ int &NewINIFormat = Make_Global<int>(0x007E491C);
 bool &GameInFocus = Make_Global<bool>(0x007E4920);
 ParticleSystemClass *&MasterParticle = Make_Global<ParticleSystemClass *>(0x007E4918);
 ProgressScreenClass &ProgressScreen = Make_Global<ProgressScreenClass>(0x00809730);
-EndGameClass &EndGame = Make_Global<EndGameClass>(0x007A2ED0);
+EnvironmentClass &Environment = Make_Global<EnvironmentClass>(0x007A2ED0);
 bool &TacticalViewActive = Make_Global<bool>(0x007E48FC);
 bool &ScenarioStarted = Make_Global<bool>(0x007E4040);
 unsigned &FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
@@ -6238,7 +6236,7 @@ REGISTER_ASM_SYMBOL("??0WalkLocomotionClass@@QAE@XZ", 0x0066CA60);
 REGISTER_ASM_SYMBOL("??0DriveLocomotionClass@@QAE@XZ", 0x0047CF10);
 REGISTER_ASM_SYMBOL("??0VQAClass@@QAE@PBDHHHHHH@Z", 0x0066B290);
 REGISTER_ASM_SYMBOL("??0ProgressScreenClass@@QAE@XZ", 0x005AD890);
-REGISTER_ASM_SYMBOL("??0EndGameClass@@QAE@XZ", 0x00493860);
+REGISTER_ASM_SYMBOL("??0EnvironmentClass@@QAE@XZ", 0x00493860);
 REGISTER_ASM_SYMBOL("??0NewMenuClass@@QAE@XZ", 0x0057FBE0);
 REGISTER_ASM_SYMBOL("??0LevitateLocomotionClass@@QAE@XZ", 0x004FDEE0);
 REGISTER_ASM_SYMBOL("??0JumpjetLocomotionClass@@QAE@XZ", 0x004F9590);
@@ -6360,7 +6358,7 @@ REGISTER_ASM_SYMBOL("??1WalkLocomotionClass@@UAE@XZ", 0x0066CAD0);
 REGISTER_ASM_SYMBOL("??1DriveLocomotionClass@@UAE@XZ", 0x0047CFB0);
 REGISTER_ASM_SYMBOL("??1VQAClass@@QAE@XZ", 0x0066B540);
 REGISTER_ASM_SYMBOL("??1ProgressScreenClass@@QAE@XZ", 0x005AD8C0);
-REGISTER_ASM_SYMBOL("??1EndGameClass@@QAE@XZ", 0x00493890);
+REGISTER_ASM_SYMBOL("??1EnvironmentClass@@QAE@XZ", 0x00493890);
 REGISTER_ASM_SYMBOL("??1TubeClass@@UAE@XZ", 0x0064AFC0);
 REGISTER_ASM_SYMBOL("??1LevitateLocomotionClass@@UAE@XZ", 0x004FDF60);
 REGISTER_ASM_SYMBOL("??1JumpjetLocomotionClass@@UAE@XZ", 0x004F9600);
