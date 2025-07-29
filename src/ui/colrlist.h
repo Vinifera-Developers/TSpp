@@ -51,9 +51,9 @@ class ColorListClass : public ListClass
         virtual void Remove_Item(const char *text) override;
 
         virtual void Draw_Entry(int index, int x, int y, int width, bool selected);
-        virtual int Add_Item(int text, ColorSchemeType color = COLORSCHEME_NONE);
-        virtual int Add_Item(const char *text, ColorSchemeType color = COLORSCHEME_NONE);
-        virtual void Set_Selected_Style(SelectStyleType style, ColorSchemeType color = COLORSCHEME_NONE);
+        virtual int Add_Item(int text, ColorSchemeType color = COLORSCHEME_FIRST);
+        virtual int Add_Item(const char *text, ColorSchemeType color = COLORSCHEME_FIRST);
+        virtual void Set_Selected_Style(SelectStyleType style, ColorSchemeType color = COLORSCHEME_FIRST);
 
     public:
         DynamicVectorClass<ColorSchemeType *> Colors;

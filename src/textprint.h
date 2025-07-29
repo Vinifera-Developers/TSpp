@@ -136,8 +136,8 @@ int Format_Window_String(char *string, WWFontClass *font, int maxlinelen, int &w
 
 Point2D Simple_Text_Print(const char *text, XSurface *surface, Rect *rect, Point2D *xy, ColorScheme *fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, int a8 = 1);
 
-Point2D Plain_Text_Print(int text, XSurface *surface, Rect *rect, Point2D *xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_NONE, int a9 = 1);
-Point2D Plain_Text_Print(char const *text, XSurface *surface, Rect *rect, Point2D *xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_NONE, int a9 = 1);
+Point2D Plain_Text_Print(int text, XSurface *surface, Rect *rect, Point2D *xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_FIRST, int a9 = 1);
+Point2D Plain_Text_Print(char const *text, XSurface *surface, Rect *rect, Point2D *xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_FIRST, int a9 = 1);
 
 Point2D Fancy_Text_Print(int text, XSurface *surface, Rect *rect, Point2D *xy, ColorScheme *fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ...);
 Point2D Fancy_Text_Print(const char *text, XSurface *surface, Rect *rect, Point2D *xy, ColorScheme *fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT|TPF_DROPSHADOW, ...);

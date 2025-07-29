@@ -1988,7 +1988,7 @@ DEFINE_ENUMERATION_OPERATORS(TiberiumImageType);
 
 typedef enum ColorSchemeType
 {
-    COLORSCHEME_NONE = 0
+    COLORSCHEME_FIRST = 0
 } ColorSchemeType;
 DEFINE_ENUMERATION_OPERATORS(ColorSchemeType);
 
