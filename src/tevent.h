@@ -96,13 +96,14 @@ TEventClass : public AbstractClass
             long Value;
         } Data;
 
-    private:
+    public:
         struct EventDescriptionStruct
         {
             char const *Name;
             char const *Description;
         };
 
+    private:
         static EventDescriptionStruct EventDescriptions[TEVENT_COUNT];
 };
 

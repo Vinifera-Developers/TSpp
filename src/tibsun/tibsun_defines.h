@@ -2319,10 +2319,10 @@ typedef enum AttachType
     ATTACH_NONE,                // Trigger doesn't attach to anything (orphan trigger types).
     ATTACH_CELL = 1 << 0,       // Trigger can only attach to a cell.
     ATTACH_OBJECT = 1 << 1,     // Trigger can attach only to object (usually building or vehicle).
-    ATTACH_MAP = 1 << 3,        // Trigger applies to the general map (usually zone or parallel triggers).
-    ATTACH_HOUSE = 1 << 4,      // Trigger applies only to a house.
-    ATTACH_GENERAL = 1 << 5,    // General purpose trigger attached to game state.
-    ATTACH_TEAM = 1 << 6        // Trigger applies to team object.
+    ATTACH_MAP = 1 << 2,        // Trigger applies to the general map (usually zone or parallel triggers).
+    ATTACH_HOUSE = 1 << 3,      // Trigger applies only to a house.
+    ATTACH_GENERAL = 1 << 4,    // General purpose trigger attached to game state.
+    ATTACH_TEAM = 1 << 5        // Trigger applies to team object.
 } AttachType;
 DEFINE_ENUMERATION_OPERATORS(AttachType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(AttachType);
