@@ -29,17 +29,6 @@
 #include "tibsun_inline.h"
 
 
-void TEventClass::Reset(CDTimerClass<FrameTimerClass> &timer) const
-{
-    if (Event == TEVENT_TIME) {
-        timer = Data.Value * TICKS_PER_SECOND;
-    }
-    if (Event == TEVENT_RANDOM_TIME) {
-        timer = Data.Value / 2 + Random_Pick(0, (int)Data.Value) * TICKS_PER_SECOND;
-    }
-}
-
-
 const char *TEventClass::Event_Name(TEventType event)
 {
     return EventDescriptions[event].Name;

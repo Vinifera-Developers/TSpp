@@ -47,8 +47,8 @@ public:
     int Increment(int index);
     int Decrement(int index);
     bool Grow(int size);
-    int Count_Of(int index);
-    int Total();
+    int Value(int index) const;
+    int Total() const;
 
     HRESULT Load(IStream *pStm);
     HRESULT Save(IStream *pStm);
@@ -64,5 +64,5 @@ public:
 
     int Increment(T index) { return CounterClass::Increment((int)index); }
     int Decrement(T index) { return CounterClass::Decrement((int)index); }
-    int Count_Of(T index) { return CounterClass::Count_Of((int)index); }
+    int Value(T index) const { return CounterClass::Value((int)index); }
 };

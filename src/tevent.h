@@ -69,13 +69,13 @@ TEventClass : public AbstractClass
         virtual void Object_CRC(CRCEngine &crc) const override;
         virtual int Fetch_Heap_ID() const override;
 
-        bool operator () (TEventType event, HouseClass *house, const ObjectClass *object, CDTimerClass<FrameTimerClass> &timer, bool &tripped, TechnoClass *source = nullptr);
-        
-        // 00642E20
-        // 00642E80
-        void Reset(CDTimerClass<FrameTimerClass> &timer) const;
         void Read_INI();
-        void Build_INI_Entry(char *buffer) const;
+        void Build_INI_Entry(char* buffer) const;
+        
+        bool Is_Temporal() const;
+        bool Has_Memory() const;
+
+        bool operator () (TEventType event, HouseClass* house, const ObjectClass* object, CDTimerClass<FrameTimerClass>& timer, bool& is_perm, TechnoClass* source);
 
         static const char *Event_Name(TEventType event);
         static const char *Event_Description(TEventType event);

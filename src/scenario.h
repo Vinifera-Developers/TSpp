@@ -37,6 +37,7 @@
 #include "special.h"
 
 
+class INIClass;
 class CCINIClass;
 class CellClass;
 class TechnoTypeClass;
@@ -46,25 +47,53 @@ class ScenarioClass
 {
 public:
     ScenarioClass();
-    ~ScenarioClass();
+    ScenarioClass(NoInitClass const& x);
 
-    void Save(LPSTREAM pStm);
-    void Load(LPSTREAM pStm);
+    void Reset();
+
+    void Set_Scenario_Name(char const* name);
 
     bool Read_INI(CCINIClass &ini);
     bool Write_INI(CCINIClass &ini);
     
-    bool Read_Global_INI(CCINIClass &ini);
-    bool Read_Local_INI(CCINIClass &ini);
-    bool Write_Local_INI(CCINIClass &ini);
+    bool Read_Global_INI(INIClass &ini);
+    bool Read_Local_INI(INIClass &ini);
+    bool Write_Local_INI(INIClass &ini);
 
-    Cell Waypoint_Cell(int wp) const;
-    CellClass *Waypoint_CellClass(int wp) const;
-    Coord Waypoint_Coord(int wp) const;
-    bool Is_Waypoint_Valid(int wp) const;
+    bool Set_Global_To(int global, bool value);
+    bool Set_Global_To(char const* name, bool value);
+    bool Get_Global_Value(int global, bool& value);
+    bool Get_Global_Value(char const* name, bool& value);
+    bool Set_Local_To(int local, bool value);
+    bool Set_Local_To(char const* name, bool value);
+    bool Get_Local_Value(int local, bool& value);
+    bool Get_Local_Value(char const* name, bool& value);
 
-    void Read_Waypoint_INI(CCINIClass& ini);
-    void Write_Waypoint_INI(CCINIClass& ini);
+    int Find_Global_Variable_Index(char const* name);
+    int Find_Local_Variable_Index(char const* name);
+
+    int Find_Free_Local() const;
+    int Num_Locals() const;
+
+    int Unique_ID();
+
+    Cell Waypoint_Cell(WAYPOINT wp) const;
+    AbstractClass* Waypoint_Target(WAYPOINT wp) const;
+    CellClass* Waypoint_CellClass(WAYPOINT wp) const;
+    Coord Waypoint_Coord(WAYPOINT wp) const;
+    void Clear_Waypoint(WAYPOINT wp);
+    void Clear_All_Waypoints();
+    bool Is_Waypoint_Valid(WAYPOINT wp) const;
+    char const* Unused_Waypoint() const;
+    void Set_Waypoint(WAYPOINT wp, Cell cell);
+
+    void Read_Waypoints(CCINIClass& ini);
+    void Write_Waypoints(CCINIClass& ini);
+
+    void Object_CRC(CRCEngine&) const;
+
+    void Save_Self(LPSTREAM stream);
+    void Load_Self(LPSTREAM stream);
 
 public:
     SpecialClass Special;
@@ -163,8 +192,12 @@ void Do_Lose();
 void Do_Restart();
 void Do_Abort();
 void Assign_Houses();
-void Pause_Scenario_Timer();
-void Resume_Scenario_Timer();
+void Pause_Scenario();
+void Resume_Scenario();
+bool Read_Scenario_INI(const char* fname, bool fresh = true);
+bool Read_Scenario_INI(CCINIClass& ini, bool random = false);
+void Last_Minute_Multiplayer_Fixups(bool official);
+void Write_Scenario_INI(const char* root, bool a2 = false);
 
 // This really belongs in MainOptionsClass.
 bool Change_Video_Mode(int height, int width);

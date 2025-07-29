@@ -390,6 +390,8 @@ typedef enum TeamType
 } TeamType;
 DEFINE_ENUMERATION_OPERATORS(TeamType);
 
+
+typedef long WAYPOINT;
 typedef enum WaypointType
 {
     WAYPOINT_HOME = 98,       // Home-cell for this scenario.
@@ -400,8 +402,8 @@ typedef enum WaypointType
 
     WAYPOINT_NONE = -1,
     WAYPOINT_FIRST = 0,
-} WAYPOINT;
-DEFINE_ENUMERATION_OPERATORS(WAYPOINT);
+} WaypointType;
+DEFINE_ENUMERATION_OPERATORS(WaypointType);
 
 typedef enum TubeType : char
 {
@@ -2382,7 +2384,7 @@ typedef enum TEventType
     TEVENT_RANDOM_TIME,                     // Delays a random time.
     TEVENT_CREDITS_BELOW,                   // house drops below this many credits.
     TEVENT_PARALYZED,                       // 
-    TEVENT_ENEMY_IN_SPOTLIGHT_ONCE,         // 
+    TEVENT_ENEMY_IN_SPOTLIGHT_REPEATING,         // 
     TEVENT_LIMPED,                          // 
 
     TEVENT_COUNT,

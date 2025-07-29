@@ -78,6 +78,7 @@ public:
     virtual void Object_CRC(CRCEngine &crc) const override;
     virtual void AI() override;
 
+    bool Is_Empty(void) const { return Member == nullptr; }
     void Assign_Mission_Target(AbstractClass * new_target);
     // 00623360
     // 006233B0

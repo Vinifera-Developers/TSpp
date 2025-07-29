@@ -118,7 +118,6 @@
 #include "crate.h"
 #include "colorscheme.h"
 #include "storage.h"
-#include "scenarioini.h"
 #include "map.h"
 #include "layer.h"
 #include "logic.h"
@@ -696,7 +695,6 @@ DEFINE_IMPLEMENTATION(int Random3Class::operator()(), 0x005BE140);
 DEFINE_IMPLEMENTATION(int Random3Class::operator()(int, int), 0x005BE1A0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ScenarioClass::ScenarioClass(), 0x005DABC0);
-ScenarioClass::~ScenarioClass() {}
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(MessageListClass::MessageListClass(), 0x00572E00);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(MessageListClass::~MessageListClass(), 0x00572E80);
@@ -1122,8 +1120,8 @@ DEFINE_IMPLEMENTATION(void CounterClass::Clear(), 0x0046EB60);
 DEFINE_IMPLEMENTATION(int CounterClass::Increment(int), 0x0046EA40);
 DEFINE_IMPLEMENTATION(int CounterClass::Decrement(int), 0x0046EAA0);
 DEFINE_IMPLEMENTATION(bool CounterClass::Grow(int), 0x0046EC90);
-DEFINE_IMPLEMENTATION(int CounterClass::Count_Of(int), 0x0046EB00);
-DEFINE_IMPLEMENTATION(int CounterClass::Total(), 0x0046EB80);
+DEFINE_IMPLEMENTATION(int CounterClass::Value(int) const, 0x0046EB00);
+DEFINE_IMPLEMENTATION(int CounterClass::Total() const, 0x0046EB80);
 DEFINE_IMPLEMENTATION(HRESULT CounterClass::Load(IStream *), 0x0046EC00);
 DEFINE_IMPLEMENTATION(HRESULT CounterClass::Save(IStream *), 0x0046EBA0);
 
@@ -2582,7 +2580,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::One_Time(), 0x004BB450);
 DEFINE_IMPLEMENTATION(void HouseClass::Computer_Paranoid(), 0x004C3630);
 DEFINE_IMPLEMENTATION(void HouseClass::Read_Scenario_INI(CCINIClass &), 0x004C2E40);
 DEFINE_IMPLEMENTATION(void HouseClass::Write_Scenario_INI(CCINIClass &), 0x004C31B0);
-DEFINE_IMPLEMENTATION(HouseClass *HouseClass::As_Pointer(HousesType), 0x004C4730);
+DEFINE_IMPLEMENTATION(HouseClass *House_From_HousesType(HousesType), 0x004C4730);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ThemeClass::ThemeClass(), 0x00643D60);
 ThemeClass::~ThemeClass() { Clear(); }
@@ -3525,8 +3523,8 @@ DEFINE_IMPLEMENTATION(int TEventClass::Get_Object_Size(bool) const, 0x00642EE0);
 DEFINE_IMPLEMENTATION(void TEventClass::Object_CRC(CRCEngine &) const, 0x00642D00);
 DEFINE_IMPLEMENTATION(int TEventClass::Fetch_Heap_ID() const, 0x00642F00);
 DEFINE_IMPLEMENTATION(bool TEventClass::operator () (TEventType, HouseClass *, const ObjectClass *, CDTimerClass<FrameTimerClass> &, bool &, TechnoClass *), 0x00642310);
-// 00642E20
-// 00642E80
+DEFINE_IMPLEMENTATION(bool TEventClass::Is_Temporal() const, 0x00642E20);
+DEFINE_IMPLEMENTATION(bool TEventClass::Has_Memory() const, 0x00642E80);
 DEFINE_IMPLEMENTATION(void TEventClass::Read_INI(), 0x00642A60);
 DEFINE_IMPLEMENTATION(void TEventClass::Build_INI_Entry(char *) const, 0x00642A10);
 DEFINE_IMPLEMENTATION(NeedType Event_Needs(TEventType), 0x00642AD0);
@@ -4448,19 +4446,40 @@ DEFINE_IMPLEMENTATION(bool TagClass::Unlink_Trigger(TriggerClass *), 0x0061EA80)
 // 0061ECE0
 const char *TagClass::Name() const { return Class->Name(); }
 
-DEFINE_IMPLEMENTATION(void ScenarioClass::Save(LPSTREAM), 0x005DF3C0);
-DEFINE_IMPLEMENTATION(void ScenarioClass::Load(LPSTREAM), 0x005DF500);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_INI(CCINIClass &), 0x005DFDE0);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_INI(CCINIClass &), 0x005E0950);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Global_INI(CCINIClass &), 0x005DF930);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Local_INI(CCINIClass &), 0x005DFBD0);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_Local_INI(CCINIClass &), 0x005DFD10);
-DEFINE_IMPLEMENTATION(Cell ScenarioClass::Waypoint_Cell(int) const, 0x005E1460);
-DEFINE_IMPLEMENTATION(CellClass *ScenarioClass::Waypoint_CellClass(int) const, 0x005E1480);
-DEFINE_IMPLEMENTATION(Coord ScenarioClass::Waypoint_Coord(int) const, 0x005E14A0);
-DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Waypoint_Valid(int) const, 0x005E1520);
-DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoint_INI(CCINIClass &), 0x005E1560);
-DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoint_INI(CCINIClass &), 0x005E1630);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Reset(), 0x005DAE90);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Set_Scenario_Name(char const*), 0x005DD0D0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_INI(CCINIClass&), 0x005DFDE0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_INI(CCINIClass&), 0x005E0950);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Global_INI(INIClass&), 0x005DF930);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Read_Local_INI(INIClass&), 0x005DFBD0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Write_Local_INI(INIClass&), 0x005DFD10);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Set_Global_To(int, bool), 0x005DF720);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Set_Global_To(char const*, bool), 0x005DF770);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Get_Global_Value(int, bool&), 0x005DF810);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Get_Global_Value(char const*, bool&), 0x005DF840);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Set_Local_To(int, bool), 0x005DF9C0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Set_Local_To(char const*, bool), 0x005DFA10);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Get_Local_Value(int, bool&), 0x005DFAB0);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Get_Local_Value(char const*, bool&), 0x005DFAE0);
+DEFINE_IMPLEMENTATION(int ScenarioClass::Find_Global_Variable_Index(char const*), 0x005DF8D0);
+DEFINE_IMPLEMENTATION(int ScenarioClass::Find_Local_Variable_Index(char const*), 0x00DFB70);
+DEFINE_IMPLEMENTATION(int ScenarioClass::Find_Free_Local() const, 0x005DFDC0);
+DEFINE_IMPLEMENTATION(int ScenarioClass::Num_Locals() const, 0x005DFDA0);
+DEFINE_IMPLEMENTATION(int ScenarioClass::Unique_ID(), 0x005E1450);
+DEFINE_IMPLEMENTATION(Cell ScenarioClass::Waypoint_Cell(WAYPOINT) const, 0x005E1460);
+DEFINE_IMPLEMENTATION(AbstractClass* ScenarioClass::Waypoint_Target(WAYPOINT) const, 0x005E1480);
+DEFINE_IMPLEMENTATION(CellClass* ScenarioClass::Waypoint_CellClass(WAYPOINT) const, 0x005E1700);
+DEFINE_IMPLEMENTATION(Coord ScenarioClass::Waypoint_Coord(WAYPOINT) const, 0x005E14A0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Clear_Waypoint(WAYPOINT), 0x005E16C0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Clear_All_Waypoints(), 0x005E1500);
+DEFINE_IMPLEMENTATION(bool ScenarioClass::Is_Waypoint_Valid(WAYPOINT) const, 0x005E1520);
+DEFINE_IMPLEMENTATION(char const* ScenarioClass::Unused_Waypoint() const, 0x005E1720);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Set_Waypoint(WAYPOINT, Cell), 0x005E16E0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Read_Waypoints(CCINIClass&), 0x005E1560);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Write_Waypoints(CCINIClass&), 0x005E1630);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Object_CRC(CRCEngine&) const, 0x005E10D0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Save_Self(LPSTREAM), 0x005DF3C0);
+DEFINE_IMPLEMENTATION(void ScenarioClass::Load_Self(LPSTREAM), 0x005DF500);
 DEFINE_IMPLEMENTATION(bool Start_Scenario(char *, bool, CampaignType), 0x005DB170);
 DEFINE_IMPLEMENTATION(bool Read_Scenario(char * name), 0x005DB9A0);
 DEFINE_IMPLEMENTATION(void Clear_Scenario(), 0x005DC510);
@@ -4469,12 +4488,12 @@ DEFINE_IMPLEMENTATION(void Do_Lose(), 0x005DCC20);
 DEFINE_IMPLEMENTATION(void Do_Restart(), 0x005DCE60);
 DEFINE_IMPLEMENTATION(void Do_Abort(), 0x005DCF70);
 DEFINE_IMPLEMENTATION(void Assign_Houses(), 0x005DE210);
-DEFINE_IMPLEMENTATION(void Pause_Scenario_Timer(), 0x005DB4C0);
-DEFINE_IMPLEMENTATION(void Resume_Scenario_Timer(), 0x005DB590);
+DEFINE_IMPLEMENTATION(void Pause_Scenario(), 0x005DB4C0);
+DEFINE_IMPLEMENTATION(void Resume_Scenario(), 0x005DB590);
 DEFINE_IMPLEMENTATION(bool Change_Video_Mode(int, int), 0x0050AC30);
 DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(const char*, bool), 0x005DD100);
-DEFINE_IMPLEMENTATION(bool Load_Scenario(CCINIClass&, bool), 0x005DD4C0);
-DEFINE_IMPLEMENTATION(void Scenario_MP_Fixups(bool), 0x005DD290);
+DEFINE_IMPLEMENTATION(bool Read_Scenario_INI(CCINIClass&, bool), 0x005DD4C0);
+DEFINE_IMPLEMENTATION(void Last_Minute_Multiplayer_Fixups(bool), 0x005DD290);
 DEFINE_IMPLEMENTATION(void Write_Scenario_INI(const char*, bool), 0x005DDFE0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE WaypointPathClass::GetClassID(CLSID *), 0x006738B0);

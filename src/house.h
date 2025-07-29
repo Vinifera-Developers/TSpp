@@ -372,7 +372,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += BQuantity.Count_Of(static_cast<StructType>(list[i]->Fetch_Heap_ID()));
+            count += BQuantity.Value(static_cast<StructType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -381,7 +381,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += UQuantity.Count_Of(static_cast<UnitType>(list[i]->Fetch_Heap_ID()));
+            count += UQuantity.Value(static_cast<UnitType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -390,7 +390,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += IQuantity.Count_Of(static_cast<InfantryType>(list[i]->Fetch_Heap_ID()));
+            count += IQuantity.Value(static_cast<InfantryType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -399,7 +399,7 @@ public:
     {
         int count = 0;
         for (int i = 0; i < list.Count(); i++) {
-            count += AQuantity.Count_Of(static_cast<AircraftType>(list[i]->Fetch_Heap_ID()));
+            count += AQuantity.Value(static_cast<AircraftType>(list[i]->Fetch_Heap_ID()));
         }
         return count;
     }
@@ -408,8 +408,6 @@ public:
     static void Computer_Paranoid();
     static void Read_Scenario_INI(CCINIClass &ini);
     static void Write_Scenario_INI(CCINIClass &ini);
-
-    static HouseClass *As_Pointer(HousesType house);
 
 public:
     HousesType HeapID;
@@ -591,3 +589,5 @@ private:
     HouseClass(const HouseClass &) = delete;
     HouseClass &operator=(const HouseClass &) = delete;
 };
+
+HouseClass* House_From_HousesType(HousesType house);
