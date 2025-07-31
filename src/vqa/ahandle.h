@@ -40,8 +40,8 @@ struct AhandleInitParams
     unsigned char Channels;
     unsigned char BitsPerSample;
     unsigned long Flags;	// 1 is used to flip left and right channels
-    void* field_8;
-    void* field_C;
+    long(__cdecl* Callback1)(VQAHandle*);
+    long(__cdecl* Callback2)(VQAHandle*, void*);
 };
 
 #define AHANDLEF_IS_PAUSED (1 << 0)
