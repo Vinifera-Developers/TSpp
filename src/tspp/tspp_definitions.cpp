@@ -286,6 +286,7 @@
 #include "savever.h"
 #include "shapeset.h"
 #include "ahandle.h"
+#include "gametime.h"
 
 
 std::vector<TSPP_SymbolEntry> TSPP_Symbols;
@@ -5454,6 +5455,15 @@ DEFINE_IMPLEMENTATION(long __cdecl Unlock_Audio_Handler(), 0x004082C0);
 
 
 /**
+ *  GameTimeClass
+ */
+DEFINE_IMPLEMENTATION(unsigned long GameTimeClass::Get_Time(), 0x004AAC10);
+DEFINE_IMPLEMENTATION(unsigned long Get_Game_Time(), 0x004AAC30);
+DEFINE_IMPLEMENTATION(unsigned long Get_Game_Time_60Hz(), 0x004AAC50);
+GameTimeClass& Game_Time = Make_Global<GameTimeClass>(0x007B340C);
+
+
+/**
  *  Owner draw
  */
 DEFINE_IMPLEMENTATION(void OwnerDraw::Init_Glow_Colors(), 0x0059CBC0);
@@ -5714,9 +5724,9 @@ int &VPL_field_C = Make_Global<int>(0x00835640);
 RGBStruct (&Voxel_Palette)[VOXEL_PALETTE_SIZE] = Make_Global<RGBStruct[VOXEL_PALETTE_SIZE]>(0x00822340);
 unsigned char (&Voxel_PaletteLookup)[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE] = Make_Global<unsigned char[MAX_PALETTE_LOOKUP_ENTRIES][VOXEL_PALETTE_SIZE]>(0x00833640);
 unsigned& GameVersion = Make_Global<unsigned>(0x0070BC58);
-extern float& VoxelLightAngle = Make_Global<float>(0x0074C734);
-extern Vector3& VoxelLightSource = Make_Global<Vector3>(0x0074C738);
-extern Vector3& VoxelShadowLightSource = Make_Global<Vector3>(0x0074C6E8);
+float& VoxelLightAngle = Make_Global<float>(0x0074C734);
+Vector3& VoxelLightSource = Make_Global<Vector3>(0x0074C738);
+Vector3& VoxelShadowLightSource = Make_Global<Vector3>(0x0074C6E8);
 
 
 /**
@@ -6593,6 +6603,7 @@ REGISTER_ASM_SYMBOL("??1StaticBufferClass@@QAE@XZ", 0x0060A8A0);
 REGISTER_ASM_SYMBOL("??0VoxelPaletteClass@@QAE@PAX0@Z", 0x0066A940);
 REGISTER_ASM_SYMBOL("??1VoxelPaletteClass@@QAE@XZ", 0x0066A9B0);
 REGISTER_ASM_SYMBOL("??0SaveVersionInfo@@QAE@XZ", 0x005D8BE0);
+REGISTER_ASM_SYMBOL("??0GameTimeClass@@QAE@XZ", 0x004AAC00);
 
 
 /**
