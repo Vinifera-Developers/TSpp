@@ -6,7 +6,7 @@
  *
  *  @file          VQA.H
  *
- *  @authors       CCHyper
+ *  @authors       tomsons26, CCHyper
  *
  *  @brief         VQA playback class.
  *
@@ -33,30 +33,6 @@
 
 
 class VQAClass;
-
-
-/**
- *  We need to redefine these as DSAudio uses pointers and here we use instances.
- */
-typedef struct tWAVEFORMATEX_6
-{
-    WORD wFormatTag;
-    WORD nChannels;
-    DWORD nSamplesPerSec;
-    DWORD nAvgBytesPerSec;
-    WORD nBlockAlign;
-    WORD wBitsPerSample;
-    WORD cbSize;
-} WAVEFORMATEX_6, *PWAVEFORMATEX_6, NEAR *NPWAVEFORMATEX_6, FAR *LPWAVEFORMATEX_6;
-
-typedef struct _DSBUFFERDESC_6
-{
-    DWORD dwSize;
-    DWORD dwFlags;
-    DWORD dwBufferBytes;
-    DWORD dwReserved;
-    LPWAVEFORMATEX_6 lpwfxFormat;
-} DSBUFFERDESC_6, *LPDSBUFFERDESC_6;
 
 
 typedef enum VQAErrorType
@@ -114,7 +90,6 @@ typedef enum VQAOptionType
 } VQAOptionType;
 
 
-// NEEDS CONFIRMING
 #pragma pack(push, 1)
 typedef struct VQAHeader
 {
@@ -124,7 +99,7 @@ typedef struct VQAHeader
     unsigned short ImageWidth;
     unsigned short ImageHeight;
     unsigned char BlockWidth;
-    unsigned char BlockHeight;    
+    unsigned char BlockHeight;
     unsigned char FPS;
     unsigned char GroupSize;
     unsigned short Num1Colors;
@@ -146,17 +121,17 @@ typedef struct VQAHeader
 #pragma pack(pop)
 
 
-// MATCHES SIZE
+struct VQAHandle;
 typedef struct VQAConfig
 {
-    void *StreamHandler;
-    void *MemoryHandler;
-    void *PaletteHandler;
-    void *DrawerCallback;
-    void *TimerHandler;
-    long field_14;
-    long AudioHandler;
-    unsigned char *ImageBuf;
+    long(__cdecl* StreamHandler)(VQAHandle*, long, void*, long);
+    long(__cdecl* MemoryHandler)(VQAHandle*, long, void*, long);
+    long(__cdecl* EventHandler)(VQAHandle*, long, void*, long);
+    long(__cdecl* DrawerCallback)(VQAHandle*, long);
+    unsigned long(__cdecl* TimerCallback)(VQAHandle*);
+    unsigned long(__cdecl* _unused_callback)(VQAHandle*);
+    long(__cdecl* AudioHandler)(VQAHandle*, long, void*, long);
+    unsigned char* ImageBuf;
     long ImageWidth;
     long ImageHeight;
     long X1;
@@ -169,24 +144,23 @@ typedef struct VQAConfig
     long OptionFlags;
     long NumFrameBufs;
     long NumCBBufs;
-    unsigned char *VocFile;
-    unsigned char *AudioBuf;
+    unsigned char* VocFile;
+    unsigned char* AudioBuf;
     long AudioBufSize;
     long HMIBufSize;
     long AudioRate;
     long Volume;
     long field_68;
-    long field_6C;
+    VQAClass* field_6C;
     long field_70;
     long field_74;
     long DigiHandle;
     long field_7C;
     long field_80;
-    long LatencyAdjustment;
+    unsigned long LatencyAdjustment;
 } VQAConfig;
 
 
-// CONFIRMED
 typedef struct VQAInfo
 {
     long NumFrames;
@@ -195,7 +169,6 @@ typedef struct VQAInfo
 } VQAInfo;
 
 
-// CONFIRMED
 typedef struct VQAChunkHeader
 {
     unsigned long ID;
@@ -203,7 +176,6 @@ typedef struct VQAChunkHeader
 } VQAChunkHeader;
 
 
-// CONFIRMED
 typedef struct VQACacheHeader
 {
     unsigned long FileOffset;
@@ -211,26 +183,24 @@ typedef struct VQACacheHeader
 } VQACacheHeader;
 
 
-// CONFIRMED
 typedef struct VQACBNode
 {
-    unsigned char *Buffer;
-    VQACBNode *Next;
-    VQACBNode *Prev;
+    unsigned char* Buffer;
+    VQACBNode* Next;
+    VQACBNode* Prev;
     unsigned long Flags;
     unsigned long CBOffset;
     unsigned long Size;
 } VQACBNode;
 
 
-// CONFIRMED
 typedef struct VQAFrameNode
 {
-    unsigned char *Polongers;
-    VQACBNode *Codebook;
-    unsigned char *Palette;
-    VQAFrameNode *Next;
-    VQAFrameNode *Prev;
+    unsigned char* Polongers;
+    VQACBNode* Codebook;
+    unsigned char* Palette;
+    VQAFrameNode* Next;
+    VQAFrameNode* Prev;
     unsigned long Flags;
     unsigned long PrevFlags;
     long FrameNum;
@@ -242,19 +212,20 @@ typedef struct VQAFrameNode
 
 typedef struct VQALoader
 {
-    VQACBNode *CurCB;
-    VQACBNode *FullCB;
-long __CurCodebook;                    // Whats this?
-    VQAFrameNode *CurFrame;
+    VQACBNode* CurCB;
+    VQACBNode* FullCB;
+    VQACBNode* PrevCB;
+    VQAFrameNode* CurFrame;
     long NumPartialCB;
     long PartialCBSize;
-    long CurFrameNum;            // __PartialCBSizeMax?
-    long LastCBFrame;            // __NextFrameNum?
-    long LastFrameNum;
+    int _unknown;
+    int NextFrameNum;
+    long CurFrameNum;
     long WaitsOnDrawer;
     long WaitsOnAudio;
     long FrameSize;
     long MaxFrameSize;
+    VQAChunkHeader CurChunkHdr;
 } VQALoader;
 
 
@@ -271,45 +242,30 @@ typedef struct VQAStatistics
 } VQAStatistics;
 
 
-// NEEDS CONFIRMING
+typedef _tagCOMPRESS_INFO2 VQASOS;
 typedef struct VQAAudio
 {
-    unsigned char *Buffer;
+    unsigned char* Buffer;
     unsigned long AudBufPos;
-    short *IsLoaded;
+    bool* IsLoaded;
+    short* BlockRepeats;
     unsigned long NumAudBlocks;
-
-
-
-    unsigned char *TempBuf;
-    unsigned long TempBufSize;
+    unsigned long Block1;
+    unsigned long Block2;
+    unsigned char* TempBuf;
+    unsigned long BufferOffset;
     unsigned long TempBufLen;
+    unsigned long TempBufSize;
+    void* HMIBuffer;
     unsigned long Flags;
-    unsigned long PlayPosition;
-    unsigned long SamplesPlayed;
-    unsigned long NumSkipped;
-    unsigned short SampleRate;
-    unsigned char Channels;
-    unsigned char BitsPerSample;
-
-    _tagCOMPRESS_INFO2 sSOSInfo;
-    unsigned long SoundTimerHandle;    
-
-    //TODO
-
-    WAVEFORMATEX_6 WaveFormat;
-    DSBUFFERDESC_6 BufferDesc;
-
-    long field_AC;
-    long field_B0;
-    long field_B4;
-    long field_C8;
-    long field_BC;
-    long field_C0;
+    long PlayPosition;
+    long BufferPosition;
+    int field_3C;
+    unsigned long BytesPerSec;
+    VQASOS ADPCM_Info;
 } VQAAudio;
 
 
-// CONFIRMED
 typedef struct VQAClipper
 {
     unsigned long Width;
@@ -317,25 +273,22 @@ typedef struct VQAClipper
 } VQAClipper;
 
 
-// CONFIRMED
 typedef struct VQAFlipper
 {
-    VQAFrameNode *CurFrame;
+    VQAFrameNode* CurFrame;
     long LastFrameNum;
 } VQAFlipper;
 
 
 typedef struct VQADrawer
 {
-    VQAFrameNode *CurFrame;
+    VQAFrameNode* CurFrame;
     unsigned long Flags;
-    unsigned char *ImageBuf;
+    unsigned char* ImageBuf;
     long ImageWidth;
     long ImageHeight;
     long X1;
     long Y1;
-//    long X2;
-//    long Y2;
     long ScreenOffset;
     long CurPalSize;
     char Palette_24[768];
@@ -343,14 +296,7 @@ typedef struct VQADrawer
     long BlocksPerRow;
     long NumRows;
     long NumBlocks;
-//    long MaskStart;            // Where did these come from?
-//    long MaskWidth;
-//    long MaskHeight;
-//    long LastTime;             // Where did these come from?
-//    long LastFrame;
-//    long LastFrameNum;
-    long DesiredFrame;
-//    long NumSkipped;           // ?
+    long LastFrameNum;
     long WaitsOnFlipper;
     long WaitsOnLoader;
 } VQADrawer;
@@ -358,17 +304,17 @@ typedef struct VQADrawer
 
 typedef struct VQAData
 {
-    void *Draw_Frame;
-    void *Page_Flip;
-    void *UnVQ;
-    VQAFrameNode *FrameData;
-    VQACBNode *CBData;
+    void* Draw_Frame;
+    void* Page_Flip;
+    void* UnVQ;
+    VQAFrameNode* FrameData;
+    VQACBNode* CBData;
     VQAAudio Audio;
     VQALoader Loader;
     VQADrawer Drawer;
     VQAFlipper Flipper;
     unsigned long Flags;
-    long *Foff;
+    long* Foff;
     long VBIBit;
     long Max_CB_Size;
     long Max_Pal_Size;
@@ -384,85 +330,280 @@ typedef struct VQAData
 typedef struct VQAHandle
 {
     unsigned long VQAStream;
-    void *StreamHandler;
-    VQAData *VQABuf;
+    void* StreamHandler;
+    VQAData* VQABuf;
     VQAConfig Config;
-    VQAClass *Class;
+    VQAClass* Class;
     VQAHeader Header;
     long vocfh;
 } VQAHandle;
 
 
+struct VQALoopInfo {
+    struct HEADER {
+        unsigned short Count;
+        unsigned long Flags;
+        unsigned short _pad;
+    };
+    HEADER Header;
+
+    struct DATA {
+        unsigned short StartFrame;
+        unsigned short EndFrame;
+    };
+    DATA* Data;
+};
+
+
+struct VQAPaletteInfo {
+    struct HEADER {
+        unsigned short Count;
+        unsigned long Flags;
+        unsigned short _pad;
+    };
+    HEADER Header;
+
+    struct DATA {
+        short field_0;
+    };
+    DATA* Data;
+};
+
+struct VQACodebookInfo {
+    struct HEADER {
+        unsigned short Count;
+        unsigned long Flags;
+        unsigned short _pad;
+    };
+    HEADER Header;
+
+    struct DATA {
+        unsigned short Frame;
+        int Size;
+    };
+    DATA* Data;
+};
+
+
+struct VQAMFCInfo {
+    struct HEADER {
+        int StaticCount;
+        unsigned long Count;
+        int field_8;
+        int field_C;
+    };
+    HEADER Header;
+
+    struct DATA {
+        int field_0;
+        unsigned long ChunkID;
+        char Pad[0x10];
+    };
+    DATA* StaticData;
+
+    struct TABLE {
+        unsigned long ChunkID;
+        int field_4;
+        int field_8;
+        int field_C;
+    };
+    TABLE* Table;
+
+    struct DATA2 {
+        unsigned long Count;
+        int field_4;
+        struct DATA {
+            char* Buffer;
+            int Size;
+            int Frame;
+        };
+        DATA* Data;
+    };
+    DATA2* Data2;
+};
+
+struct VQAMSCInfo {
+    struct HEADER {
+        unsigned long Count;
+        int field_4;
+    };
+    HEADER Header;
+
+    struct TABLE {
+        unsigned long ChunkID;
+        int field_4;
+        int field_8;
+        int field_C;
+    };
+    TABLE* Table;
+
+    struct DATA2 {
+        unsigned long Count;
+        int field_4;
+        struct DATA {
+            char* Buffer;
+            int Size;
+            int Frame;
+        };
+        DATA* Data;
+    };
+    DATA2* Data2;
+};
+
+
+struct VQALoopCache {
+    char* Ptr;
+    int Size;
+    char* Buffer;
+    int Bytes;
+    int Offset;
+    int Min;
+    int Max;
+    int ID;
+};
+
+
+typedef struct VQAHandleP {
+    unsigned short Version;
+    unsigned short ImageWidth;
+    unsigned short ImageHeight;
+    short field_6;
+    void* ImageBuf;
+    unsigned short ColorMode;
+    unsigned short FrameRate;
+    long NumFrames;
+    int LoadedFrames;
+    int DrawnFrames;
+    int SkippedFrames;
+    int StartTime;
+    int EndTime;
+    int field_28;
+    int field_2C;
+    int MemUsed;
+    int field_34;
+    int RepeatedBuffers;
+    unsigned short SampleRate;
+    unsigned char Channels;
+    unsigned char BitsPerSample;
+    VQAConfig Config;
+    char field_C8[32];
+    VQAHeader Header;
+    VQAClipper Clipper;
+    short field_11A;
+    int StopFrame;
+    int LoopID;
+    int LoopIterations;
+    int LoopStartFrame0;
+    int LoopEndFrameMode2;
+    int LoopEndFrameJump;
+    int LoopIterationsJump;
+    int LoopEndFrameNormal;
+    int LoopStartFrame1;
+    int LoopEndFrame2;
+    int LoopStartFrame2;
+    int TickOffset;
+    int field_14C;
+    unsigned long Flags;
+    unsigned long AltBufferFlags;
+    void* AltImageBuf;
+    int AltImageWidth;
+    int AltImageHeight;
+    VQALoader Loader;
+    VQADrawer Drawer;
+    VQAFlipper Flipper;
+    VQAFrameNode* FrameData;
+    void* AltPtrBuffer;
+    VQACBNode* CBData;
+    void* AltCBBuffer;
+    VQALoopCache LoopCache;
+    VQALoopInfo LoopInfo;
+    VQAMFCInfo MFCInfo;
+    VQAMSCInfo MSCInfo;
+    VQACodebookInfo CodebookInfo;
+    VQAPaletteInfo PaletteInfo;
+    long* Foff;
+    long Max_CB_Size;
+    long Max_Ptr_Size;
+    long Max_Pal_Size;
+    int CBBufferSize;
+    int PtrBufferSize;
+    long (*Draw_Frame)(VQAHandle*);
+    long (*Page_Flip)(VQAHandle*);
+    void(__cdecl* UnVQ1)(unsigned char*, unsigned char*, unsigned char*, unsigned long, unsigned long, unsigned long);
+    void(__cdecl* UnVQ2)(unsigned char*, unsigned char*, unsigned char*, unsigned long, unsigned long, unsigned long);
+    VQAAudio Audio;
+} VQAHandleP;
+
+
 class VQAClass
 {
-    public:
-        VQAClass(const char *filename, int flags, int framecount, int lockfunc, int unlockfunc, int frame_rate, int draw_rate);
-        ~VQAClass();
+public:
+    VQAClass(const char* filename, int flags, int framecount, int lockfunc, int unlockfunc, int frame_rate, int draw_rate);
+    ~VQAClass();
 
-        void func_66B780(void *a1);
-        void func_66B7B0();
-        bool Open();
-        int func_66B830();
-        void Set_Volume(int volume);
-        bool Play(int a1, int a2);
-        bool func_66B8A0(int start_frame, int end_frame, int a3);
-        void Seek_To_Frame(int frame);
-        bool func_66B920();
-        int func_66B960(int frame, bool a2);
-        void func_66BBC0(int frame);
-        bool Advance_Frame(bool &a1);
-        void Pause();
-        void Resume();
-        void Close();
-        void func_66BE60();
-        int func_66BE70() const;
-        bool Set_Draw_Buffer(void *buffer, int width, int height, int xpos, int ypos);
-        void func_66BEF0(int a1);
-        void func_66BF00(int a1, int a2);
-        int Get_Width() const;
-        int Get_Height() const;
-        void Lock_Surface();
-        void Unlock_Surface();
+    void func_66B780(void* a1);
+    void func_66B7B0();
+    bool Open();
+    int func_66B830();
+    void Set_Volume(int volume);
+    bool Play(int a1, int a2);
+    bool func_66B8A0(int start_frame, int end_frame, int a3);
+    void Seek_To_Frame(int frame);
+    bool func_66B920();
+    int func_66B960(int frame, bool a2);
+    void func_66BBC0(int frame);
+    bool Advance_Frame(bool& a1);
+    void Pause();
+    void Resume();
+    void Close();
+    void func_66BE60();
+    int func_66BE70() const;
+    bool Set_Draw_Buffer(void* buffer, int width, int height, int xpos, int ypos);
+    void func_66BEF0(int a1);
+    void func_66BF00(int a1, int a2);
+    int Get_Width() const;
+    int Get_Height() const;
+    void Lock_Surface();
+    void Unlock_Surface();
 
-    public:
-        CCFileClass File;
-        bool field_64;
-        char Filename[263];
-        VQAConfig Config;
-        VQAHandle *Handle;
-        char Palette[768];
-        int CurrentFrame;
-        int TotalFrames;
-        int field_500;
-        int field_504;
-        bool IsOpen;
-        int Width;
-        int Height;
-        int field_514;
-        int field_518;
-        bool field_51C;
-        int field_520;
-        int field_524;
-        int field_528;
-        int field_52C;
-        int field_530;
-        void *field_534;
-        void *field_538;
-        void *field_53C;
-        int field_540;
-        bool field_544;
-        bool field_545;
+public:
+    CCFileClass File;
+    bool field_64;
+    char Filename[263];
+    VQAConfig Config;
+    VQAHandle* Handle;
+    char Palette[768];
+    int CurrentFrame;
+    int TotalFrames;
+    int field_500;
+    int field_504;
+    bool IsOpen;
+    int Width;
+    int Height;
+    int field_514;
+    int field_518;
+    bool field_51C;
+    int field_520;
+    int field_524;
+    int field_528;
+    int field_52C;
+    int field_530;
+    void* field_534;
+    void* field_538;
+    void* field_53C;
+    int field_540;
+    bool field_544;
+    bool field_545;
 };
 
 
 /**
  *  VQA library functions.
  */
-
 void VQA_Init_Option();
 void VQA_Set_Option(VQAOptionType option);
 void VQA_Clear_Option(VQAOptionType option);
 bool VQA_Get_Option(VQAOptionType option);
 bool VQA_Flip_Option(VQAOptionType option);
 
-unsigned long VQA_GetTime(VQAHandle *handle);
+unsigned long VQA_GetTime(VQAHandle* handle);

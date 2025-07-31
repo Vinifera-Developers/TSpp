@@ -30,11 +30,9 @@
 #include "always.h"
 #include <windows.h>
 #include "dsaudio.h"
+#include "vqa.h"
 
 
-#define VQAHandle   unsigned char
-#define VQAHandleP  unsigned char
-#define VQAConfig   unsigned char
 
 struct AhandleInitParams
 {
