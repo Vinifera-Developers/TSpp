@@ -285,6 +285,7 @@
 #include "voxelpal.h"
 #include "savever.h"
 #include "shapeset.h"
+#include "ahandle.h"
 
 
 std::vector<TSPP_SymbolEntry> TSPP_Symbols;
@@ -5432,6 +5433,24 @@ DEFINE_IMPLEMENTATION(HRESULT SaveVersionInfo::Save_Time_Set(IPropertySetStorage
 DEFINE_IMPLEMENTATION(const WCHAR* Stream_Name_From_ID(int), 0x005DA8C0);
 DEFINE_IMPLEMENTATION(bool Get_Savefile_Info(char const *, SaveVersionInfo &), 0x005D7E90);
 
+/**
+ *  Ahandle
+ */
+DEFINE_IMPLEMENTATION(unsigned long __cdecl Timer_Callback_Audio_Handler(VQAHandle *), 0x004072D0);
+DEFINE_IMPLEMENTATION(long __cdecl Stream_Audio_Handler(VQAHandle *, long, void *, long), 0x00407450);
+DEFINE_IMPLEMENTATION(long __cdecl Open_Audio_Handler(VQAHandleP *, AhandleInitParams *, long), 0x00407650);
+DEFINE_IMPLEMENTATION(long __cdecl Close_Audio_Handler(VQAHandleP *), 0x00407980);
+DEFINE_IMPLEMENTATION(long __cdecl Start_Audio_Handler(VQAHandleP *), 0x00407B20);
+DEFINE_IMPLEMENTATION(long __cdecl Load_Audio_Handler(VQAHandleP *, void *, long), 0x00407D30);
+DEFINE_IMPLEMENTATION(long __cdecl Pause_Audio_Handler(VQAHandleP *), 0x00407EF0);
+DEFINE_IMPLEMENTATION(long __cdecl Play_Audio_Handler(VQAHandleP *), 0x00407F40);
+DEFINE_IMPLEMENTATION(long __cdecl Stop_Audio_Handler(VQAHandleP *), 0x00407FE0);
+DEFINE_IMPLEMENTATION(void CALLBACK AudioCallback(UINT, UINT, DWORD, DWORD, DWORD), 0x00408060);
+DEFINE_IMPLEMENTATION(unsigned long __cdecl Simple_Timer_Callback_Audio_Handler(VQAHandle *), 0x00408200);
+DEFINE_IMPLEMENTATION(void Pause_All_Audio_Handler(), 0x00408210);
+DEFINE_IMPLEMENTATION(void Resume_All_Audio_Handler(), 0x00408260);
+DEFINE_IMPLEMENTATION(long __cdecl Lock_Audio_Handler(), 0x004082B0);
+DEFINE_IMPLEMENTATION(long __cdecl Unlock_Audio_Handler(), 0x004082C0);
 
 
 /**

@@ -28,78 +28,78 @@
 #pragma once
 
 #include "always.h"
+#include <windows.h>
 #include "dsaudio.h"
 
 
-struct VQAHandle;
+#define VQAHandle   unsigned char
+#define VQAHandleP  unsigned char
+#define VQAConfig   unsigned char
 
-
-/**
- *  We need to redefine these as DSAudio uses pointers and here we use instances.
- */
-typedef struct tWAVEFORMATEX_6
+struct AhandleInitParams
 {
-    WORD wFormatTag;
-    WORD nChannels;
-    DWORD nSamplesPerSec;
-    DWORD nAvgBytesPerSec;
-    WORD nBlockAlign;
-    WORD wBitsPerSample;
-    WORD cbSize;
-} WAVEFORMATEX_6, *PWAVEFORMATEX_6, NEAR *NPWAVEFORMATEX_6, FAR *LPWAVEFORMATEX_6;
-
-typedef struct _DSBUFFERDESC_6
-{
-    DWORD dwSize;
-    DWORD dwFlags;
-    DWORD dwBufferBytes;
-    DWORD dwReserved;
-    LPWAVEFORMATEX_6 lpwfxFormat;
-} DSBUFFERDESC_6, *LPDSBUFFERDESC_6;
-
-
-class AHandle
-{
-    public:
-        //AHandle();
-        //~AHandle()
-
-    public:
-        bool field_0; // is allocated?
-        int Volume;
-        short field_8; // samples per sec?
-        char field_A; // channels?
-        char field_B; // bits per sample?
-        int field_C; // 
-        int field_10; // 
-        int field_14; // 
-        int field_18; // 
-        int field_1C; // pause adjust?
-        int field_20; // paused frame?
-        int field_24; // 
-        int field_28; // flags?
-        int field_2C; // 
-        int field_30; // 
-        int field_34; // 
-        int field_38; // 
-        int field_3C; // 
-        int field_40; // 
-        int field_44; // 
-        int field_48; // pointer
-        int field_4C; // 
-        int field_50; // 
-        int field_54; // 
-        int field_58; // 
-        int field_5C; // 
-        UINT TimerHandle;
-        DSBUFFERDESC_6 BufferDesc;
-        WAVEFORMATEX_6 BuffFormat;
-        LPDIRECTSOUNDBUFFER BufferPtr;
-        int field_90; // buffer size?
-        int field_94;
-        int field_98;
-        int field_9C; // write cursor?
-        CRITICAL_SECTION CriticalSection;
-        int field_B8; // lock level?
-        bool field_BC;
+    unsigned short SampleRate;
+    unsigned char Channels;
+    unsigned char BitsPerSample;
+    unsigned long Flags;	// 1 is used to flip left and right channels
+    void* field_8;
+    void* field_C;
 };
+
+#define AHANDLEF_IS_PAUSED (1 << 0)
+
+struct Ahandle {
+
+    enum {
+        MAX_HANDLES = 1,
+        MAX_BUFFERS = 2,
+    };
+
+    bool Used;
+    int Volume;
+    unsigned short SampleRate;
+    unsigned char Channels;
+    unsigned char BitsPerSample;
+    char field_C[8];
+    unsigned long LastPlaybackPosition;
+    unsigned long LastTimerTick;
+    unsigned long PauseAdjust;
+    unsigned long TickCount;
+    unsigned long InitFlags;
+    unsigned long Flags;
+    char field_2C[20];
+    int AudioBufReadIndex;
+    int AudioBufWriteIndex;
+    BOOL AudioBufInUse[MAX_BUFFERS];
+    void* AudioBuf[MAX_BUFFERS];
+    unsigned long AudioBufSize[MAX_BUFFERS];
+    UINT TimerHandle;
+    DSBUFFERDESC BufferDesc;
+    WAVEFORMATEX DsBuffFormat;
+    LPDIRECTSOUNDBUFFER SecondaryBufferPtr;
+    unsigned long SecondaryBufferSize;
+    unsigned long ChunksMovedToAudioBuffer;
+    unsigned long LastChunkPosition;
+    unsigned long EndLastAudioChunk;
+    CRITICAL_SECTION CriticalSection;
+    LONG SuspendAudioCallback;
+};
+
+unsigned long __cdecl Simple_Timer_Callback_Audio_Handler(VQAHandle* vqa);
+unsigned long __cdecl Timer_Callback_Audio_Handler(VQAHandle* vqa);
+
+long __cdecl Lock_Audio_Handler();
+long __cdecl Unlock_Audio_Handler();
+long __cdecl Stream_Audio_Handler(VQAHandle* vqa, long action, void* buffer, long nbytes);
+
+typedef long(__cdecl* AHANDLE_CALLBACK_1)(VQAHandle* vqa);
+typedef long(__cdecl* AHANDLE_CALLBACK_2)(VQAHandle* vqa, void* buffer);
+
+long __cdecl Open_Audio_Handler(VQAHandleP* vqap, AhandleInitParams* params, long);
+long __cdecl Close_Audio_Handler(VQAHandleP* vqap);
+long __cdecl Start_Audio_Handler(VQAHandleP* vqap);
+long __cdecl Stop_Audio_Handler(VQAHandleP* vqap);
+long __cdecl Play_Audio_Handler(VQAHandleP* vqap);
+long __cdecl Pause_Audio_Handler(VQAHandleP* vqap);
+long __cdecl Load_Audio_Handler(VQAHandleP* vqap, void* buffer, long nbytes);
+void CALLBACK AudioCallback(UINT event_id, UINT res1, DWORD user, DWORD res2, DWORD res3);
