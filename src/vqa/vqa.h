@@ -34,6 +34,8 @@
 
 class VQAClass;
 
+#define    VQA_TIMETICKS 60 /* Clock ticks per second */
+
 
 typedef enum VQAErrorType
 {
