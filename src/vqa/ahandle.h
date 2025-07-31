@@ -6,7 +6,7 @@
  *
  *  @file          AHANDLE.H
  *
- *  @authors       CCHyper
+ *  @authors       CCHyper, tomsons26
  *
  *  @brief         VQA Audio handler
  *
