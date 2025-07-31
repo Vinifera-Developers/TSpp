@@ -4,7 +4,7 @@
  *
  *  @project       TS++
  *
- *  @file          AHANDLE.H
+ *  @file          GAMETIME.H
  *
  *  @authors       tomsons26, ZivDero
  *
