@@ -28,32 +28,7 @@
 #include "side.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const SideClass &SideClass::As_Reference(SideType type)
-{
-    TSPP_ASSERT(type != SIDE_NONE && type < Sides.Count());
-    return *Sides[type];
-}
-
-
-const SideClass *SideClass::As_Pointer(SideType type)
-{
-    TSPP_ASSERT(type != SIDE_NONE && type < Sides.Count());
-    return type != SIDE_NONE && type < Sides.Count() ? Sides[type] : nullptr;
-}
-
-
-const SideClass &SideClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const SideClass *SideClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 SideType SideClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ SideType SideClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (SideType index = SIDE_FIRST; index < Sides.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(Sides[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ SideType SideClass::From_Name(const char *name)
 
 const char *SideClass::Name_From(SideType type)
 {
-    return (type != SIDE_NONE && type < Sides.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SIDE_NONE && type < Sides.Count() ? Sides[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const SideClass *SideClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (SideType index = SIDE_FIRST; index < Sides.Count(); ++index) {
-        if (!strcasecmp(Sides[index]->Name(), name)) {
-            return Sides[index];
-        }
-    }
-
-    SideClass *ptr = new SideClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, Sides);
 }

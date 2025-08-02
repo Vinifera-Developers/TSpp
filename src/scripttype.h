@@ -102,10 +102,6 @@ ScriptTypeClass : public AbstractTypeClass
         static void Read_Scenario_INI(CCINIClass &ini, bool a2 = false);
         static void Write_Scenario_INI(CCINIClass &ini, bool a2 = false);
 
-        static const ScriptTypeClass &As_Reference(ScriptType type);
-        static const ScriptTypeClass *As_Pointer(ScriptType type);
-        static const ScriptTypeClass &As_Reference(const char *name);
-        static const ScriptTypeClass *As_Pointer(const char *name);
         static ScriptType From_Name(const char *name);
         static const char *Name_From(ScriptType type);
         static const ScriptTypeClass *Find_Or_Make(const char *name);

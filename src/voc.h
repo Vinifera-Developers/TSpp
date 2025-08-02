@@ -61,11 +61,6 @@ class VocClass
         static VocClass *Voc_From_Name(const char *name);
         static const char *INI_Name_From(VocType type);
 
-        static const VocClass *As_Pointer(VocType type)
-        {
-            return type != VOC_NONE && type < Vocs.Count() ? Vocs[type] : nullptr;
-        }
-
     public:
         char Filename[256];
         int Priority;
@@ -95,9 +90,8 @@ void Static_Sound(VocType voc, const Coord& coord);
  */
 inline bool Is_Sound_Effect_Playing(VocType type)
 {
-    const VocClass *voc = VocClass::As_Pointer(type);
-    if (voc) {
-        return voc->Is_Playing();
+    if (type < VOC_FIRST || type >= Vocs.Count()) {
+        return false;
     }
-    return false;
+    return Vocs[type]->Is_Playing();
 }

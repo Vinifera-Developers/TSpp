@@ -28,32 +28,7 @@
 #include "infantrytype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const InfantryTypeClass &InfantryTypeClass::As_Reference(InfantryType type)
-{
-    TSPP_ASSERT(type != INFANTRY_NONE && type < InfantryTypes.Count());
-    return *InfantryTypes[type];
-}
-
-
-const InfantryTypeClass *InfantryTypeClass::As_Pointer(InfantryType type)
-{
-    TSPP_ASSERT(type != INFANTRY_NONE && type < InfantryTypes.Count());
-    return type != INFANTRY_NONE && type < InfantryTypes.Count() ? InfantryTypes[type] : nullptr;
-}
-
-
-const InfantryTypeClass &InfantryTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const InfantryTypeClass *InfantryTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 InfantryType InfantryTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ InfantryType InfantryTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (InfantryType index = INFANTRY_FIRST; index < InfantryTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(InfantryTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ InfantryType InfantryTypeClass::From_Name(const char *name)
 
 const char *InfantryTypeClass::Name_From(InfantryType type)
 {
-    return (type != INFANTRY_NONE && type < InfantryTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != INFANTRY_NONE && type < InfantryTypes.Count() ? InfantryTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const InfantryTypeClass *InfantryTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (InfantryType index = INFANTRY_FIRST; index < InfantryTypes.Count(); ++index) {
-        if (!strcasecmp(InfantryTypes[index]->Name(), name)) {
-            return InfantryTypes[index];
-        }
-    }
-
-    InfantryTypeClass *ptr = new InfantryTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, InfantryTypes);
 }

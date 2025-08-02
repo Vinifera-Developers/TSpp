@@ -73,10 +73,6 @@ HouseTypeClass : public AbstractTypeClass
          */
         virtual bool Read_INI(CCINIClass &ini) override;
 
-        static const HouseTypeClass &As_Reference(HousesType type);
-        static const HouseTypeClass *As_Pointer(HousesType type);
-        static const HouseTypeClass &As_Reference(const char *name);
-        static const HouseTypeClass *As_Pointer(const char *name);
         static HousesType From_Name(const char *name);
         static const char *Name_From(HousesType type);
         static const HouseTypeClass *Find_Or_Make(const char *name);

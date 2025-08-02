@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const BuildingTypeClass &BuildingTypeClass::As_Reference(StructType type)
-{
-    TSPP_ASSERT(type != STRUCT_NONE && type < BuildingTypes.Count());
-    return *BuildingTypes[type];
-}
-
-
-const BuildingTypeClass *BuildingTypeClass::As_Pointer(StructType type)
-{
-    TSPP_ASSERT(type != STRUCT_NONE && type < BuildingTypes.Count());
-    return type != STRUCT_NONE && type < BuildingTypes.Count() ? BuildingTypes[type] : nullptr;
-}
-
-
-const BuildingTypeClass &BuildingTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const BuildingTypeClass *BuildingTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 StructType BuildingTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ StructType BuildingTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (StructType index = STRUCT_FIRST; index < BuildingTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(BuildingTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ StructType BuildingTypeClass::From_Name(const char *name)
 
 const char *BuildingTypeClass::Name_From(StructType type)
 {
-    return (type != STRUCT_NONE && type < BuildingTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != STRUCT_NONE && type < BuildingTypes.Count() ? BuildingTypes[type]->Name() : "<none>");
 }
 
 

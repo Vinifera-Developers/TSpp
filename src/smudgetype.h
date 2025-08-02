@@ -82,10 +82,6 @@ SmudgeTypeClass : public ObjectTypeClass
         static bool Create_Crater(const Coord &coord, int width, int height, bool large = false);
         static void Init(TheaterType theater = THEATER_TEMPERATE);
 
-        static const SmudgeTypeClass &As_Reference(SmudgeType type);
-        static const SmudgeTypeClass *As_Pointer(SmudgeType type);
-        static const SmudgeTypeClass &As_Reference(const char *name);
-        static const SmudgeTypeClass *As_Pointer(const char *name);
         static SmudgeType From_Name(const char *name);
         static const char *Name_From(SmudgeType type);
         static const SmudgeTypeClass *Find_Or_Make(const char *name);

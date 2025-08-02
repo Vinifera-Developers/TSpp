@@ -28,6 +28,7 @@
 #include "scripttype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
+#include "findmake.h"
 
 
 const char *ScriptMissionClass::Mission_Name(ScriptMissionType mission)
@@ -99,32 +100,6 @@ ScriptMissionClass::MissionDescriptionStruct ScriptMissionClass::MissionDescript
 };
 
 
-const ScriptTypeClass &ScriptTypeClass::As_Reference(ScriptType type)
-{
-    TSPP_ASSERT(type != SCRIPT_NONE && type < ScriptTypes.Count());
-    return *ScriptTypes[type];
-}
-
-
-const ScriptTypeClass *ScriptTypeClass::As_Pointer(ScriptType type)
-{
-    TSPP_ASSERT(type != SCRIPT_NONE && type < ScriptTypes.Count());
-    return type != SCRIPT_NONE && type < ScriptTypes.Count() ? ScriptTypes[type] : nullptr;
-}
-
-
-const ScriptTypeClass &ScriptTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const ScriptTypeClass *ScriptTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 ScriptType ScriptTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -135,7 +110,7 @@ ScriptType ScriptTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (ScriptType index = SCRIPT_FIRST; index < ScriptTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(ScriptTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -147,7 +122,7 @@ ScriptType ScriptTypeClass::From_Name(const char *name)
 
 const char *ScriptTypeClass::Name_From(ScriptType type)
 {
-    return (type != SCRIPT_NONE && type < ScriptTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SCRIPT_NONE && type < ScriptTypes.Count() ? ScriptTypes[type]->Name() : "<none>");
 }
 
 
@@ -155,17 +130,5 @@ const ScriptTypeClass *ScriptTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (ScriptType index = SCRIPT_FIRST; index < ScriptTypes.Count(); ++index) {
-        if (!strcasecmp(ScriptTypes[index]->Name(), name)) {
-            return ScriptTypes[index];
-        }
-    }
-
-    ScriptTypeClass *ptr = new ScriptTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, ScriptTypes);
 }

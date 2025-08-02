@@ -82,10 +82,6 @@ InfantryTypeClass : public TechnoTypeClass
 
         void Sequence_Read_INI();
 
-        static const InfantryTypeClass &As_Reference(InfantryType type);
-        static const InfantryTypeClass *As_Pointer(InfantryType type);
-        static const InfantryTypeClass &As_Reference(const char *name);
-        static const InfantryTypeClass *As_Pointer(const char *name);
         static InfantryType From_Name(const char *name);
         static const char *Name_From(InfantryType type);
         static const InfantryTypeClass *Find_Or_Make(const char *name);

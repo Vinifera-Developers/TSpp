@@ -86,10 +86,6 @@ AnimTypeClass : public ObjectTypeClass
 
         static void Init(TheaterType theater);
 
-        static const AnimTypeClass &As_Reference(AnimType type);
-        static const AnimTypeClass *As_Pointer(AnimType type);
-        static const AnimTypeClass &As_Reference(const char *name);
-        static const AnimTypeClass *As_Pointer(const char *name);
         static AnimType From_Name(const char *name);
         static const char *Name_From(AnimType type);
         static const AnimTypeClass *Find_Or_Make(const char *name);

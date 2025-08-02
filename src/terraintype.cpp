@@ -28,32 +28,7 @@
 #include "terraintype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TerrainTypeClass &TerrainTypeClass::As_Reference(TerrainType type)
-{
-    TSPP_ASSERT(type != TERRAIN_NONE && type < TerrainTypes.Count());
-    return *TerrainTypes[type];
-}
-
-
-const TerrainTypeClass *TerrainTypeClass::As_Pointer(TerrainType type)
-{
-    TSPP_ASSERT(type != TERRAIN_NONE && type < TerrainTypes.Count());
-    return type != TERRAIN_NONE && type < TerrainTypes.Count() ? TerrainTypes[type] : nullptr;
-}
-
-
-const TerrainTypeClass &TerrainTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TerrainTypeClass *TerrainTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TerrainType TerrainTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ TerrainType TerrainTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TerrainType index = TERRAIN_FIRST; index < TerrainTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(TerrainTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ TerrainType TerrainTypeClass::From_Name(const char *name)
 
 const char *TerrainTypeClass::Name_From(TerrainType type)
 {
-    return (type != TERRAIN_NONE && type < TerrainTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TERRAIN_NONE && type < TerrainTypes.Count() ? TerrainTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const TerrainTypeClass *TerrainTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (TerrainType index = TERRAIN_FIRST; index < TerrainTypes.Count(); ++index) {
-        if (!strcasecmp(TerrainTypes[index]->Name(), name)) {
-            return TerrainTypes[index];
-        }
-    }
-
-    TerrainTypeClass *ptr = new TerrainTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, TerrainTypes);
 }

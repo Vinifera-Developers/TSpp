@@ -108,10 +108,6 @@ IsometricTileTypeClass : public ObjectTypeClass
         // 004F8A40
         // 004F8A70
 
-        static const IsometricTileTypeClass &As_Reference(IsometricTileType type);
-        static const IsometricTileTypeClass *As_Pointer(IsometricTileType type);
-        static const IsometricTileTypeClass &As_Reference(const char *name);
-        static const IsometricTileTypeClass *As_Pointer(const char *name);
         static IsometricTileType From_Name(const char *name);
         static const char *Name_From(IsometricTileType type);
 

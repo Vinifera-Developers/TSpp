@@ -76,10 +76,6 @@ ParticleTypeClass : public ObjectTypeClass
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 
-        static const ParticleTypeClass &As_Reference(ParticleType type);
-        static const ParticleTypeClass *As_Pointer(ParticleType type);
-        static const ParticleTypeClass &As_Reference(const char *name);
-        static const ParticleTypeClass *As_Pointer(const char *name);
         static ParticleType From_Name(const char *name);
         static const char *Name_From(ParticleType type);
         static const ParticleTypeClass *Find_Or_Make(const char *name);

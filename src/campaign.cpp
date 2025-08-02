@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const CampaignClass &CampaignClass::As_Reference(CampaignType type)
-{
-    TSPP_ASSERT(type != CAMPAIGN_NONE && type < Campaigns.Count());
-    return *Campaigns[type];
-}
-
-
-const CampaignClass *CampaignClass::As_Pointer(CampaignType type)
-{
-    TSPP_ASSERT(type != CAMPAIGN_NONE && type < Campaigns.Count());
-    return type != CAMPAIGN_NONE && type < Campaigns.Count() ? Campaigns[type] : nullptr;
-}
-
-
-const CampaignClass &CampaignClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const CampaignClass *CampaignClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 CampaignType CampaignClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ CampaignType CampaignClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (CampaignType index = CAMPAIGN_FIRST; index < Campaigns.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(Campaigns[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ CampaignType CampaignClass::From_Name(const char *name)
 
 const char *CampaignClass::Name_From(CampaignType type)
 {
-    return (type != CAMPAIGN_NONE && type < Campaigns.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != CAMPAIGN_NONE && type < Campaigns.Count() ? Campaigns[type]->Name() : "<none>");
 }
 
 

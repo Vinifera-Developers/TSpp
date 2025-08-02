@@ -77,10 +77,6 @@ TerrainTypeClass : public ObjectTypeClass
 
         static void Init(TheaterType theater);
 
-        static const TerrainTypeClass &As_Reference(TerrainType type);
-        static const TerrainTypeClass *As_Pointer(TerrainType type);
-        static const TerrainTypeClass &As_Reference(const char *name);
-        static const TerrainTypeClass *As_Pointer(const char *name);
         static TerrainType From_Name(const char *name);
         static const char *Name_From(TerrainType type);
         static const TerrainTypeClass *Find_Or_Make(const char *name);

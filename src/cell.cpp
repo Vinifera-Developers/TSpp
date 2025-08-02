@@ -55,11 +55,7 @@ bool CellClass::Spread_Tiberium(TiberiumType tiberium, bool forced)
 		return false;
 	}
 
-	TiberiumClass *tib = (TiberiumClass *)TiberiumClass::As_Pointer(tiberium);
-	if (!tib) {
-		return false;
-	}
-
+	TiberiumClass *tib = Tiberiums[tiberium];
 	FacingType offset = Random_Pick(FACING_N, FACING_NW);
 	for (FacingType index = FACING_N; index < FACING_COUNT; ++index) {
 		CellClass * newcell = &Adjacent_Cell(index+offset);

@@ -71,10 +71,6 @@ ParticleSystemTypeClass : public ObjectTypeClass
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 
-        static const ParticleSystemTypeClass &As_Reference(ParticleSystemType type);
-        static const ParticleSystemTypeClass *As_Pointer(ParticleSystemType type);
-        static const ParticleSystemTypeClass &As_Reference(const char *name);
-        static const ParticleSystemTypeClass *As_Pointer(const char *name);
         static ParticleSystemType From_Name(const char *name);
         static const char *Name_From(ParticleSystemType type);
         static const ParticleSystemTypeClass *Find_Or_Make(const char *name);

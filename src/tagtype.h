@@ -80,10 +80,6 @@ TagTypeClass : public AbstractTypeClass
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
 
-        static const TagTypeClass &As_Reference(TagType type);
-        static const TagTypeClass *As_Pointer(TagType type);
-        static const TagTypeClass &As_Reference(const char *name);
-        static const TagTypeClass *As_Pointer(const char *name);
         static TagType From_Name(const char *name);
         static const char *Name_From(TagType type);
         static const TagTypeClass *Find_Or_Make(const char *name);

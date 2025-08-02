@@ -170,24 +170,6 @@ class CCINIClass : public INIClass
 
         VocType Get_VocType(const char *section, const char *entry, const VocType defvalue);
 
-        const UnitTypeClass *Get_Unit(const char *section, const char *entry, const UnitTypeClass *defvalue);
-        bool Put_Unit(const char *section, const char *entry, const UnitTypeClass *value);
-
-        const AircraftTypeClass *Get_Aircraft(const char* section, const char* entry, const AircraftTypeClass* defvalue);
-        bool Put_Aircraft(const char *section, const char *entry, const AircraftTypeClass *value);
-
-        const AnimTypeClass *Get_Anim(const char *section, const char *entry, const AnimTypeClass *defvalue);
-        bool Put_Anim(const char *section, const char *entry, const AnimTypeClass *value);
-
-        TypeList<AnimTypeClass *> Get_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> defvalue);
-        bool Put_Anims(const char *section, const char *entry, const TypeList<AnimTypeClass *> value);
-
-        TypeList<UnitTypeClass *> Get_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> defvalue);
-        bool Put_Units(const char *section, const char *entry, const TypeList<UnitTypeClass *> value);
-
-        TypeList<BuildingTypeClass *> Get_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> defvalue);
-        bool Put_Buildings(const char *section, const char *entry, const TypeList<BuildingTypeClass *> value);
-
         LayerType Get_LayerType(const char *section, const char *entry, const LayerType defvalue);
         bool Put_LayerType(const char *section, const char *entry, LayerType value);
 
@@ -197,37 +179,17 @@ class CCINIClass : public INIClass
         TiberiumType Get_TiberiumType(const char *section, const char *entry, const TiberiumType defvalue);
         bool Put_TiberiumType(const char *section, const char *entry, TiberiumType value);
 
-        //static TypeList<VocType> Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue);
-
         TypeList<VocType> Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue);
         bool Put_VocTypes(const char *section, const char *entry, const TypeList<VocType> value);
 
         const TechnoTypeClass *Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue);
         bool Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value);
 
-        const WeaponTypeClass *Get_Weapon(const char *section, const char *entry, const WeaponTypeClass *defvalue);
-        bool Put_Weapon(const char *section, const char *entry, const WeaponTypeClass *value);
-
-        const WarheadTypeClass *Get_Warhead(const char *section, const char *entry, const WarheadTypeClass *defvalue);
-        bool Put_Warhead(const char *section, const char *entry, const WarheadTypeClass *value);
-
-        const ParticleSystemTypeClass *Get_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *defvalue);
-        bool Put_ParticleSystem(const char *section, const char *entry, const ParticleSystemTypeClass *value);
-
-        const OverlayTypeClass *Get_Overlay(const char *section, const char *entry, const OverlayTypeClass *defvalue);
-        bool Put_Overlay(const char *section, const char *entry, const OverlayTypeClass *value);
-
         FacingType Get_FacingType(const char *section, const char *entry, const FacingType defvalue);
         bool Put_FacingType(const char *section, const char *entry, FacingType value);
 
         MissionType Get_MissionType(const char *section, const char *entry, const MissionType defvalue);
         bool Put_MissionType(const char *section, const char *entry, MissionType value);
-
-        const InfantryTypeClass *Get_Infantry(const char *section, const char *entry, const InfantryTypeClass *defvalue);
-        bool Put_Infantry(const char *section, const char *entry, const InfantryTypeClass *value);
-
-        const BuildingTypeClass *Get_Building(const char *section, const char *entry, const BuildingTypeClass *defvalue);
-        bool Put_Building(const char *section, const char *entry, const BuildingTypeClass *value);
 
         TypeList<const char *> Get_Strings(const char *section, const char *entry, const TypeList<const char *> defvalue);
         bool Put_Strings(const char *section, const char *entry, const TypeList<const char *> value);

@@ -110,10 +110,6 @@ public:
     static void One_Time();
     static void Init(TheaterType theater);
 
-    static const BuildingTypeClass &As_Reference(StructType type);
-    static const BuildingTypeClass *As_Pointer(StructType type);
-    static const BuildingTypeClass &As_Reference(const char *name);
-    static const BuildingTypeClass *As_Pointer(const char *name);
     static StructType From_Name(const char *name);
     static const char *Name_From(StructType type);
     static const BuildingTypeClass *Find_Or_Make(const char *name);

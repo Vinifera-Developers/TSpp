@@ -84,10 +84,6 @@ TriggerTypeClass : public AbstractTypeClass
         static void Read_Scenario_INI(CCINIClass &ini);
         static void Write_Scenario_INI(CCINIClass &ini);
 
-        static const TriggerTypeClass &As_Reference(TriggerType type);
-        static const TriggerTypeClass *As_Pointer(TriggerType type);
-        static const TriggerTypeClass &As_Reference(const char *name);
-        static const TriggerTypeClass *As_Pointer(const char *name);
         static TriggerType From_Name(const char *name);
         static const char *Name_From(TriggerType type);
         static const TriggerTypeClass *Find_Or_Make(const char *name);

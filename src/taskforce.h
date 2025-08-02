@@ -87,10 +87,6 @@ public:
     static void Read_Scenario_INI(CCINIClass &ini, int a2);
     static void Write_Scenario_INI(CCINIClass &ini, int a2);
 
-    static const TaskForceClass &As_Reference(TaskForceType type);
-    static const TaskForceClass *As_Pointer(TaskForceType type);
-    static const TaskForceClass &As_Reference(const char *name);
-    static const TaskForceClass *As_Pointer(const char *name);
     static TaskForceType From_Name(const char *name);
     static TaskForceType From_Full_Name(const char *name);
     static const char *Name_From(TaskForceType type);

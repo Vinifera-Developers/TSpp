@@ -28,32 +28,7 @@
 #include "unittype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const UnitTypeClass &UnitTypeClass::As_Reference(UnitType type)
-{
-    TSPP_ASSERT(type != UNIT_NONE && type < UnitTypes.Count());
-    return *UnitTypes[type];
-}
-
-
-const UnitTypeClass *UnitTypeClass::As_Pointer(UnitType type)
-{
-    TSPP_ASSERT(type != UNIT_NONE && type < UnitTypes.Count());
-    return type != UNIT_NONE && type < UnitTypes.Count() ? UnitTypes[type] : nullptr;
-}
-
-
-const UnitTypeClass &UnitTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const UnitTypeClass *UnitTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 UnitType UnitTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ UnitType UnitTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(UnitTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ UnitType UnitTypeClass::From_Name(const char *name)
 
 const char *UnitTypeClass::Name_From(UnitType type)
 {
-    return (type != UNIT_NONE && type < UnitTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != UNIT_NONE && type < UnitTypes.Count() ? UnitTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const UnitTypeClass *UnitTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (UnitType index = UNIT_FIRST; index < UnitTypes.Count(); ++index) {
-        if (!strcasecmp(UnitTypes[index]->Name(), name)) {
-            return UnitTypes[index];
-        }
-    }
-
-    UnitTypeClass *ptr = new UnitTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, UnitTypes);
 }

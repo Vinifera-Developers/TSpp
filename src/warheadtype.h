@@ -68,10 +68,6 @@ WarheadTypeClass : public AbstractTypeClass
          */
         virtual bool Read_INI(CCINIClass &ini) override;
 
-        static const WarheadTypeClass &As_Reference(WarheadType type);
-        static const WarheadTypeClass *As_Pointer(WarheadType type);
-        static const WarheadTypeClass &As_Reference(const char *name);
-        static const WarheadTypeClass *As_Pointer(const char *name);
         static WarheadType From_Name(const char *name);
         static const char *Name_From(WarheadType type);
         static const WarheadTypeClass *Find_Or_Make(const char *name);

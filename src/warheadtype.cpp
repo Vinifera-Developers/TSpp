@@ -28,32 +28,7 @@
 #include "warheadtype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const WarheadTypeClass &WarheadTypeClass::As_Reference(WarheadType type)
-{
-    TSPP_ASSERT(type != WARHEAD_NONE && type < WarheadTypes.Count());
-    return *WarheadTypes[type];
-}
-
-
-const WarheadTypeClass *WarheadTypeClass::As_Pointer(WarheadType type)
-{
-    TSPP_ASSERT(type != WARHEAD_NONE && type < WarheadTypes.Count());
-    return type != WARHEAD_NONE && type < WarheadTypes.Count() ? WarheadTypes[type] : nullptr;
-}
-
-
-const WarheadTypeClass &WarheadTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const WarheadTypeClass *WarheadTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 WarheadType WarheadTypeClass::From_Name(const char *name)
@@ -65,8 +40,8 @@ WarheadType WarheadTypeClass::From_Name(const char *name)
     }
 
     if (name != nullptr) {
-        for (WarheadType index = WARHEAD_FIRST; index < WarheadTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+        for (WarheadType index = WARHEAD_FIRST; index < Warheads.Count(); ++index) {
+            if (!strcasecmp(Warheads[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ WarheadType WarheadTypeClass::From_Name(const char *name)
 
 const char *WarheadTypeClass::Name_From(WarheadType type)
 {
-    return (type != WARHEAD_NONE && type < WarheadTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != WARHEAD_NONE && type < Warheads.Count() ? Warheads[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const WarheadTypeClass *WarheadTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (WarheadType index = WARHEAD_FIRST; index < WarheadTypes.Count(); ++index) {
-        if (!strcasecmp(WarheadTypes[index]->Name(), name)) {
-            return WarheadTypes[index];
-        }
-    }
-
-    WarheadTypeClass *ptr = new WarheadTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, Warheads);
 }

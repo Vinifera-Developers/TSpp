@@ -72,10 +72,6 @@ AircraftTypeClass : public TechnoTypeClass
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
         virtual Cell *Occupy_List(bool placement = false) const;
 
-        static const AircraftTypeClass &As_Reference(AircraftType type);
-        static const AircraftTypeClass *As_Pointer(AircraftType type);
-        static const AircraftTypeClass &As_Reference(const char *name);
-        static const AircraftTypeClass *As_Pointer(const char *name);
         static AircraftType From_Name(const char *name);
         static const char *Name_From(AircraftType type);
         static const AircraftTypeClass *Find_Or_Make(const char *name);

@@ -30,18 +30,6 @@
 #include "tspp_assert.h"
 
 
-const TechnoTypeClass &TechnoTypeClass::As_Reference(const char *name)
-{
-    return *From_Name(name);
-}
-
-
-const TechnoTypeClass *TechnoTypeClass::As_Pointer(const char *name)
-{
-    return From_Name(name);
-}
-
-
 const TechnoTypeClass *TechnoTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);

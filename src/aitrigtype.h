@@ -83,10 +83,6 @@ AITriggerTypeClass : public AbstractTypeClass
         static void Read_Scenario_INI(CCINIClass &ini, int a2);
         static void Write_Scenario_INI(CCINIClass &ini, int a2);
 
-        static const AITriggerTypeClass &As_Reference(AITriggerType type);
-        static const AITriggerTypeClass *As_Pointer(AITriggerType type);
-        static const AITriggerTypeClass &As_Reference(const char *name);
-        static const AITriggerTypeClass *As_Pointer(const char *name);
         static AITriggerType From_Name(const char *name);
         static const char *Name_From(AITriggerType type);
         static const AITriggerTypeClass *Find_Or_Make(const char *name);

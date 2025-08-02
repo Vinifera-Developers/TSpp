@@ -28,32 +28,7 @@
 #include "triggertype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TriggerTypeClass &TriggerTypeClass::As_Reference(TriggerType type)
-{
-    TSPP_ASSERT(type != TRIGGER_NONE && type < TriggerTypes.Count());
-    return *TriggerTypes[type];
-}
-
-
-const TriggerTypeClass *TriggerTypeClass::As_Pointer(TriggerType type)
-{
-    TSPP_ASSERT(type != TRIGGER_NONE && type < TriggerTypes.Count());
-    return type != TRIGGER_NONE && type < TriggerTypes.Count() ? TriggerTypes[type] : nullptr;
-}
-
-
-const TriggerTypeClass &TriggerTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TriggerTypeClass *TriggerTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TriggerType TriggerTypeClass::From_Name(const char *name)
@@ -66,10 +41,10 @@ TriggerType TriggerTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TriggerType index = TRIGGER_FIRST; index < TriggerTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(TriggerTypes[index]->Name(), name)) {
                 return index;
             }
-            if (!strcasecmp(As_Reference(index).Full_Name(), name)) {
+            if (!strcasecmp(TriggerTypes[index]->Full_Name(), name)) {
                 return index;
             }
         }
@@ -81,7 +56,7 @@ TriggerType TriggerTypeClass::From_Name(const char *name)
 
 const char *TriggerTypeClass::Name_From(TriggerType type)
 {
-    return (type != TRIGGER_NONE && type < TriggerTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TRIGGER_NONE && type < TriggerTypes.Count() ? TriggerTypes[type]->Name() : "<none>");
 }
 
 
@@ -89,20 +64,5 @@ const TriggerTypeClass *TriggerTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (TriggerType index = TRIGGER_FIRST; index < TriggerTypes.Count(); ++index) {
-        if (!strcasecmp(TriggerTypes[index]->Name(), name)) {
-            return TriggerTypes[index];
-        }
-        if (!strcasecmp(TriggerTypes[index]->Full_Name(), name)) {
-            return TriggerTypes[index];
-        }
-    }
-
-    TriggerTypeClass *ptr = new TriggerTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, TriggerTypes);
 }

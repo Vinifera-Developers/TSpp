@@ -85,10 +85,6 @@ OverlayTypeClass : public ObjectTypeClass
         
         static void Init(TheaterType theater = THEATER_TEMPERATE);
 
-        static const OverlayTypeClass &As_Reference(OverlayType type);
-        static const OverlayTypeClass *As_Pointer(OverlayType type);
-        static const OverlayTypeClass &As_Reference(const char *name);
-        static const OverlayTypeClass *As_Pointer(const char *name);
         static OverlayType From_Name(const char *name);
         static const char *Name_From(OverlayType type);
         static const OverlayTypeClass *Find_Or_Make(const char *name);

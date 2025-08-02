@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const AircraftTypeClass &AircraftTypeClass::As_Reference(AircraftType type)
-{
-    TSPP_ASSERT(type != AIRCRAFT_NONE && type < AircraftTypes.Count());
-    return *AircraftTypes[type];
-}
-
-
-const AircraftTypeClass *AircraftTypeClass::As_Pointer(AircraftType type)
-{
-    TSPP_ASSERT(type != AIRCRAFT_NONE && type < AircraftTypes.Count());
-    return type != AIRCRAFT_NONE && type < AircraftTypes.Count() ? AircraftTypes[type] : nullptr;
-}
-
-
-const AircraftTypeClass &AircraftTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const AircraftTypeClass *AircraftTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 AircraftType AircraftTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ AircraftType AircraftTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (AircraftType index = AIRCRAFT_FIRST; index < AircraftTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(AircraftTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ AircraftType AircraftTypeClass::From_Name(const char *name)
 
 const char *AircraftTypeClass::Name_From(AircraftType type)
 {
-    return (type != AIRCRAFT_NONE && type < AircraftTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != AIRCRAFT_NONE && type < AircraftTypes.Count() ? AircraftTypes[type]->Name() : "<none>");
 }
 
 

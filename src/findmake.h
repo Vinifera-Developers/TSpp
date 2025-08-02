@@ -60,7 +60,7 @@ T * TFind_Or_Make(const char * name, const DynamicVectorClass<T *>& vector)
 template<class T>
 TypeList<T *> TGet_TypeList(CCINIClass const & ini, char const * section, char const * entry, TypeList<T *> const & defvalue)
 {
-    char buffer[128];
+    char buffer[1024];
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
         TypeList<T *> list;
         const char * token = strtok(buffer, ",");
@@ -85,7 +85,7 @@ TypeList<T *> TGet_TypeList(CCINIClass const & ini, char const * section, char c
 template<class T>
 T * TGet_Class(CCINIClass const & ini, char const * section, char const * entry, T * defvalue)
 {
-    char buffer[128];
+    char buffer[1024];
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
         return T::Find_Or_Make(buffer);
     }

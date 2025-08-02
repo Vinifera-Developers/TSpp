@@ -28,32 +28,7 @@
 #include "tiberium.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TiberiumClass &TiberiumClass::As_Reference(TiberiumType type)
-{
-    TSPP_ASSERT(type != TIBERIUM_NONE && type < Tiberiums.Count());
-    return *Tiberiums[type];
-}
-
-
-const TiberiumClass *TiberiumClass::As_Pointer(TiberiumType type)
-{
-    TSPP_ASSERT(type != TIBERIUM_NONE && type < Tiberiums.Count());
-    return type != TIBERIUM_NONE && type < Tiberiums.Count() ? Tiberiums[type] : nullptr;
-}
-
-
-const TiberiumClass &TiberiumClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TiberiumClass *TiberiumClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TiberiumType TiberiumClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ TiberiumType TiberiumClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TiberiumType index = TIBERIUM_FIRST; index < Tiberiums.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(Tiberiums[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,24 +53,13 @@ TiberiumType TiberiumClass::From_Name(const char *name)
 
 const char *TiberiumClass::Name_From(TiberiumType type)
 {
-    return (type != TIBERIUM_NONE && type < Tiberiums.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TIBERIUM_NONE && type < Tiberiums.Count() ? Tiberiums[type]->Name() : "<none>");
 }
 
 
-const TiberiumClass* TiberiumClass::Find_Or_Make(const char* name) {
-  TSPP_ASSERT(name != nullptr);
+const TiberiumClass* TiberiumClass::Find_Or_Make(const char* name)
+{
+    TSPP_ASSERT(name != nullptr);
 
-  if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-    return nullptr;
-  }
-
-  for (TiberiumType index = TIBERIUM_FIRST; index < Tiberiums.Count(); ++index) {
-    if (!strcasecmp(Tiberiums[index]->Name(), name)) {
-      return Tiberiums[index];
-    }
-  }
-
-  TiberiumClass* ptr = new TiberiumClass(name);
-  TSPP_ASSERT(ptr != nullptr);
-  return ptr;
+    return TFind_Or_Make(name, Tiberiums);
 }

@@ -1797,12 +1797,12 @@ void CrateClass::Make_Invalid() { Location = Cell(-1, -1); Timer.Stop(); }
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(), 0x005E2430);
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(ColorScheme::ColorScheme(const char *, HSVClass *, PaletteClass *, PaletteClass *, int), 0x005E24F0);
 //DEFINE_IMPLEMENTATION_DESTRUCTOR(ColorScheme::~ColorScheme(), 0x005E26C0);
-DEFINE_IMPLEMENTATION(void ColorScheme::func_5E2650(PaletteClass *, PaletteClass *, int, int, int), 0x005E2650);
-DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C3B0(HSVClass *, PaletteClass *, PaletteClass *, PaletteClass *, Surface *, int, int, int, int, bool *), 0x005E2190);
-DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::func_68C500(HSVClass *, PaletteClass *, PaletteClass *, Surface *, PaletteClass *), 0x005E22E0);
+DEFINE_IMPLEMENTATION(void ColorScheme::Build_Light_Converters(PaletteClass *, PaletteClass *, int, int, int), 0x005E2650);
+DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::Build_Light_Converter(HSVClass *, PaletteClass *, PaletteClass *, PaletteClass *, Surface *, int, int, int, int, bool *), 0x005E2190);
+DEFINE_IMPLEMENTATION(ConvertClass * ColorScheme::Build_Converter(HSVClass *, PaletteClass *, PaletteClass *, Surface *, PaletteClass *), 0x005E22E0);
 DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::Find_Or_Make(const char *, HSVClass &, PaletteClass *, PaletteClass *, int), 0x005E27B0);
-DEFINE_IMPLEMENTATION(ColorScheme *ColorScheme::As_Pointer(const char *, int), 0x005E2840);
-DEFINE_IMPLEMENTATION(ColorSchemeType ColorScheme::From_Name(const char *, int), 0x005E28A0);
+DEFINE_IMPLEMENTATION(ColorScheme *Fetch_Scheme_By_Name(const char *, int), 0x005E2840);
+DEFINE_IMPLEMENTATION(ColorSchemeType Fetch_Scheme_Index_By_Name(const char *, int), 0x005E28A0);
 
 //DEFINE_IMPLEMENTATION_CONSTRUCTOR(StorageClass::StorageClass(), 0x0060AD60);
 StorageClass::StorageClass(const NoInitClass &noinit) {}
@@ -5903,9 +5903,9 @@ DynamicVectorClass<UnitTypeClass *> &UnitTypes = Make_Global<DynamicVectorClass<
 DynamicVectorClass<InfantryTypeClass *> &InfantryTypes = Make_Global<DynamicVectorClass<InfantryTypeClass *>>(0x007E4010);
 DynamicVectorClass<AircraftTypeClass *> &AircraftTypes = Make_Global<DynamicVectorClass<AircraftTypeClass *>>(0x007E2420);
 DynamicVectorClass<VoxelAnimTypeClass *> &VoxelAnimTypes = Make_Global<DynamicVectorClass<VoxelAnimTypeClass *>>(0x007E46F0);
-DynamicVectorClass<WeaponTypeClass *> &WeaponTypes = Make_Global<DynamicVectorClass<WeaponTypeClass *>>(0x0074C828);
+DynamicVectorClass<WeaponTypeClass *> &Weapons = Make_Global<DynamicVectorClass<WeaponTypeClass *>>(0x0074C828);
 DynamicVectorClass<BulletTypeClass *> &BulletTypes = Make_Global<DynamicVectorClass<BulletTypeClass *>>(0x007E21B8);
-DynamicVectorClass<WarheadTypeClass *> &WarheadTypes = Make_Global<DynamicVectorClass<WarheadTypeClass *>>(0x0074C798);
+DynamicVectorClass<WarheadTypeClass *> &Warheads = Make_Global<DynamicVectorClass<WarheadTypeClass *>>(0x0074C798);
 DynamicVectorClass<OverlayTypeClass *> &OverlayTypes = Make_Global<DynamicVectorClass<OverlayTypeClass *>>(0x007E22A0);
 DynamicVectorClass<SpotlightClass *> &Spotlights = Make_Global<DynamicVectorClass<SpotlightClass *>>(0x008089A8);
 DynamicVectorClass<CommandClass *> &Commands = Make_Global<DynamicVectorClass<CommandClass *>>(0x007481A8);

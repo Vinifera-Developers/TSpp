@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const BulletTypeClass &BulletTypeClass::As_Reference(BulletType type)
-{
-    TSPP_ASSERT(type != BULLET_NONE && type < BulletTypes.Count());
-    return *BulletTypes[type];
-}
-
-
-const BulletTypeClass *BulletTypeClass::As_Pointer(BulletType type)
-{
-    TSPP_ASSERT(type != BULLET_NONE && type < BulletTypes.Count());
-    return type != BULLET_NONE && type < BulletTypes.Count() ? BulletTypes[type] : nullptr;
-}
-
-
-const BulletTypeClass &BulletTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const BulletTypeClass *BulletTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 BulletType BulletTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ BulletType BulletTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (BulletType index = BULLET_FIRST; index < BulletTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(BulletTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ BulletType BulletTypeClass::From_Name(const char *name)
 
 const char *BulletTypeClass::Name_From(BulletType type)
 {
-    return (type != BULLET_NONE && type < BulletTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != BULLET_NONE && type < BulletTypes.Count() ? BulletTypes[type]->Name() : "<none>");
 }
 
 

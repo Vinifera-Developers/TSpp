@@ -28,32 +28,7 @@
 #include "overlaytype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const OverlayTypeClass &OverlayTypeClass::As_Reference(OverlayType type)
-{
-    TSPP_ASSERT(type != OVERLAY_NONE && type < OverlayTypes.Count());
-    return *OverlayTypes[type];
-}
-
-
-const OverlayTypeClass *OverlayTypeClass::As_Pointer(OverlayType type)
-{
-    TSPP_ASSERT(type != OVERLAY_NONE && type < OverlayTypes.Count());
-    return type != OVERLAY_NONE && type < OverlayTypes.Count() ? OverlayTypes[type] : nullptr;
-}
-
-
-const OverlayTypeClass &OverlayTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const OverlayTypeClass *OverlayTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 OverlayType OverlayTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ OverlayType OverlayTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (OverlayType index = OVERLAY_FIRST; index < OverlayTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(OverlayTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ OverlayType OverlayTypeClass::From_Name(const char *name)
 
 const char *OverlayTypeClass::Name_From(OverlayType type)
 {
-    return (type != OVERLAY_NONE && type < OverlayTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != OVERLAY_NONE && type < OverlayTypes.Count() ? OverlayTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const OverlayTypeClass *OverlayTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (OverlayType index = OVERLAY_FIRST; index < OverlayTypes.Count(); ++index) {
-        if (!strcasecmp(OverlayTypes[index]->Name(), name)) {
-            return OverlayTypes[index];
-        }
-    }
-
-    OverlayTypeClass *ptr = new OverlayTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, OverlayTypes);
 }

@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const AITriggerTypeClass &AITriggerTypeClass::As_Reference(AITriggerType type)
-{
-    TSPP_ASSERT(type != AITRIGGER_NONE && type < AITriggerTypes.Count());
-    return *AITriggerTypes[type];
-}
-
-
-const AITriggerTypeClass *AITriggerTypeClass::As_Pointer(AITriggerType type)
-{
-    TSPP_ASSERT(type != AITRIGGER_NONE && type < AITriggerTypes.Count());
-    return type != AITRIGGER_NONE && type < AITriggerTypes.Count() ? AITriggerTypes[type] : nullptr;
-}
-
-
-const AITriggerTypeClass &AITriggerTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const AITriggerTypeClass *AITriggerTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 AITriggerType AITriggerTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ AITriggerType AITriggerTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (AITriggerType index = AITRIGGER_FIRST; index < AITriggerTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(AITriggerTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ AITriggerType AITriggerTypeClass::From_Name(const char *name)
 
 const char *AITriggerTypeClass::Name_From(AITriggerType type)
 {
-    return (type != AITRIGGER_NONE && type < AITriggerTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != AITRIGGER_NONE && type < AITriggerTypes.Count() ? AITriggerTypes[type]->Name() : "<none>");
 }
 
 

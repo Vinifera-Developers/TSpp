@@ -75,10 +75,6 @@ VoxelAnimTypeClass : public ObjectTypeClass
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 
-        static const VoxelAnimTypeClass &As_Reference(VoxelAnimType type);
-        static const VoxelAnimTypeClass *As_Pointer(VoxelAnimType type);
-        static const VoxelAnimTypeClass &As_Reference(const char *name);
-        static const VoxelAnimTypeClass *As_Pointer(const char *name);
         static VoxelAnimType From_Name(const char *name);
         static const char *Name_From(VoxelAnimType type);
         static const VoxelAnimTypeClass *Find_Or_Make(const char *name);

@@ -28,32 +28,7 @@
 #include "supertype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(SuperWeaponType type)
-{
-    TSPP_ASSERT(type != SUPER_NONE && type < SuperWeaponTypes.Count());
-    return *SuperWeaponTypes[type];
-}
-
-
-const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(SuperWeaponType type)
-{
-    TSPP_ASSERT(type != SUPER_NONE && type < SuperWeaponTypes.Count());
-    return type != SUPER_NONE && type < SuperWeaponTypes.Count() ? SuperWeaponTypes[type] : nullptr;
-}
-
-
-const SuperWeaponTypeClass &SuperWeaponTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const SuperWeaponTypeClass *SuperWeaponTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 SuperWeaponType SuperWeaponTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ SuperWeaponType SuperWeaponTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (SuperWeaponType index = SUPER_FIRST; index < SuperWeaponTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(SuperWeaponTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ SuperWeaponType SuperWeaponTypeClass::From_Name(const char *name)
 
 const char *SuperWeaponTypeClass::Name_From(SuperWeaponType type)
 {
-    return (type != SUPER_NONE && type < SuperWeaponTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SUPER_NONE && type < SuperWeaponTypes.Count() ? SuperWeaponTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const SuperWeaponTypeClass *SuperWeaponTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (SuperWeaponType index = SUPER_FIRST; index < SuperWeaponTypes.Count(); ++index) {
-        if (!strcasecmp(SuperWeaponTypes[index]->Name(), name)) {
-            return SuperWeaponTypes[index];
-        }
-    }
-
-    SuperWeaponTypeClass *ptr = new SuperWeaponTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, SuperWeaponTypes);
 }

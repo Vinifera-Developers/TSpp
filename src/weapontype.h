@@ -73,10 +73,6 @@ WeaponTypeClass : public AbstractTypeClass
         bool Is_Wall_Destroyer() const;
         ThreatType Allowed_Threats() const;
 
-        static const WeaponTypeClass &As_Reference(WeaponType type);
-        static const WeaponTypeClass *As_Pointer(WeaponType type);
-        static const WeaponTypeClass &As_Reference(const char *name);
-        static const WeaponTypeClass *As_Pointer(const char *name);
         static WeaponType From_Name(const char *name);
         static const char *Name_From(WeaponType type);
         static const WeaponTypeClass *Find_Or_Make(const char *name);

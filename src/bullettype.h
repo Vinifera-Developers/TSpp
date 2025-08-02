@@ -75,10 +75,6 @@ BulletTypeClass : public ObjectTypeClass
         virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
         virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
 
-        static const BulletTypeClass &As_Reference(BulletType type);
-        static const BulletTypeClass *As_Pointer(BulletType type);
-        static const BulletTypeClass &As_Reference(const char *name);
-        static const BulletTypeClass *As_Pointer(const char *name);
         static BulletType From_Name(const char *name);
         static const char *Name_From(BulletType type);
         static const BulletTypeClass *Find_Or_Make(const char *name);

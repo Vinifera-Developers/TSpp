@@ -28,32 +28,7 @@
 #include "smudgetype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const SmudgeTypeClass &SmudgeTypeClass::As_Reference(SmudgeType type)
-{
-    TSPP_ASSERT(type != SMUDGE_NONE && type < SmudgeTypes.Count());
-    return *SmudgeTypes[type];
-}
-
-
-const SmudgeTypeClass *SmudgeTypeClass::As_Pointer(SmudgeType type)
-{
-    TSPP_ASSERT(type != SMUDGE_NONE && type < SmudgeTypes.Count());
-    return type != SMUDGE_NONE && type < SmudgeTypes.Count() ? SmudgeTypes[type] : nullptr;
-}
-
-
-const SmudgeTypeClass &SmudgeTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const SmudgeTypeClass *SmudgeTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 SmudgeType SmudgeTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ SmudgeType SmudgeTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (SmudgeType index = SMUDGE_FIRST; index < SmudgeTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(SmudgeTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ SmudgeType SmudgeTypeClass::From_Name(const char *name)
 
 const char *SmudgeTypeClass::Name_From(SmudgeType type)
 {
-    return (type != SMUDGE_NONE && type < SmudgeTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != SMUDGE_NONE && type < SmudgeTypes.Count() ? SmudgeTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const SmudgeTypeClass *SmudgeTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (SmudgeType index = SMUDGE_FIRST; index < SmudgeTypes.Count(); ++index) {
-        if (!strcasecmp(SmudgeTypes[index]->Name(), name)) {
-            return SmudgeTypes[index];
-        }
-    }
-
-    SmudgeTypeClass *ptr = new SmudgeTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, SmudgeTypes);
 }

@@ -28,32 +28,7 @@
 #include "taskforce.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TaskForceClass &TaskForceClass::As_Reference(TaskForceType type)
-{
-    TSPP_ASSERT(type != TASKFORCE_NONE && type < TaskForces.Count());
-    return *TaskForces[type];
-}
-
-
-const TaskForceClass *TaskForceClass::As_Pointer(TaskForceType type)
-{
-    TSPP_ASSERT(type != TASKFORCE_NONE && type < TaskForces.Count());
-    return type != TASKFORCE_NONE && type < TaskForces.Count() ? TaskForces[type] : nullptr;
-}
-
-
-const TaskForceClass &TaskForceClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TaskForceClass *TaskForceClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TaskForceType TaskForceClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ TaskForceType TaskForceClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TaskForceType index = TASKFORCE_FIRST; index < TaskForces.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(TaskForces[index]->Name(), name)) {
                 return index;
             }
         }
@@ -86,7 +61,7 @@ TaskForceType TaskForceClass::From_Full_Name(const char *name)
 
     if (name != nullptr) {
         for (TaskForceType index = TASKFORCE_FIRST; index < TaskForces.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Full_Name(), name)) {
+            if (!strcasecmp(TaskForces[index]->Full_Name(), name)) {
                 return index;
             }
         }
@@ -98,7 +73,7 @@ TaskForceType TaskForceClass::From_Full_Name(const char *name)
 
 const char *TaskForceClass::Name_From(TaskForceType type)
 {
-    return (type != TASKFORCE_NONE && type < TaskForces.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TASKFORCE_NONE && type < TaskForces.Count() ? TaskForces[type]->Name() : "<none>");
 }
 
 
@@ -106,17 +81,5 @@ const TaskForceClass *TaskForceClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (TaskForceType index = TASKFORCE_FIRST; index < TaskForces.Count(); ++index) {
-        if (!strcasecmp(TaskForces[index]->Full_Name(), name)) {
-            return TaskForces[index];
-        }
-    }
-
-    TaskForceClass *ptr = new TaskForceClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, TaskForces);
 }

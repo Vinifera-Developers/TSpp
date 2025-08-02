@@ -98,10 +98,6 @@ TiberiumClass : public AbstractTypeClass
         static void Init_Cells();
         static void Init();
 
-        static const TiberiumClass &As_Reference(TiberiumType type);
-        static const TiberiumClass *As_Pointer(TiberiumType type);
-        static const TiberiumClass &As_Reference(const char *name);
-        static const TiberiumClass *As_Pointer(const char *name);
         static TiberiumType From_Name(const char *name);
         static const char *Name_From(TiberiumType type);
         static const TiberiumClass* Find_Or_Make(const char* name);
@@ -116,7 +112,7 @@ TiberiumClass : public AbstractTypeClass
         int Power;
         int Color;
         TypeList<AnimTypeClass *> Debris;
-        OverlayTypeClass *Overlay;
+        const OverlayTypeClass *Overlay;
         int FrameCount;
         int Variety;
         int RampVariety;

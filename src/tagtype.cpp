@@ -28,32 +28,7 @@
 #include "tagtype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TagTypeClass &TagTypeClass::As_Reference(TagType type)
-{
-    TSPP_ASSERT(type != TAG_NONE && type < TagTypes.Count());
-    return *TagTypes[type];
-}
-
-
-const TagTypeClass *TagTypeClass::As_Pointer(TagType type)
-{
-    TSPP_ASSERT(type != TAG_NONE && type < TagTypes.Count());
-    return type != TAG_NONE && type < TagTypes.Count() ? TagTypes[type] : nullptr;
-}
-
-
-const TagTypeClass &TagTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TagTypeClass *TagTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TagType TagTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ TagType TagTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TagType index = TAG_FIRST; index < TagTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(TagTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ TagType TagTypeClass::From_Name(const char *name)
 
 const char *TagTypeClass::Name_From(TagType type)
 {
-    return (type != TAG_NONE && type < TagTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TAG_NONE && type < TagTypes.Count() ? TagTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const TagTypeClass *TagTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (TagType index = TAG_FIRST; index < TagTypes.Count(); ++index) {
-        if (!strcasecmp(TagTypes[index]->Name(), name)) {
-            return TagTypes[index];
-        }
-    }
-
-    TagTypeClass *ptr = new TagTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, TagTypes);
 }

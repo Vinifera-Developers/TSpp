@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const IsometricTileTypeClass &IsometricTileTypeClass::As_Reference(IsometricTileType type)
-{
-    TSPP_ASSERT(type != ISOTILE_NONE && type < IsoTileTypes.Count());
-    return *IsoTileTypes[type];
-}
-
-
-const IsometricTileTypeClass *IsometricTileTypeClass::As_Pointer(IsometricTileType type)
-{
-    TSPP_ASSERT(type != ISOTILE_NONE && type < IsoTileTypes.Count());
-    return type != ISOTILE_NONE && type < IsoTileTypes.Count() ? IsoTileTypes[type] : nullptr;
-}
-
-
-const IsometricTileTypeClass &IsometricTileTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const IsometricTileTypeClass *IsometricTileTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (IsometricTileType index = ISOTILE_FIRST; index < IsoTileTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(IsoTileTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,5 +52,5 @@ IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
 
 const char *IsometricTileTypeClass::Name_From(IsometricTileType type)
 {
-    return (type != ISOTILE_NONE && type < IsoTileTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != ISOTILE_NONE && type < IsoTileTypes.Count() ? IsoTileTypes[type]->Name() : "<none>");
 }

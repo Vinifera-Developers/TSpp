@@ -59,10 +59,6 @@ SideClass : public AbstractTypeClass
         virtual int Get_Object_Size(bool firestorm = false) const override;
         virtual void Object_CRC(CRCEngine &crc) const override;
 
-        static const SideClass &As_Reference(SideType type);
-        static const SideClass *As_Pointer(SideType type);
-        static const SideClass &As_Reference(const char *name);
-        static const SideClass *As_Pointer(const char *name);
         static SideType From_Name(const char *name);
         static const char *Name_From(SideType type);
         static const SideClass *Find_Or_Make(const char *name);

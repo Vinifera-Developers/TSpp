@@ -68,10 +68,6 @@ CampaignClass : public AbstractTypeClass
 
         static int Process(CCINIClass &ini);
 
-        static const CampaignClass &As_Reference(CampaignType type);
-        static const CampaignClass *As_Pointer(CampaignType type);
-        static const CampaignClass &As_Reference(const char *name);
-        static const CampaignClass *As_Pointer(const char *name);
         static CampaignType From_Name(const char *name);
         static const char *Name_From(CampaignType type);
         static const CampaignClass *Find_Or_Make(const char *name);

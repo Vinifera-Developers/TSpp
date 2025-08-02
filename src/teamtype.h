@@ -86,10 +86,6 @@ public:
     static void Read_Scenario_INI(CCINIClass &ini, int a2);
     static void Write_Scenario_INI(CCINIClass &ini, int a2);
 
-    static const TeamTypeClass &As_Reference(TeamType type);
-    static const TeamTypeClass *As_Pointer(TeamType type);
-    static const TeamTypeClass &As_Reference(const char *name);
-    static const TeamTypeClass *As_Pointer(const char *name);
     static TeamType From_Name(const char *name);
     static const char *Name_From(TeamType type);
     static const TeamTypeClass *Find_Or_Make(const char *name);

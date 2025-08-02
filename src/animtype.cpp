@@ -30,32 +30,6 @@
 #include "tspp_assert.h"
 
 
-const AnimTypeClass &AnimTypeClass::As_Reference(AnimType type)
-{
-    TSPP_ASSERT(type != ANIM_NONE && type < AnimTypes.Count());
-    return *AnimTypes[type];
-}
-
-
-const AnimTypeClass *AnimTypeClass::As_Pointer(AnimType type)
-{
-    TSPP_ASSERT(type != ANIM_NONE && type < AnimTypes.Count());
-    return type != ANIM_NONE && type < AnimTypes.Count() ? AnimTypes[type] : nullptr;
-}
-
-
-const AnimTypeClass &AnimTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const AnimTypeClass *AnimTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
-
-
 AnimType AnimTypeClass::From_Name(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
@@ -66,7 +40,7 @@ AnimType AnimTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (AnimType index = ANIM_FIRST; index < AnimTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(AnimTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +52,7 @@ AnimType AnimTypeClass::From_Name(const char *name)
 
 const char *AnimTypeClass::Name_From(AnimType type)
 {
-    return (type != ANIM_NONE && type < AnimTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != ANIM_NONE && type < AnimTypes.Count() ? AnimTypes[type]->Name() : "<none>");
 }
 
 

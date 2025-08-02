@@ -88,10 +88,6 @@ UnitTypeClass : public TechnoTypeClass
 
         const TPoint3D<int> Turret_Adjust(Dir256 dir, TPoint3D<int> &pos) const;
 
-        static const UnitTypeClass &As_Reference(UnitType type);
-        static const UnitTypeClass *As_Pointer(UnitType type);
-        static const UnitTypeClass &As_Reference(const char *name);
-        static const UnitTypeClass *As_Pointer(const char *name);
         static UnitType From_Name(const char *name);
         static const char *Name_From(UnitType type);
         static const UnitTypeClass *Find_Or_Make(const char *name);

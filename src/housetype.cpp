@@ -28,32 +28,7 @@
 #include "housetype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const HouseTypeClass &HouseTypeClass::As_Reference(HousesType type)
-{
-    TSPP_ASSERT(type != HOUSE_NONE && type < HouseTypes.Count());
-    return *HouseTypes[type];
-}
-
-
-const HouseTypeClass *HouseTypeClass::As_Pointer(HousesType type)
-{
-    TSPP_ASSERT(type != HOUSE_NONE && type < HouseTypes.Count());
-    return type != HOUSE_NONE && type < HouseTypes.Count() ? HouseTypes[type] : nullptr;
-}
-
-
-const HouseTypeClass &HouseTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const HouseTypeClass *HouseTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 HousesType HouseTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ HousesType HouseTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (HousesType index = HOUSE_FIRST; index < HouseTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(HouseTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ HousesType HouseTypeClass::From_Name(const char *name)
 
 const char *HouseTypeClass::Name_From(HousesType type)
 {
-    return (type != HOUSE_NONE && type < HouseTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != HOUSE_NONE && type < HouseTypes.Count() ? HouseTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const HouseTypeClass *HouseTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (HousesType index = HOUSE_FIRST; index < HouseTypes.Count(); ++index) {
-        if (!strcasecmp(HouseTypes[index]->Name(), name)) {
-            return HouseTypes[index];
-        }
-    }
-
-    HouseTypeClass *ptr = new HouseTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, HouseTypes);
 }

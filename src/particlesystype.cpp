@@ -28,32 +28,7 @@
 #include "particlesystype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const ParticleSystemTypeClass &ParticleSystemTypeClass::As_Reference(ParticleSystemType type)
-{
-    TSPP_ASSERT(type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count());
-    return *ParticleSystemTypes[type];
-}
-
-
-const ParticleSystemTypeClass *ParticleSystemTypeClass::As_Pointer(ParticleSystemType type)
-{
-    TSPP_ASSERT(type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count());
-    return type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count() ? ParticleSystemTypes[type] : nullptr;
-}
-
-
-const ParticleSystemTypeClass &ParticleSystemTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const ParticleSystemTypeClass *ParticleSystemTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 ParticleSystemType ParticleSystemTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ ParticleSystemType ParticleSystemTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (ParticleSystemType index = PARTICLESYS_FIRST; index < ParticleSystemTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(ParticleSystemTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ ParticleSystemType ParticleSystemTypeClass::From_Name(const char *name)
 
 const char *ParticleSystemTypeClass::Name_From(ParticleSystemType type)
 {
-    return (type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count() ? ParticleSystemTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const ParticleSystemTypeClass *ParticleSystemTypeClass::Find_Or_Make(const char 
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (ParticleSystemType index = PARTICLESYS_FIRST; index < ParticleSystemTypes.Count(); ++index) {
-        if (!strcasecmp(ParticleSystemTypes[index]->Name(), name)) {
-            return ParticleSystemTypes[index];
-        }
-    }
-
-    ParticleSystemTypeClass *ptr = new ParticleSystemTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, ParticleSystemTypes);
 }

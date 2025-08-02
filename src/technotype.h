@@ -95,8 +95,6 @@ public:
 
     int Max_Passengers() const { return MaxPassengers; }
 
-    static const TechnoTypeClass &As_Reference(const char *name);
-    static const TechnoTypeClass *As_Pointer(const char *name);
     static const TechnoTypeClass *From_Name(const char *name);
 
 public:

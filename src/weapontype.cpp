@@ -28,32 +28,7 @@
 #include "weapontype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const WeaponTypeClass &WeaponTypeClass::As_Reference(WeaponType type)
-{
-    TSPP_ASSERT(type != WEAPON_NONE && type < WeaponTypes.Count());
-    return *WeaponTypes[type];
-}
-
-
-const WeaponTypeClass *WeaponTypeClass::As_Pointer(WeaponType type)
-{
-    TSPP_ASSERT(type != WEAPON_NONE && type < WeaponTypes.Count());
-    return type != WEAPON_NONE && type < WeaponTypes.Count() ? WeaponTypes[type] : nullptr;
-}
-
-
-const WeaponTypeClass &WeaponTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const WeaponTypeClass *WeaponTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 WeaponType WeaponTypeClass::From_Name(const char *name)
@@ -65,8 +40,8 @@ WeaponType WeaponTypeClass::From_Name(const char *name)
     }
 
     if (name != nullptr) {
-        for (WeaponType index = WEAPON_FIRST; index < WeaponTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+        for (WeaponType index = WEAPON_FIRST; index < Weapons.Count(); ++index) {
+            if (!strcasecmp(Weapons[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ WeaponType WeaponTypeClass::From_Name(const char *name)
 
 const char *WeaponTypeClass::Name_From(WeaponType type)
 {
-    return (type != WEAPON_NONE && type < WeaponTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != WEAPON_NONE && type < Weapons.Count() ? Weapons[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const WeaponTypeClass *WeaponTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (WeaponType index = WEAPON_FIRST; index < WeaponTypes.Count(); ++index) {
-        if (!strcasecmp(WeaponTypes[index]->Name(), name)) {
-            return WeaponTypes[index];
-        }
-    }
-
-    WeaponTypeClass *ptr = new WeaponTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, Weapons);
 }

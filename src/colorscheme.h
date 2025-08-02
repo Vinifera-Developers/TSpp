@@ -47,14 +47,12 @@ public:
     bool operator==(const char *their_name) { return strcmpi(Name, their_name) == 0; }
     bool operator!=(const char *their_name) { return strcmpi(Name, their_name) != 0; }
 
-    void func_5E2650(PaletteClass *pal1, PaletteClass *pal2, int r, int g, int b);
+    void Build_Light_Converters(PaletteClass *pal1, PaletteClass *pal2, int r, int g, int b);
 
-    static ConvertClass * func_68C3B0(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, PaletteClass *pal3, Surface *surface, int shade_count, int r, int g, int b, bool *indexes);
-    static ConvertClass * func_68C500(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, Surface *surface, PaletteClass *pal3);
+    static ConvertClass * Build_Light_Converter(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, PaletteClass *pal3, Surface *surface, int shade_count, int r, int g, int b, bool *indexes);
+    static ConvertClass * Build_Converter(HSVClass *hsv, PaletteClass *pal1, PaletteClass *pal2, Surface *surface, PaletteClass *pal3);
 
     static ColorScheme *Find_Or_Make(const char *name, HSVClass &, PaletteClass *a2, PaletteClass *a3, int a4 = 63);
-    static ColorScheme *As_Pointer(const char *name, int a2 = 63);
-    static ColorSchemeType From_Name(const char *name, int a2 = 63);
 
 public:
     int ID;
@@ -74,3 +72,6 @@ public:
     unsigned int Underline;
     unsigned int Bar;
 };
+
+ColorScheme *Fetch_Scheme_By_Name(const char* name, int a2 = 1);
+ColorSchemeType Fetch_Scheme_Index_By_Name(const char* name, int a2 = 1);

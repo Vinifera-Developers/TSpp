@@ -28,32 +28,7 @@
 #include "voxelanimtype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const VoxelAnimTypeClass &VoxelAnimTypeClass::As_Reference(VoxelAnimType type)
-{
-    TSPP_ASSERT(type != VOXELANIM_NONE && type < VoxelAnimTypes.Count());
-    return *VoxelAnimTypes[type];
-}
-
-
-const VoxelAnimTypeClass *VoxelAnimTypeClass::As_Pointer(VoxelAnimType type)
-{
-    TSPP_ASSERT(type != VOXELANIM_NONE && type < VoxelAnimTypes.Count());
-    return type != VOXELANIM_NONE && type < VoxelAnimTypes.Count() ? VoxelAnimTypes[type] : nullptr;
-}
-
-
-const VoxelAnimTypeClass &VoxelAnimTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const VoxelAnimTypeClass *VoxelAnimTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 VoxelAnimType VoxelAnimTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ VoxelAnimType VoxelAnimTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (VoxelAnimType index = VOXELANIM_FIRST; index < VoxelAnimTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(VoxelAnimTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ VoxelAnimType VoxelAnimTypeClass::From_Name(const char *name)
 
 const char *VoxelAnimTypeClass::Name_From(VoxelAnimType type)
 {
-    return (type != VOXELANIM_NONE && type < VoxelAnimTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != VOXELANIM_NONE && type < VoxelAnimTypes.Count() ? VoxelAnimTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const VoxelAnimTypeClass *VoxelAnimTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (VoxelAnimType index = VOXELANIM_FIRST; index < VoxelAnimTypes.Count(); ++index) {
-        if (!strcasecmp(VoxelAnimTypes[index]->Name(), name)) {
-            return VoxelAnimTypes[index];
-        }
-    }
-
-    VoxelAnimTypeClass *ptr = new VoxelAnimTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, VoxelAnimTypes);
 }

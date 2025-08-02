@@ -28,32 +28,7 @@
 #include "teamtype.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-
-
-const TeamTypeClass &TeamTypeClass::As_Reference(TeamType type)
-{
-    TSPP_ASSERT(type != TEAM_NONE && type < TeamTypes.Count());
-    return *TeamTypes[type];
-}
-
-
-const TeamTypeClass *TeamTypeClass::As_Pointer(TeamType type)
-{
-    TSPP_ASSERT(type != TEAM_NONE && type < TeamTypes.Count());
-    return type != TEAM_NONE && type < TeamTypes.Count() ? TeamTypes[type] : nullptr;
-}
-
-
-const TeamTypeClass &TeamTypeClass::As_Reference(const char *name)
-{
-    return As_Reference(From_Name(name));
-}
-
-
-const TeamTypeClass *TeamTypeClass::As_Pointer(const char *name)
-{
-    return As_Pointer(From_Name(name));
-}
+#include "findmake.h"
 
 
 TeamType TeamTypeClass::From_Name(const char *name)
@@ -66,7 +41,7 @@ TeamType TeamTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (TeamType index = TEAM_FIRST; index < TeamTypes.Count(); ++index) {
-            if (!strcasecmp(As_Reference(index).Name(), name)) {
+            if (!strcasecmp(TeamTypes[index]->Name(), name)) {
                 return index;
             }
         }
@@ -78,7 +53,7 @@ TeamType TeamTypeClass::From_Name(const char *name)
 
 const char *TeamTypeClass::Name_From(TeamType type)
 {
-    return (type != TEAM_NONE && type < TeamTypes.Count() ? As_Reference(type).Name() : "<none>");
+    return (type != TEAM_NONE && type < TeamTypes.Count() ? TeamTypes[type]->Name() : "<none>");
 }
 
 
@@ -86,17 +61,5 @@ const TeamTypeClass *TeamTypeClass::Find_Or_Make(const char *name)
 {
     TSPP_ASSERT(name != nullptr);
 
-    if (!strcasecmp(name, "<none>") || !strcasecmp(name, "none")) {
-        return nullptr;
-    }
-
-    for (TeamType index = TEAM_FIRST; index < TeamTypes.Count(); ++index) {
-        if (!strcasecmp(TeamTypes[index]->Name(), name)) {
-            return TeamTypes[index];
-        }
-    }
-
-    TeamTypeClass *ptr = new TeamTypeClass(name);
-    TSPP_ASSERT(ptr != nullptr);
-    return ptr;
+    return TFind_Or_Make(name, TeamTypes);
 }
