@@ -35,26 +35,26 @@ class NoInitClass;
 
 class FlasherClass
 {
-    public:
-        FlasherClass() : FlashCount(0), IsBlushing(false) {}
-        FlasherClass(const NoInitClass &noinit) {}
-        ~FlasherClass() {}
+public:
+    FlasherClass() : FlashCount(0), IsBlushing(false) {}
+    FlasherClass(const NoInitClass& noinit) {}
+    ~FlasherClass() {}
 
-        bool Process()
-        {
-            if (FlashCount) {
-                FlashCount--;
-                IsBlushing = false;
+    bool Process()
+    {
+        if (FlashCount) {
+            FlashCount--;
+            IsBlushing = false;
 
-                if (FlashCount & 0x01) {
-                    IsBlushing = true;
-                }
-                return true;
+            if (FlashCount & 0x01) {
+                IsBlushing = true;
             }
-            return false;
+            return true;
         }
+        return false;
+    }
 
-    public:
-		unsigned FlashCount;
-		bool IsBlushing;
+public:
+    unsigned FlashCount;
+    bool IsBlushing;
 };

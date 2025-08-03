@@ -48,7 +48,7 @@ public:
     static DiskID Get_CD_Index(int cd_drive, int timeout);
 
 public:
-    static bool &IsFilesLocal;
+    static bool& IsFilesLocal;
     static DiskID& RequiredCD;
 
 public:

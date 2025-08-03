@@ -28,18 +28,16 @@
 #pragma once
 
 #include "always.h"
-#include <windows.h>
 #include "dsaudio.h"
 #include "vqa.h"
+#include <windows.h>
 
 
-
-struct AhandleInitParams
-{
+struct AhandleInitParams {
     unsigned short SampleRate;
     unsigned char Channels;
     unsigned char BitsPerSample;
-    unsigned long Flags;	// 1 is used to flip left and right channels
+    unsigned long Flags; // 1 is used to flip left and right channels
     long(__cdecl* Callback1)(VQAHandle*);
     long(__cdecl* Callback2)(VQAHandle*, void*);
 };

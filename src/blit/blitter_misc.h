@@ -32,7 +32,7 @@
 #include "always.h"
 
 
-void __cdecl Brighten_555(unsigned char *add_buffer, unsigned short *buffer, int addbuff_width, int buff_width, int width, int height);
-void __cdecl Brighten_556(unsigned char *add_buffer, unsigned short *buffer, int addbuff_width, int buff_width, int width, int height);
-void __cdecl Brighten_565(unsigned char *add_buffer, unsigned short *buffer, int addbuff_width, int buff_width, int width, int height);
-void __cdecl Brighten_655(unsigned char *add_buffer, unsigned short *buffer, int addbuff_width, int buff_width, int width, int height);
+void __cdecl Brighten_555(unsigned char* add_buffer, unsigned short* buffer, int addbuff_width, int buff_width, int width, int height);
+void __cdecl Brighten_556(unsigned char* add_buffer, unsigned short* buffer, int addbuff_width, int buff_width, int width, int height);
+void __cdecl Brighten_565(unsigned char* add_buffer, unsigned short* buffer, int addbuff_width, int buff_width, int width, int height);
+void __cdecl Brighten_655(unsigned char* add_buffer, unsigned short* buffer, int addbuff_width, int buff_width, int width, int height);

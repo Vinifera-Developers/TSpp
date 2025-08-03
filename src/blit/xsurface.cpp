@@ -28,20 +28,20 @@
 #include "xsurface.h"
 #include "bsurface.h"
 #include "dsurface.h"
+#include "spritecollection.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "spritecollection.h"
 
 
 /**
  *  Copys image from the surface with a alpha mask applied.
- * 
+ *
  *  x_offset and y_offset are optional, and are for panning a sprite sheet
  *  alpha mask.
- * 
+ *
  *  @author: CCHyper
  */
-bool XSurface::Copy_From_Alpha(Surface &fromsurface, Surface &alphasurface, int x_offset, int y_offset)
+bool XSurface::Copy_From_Alpha(Surface& fromsurface, Surface& alphasurface, int x_offset, int y_offset)
 {
     /**
      *  Alpha mask must be the same size as the image for non-sprite sheet masks.
@@ -57,19 +57,17 @@ bool XSurface::Copy_From_Alpha(Surface &fromsurface, Surface &alphasurface, int 
 
 /**
  *  Copys image from the sprite surface.
- * 
+ *
  *  x_offset and y_offset are the offset within the sprite surface where the
  *  desired image is located.
- * 
+ *
  *  @author: CCHyper
  */
-bool XSurface::Copy_From_Spritesheet(Surface &fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
+bool XSurface::Copy_From_Spritesheet(Surface& fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
 {
     BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Get_Bytes_Per_Pixel());
 
-    Rect sprite_rect(
-        x_offset, y_offset, sprite_width, sprite_height
-    );
+    Rect sprite_rect(x_offset, y_offset, sprite_width, sprite_height);
 
     return Copy_From(Get_Rect(), fromsurface, sprite_rect);
 }
@@ -77,19 +75,17 @@ bool XSurface::Copy_From_Spritesheet(Surface &fromsurface, int sprite_width, int
 
 /**
  *  Copys image from the sprite surface with a alpha mask applied.
- * 
+ *
  *  x_offset and y_offset are the offset within the sprite surface AND the alpah
  *  mask where the desired image is located.
- * 
+ *
  *  @author: CCHyper
  */
-bool XSurface::Copy_From_Spritesheet_Alpha(Surface &fromsurface, Surface &alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
+bool XSurface::Copy_From_Spritesheet_Alpha(Surface& fromsurface, Surface& alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
 {
     BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Get_Bytes_Per_Pixel());
 
-    Rect sprite_rect(
-        x_offset, y_offset, sprite_width, sprite_height
-    );
+    Rect sprite_rect(x_offset, y_offset, sprite_width, sprite_height);
 
     sprite_surface.Copy_From(Get_Rect(), fromsurface, sprite_rect);
 

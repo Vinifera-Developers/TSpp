@@ -38,77 +38,77 @@ class AnimTypeClass;
 class DECLSPEC_UUID("5AF2CE77-0634-11D2-ACA4-006008055BB5")
 BulletTypeClass : public ObjectTypeClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-    public:
-        BulletTypeClass(const char *ini_name = nullptr);
-        BulletTypeClass(const NoInitClass &noinit);
-        virtual ~BulletTypeClass();
+public:
+    BulletTypeClass(const char* ini_name = nullptr);
+    BulletTypeClass(const NoInitClass& noinit);
+    virtual ~BulletTypeClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual void Detach(AbstractClass * target, bool all = true) override;
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine &crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual void Detach(AbstractClass* target, bool all = true) override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
-        /**
-         *  AbstractTypeClass
-         */
-        virtual bool Read_INI(CCINIClass &ini) override;
+    /**
+     *  AbstractTypeClass
+     */
+    virtual bool Read_INI(CCINIClass& ini) override;
 
-        /**
-         *  ObjectTypeClass
-         */
-        virtual Coord Coord_Fixup(Coord *coord) const override;
-        virtual bool Create_And_Place(Cell &cell, HouseClass *house = nullptr) const override;
-        virtual ObjectClass *const Create_One_Of(HouseClass *house = nullptr) const override;
+    /**
+     *  ObjectTypeClass
+     */
+    virtual Coord Coord_Fixup(Coord* coord) const override;
+    virtual bool Create_And_Place(Cell& cell, HouseClass* house = nullptr) const override;
+    virtual ObjectClass* const Create_One_Of(HouseClass* house = nullptr) const override;
 
-        static BulletType From_Name(const char *name);
-        static const char *Name_From(BulletType type);
-        static const BulletTypeClass *Find_Or_Make(const char *name);
+    static BulletType From_Name(const char* name);
+    static const char* Name_From(BulletType type);
+    static const BulletTypeClass* Find_Or_Make(const char* name);
 
-    public:
-        bool IsAirburst;
-        bool IsFloater;
-        bool IsHigh;
-        bool IsVeryHigh;
-        bool IsShadow;
-        bool IsArcing;
-        bool IsDropping;
-        bool IsInvisible;
-        bool IsProximityArmed;
-        bool IsFueled;
-        bool IsFaceless;
-        bool IsInaccurate;
-        bool IsAntiAircraft;
-        bool IsAntiGround;
-        bool IsDegenerate;
-        bool IsBouncy;
-        bool IsAnimPalette;
-        bool IsSplits;
-        bool IsAntiVehicle;
-        int Cluster;
-        WeaponTypeClass *AirburstWeapon;
-        double Elasticity;
-        int Acceleration;
-        ColorSchemeType Color;
-        AnimTypeClass *Trailer;
-        unsigned ROT;
-        int RetargetAccuracy;
-        int Arming;
-        unsigned char AnimLow;
-        unsigned char AnimHigh;
-        unsigned char AnimRate;
+public:
+    bool IsAirburst;
+    bool IsFloater;
+    bool IsHigh;
+    bool IsVeryHigh;
+    bool IsShadow;
+    bool IsArcing;
+    bool IsDropping;
+    bool IsInvisible;
+    bool IsProximityArmed;
+    bool IsFueled;
+    bool IsFaceless;
+    bool IsInaccurate;
+    bool IsAntiAircraft;
+    bool IsAntiGround;
+    bool IsDegenerate;
+    bool IsBouncy;
+    bool IsAnimPalette;
+    bool IsSplits;
+    bool IsAntiVehicle;
+    int Cluster;
+    WeaponTypeClass* AirburstWeapon;
+    double Elasticity;
+    int Acceleration;
+    ColorSchemeType Color;
+    AnimTypeClass* Trailer;
+    unsigned ROT;
+    int RetargetAccuracy;
+    int Arming;
+    unsigned char AnimLow;
+    unsigned char AnimHigh;
+    unsigned char AnimRate;
 };

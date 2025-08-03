@@ -28,17 +28,16 @@
 #pragma once
 
 #include "always.h"
-#include "dsaudio.h"
 #include "ccfile.h"
+#include "dsaudio.h"
 
 
 class VQAClass;
 
-#define    VQA_TIMETICKS 60 /* Clock ticks per second */
+#define VQA_TIMETICKS 60 /* Clock ticks per second */
 
 
-typedef enum VQAErrorType
-{
+typedef enum VQAErrorType {
     VQAERR_NOERROR = 0,
 
     VQAERR_NONE = -(1),
@@ -69,8 +68,7 @@ typedef enum VQAErrorType
 } VQAErrorType;
 
 
-typedef enum VQAOptionType
-{
+typedef enum VQAOptionType {
     OPTION_USE_MIX_HANDLER,
     OPTION_1,
     OPTION_2,
@@ -93,8 +91,7 @@ typedef enum VQAOptionType
 
 
 #pragma pack(push, 1)
-typedef struct VQAHeader
-{
+typedef struct VQAHeader {
     unsigned short Version;
     unsigned short Flags;
     unsigned short Frames;
@@ -124,8 +121,7 @@ typedef struct VQAHeader
 
 
 struct VQAHandle;
-typedef struct VQAConfig
-{
+typedef struct VQAConfig {
     long(__cdecl* StreamHandler)(VQAHandle*, long, void*, long);
     long(__cdecl* MemoryHandler)(VQAHandle*, long, void*, long);
     long(__cdecl* EventHandler)(VQAHandle*, long, void*, long);
@@ -163,30 +159,26 @@ typedef struct VQAConfig
 } VQAConfig;
 
 
-typedef struct VQAInfo
-{
+typedef struct VQAInfo {
     long NumFrames;
     long ImageWidth;
     long ImageHeight;
 } VQAInfo;
 
 
-typedef struct VQAChunkHeader
-{
+typedef struct VQAChunkHeader {
     unsigned long ID;
     unsigned long Size;
 } VQAChunkHeader;
 
 
-typedef struct VQACacheHeader
-{
+typedef struct VQACacheHeader {
     unsigned long FileOffset;
     unsigned long FileSize;
 } VQACacheHeader;
 
 
-typedef struct VQACBNode
-{
+typedef struct VQACBNode {
     unsigned char* Buffer;
     VQACBNode* Next;
     VQACBNode* Prev;
@@ -196,8 +188,7 @@ typedef struct VQACBNode
 } VQACBNode;
 
 
-typedef struct VQAFrameNode
-{
+typedef struct VQAFrameNode {
     unsigned char* Polongers;
     VQACBNode* Codebook;
     unsigned char* Palette;
@@ -212,8 +203,7 @@ typedef struct VQAFrameNode
 } VQAFrameNode;
 
 
-typedef struct VQALoader
-{
+typedef struct VQALoader {
     VQACBNode* CurCB;
     VQACBNode* FullCB;
     VQACBNode* PrevCB;
@@ -231,8 +221,7 @@ typedef struct VQALoader
 } VQALoader;
 
 
-typedef struct VQAStatistics
-{
+typedef struct VQAStatistics {
     long StartTime;
     long EndTime;
     long FramesLoaded;
@@ -245,8 +234,7 @@ typedef struct VQAStatistics
 
 
 typedef _tagCOMPRESS_INFO2 VQASOS;
-typedef struct VQAAudio
-{
+typedef struct VQAAudio {
     unsigned char* Buffer;
     unsigned long AudBufPos;
     bool* IsLoaded;
@@ -268,22 +256,19 @@ typedef struct VQAAudio
 } VQAAudio;
 
 
-typedef struct VQAClipper
-{
+typedef struct VQAClipper {
     unsigned long Width;
     unsigned long Height;
 } VQAClipper;
 
 
-typedef struct VQAFlipper
-{
+typedef struct VQAFlipper {
     VQAFrameNode* CurFrame;
     long LastFrameNum;
 } VQAFlipper;
 
 
-typedef struct VQADrawer
-{
+typedef struct VQADrawer {
     VQAFrameNode* CurFrame;
     unsigned long Flags;
     unsigned char* ImageBuf;
@@ -304,8 +289,7 @@ typedef struct VQADrawer
 } VQADrawer;
 
 
-typedef struct VQAData
-{
+typedef struct VQAData {
     void* Draw_Frame;
     void* Page_Flip;
     void* UnVQ;
@@ -329,8 +313,7 @@ typedef struct VQAData
 } VQAData;
 
 
-typedef struct VQAHandle
-{
+typedef struct VQAHandle {
     unsigned long VQAStream;
     void* StreamHandler;
     VQAData* VQABuf;

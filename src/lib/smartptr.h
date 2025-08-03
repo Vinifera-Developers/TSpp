@@ -35,27 +35,31 @@
 template<class T>
 class SmartPtr
 {
-    public:
-        SmartPtr(const NoInitClass &) {}
-        SmartPtr(T * realptr = nullptr) : Pointer(realptr) {}
-        SmartPtr(const SmartPtr & rvalue) : Pointer(rvalue.Pointer) {}
-        ~SmartPtr() { Pointer = nullptr; }
+public:
+    SmartPtr(const NoInitClass&) {}
+    SmartPtr(T* realptr = nullptr) : Pointer(realptr) {}
+    SmartPtr(const SmartPtr& rvalue) : Pointer(rvalue.Pointer) {}
+    ~SmartPtr() { Pointer = nullptr; }
 
-        operator T * () const { return Pointer; }
+    operator T*() const { return Pointer; }
 
-        operator long () const { return (long)Pointer; }
+    operator long() const { return (long)Pointer; }
 
-        bool Is_Valid() const { return Pointer != nullptr; }
+    bool Is_Valid() const { return Pointer != nullptr; }
 
-        // SmartPtr<T> operator ++ (int) { TSPP_ASSERT(Pointer != nullptr); SmartPtr<T> temp = *this; ++Pointer; return temp; }
-        // SmartPtr<T> & operator ++ () { TSPP_ASSERT(Pointer != nullptr); ++Pointer; return(*this); }
-        // SmartPtr<T> operator -- (int) { TSPP_ASSERT(Pointer != nullptr); SmartPtr<T> temp = *this; --Pointer; return temp; }
-        // SmartPtr<T> & operator -- () { TSPP_ASSERT(Pointer != nullptr); --Pointer; return(*this); }
+    // SmartPtr<T> operator ++ (int) { TSPP_ASSERT(Pointer != nullptr); SmartPtr<T> temp = *this; ++Pointer; return temp; }
+    // SmartPtr<T> & operator ++ () { TSPP_ASSERT(Pointer != nullptr); ++Pointer; return(*this); }
+    // SmartPtr<T> operator -- (int) { TSPP_ASSERT(Pointer != nullptr); SmartPtr<T> temp = *this; --Pointer; return temp; }
+    // SmartPtr<T> & operator -- () { TSPP_ASSERT(Pointer != nullptr); --Pointer; return(*this); }
 
-        SmartPtr & operator = (const SmartPtr & rvalue) { Pointer = rvalue.Pointer; return (*this); }
-        T * operator -> () const { /*TSPP_ASSERT(Pointer != nullptr);*/ return(Pointer);}
-        T & operator * () const { /*TSPP_ASSERT(Pointer != nullptr);*/ return(*Pointer);}
+    SmartPtr& operator=(const SmartPtr& rvalue)
+    {
+        Pointer = rvalue.Pointer;
+        return (*this);
+    }
+    T* operator->() const { /*TSPP_ASSERT(Pointer != nullptr);*/ return (Pointer); }
+    T& operator*() const { /*TSPP_ASSERT(Pointer != nullptr);*/ return (*Pointer); }
 
-    private:
-        T * Pointer;
+private:
+    T* Pointer;
 };

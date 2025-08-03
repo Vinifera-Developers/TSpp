@@ -34,60 +34,63 @@
 
 class SwizzleManagerClass : public ISwizzle
 {
-    public:
-        struct SwizzlePointerStruct
+public:
+    struct SwizzlePointerStruct {
+        SwizzlePointerStruct() : ID(0), Pointer(nullptr) {}
+        SwizzlePointerStruct(LONG id, void* pointer) : ID(id), Pointer(pointer) {}
+        ~SwizzlePointerStruct() {}
+
+        void operator=(const SwizzlePointerStruct& that)
         {
-            SwizzlePointerStruct() : ID(0), Pointer(nullptr) {}
-            SwizzlePointerStruct(LONG id, void *pointer) : ID(id), Pointer(pointer) {}
-            ~SwizzlePointerStruct() {}
+            ID = that.ID;
+            Pointer = that.Pointer;
+        }
 
-            void operator=(const SwizzlePointerStruct &that) { ID = that.ID; Pointer = that.Pointer; }
+        bool operator==(const SwizzlePointerStruct& that) const { return ID == that.ID; }
+        bool operator!=(const SwizzlePointerStruct& that) const { return ID != that.ID; }
+        bool operator<(const SwizzlePointerStruct& that) const { return ID < that.ID; }
+        bool operator>(const SwizzlePointerStruct& that) const { return ID > that.ID; }
 
-            bool operator==(const SwizzlePointerStruct &that) const { return ID == that.ID; }
-            bool operator!=(const SwizzlePointerStruct &that) const { return ID != that.ID; }
-            bool operator<(const SwizzlePointerStruct &that) const { return ID < that.ID; }
-            bool operator>(const SwizzlePointerStruct &that) const { return ID > that.ID; }
+        LONG ID;
+        void* Pointer;
+    };
 
-            LONG ID;
-            void *Pointer;
-        };
+public:
+    /**
+     *  IUnknown
+     */
+    IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID* ppvObj);
+    IFACEMETHOD_(ULONG, AddRef)();
+    IFACEMETHOD_(ULONG, Release)();
 
-    public:
-        /**
-         *  IUnknown
-         */
-        IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID *ppvObj);
-        IFACEMETHOD_(ULONG, AddRef)();
-        IFACEMETHOD_(ULONG, Release)();
+    /**
+     *  ISwizzle
+     */
+    IFACEMETHOD_(LONG, Reset)();
+    IFACEMETHOD_(LONG, Swizzle)(void** pointer);
+    IFACEMETHOD_(LONG, Fetch_Swizzle_ID)(void* pointer, LONG* id);
+    IFACEMETHOD_(LONG, Here_I_Am)(LONG id, void* pointer);
+    IFACEMETHOD(Save_Interface)(IStream* stream, IUnknown* pointer);
+    IFACEMETHOD(Load_Interface)(IStream* stream, CLSID* riid, void** pointer);
+    IFACEMETHOD_(LONG, Get_Save_Size)(LONG* size);
 
-        /**
-         *  ISwizzle
-         */
-        IFACEMETHOD_(LONG, Reset)();
-        IFACEMETHOD_(LONG, Swizzle)(void **pointer);
-        IFACEMETHOD_(LONG, Fetch_Swizzle_ID)(void *pointer, LONG *id);
-        IFACEMETHOD_(LONG, Here_I_Am)(LONG id, void *pointer);
-        IFACEMETHOD(Save_Interface)(IStream *stream, IUnknown *pointer);
-        IFACEMETHOD(Load_Interface)(IStream *stream, CLSID *riid, void **pointer);
-        IFACEMETHOD_(LONG, Get_Save_Size)(LONG *size);
+public:
+    SwizzleManagerClass();
+    ~SwizzleManagerClass();
 
-    public:
-        SwizzleManagerClass();
-        ~SwizzleManagerClass();
+    void Process_Tables();
 
-        void Process_Tables();
+public:
+    DynamicVectorClass<SwizzlePointerStruct> RequestTable;
+    DynamicVectorClass<SwizzlePointerStruct> PointerTable;
 
-    public:
-        DynamicVectorClass<SwizzlePointerStruct> RequestTable;
-        DynamicVectorClass<SwizzlePointerStruct> PointerTable;
-        
 #ifndef NDEBUG
-    public:
-        /**
-         *  These globals allow for save/load call site analysis in debug builds.
-         */
-        static char * DebugFile;
-        static char * DebugFunction;
-        static int DebugLine;
+public:
+    /**
+     *  These globals allow for save/load call site analysis in debug builds.
+     */
+    static char* DebugFile;
+    static char* DebugFunction;
+    static int DebugLine;
 #endif
 };

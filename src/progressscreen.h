@@ -37,43 +37,42 @@ class ShapeSet;
 
 class ProgressScreenClass
 {
-	public:
-		ProgressScreenClass();
-		~ProgressScreenClass();
+public:
+    ProgressScreenClass();
+    ~ProgressScreenClass();
 
-		void Init(double start_progress, int player_count, bool do_dialog = false);
-		void Reset();
-		void Draw_Graphics(const char *progress_bar_shape, const char *background_image, const char *string, int text_xpos, int text_ypos);
-		double Get_Total_Progress();
-		void Draw_Bars_And_Text(int xpos = -1, int ypos = -1);
-		Rect Get_Bar_Dimensions();
-		void Update_Progress(int player_index, double value, int xpos, int ypos);
-		void Add_Progress(int player_index, double value, int xpos, int ypos);
+    void Init(double start_progress, int player_count, bool do_dialog = false);
+    void Reset();
+    void Draw_Graphics(const char* progress_bar_shape, const char* background_image, const char* string, int text_xpos, int text_ypos);
+    double Get_Total_Progress();
+    void Draw_Bars_And_Text(int xpos = -1, int ypos = -1);
+    Rect Get_Bar_Dimensions();
+    void Update_Progress(int player_index, double value, int xpos, int ypos);
+    void Add_Progress(int player_index, double value, int xpos, int ypos);
 
-		void Init_Dialog();
-		void Destroy_Dialog();
+    void Init_Dialog();
+    void Destroy_Dialog();
 
-		static LRESULT CALLBACK Dialog_Proc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK Dialog_Proc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
-	public:
-		double PlayerProgress[MAX_PLAYERS];
-		double MainProgress;
-		const char *String;
-		ShapeSet *ProgressShape;
-		const char *BackgroundImage;
-		bool field_54;
-		char field_55;
-		HWND Handle;
-		int XPos;
-		int YPos;
-		int field_64;
+public:
+    double PlayerProgress[MAX_PLAYERS];
+    double MainProgress;
+    const char* String;
+    ShapeSet* ProgressShape;
+    const char* BackgroundImage;
+    bool field_54;
+    char field_55;
+    HWND Handle;
+    int XPos;
+    int YPos;
+    int field_64;
 };
 
 
-typedef struct ProgressTextStruct
-{
-	int Progress;
-	int TextID;
+typedef struct ProgressTextStruct {
+    int Progress;
+    int TextID;
 } ProgressTextStruct;
 
 ARRAY_DEC(ProgressTextStruct, ProgressText, 8);

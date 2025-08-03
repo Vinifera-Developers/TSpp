@@ -33,10 +33,10 @@
 /**
  *  Available font attribute styles.
  */
-#define WINFONT_ATTR_BOLD       1
-#define WINFONT_ATTR_ITALIC     2
-#define WINFONT_ATTR_UNDERLINE  4
-#define WINFONT_ATTR_STRIKEOUT  8
+#define WINFONT_ATTR_BOLD      1
+#define WINFONT_ATTR_ITALIC    2
+#define WINFONT_ATTR_UNDERLINE 4
+#define WINFONT_ATTR_STRIKEOUT 8
 
 
-HFONT WinCreateFont(HDC hdc, TCHAR * szFaceName, int iDeciPtWidth, int iDeciPtHeight, int iAttributes);
+HFONT WinCreateFont(HDC hdc, TCHAR* szFaceName, int iDeciPtWidth, int iDeciPtHeight, int iAttributes);

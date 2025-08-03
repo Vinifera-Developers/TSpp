@@ -28,64 +28,63 @@
 #pragma once
 
 #include "always.h"
-#include "ttimer.h"
 #include "ftimer.h"
 #include "rgb.h"
 #include "tibsun_defines.h"
+#include "ttimer.h"
 
 
-typedef struct RadarDrawStruct
-{
+typedef struct RadarDrawStruct {
     Point2D Points[4];
 } RadarDrawStruct;
 
 
 class RadarEventClass
 {
-    public:
-        RadarEventClass(RadarEventType event, Cell cell);
-        ~RadarEventClass();
+public:
+    RadarEventClass(RadarEventType event, Cell cell);
+    ~RadarEventClass();
 
-        void Process();
-        void Draw();
-        void Plot();
-        int Get_Visibility_Duration();
-        int Get_Duration();
-        int Get_Supression_Distance();
-        RGBClass Get_Max_Color();
-        RGBClass Get_Min_Color();
-        RadarDrawStruct Get_Draw_Data() const;
+    void Process();
+    void Draw();
+    void Plot();
+    int Get_Visibility_Duration();
+    int Get_Duration();
+    int Get_Supression_Distance();
+    RGBClass Get_Max_Color();
+    RGBClass Get_Min_Color();
+    RadarDrawStruct Get_Draw_Data() const;
 
-        static bool Create_Event(RadarEventType event, Cell cell);
-        static bool Is_Combat_Event(RadarEventType event);
-        static void Process_Events();
-        static void Draw_Events();
-        static void Remove_Finished();
-        static bool Suppression_Check(RadarEventType type, int a2, Cell cell);
-        static bool Any_Active();
+    static bool Create_Event(RadarEventType event, Cell cell);
+    static bool Is_Combat_Event(RadarEventType event);
+    static void Process_Events();
+    static void Draw_Events();
+    static void Remove_Finished();
+    static bool Suppression_Check(RadarEventType type, int a2, Cell cell);
+    static bool Any_Active();
 
-        static void Plot_Point(Point2D *point);
+    static void Plot_Point(Point2D* point);
 
-        static void Clear_All();
+    static void Clear_All();
 
-        static bool Save_All(IStream *pStm);
-        static bool Load_All(IStream *pStm);
+    static bool Save_All(IStream* pStm);
+    static bool Load_All(IStream* pStm);
 
-    public:
-        RadarEventType Type;
-        int XOffset;
-        int YOffset;
-        int Radius;
-        int RotationAngle;
-        int RotationSpeed;
-        int ColorFactor;
-        int ColorSpeed;
-        Cell Location;
-        CDTimerClass<FrameTimerClass> DurationTimer;
-        CDTimerClass<FrameTimerClass> VisibilityTimer;
-        bool IsRotating;
-        bool IsVisible;
+public:
+    RadarEventType Type;
+    int XOffset;
+    int YOffset;
+    int Radius;
+    int RotationAngle;
+    int RotationSpeed;
+    int ColorFactor;
+    int ColorSpeed;
+    Cell Location;
+    CDTimerClass<FrameTimerClass> DurationTimer;
+    CDTimerClass<FrameTimerClass> VisibilityTimer;
+    bool IsRotating;
+    bool IsVisible;
 
-    public:
-        static Cell &LastEventCell;
+public:
+    static Cell& LastEventCell;
 };

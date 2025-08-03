@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "warheadtype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-WarheadType WarheadTypeClass::From_Name(const char *name)
+WarheadType WarheadTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ WarheadType WarheadTypeClass::From_Name(const char *name)
 }
 
 
-const char *WarheadTypeClass::Name_From(WarheadType type)
+const char* WarheadTypeClass::Name_From(WarheadType type)
 {
     return (type != WARHEAD_NONE && type < Warheads.Count() ? Warheads[type]->Name() : "<none>");
 }
 
 
-const WarheadTypeClass *WarheadTypeClass::Find_Or_Make(const char *name)
+const WarheadTypeClass* WarheadTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

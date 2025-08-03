@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "tagtype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-TagType TagTypeClass::From_Name(const char *name)
+TagType TagTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ TagType TagTypeClass::From_Name(const char *name)
 }
 
 
-const char *TagTypeClass::Name_From(TagType type)
+const char* TagTypeClass::Name_From(TagType type)
 {
     return (type != TAG_NONE && type < TagTypes.Count() ? TagTypes[type]->Name() : "<none>");
 }
 
 
-const TagTypeClass *TagTypeClass::Find_Or_Make(const char *name)
+const TagTypeClass* TagTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

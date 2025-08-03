@@ -14,7 +14,7 @@
  *                 packet process packets. class is used to create a linked list
  *                 of field entries which can be converted to a linear packet in
  *                 a COMMS API compatible format.
- * 
+ *
  *                 Packets can be created empty and then have fields added to
  *                 them or can be created from an existing linear packet.
  *
@@ -49,30 +49,30 @@ class FieldClass;
 
 class PacketClass
 {
-	friend class FieldClass;
+    friend class FieldClass;
 
-	public:
-		PacketClass(short id = 0);
-		PacketClass(char *cur_buf);
-		~PacketClass();
+public:
+    PacketClass(short id = 0);
+    PacketClass(char* cur_buf);
+    ~PacketClass();
 
-		void Add_Field(FieldClass *field);
+    void Add_Field(FieldClass* field);
 
-		FieldClass *Find_Field(char *id);
-		bool Get_Field(char *id, char &data);
-		bool Get_Field(char *id, unsigned char &data);
-		bool Get_Field(char *id, short &data);
-		bool Get_Field(char *id, unsigned short &data);
-		bool Get_Field(char *id, long &data);
-		bool Get_Field(char *id, unsigned long &data);
-		bool Get_Field(char *id, char *data);
-		bool Get_Field(char *id, void *data, int &length);
+    FieldClass* Find_Field(char* id);
+    bool Get_Field(char* id, char& data);
+    bool Get_Field(char* id, unsigned char& data);
+    bool Get_Field(char* id, short& data);
+    bool Get_Field(char* id, unsigned short& data);
+    bool Get_Field(char* id, long& data);
+    bool Get_Field(char* id, unsigned long& data);
+    bool Get_Field(char* id, char* data);
+    bool Get_Field(char* id, void* data, int& length);
 
-		char *Create_Comms_Packet(int &size);
+    char* Create_Comms_Packet(int& size);
 
-	private:
-		unsigned short Size;
-		short ID;
-		FieldClass *Head;
-		FieldClass *Current;
+private:
+    unsigned short Size;
+    short ID;
+    FieldClass* Head;
+    FieldClass* Current;
 };

@@ -8,7 +8,7 @@
  *
  *  @authors       CCHyper, tomsons26
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -26,35 +26,35 @@
  *
  ******************************************************************************/
 #include "spritecollection.h"
-#include "tibsun_globals.h"
-#include "filepcx.h"
-#include "ccfile.h"
-#include "wstring.h"
 #include "bsurface.h"
-//#include "tspp_debug.h"
+#include "ccfile.h"
+#include "filepcx.h"
+#include "tibsun_globals.h"
+#include "wstring.h"
+// #include "tspp_debug.h"
 
 
 /**
  *  Fetch a PCX image surface from the specified filename if it exists.
- *  
+ *
  *  @return      NULL if the PCX file was not found.
- * 
+ *
  *  @warning     The input filename must not contain an extension!
- * 
+ *
  *  @author: CCHyper
  */
-BSurface *Get_PCX_Image_Surface(const char *filename)
+BSurface* Get_PCX_Image_Surface(const char* filename)
 {
     if (!filename || !std::strlen(filename)) {
         return nullptr;
     }
 
     if (std::strstr(filename, ".PCX")) {
-        //TSPP_DEBUG_WARNING("invalid filename passed to Get_PCX_Image_Surface()!\n");
+        // TSPP_DEBUG_WARNING("invalid filename passed to Get_PCX_Image_Surface()!\n");
         return nullptr;
     }
 
-    BSurface *surface = nullptr;
+    BSurface* surface = nullptr;
 
     Wstring fname = filename;
     fname += ".PCX";
@@ -76,7 +76,7 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
      *  We only support 8-bit PCX images.
      */
     if (pcxhdr.BitsPixelPlane != 8) {
-        //TSPP_DEBUG_ERROR("File \"%s\" is an unsupported PCX format!\n", buff);
+        // TSPP_DEBUG_ERROR("File \"%s\" is an unsupported PCX format!\n", buff);
         return false;
     }
 
@@ -89,7 +89,7 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
         /**
          *  PCX is paletted.
          */
-         if (pcxhdr.NumberOfPlanes == 1) {
+        if (pcxhdr.NumberOfPlanes == 1) {
             loaded = SpriteCollection.Load_Paletted_PCX(fname.Peek_Buffer());
 
         } else {
@@ -98,7 +98,7 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
     }
 
     if (!loaded) {
-        //TSPP_DEBUG_WARNING("Failed to load PCX \"%s\"!\n", fname.Peek_Buffer());
+        // TSPP_DEBUG_WARNING("Failed to load PCX \"%s\"!\n", fname.Peek_Buffer());
         return false;
     }
 
@@ -106,7 +106,7 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
      *  Was the PCX file loaded successfully? Return a pointer to the loaded image surface.
      */
     if (loaded) {
-        BSurface *tmp = SpriteCollection.Get_Image_Surface(fname.Peek_Buffer());
+        BSurface* tmp = SpriteCollection.Get_Image_Surface(fname.Peek_Buffer());
         surface = new BSurface(tmp->Get_Width(), tmp->Get_Height(), tmp->Get_Bytes_Per_Pixel());
         surface->Copy_From(*tmp);
     }
@@ -117,21 +117,21 @@ BSurface *Get_PCX_Image_Surface(const char *filename)
 
 /**
  *  Fetch a BMP image surface from the specified filename if it exists.
- *  
+ *
  *  @return      NULL if the BMP file was not found.
- * 
+ *
  *  @warning     The input filename must not contain an extension!
- * 
+ *
  *  @author: CCHyper
  */
-BSurface *Get_BMP_Image_Surface(const char *filename)
+BSurface* Get_BMP_Image_Surface(const char* filename)
 {
     if (!filename || !std::strlen(filename)) {
         return nullptr;
     }
 
     if (std::strstr(filename, ".BMP")) {
-        //TSPP_DEBUG_WARNING("invalid filename passed to Get_BMP_Image_Surface()!\n");
+        // TSPP_DEBUG_WARNING("invalid filename passed to Get_BMP_Image_Surface()!\n");
         return nullptr;
     }
 
@@ -148,7 +148,7 @@ BSurface *Get_BMP_Image_Surface(const char *filename)
         return nullptr;
     }
 
-    BSurface *surface = nullptr;
+    BSurface* surface = nullptr;
 
     // TODO
 

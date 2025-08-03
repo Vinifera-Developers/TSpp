@@ -32,9 +32,9 @@
 
 class RLEBlitter
 {
-    public:
-        RLEBlitter() {}
-        virtual ~RLEBlitter() {}
+public:
+    RLEBlitter() {}
+    virtual ~RLEBlitter() {}
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) = 0;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) = 0;
 };

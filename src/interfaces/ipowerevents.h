@@ -42,7 +42,7 @@ DECLARE_INTERFACE_IID_(IPowerEvents, IUnknown, "56272740-89BB-11D1-B707-00A024DD
      *  Triggered when power first becomes sufficient.
      */
     STDMETHOD_(LONG, Power_Activated)() PURE;
-    
+
     /**
      *  Triggered when power first becomes insufficient.
      */

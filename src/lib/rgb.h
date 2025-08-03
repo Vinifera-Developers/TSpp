@@ -36,38 +36,38 @@ class HSVClass;
 
 class RGBClass
 {
-    public:
-        RGBClass();
-        RGBClass(const RGBStruct &that);
-        RGBClass(const RGBClass &that);
-        RGBClass(unsigned char red, unsigned char green, unsigned char blue);
+public:
+    RGBClass();
+    RGBClass(const RGBStruct& that);
+    RGBClass(const RGBClass& that);
+    RGBClass(unsigned char red, unsigned char green, unsigned char blue);
 
-        operator HSVClass () const;
-        operator RGBStruct () const { return RGBStruct { Red, Green, Blue }; }
+    operator HSVClass() const;
+    operator RGBStruct() const { return RGBStruct {Red, Green, Blue}; }
 
-        bool operator==(const RGBClass &that) const { return Red == that.Red && Green == that.Green && Blue == that.Blue; }
-        bool operator!=(const RGBClass &that) const { return Red != that.Red && Green != that.Green && Blue != that.Blue; }
-        RGBClass & operator= (const RGBClass &that);
+    bool operator==(const RGBClass& that) const { return Red == that.Red && Green == that.Green && Blue == that.Blue; }
+    bool operator!=(const RGBClass& that) const { return Red != that.Red && Green != that.Green && Blue != that.Blue; }
+    RGBClass& operator=(const RGBClass& that);
 
-        void Adjust(int adjust, const RGBClass &that);
-        int Difference(const RGBClass &that) const;
+    void Adjust(int adjust, const RGBClass& that);
+    int Difference(const RGBClass& that) const;
 
-        RGBClass Adjust_Brightness(RGBClass &color, float adjust);
-        RGBClass Lerp(RGBClass &left, RGBClass &right, float adjust);
-        static RGBClass Interpolate(RGBClass &from, RGBClass &towards, float adjust);
+    RGBClass Adjust_Brightness(RGBClass& color, float adjust);
+    RGBClass Lerp(RGBClass& left, RGBClass& right, float adjust);
+    static RGBClass Interpolate(RGBClass& from, RGBClass& towards, float adjust);
 
-        enum {
-            MAX_VALUE = 255
-        };
+    enum {
+        MAX_VALUE = 255
+    };
 
-    public:
-        unsigned char Red;
-        unsigned char Green;
-        unsigned char Blue;
+public:
+    unsigned char Red;
+    unsigned char Green;
+    unsigned char Blue;
 };
 
 
-inline RGBClass &RGBClass::operator=(const RGBClass &that)
+inline RGBClass& RGBClass::operator=(const RGBClass& that)
 {
     if (this != &that) {
         Red = that.Red;

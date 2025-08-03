@@ -40,21 +40,21 @@
 
 class FileStraw : public Straw
 {
-    public:
-        FileStraw(FileClass *file);
-        FileStraw(FileClass &file);
-        virtual ~FileStraw();
+public:
+    FileStraw(FileClass* file);
+    FileStraw(FileClass& file);
+    virtual ~FileStraw();
 
-        virtual int Get(void *source, int slen) override;
+    virtual int Get(void* source, int slen) override;
 
-    private:
-        bool Valid_File() { return File != nullptr; }
+private:
+    bool Valid_File() { return File != nullptr; }
 
-    private:
-        FileClass *File;
-        bool HasOpened;
+private:
+    FileClass* File;
+    bool HasOpened;
 
-    private:
-        FileStraw(FileStraw &) = delete;
-        FileStraw & operator = (const FileStraw &) = delete;
+private:
+    FileStraw(FileStraw&) = delete;
+    FileStraw& operator=(const FileStraw&) = delete;
 };

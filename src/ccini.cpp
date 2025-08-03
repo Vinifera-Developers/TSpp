@@ -27,29 +27,29 @@
  *
  ******************************************************************************/
 #include "ccini.h"
-#include "tibsun_globals.h"
-#include "tibsun_functions.h"
-#include "voc.h"
-#include "unittype.h"
 #include "aircrafttype.h"
 #include "animtype.h"
 #include "buildingtype.h"
+#include "infantrytype.h"
+#include "mission.h"
+#include "overlaytype.h"
+#include "particlesystype.h"
 #include "particletype.h"
 #include "tiberium.h"
-#include "weapontype.h"
+#include "tibsun_functions.h"
+#include "tibsun_globals.h"
+#include "unittype.h"
+#include "voc.h"
 #include "warheadtype.h"
-#include "particlesystype.h"
-#include "infantrytype.h"
-#include "overlaytype.h"
-#include "mission.h"
+#include "weapontype.h"
 
 
 /**
  *  Store a vector3 to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-const Vector3 CCINIClass::Get_Vector3(char const *section, char const *entry, const Vector3 defvalue) const
+const Vector3 CCINIClass::Get_Vector3(char const* section, char const* entry, const Vector3 defvalue) const
 {
     char buffer[1024];
     char defbuff[1024];
@@ -77,10 +77,10 @@ const Vector3 CCINIClass::Get_Vector3(char const *section, char const *entry, co
 
 /**
  *  Fetch a vector3 from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Vector3(char const *section, char const *entry, const Vector3 value)
+bool CCINIClass::Put_Vector3(char const* section, char const* entry, const Vector3 value)
 {
     char buffer[1024];
 
@@ -92,10 +92,10 @@ bool CCINIClass::Put_Vector3(char const *section, char const *entry, const Vecto
 
 /**
  *  Fetch a voc (sound effect) from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-VocType CCINIClass::Get_VocType(const char *section, const char *entry, const VocType defvalue)
+VocType CCINIClass::Get_VocType(const char* section, const char* entry, const VocType defvalue)
 {
     char buffer[1024];
 
@@ -109,10 +109,10 @@ VocType CCINIClass::Get_VocType(const char *section, const char *entry, const Vo
 
 /**
  *  Fetch a land identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-LayerType CCINIClass::Get_LayerType(const char *section, const char *entry, const LayerType defvalue)
+LayerType CCINIClass::Get_LayerType(const char* section, const char* entry, const LayerType defvalue)
 {
     char buffer[1024];
 
@@ -126,10 +126,10 @@ LayerType CCINIClass::Get_LayerType(const char *section, const char *entry, cons
 
 /**
  *  Store a land identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_LayerType(const char *section, const char *entry, LayerType value)
+bool CCINIClass::Put_LayerType(const char* section, const char* entry, LayerType value)
 {
     return Put_String(section, entry, Name_From_Layer(value));
 }
@@ -137,10 +137,10 @@ bool CCINIClass::Put_LayerType(const char *section, const char *entry, LayerType
 
 /**
  *  Fetch a particle identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-ParticleType CCINIClass::Get_ParticleType(const char *section, const char *entry, const ParticleType defvalue)
+ParticleType CCINIClass::Get_ParticleType(const char* section, const char* entry, const ParticleType defvalue)
 {
     char buffer[1024];
 
@@ -154,10 +154,10 @@ ParticleType CCINIClass::Get_ParticleType(const char *section, const char *entry
 
 /**
  *  Store a particle identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_ParticleType(const char *section, const char *entry, ParticleType value)
+bool CCINIClass::Put_ParticleType(const char* section, const char* entry, ParticleType value)
 {
     return Put_String(section, entry, ParticleTypeClass::Name_From(value));
 }
@@ -165,10 +165,10 @@ bool CCINIClass::Put_ParticleType(const char *section, const char *entry, Partic
 
 /**
  *  Fetch a unit list from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-TypeList<VocType> CCINIClass::Get_VocTypes(const char *section, const char *entry, const TypeList<VocType> defvalue)
+TypeList<VocType> CCINIClass::Get_VocTypes(const char* section, const char* entry, const TypeList<VocType> defvalue)
 {
     char buffer[1024];
 
@@ -176,10 +176,10 @@ TypeList<VocType> CCINIClass::Get_VocTypes(const char *section, const char *entr
 
         TypeList<VocType> list;
 
-        char *name = std::strtok(buffer, ",");
+        char* name = std::strtok(buffer, ",");
         while (name) {
 
-            VocClass *voc = VocClass::Voc_From_Name(name);
+            VocClass* voc = VocClass::Voc_From_Name(name);
             if (voc) {
                 list.Add(VocClass::VocType_From_Voc(voc));
             }
@@ -196,12 +196,12 @@ TypeList<VocType> CCINIClass::Get_VocTypes(const char *section, const char *entr
 
 /**
  *  Store a unit list to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_VocTypes(const char *section, const char *entry, const TypeList<VocType> value)
+bool CCINIClass::Put_VocTypes(const char* section, const char* entry, const TypeList<VocType> value)
 {
-    char buffer[1024] = { '\0' };
+    char buffer[1024] = {'\0'};
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -216,10 +216,10 @@ bool CCINIClass::Put_VocTypes(const char *section, const char *entry, const Type
 
 /**
  *  Fetch the techno type identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-const TechnoTypeClass *CCINIClass::Get_Techno(const char *section, const char *entry, const TechnoTypeClass *defvalue)
+const TechnoTypeClass* CCINIClass::Get_Techno(const char* section, const char* entry, const TechnoTypeClass* defvalue)
 {
     char buffer[1024];
 
@@ -234,7 +234,6 @@ const TechnoTypeClass *CCINIClass::Get_Techno(const char *section, const char *e
                 return TechnoTypes[index];
             }
         }
-
     }
 
     return defvalue;
@@ -243,10 +242,10 @@ const TechnoTypeClass *CCINIClass::Get_Techno(const char *section, const char *e
 
 /**
  *  Store the techno type identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Techno(const char *section, const char *entry, const TechnoTypeClass *value)
+bool CCINIClass::Put_Techno(const char* section, const char* entry, const TechnoTypeClass* value)
 {
     if (value) {
         return Put_String(section, entry, value->Name());
@@ -258,10 +257,10 @@ bool CCINIClass::Put_Techno(const char *section, const char *entry, const Techno
 
 /**
  *  Store a tiberium identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_TiberiumType(const char *section, const char *entry, TiberiumType value)
+bool CCINIClass::Put_TiberiumType(const char* section, const char* entry, TiberiumType value)
 {
     return Put_String(section, entry, TiberiumClass::Name_From(value));
 }
@@ -269,10 +268,10 @@ bool CCINIClass::Put_TiberiumType(const char *section, const char *entry, Tiberi
 
 /**
  *  Fetch a tiberium identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-TiberiumType CCINIClass::Get_TiberiumType(const char *section, const char *entry, const TiberiumType defvalue)
+TiberiumType CCINIClass::Get_TiberiumType(const char* section, const char* entry, const TiberiumType defvalue)
 {
     char buffer[1024];
 
@@ -286,10 +285,10 @@ TiberiumType CCINIClass::Get_TiberiumType(const char *section, const char *entry
 
 /**
  *  Fetch a facing identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-FacingType CCINIClass::Get_FacingType(const char *section, const char *entry, const FacingType defvalue)
+FacingType CCINIClass::Get_FacingType(const char* section, const char* entry, const FacingType defvalue)
 {
     char buffer[1024];
 
@@ -303,10 +302,10 @@ FacingType CCINIClass::Get_FacingType(const char *section, const char *entry, co
 
 /**
  *  Store a facing identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_FacingType(const char *section, const char *entry, FacingType value)
+bool CCINIClass::Put_FacingType(const char* section, const char* entry, FacingType value)
 {
     return Put_String(section, entry, Name_From_Facing(value));
 }
@@ -314,10 +313,10 @@ bool CCINIClass::Put_FacingType(const char *section, const char *entry, FacingTy
 
 /**
  *  Fetch a mission identifier from the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-MissionType CCINIClass::Get_MissionType(const char *section, const char *entry, const MissionType defvalue)
+MissionType CCINIClass::Get_MissionType(const char* section, const char* entry, const MissionType defvalue)
 {
     char buffer[1024];
 
@@ -331,10 +330,10 @@ MissionType CCINIClass::Get_MissionType(const char *section, const char *entry, 
 
 /**
  *  Store a mission identifier to the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_MissionType(const char *section, const char *entry, MissionType value)
+bool CCINIClass::Put_MissionType(const char* section, const char* entry, MissionType value)
 {
     return Put_String(section, entry, MissionClass::Mission_Name(value));
 }
@@ -345,15 +344,15 @@ bool CCINIClass::Put_MissionType(const char *section, const char *entry, Mission
  *
  *  @author: CCHyper
  */
-TypeList<const char *> CCINIClass::Get_Strings(const char *section, const char *entry, const TypeList<const char *> defvalue)
+TypeList<const char*> CCINIClass::Get_Strings(const char* section, const char* entry, const TypeList<const char*> defvalue)
 {
     char buffer[1024];
 
     if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
 
-        TypeList<const char *> list;
+        TypeList<const char*> list;
 
-        char *name = std::strtok(buffer, ",");
+        char* name = std::strtok(buffer, ",");
         while (name) {
             list.Add(name);
 
@@ -372,9 +371,9 @@ TypeList<const char *> CCINIClass::Get_Strings(const char *section, const char *
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeList<const char *> value)
+bool CCINIClass::Put_Strings(const char* section, const char* entry, const TypeList<const char*> value)
 {
-    char buffer[1024] ={'\0'};
+    char buffer[1024] = {'\0'};
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -392,15 +391,15 @@ bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeL
  *
  *  @author: CCHyper
  */
-DynamicVectorClass<const char *> CCINIClass::Get_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> defvalue)
+DynamicVectorClass<const char*> CCINIClass::Get_Strings(const char* section, const char* entry, const DynamicVectorClass<const char*> defvalue)
 {
     char buffer[1024];
 
     if (INIClass::Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
 
-        TypeList<const char *> list;
+        TypeList<const char*> list;
 
-        char *name = std::strtok(buffer, ",");
+        char* name = std::strtok(buffer, ",");
         while (name) {
             list.Add(name);
 
@@ -419,9 +418,9 @@ DynamicVectorClass<const char *> CCINIClass::Get_Strings(const char *section, co
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Strings(const char *section, const char *entry, const DynamicVectorClass<const char *> value)
+bool CCINIClass::Put_Strings(const char* section, const char* entry, const DynamicVectorClass<const char*> value)
 {
-    char buffer[1024] ={'\0'};
+    char buffer[1024] = {'\0'};
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -439,7 +438,7 @@ bool CCINIClass::Put_Strings(const char *section, const char *entry, const Dynam
  *
  *  @author: CCHyper
  */
-TypeList<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry, const TypeList<Wstring> defvalue)
+TypeList<Wstring> CCINIClass::Get_Strings(const char* section, const char* entry, const TypeList<Wstring> defvalue)
 {
     char buffer[1024];
 
@@ -447,7 +446,7 @@ TypeList<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry
 
         TypeList<Wstring> list;
 
-        char *name = std::strtok(buffer, ",");
+        char* name = std::strtok(buffer, ",");
         while (name) {
             list.Add(name);
 
@@ -466,9 +465,9 @@ TypeList<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeList<Wstring> value)
+bool CCINIClass::Put_Strings(const char* section, const char* entry, const TypeList<Wstring> value)
 {
-    char buffer[1024] ={'\0'};
+    char buffer[1024] = {'\0'};
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {
@@ -486,7 +485,7 @@ bool CCINIClass::Put_Strings(const char *section, const char *entry, const TypeL
  *
  *  @author: CCHyper
  */
-DynamicVectorClass<Wstring> CCINIClass::Get_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> defvalue)
+DynamicVectorClass<Wstring> CCINIClass::Get_Strings(const char* section, const char* entry, const DynamicVectorClass<Wstring> defvalue)
 {
     char buffer[1024];
 
@@ -494,7 +493,7 @@ DynamicVectorClass<Wstring> CCINIClass::Get_Strings(const char *section, const c
 
         TypeList<Wstring> list;
 
-        char *name = std::strtok(buffer, ",");
+        char* name = std::strtok(buffer, ",");
         while (name) {
             list.Add(name);
 
@@ -513,9 +512,9 @@ DynamicVectorClass<Wstring> CCINIClass::Get_Strings(const char *section, const c
  *
  *  @author: CCHyper
  */
-bool CCINIClass::Put_Strings(const char *section, const char *entry, const DynamicVectorClass<Wstring> value)
+bool CCINIClass::Put_Strings(const char* section, const char* entry, const DynamicVectorClass<Wstring> value)
 {
-    char buffer[1024] ={'\0'};
+    char buffer[1024] = {'\0'};
 
     for (int index = 0; index < value.Count(); ++index) {
         if (buffer[0] != '\0') {

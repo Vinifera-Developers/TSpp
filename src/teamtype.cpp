@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "teamtype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-TeamType TeamTypeClass::From_Name(const char *name)
+TeamType TeamTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ TeamType TeamTypeClass::From_Name(const char *name)
 }
 
 
-const char *TeamTypeClass::Name_From(TeamType type)
+const char* TeamTypeClass::Name_From(TeamType type)
 {
     return (type != TEAM_NONE && type < TeamTypes.Count() ? TeamTypes[type]->Name() : "<none>");
 }
 
 
-const TeamTypeClass *TeamTypeClass::Find_Or_Make(const char *name)
+const TeamTypeClass* TeamTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

@@ -28,24 +28,24 @@
 #pragma once
 
 
-#include "always.h"
 #include "abstract.h"
+#include "always.h"
 #include "vector.h"
 
 
 class WaypointClass
 {
-    public:
-        WaypointClass();
-        ~WaypointClass();
+public:
+    WaypointClass();
+    ~WaypointClass();
 
-        bool operator==(const WaypointClass &that) const { return Location == that.Location; }
-        bool operator!=(const WaypointClass &that) const { return Location != that.Location; }
+    bool operator==(const WaypointClass& that) const { return Location == that.Location; }
+    bool operator!=(const WaypointClass& that) const { return Location != that.Location; }
 
-    public:
-        Coord Location;
+public:
+    Coord Location;
 };
 
 
-const char *Waypoint_As_String(int num);
-int Waypoint_From_String(const char *string);
+const char* Waypoint_As_String(int num);
+int Waypoint_From_String(const char* string);

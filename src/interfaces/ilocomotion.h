@@ -52,7 +52,7 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Links object to locomotor.
      */
-    STDMETHOD(Link_To_Object)(void *object) PURE;
+    STDMETHOD(Link_To_Object)(void* object) PURE;
 
     /**
      *  Sees if object is moving.
@@ -82,12 +82,12 @@ DECLARE_INTERFACE_IID_(ILocomotion, IUnknown, "070F3290-9841-11D1-B709-00A024DDA
     /**
      *  Fetch voxel draw matrix.
      */
-    STDMETHOD_(Matrix3D, Draw_Matrix)(int *key) PURE;
+    STDMETHOD_(Matrix3D, Draw_Matrix)(int* key) PURE;
 
     /**
      *  Fetch shadow draw matrix.
      */
-    STDMETHOD_(Matrix3D, Shadow_Matrix)(int *key) PURE;
+    STDMETHOD_(Matrix3D, Shadow_Matrix)(int* key) PURE;
 
     /**
      *  Draw point center location.

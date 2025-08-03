@@ -51,14 +51,24 @@ public:
     TRect(TPoint2D<T> const& point, T w, T h) : X(point.X), Y(point.Y), Width(w), Height(h) {}
 
     // Equality comparison operators.
-    bool operator == (TRect<T> const& rvalue) const { return X == rvalue.X && Y == rvalue.Y && Width == rvalue.Width && Height == rvalue.Height; }
-    bool operator != (TRect<T> const& rvalue) const { return X != rvalue.X || Y != rvalue.Y || Width != rvalue.Width || Height != rvalue.Height; }
+    bool operator==(TRect<T> const& rvalue) const { return X == rvalue.X && Y == rvalue.Y && Width == rvalue.Width && Height == rvalue.Height; }
+    bool operator!=(TRect<T> const& rvalue) const { return X != rvalue.X || Y != rvalue.Y || Width != rvalue.Width || Height != rvalue.Height; }
 
     // Addition and subtraction operators.
-    TRect<T> const& operator += (TPoint2D<T> const& point) { X += point.X; Y += point.Y; return*this; }
-    TRect<T> const& operator -= (TPoint2D<T> const& point) { X -= point.X; Y -= point.Y; return*this; }
-    TRect<T> operator + (TPoint2D<T> const& point) { return TRect<T>(Top_Left() + point, Width, Height); }
-    TRect<T> operator - (TPoint2D<T> const& point) { return TRect<T>(Top_Left() - point, Width, Height); }
+    TRect<T> const& operator+=(TPoint2D<T> const& point)
+    {
+        X += point.X;
+        Y += point.Y;
+        return *this;
+    }
+    TRect<T> const& operator-=(TPoint2D<T> const& point)
+    {
+        X -= point.X;
+        Y -= point.Y;
+        return *this;
+    }
+    TRect<T> operator+(TPoint2D<T> const& point) { return TRect<T>(Top_Left() + point, Width, Height); }
+    TRect<T> operator-(TPoint2D<T> const& point) { return TRect<T>(Top_Left() - point, Width, Height); }
 
     /*
     **  Bias this rectangle within another.
@@ -66,7 +76,13 @@ public:
     TRect<T> Bias_To(TRect<T> const& rect) const { return TRect<T>(Top_Left() + rect.Top_Left(), Width, Height); }
 
     // Assign values
-    void Set(T x, T y, T w, T h) { X = x; Y = y; Width = w; Height = h; }
+    void Set(T x, T y, T w, T h)
+    {
+        X = x;
+        Y = y;
+        Width = w;
+        Height = h;
+    }
 
     /*
     **  Determine if two rectangles overlap.
@@ -107,7 +123,6 @@ public:
     bool Is_Point_Within(TPoint2D<T> const& point) const { return point.X >= X && point.X < X + Width && point.Y >= Y && point.Y < Y + Height; }
 
 public:
-
     /*
     **  Coordinate of upper left corner of rectangle.
     */
@@ -204,8 +219,8 @@ TRect<T> Union(TRect<T> const& rect1, TRect<T> const& rect2)
 template<class T>
 TRect<T> Intersect(TRect<T> const& bounding_rect, TRect<T> const& draw_rect, T* x, T* y)
 {
-    TRect<T> bad_rect(0, 0, 0, 0);			// Dummy (illegal) draw_rect.
-    TRect<T> new_draw_rect = draw_rect;		// Working draw_rect.
+    TRect<T> bad_rect(0, 0, 0, 0);      // Dummy (illegal) draw_rect.
+    TRect<T> new_draw_rect = draw_rect; // Working draw_rect.
 
     /*
     **  Both draw_rects must be valid or else no intersection can occur. In such

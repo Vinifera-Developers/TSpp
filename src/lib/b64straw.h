@@ -32,32 +32,31 @@
  *                 https://github.com/ElectronicArts/CnC_Remastered_Collection
  *
  ******************************************************************************/
-#pragma once 
+#pragma once
 
 #include "straw.h"
 
 
 class Base64Straw : public Straw
 {
-    public:
-        typedef enum CodeControl {
-            ENCODE,
-            DECODE
-        } CodeControl;
+public:
+    typedef enum CodeControl {
+        ENCODE,
+        DECODE
+    } CodeControl;
 
-    public:
-        Base64Straw(CodeControl control) : 
-            Control(control), Counter(0), CBuffer(), PBuffer() {}
+public:
+    Base64Straw(CodeControl control) : Control(control), Counter(0), CBuffer(), PBuffer() {}
 
-        virtual int Get(void * source, int slen) override;
+    virtual int Get(void* source, int slen) override;
 
-    private:
-        CodeControl Control;
-        int Counter;
-        char CBuffer[4];
-        char PBuffer[3];
+private:
+    CodeControl Control;
+    int Counter;
+    char CBuffer[4];
+    char PBuffer[3];
 
-    private:
-        Base64Straw(const Base64Straw &) = delete;
-        Base64Straw & operator = (const Base64Straw &) = delete;
+private:
+    Base64Straw(const Base64Straw&) = delete;
+    Base64Straw& operator=(const Base64Straw&) = delete;
 };

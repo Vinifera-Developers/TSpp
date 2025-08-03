@@ -30,5 +30,5 @@
 #include "always.h"
 
 
-void Fatal(const char *why, ...);
+void Fatal(const char* why, ...);
 void Emergency_Exit(int code);

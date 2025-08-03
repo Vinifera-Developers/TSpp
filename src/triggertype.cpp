@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "triggertype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-TriggerType TriggerTypeClass::From_Name(const char *name)
+TriggerType TriggerTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -54,13 +54,13 @@ TriggerType TriggerTypeClass::From_Name(const char *name)
 }
 
 
-const char *TriggerTypeClass::Name_From(TriggerType type)
+const char* TriggerTypeClass::Name_From(TriggerType type)
 {
     return (type != TRIGGER_NONE && type < TriggerTypes.Count() ? TriggerTypes[type]->Name() : "<none>");
 }
 
 
-const TriggerTypeClass *TriggerTypeClass::Find_Or_Make(const char *name)
+const TriggerTypeClass* TriggerTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

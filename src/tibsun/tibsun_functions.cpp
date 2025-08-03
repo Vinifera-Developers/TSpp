@@ -26,14 +26,14 @@
  *
  ******************************************************************************/
 #include "tibsun_functions.h"
-#include "tibsun_globals.h"
+#include "abstracttype.h"
+#include "ccfile.h"
+#include "foot.h"
+#include "iomap.h"
 #include "object.h"
 #include "objecttype.h"
 #include "techno.h"
-#include "foot.h"
-#include "abstracttype.h"
-#include "ccfile.h"
-#include "iomap.h"
+#include "tibsun_globals.h"
 
 
 /***************************************************************************
@@ -516,7 +516,7 @@ Rect Get_Tactical_Rect(bool use_options_size)
  *   02/11/2025 Rampastring : Adjusted for Tiberian Sun.
  *   09/04/1996 JLB : Created.                                                                 *
  *=============================================================================================*/
-void List_Copy(Cell const * source, int len, Cell * dest)
+void List_Copy(Cell const* source, int len, Cell* dest)
 {
     if (source == nullptr || dest == nullptr) {
         return;
@@ -524,8 +524,7 @@ void List_Copy(Cell const * source, int len, Cell * dest)
 
     while (len > 0) {
         *dest = *source;
-        if (*dest == REFRESH_EOL)
-            return;
+        if (*dest == REFRESH_EOL) return;
         dest++;
         source++;
         len--;

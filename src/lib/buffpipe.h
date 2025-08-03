@@ -34,26 +34,26 @@
  ******************************************************************************/
 #pragma once
 
-#include "pipe.h"
 #include "buff.h"
+#include "pipe.h"
 
 
 class BufferPipe : public Pipe
 {
-    public:
-        BufferPipe(const Buffer &buffer) : BufferPtr(buffer), Index(0) {}
-        BufferPipe(void *buffer, int length) : BufferPtr(buffer, length), Index(0) {}
+public:
+    BufferPipe(const Buffer& buffer) : BufferPtr(buffer), Index(0) {}
+    BufferPipe(void* buffer, int length) : BufferPtr(buffer, length), Index(0) {}
 
-        virtual int Put(const void *source, int slen) override;
+    virtual int Put(const void* source, int slen) override;
 
-    private:
-        bool Is_Valid() { return BufferPtr.Is_Valid(); }
+private:
+    bool Is_Valid() { return BufferPtr.Is_Valid(); }
 
-    private:
-        Buffer BufferPtr;
-        int Index;
+private:
+    Buffer BufferPtr;
+    int Index;
 
-    private:
-        BufferPipe(BufferPipe &) = delete;
-        BufferPipe & operator = (const BufferPipe &) = delete;
+private:
+    BufferPipe(BufferPipe&) = delete;
+    BufferPipe& operator=(const BufferPipe&) = delete;
 };

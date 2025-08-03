@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
+IsometricTileType IsometricTileTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,7 +50,7 @@ IsometricTileType IsometricTileTypeClass::From_Name(const char *name)
 }
 
 
-const char *IsometricTileTypeClass::Name_From(IsometricTileType type)
+const char* IsometricTileTypeClass::Name_From(IsometricTileType type)
 {
     return (type != ISOTILE_NONE && type < IsoTileTypes.Count() ? IsoTileTypes[type]->Name() : "<none>");
 }

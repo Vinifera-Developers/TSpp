@@ -33,8 +33,8 @@
  *
  ******************************************************************************/
 #include "lzw.h"
-#include "buffstraw.h"
 #include "buffpipe.h"
+#include "buffstraw.h"
 
 
 LZWEngine::LZWEngine()
@@ -51,7 +51,7 @@ void LZWEngine::Reset()
 }
 
 
-int LZWEngine::Compress(Buffer const & input, Buffer const & output)
+int LZWEngine::Compress(Buffer const& input, Buffer const& output)
 {
     BufferStraw instraw(input);
     BufferPipe outpipe(output);
@@ -96,7 +96,7 @@ int LZWEngine::Compress(Buffer const & input, Buffer const & output)
 }
 
 
-int LZWEngine::Uncompress(Buffer const & input, Buffer const & output)
+int LZWEngine::Uncompress(Buffer const& input, Buffer const& output)
 {
     int outcount = 0;
     BufferStraw instraw(input);
@@ -127,7 +127,7 @@ int LZWEngine::Uncompress(Buffer const & input, Buffer const & output)
             count = Decode_String(Decode_Stack, new_code);
         }
 
-        character = Decode_Stack[count-1];
+        character = Decode_Stack[count - 1];
         while (count > 0) {
             --count;
             outcount += outpipe.Put(&Decode_Stack[count], sizeof(Decode_Stack[0]));
@@ -146,7 +146,7 @@ int LZWEngine::Uncompress(Buffer const & input, Buffer const & output)
 
 int LZWEngine::Make_LZW_Hash(CodeType code, char character)
 {
-    return ((((int)(unsigned char)character) << ( BITS - 8 ) ) ^ (int)code);
+    return ((((int)(unsigned char)character) << (BITS - 8)) ^ (int)code);
 }
 
 
@@ -178,7 +178,7 @@ int LZWEngine::Find_Child_Node(CodeType parent_code, char child_character)
 }
 
 
-int LZWEngine::Decode_String(char * ptr, CodeType code)
+int LZWEngine::Decode_String(char* ptr, CodeType code)
 {
     int count = 0;
     while (code > 255) {

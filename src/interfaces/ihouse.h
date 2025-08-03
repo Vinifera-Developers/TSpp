@@ -56,7 +56,7 @@ DECLARE_INTERFACE_IID_(IHouse, IUnknown, "941582E0-86DA-11D1-B706-00A024DDAFD1")
     /**
      *  Returns IApplication interface.
      */
-    STDMETHOD_(IApplication *, Get_Application)() PURE;
+    STDMETHOD_(IApplication*, Get_Application)() PURE;
 
     /**
      *  Available money.

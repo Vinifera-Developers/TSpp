@@ -33,10 +33,10 @@
 
 class CounterClass : public VectorClass<int>
 {
-// Required for GCC.
-using VectorClass<int>::Vector;
-using VectorClass<int>::VectorMax;
-using VectorClass<int>::IsAllocated;
+    // Required for GCC.
+    using VectorClass<int>::Vector;
+    using VectorClass<int>::VectorMax;
+    using VectorClass<int>::IsAllocated;
 
 public:
     CounterClass();
@@ -50,8 +50,8 @@ public:
     int Value(int index) const;
     int Total() const;
 
-    HRESULT Load(IStream *pStm);
-    HRESULT Save(IStream *pStm);
+    HRESULT Load(IStream* pStm);
+    HRESULT Save(IStream* pStm);
 };
 
 

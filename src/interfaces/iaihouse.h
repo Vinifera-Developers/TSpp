@@ -39,16 +39,16 @@
  *  @brief   AI for House.
  */
 DECLARE_INTERFACE_IID_(IAIHouse, IUnknown, "96F02EC4-6FE8-11D1-B6FD-00A024DDAFD1")
-{   
+{
     /**
      *  Links house to an advisor object.
      */
-    STDMETHOD_(LONG, Link_House)(IHouse *house) PURE;
+    STDMETHOD_(LONG, Link_House)(IHouse * house) PURE;
 
     /**
      *  AI processing entry function.
      */
-    STDMETHOD_(LONG, AI)(long *framedelay) PURE;
+    STDMETHOD_(LONG, AI)(long* framedelay) PURE;
 };
 
 /**

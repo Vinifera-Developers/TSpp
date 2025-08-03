@@ -37,14 +37,14 @@ class GraphicMenuItem;
 
 class GraphicMenu
 {
-    public:
-        GraphicMenu();
-        virtual ~GraphicMenu();
+public:
+    GraphicMenu();
+    virtual ~GraphicMenu();
 
-    public:
-        MSEngine Engine;
-        char *Background;
-        char *Theme;
-        int field_54;
-        DynamicVectorClass<GraphicMenuItem *> Items;
+public:
+    MSEngine Engine;
+    char* Background;
+    char* Theme;
+    int field_54;
+    DynamicVectorClass<GraphicMenuItem*> Items;
 };

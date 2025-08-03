@@ -32,5 +32,5 @@
 #include <new>
 
 
-void *__cdecl operator_new(unsigned int size);
-void __cdecl operator_delete(void *ptr);
+void* __cdecl operator_new(unsigned int size);
+void __cdecl operator_delete(void* ptr);

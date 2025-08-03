@@ -28,8 +28,8 @@
  ******************************************************************************/
 #pragma once
 
-#include "typelist.h"
 #include "ccini.h"
+#include "typelist.h"
 
 
 /**
@@ -38,7 +38,7 @@
  *  @author: tomsons26, ZivDero
  */
 template<class T>
-T * TFind_Or_Make(const char * name, const DynamicVectorClass<T *>& vector)
+T* TFind_Or_Make(const char* name, const DynamicVectorClass<T*>& vector)
 {
     if (stricmp("<none>", name) && stricmp("none", name)) {
         for (int index = 0; index < vector.Count(); index++) {
@@ -58,12 +58,12 @@ T * TFind_Or_Make(const char * name, const DynamicVectorClass<T *>& vector)
  *  @author: CCHyper
  */
 template<class T>
-TypeList<T *> TGet_TypeList(CCINIClass const & ini, char const * section, char const * entry, TypeList<T *> const & defvalue)
+TypeList<T*> TGet_TypeList(CCINIClass const& ini, char const* section, char const* entry, TypeList<T*> const& defvalue)
 {
     char buffer[1024];
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
-        TypeList<T *> list;
-        const char * token = strtok(buffer, ",");
+        TypeList<T*> list;
+        const char* token = strtok(buffer, ",");
         while (token != nullptr && token[0] != '\0') {
             T* ptr = const_cast<T*>(T::Find_Or_Make(token));
             if (ptr) {
@@ -83,7 +83,7 @@ TypeList<T *> TGet_TypeList(CCINIClass const & ini, char const * section, char c
  *  @author: ZivDero
  */
 template<class T>
-T * TGet_Class(CCINIClass const & ini, char const * section, char const * entry, T * defvalue)
+T* TGet_Class(CCINIClass const& ini, char const* section, char const* entry, T* defvalue)
 {
     char buffer[1024];
     if (ini.Get_String(section, entry, "", buffer, sizeof(buffer)) != 0) {
@@ -99,7 +99,7 @@ T * TGet_Class(CCINIClass const & ini, char const * section, char const * entry,
  *  @author: ZivDero
  */
 template<class T>
-bool TPut_Class(CCINIClass & ini, char const * section, char const * entry, T const * value)
+bool TPut_Class(CCINIClass& ini, char const* section, char const* entry, T const* value)
 {
     return ini.Put_String(section, entry, value->Name());
 }

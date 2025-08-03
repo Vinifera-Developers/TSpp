@@ -27,4 +27,4 @@
  ******************************************************************************/
 #pragma once
 
-char *strtrim(char *buffer);
+char* strtrim(char* buffer);

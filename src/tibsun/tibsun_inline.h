@@ -27,9 +27,9 @@
  ******************************************************************************/
 #pragma once
 
-#include "tibsun_globals.h"
-#include "tibsun_defines.h"
 #include "scenario.h"
+#include "tibsun_defines.h"
+#include "tibsun_globals.h"
 #include "wwmath.h"
 #include <algorithm>
 
@@ -100,55 +100,55 @@ inline DirType Direction(Coord const& coord1, Coord const& coord2)
 }
 
 
-inline DirType Desired_Facing(const Point2D &point1, const Point2D &point2)
+inline DirType Desired_Facing(const Point2D& point1, const Point2D& point2)
 {
     return Desired_Facing(point2.X, point2.Y, point1.X, point1.Y);
 }
 
 
-inline Dir256 Desired_Facing256(const Point2D &point1, const Point2D &point2)
+inline Dir256 Desired_Facing256(const Point2D& point1, const Point2D& point2)
 {
     Dir256 facing = Desired_Facing(point2.X, point2.Y, point1.X, point1.Y).Get_Dir();
     return facing;
 }
 
 
-inline FacingType Desired_Facing8(const Point2D &point1, const Point2D &point2)
+inline FacingType Desired_Facing8(const Point2D& point1, const Point2D& point2)
 {
     FacingType facing = Dir_Facing(Desired_Facing(point2.X, point2.Y, point1.X, point1.Y).Get_Dir());
     return facing;
 }
 
 
-inline Dir256 Direction256(const Coord &coord1, const Coord &coord2)
+inline Dir256 Direction256(const Coord& coord1, const Coord& coord2)
 {
     Dir256 facing = Desired_Facing(coord2.X, coord2.Y, coord1.X, coord1.Y).Get_Dir();
     return facing;
 }
 
 
-inline FacingType Direction8(const Coord &coord1, const Coord &coord2)
+inline FacingType Direction8(const Coord& coord1, const Coord& coord2)
 {
     FacingType facing = Dir_Facing(Desired_Facing(coord1.X, coord1.Y, coord2.X, coord2.Y).Get_Dir());
     return facing;
 }
 
 
-inline Dir256 Direction256(const Cell &cell1, const Cell &cell2)
+inline Dir256 Direction256(const Cell& cell1, const Cell& cell2)
 {
     Dir256 facing = Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir();
     return facing;
 }
 
 
-inline FacingType Direction8(const Cell &cell1, const Cell &cell2)
+inline FacingType Direction8(const Cell& cell1, const Cell& cell2)
 {
     FacingType facing = Dir_Facing(Desired_Facing(cell1.X, cell1.Y, cell2.X, cell2.Y).Get_Dir());
     return facing;
 }
 
 
-inline int Distance(const Coord &coord1, const Coord &coord2)
+inline int Distance(const Coord& coord1, const Coord& coord2)
 {
     Coord coord;
     coord = coord1 - coord2;
@@ -161,13 +161,13 @@ inline int Distance_Level_Snap(const Coord& coord1, const Coord& coord2)
     int z1 = coord1.Z;
     int z2 = coord2.Z;
     if (abs(z2 - z1) < LEVEL_LEPTON_H) {
-      z2 = coord1.Z;
+        z2 = coord1.Z;
     }
     return Coord(coord1.X - coord2.X, coord1.Y - coord2.Y, z1 - z2).Length();
 }
 
 
-inline short Distance(const Cell &cell1, const Cell &cell2)
+inline short Distance(const Cell& cell1, const Cell& cell2)
 {
     Cell cell;
     cell = cell1 - cell2;
@@ -175,41 +175,41 @@ inline short Distance(const Cell &cell1, const Cell &cell2)
 }
 
 
-inline bool Is_Distance_Within_Range(const Coord &coord1, const Coord &coord2, int min, int max)
+inline bool Is_Distance_Within_Range(const Coord& coord1, const Coord& coord2, int min, int max)
 {
     int dist = Distance(coord1, coord2);
     return dist >= min && dist <= max;
 }
 
 
-inline bool Is_Distance_Within_Range(const Cell &cell1, const Cell &cell2, int min, int max)
+inline bool Is_Distance_Within_Range(const Cell& cell1, const Cell& cell2, int min, int max)
 {
     int dist = Distance(cell1, cell2);
     return dist >= min && dist <= max;
 }
 
 
-inline void Move_Point(Point2D &point, Dir256 dir, int distance)
+inline void Move_Point(Point2D& point, Dir256 dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360) / (UINT16_MAX - 1);
 
     point.Y -= (WWMath::Sin(radians) * distance);
     point.X += (WWMath::Cos(radians) * distance);
 }
 
 
-inline void Move_Coord(Coord &coord, Dir256 dir, int distance)
+inline void Move_Coord(Coord& coord, Dir256 dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360) / (UINT16_MAX - 1);
 
     coord.Y -= (WWMath::Sin(radians) * distance);
     coord.X += (WWMath::Cos(radians) * distance);
 }
 
 
-inline void Move_Cell(Cell &cell, Dir256 dir, int distance)
+inline void Move_Cell(Cell& cell, Dir256 dir, int distance)
 {
-    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360)/(UINT16_MAX - 1);
+    double radians = (double)(dir - 0x3FFF) * -DEG_TO_RAD(360) / (UINT16_MAX - 1);
 
     cell.Y -= (WWMath::Sin(radians) * distance);
     cell.X += (WWMath::Cos(radians) * distance);
@@ -228,7 +228,7 @@ inline LEPTON Pixel_To_Lepton(int pixel)
 }
 
 
-inline Coord Lerp(const Coord &coord1, const Coord &coord2, float t)
+inline Coord Lerp(const Coord& coord1, const Coord& coord2, float t)
 {
     Coord coord;
     coord.X = ((double)coord1.X * (1.0f - (double)t)) + ((double)coord2.X * t);
@@ -238,7 +238,7 @@ inline Coord Lerp(const Coord &coord1, const Coord &coord2, float t)
 }
 
 
-inline Cell Lerp(const Cell &cell1, const Cell &cell2, float t)
+inline Cell Lerp(const Cell& cell1, const Cell& cell2, float t)
 {
     Cell cell;
     cell.X = ((double)cell1.X * (1.0f - (double)t)) + ((double)cell2.X * t);
@@ -247,7 +247,7 @@ inline Cell Lerp(const Cell &cell1, const Cell &cell2, float t)
 }
 
 
-inline Coord Coord_Snap(const Coord &coord)
+inline Coord Coord_Snap(const Coord& coord)
 {
     // Convert coord to cell, and back again to get the absolute position.
     Cell cell;
@@ -269,7 +269,7 @@ inline Coord Coord_Snap(const Coord &coord)
 }
 
 
-inline Coord Coord_Fraction(const Coord &coord)
+inline Coord Coord_Fraction(const Coord& coord)
 {
     Coord tmp;
     tmp.X = coord.X % CELL_LEPTON_W;
@@ -278,7 +278,7 @@ inline Coord Coord_Fraction(const Coord &coord)
 }
 
 
-inline Coord Coord_Whole(const Coord &coord)
+inline Coord Coord_Whole(const Coord& coord)
 {
     // Convert coord to cell, and back again to get the absolute position.
     Cell cell;
@@ -309,25 +309,25 @@ inline int Lepton_To_Cell(LEPTON lepton_distance)
 }
 
 
-inline Coord Adjacent_Cell(const Coord &coord, FacingType dir)
+inline Coord Adjacent_Cell(const Coord& coord, FacingType dir)
 {
-    return coord + AdjacentCoord[(int)dir & (FACING_COUNT-1)];
+    return coord + AdjacentCoord[(int)dir & (FACING_COUNT - 1)];
 }
 
 
-inline Coord Adjacent_Cell(const Coord &coord, Dir256 dir)
+inline Coord Adjacent_Cell(const Coord& coord, Dir256 dir)
 {
     return Adjacent_Cell(coord, Dir_Facing(dir));
 }
 
 
-inline Cell Adjacent_Cell(const Cell &cell, FacingType dir)
+inline Cell Adjacent_Cell(const Cell& cell, FacingType dir)
 {
-    return (Cell)(cell + AdjacentCell[(int)dir & (FACING_COUNT-1)]);
+    return (Cell)(cell + AdjacentCell[(int)dir & (FACING_COUNT - 1)]);
 }
 
 
-inline Cell Adjacent_Cell(const Cell &cell, Dir256 dir)
+inline Cell Adjacent_Cell(const Cell& cell, Dir256 dir)
 {
     return Adjacent_Cell(cell, Dir_Facing(dir));
 }
@@ -367,7 +367,7 @@ inline bool Probability_Of(double probability)
 
 inline bool Probability_Of2(double probability)
 {
-    return (((Scen->RandomNumber(0, INT_MAX-1) / (double)(INT_MAX-1))) < probability);
+    return (((Scen->RandomNumber(0, INT_MAX - 1) / (double)(INT_MAX - 1))) < probability);
 }
 
 

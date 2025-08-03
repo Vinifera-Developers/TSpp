@@ -30,8 +30,8 @@
 #include "always.h"
 #include "tibsun_defines.h"
 
-extern int &InstalledMode;
-extern int &EnabledMode;
+extern int& InstalledMode;
+extern int& EnabledMode;
 
 bool Detect_Addons();
 bool Is_Addon_Available(AddonType addon);

@@ -29,9 +29,9 @@
  *  @note          This file is part of the LZO real-time data compression library.
  *                 Copyright (C) 1996-2017 Markus Franz Xaver Johannes Oberhumer.
  *                 All Rights Reserved.
- * 
+ *
  *                 Markus F.X.J. Oberhumer <markus@oberhumer.com>
- * 
+ *
  *                 The full LZO package can be found at
  *                 http://www.oberhumer.com/opensource/lzo/
  *
@@ -45,18 +45,14 @@
 extern "C" {
 #endif
 
-typedef void * lzo_voidp;
-typedef unsigned char * lzo_bytep;
+typedef void* lzo_voidp;
+typedef unsigned char* lzo_bytep;
 typedef unsigned long lzo_uint;
-typedef lzo_uint * lzo_uintp;
+typedef lzo_uint* lzo_uintp;
 
-int lzo1x_1_compress(const lzo_bytep src, lzo_uint src_len,
-                     lzo_bytep dst, lzo_uintp dst_len,
-                     lzo_voidp wrkmem );
+int lzo1x_1_compress(const lzo_bytep src, lzo_uint src_len, lzo_bytep dst, lzo_uintp dst_len, lzo_voidp wrkmem);
 
-int lzo1x_decompress(const lzo_bytep src, lzo_uint src_len,
-                     lzo_bytep dst, lzo_uintp dst_len,
-                     lzo_voidp wrkmem);
+int lzo1x_decompress(const lzo_bytep src, lzo_uint src_len, lzo_bytep dst, lzo_uintp dst_len, lzo_voidp wrkmem);
 
 #ifdef __cplusplus
 } /* extern "C" */

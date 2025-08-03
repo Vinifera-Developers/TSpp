@@ -40,73 +40,73 @@ class ParticleSystemTypeClass;
 class DECLSPEC_UUID("9FD219CA-0F7B-11D2-8172-006008055BB5")
 WeaponTypeClass : public AbstractTypeClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-    public:
-        WeaponTypeClass(const char *ini_name = nullptr);
-        WeaponTypeClass(const NoInitClass &noinit);
-        virtual ~WeaponTypeClass();
+public:
+    WeaponTypeClass(const char* ini_name = nullptr);
+    WeaponTypeClass(const NoInitClass& noinit);
+    virtual ~WeaponTypeClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine &crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
-        /**
-         *  AbstractTypeClass
-         */
-        virtual bool Read_INI(CCINIClass &ini) override;
+    /**
+     *  AbstractTypeClass
+     */
+    virtual bool Read_INI(CCINIClass& ini) override;
 
-        void Set_Speed();
-        bool Is_Wall_Destroyer() const;
-        ThreatType Allowed_Threats() const;
+    void Set_Speed();
+    bool Is_Wall_Destroyer() const;
+    ThreatType Allowed_Threats() const;
 
-        static WeaponType From_Name(const char *name);
-        static const char *Name_From(WeaponType type);
-        static const WeaponTypeClass *Find_Or_Make(const char *name);
+    static WeaponType From_Name(const char* name);
+    static const char* Name_From(WeaponType type);
+    static const WeaponTypeClass* Find_Or_Make(const char* name);
 
-    public:
-        int AmbientDamage;
-        int Burst;
-        BulletTypeClass *Bullet;
-        int Attack;
-        MPHType MaxSpeed;
-        WarheadTypeClass *WarheadPtr;
-        int ROF;
-        LEPTON Range;
-        LEPTON ProjectileRange;
-        int BurstDelay[4];
-        LEPTON MinimumRange;
-        TypeList<VocType> Sound;
-        TypeList<AnimTypeClass *> Anim;
-        ParticleSystemTypeClass *AttachedParticleSystem;
-        RGBStruct LaserInnerColor;
-        RGBStruct LaserOuterColor;
-        RGBStruct LaserOuterSpread;
-        bool IsUseFireParticles;
-        bool IsUseSparkParticles;
-        bool IsRailgun;
-        bool IsLobber;
-        bool IsBright;
-        unsigned char LaserDuration;
-        bool IsBigLaser;
-        bool IsSonic;
-        bool IsTurboBoosted;
-        bool IsSupressed;
-        bool IsCamera;
-        bool IsElectric;
-        bool IsLaser;
-        bool IsIonSensitive;
+public:
+    int AmbientDamage;
+    int Burst;
+    BulletTypeClass* Bullet;
+    int Attack;
+    MPHType MaxSpeed;
+    WarheadTypeClass* WarheadPtr;
+    int ROF;
+    LEPTON Range;
+    LEPTON ProjectileRange;
+    int BurstDelay[4];
+    LEPTON MinimumRange;
+    TypeList<VocType> Sound;
+    TypeList<AnimTypeClass*> Anim;
+    ParticleSystemTypeClass* AttachedParticleSystem;
+    RGBStruct LaserInnerColor;
+    RGBStruct LaserOuterColor;
+    RGBStruct LaserOuterSpread;
+    bool IsUseFireParticles;
+    bool IsUseSparkParticles;
+    bool IsRailgun;
+    bool IsLobber;
+    bool IsBright;
+    unsigned char LaserDuration;
+    bool IsBigLaser;
+    bool IsSonic;
+    bool IsTurboBoosted;
+    bool IsSupressed;
+    bool IsCamera;
+    bool IsElectric;
+    bool IsLaser;
+    bool IsIonSensitive;
 };

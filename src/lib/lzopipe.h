@@ -39,31 +39,31 @@
 
 class LZOPipe : public Pipe
 {
-    public:
-        typedef enum CompControl {
-            COMPRESS,
-            DECOMPRESS
-        } CompControl;
+public:
+    typedef enum CompControl {
+        COMPRESS,
+        DECOMPRESS
+    } CompControl;
 
-        LZOPipe(CompControl control, int blocksize = 1024*8);
-        virtual ~LZOPipe();
+    LZOPipe(CompControl control, int blocksize = 1024 * 8);
+    virtual ~LZOPipe();
 
-        virtual int Flush() override;
-        virtual int Put(const void *source, int slen) override;
+    virtual int Flush() override;
+    virtual int Put(const void* source, int slen) override;
 
-    private:
-        CompControl Control;
-        int Counter;
-        char * Buffer;
-        char * Buffer2;
-        int BlockSize;
-        int SafetyMargin;
-        struct {
-            unsigned short CompCount;
-            unsigned short UncompCount;
-        } BlockHeader;
+private:
+    CompControl Control;
+    int Counter;
+    char* Buffer;
+    char* Buffer2;
+    int BlockSize;
+    int SafetyMargin;
+    struct {
+        unsigned short CompCount;
+        unsigned short UncompCount;
+    } BlockHeader;
 
-    private:
-        LZOPipe(LZOPipe &) = delete;
-        LZOPipe & operator = (const LZOPipe &) = delete;
+private:
+    LZOPipe(LZOPipe&) = delete;
+    LZOPipe& operator=(const LZOPipe&) = delete;
 };

@@ -38,41 +38,41 @@ class ScriptMissionClass;
 class DECLSPEC_UUID("42F3A646-0789-11D2-ACA5-006008055BB5")
 ScriptClass : public AbstractClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-	public:
-        ScriptClass(ScriptTypeClass *classof);
-        ScriptClass(const NoInitClass &noinit);
-        virtual ~ScriptClass();
+public:
+    ScriptClass(ScriptTypeClass* classof);
+    ScriptClass(const NoInitClass& noinit);
+    virtual ~ScriptClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine &crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
-        ScriptMissionClass Get_Current_Mission();
-        ScriptMissionClass Get_Next_Mission();
-        bool Stop_Script();
-        bool Set_Line(int line);
-        bool Next_Mission();
-        bool Has_Missions_Remaining() const;
-        
-        const char *Name() const;
+    ScriptMissionClass Get_Current_Mission();
+    ScriptMissionClass Get_Next_Mission();
+    bool Stop_Script();
+    bool Set_Line(int line);
+    bool Next_Mission();
+    bool Has_Missions_Remaining() const;
 
-	public:
-        ScriptTypeClass *Class;
-        int field_18;
-		int CurrentMission;
+    const char* Name() const;
+
+public:
+    ScriptTypeClass* Class;
+    int field_18;
+    int CurrentMission;
 };

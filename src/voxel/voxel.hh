@@ -29,8 +29,8 @@
 
 #include "always.h"
 #include "matrix3d.h"
-#include "vector3.h"
 #include "rgb.h"
+#include "vector3.h"
 
 
 /**
@@ -59,8 +59,7 @@
 /**
  *  Voxel file header (VXL).
  */
-typedef struct VoxelHeaderStruct
-{
+typedef struct VoxelHeaderStruct {
     char Name[MAX_VOXEL_NAME_LENGTH];
     int PaletteCount;
     int LayerCount;
@@ -72,8 +71,7 @@ typedef struct VoxelHeaderStruct
 /**
  *  Voxel layer header.
  */
-typedef struct VoxelLayerHeaderStruct
-{
+typedef struct VoxelLayerHeaderStruct {
     char Name[MAX_VOXEL_NAME_LENGTH];
     int InfoIndex;
     int field_14;
@@ -84,8 +82,7 @@ typedef struct VoxelLayerHeaderStruct
 /**
  *  Voxel layer info header.
  */
-typedef struct VoxelLayerInfoStruct
-{
+typedef struct VoxelLayerInfoStruct {
     int StartOffset;
     int EndOffset;
     int DataOffset;
@@ -100,15 +97,13 @@ typedef struct VoxelLayerInfoStruct
 };
 
 
-typedef struct VoxelCubeStruct
-{
+typedef struct VoxelCubeStruct {
     unsigned char ColorIndex;
     unsigned char NormalIndex;
 };
 
 
-typedef struct VoxelSliceStruct
-{
+typedef struct VoxelSliceStruct {
     unsigned char field_0; // Known as "skip count."
     unsigned char Count;
 };
@@ -117,8 +112,7 @@ typedef struct VoxelSliceStruct
 /**
  *  Voxel anim control header (HVA: Hierarchical Voxel Animation).
  */
-typedef struct VoxelAnimFileHeaderStruct
-{
+typedef struct VoxelAnimFileHeaderStruct {
     char Name[MAX_VOXEL_NAME_LENGTH];
     int FrameCount;
     int LayerCount;

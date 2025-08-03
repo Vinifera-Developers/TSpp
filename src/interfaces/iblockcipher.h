@@ -41,25 +41,25 @@ DECLARE_INTERFACE_IID_(IBlockCipher, IUnknown, "E0113100-6A7C-11D1-B6F9-00A024DD
     /**
      *  Sets encryption/decryption key.
      */
-    STDMETHOD(Submit_Key)(int length, void *key) PURE;
+    STDMETHOD(Submit_Key)(int length, void* key) PURE;
 
     /**
      *  Maximum key length allowed.
      */
-    STDMETHOD(Max_Key_Length)(LONG *key_length) PURE;
+    STDMETHOD(Max_Key_Length)(LONG* key_length) PURE;
 
     /**
      *  Size of encryption block.
      */
-    STDMETHOD(Block_Size)(LONG *key_length) PURE;
+    STDMETHOD(Block_Size)(LONG* key_length) PURE;
 
     /**
      *  Encrypt data buffer.
      */
-    STDMETHOD(Encrypt)(int length, void *plain_text, void *cypher_text) PURE;
+    STDMETHOD(Encrypt)(int length, void* plain_text, void* cypher_text) PURE;
 
     /**
      *  Decrypt data buffer.
      */
-    STDMETHOD(Decrypt)(int length, void *cypher_text, void *plain_text) PURE;
+    STDMETHOD(Decrypt)(int length, void* cypher_text, void* plain_text) PURE;
 };

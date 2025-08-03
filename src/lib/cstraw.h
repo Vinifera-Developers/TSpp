@@ -34,28 +34,28 @@
  ******************************************************************************/
 #pragma once
 
-#include "straw.h"
 #include "buff.h"
+#include "straw.h"
 
 
 class CacheStraw : public Straw
 {
-    public:
-        CacheStraw(const Buffer &buffer) : BufferPtr(buffer), Index(0), Length(0) {}
-        CacheStraw(int length = 4096) : BufferPtr(length), Index(0), Length(0) {}
-        virtual ~CacheStraw() {}
+public:
+    CacheStraw(const Buffer& buffer) : BufferPtr(buffer), Index(0), Length(0) {}
+    CacheStraw(int length = 4096) : BufferPtr(length), Index(0), Length(0) {}
+    virtual ~CacheStraw() {}
 
-        virtual int Get(void *source, int slen) override;
+    virtual int Get(void* source, int slen) override;
 
-    private:
-        bool Is_Valid() { return BufferPtr.Is_Valid(); }
+private:
+    bool Is_Valid() { return BufferPtr.Is_Valid(); }
 
-    private:
-        Buffer BufferPtr;
-        int Index;
-        int Length;
+private:
+    Buffer BufferPtr;
+    int Index;
+    int Length;
 
-    private:
-        CacheStraw(const CacheStraw &) = delete;
-        CacheStraw & operator = (const CacheStraw &) = delete;
+private:
+    CacheStraw(const CacheStraw&) = delete;
+    CacheStraw& operator=(const CacheStraw&) = delete;
 };

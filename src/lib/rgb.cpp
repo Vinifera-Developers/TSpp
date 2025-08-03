@@ -31,7 +31,7 @@
 #include <algorithm>
 
 
-RGBClass RGBClass::Interpolate(RGBClass &from, RGBClass &towards, float amount)
+RGBClass RGBClass::Interpolate(RGBClass& from, RGBClass& towards, float amount)
 {
     RGBClass tmp;
     tmp.Red = std::clamp(from.Red * (1.0f - amount) + towards.Red * amount, 0.0f, 255.0f);

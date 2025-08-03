@@ -27,10 +27,10 @@
  ******************************************************************************/
 #pragma once
 
-#include "ttimer.h"
 #include "stimer.h"
 #include "tibsun_defines.h"
 #include "tspp.h"
+#include "ttimer.h"
 
 
 void Speak(VoxType voice, bool a2 = false);
@@ -40,15 +40,14 @@ bool Is_Speaking();
 void Set_Speech_Volume(int vol);
 
 
-extern int &SpeechVolume;
-extern bool &IsSpeechAllowed;
+extern int& SpeechVolume;
+extern bool& IsSpeechAllowed;
 
-extern CDTimerClass<SystemTimerClass> &SpeakTimer;
+extern CDTimerClass<SystemTimerClass>& SpeakTimer;
 
-ARRAY_DEC(void *, SpeechBuffer, 2);
+ARRAY_DEC(void*, SpeechBuffer, 2);
 ARRAY_DEC(VoxType, SpeechRecord, 2);
-extern VoxType &SpeakQueue;
-extern VoxType &CurrentVoice;
+extern VoxType& SpeakQueue;
+extern VoxType& CurrentVoice;
 
-ARRAY_DEC(char const *, Speech, VOX_COUNT);
-
+ARRAY_DEC(char const*, Speech, VOX_COUNT);

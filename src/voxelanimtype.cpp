@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "voxelanimtype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-VoxelAnimType VoxelAnimTypeClass::From_Name(const char *name)
+VoxelAnimType VoxelAnimTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ VoxelAnimType VoxelAnimTypeClass::From_Name(const char *name)
 }
 
 
-const char *VoxelAnimTypeClass::Name_From(VoxelAnimType type)
+const char* VoxelAnimTypeClass::Name_From(VoxelAnimType type)
 {
     return (type != VOXELANIM_NONE && type < VoxelAnimTypes.Count() ? VoxelAnimTypes[type]->Name() : "<none>");
 }
 
 
-const VoxelAnimTypeClass *VoxelAnimTypeClass::Find_Or_Make(const char *name)
+const VoxelAnimTypeClass* VoxelAnimTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

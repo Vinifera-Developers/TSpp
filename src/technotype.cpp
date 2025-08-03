@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-const TechnoTypeClass *TechnoTypeClass::From_Name(const char *name)
+const TechnoTypeClass* TechnoTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -40,7 +40,7 @@ const TechnoTypeClass *TechnoTypeClass::From_Name(const char *name)
 
     if (name != nullptr) {
         for (int index = 0; index < TechnoTypes.Count(); ++index) {
-            const TechnoTypeClass *ttype = TechnoTypes[index];
+            const TechnoTypeClass* ttype = TechnoTypes[index];
             if (!strcasecmp(ttype->Name(), name)) {
                 return ttype;
             }

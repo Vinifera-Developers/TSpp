@@ -28,8 +28,8 @@
 #pragma once
 
 #include "objecttype.h"
-#include "tibsun_defines.h"
 #include "point.h"
+#include "tibsun_defines.h"
 #include "typelist.h"
 
 
@@ -51,51 +51,51 @@ public:
     /**
      *  IPersistStream
      */
-    IFACEMETHOD(Load)(IStream *pStm);
-    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
-    IFACEMETHOD_(LONG, GetSizeMax)(ULARGE_INTEGER *pcbSize);
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
+    IFACEMETHOD_(LONG, GetSizeMax)(ULARGE_INTEGER* pcbSize);
 
 public:
-    TechnoTypeClass(const char *ini_name = nullptr, SpeedType speed = SPEED_FOOT);
-    TechnoTypeClass(const NoInitClass &noinit);
+    TechnoTypeClass(const char* ini_name = nullptr, SpeedType speed = SPEED_FOOT);
+    TechnoTypeClass(const NoInitClass& noinit);
     virtual ~TechnoTypeClass();
 
     /**
      *  AbstractClass
      */
     virtual int Get_Object_Size_Delta() const override;
-    virtual void Object_CRC(CRCEngine &crc) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
     /**
      *  AbstractTypeClass
      */
-    virtual bool Read_INI(CCINIClass &ini) override;
+    virtual bool Read_INI(CCINIClass& ini) override;
 
     /**
      *  ObjectTypeClass
      */
     virtual int Get_Ownable() const override;
     virtual int Max_Pips() const override;
-    virtual int Cost_Of(HouseClass *house = nullptr) const override;
+    virtual int Cost_Of(HouseClass* house = nullptr) const override;
     virtual int Time_To_Build() const override;
-    virtual ShapeSet *const Get_Cameo_Data() const override;
+    virtual ShapeSet* const Get_Cameo_Data() const override;
 
     /**
      *  TechnoTypeClass
      */
-    virtual bool Legal_Placement(Cell &pos, HouseClass *house = nullptr) const;
+    virtual bool Legal_Placement(Cell& pos, HouseClass* house = nullptr) const;
     virtual int Raw_Cost() const;
     virtual int Repair_Cost() const;
     virtual int Repair_Step() const;
     virtual int Flight_Level() const;
 
     bool Is_Two_Shooter() const;
-    const WeaponInfoStruct & Fetch_Weapon_Info(WeaponSlotType slot) const;
-    bool In_Range(Coord &coord, AbstractClass * target, WeaponTypeClass *weapon);
+    const WeaponInfoStruct& Fetch_Weapon_Info(WeaponSlotType slot) const;
+    bool In_Range(Coord& coord, AbstractClass* target, WeaponTypeClass* weapon);
 
     int Max_Passengers() const { return MaxPassengers; }
 
-    static const TechnoTypeClass *From_Name(const char *name);
+    static const TechnoTypeClass* From_Name(const char* name);
 
 public:
     float CollateralDamageCoefficient;
@@ -114,7 +114,7 @@ public:
     double DeaccelerationFactor;
     double AccelerationFactor;
     int CloakingSpeed;
-    TypeList<VoxelAnimTypeClass *> DebrisTypes;
+    TypeList<VoxelAnimTypeClass*> DebrisTypes;
     TypeList<int> DebrisMaximums;
     CLSID Locomotor;
     double field_1F8;
@@ -131,9 +131,9 @@ public:
     double DeployTime;
     int FireAngle;
     PipScaleType PipScale;
-    TypeList<BuildingTypeClass *> Dock;
-    BuildingTypeClass *DeploysInto;
-    UnitTypeClass *UndeploysInto;
+    TypeList<BuildingTypeClass*> Dock;
+    BuildingTypeClass* DeploysInto;
+    UnitTypeClass* UndeploysInto;
     TypeList<VocType> VoiceSelect;
     TypeList<VocType> VoiceMove;
     TypeList<VocType> VoiceAttack;
@@ -158,15 +158,15 @@ public:
     long Ownable;
     bool IsAllowedToStartInMultiplayer;
     char CameoFilename[21 + 4];
-    const ShapeSet *CameoData;
+    const ShapeSet* CameoData;
     int Rotation;
     int ROT;
     int TurretOffset;
     int Points;
-    TypeList<AnimTypeClass *> Explosion;
-    ParticleSystemTypeClass *NaturalParticleSystem;
+    TypeList<AnimTypeClass*> Explosion;
+    ParticleSystemTypeClass* NaturalParticleSystem;
     TPoint3D<int> NaturalParticleSystemLocation;
-    TypeList<ParticleSystemTypeClass *> DamageParticleSystems;
+    TypeList<ParticleSystemTypeClass*> DamageParticleSystems;
     TPoint3D<int> DamageSmokeOffset;
     int ShadowIndex;
     int Storage;

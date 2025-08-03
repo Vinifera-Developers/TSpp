@@ -26,8 +26,8 @@
  *
  ******************************************************************************/
 #include "ffactory.h"
-#include "rawfile.h"
 #include "bfiofile.h"
+#include "rawfile.h"
 #include "tspp_assert.h"
 
 
@@ -37,8 +37,8 @@
 SimpleFileFactoryClass DefaultFileFactory;
 RawFileFactoryClass DefaultWritingFileFactory;
 
-FileFactoryClass *TheFileFactory = &DefaultFileFactory;
-RawFileFactoryClass *TheWritingFileFactory = &DefaultWritingFileFactory;
+FileFactoryClass* TheFileFactory = &DefaultFileFactory;
+RawFileFactoryClass* TheWritingFileFactory = &DefaultWritingFileFactory;
 
 
 SimpleFileFactoryClass::SimpleFileFactoryClass() :
@@ -49,7 +49,7 @@ SimpleFileFactoryClass::SimpleFileFactoryClass() :
 }
 
 
-FileClass *SimpleFileFactoryClass::Get_File(char const *filename)
+FileClass* SimpleFileFactoryClass::Get_File(char const* filename)
 {
     CriticalSectionClass::LockClass lock(Mutex);
 
@@ -59,14 +59,14 @@ FileClass *SimpleFileFactoryClass::Get_File(char const *filename)
     std::strncpy(stripped_name, filename, sizeof(stripped_name));
 
     if (IsStripPath) {
-        const char *separator = nullptr;
+        const char* separator = nullptr;
         if ((separator = std::strrchr(filename, '/')) != nullptr || (separator = std::strrchr(filename, '\\')) != nullptr) {
             // Copy string from after the separator.
             std::strncpy(stripped_name, (separator + 1), sizeof(stripped_name));
         }
     }
 
-    BufferIOFileClass *file = new BufferIOFileClass;
+    BufferIOFileClass* file = new BufferIOFileClass;
     TSPP_ASSERT(file != nullptr);
 
     if (file == nullptr) {
@@ -79,7 +79,7 @@ FileClass *SimpleFileFactoryClass::Get_File(char const *filename)
 
             if (std::strchr(SubDirectory, ';')) {
 
-                for (const char *token = std::strtok(SubDirectory, ";"); token; token = std::strtok(nullptr, ";")) {
+                for (const char* token = std::strtok(SubDirectory, ";"); token; token = std::strtok(nullptr, ";")) {
                     std::snprintf(new_name, sizeof(new_name), "%s%s", token, stripped_name);
                     file->Set_Name(new_name);
                     if (file->Is_Available()) {
@@ -90,7 +90,6 @@ FileClass *SimpleFileFactoryClass::Get_File(char const *filename)
             } else {
                 std::snprintf(new_name, sizeof(new_name), "%s%s", SubDirectory, stripped_name);
             }
-
         }
 
     } else {
@@ -103,7 +102,7 @@ FileClass *SimpleFileFactoryClass::Get_File(char const *filename)
 }
 
 
-void SimpleFileFactoryClass::Return_File(FileClass *file)
+void SimpleFileFactoryClass::Return_File(FileClass* file)
 {
     if (file != nullptr) {
         delete file;
@@ -111,7 +110,7 @@ void SimpleFileFactoryClass::Return_File(FileClass *file)
 }
 
 
-void SimpleFileFactoryClass::Get_Sub_Directory(char *new_dir)
+void SimpleFileFactoryClass::Get_Sub_Directory(char* new_dir)
 {
     CriticalSectionClass::LockClass lock(Mutex);
 
@@ -121,7 +120,7 @@ void SimpleFileFactoryClass::Get_Sub_Directory(char *new_dir)
 }
 
 
-void SimpleFileFactoryClass::Set_Sub_Directory(const char *sub_directory)
+void SimpleFileFactoryClass::Set_Sub_Directory(const char* sub_directory)
 {
     TSPP_ASSERT(sub_directory != nullptr);
 
@@ -136,7 +135,7 @@ void SimpleFileFactoryClass::Set_Sub_Directory(const char *sub_directory)
 /**
  *  Prepends a sub directory to the list of paths to search so it is searched first.
  */
-void SimpleFileFactoryClass::Prepend_Sub_Directory(const char *sub_directory)
+void SimpleFileFactoryClass::Prepend_Sub_Directory(const char* sub_directory)
 {
     TSPP_ASSERT(sub_directory != nullptr);
 
@@ -148,7 +147,7 @@ void SimpleFileFactoryClass::Prepend_Sub_Directory(const char *sub_directory)
 
     int subdir_len = std::strlen(sub_directory);
 
-    if ( subdir_len <= (sizeof(temp_sub_dir) - 3) && subdir_len >= 1 ) {
+    if (subdir_len <= (sizeof(temp_sub_dir) - 3) && subdir_len >= 1) {
 
         std::strcpy(temp_sub_dir, sub_directory);
 
@@ -174,7 +173,7 @@ void SimpleFileFactoryClass::Prepend_Sub_Directory(const char *sub_directory)
 /**
  *  Performs some simple tests on a path to check if it is fully qualified.
  */
-void SimpleFileFactoryClass::Append_Sub_Directory(char const *sub_directory)
+void SimpleFileFactoryClass::Append_Sub_Directory(char const* sub_directory)
 {
     TSPP_ASSERT(sub_directory != nullptr);
 
@@ -198,7 +197,7 @@ void SimpleFileFactoryClass::Append_Sub_Directory(char const *sub_directory)
         CriticalSectionClass::LockClass lock(Mutex);
 
         // Add ';' at the end if it doesn't already have one as the delimiter.
-        if (std::strlen(SubDirectory) > 0 && SubDirectory[std::strlen(SubDirectory)- 1] != ';') {
+        if (std::strlen(SubDirectory) > 0 && SubDirectory[std::strlen(SubDirectory) - 1] != ';') {
             std::strncat(SubDirectory, ";", sizeof(SubDirectory));
         }
 
@@ -210,7 +209,7 @@ void SimpleFileFactoryClass::Append_Sub_Directory(char const *sub_directory)
 /**
  *  Performs some simple tests on a path to check if it is fully qualified.
  */
-bool SimpleFileFactoryClass::Is_Full_Path(const char *path)
+bool SimpleFileFactoryClass::Is_Full_Path(const char* path)
 {
     if (path == nullptr) {
         return false;
@@ -220,15 +219,15 @@ bool SimpleFileFactoryClass::Is_Full_Path(const char *path)
 }
 
 
-FileClass *RawFileFactoryClass::Get_File(char const *filename)
+FileClass* RawFileFactoryClass::Get_File(char const* filename)
 {
-    RawFileClass *file = new RawFileClass(filename);
+    RawFileClass* file = new RawFileClass(filename);
     TSPP_ASSERT(file != nullptr);
     return file;
 }
 
 
-void RawFileFactoryClass::Return_File(FileClass *file)
+void RawFileFactoryClass::Return_File(FileClass* file)
 {
     if (file != nullptr) {
         delete file;

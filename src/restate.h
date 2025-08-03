@@ -33,4 +33,4 @@
 class ScenarioClass;
 
 
-void Restate_Mission(ScenarioClass *scenario);
+void Restate_Mission(ScenarioClass* scenario);

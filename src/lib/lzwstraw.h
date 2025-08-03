@@ -39,31 +39,31 @@
 
 class LZWStraw : public Straw
 {
-	public:
-		typedef enum CompControl {
-			COMPRESS,
-			DECOMPRESS
-		} CompControl;
+public:
+    typedef enum CompControl {
+        COMPRESS,
+        DECOMPRESS
+    } CompControl;
 
-		LZWStraw(CompControl control, int blocksize = 1024*8);
-		virtual ~LZWStraw();
+    LZWStraw(CompControl control, int blocksize = 1024 * 8);
+    virtual ~LZWStraw();
 
-		virtual int Get(void * source, int slen) override;
+    virtual int Get(void* source, int slen) override;
 
-	private:
-		CompControl Control;
-		int Counter;
-		char * Buffer;
-		char * Buffer2;
-		int BlockSize;
-		int SafetyMargin;
+private:
+    CompControl Control;
+    int Counter;
+    char* Buffer;
+    char* Buffer2;
+    int BlockSize;
+    int SafetyMargin;
 
-		struct {
-			unsigned short CompCount;
-			unsigned short UncompCount;
-		} BlockHeader;
+    struct {
+        unsigned short CompCount;
+        unsigned short UncompCount;
+    } BlockHeader;
 
-	private:
-		LZWStraw(LZWStraw &) = delete;
-		LZWStraw & operator = (const LZWStraw &) = delete;
+private:
+    LZWStraw(LZWStraw&) = delete;
+    LZWStraw& operator=(const LZWStraw&) = delete;
 };

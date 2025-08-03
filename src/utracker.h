@@ -49,7 +49,7 @@ public:
         return 0;
     }
 
-    long *Get_All_Totals();
+    long* Get_All_Totals();
 
     void To_Network_Format();
     void To_PC_Format();
@@ -64,7 +64,7 @@ public:
     }
 
 protected:
-    long *UnitTotals;
-    int	UnitCount;
-    int	InNetworkFormat;
+    long* UnitTotals;
+    int UnitCount;
+    int InNetworkFormat;
 };

@@ -32,33 +32,33 @@
 
 class RAMFileClass : public FileClass
 {
-    public:
-        RAMFileClass(void *buffer, int len);
-        virtual ~RAMFileClass();
+public:
+    RAMFileClass(void* buffer, int len);
+    virtual ~RAMFileClass();
 
-        virtual const char *File_Name() const override;
-        virtual const char *Set_Name(const char *filename) override;
-        virtual bool Create() override;
-        virtual bool Delete() override;
-        virtual bool Is_Available(bool forced = false) override;
-        virtual bool Is_Open() const override;
-        virtual bool Open(const char *filename, FileAccessType rights = FILE_ACCESS_READ) override;
-        virtual bool Open(FileAccessType rights = FILE_ACCESS_READ) override;
-        virtual long Read(void *buffer, int length) override;
-        virtual off_t Seek(off_t offset, FileSeekType whence = FILE_SEEK_CURRENT) override;
-        virtual off_t Size() override;
-        virtual long Write(const void *buffer, int length) override;
-        virtual void Close() override;
-        virtual LONG Get_Date_Time() const override;
-        virtual bool Set_Date_Time(LONG date_time) override;
-        virtual void Error(FileErrorType error, bool can_retry = false, const char *filename = nullptr) override;
+    virtual const char* File_Name() const override;
+    virtual const char* Set_Name(const char* filename) override;
+    virtual bool Create() override;
+    virtual bool Delete() override;
+    virtual bool Is_Available(bool forced = false) override;
+    virtual bool Is_Open() const override;
+    virtual bool Open(const char* filename, FileAccessType rights = FILE_ACCESS_READ) override;
+    virtual bool Open(FileAccessType rights = FILE_ACCESS_READ) override;
+    virtual long Read(void* buffer, int length) override;
+    virtual off_t Seek(off_t offset, FileSeekType whence = FILE_SEEK_CURRENT) override;
+    virtual off_t Size() override;
+    virtual long Write(const void* buffer, int length) override;
+    virtual void Close() override;
+    virtual LONG Get_Date_Time() const override;
+    virtual bool Set_Date_Time(LONG date_time) override;
+    virtual void Error(FileErrorType error, bool can_retry = false, const char* filename = nullptr) override;
 
-    private:
-        char * Buffer;
-        int MaxLength;
-        int Length;
-        int Offset;
-        FileAccessType Access;
-        bool IsOpen;
-        bool IsAllocated;
+private:
+    char* Buffer;
+    int MaxLength;
+    int Length;
+    int Offset;
+    FileAccessType Access;
+    bool IsOpen;
+    bool IsAllocated;
 };

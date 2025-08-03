@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "particlesystype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-ParticleSystemType ParticleSystemTypeClass::From_Name(const char *name)
+ParticleSystemType ParticleSystemTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ ParticleSystemType ParticleSystemTypeClass::From_Name(const char *name)
 }
 
 
-const char *ParticleSystemTypeClass::Name_From(ParticleSystemType type)
+const char* ParticleSystemTypeClass::Name_From(ParticleSystemType type)
 {
     return (type != PARTICLESYS_NONE && type < ParticleSystemTypes.Count() ? ParticleSystemTypes[type]->Name() : "<none>");
 }
 
 
-const ParticleSystemTypeClass *ParticleSystemTypeClass::Find_Or_Make(const char *name)
+const ParticleSystemTypeClass* ParticleSystemTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

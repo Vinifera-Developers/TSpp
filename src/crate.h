@@ -27,31 +27,31 @@
  ******************************************************************************/
 #pragma once
 
-#include <always.h>
-#include "ttimer.h"
+#include "always.h"
 #include "ftimer.h"
 #include "tibsun_defines.h"
+#include "ttimer.h"
 
 
 class CrateClass
 {
-	public:
-		CrateClass();
-		~CrateClass();
+public:
+    CrateClass();
+    ~CrateClass();
 
-		void Init();
-		bool Create_Crate(Cell &cell);
-		bool Is_Here(Cell &cell) const;
-		bool Remove_It();
+    void Init();
+    bool Create_Crate(Cell& cell);
+    bool Is_Here(Cell& cell) const;
+    bool Remove_It();
 
-		bool Is_Expired() const;
-		bool Is_Valid() const;
-		void Make_Invalid();
+    bool Is_Expired() const;
+    bool Is_Valid() const;
+    void Make_Invalid();
 
-		static bool Put_Crate(Cell &cell);
-		static bool Get_Crate(Cell &cell);
+    static bool Put_Crate(Cell& cell);
+    static bool Get_Crate(Cell& cell);
 
-	private:
-		CDTimerClass<FrameTimerClass> Timer;
-		Cell Location;
+private:
+    CDTimerClass<FrameTimerClass> Timer;
+    Cell Location;
 };

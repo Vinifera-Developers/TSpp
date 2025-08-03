@@ -41,12 +41,12 @@ DECLARE_INTERFACE_IID_(IApplication, IUnknown, "96F02EC3-6FE8-11D1-B6FD-00A024DD
     /**
      *  Returns the full name of the application.
      */
-    STDMETHOD_(LONG, Full_Name)(wchar_t *retval) PURE;
+    STDMETHOD_(LONG, Full_Name)(wchar_t* retval) PURE;
 
     /**
      *  Returns the name of the application.
      */
-    STDMETHOD_(LONG, Name)(wchar_t *retval) PURE;
+    STDMETHOD_(LONG, Name)(wchar_t* retval) PURE;
 
     /**
      *  Exits the application gracefully.
@@ -56,15 +56,15 @@ DECLARE_INTERFACE_IID_(IApplication, IUnknown, "96F02EC3-6FE8-11D1-B6FD-00A024DD
     /**
      *  Internal scenario name.
      */
-    STDMETHOD_(LONG, Scenario_Name)(wchar_t *retval) PURE;
+    STDMETHOD_(LONG, Scenario_Name)(wchar_t* retval) PURE;
 
     /**
      *  Game frame count.
      */
-    STDMETHOD_(LONG, Frame_Count)(long *retval) PURE;
+    STDMETHOD_(LONG, Frame_Count)(long* retval) PURE;
 
     /**
      *  ISwizzle Interface.
      */
-    STDMETHOD_(LONG, Swizzle_Interface)(ISwizzle **pVal) PURE;
+    STDMETHOD_(LONG, Swizzle_Interface)(ISwizzle** pVal) PURE;
 };

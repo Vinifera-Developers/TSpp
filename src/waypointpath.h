@@ -28,8 +28,8 @@
 #pragma once
 
 
-#include "always.h"
 #include "abstract.h"
+#include "always.h"
 #include "vector.h"
 #include "waypoint.h"
 
@@ -40,42 +40,42 @@ class WaypointClass;
 class DECLSPEC_UUID("F73125BA-1054-11D2-8172-006008055BB5")
 WaypointPathClass : public AbstractClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-    public:
-        WaypointPathClass();
-        WaypointPathClass(int index);
-        WaypointPathClass(const NoInitClass &noinit);
-        virtual ~WaypointPathClass();
+public:
+    WaypointPathClass();
+    WaypointPathClass(int index);
+    WaypointPathClass(const NoInitClass& noinit);
+    virtual ~WaypointPathClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine &crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
-        Coord *Get_Waypoint_Coord(int index) const; // 00673600
-        // 00673620
-        // 006736D0
-        // 00673770
-        // 006737B0
-        // 00673820
-        // 00673860
+    Coord* Get_Waypoint_Coord(int index) const; // 00673600
+    // 00673620
+    // 006736D0
+    // 00673770
+    // 006737B0
+    // 00673820
+    // 00673860
 
-        const char *Name() const;
+    const char* Name() const;
 
-    public:
-        int field_14; // 0x14
-        DynamicVectorClass<WaypointClass> Waypoints;
+public:
+    int field_14; // 0x14
+    DynamicVectorClass<WaypointClass> Waypoints;
 };

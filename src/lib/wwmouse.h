@@ -30,8 +30,8 @@
 #include "always.h"
 #include "point.h"
 #include "rect.h"
-#include <windows.h>
 #include <mmsystem.h>
+#include <windows.h>
 
 
 class ShapeSet;
@@ -40,54 +40,58 @@ class XSurface;
 
 class WWMouseClass
 {
-    public:
-        WWMouseClass(XSurface *scr, HWND hWnd = nullptr);
-        virtual ~WWMouseClass();
+public:
+    WWMouseClass(XSurface* scr, HWND hWnd = nullptr);
+    virtual ~WWMouseClass();
 
-        virtual void Set_Cursor(Point2D *hotspot, const ShapeSet *cursor, int cursor_index);
-        virtual bool Is_Locked() const;
-        virtual void Hide_Mouse();
-        virtual void Show_Mouse();
-        virtual void Release_Mouse();
-        virtual void Capture_Mouse();
-        virtual bool Is_Captured() const;
-        virtual void Conditional_Hide_Mouse(int x_pos, int y_pos, int width, int height);
-        virtual void Conditional_Show_Mouse();
-        virtual int Get_Mouse_State() const;
-        virtual int Get_Mouse_X() const;
-        virtual int Get_Mouse_Y() const;
-        virtual Point2D Get_Mouse_XY() const;
-        virtual void Draw_1(XSurface *surface, bool forced = false);
-        virtual void Draw_2(XSurface *surface, bool forced = false);
-        virtual void Confine_Pos(int &x, int &y) const;
+    virtual void Set_Cursor(Point2D* hotspot, const ShapeSet* cursor, int cursor_index);
+    virtual bool Is_Locked() const;
+    virtual void Hide_Mouse();
+    virtual void Show_Mouse();
+    virtual void Release_Mouse();
+    virtual void Capture_Mouse();
+    virtual bool Is_Captured() const;
+    virtual void Conditional_Hide_Mouse(int x_pos, int y_pos, int width, int height);
+    virtual void Conditional_Show_Mouse();
+    virtual int Get_Mouse_State() const;
+    virtual int Get_Mouse_X() const;
+    virtual int Get_Mouse_Y() const;
+    virtual Point2D Get_Mouse_XY() const;
+    virtual void Draw_1(XSurface* surface, bool forced = false);
+    virtual void Draw_2(XSurface* surface, bool forced = false);
+    virtual void Confine_Pos(int& x, int& y) const;
 
-        void Set_Mouse_XY(int x, int y) { MousePos.X = x; MousePos.Y = y; }
-        void Set_Mouse_X(int x) { MousePos.X = x; }
-        void Set_Mouse_Y(int y) { MousePos.Y = y; }
+    void Set_Mouse_XY(int x, int y)
+    {
+        MousePos.X = x;
+        MousePos.Y = y;
+    }
+    void Set_Mouse_X(int x) { MousePos.X = x; }
+    void Set_Mouse_Y(int y) { MousePos.Y = y; }
 
-        XSurface *Get_Surface() const { return Screen; }
-        bool Cursor_Set() const { return MouseCursor != nullptr; }
+    XSurface* Get_Surface() const { return Screen; }
+    bool Cursor_Set() const { return MouseCursor != nullptr; }
 
-        void Calc_Confining_Rect();
+    void Calc_Confining_Rect();
 
-    private:
-        ShapeSet *MouseCursor;
-        int MouseCursorIndex;
-        HANDLE MouseMutex;
-        int MouseLockCount;
-        bool MouseCaptured;
-        Point2D MousePos;
-        XSurface *Screen;
-        HWND WindowHandle;
-        Rect ConfiningRect;
-        Point2D MouseHot;
-        XSurface *MouseBuffer;
-        Rect MouseBuffRect;
-        XSurface *TacticalBuffer;
-        Rect TacticalBuffRect;
-        XSurface *SidebarBuffer;
-        Rect SidebarBuffRect;
-        Rect field_7C;
-        int field_8C;
-        MMRESULT TimerHandle;
+private:
+    ShapeSet* MouseCursor;
+    int MouseCursorIndex;
+    HANDLE MouseMutex;
+    int MouseLockCount;
+    bool MouseCaptured;
+    Point2D MousePos;
+    XSurface* Screen;
+    HWND WindowHandle;
+    Rect ConfiningRect;
+    Point2D MouseHot;
+    XSurface* MouseBuffer;
+    Rect MouseBuffRect;
+    XSurface* TacticalBuffer;
+    Rect TacticalBuffRect;
+    XSurface* SidebarBuffer;
+    Rect SidebarBuffRect;
+    Rect field_7C;
+    int field_8C;
+    MMRESULT TimerHandle;
 };

@@ -40,18 +40,18 @@
 
 class CRCPipe : public Pipe
 {
-    public:
-        CRCPipe() {}
-        ~CRCPipe() {}
+public:
+    CRCPipe() {}
+    ~CRCPipe() {}
 
-        virtual int Put(const void *source, int slen);
+    virtual int Put(const void* source, int slen);
 
-        long Result() const;
+    long Result() const;
 
-    protected:
-        CRCEngine CRC;
+protected:
+    CRCEngine CRC;
 
-    private:
-        CRCPipe(CRCPipe &) = delete;
-        CRCPipe & operator = (const CRCPipe &) = delete;
+private:
+    CRCPipe(CRCPipe&) = delete;
+    CRCPipe& operator=(const CRCPipe&) = delete;
 };

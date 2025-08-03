@@ -34,25 +34,25 @@
  ******************************************************************************/
 #pragma once
 
-#include "straw.h"
 #include "sha.h"
+#include "straw.h"
 
 
 class SHAStraw : public Straw
 {
-    public:
-        SHAStraw(bool bypass_sha = false);
-        ~SHAStraw();
+public:
+    SHAStraw(bool bypass_sha = false);
+    ~SHAStraw();
 
-        virtual int Get(void * source, int slen) override;
+    virtual int Get(void* source, int slen) override;
 
-        int Result(void * result) const;
+    int Result(void* result) const;
 
-    protected:
-        bool BypassSHA;
-        SHAEngine SHA;
+protected:
+    bool BypassSHA;
+    SHAEngine SHA;
 
-    private:
-        SHAStraw(const SHAStraw &) = delete;
-        SHAStraw & operator = (const SHAStraw &) = delete;
+private:
+    SHAStraw(const SHAStraw&) = delete;
+    SHAStraw& operator=(const SHAStraw&) = delete;
 };

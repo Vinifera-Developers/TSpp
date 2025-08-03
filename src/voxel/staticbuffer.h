@@ -8,7 +8,7 @@
  *
  *  @authors       CCHyper
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -28,22 +28,20 @@
 #pragma once
 
 #include "always.h"
-#include "tibsun_defines.h"
-#include "rect.h"
 #include "point.h"
+#include "rect.h"
+#include "tibsun_defines.h"
 
 
 class BSurface;
 
 
-struct DataStruct
-{
+struct DataStruct {
     TRect<unsigned short> Area;
-    void * BufferPos;
+    void* BufferPos;
 };
 
-struct AreaStruct
-{
+struct AreaStruct {
     Point2D Pos;
     Rect Size;
 };
@@ -51,15 +49,15 @@ struct AreaStruct
 
 class StaticBufferClass
 {
-    public:
-        StaticBufferClass(unsigned int size);
-        ~StaticBufferClass();
+public:
+    StaticBufferClass(unsigned int size);
+    ~StaticBufferClass();
 
-        DataStruct * Write_To_Surface(BSurface &surface, AreaStruct &bounds);
-        DataStruct * Write_To_Surface(BSurface &surface, Rect &rect, TPoint2D<unsigned short>);
+    DataStruct* Write_To_Surface(BSurface& surface, AreaStruct& bounds);
+    DataStruct* Write_To_Surface(BSurface& surface, Rect& rect, TPoint2D<unsigned short>);
 
-    public:
-        int BufferSize;
-        void * BufferPtr;
-        void * CurrentBufferPtr;
+public:
+    int BufferSize;
+    void* BufferPtr;
+    void* CurrentBufferPtr;
 };

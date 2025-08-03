@@ -29,15 +29,15 @@
 
 
 #include "always.h"
-#include <windows.h>
 #include <mmsystem.h>
+#include <windows.h>
 
 
 class SystemTimerClass
 {
-    public:
-        long operator () () const { return timeGetTime() / 16; }
-        operator long () const { return timeGetTime() / 16; }
+public:
+    long operator()() const { return timeGetTime() / 16; }
+    operator long() const { return timeGetTime() / 16; }
 };
 
 
@@ -46,10 +46,10 @@ class SystemTimerClass
  */
 class MSTimerClass
 {
-    public:
-        MSTimerClass() { timeBeginPeriod(1); }
-        ~MSTimerClass() { timeEndPeriod(1); }
+public:
+    MSTimerClass() { timeBeginPeriod(1); }
+    ~MSTimerClass() { timeEndPeriod(1); }
 
-        long operator () () const { return timeGetTime(); }
-        operator long () const { return timeGetTime(); }
+    long operator()() const { return timeGetTime(); }
+    operator long() const { return timeGetTime(); }
 };

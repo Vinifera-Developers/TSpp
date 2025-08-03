@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "housetype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-HousesType HouseTypeClass::From_Name(const char *name)
+HousesType HouseTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ HousesType HouseTypeClass::From_Name(const char *name)
 }
 
 
-const char *HouseTypeClass::Name_From(HousesType type)
+const char* HouseTypeClass::Name_From(HousesType type)
 {
     return (type != HOUSE_NONE && type < HouseTypes.Count() ? HouseTypes[type]->Name() : "<none>");
 }
 
 
-const HouseTypeClass *HouseTypeClass::Find_Or_Make(const char *name)
+const HouseTypeClass* HouseTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

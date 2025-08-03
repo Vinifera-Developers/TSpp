@@ -30,15 +30,15 @@
 #include "tspp_assert.h"
 
 
-bool CommandClass::Activate_From_Name(const char *name)
+bool CommandClass::Activate_From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
     TSPP_ASSERT(Commands.Count() > 0);
 
     if (name != nullptr) {
         for (int index = 0; index < Commands.Count(); ++index) {
-            CommandClass *cmd = const_cast<CommandClass *>(Commands[index]);
-            //TSPP_ASSERT(cmd != nullptr);
+            CommandClass* cmd = const_cast<CommandClass*>(Commands[index]);
+            // TSPP_ASSERT(cmd != nullptr);
             if (!strcasecmp(name, cmd->Get_Name())) {
                 return cmd->Process();
             }
@@ -48,15 +48,15 @@ bool CommandClass::Activate_From_Name(const char *name)
 }
 
 
-CommandClass *CommandClass::From_Name(const char *name)
+CommandClass* CommandClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
     TSPP_ASSERT(Commands.Count() > 0);
 
     if (name != nullptr) {
         for (int index = 0; index < Commands.Count(); ++index) {
-            CommandClass *cmd = const_cast<CommandClass *>(Commands[index]);
-            //TSPP_ASSERT(cmd != nullptr);
+            CommandClass* cmd = const_cast<CommandClass*>(Commands[index]);
+            // TSPP_ASSERT(cmd != nullptr);
             if (!strcasecmp(name, cmd->Get_Name())) {
                 return cmd;
             }
@@ -66,13 +66,13 @@ CommandClass *CommandClass::From_Name(const char *name)
 }
 
 
-CommandClass *CommandClass::From_KeyNum(KeyNumType key)
+CommandClass* CommandClass::From_KeyNum(KeyNumType key)
 {
     TSPP_ASSERT(Commands.Count() > 0);
 
     if (key != KN_NONE) {
-        CommandClass *cmd = const_cast<CommandClass *>(HotkeyIndex[key]);
-        //TSPP_ASSERT(cmd != nullptr);
+        CommandClass* cmd = const_cast<CommandClass*>(HotkeyIndex[key]);
+        // TSPP_ASSERT(cmd != nullptr);
         if (cmd != nullptr) {
             return cmd;
         }
@@ -87,7 +87,7 @@ bool CommandClass::Activate_From_Type(CommandType type)
 }
 
 
-CommandClass *CommandClass::From_Type(CommandType type)
+CommandClass* CommandClass::From_Type(CommandType type)
 {
     return CommandClass::From_Name(Commands[type]->Get_Name());
 }

@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-StructType BuildingTypeClass::From_Name(const char *name)
+StructType BuildingTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ StructType BuildingTypeClass::From_Name(const char *name)
 }
 
 
-const char *BuildingTypeClass::Name_From(StructType type)
+const char* BuildingTypeClass::Name_From(StructType type)
 {
     return (type != STRUCT_NONE && type < BuildingTypes.Count() ? BuildingTypes[type]->Name() : "<none>");
 }
 
 
-const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
+const BuildingTypeClass* BuildingTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const BuildingTypeClass *BuildingTypeClass::Find_Or_Make(const char *name)
         }
     }
 
-    BuildingTypeClass *ptr = new BuildingTypeClass(name);
+    BuildingTypeClass* ptr = new BuildingTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

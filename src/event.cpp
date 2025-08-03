@@ -27,11 +27,11 @@
 *
 ******************************************************************************/
 #include "event.h"
-#include "tibsun_globals.h"
 #include "tibsun_defines.h"
+#include "tibsun_globals.h"
 
 
-const char *EventClass::Event_Name(EventType event)
+const char* EventClass::Event_Name(EventType event)
 {
     TSPP_ASSERT(event < EVENT_COUNT);
 

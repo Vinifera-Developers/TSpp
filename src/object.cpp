@@ -31,50 +31,37 @@
 
 /**
  *  Returns this object as a TechnoClass pointer in applicable.
- * 
+ *
  *  @author: CCHyper
  */
-TechnoClass *ObjectClass::As_Techno()
+TechnoClass* ObjectClass::As_Techno()
 {
     switch (What_Am_I()) {
-        case RTTI_UNIT:
-        case RTTI_AIRCRAFT:
-        case RTTI_BUILDING:
-        case RTTI_INFANTRY:
-            return reinterpret_cast<TechnoClass *>(this);
-        default:
-            return nullptr;
+    case RTTI_UNIT:
+    case RTTI_AIRCRAFT:
+    case RTTI_BUILDING:
+    case RTTI_INFANTRY:
+        return reinterpret_cast<TechnoClass*>(this);
+    default:
+        return nullptr;
     };
 }
 
 
 /**
  *  Returns this object as a FootClass pointer in applicable.
- * 
+ *
  *  @author: CCHyper
  */
-FootClass *ObjectClass::As_Foot()
+FootClass* ObjectClass::As_Foot()
 {
     switch (What_Am_I()) {
-        case RTTI_UNIT:
-        case RTTI_AIRCRAFT:
-        case RTTI_BUILDING:
-        case RTTI_INFANTRY:
-            return reinterpret_cast<FootClass *>(this);
-        default:
-            return nullptr;
+    case RTTI_UNIT:
+    case RTTI_AIRCRAFT:
+    case RTTI_BUILDING:
+    case RTTI_INFANTRY:
+        return reinterpret_cast<FootClass*>(this);
+    default:
+        return nullptr;
     };
-}
-
-
-/**
- *  This operator will automatically convert from a class object into the enumerated value.
- * 
- *  #NOTE: This is ONLY implemented for backwards compatability with legacy code!
- * 
- *  @author: CCHyper
- */
-ObjectClass::operator int () const
-{
-    return Class_Of()->Fetch_Heap_ID();
 }

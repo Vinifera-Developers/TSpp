@@ -26,17 +26,17 @@
  *
  ******************************************************************************/
 #include "tibsun_util.h"
-#include "tibsun_globals.h"
-#include "tibsun_inline.h"
+#include "language.h"
 #include "msgbox.h"
 #include "tactical.h"
-#include "language.h"
+#include "tibsun_globals.h"
+#include "tibsun_inline.h"
 #include "wwmouse.h"
 
 
 /**
  *  Fetch the cell position from the current mouse pixel position.
- * 
+ *
  *  @author: CCHyper
  */
 Cell Get_Cell_Under_Mouse()
@@ -61,7 +61,7 @@ Cell Get_Cell_Under_Mouse()
 
 /**
  *  Fetch the coord position from the current mouse pixel position.
- * 
+ *
  *  @author: CCHyper
  */
 Coord Get_Coord_Under_Mouse()
@@ -86,13 +86,13 @@ Coord Get_Coord_Under_Mouse()
 
 /**
  *  Displays a simple message box, returns true on "Yes" being clicked.
- * 
+ *
  *  @author: CCHyper
  */
-bool Simple_YesNo_WWMessageBox(const char *msg)
+bool Simple_YesNo_WWMessageBox(const char* msg)
 {
-    const char *btn1 = Text_String(TXT_YES);
-    const char *btn2 = Text_String(TXT_NO);
+    const char* btn1 = Text_String(TXT_YES);
+    const char* btn2 = Text_String(TXT_NO);
     return WWMessageBox().Process(msg, 0, btn1, btn2) == 0; // 0 == button 1
 }
 
@@ -102,33 +102,33 @@ bool Simple_YesNo_WWMessageBox(const char *msg)
  */
 FacingType KN_To_Facing(KeyNumType input)
 {
-	input &= ~(KN_ALT_BIT|KN_SHIFT_BIT|KN_CTRL_BIT);
+    input &= ~(KN_ALT_BIT | KN_SHIFT_BIT | KN_CTRL_BIT);
 
-	switch (input) {
-		case KN_LEFT:
-			return FACING_W;
+    switch (input) {
+    case KN_LEFT:
+        return FACING_W;
 
-		case KN_RIGHT:
-			return FACING_E;
+    case KN_RIGHT:
+        return FACING_E;
 
-		case KN_UP:
-			return FACING_N;
+    case KN_UP:
+        return FACING_N;
 
-		case KN_DOWN:
-			return FACING_S;
+    case KN_DOWN:
+        return FACING_S;
 
-		case KN_UPLEFT:
-			return FACING_NW;
+    case KN_UPLEFT:
+        return FACING_NW;
 
-		case KN_UPRIGHT:
-			return FACING_NE;
+    case KN_UPRIGHT:
+        return FACING_NE;
 
-		case KN_DOWNLEFT:
-			return FACING_SW;
+    case KN_DOWNLEFT:
+        return FACING_SW;
 
-		case KN_DOWNRIGHT:
-			return FACING_SE;
-	}
+    case KN_DOWNRIGHT:
+        return FACING_SE;
+    }
 
-	return FACING_NONE;
+    return FACING_NONE;
 }

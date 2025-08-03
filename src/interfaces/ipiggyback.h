@@ -44,12 +44,12 @@ DECLARE_INTERFACE_IID_(IPiggyback, IUnknown, "92FEA800-A184-11D1-B70A-00A024DDAF
     /**
      *  Piggybacks a locomotor onto this one.
      */
-    STDMETHOD(Begin_Piggyback)(ILocomotion *pointer) PURE;
+    STDMETHOD(Begin_Piggyback)(ILocomotion* pointer) PURE;
 
     /**
      *  End piggyback process and restore locomotor interface pointer.
      */
-    STDMETHOD(End_Piggyback)(ILocomotion **pointer) PURE;
+    STDMETHOD(End_Piggyback)(ILocomotion** pointer) PURE;
 
     /**
      *  Is it ok to end the piggyback process?
@@ -59,7 +59,7 @@ DECLARE_INTERFACE_IID_(IPiggyback, IUnknown, "92FEA800-A184-11D1-B70A-00A024DDAF
     /**
      *  Fetches piggybacked locomotor class ID.
      */
-    STDMETHOD(Piggyback_CLSID)(CLSID *classid) PURE;
+    STDMETHOD(Piggyback_CLSID)(CLSID* classid) PURE;
 
     /**
      *  Is it currently piggy backing another locomotor?

@@ -28,62 +28,60 @@
 #pragma once
 
 #include "always.h"
-#include "vector.h"
 #include "tspp_assert.h"
+#include "vector.h"
 #include <unknwn.h>
 
 
 template<class T>
 class TypeList : public DynamicVectorClass<T>
 {
-    public: // Needs to be public otherwise calls to Count() using a TypeList instance is not allowed.
-        using DynamicVectorClass<T>::Count;
-        using DynamicVectorClass<T>::Add;
+public: // Needs to be public otherwise calls to Count() using a TypeList instance is not allowed.
+    using DynamicVectorClass<T>::Count;
+    using DynamicVectorClass<T>::Add;
 
-    public:
-        TypeList(unsigned size = 0, const T *array = nullptr);
-        TypeList(const TypeList &that);
-        TypeList(const NoInitClass &noinit) : DynamicVectorClass<T>(noinit) {}
-        virtual ~TypeList() {}
+public:
+    TypeList(unsigned size = 0, const T* array = nullptr);
+    TypeList(const TypeList& that);
+    TypeList(const NoInitClass& noinit) : DynamicVectorClass<T>(noinit) {}
+    virtual ~TypeList() {}
 
-        TypeList &operator=(const TypeList &that)
-        {
-            DynamicVectorClass<T>::operator=(that);
-            field_18 = that.field_18;
-            return (*this);
-        }
+    TypeList& operator=(const TypeList& that)
+    {
+        DynamicVectorClass<T>::operator=(that);
+        field_18 = that.field_18;
+        return (*this);
+    }
 
-        bool Save(IStream *pStm);
-        bool Load(IStream *pStm);
+    bool Save(IStream* pStm);
+    bool Load(IStream* pStm);
 
-    protected:
-        int field_18;
+protected:
+    int field_18;
 };
 
 
 template<class T>
-TypeList<T>::TypeList(unsigned size, T const *array) :
-    DynamicVectorClass<T>(size, array),
-    field_18(0)
+TypeList<T>::TypeList(unsigned size, T const* array) :
+    DynamicVectorClass<T>(size, array), field_18(0)
 {
 }
 
 
 template<class T>
-TypeList<T>::TypeList(const TypeList<T> &that) :
-    DynamicVectorClass<T>(that),
-    field_18(that.field_18)
+TypeList<T>::TypeList(const TypeList<T>& that) :
+    DynamicVectorClass<T>(that), field_18(that.field_18)
 {
 }
 
 
 /**
  *  Saves all active objects to the data stream.
- * 
+ *
  *  @author: CCHyper
  */
 template<class T>
-bool TypeList<T>::Save(IStream *pStm)
+bool TypeList<T>::Save(IStream* pStm)
 {
     TSPP_ASSERT(pStm != nullptr);
 
@@ -111,11 +109,11 @@ bool TypeList<T>::Save(IStream *pStm)
 
 /**
  *  Saves all active objects from the data stream.
- * 
+ *
  *  @author: CCHyper
  */
 template<class T>
-bool TypeList<T>::Load(IStream *pStm)
+bool TypeList<T>::Load(IStream* pStm)
 {
     TSPP_ASSERT(pStm != nullptr);
 

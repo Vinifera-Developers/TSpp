@@ -42,12 +42,12 @@ void IonStorm_Lightning_Strike_At(Cell where);
 void IonStorm_Do_Screen_Static();
 void IonStorm_Init(bool start = false);
 void IonStorm_Init_Clear();
-HRESULT IonStorm_Save(IStream *pStm);
-HRESULT IonStorm_Load(IStream *pStm);
+HRESULT IonStorm_Save(IStream* pStm);
+HRESULT IonStorm_Load(IStream* pStm);
 
-extern bool &IonStorm_IsActive;
+extern bool& IonStorm_IsActive;
 // 007F50E8 countdown?
-extern int &IonStorm_StaticLoopCounter;
-extern int &IonStorm_StartFrame;
-extern int &IonStorm_Duration;
-extern ThemeType &IonStorm_RestoreTheme;
+extern int& IonStorm_StaticLoopCounter;
+extern int& IonStorm_StartFrame;
+extern int& IonStorm_Duration;
+extern ThemeType& IonStorm_RestoreTheme;

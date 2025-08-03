@@ -8,7 +8,7 @@
  *
  *  @authors       CCHyper, tomsons26
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -27,26 +27,26 @@
  ******************************************************************************/
 #pragma once
 
-#include "gadget.h"
 #include "buff.h"
+#include "gadget.h"
 #include "textprint.h"
 
 
 class StaticButtonClass : public GadgetClass
 {
-    public:
-        StaticButtonClass();
-        StaticButtonClass(unsigned id, const char *text, TextPrintType style, int x, int y, int w = -1, int h = -1);
-        virtual ~StaticButtonClass();
+public:
+    StaticButtonClass();
+    StaticButtonClass(unsigned id, const char* text, TextPrintType style, int x, int y, int w = -1, int h = -1);
+    virtual ~StaticButtonClass();
 
-        virtual bool Draw_Me(bool forced = false) override;
+    virtual bool Draw_Me(bool forced = false) override;
 
-        virtual void Set_Text(const char *text, bool resize = false);
-        virtual void Draw_Background();
-        virtual void Draw_Text(const char *text);
+    virtual void Set_Text(const char* text, bool resize = false);
+    virtual void Draw_Background();
+    virtual void Draw_Text(const char* text);
 
-    public:
-        Buffer Background;
-        char *String;
-        TextPrintType PrintFlags;
+public:
+    Buffer Background;
+    char* String;
+    TextPrintType PrintFlags;
 };

@@ -36,33 +36,33 @@ class RGBClass;
 
 class HSVClass
 {
-    public:
-        HSVClass();
-        HSVClass(const HSVStruct &that);
-        HSVClass(const HSVClass &that);
-        HSVClass(unsigned char hue, unsigned char saturation, unsigned char value);
+public:
+    HSVClass();
+    HSVClass(const HSVStruct& that);
+    HSVClass(const HSVClass& that);
+    HSVClass(unsigned char hue, unsigned char saturation, unsigned char value);
 
-        operator RGBClass () const;
+    operator RGBClass() const;
 
-        bool operator==(const HSVClass &that) const { return Hue == that.Hue && Saturation == that.Saturation && Value == that.Value; }
-        bool operator!=(const HSVClass &that) const { return Hue != that.Hue && Saturation != that.Saturation && Value != that.Value; }
-        HSVClass &operator=(const HSVClass &that);
+    bool operator==(const HSVClass& that) const { return Hue == that.Hue && Saturation == that.Saturation && Value == that.Value; }
+    bool operator!=(const HSVClass& that) const { return Hue != that.Hue && Saturation != that.Saturation && Value != that.Value; }
+    HSVClass& operator=(const HSVClass& that);
 
-        void Adjust(int ratio, const HSVClass & hsv);
-        int Difference(const HSVClass & hsv) const;
+    void Adjust(int ratio, const HSVClass& hsv);
+    int Difference(const HSVClass& hsv) const;
 
-        enum {
-            MAX_VALUE = 255
-        };
+    enum {
+        MAX_VALUE = 255
+    };
 
-    public:
-        unsigned char Hue;
-        unsigned char Saturation;
-        unsigned char Value;
+public:
+    unsigned char Hue;
+    unsigned char Saturation;
+    unsigned char Value;
 };
 
 
-inline HSVClass &HSVClass::operator=(const HSVClass &that)
+inline HSVClass& HSVClass::operator=(const HSVClass& that)
 {
     if (this != &that) {
         Hue = that.Hue;

@@ -36,24 +36,24 @@ class Surface;
 
 class BitmapClass
 {
-    public:
-        BitmapClass(int w, int h, unsigned char *data) : Width(w), Height(h), Data(data) {}
+public:
+    BitmapClass(int w, int h, unsigned char* data) : Width(w), Height(h), Data(data) {}
 
-    public:
-        int Width;
-        int Height;
-        unsigned char *Data;
+public:
+    int Width;
+    int Height;
+    unsigned char* Data;
 };
 
 
 /**
  *  Using Bi-Linear Interpolation, draws a scaled and rotated
  *  bitmap onto the buffer. No clipping is performed, so beware!
- *  
+ *
  *  bmp     - bitmap to draw.
  *  pt      - desired position of the center.
  *  scale   - scale factor.
  *  angle   - 8bit angle (0=0deg, 255=360deg)
- *  
+ *
  */
-bool Scale_Rotate(Surface &src, BitmapClass &bmp, TPoint2D<int> &pt, int scale, unsigned char angle);
+bool Scale_Rotate(Surface& src, BitmapClass& bmp, TPoint2D<int>& pt, int scale, unsigned char angle);

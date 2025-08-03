@@ -27,36 +27,36 @@
  ******************************************************************************/
 #pragma once
 
-#include <always.h>
+#include "always.h"
 #include "ipx.h"
 
 
 class IPXAddressClass
 {
-    public:
-        IPXAddressClass();
-        IPXAddressClass(NetNumType net, NetNodeType node);
-        IPXAddressClass(IPXHeaderType *header);
-        ~IPXAddressClass();
+public:
+    IPXAddressClass();
+    IPXAddressClass(NetNumType net, NetNodeType node);
+    IPXAddressClass(IPXHeaderType* header);
+    ~IPXAddressClass();
 
-        void Set_Address(NetNumType net, NetNodeType node);
-        void Set_Address(IPXHeaderType *header);
+    void Set_Address(NetNumType net, NetNodeType node);
+    void Set_Address(IPXHeaderType* header);
 
-        void Get_Address(NetNumType net, NetNodeType node) const;
-        void Get_Address(IPXHeaderType *header) const;
+    void Get_Address(NetNumType net, NetNodeType node) const;
+    void Get_Address(IPXHeaderType* header) const;
 
-        bool Is_Broadcast() const;
+    bool Is_Broadcast() const;
 
-        bool operator == (IPXAddressClass &addr) const;
-        bool operator != (IPXAddressClass &addr) const;
-        bool operator > (IPXAddressClass &addr) const;
-        bool operator < (IPXAddressClass &addr) const;
-        bool operator >= (IPXAddressClass &addr) const;
-        bool operator <= (IPXAddressClass &addr) const;
+    bool operator==(IPXAddressClass& addr) const;
+    bool operator!=(IPXAddressClass& addr) const;
+    bool operator>(IPXAddressClass& addr) const;
+    bool operator<(IPXAddressClass& addr) const;
+    bool operator>=(IPXAddressClass& addr) const;
+    bool operator<=(IPXAddressClass& addr) const;
 
-        const char *As_String() const;
+    const char* As_String() const;
 
-    public:
-        NetNumType NetworkNumber;
-        NetNodeType NodeAddress;
+public:
+    NetNumType NetworkNumber;
+    NetNodeType NodeAddress;
 };

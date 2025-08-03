@@ -29,14 +29,14 @@
 
 // For counting variadic macro arguments.
 #define VA_NARGS_IMPL(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, N, ...) N
-#define VA_NARGS(...) VA_NARGS_IMPL(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
-#define VA_NARGS2(...) ((int)(sizeof((int[]){ __VA_ARGS__ })/sizeof(int)))
+#define VA_NARGS(...)                                                  VA_NARGS_IMPL(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+#define VA_NARGS2(...)                                                 ((int)(sizeof((int[]) {__VA_ARGS__}) / sizeof(int)))
 
 // The ubiquitous stringify macros for formatting strings.
 #ifndef STRINGIZE
-#define STRINGIZE_HELPER(str) #str
-#define STRINGIZE(str) STRINGIZE_HELPER(str)
-#define STRINGIZE_JOIN(str1, str2) STRINGIZE_HELPER(str1 ## str2)
+#define STRINGIZE_HELPER(str)      #str
+#define STRINGIZE(str)             STRINGIZE_HELPER(str)
+#define STRINGIZE_JOIN(str1, str2) STRINGIZE_HELPER(str1##str2)
 #endif // STRINGIZE
 
 // Define some C++ keywords when standard is less than C++11, mainly for watcom support
@@ -62,57 +62,43 @@
 // This section defines some keywords controlling inlining and unused variables
 // where the keywords needed differ between compilers.
 #define __noinline __declspec(noinline)
-#define __unused __pragma(warning(suppress : 4100 4101))
+#define __unused   __pragma(warning(suppress : 4100 4101))
 #define __mayalias
-#define __noreturn __declspec(noreturn)
-#define __nothrow __declspec(nothrow)
+#define __noreturn  __declspec(noreturn)
+#define __nothrow   __declspec(nothrow)
 #define __selectany __declspec(selectany)
-#define __novtable __declspec(novtable)
+#define __novtable  __declspec(novtable)
 
 /**
  *  Defines operator overloads to enable bit operations on enum values, useful for
  *  using an enum to define flags for a bitfield.
- *  
+ *
  *  Example usage:
  *   enum MyEnum {
  *       ENUM_A = 0,
  *       ENUM_B = 1,
  *       ENUM_C = 2,
  *   };
- *  
+ *
  *   DEFINE_ENUMERATION_BITWISE_OPERATORS(MyEnum);
  */
 #ifdef __cplusplus
 #if !defined(DEFINE_ENUMERATION_BITWISE_OPERATORS)
-#define DEFINE_ENUMERATION_BITWISE_OPERATORS(ENUMTYPE) \
-    extern "C++" { \
-    __forceinline constexpr ENUMTYPE operator|(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return ENUMTYPE(((int)a) | ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator&(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return ENUMTYPE(((int)a) & ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator~(ENUMTYPE const a) { return ENUMTYPE(~((int)a)); } \
-    __forceinline constexpr ENUMTYPE operator^(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return ENUMTYPE(((int)a) ^ ((int)b)); \
-    } \
-    __forceinline ENUMTYPE &operator^=(ENUMTYPE &a, ENUMTYPE const &b) { return (ENUMTYPE &)(((int &)a) ^= ((int &)b)); } \
-    __forceinline ENUMTYPE &operator&=(ENUMTYPE &a, ENUMTYPE const &b) { return (ENUMTYPE &)(((int &)a) &= ((int &)b)); } \
-    __forceinline ENUMTYPE &operator|=(ENUMTYPE &a, ENUMTYPE const &b) { return (ENUMTYPE &)(((int &)a) |= ((int &)b)); } \
-    __forceinline constexpr ENUMTYPE operator<<(ENUMTYPE a, int const b) { return (ENUMTYPE)(((int)a) << ((int)b)); } \
-    __forceinline constexpr ENUMTYPE operator>>(ENUMTYPE a, int const b) { return (ENUMTYPE)(((int)a) >> ((int)b)); } \
-    __forceinline ENUMTYPE &operator<<=(ENUMTYPE &a, int const b) \
-    { \
-        return (ENUMTYPE &)((int &)a = ((int &)a) << ((int)b)); \
-    } \
-    __forceinline ENUMTYPE &operator>>=(ENUMTYPE &a, int const b) \
-    { \
-        return (ENUMTYPE &)((int &)a = ((int &)a) >> ((int)b)); \
-    } \
-    }
+#define DEFINE_ENUMERATION_BITWISE_OPERATORS(ENUMTYPE)                                                                            \
+extern "C++" {                                                                                                                    \
+__forceinline constexpr ENUMTYPE operator|(ENUMTYPE const a, ENUMTYPE const b) { return ENUMTYPE(((int)a) | ((int)b)); }          \
+__forceinline constexpr ENUMTYPE operator&(ENUMTYPE const a, ENUMTYPE const b) { return ENUMTYPE(((int)a) & ((int)b)); }          \
+__forceinline constexpr ENUMTYPE operator~(ENUMTYPE const a) { return ENUMTYPE(~((int)a)); }                                      \
+__forceinline constexpr ENUMTYPE operator^(ENUMTYPE const a, ENUMTYPE const b) { return ENUMTYPE(((int)a) ^ ((int)b)); }          \
+__forceinline ENUMTYPE& operator^=(ENUMTYPE& a, ENUMTYPE const& b) { return (ENUMTYPE&)(((int&)a) ^= ((int&)b)); }                \
+__forceinline ENUMTYPE& operator&=(ENUMTYPE& a, ENUMTYPE const& b) { return (ENUMTYPE&)(((int&)a) &= ((int&)b)); }                \
+__forceinline ENUMTYPE& operator|=(ENUMTYPE& a, ENUMTYPE const& b) { return (ENUMTYPE&)(((int&)a) |= ((int&)b)); }                \
+__forceinline constexpr ENUMTYPE operator<<(ENUMTYPE a, int const b) { return (ENUMTYPE)(((int)a) << ((int)b)); }                 \
+__forceinline constexpr ENUMTYPE operator>>(ENUMTYPE a, int const b) { return (ENUMTYPE)(((int)a) >> ((int)b)); }                 \
+__forceinline ENUMTYPE& operator<<=(ENUMTYPE& a, int const b) { return (ENUMTYPE&)((int&)a = ((int&)a) << ((int)b)); }            \
+__forceinline ENUMTYPE& operator>>=(ENUMTYPE& a, int const b) { return (ENUMTYPE&)((int&)a = ((int&)a) >> ((int)b)); }            \
+}
+
 #endif // !DEFINE_ENUMERATION_BITWISE_OPERATORS
 #else
 #define DEFINE_ENUMERATION_BITWISE_OPERATORS(ENUMTYPE) // NOP, C allows these operators.
@@ -121,60 +107,40 @@
 /**
  *  Defines operator overloads to enable stadard math operations on an enum.
  *  Useful when an enum represents a range that can be iterated over.
- *  
+ *
  *  Example usage:
  *   enum MyEnum {
  *       ENUM_A = 0,
  *       ENUM_B = 1,
  *       ENUM_C = 2,
  *   };
- *  
+ *
  *   DEFINE_ENUMERATION_OPERATORS(MyEnum);
  */
 #ifdef __cplusplus
 #if !defined(DEFINE_ENUMERATION_OPERATORS)
-#define DEFINE_ENUMERATION_OPERATORS(ENUMTYPE) \
-    extern "C++" { \
-    __forceinline ENUMTYPE operator++(ENUMTYPE const &a) { return (ENUMTYPE)(++((int &)a)); } \
-    __forceinline ENUMTYPE operator--(ENUMTYPE const &a) { return (ENUMTYPE)(--((int &)a)); } \
-    __forceinline constexpr ENUMTYPE operator+(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE)(((int)a) + ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator-(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE)(((int)a) - ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator*(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE)(((int)a) * ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator/(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE)(((int)a) / ((int)b)); \
-    } \
-    __forceinline constexpr ENUMTYPE operator%(ENUMTYPE const a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE)(((int)a) % ((int)b)); \
-    } \
-    __forceinline ENUMTYPE &operator+=(ENUMTYPE &a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE &)((int &)a = ((int &)a) + ((ENUMTYPE)b)); \
-    } \
-    __forceinline ENUMTYPE &operator-=(ENUMTYPE &a, ENUMTYPE const b) \
-    { \
-        return (ENUMTYPE &)((int &)a = ((int &)a) - ((ENUMTYPE)b)); \
-    } \
-    __forceinline ENUMTYPE operator++(ENUMTYPE const &a, int const b) { return (ENUMTYPE)(++((int &)a)); } \
-    __forceinline ENUMTYPE operator--(ENUMTYPE const &a, int const b) { return (ENUMTYPE)(--((int &)a)); } \
-    __forceinline constexpr ENUMTYPE operator+(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) + ((int)b)); } \
-    __forceinline constexpr ENUMTYPE operator-(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) - ((int)b)); } \
-    __forceinline constexpr ENUMTYPE operator*(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) * ((int)b)); } \
-    __forceinline constexpr ENUMTYPE operator/(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) / ((int)b)); } \
-    __forceinline constexpr ENUMTYPE operator%(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) % ((int)b)); } \
-    __forceinline ENUMTYPE &operator+=(ENUMTYPE &a, int const b) { return (ENUMTYPE &)((int &)a = ((int &)a) + ((int)b)); } \
-    __forceinline ENUMTYPE &operator-=(ENUMTYPE &a, int const b) { return (ENUMTYPE &)((int &)a = ((int &)a) - ((int)b)); } \
-    }
+#define DEFINE_ENUMERATION_OPERATORS(ENUMTYPE)                                                                                     \
+extern "C++" {                                                                                                                     \
+__forceinline ENUMTYPE operator++(ENUMTYPE const& a) { return (ENUMTYPE)(++((int&)a)); }                                           \
+__forceinline ENUMTYPE operator--(ENUMTYPE const& a) { return (ENUMTYPE)(--((int&)a)); }                                           \
+__forceinline constexpr ENUMTYPE operator+(ENUMTYPE const a, ENUMTYPE const b) { return (ENUMTYPE)(((int)a) + ((int)b)); }         \
+__forceinline constexpr ENUMTYPE operator-(ENUMTYPE const a, ENUMTYPE const b) { return (ENUMTYPE)(((int)a) - ((int)b)); }         \
+__forceinline constexpr ENUMTYPE operator*(ENUMTYPE const a, ENUMTYPE const b) { return (ENUMTYPE)(((int)a) * ((int)b)); }         \
+__forceinline constexpr ENUMTYPE operator/(ENUMTYPE const a, ENUMTYPE const b) { return (ENUMTYPE)(((int)a) / ((int)b)); }         \
+__forceinline constexpr ENUMTYPE operator%(ENUMTYPE const a, ENUMTYPE const b) { return (ENUMTYPE)(((int)a) % ((int)b)); }         \
+__forceinline ENUMTYPE& operator+=(ENUMTYPE& a, ENUMTYPE const b) { return (ENUMTYPE&)((int&)a = ((int&)a) + ((ENUMTYPE)b)); }     \
+__forceinline ENUMTYPE& operator-=(ENUMTYPE& a, ENUMTYPE const b) { return (ENUMTYPE&)((int&)a = ((int&)a) - ((ENUMTYPE)b)); }     \
+__forceinline ENUMTYPE operator++(ENUMTYPE const& a, int const b) { return (ENUMTYPE)(++((int&)a)); }                              \
+__forceinline ENUMTYPE operator--(ENUMTYPE const& a, int const b) { return (ENUMTYPE)(--((int&)a)); }                              \
+__forceinline constexpr ENUMTYPE operator+(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) + ((int)b)); }              \
+__forceinline constexpr ENUMTYPE operator-(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) - ((int)b)); }              \
+__forceinline constexpr ENUMTYPE operator*(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) * ((int)b)); }              \
+__forceinline constexpr ENUMTYPE operator/(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) / ((int)b)); }              \
+__forceinline constexpr ENUMTYPE operator%(ENUMTYPE const a, int const b) { return (ENUMTYPE)(((int)a) % ((int)b)); }              \
+__forceinline ENUMTYPE& operator+=(ENUMTYPE& a, int const b) { return (ENUMTYPE&)((int&)a = ((int&)a) + ((int)b)); }               \
+__forceinline ENUMTYPE& operator-=(ENUMTYPE& a, int const b) { return (ENUMTYPE&)((int&)a = ((int&)a) - ((int)b)); }               \
+}
+
 #endif // !DEFINE_ENUMERATION_OPERATORS
 #else
 #define DEFINE_ENUMERATION_OPERATORS(ENUMTYPE) // NOP, C allows these operators.
@@ -190,5 +156,5 @@
 // make the IDE think it should abort execution. You can double
 // click on these messages and jump to the line in question.
 #define MakeString(M, L) M(L)
-#define $Line MakeString(STRINGIZE, __LINE__)
-#define Reminder __FILE__ "(" $Line ") : Reminder: "
+#define $Line            MakeString(STRINGIZE, __LINE__)
+#define Reminder         __FILE__ "(" $Line ") : Reminder: "

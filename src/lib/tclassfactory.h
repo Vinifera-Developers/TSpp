@@ -27,89 +27,87 @@
  ******************************************************************************/
 #pragma once
 
-#include <always.h>
-#include <unknwn.h>
-#include "vector.h"
+#include "always.h"
 #include "tspp_assert.h"
+#include "vector.h"
+#include <unknwn.h>
 
 
 /**
  *  Register a class-object with OLE.
  */
-#define REGISTER_CLASS(_class) \
-    { \
-        DWORD dwRegister = 0; \
-        TClassFactory<_class> *ptr = new TClassFactory<_class>(); \
-        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
-        if (FAILED(hr)) \
-        { \
-            std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError()); \
-        } else { \
-            std::printf(#_class " factory registered.\n"); \
-        } \
-        ClassFactories.Add(dwRegister); \
+#define REGISTER_CLASS(_class)                                                                                                    \
+    {                                                                                                                             \
+        DWORD dwRegister = 0;                                                                                                     \
+        TClassFactory<_class>* ptr = new TClassFactory<_class>();                                                                 \
+        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister);         \
+        if (FAILED(hr)) {                                                                                                         \
+            std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError());        \
+        } else {                                                                                                                  \
+            std::printf(#_class " factory registered.\n");                                                                        \
+        }                                                                                                                         \
+        ClassFactories.Add(dwRegister);                                                                                           \
     }
 
 
 /**
  *  Register a class-object with OLE (pre-created factory).
  */
-#define REGISTER_FACT_CLASS(_class, _fact) \
-    { \
-        DWORD dwRegister = 0; \
-        IClassFactory *ptr = _fact; \
-        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister); \
-        if (FAILED(hr)) \
-        { \
-            std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError()); \
-        } else { \
-            std::printf(#_class " factory registered.\n"); \
-        } \
-        ClassFactories.Add(dwRegister); \
+#define REGISTER_FACT_CLASS(_class, _fact)                                                                                        \
+    {                                                                                                                             \
+        DWORD dwRegister = 0;                                                                                                     \
+        IClassFactory* ptr = _fact;                                                                                               \
+        HRESULT hr = CoRegisterClassObject(__uuidof(_class), ptr, CLSCTX_INPROC_SERVER, REGCLS_MULTIPLEUSE, &dwRegister);         \
+        if (FAILED(hr)) {                                                                                                         \
+            std::printf("CoRegisterClassObject(TClassFactory<" #_class ">) failed with error code %d.\n", GetLastError());        \
+        } else {                                                                                                                  \
+            std::printf(#_class " factory registered.\n");                                                                        \
+        }                                                                                                                         \
+        ClassFactories.Add(dwRegister);                                                                                           \
     }
 
 
 /**
- *  
+ *
  */
 template<class T>
 class TClassFactory : public IClassFactory
 {
-    public:
-        TClassFactory() : m_cRef(0) {}
-        //~TClassFactory() {}
+public:
+    TClassFactory() : m_cRef(0) {}
+    //~TClassFactory() {}
 
-        /**
-         *  IUnknown
-         */
-        IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID *ppvObj);
-        IFACEMETHOD_(ULONG, AddRef)();
-        IFACEMETHOD_(ULONG, Release)();
+    /**
+     *  IUnknown
+     */
+    IFACEMETHOD(QueryInterface)(REFIID riid, LPVOID* ppvObj);
+    IFACEMETHOD_(ULONG, AddRef)();
+    IFACEMETHOD_(ULONG, Release)();
 
-        /**
-         *  IClassFactory
-         */
-        IFACEMETHOD(CreateInstance)(IUnknown *pUnkOuter, REFIID riid, PVOID *ppvObj);
-        IFACEMETHOD(LockServer)(BOOL fLock);
+    /**
+     *  IClassFactory
+     */
+    IFACEMETHOD(CreateInstance)(IUnknown* pUnkOuter, REFIID riid, PVOID* ppvObj);
+    IFACEMETHOD(LockServer)(BOOL fLock);
 
-    public:
-        ULONG m_cRef;
+public:
+    ULONG m_cRef;
 };
 
 
 /**
  *  TClassFactory::QueryInterface
- * 
+ *
  *  Retrieves pointers to the supported interfaces on an object.
- *  
+ *
  *  @param      riid    The interface to this object being queried for.
- * 
+ *
  *  @param      ppvObj  Buffer to fill with obtained interface.
- * 
+ *
  *  @return     S_OK if interface obtained; E_NOINTERFACE otherwise.
  */
 template<class T>
-HRESULT STDMETHODCALLTYPE TClassFactory<T>::QueryInterface(REFIID riid, LPVOID *ppvObj)
+HRESULT STDMETHODCALLTYPE TClassFactory<T>::QueryInterface(REFIID riid, LPVOID* ppvObj)
 {
     /**
      *  Always set out parameter to NULL, validating it first.
@@ -120,11 +118,11 @@ HRESULT STDMETHODCALLTYPE TClassFactory<T>::QueryInterface(REFIID riid, LPVOID *
     *ppvObj = nullptr;
 
     if (riid == __uuidof(IUnknown)) {
-        *ppvObj = static_cast<IUnknown *>(this);
+        *ppvObj = static_cast<IUnknown*>(this);
     }
 
     if (riid == __uuidof(IClassFactory)) {
-        *ppvObj = static_cast<IClassFactory *>(this);
+        *ppvObj = static_cast<IClassFactory*>(this);
     }
 
     if (*ppvObj == nullptr) {
@@ -134,7 +132,7 @@ HRESULT STDMETHODCALLTYPE TClassFactory<T>::QueryInterface(REFIID riid, LPVOID *
     /**
      *  Increment the reference count and return the pointer.
      */
-    reinterpret_cast<IUnknown *>(*ppvObj)->AddRef();
+    reinterpret_cast<IUnknown*>(*ppvObj)->AddRef();
 
     return S_OK;
 }
@@ -142,7 +140,7 @@ HRESULT STDMETHODCALLTYPE TClassFactory<T>::QueryInterface(REFIID riid, LPVOID *
 
 /**
  *  TClassFactory::AddRef
- * 
+ *
  *  Increments the reference count for an interface pointer to a COM object.
  */
 template<class T>
@@ -154,7 +152,7 @@ ULONG STDMETHODCALLTYPE TClassFactory<T>::AddRef()
 
 /**
  *  TClassFactory::Release
- * 
+ *
  *  Decrements the reference count for an interface on a COM object.
  */
 template<class T>
@@ -170,22 +168,22 @@ ULONG STDMETHODCALLTYPE TClassFactory<T>::Release()
 
 /**
  *  TClassFactory::CreateInstance
- * 
+ *
  *  Creates an uninitialized object.
- * 
+ *
  *  @param      pUnkOuter  If the object is being created as part of an aggregate, specify a
  *                         pointer to the controlling IUnknown interface of the aggregate.
- * 
+ *
  *  @param      riid       A reference to the identifier of the interface to be used to
  *                         communicate with the newly created object.
- * 
+ *
  *  @param      ppvObj     The address of pointer variable that receives the interface
  *                         pointer requested in riid.
- * 
+ *
  *  @return     S_OK if interface obtained; E_NOINTERFACE otherwise.
  */
 template<class T>
-HRESULT STDMETHODCALLTYPE TClassFactory<T>::CreateInstance(IUnknown *pUnkOuter, REFIID riid, PVOID *ppvObj)
+HRESULT STDMETHODCALLTYPE TClassFactory<T>::CreateInstance(IUnknown* pUnkOuter, REFIID riid, PVOID* ppvObj)
 {
     if (ppvObj == nullptr) {
         return E_INVALIDARG;
@@ -196,8 +194,8 @@ HRESULT STDMETHODCALLTYPE TClassFactory<T>::CreateInstance(IUnknown *pUnkOuter, 
         return CLASS_E_NOAGGREGATION;
     }
 
-    T *obj = new T();
-    if (obj == nullptr) {  
+    T* obj = new T();
+    if (obj == nullptr) {
         return E_OUTOFMEMORY;
     }
 
@@ -215,7 +213,7 @@ HRESULT STDMETHODCALLTYPE TClassFactory<T>::CreateInstance(IUnknown *pUnkOuter, 
 
 /**
  *  TClassFactory::CreateInstance
- * 
+ *
  *  Locks an object application open in memory.
  */
 template<class T>

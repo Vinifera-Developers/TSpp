@@ -28,8 +28,8 @@
 #pragma once
 
 #include "always.h"
-#include <atomic>
 #include <Windows.h>
+#include <atomic>
 
 
 /*******************************************************************************
@@ -46,44 +46,43 @@
  */
 class SimpleCriticalSectionClass
 {
-    public:
-        SimpleCriticalSectionClass();
-        virtual ~SimpleCriticalSectionClass();
+public:
+    SimpleCriticalSectionClass();
+    virtual ~SimpleCriticalSectionClass();
 
-        void Enter();
-        bool Try_Enter();
-        void Leave();
+    void Enter();
+    bool Try_Enter();
+    void Leave();
 
-    protected:
-        SimpleCriticalSectionClass &operator=(const SimpleCriticalSectionClass &that) { return *this; }
+protected:
+    SimpleCriticalSectionClass& operator=(const SimpleCriticalSectionClass& that) { return *this; }
 
-    private:
-        CRITICAL_SECTION Handle;
+private:
+    CRITICAL_SECTION Handle;
 };
 
 
 class ScopedCriticalSectionClass
 {
-    public:
-        ScopedCriticalSectionClass(SimpleCriticalSectionClass *cs) :
-            CritSection(cs)
-        {
-            if (cs != nullptr) {
-                //printf("Entering CriticalSection from scoped lock\n");
-                CritSection->Enter();
-            }
+public:
+    ScopedCriticalSectionClass(SimpleCriticalSectionClass* cs) : CritSection(cs)
+    {
+        if (cs != nullptr) {
+            // printf("Entering CriticalSection from scoped lock\n");
+            CritSection->Enter();
         }
+    }
 
-        virtual ~ScopedCriticalSectionClass()
-        {
-            if (CritSection != nullptr) {
-                //printf("Leaving CriticalSection from scoped lock\n");
-                CritSection->Leave();
-            }
+    virtual ~ScopedCriticalSectionClass()
+    {
+        if (CritSection != nullptr) {
+            // printf("Leaving CriticalSection from scoped lock\n");
+            CritSection->Leave();
         }
+    }
 
-    private:
-        SimpleCriticalSectionClass *CritSection;
+private:
+    SimpleCriticalSectionClass* CritSection;
 };
 
 
@@ -100,35 +99,35 @@ class ScopedCriticalSectionClass
  */
 class CriticalSectionClass
 {
+public:
+    CriticalSectionClass();
+    ~CriticalSectionClass();
+
+    class LockClass
+    {
     public:
-        CriticalSectionClass();
-        ~CriticalSectionClass();
-
-        class LockClass
-        {
-        public:
-            // In order to enter a critical section create a local instance of LockClass with critical section as a parameter.
-            LockClass(CriticalSectionClass &critical_section) : CriticalSection(critical_section) { CriticalSection.Lock(); }
-            ~LockClass() { CriticalSection.Unlock(); }
-
-        private:
-            LockClass &operator=(const LockClass &that) { return *this; }
-            CriticalSectionClass &CriticalSection;
-        };
-
-        friend class LockClass;
+        // In order to enter a critical section create a local instance of LockClass with critical section as a parameter.
+        LockClass(CriticalSectionClass& critical_section) : CriticalSection(critical_section) { CriticalSection.Lock(); }
+        ~LockClass() { CriticalSection.Unlock(); }
 
     private:
-        // Lock and unlock are private, you have to create a
-        // CriticalSectionClass::LockClass object to call them instead.
-        void Lock();
-        void Unlock();
+        LockClass& operator=(const LockClass& that) { return *this; }
+        CriticalSectionClass& CriticalSection;
+    };
 
-        bool Is_Locked() { return Locked > 0; }
+    friend class LockClass;
 
-    private:
-        CRITICAL_SECTION Handle;
-        unsigned int Locked;
+private:
+    // Lock and unlock are private, you have to create a
+    // CriticalSectionClass::LockClass object to call them instead.
+    void Lock();
+    void Unlock();
+
+    bool Is_Locked() { return Locked > 0; }
+
+private:
+    CRITICAL_SECTION Handle;
+    unsigned int Locked;
 };
 
 
@@ -142,31 +141,28 @@ class CriticalSectionClass
  */
 class FastCriticalSectionClass
 {
+public:
+    FastCriticalSectionClass() { Flag.clear(); }
+    ~FastCriticalSectionClass() {}
+
+    class LockClass
+    {
     public:
-        FastCriticalSectionClass() { Flag.clear(); }
-        ~FastCriticalSectionClass() {}
+        LockClass(FastCriticalSectionClass& critical_section) : CriticalSection(critical_section) { CriticalSection.Thread_Safe_Set_Flag(); }
 
-        class LockClass
-        {
-        public:
-            LockClass(FastCriticalSectionClass &critical_section) : CriticalSection(critical_section)
-            {
-                CriticalSection.Thread_Safe_Set_Flag();
-            }
-
-            ~LockClass() { CriticalSection.Thread_Safe_Clear_Flag(); }
-
-        private:
-            LockClass &operator=(const LockClass &that) { return *this; }
-            FastCriticalSectionClass &CriticalSection;
-        };
-
-        friend class LockClass;
+        ~LockClass() { CriticalSection.Thread_Safe_Clear_Flag(); }
 
     private:
-        void Thread_Safe_Set_Flag();
-        void Thread_Safe_Clear_Flag();
+        LockClass& operator=(const LockClass& that) { return *this; }
+        FastCriticalSectionClass& CriticalSection;
+    };
 
-    private:
-        std::atomic_flag Flag;
+    friend class LockClass;
+
+private:
+    void Thread_Safe_Set_Flag();
+    void Thread_Safe_Clear_Flag();
+
+private:
+    std::atomic_flag Flag;
 };

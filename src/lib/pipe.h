@@ -32,21 +32,21 @@
 
 class Pipe
 {
-        Pipe(const Pipe &) = delete;
-        Pipe & operator = (const Pipe &) = delete;
+    Pipe(const Pipe&) = delete;
+    Pipe& operator=(const Pipe&) = delete;
 
-    public:
-        Pipe();
-        virtual ~Pipe();
+public:
+    Pipe();
+    virtual ~Pipe();
 
-        virtual int Flush();
-        virtual int End();
-        virtual void Put_To(Pipe *pipe);
-        virtual int Put(const void *source, int slen);
+    virtual int Flush();
+    virtual int End();
+    virtual void Put_To(Pipe* pipe);
+    virtual int Put(const void* source, int slen);
 
-        inline void Put_To(Pipe &pipe) { Put_To(&pipe); }
+    inline void Put_To(Pipe& pipe) { Put_To(&pipe); }
 
-    public:
-        Pipe *ChainTo;
-        Pipe *ChainFrom;
+public:
+    Pipe* ChainTo;
+    Pipe* ChainFrom;
 };

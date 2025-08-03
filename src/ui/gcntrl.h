@@ -32,17 +32,17 @@
 
 class ControlClass : public GadgetClass
 {
-	public:
-		ControlClass(unsigned id, int x, int y, int w, int h, unsigned flags = LEFTPRESS|RIGHTPRESS, bool sticky = false);
-		ControlClass(const ControlClass &control);
-		ControlClass(const NoInitClass &x);
+public:
+    ControlClass(unsigned id, int x, int y, int w, int h, unsigned flags = LEFTPRESS | RIGHTPRESS, bool sticky = false);
+    ControlClass(const ControlClass& control);
+    ControlClass(const NoInitClass& x);
 
-		virtual void Make_Peer(GadgetClass &gadget);
-		virtual bool Draw_Me(bool forced = false) override;
-		virtual unsigned Get_ID() const override;
-		virtual bool Action(unsigned flags, KeyNumType &key) override;
+    virtual void Make_Peer(GadgetClass& gadget);
+    virtual bool Draw_Me(bool forced = false) override;
+    virtual unsigned Get_ID() const override;
+    virtual bool Action(unsigned flags, KeyNumType& key) override;
 
-	public:
-		unsigned ID;
-		GadgetClass *Peer;
+public:
+    unsigned ID;
+    GadgetClass* Peer;
 };

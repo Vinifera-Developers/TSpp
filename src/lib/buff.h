@@ -32,26 +32,26 @@
 
 class Buffer
 {
-    public:
-        Buffer(char *ptr, long size = 0);
-        Buffer(void *ptr = nullptr, long size = 0);
-        Buffer(const void * ptr, long size = 0);
-        Buffer(long size);
-        Buffer(const Buffer & buffer);
-        ~Buffer();
+public:
+    Buffer(char* ptr, long size = 0);
+    Buffer(void* ptr = nullptr, long size = 0);
+    Buffer(const void* ptr, long size = 0);
+    Buffer(long size);
+    Buffer(const Buffer& buffer);
+    ~Buffer();
 
-        Buffer & operator = (const Buffer & buffer);
+    Buffer& operator=(const Buffer& buffer);
 
-        operator void * () const { return BufferPtr; }
-        operator char * () const { return (char *)BufferPtr; }
+    operator void*() const { return BufferPtr; }
+    operator char*() const { return (char*)BufferPtr; }
 
-        void Reset();
-        void * Get_Buffer() const { return BufferPtr; }
-        long Get_Size() const { return Size; }
-        bool Is_Valid() const { return BufferPtr != nullptr; }
+    void Reset();
+    void* Get_Buffer() const { return BufferPtr; }
+    long Get_Size() const { return Size; }
+    bool Is_Valid() const { return BufferPtr != nullptr; }
 
-    protected:
-        void * BufferPtr;
-        long Size;
-        bool IsAllocated;
+protected:
+    void* BufferPtr;
+    long Size;
+    bool IsAllocated;
 };

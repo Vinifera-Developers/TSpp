@@ -39,25 +39,24 @@
 
 class Base64Pipe : public Pipe
 {
-    public:
-        typedef enum CodeControl {
-            ENCODE,
-            DECODE
-        } CodeControl;
+public:
+    typedef enum CodeControl {
+        ENCODE,
+        DECODE
+    } CodeControl;
 
-        Base64Pipe(CodeControl control) : 
-            Control(control), Counter(0), CBuffer(), PBuffer() {}
+    Base64Pipe(CodeControl control) : Control(control), Counter(0), CBuffer(), PBuffer() {}
 
-        virtual int Flush() override;
-        virtual int Put(const void * source, int slen) override;
+    virtual int Flush() override;
+    virtual int Put(const void* source, int slen) override;
 
-    private:
-        CodeControl Control;
-        int Counter;
-        char CBuffer[4];
-        char PBuffer[3];
+private:
+    CodeControl Control;
+    int Counter;
+    char CBuffer[4];
+    char PBuffer[3];
 
-    private:
-        Base64Pipe(const Base64Pipe & rvalue) = delete;
-        Base64Pipe & operator = (const Base64Pipe &) = delete;
+private:
+    Base64Pipe(const Base64Pipe& rvalue) = delete;
+    Base64Pipe& operator=(const Base64Pipe&) = delete;
 };

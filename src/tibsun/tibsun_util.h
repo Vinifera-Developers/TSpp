@@ -34,6 +34,6 @@
 Cell Get_Cell_Under_Mouse();
 Coord Get_Coord_Under_Mouse();
 
-bool Simple_YesNo_WWMessageBox(const char *msg);
+bool Simple_YesNo_WWMessageBox(const char* msg);
 
 FacingType KN_To_Facing(KeyNumType input);

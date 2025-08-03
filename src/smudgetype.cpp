@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "smudgetype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-SmudgeType SmudgeTypeClass::From_Name(const char *name)
+SmudgeType SmudgeTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ SmudgeType SmudgeTypeClass::From_Name(const char *name)
 }
 
 
-const char *SmudgeTypeClass::Name_From(SmudgeType type)
+const char* SmudgeTypeClass::Name_From(SmudgeType type)
 {
     return (type != SMUDGE_NONE && type < SmudgeTypes.Count() ? SmudgeTypes[type]->Name() : "<none>");
 }
 
 
-const SmudgeTypeClass *SmudgeTypeClass::Find_Or_Make(const char *name)
+const SmudgeTypeClass* SmudgeTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

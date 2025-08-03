@@ -40,36 +40,34 @@
 
 class SHAEngine
 {
-    private:
-        typedef union {
-            unsigned long Long[5];
-            unsigned char Char[20];
-        } SHADigest;
+private:
+    typedef union {
+        unsigned long Long[5];
+        unsigned char Char[20];
+    } SHADigest;
 
-        enum : unsigned
-        {
-            SRC_BLOCK_SIZE=16*sizeof(long),
-            PROC_BLOCK_SIZE=80*sizeof(long)
-        };
-    public:
-        SHAEngine();
+    enum : unsigned {
+        SRC_BLOCK_SIZE = 16 * sizeof(long),
+        PROC_BLOCK_SIZE = 80 * sizeof(long)
+    };
 
-        void Init() {
-            new ((void*)this) SHAEngine;
-        };
+public:
+    SHAEngine();
 
-        int Result(void * result) const;
-        void Hash(void const * data, long length);
-        void Process_Block(void const * source, SHADigest & acc) const;
-        void Process_Partial(void const * & data, long & length);
+    void Init() { new ((void*)this) SHAEngine; };
 
-        static int Digest_Size() { return sizeof(SHADigest); }
+    int Result(void* result) const;
+    void Hash(void const* data, long length);
+    void Process_Block(void const* source, SHADigest& acc) const;
+    void Process_Partial(void const*& data, long& length);
 
-    private:
-        bool IsCached;
-        SHADigest FinalResult;
-        SHADigest Acc;
-        long Length;
-        int PartialCount;
-        char Partial[SRC_BLOCK_SIZE];
+    static int Digest_Size() { return sizeof(SHADigest); }
+
+private:
+    bool IsCached;
+    SHADigest FinalResult;
+    SHADigest Acc;
+    long Length;
+    int PartialCount;
+    char Partial[SRC_BLOCK_SIZE];
 };

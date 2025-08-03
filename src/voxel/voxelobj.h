@@ -29,11 +29,10 @@
 
 #include "always.h"
 #include "ccfile.h"
-#include "voxellib.h"
 #include "motionlib.h"
+#include "voxellib.h"
 
-struct VoxelObject
-{
+struct VoxelObject {
 public:
     ~VoxelObject()
     {
@@ -78,19 +77,16 @@ public:
 
             if (!MotionLibrary || MotionLibrary->Load_Failed()) {
                 success = false;
-            }
-            else {
+            } else {
                 MotionLibrary->Scale(VoxelLibrary->Get_Layer_Info(0, 0)->Scale);
             }
-        }
-        else {
+        } else {
             success = false;
         }
 
         if (success) {
             index.Clear();
-        }
-        else {
+        } else {
             this->~VoxelObject();
         }
 

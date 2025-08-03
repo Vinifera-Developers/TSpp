@@ -26,22 +26,21 @@
  *
  ******************************************************************************/
 #include "pcxbtn.h"
-#include "tibsun_defines.h"
-#include "tibsun_globals.h"
+#include "bsurface.h"
+#include "dsurface.h"
+#include "filepcx.h"
 #include "language.h"
 #include "spritecollection.h"
-#include "filepcx.h"
-#include "dsurface.h"
-#include "bsurface.h"
+#include "tibsun_defines.h"
+#include "tibsun_globals.h"
 
 
 /**
  *  Default constructor for a pcx image button.
- * 
+ *
  *  @author: CCHyper
  */
-PCXButtonClass::PCXButtonClass() :
-    ToggleClass(0, 0, 0, 0, 0)
+PCXButtonClass::PCXButtonClass() : ToggleClass(0, 0, 0, 0, 0)
 {
     Disable();
 }
@@ -49,11 +48,10 @@ PCXButtonClass::PCXButtonClass() :
 
 /**
  *  Constructor for a pcx image button.
- * 
+ *
  *  @author: CCHyper
  */
-PCXButtonClass::PCXButtonClass(unsigned id, const char *image_fname, int x, int y, int w, int h) :
-    ToggleClass(id, x, y, w, h)
+PCXButtonClass::PCXButtonClass(unsigned id, const char* image_fname, int x, int y, int w, int h) : ToggleClass(id, x, y, w, h)
 {
     Disable();
 
@@ -63,7 +61,7 @@ PCXButtonClass::PCXButtonClass(unsigned id, const char *image_fname, int x, int 
 
 /**
  *  Default destructor for a pcx image button.
- * 
+ *
  *  @author: CCHyper
  */
 PCXButtonClass::~PCXButtonClass()
@@ -74,7 +72,7 @@ PCXButtonClass::~PCXButtonClass()
 
 /**
  *  Renders the pcx button's imagery.
- * 
+ *
  *  @author: CCHyper
  */
 bool PCXButtonClass::Draw_Me(bool forced)
@@ -86,7 +84,7 @@ bool PCXButtonClass::Draw_Me(bool forced)
     if (!ImageSurface) {
         return false;
     }
-    
+
     Rect hidden_rect = HiddenSurface->Get_Rect();
 
     /**
@@ -106,10 +104,10 @@ bool PCXButtonClass::Draw_Me(bool forced)
 
 /**
  *  Loads the buttons imagery from the input filename.
- * 
+ *
  *  @author: CCHyper
  */
-bool PCXButtonClass::Load_Image(const char *filename)
+bool PCXButtonClass::Load_Image(const char* filename)
 {
     CCFileClass pcxfile(filename);
     if (!pcxfile.Is_Available()) {
@@ -128,16 +126,16 @@ bool PCXButtonClass::Load_Image(const char *filename)
     bool loaded = false;
 
     switch (pcxhdr.BitsPixelPlane) {
-        case 8:
-            loaded = SpriteCollection.Load_Paletted_PCX(lowerstr.Peek_Buffer());
-            break;
+    case 8:
+        loaded = SpriteCollection.Load_Paletted_PCX(lowerstr.Peek_Buffer());
+        break;
 
-        case 16:
-            loaded = SpriteCollection.Load_PCX(lowerstr.Peek_Buffer(), 2);
-            break;
+    case 16:
+        loaded = SpriteCollection.Load_PCX(lowerstr.Peek_Buffer(), 2);
+        break;
 
-        default:
-            break;
+    default:
+        break;
     };
 
     if (loaded) {

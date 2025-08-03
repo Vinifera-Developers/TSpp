@@ -36,9 +36,9 @@ class TechnoTypeClass;
 
 class TaskForceMemberClass
 {
-    public:
-        int Quantity;                   // Number of objects desired for this type.
-        const TechnoTypeClass *Class;   // The type of object desired.
+public:
+    int Quantity;                 // Number of objects desired for this type.
+    const TechnoTypeClass* Class; // The type of object desired.
 };
 
 
@@ -54,17 +54,17 @@ public:
     /**
      *  IPersist
      */
-    IFACEMETHOD(GetClassID)(CLSID *pClassID);
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
     /**
      *  IPersistStream
      */
-    IFACEMETHOD(Load)(IStream *pStm);
-    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
 public:
-    TaskForceClass(const char *ini_name = nullptr);
-    TaskForceClass(const NoInitClass &noinit);
+    TaskForceClass(const char* ini_name = nullptr);
+    TaskForceClass(const NoInitClass& noinit);
     virtual ~TaskForceClass();
 
     /**
@@ -72,25 +72,25 @@ public:
      */
     virtual RTTIType Fetch_RTTI() const override;
     virtual int Get_Object_Size(bool firestorm = false) const override;
-    virtual void Object_CRC(CRCEngine &crc) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
     /**
      *  AbstractTypeClass
      */
-    virtual bool Read_INI(CCINIClass &ini) override;
-    virtual bool Write_INI(CCINIClass &ini) const override;
+    virtual bool Read_INI(CCINIClass& ini) override;
+    virtual bool Write_INI(CCINIClass& ini) const override;
 
     // 006216C0
     bool Consists_Only_Of_Infantry() const;
     // 00621DE0
 
-    static void Read_Scenario_INI(CCINIClass &ini, int a2);
-    static void Write_Scenario_INI(CCINIClass &ini, int a2);
+    static void Read_Scenario_INI(CCINIClass& ini, int a2);
+    static void Write_Scenario_INI(CCINIClass& ini, int a2);
 
-    static TaskForceType From_Name(const char *name);
-    static TaskForceType From_Full_Name(const char *name);
-    static const char *Name_From(TaskForceType type);
-    static const TaskForceClass *Find_Or_Make(const char *name);
+    static TaskForceType From_Name(const char* name);
+    static TaskForceType From_Full_Name(const char* name);
+    static const char* Name_From(TaskForceType type);
+    static const TaskForceClass* Find_Or_Make(const char* name);
 
 public:
     int Group;

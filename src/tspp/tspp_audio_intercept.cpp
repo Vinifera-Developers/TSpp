@@ -29,11 +29,11 @@
 #include "tibsun_globals.h"
 
 
-int (*TSPP_Play_Sample_Function_Ptr)(const void *sample, int priority, int volume) = nullptr;
-bool (*TSPP_Is_Sample_Playing_Function_Ptr)(const void *sample) = nullptr;
+int (*TSPP_Play_Sample_Function_Ptr)(const void* sample, int priority, int volume) = nullptr;
+bool (*TSPP_Is_Sample_Playing_Function_Ptr)(const void* sample) = nullptr;
 
 
-int TSPP_Play_Sample(const void *sample, int priority, int volume)
+int TSPP_Play_Sample(const void* sample, int priority, int volume)
 {
     if (TSPP_Play_Sample_Function_Ptr) {
         return TSPP_Play_Sample_Function_Ptr(sample, priority, volume);
@@ -43,7 +43,7 @@ int TSPP_Play_Sample(const void *sample, int priority, int volume)
 }
 
 
-bool TSPP_Is_Sample_Playing(const void *sample)
+bool TSPP_Is_Sample_Playing(const void* sample)
 {
     if (TSPP_Is_Sample_Playing_Function_Ptr) {
         return TSPP_Is_Sample_Playing_Function_Ptr(sample);

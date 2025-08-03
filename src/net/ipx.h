@@ -27,7 +27,7 @@
 ******************************************************************************/
 #pragma once
 
-#include <always.h>
+#include "always.h"
 
 
 typedef unsigned char NetNumType[4];
@@ -40,18 +40,17 @@ typedef unsigned char NetNodeType[6];
  *  field; annotation of 'APP' means the application must set the field.
  *  NOTE: All header fields are ordered high-byte,low-byte.
  */
-typedef struct IPXHEADER
-{
-    unsigned short CheckSum;                // IPX: Not used; always 0xffff
-    unsigned short Length;                  // IPX: Total size, incl header & data
-    unsigned char TransportControl;         // IPX: # bridges message crossed
-    unsigned char PacketType;               // APP: Set to 4 for IPX (5 for SPX)
-    unsigned char DestNetworkNumber[4];     // APP: destination Network Number
-    unsigned char DestNetworkNode[6];       // APP: destination Node Address
-    unsigned short DestNetworkSocket;       // APP: destination Socket Number
-    unsigned char SourceNetworkNumber[4];   // IPX: source Network Number
-    unsigned char SourceNetworkNode[6];     // IPX: source Node Address
-    unsigned short SourceNetworkSocket;     // IPX: source Socket Number
+typedef struct IPXHEADER {
+    unsigned short CheckSum;              // IPX: Not used; always 0xffff
+    unsigned short Length;                // IPX: Total size, incl header & data
+    unsigned char TransportControl;       // IPX: # bridges message crossed
+    unsigned char PacketType;             // APP: Set to 4 for IPX (5 for SPX)
+    unsigned char DestNetworkNumber[4];   // APP: destination Network Number
+    unsigned char DestNetworkNode[6];     // APP: destination Node Address
+    unsigned short DestNetworkSocket;     // APP: destination Socket Number
+    unsigned char SourceNetworkNumber[4]; // IPX: source Network Number
+    unsigned char SourceNetworkNode[6];   // IPX: source Node Address
+    unsigned short SourceNetworkSocket;   // IPX: source Socket Number
 } IPXHeaderType;
 
 /**
@@ -61,14 +60,14 @@ typedef struct IPXHEADER
  */
 typedef struct ECB {
     void* Link_Address;
-    void (*Event_Service_Routine)();		// APP: event handler (NULL=none)
-    unsigned char InUse;						// IPX: 0 = event complete
-    unsigned char CompletionCode;				// IPX: event's return code
-    unsigned short SocketNumber;				// APP: socket to send data through
-    unsigned short ConnectionID;				// returned by Listen (???)
+    void (*Event_Service_Routine)(); // APP: event handler (NULL=none)
+    unsigned char InUse;             // IPX: 0 = event complete
+    unsigned char CompletionCode;    // IPX: event's return code
+    unsigned short SocketNumber;     // APP: socket to send data through
+    unsigned short ConnectionID;     // returned by Listen (???)
     unsigned short RestOfWorkspace;
     unsigned char DriverWorkspace[12];
-    unsigned char ImmediateAddress[6];			// returned by Get_Local_Target
+    unsigned char ImmediateAddress[6]; // returned by Get_Local_Target
     unsigned short PacketCount;
     struct {
         void* Address;

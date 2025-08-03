@@ -32,10 +32,10 @@
 
 class CheckBoxClass : public ToggleClass
 {
-    public:
-        CheckBoxClass(unsigned id, int x, int y);
-        virtual ~CheckBoxClass();
+public:
+    CheckBoxClass(unsigned id, int x, int y);
+    virtual ~CheckBoxClass();
 
-        virtual bool Draw_Me(bool forced = false) override;
-        virtual bool Action(unsigned flags, KeyNumType & key) override;
+    virtual bool Draw_Me(bool forced = false) override;
+    virtual bool Action(unsigned flags, KeyNumType& key) override;
 };

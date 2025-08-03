@@ -28,23 +28,23 @@
 #pragma once
 
 #include "always.h"
-#include "tooltip.h"
 #include "textprint.h"
+#include "tooltip.h"
 
 
 class CCToolTip : public ToolTipManager
 {
-    public:
-        CCToolTip(HWND hWnd);
-        virtual ~CCToolTip();
+public:
+    CCToolTip(HWND hWnd);
+    virtual ~CCToolTip();
 
-        virtual bool Update(const ToolTipText *text);
-        virtual void Reset(const ToolTipText *text);
-        virtual void Force_Redraw(bool sidebar = false);
-        virtual void Draw(const ToolTipText *text);
-        virtual const char *ToolTip_Text(int id);
+    virtual bool Update(const ToolTipText* text);
+    virtual void Reset(const ToolTipText* text);
+    virtual void Force_Redraw(bool sidebar = false);
+    virtual void Draw(const ToolTipText* text);
+    virtual const char* ToolTip_Text(int id);
 
-    protected:
-        bool DrawOnSidebar;
-        TextPrintType Style;
+protected:
+    bool DrawOnSidebar;
+    TextPrintType Style;
 };

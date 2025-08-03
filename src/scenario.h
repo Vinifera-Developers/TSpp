@@ -27,20 +27,21 @@
  ******************************************************************************/
 #pragma once
 
-#include <always.h>
-#include "tibsun_defines.h"
-#include "random.h"
-#include "ttimer.h"
+#include "always.h"
 #include "ftimer.h"
-#include "stimer.h"
-#include "typelist.h"
+#include "random.h"
 #include "special.h"
+#include "stimer.h"
+#include "tibsun_defines.h"
+#include "ttimer.h"
+#include "typelist.h"
 
 
 class INIClass;
 class CCINIClass;
 class CellClass;
 class TechnoTypeClass;
+class CRCEngine;
 
 
 class ScenarioClass
@@ -53,12 +54,12 @@ public:
 
     void Set_Scenario_Name(char const* name);
 
-    bool Read_INI(CCINIClass &ini);
-    bool Write_INI(CCINIClass &ini);
-    
-    bool Read_Global_INI(INIClass &ini);
-    bool Read_Local_INI(INIClass &ini);
-    bool Write_Local_INI(INIClass &ini);
+    bool Read_INI(CCINIClass& ini);
+    bool Write_INI(CCINIClass& ini);
+
+    bool Read_Global_INI(INIClass& ini);
+    bool Read_Local_INI(INIClass& ini);
+    bool Write_Local_INI(INIClass& ini);
 
     bool Set_Global_To(int global, bool value);
     bool Set_Global_To(char const* name, bool value);
@@ -99,12 +100,12 @@ public:
     SpecialClass Special;
     char NextScenarioName[PATH_MAX];
     char AltNextScenarioName[PATH_MAX];
-    int Home;                               // These are waypoint indices, not Cell coordinates
+    int Home; // These are waypoint indices, not Cell coordinates
     int AltHome;
     int UniqueID;
     Random2Class RandomNumber;
-    DiffType Difficulty;                    // For human player.
-    DiffType CDifficulty;                   // For computer players.
+    DiffType Difficulty;  // For human player.
+    DiffType CDifficulty; // For computer players.
     TTimerClass<SystemTimerClass> ElapsedTimer;
     Cell Waypoint[WAYPT_COUNT];
     CDTimerClass<FrameTimerClass> MissionTimer;
@@ -158,7 +159,7 @@ public:
     CDTimerClass<FrameTimerClass> FadeTimer;
     CampaignType Campaign;
     int StartingDropships;
-    TypeList<TechnoTypeClass *> AllowableUnits;
+    TypeList<TechnoTypeClass*> AllowableUnits;
     TypeList<int> AllowableUnitMaximums;
     TypeList<int> AllowableUnitUsage;
     int AmbientLight;
@@ -175,7 +176,7 @@ public:
     int IonBlueTint;
     int IonGroundLight;
     int IonLevelLight;
-    bool field_1E38;                    // Currently reading scenario ini?
+    bool field_1E38; // Currently reading scenario ini?
     int InitTime;
     AddonType RequiredAddOn;
     SideType SpeechSide;
@@ -184,8 +185,8 @@ public:
 };
 
 
-bool Start_Scenario(char *name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);
-bool Read_Scenario(char *name);
+bool Start_Scenario(char* name, bool briefing, CampaignType campaign = CAMPAIGN_NONE);
+bool Read_Scenario(char* name);
 void Clear_Scenario();
 void Do_Win();
 void Do_Lose();

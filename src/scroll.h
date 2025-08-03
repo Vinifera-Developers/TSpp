@@ -33,41 +33,41 @@
 
 class ScrollClass : public TabClass
 {
-    public:
-        ScrollClass();
-        ScrollClass(const NoInitClass &x);
-        ~ScrollClass();
+public:
+    ScrollClass();
+    ScrollClass(const NoInitClass& x);
+    ~ScrollClass();
 
-        /**
-         *  GScreenClass
-         */
-        virtual void Init_IO() override;
-        virtual void AI(KeyNumType &input, Point2D &xy) override;
+    /**
+     *  GScreenClass
+     */
+    virtual void Init_IO() override;
+    virtual void AI(KeyNumType& input, Point2D& xy) override;
 
-        /**
-         *  MapClass
-         */
-        virtual bool entry_64() const override;
+    /**
+     *  MapClass
+     */
+    virtual bool entry_64() const override;
 
-        /**
-         *  DisplayClass
-         */
-        virtual void Abort_Drag_Select() override;
-        virtual void Mouse_Right_Press(Point2D &xy = Point2D()) override;
-        virtual void Mouse_Right_Up(Point2D &xy = Point2D()) override;
+    /**
+     *  DisplayClass
+     */
+    virtual void Abort_Drag_Select() override;
+    virtual void Mouse_Right_Press(Point2D& xy = Point2D()) override;
+    virtual void Mouse_Right_Up(Point2D& xy = Point2D()) override;
 
-        // 005E8600
-        // 005E8910
-        // 005E8DD0
-        // 005E91A0
-        // 005E9300
-        // 005E9660
+    // 005E8600
+    // 005E8910
+    // 005E8DD0
+    // 005E91A0
+    // 005E9300
+    // 005E9660
 
-    private:
-        int	Inertia;
-        bool field_1D0C;        // is scrolling allowed?
-        Point2D field_1D10;     // the point of the right-click location when scrolling started.
-        bool field_1D18;        // to redraw or to scroll?
-        bool field_1D19;        // inertia scroll related, could be IsAutoScroll.
-        bool field_1D1A;        // is currently coasting or mouse button down?
+private:
+    int Inertia;
+    bool field_1D0C;    // is scrolling allowed?
+    Point2D field_1D10; // the point of the right-click location when scrolling started.
+    bool field_1D18;    // to redraw or to scroll?
+    bool field_1D19;    // inertia scroll related, could be IsAutoScroll.
+    bool field_1D1A;    // is currently coasting or mouse button down?
 };

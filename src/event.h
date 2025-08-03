@@ -28,10 +28,10 @@
  ******************************************************************************/
 #pragma once
 
-#include <always.h>
+#include "always.h"
+#include "house.h"
 #include "special.h"
 #include "target.h"
-#include "house.h"
 #include "tibsun_defines.h"
 
 
@@ -51,7 +51,7 @@ public:
     EventClass(int index, EventType type, int val);
     EventClass(int index, EventType type, const Cell& cell);
     EventClass(int index, EventType type, TargetClass src, TargetClass dest);
-    EventClass(int index, TargetClass src, MissionType mission, TargetClass target=TargetClass(), TargetClass destination = TargetClass());
+    EventClass(int index, TargetClass src, MissionType mission, TargetClass target = TargetClass(), TargetClass destination = TargetClass());
     EventClass(int index, TargetClass src, MissionType mission, TargetClass target, TargetClass destination, SpeedType speed, MPHType maxspeed);
     EventClass(int index, EventType type, RTTIType object, int id);
     EventClass(int index, EventType type, RTTIType object, Cell const& cell);
@@ -78,12 +78,12 @@ public:
         Data.LongLongExtra.Extra = extra;
     }
 
-    int operator==(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
-    int operator!=(const EventClass &q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
+    int operator==(const EventClass& q) { return std::memcmp(this, &q, sizeof(q)) == 0; }
+    int operator!=(const EventClass& q) { return std::memcmp(this, &q, sizeof(q)) != 0; }
 
     void Execute();
 
-    static const char *Event_Name(EventType event);
+    static const char* Event_Name(EventType event);
     static unsigned char Event_Length(EventType event);
 
 #pragma pack(1) // We need this so bools/bits are not aligned.
@@ -117,14 +117,14 @@ public:
 
         struct {
             xTargetClass Whom;
-            MissionType	Mission;
+            MissionType Mission;
             xTargetClass Target;
             xTargetClass Destination;
         } MegaMission;
 
         struct {
             xTargetClass Whom;
-            MissionType	Mission;
+            MissionType Mission;
             xTargetClass Target;
             xTargetClass Destination;
             SpeedType Speed;
@@ -168,7 +168,7 @@ public:
         } FrameInfo;
 
         struct {
-            void * Pointer;
+            void* Pointer;
             unsigned long Size;
         } Variable;
 

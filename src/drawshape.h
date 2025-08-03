@@ -38,20 +38,19 @@ enum ShapeFlags_Type;
 
 /**
  *  All draw shape calls will route through these functions. It handles all
- *  draws for the C&C engine.	
+ *  draws for the C&C engine.
  */
-void Draw_Shape(
-	Surface &surface,						// Destination surface to draw the shape to.
-	ConvertClass &convert,
-	const ShapeSet *shapefile,				// Pointer to the shape data file. This data file contains all the embedded shapes.
-	int shapenum,							// The shape number within the shapefile that will be drawn.
-	const Point2D &point,							// The pixel coordinates to draw the shape.
-	const Rect &window,							// The clipping rect/window to use.
-	ShapeFlags_Type flags = SHAPE_NORMAL,	// The custom draw shape flags. This controls how the data is drawn to the surface.
-	const char* remap = nullptr,
-	int height_offset = 0,					// looks like it's the z adjustment value.
-	ZGradientType zgrad = ZGRAD_GROUND,
-	int intensity = 1000,					// some sort of color intensity 0 - 2000 (def 1000)
-	const ShapeSet* z_shapefile = nullptr,
-	int z_shapenum = 0,						// The shape number within the z shape that will be drawn.
-	Point2D z_off = Point2D(0, 0));
+void Draw_Shape(Surface& surface,                       // Destination surface to draw the shape to.
+                ConvertClass& convert,
+                const ShapeSet* shapefile,              // Pointer to the shape data file. This data file contains all the embedded shapes.
+                int shapenum,                           // The shape number within the shapefile that will be drawn.
+                const Point2D& point,                   // The pixel coordinates to draw the shape.
+                const Rect& window,                     // The clipping rect/window to use.
+                ShapeFlags_Type flags = SHAPE_NORMAL,   // The custom draw shape flags. This controls how the data is drawn to the surface.
+                const char* remap = nullptr,
+                int height_offset = 0,                  // looks like it's the z adjustment value.
+                ZGradientType zgrad = ZGRAD_GROUND,
+                int intensity = 1000,                   // some sort of color intensity 0 - 2000 (def 1000)
+                const ShapeSet* z_shapefile = nullptr,
+                int z_shapenum = 0,                     // The shape number within the z shape that will be drawn.
+                Point2D z_off = Point2D(0, 0));

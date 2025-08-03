@@ -38,24 +38,25 @@ static const char NewLineChar = '\n';
 
 
 const char Wstring::NullChar = '\0';
-const char *Wstring::EmptyString = &Wstring::NullChar;
+const char* Wstring::EmptyString = &Wstring::NullChar;
 
 
 Wstring::Wstring() :
     Buffer(nullptr)
 {
+    
 }
 
 
 Wstring::Wstring(char c) :
-   Wstring()
+    Wstring()
 {
     bool result = Set(c);
     TSPP_ASSERT(result);
 }
 
 
-Wstring::Wstring(const char *string) :
+Wstring::Wstring(const char* string) :
     Wstring()
 {
     bool result = Set(string);
@@ -63,7 +64,7 @@ Wstring::Wstring(const char *string) :
 }
 
 
-Wstring::Wstring(const Wstring &that) :
+Wstring::Wstring(const Wstring& that) :
     Wstring()
 {
     bool result = Set(that);
@@ -71,7 +72,7 @@ Wstring::Wstring(const Wstring &that) :
 }
 
 
-Wstring::Wstring(Wstring &&that) noexcept :
+Wstring::Wstring(Wstring&& that) noexcept :
     Buffer(that.Buffer)
 {
     that.Buffer = nullptr;
@@ -84,7 +85,7 @@ Wstring::~Wstring()
 }
 
 
-Wstring &Wstring::operator=(const Wstring &that)
+Wstring& Wstring::operator=(const Wstring& that)
 {
     bool result = Set(that);
     TSPP_ASSERT(result);
@@ -93,7 +94,7 @@ Wstring &Wstring::operator=(const Wstring &that)
 }
 
 
-Wstring &Wstring::operator=(Wstring &&that) noexcept
+Wstring& Wstring::operator=(Wstring&& that) noexcept
 {
     bool result = Set(std::move(that));
     TSPP_ASSERT(result);
@@ -102,7 +103,7 @@ Wstring &Wstring::operator=(Wstring &&that) noexcept
 }
 
 
-Wstring &Wstring::operator=(char c)
+Wstring& Wstring::operator=(char c)
 {
     bool result = Set(c);
     TSPP_ASSERT(result);
@@ -111,7 +112,7 @@ Wstring &Wstring::operator=(char c)
 }
 
 
-Wstring &Wstring::operator=(const char *string)
+Wstring& Wstring::operator=(const char* string)
 {
     bool result = Set(string);
     TSPP_ASSERT(result);
@@ -120,7 +121,7 @@ Wstring &Wstring::operator=(const char *string)
 }
 
 
-Wstring &Wstring::operator+=(char c)
+Wstring& Wstring::operator+=(char c)
 {
     bool result = Concat(c);
     TSPP_ASSERT(result);
@@ -129,7 +130,7 @@ Wstring &Wstring::operator+=(char c)
 }
 
 
-Wstring &Wstring::operator+=(const char *string)
+Wstring& Wstring::operator+=(const char* string)
 {
     bool result = Concat(string);
     TSPP_ASSERT(result);
@@ -138,7 +139,7 @@ Wstring &Wstring::operator+=(const char *string)
 }
 
 
-Wstring &Wstring::operator+=(const Wstring &that)
+Wstring& Wstring::operator+=(const Wstring& that)
 {
     bool result = Concat(that);
     TSPP_ASSERT(result);
@@ -154,16 +155,16 @@ void Wstring::Release_Buffer()
 }
 
 
-char *Wstring::Peek_Buffer()
+char* Wstring::Peek_Buffer()
 {
     if (Buffer == nullptr) {
-        return const_cast<char *>(EmptyString);
+        return const_cast<char*>(EmptyString);
     }
     return Buffer;
 }
 
 
-const char *Wstring::Peek_Buffer() const
+const char* Wstring::Peek_Buffer() const
 {
     if (Buffer == nullptr) {
         return EmptyString;
@@ -172,7 +173,7 @@ const char *Wstring::Peek_Buffer() const
 }
 
 
-void Wstring::Get_Buffer(char *string, int length) const
+void Wstring::Get_Buffer(char* string, int length) const
 {
     TSPP_ASSERT(string != nullptr);
     TSPP_ASSERT(length >= 0);
@@ -223,21 +224,21 @@ bool Wstring::Resize(int new_length)
         return true;
     }
 
-    char *new_buffer = new char [new_length + 1];
+    char* new_buffer = new char[new_length + 1];
 
     if (new_buffer == nullptr) {
         return false;
     }
-    
+
     if (Is_Not_Empty()) {
         std::memcpy(new_buffer, Buffer, old_length * sizeof(char));
     }
-    
+
     std::memset(new_buffer, static_cast<int>(NullChar), (new_length - old_length + 1) * sizeof(char));
-    
+
     Release_Buffer();
     Buffer = new_buffer;
-    
+
     return true;
 }
 
@@ -249,7 +250,7 @@ void Wstring::Reserve(int length)
     Release_Buffer();
 
     if (length >= 0) {
-        Buffer = new char [length];
+        Buffer = new char[length];
         TSPP_ASSERT(Buffer != nullptr);
         std::memset(Buffer, static_cast<int>(NullChar), length * sizeof(char));
     }
@@ -298,10 +299,9 @@ Wstring Wstring::As_Upper() const
 }
 
 
-int Wstring::Compare(const char *string) const
+int Wstring::Compare(const char* string) const
 {
-    if ((Buffer == nullptr && string == nullptr) ||
-        (Buffer == string)) {
+    if ((Buffer == nullptr && string == nullptr) || (Buffer == string)) {
         return 0;
     }
 
@@ -328,16 +328,15 @@ int Wstring::Compare(const char *string) const
 }
 
 
-int Wstring::Compare(const Wstring &that) const
+int Wstring::Compare(const Wstring& that) const
 {
     return Compare(that.Buffer);
 }
 
 
-int Wstring::Compare_No_Case(const char *string) const
+int Wstring::Compare_No_Case(const char* string) const
 {
-    if ((Buffer == nullptr && string == nullptr) ||
-        (Buffer == string)) {
+    if ((Buffer == nullptr && string == nullptr) || (Buffer == string)) {
         return 0;
     }
 
@@ -364,13 +363,13 @@ int Wstring::Compare_No_Case(const char *string) const
 }
 
 
-int Wstring::Compare_No_Case(const Wstring &that) const
+int Wstring::Compare_No_Case(const Wstring& that) const
 {
     return Compare_No_Case(that.Buffer);
 }
 
 
-bool Wstring::Contains(const char *delimiters) const
+bool Wstring::Contains(const char* delimiters) const
 {
     if (Buffer == nullptr || delimiters == nullptr || delimiters[0] == NullChar) {
         return false;
@@ -379,13 +378,13 @@ bool Wstring::Contains(const char *delimiters) const
 }
 
 
-bool Wstring::Contains(const Wstring &delimiters) const
+bool Wstring::Contains(const Wstring& delimiters) const
 {
     return Contains(delimiters.Buffer);
 }
 
 
-bool Wstring::Contains_String(const char *string) const
+bool Wstring::Contains_String(const char* string) const
 {
     if (Buffer == nullptr || string == nullptr || string[0] == NullChar) {
         return false;
@@ -394,7 +393,7 @@ bool Wstring::Contains_String(const char *string) const
 }
 
 
-bool Wstring::Contains_String(const Wstring &that) const
+bool Wstring::Contains_String(const Wstring& that) const
 {
     return Contains(that.Buffer);
 }
@@ -406,13 +405,13 @@ bool Wstring::Set(char c)
 }
 
 
-bool Wstring::Set(const char *string)
+bool Wstring::Set(const char* string)
 {
     return Internal_Set(string == nullptr ? 0 : std::strlen(string), string);
 }
 
 
-bool Wstring::Set(const Wstring &that)
+bool Wstring::Set(const Wstring& that)
 {
     bool result;
     if (this != &that) {
@@ -424,7 +423,7 @@ bool Wstring::Set(const Wstring &that)
 }
 
 
-bool Wstring::Set(Wstring &&that) noexcept
+bool Wstring::Set(Wstring&& that) noexcept
 {
     if (this != &that) {
         Release_Buffer();
@@ -434,13 +433,13 @@ bool Wstring::Set(Wstring &&that) noexcept
 }
 
 
-bool Wstring::Set(int length, const char *string)
+bool Wstring::Set(int length, const char* string)
 {
     return Internal_Set(std::min<unsigned int>(string == nullptr ? 0 : std::strlen(string), length), string);
 }
 
 
-bool Wstring::Set(int length, const Wstring &that)
+bool Wstring::Set(int length, const Wstring& that)
 {
     return Set(length, that.Buffer);
 }
@@ -481,31 +480,31 @@ bool Wstring::Set_Char(char c, int index)
 }
 
 
-bool Wstring::Concat(const char *string)
+bool Wstring::Concat(const char* string)
 {
     return Internal_Concat(string == nullptr ? 0 : std::strlen(string), string);
 }
 
 
-bool Wstring::Concat(int length, const char *string)
+bool Wstring::Concat(int length, const char* string)
 {
     return Internal_Concat(std::min<unsigned int>(string == nullptr ? 0 : std::strlen(string), length), string);
 }
 
 
-bool Wstring::Concat(const Wstring &that)
+bool Wstring::Concat(const Wstring& that)
 {
     return Concat(that.Buffer);
 }
 
 
-bool Wstring::Concat(int length, const Wstring &that)
+bool Wstring::Concat(int length, const Wstring& that)
 {
     return Concat(length, that.Buffer);
 }
 
 
-bool Wstring::Concat(char  c)
+bool Wstring::Concat(char c)
 {
     return Internal_Concat(1, &c);
 }
@@ -521,8 +520,8 @@ bool Wstring::Remove_Character(char c)
     }
 
     bool result = false;
-    char *bufferptr = Buffer;
-    for (char *pch = std::strchr(Buffer, c); pch != nullptr; pch = std::strchr(Buffer, c)) {
+    char* bufferptr = Buffer;
+    for (char* pch = std::strchr(Buffer, c); pch != nullptr; pch = std::strchr(Buffer, c)) {
         result = true;
         std::memmove(pch, pch + 1, (Buffer - pch + length--) * sizeof(char));
     }
@@ -538,7 +537,7 @@ void Wstring::Remove_Whitespace()
 }
 
 
-int Wstring::Split(int start_index, const char *delimiters, Wstring &split_string) const
+int Wstring::Split(int start_index, const char* delimiters, Wstring& split_string) const
 {
     TSPP_ASSERT(start_index >= 0);
     TSPP_ASSERT(delimiters != nullptr);
@@ -570,13 +569,13 @@ int Wstring::Split(int start_index, const char *delimiters, Wstring &split_strin
 }
 
 
-int Wstring::Split(int start_index, const Wstring &delimiters, Wstring &split_string) const
+int Wstring::Split(int start_index, const Wstring& delimiters, Wstring& split_string) const
 {
     return Split(start_index, delimiters.Peek_Buffer(), split_string);
 }
 
 
-int Wstring::Next_Line(int start_index, Wstring &line) const
+int Wstring::Next_Line(int start_index, Wstring& line) const
 {
     TSPP_ASSERT(start_index >= 0);
     TSPP_ASSERT(this != &line);
@@ -596,7 +595,7 @@ int Wstring::Next_Line(int start_index, Wstring &line) const
             start_index += sizeof(char);
         }
     }
-    
+
     if (!line.Set(Buffer + start_index)) {
         return -1;
     }
@@ -611,7 +610,7 @@ bool Wstring::Trim_To_Char(char c)
         return false;
     }
 
-    char *pch = std::strchr(Buffer, c);
+    char* pch = std::strchr(Buffer, c);
     if (pch == nullptr) {
         return false;
     }
@@ -653,7 +652,7 @@ bool Wstring::Trim_Range(int start_index, int length)
 }
 
 
-void Wstring::Trim_To_First_Difference(const char *delimiters)
+void Wstring::Trim_To_First_Difference(const char* delimiters)
 {
     TSPP_ASSERT(delimiters != nullptr);
 
@@ -674,13 +673,13 @@ void Wstring::Trim_To_First_Difference(const char *delimiters)
 }
 
 
-void Wstring::Trim_To_First_Difference(const Wstring &delimiters)
+void Wstring::Trim_To_First_Difference(const Wstring& delimiters)
 {
     return Trim_To_First_Difference(delimiters.Peek_Buffer());
 }
 
 
-void Wstring::Trim_After_First_Difference(const char *delimiters)
+void Wstring::Trim_After_First_Difference(const char* delimiters)
 {
     TSPP_ASSERT(delimiters != nullptr);
 
@@ -699,7 +698,7 @@ void Wstring::Trim_After_First_Difference(const char *delimiters)
 }
 
 
-void Wstring::Trim_After_First_Difference(const Wstring &delimiters)
+void Wstring::Trim_After_First_Difference(const Wstring& delimiters)
 {
     Trim_After_First_Difference(delimiters.Peek_Buffer());
 }
@@ -720,35 +719,35 @@ bool Wstring::Insert(char c, int index)
 }
 
 
-bool Wstring::Insert(const char *string, int index)
+bool Wstring::Insert(const char* string, int index)
 {
     return Internal_Insert(string, index, string == nullptr ? 0 : std::strlen(string));
 }
 
 
-bool Wstring::Insert(const Wstring &that, int index)
+bool Wstring::Insert(const Wstring& that, int index)
 {
     return Insert(that.Buffer, index);
 }
 
 
-bool Wstring::Replace(const char *str_to_replace, const char *replacement_str)
+bool Wstring::Replace(const char* str_to_replace, const char* replacement_str)
 {
     TSPP_ASSERT(str_to_replace != nullptr);
-    
+
     if (str_to_replace[0] == NullChar) {
         return true;
     }
 
     Wstring tmp;
 
-    char *original_string_remainder = Peek_Buffer();
+    char* original_string_remainder = Peek_Buffer();
     int str_to_replace_length = std::strlen(str_to_replace);
 
     while (original_string_remainder != nullptr && original_string_remainder[0] != NullChar) {
 
-        char *pointer_to_str_to_replace = std::strstr(original_string_remainder, str_to_replace);
-        
+        char* pointer_to_str_to_replace = std::strstr(original_string_remainder, str_to_replace);
+
         if (pointer_to_str_to_replace == nullptr) {
 
             if (tmp.Is_Empty()) {
@@ -761,7 +760,7 @@ bool Wstring::Replace(const char *str_to_replace, const char *replacement_str)
 
             break;
         }
-        
+
         if (!tmp.Concat(pointer_to_str_to_replace - original_string_remainder, original_string_remainder)) {
             return false;
         }
@@ -777,13 +776,13 @@ bool Wstring::Replace(const char *str_to_replace, const char *replacement_str)
 }
 
 
-bool Wstring::Replace(const Wstring &str_to_replace, const Wstring &replacement_str)
+bool Wstring::Replace(const Wstring& str_to_replace, const Wstring& replacement_str)
 {
     return Replace(str_to_replace.Peek_Buffer(), replacement_str.Buffer);
 }
 
 
-bool Wstring::Internal_Set(int length, const char *string)
+bool Wstring::Internal_Set(int length, const char* string)
 {
     TSPP_ASSERT(length >= 0);
     TSPP_ASSERT(Buffer == nullptr || Buffer != string);
@@ -793,7 +792,7 @@ bool Wstring::Internal_Set(int length, const char *string)
         return true;
     }
 
-    char *new_buffer = new char [length + 1];
+    char* new_buffer = new char[length + 1];
 
     if (new_buffer == nullptr) {
         return false;
@@ -809,7 +808,7 @@ bool Wstring::Internal_Set(int length, const char *string)
 }
 
 
-bool Wstring::Internal_Insert(const char *string, int index, int length)
+bool Wstring::Internal_Insert(const char* string, int index, int length)
 {
     TSPP_ASSERT(string != nullptr);
     TSPP_ASSERT(index >= 0);
@@ -828,7 +827,7 @@ bool Wstring::Internal_Insert(const char *string, int index, int length)
     index = std::min(old_length, index);
 
     int new_length = old_length + length;
-    char *new_buffer = new char [new_length + 1];
+    char* new_buffer = new char[new_length + 1];
 
     if (new_buffer == nullptr) {
         return false;
@@ -849,7 +848,7 @@ bool Wstring::Internal_Insert(const char *string, int index, int length)
 }
 
 
-bool Wstring::Internal_Concat(int length, const char *string)
+bool Wstring::Internal_Concat(int length, const char* string)
 {
     TSPP_ASSERT(length >= 0);
 
@@ -857,9 +856,8 @@ bool Wstring::Internal_Concat(int length, const char *string)
         return true;
     }
 
-    char *new_string = nullptr;
-    if (!Combine_Strings(Buffer, Get_Length(), string, length, new_string))
-    {
+    char* new_string = nullptr;
+    if (!Combine_Strings(Buffer, Get_Length(), string, length, new_string)) {
         return false;
     }
 
@@ -870,7 +868,7 @@ bool Wstring::Internal_Concat(int length, const char *string)
 }
 
 
-bool Wstring::Combine_Strings(const char *lhs, int lhs_length, const char *rhs, int rhs_length, char *&result)
+bool Wstring::Combine_Strings(const char* lhs, int lhs_length, const char* rhs, int rhs_length, char*& result)
 {
     TSPP_ASSERT(lhs_length >= 0);
     TSPP_ASSERT(rhs_length >= 0);
@@ -888,12 +886,12 @@ bool Wstring::Combine_Strings(const char *lhs, int lhs_length, const char *rhs, 
         return true;
     }
 
-    char *new_string = new char [new_length + 1];
+    char* new_string = new char[new_length + 1];
     if (new_string == nullptr) {
         return false;
     }
 
-    char *new_string_ptr = new_string;
+    char* new_string_ptr = new_string;
     if (lhs != nullptr && lhs_length > 0) {
         std::memcpy(new_string_ptr, lhs, lhs_length * sizeof(char));
         new_string_ptr += lhs_length;

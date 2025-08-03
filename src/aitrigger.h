@@ -33,20 +33,20 @@
 class DECLSPEC_UUID("03C4CE76-4CF5-11D2-BC26-00104B8FB04D")
 AITriggerClass : public AbstractClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-    public:
-        AITriggerClass();
-        AITriggerClass(NoInitClass &noinit);
-        virtual ~AITriggerClass();
+public:
+    AITriggerClass();
+    AITriggerClass(NoInitClass& noinit);
+    virtual ~AITriggerClass();
 };

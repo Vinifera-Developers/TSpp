@@ -41,10 +41,10 @@ DECLARE_INTERFACE_IID_(ILinkStream, IUnknown, "0D5CD78E-6470-11D2-9B74-00104B972
     /**
      *  Link base stream.
      */
-    STDMETHOD(Link_Stream(IUnknown *stream)) PURE;
+    STDMETHOD(Link_Stream(IUnknown* stream)) PURE;
 
     /**
      *  Unlink stream.
      */
-    STDMETHOD(Unlink_Stream(IUnknown **stream)) PURE;
+    STDMETHOD(Unlink_Stream(IUnknown** stream)) PURE;
 };

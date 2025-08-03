@@ -33,33 +33,33 @@
 
 class CDControlClass
 {
-    public:
-        CDControlClass();
-        ~CDControlClass();
+public:
+    CDControlClass();
+    ~CDControlClass();
 
-        bool Eject_CD_Drive(UINT drive_num);
-        bool Load_CD_Drive(UINT drive_num);
-        bool Lock_CD_Drive(UINT drive_num);
-        bool Unlock_CD_Drive(UINT drive_num);
+    bool Eject_CD_Drive(UINT drive_num);
+    bool Load_CD_Drive(UINT drive_num);
+    bool Lock_CD_Drive(UINT drive_num);
+    bool Unlock_CD_Drive(UINT drive_num);
 
-        bool Unlock_All_CD_Drives()
-        {
-            for (UINT drive_num = 0; drive_num <= std::size(LockCount); ++drive_num) {
+    bool Unlock_All_CD_Drives()
+    {
+        for (UINT drive_num = 0; drive_num <= std::size(LockCount); ++drive_num) {
 
-                if (LockCount[drive_num] <= 0) {
-                    continue;
-                }
-
-                if (LockCount[drive_num] == 0) {
-                    continue;
-                }
-
-                Unlock_CD_Drive(drive_num);
+            if (LockCount[drive_num] <= 0) {
+                continue;
             }
 
-            return true;
+            if (LockCount[drive_num] == 0) {
+                continue;
+            }
+
+            Unlock_CD_Drive(drive_num);
         }
 
-    private:
-        int LockCount[26]; // Windows drives use the alphabet range (max 26 characters).
+        return true;
+    }
+
+private:
+    int LockCount[26]; // Windows drives use the alphabet range (max 26 characters).
 };

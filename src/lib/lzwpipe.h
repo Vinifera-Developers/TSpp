@@ -39,31 +39,31 @@
 
 class LZWPipe : public Pipe
 {
-	public:
-		typedef enum CompControl {
-			COMPRESS,
-			DECOMPRESS
-		} CompControl;
+public:
+    typedef enum CompControl {
+        COMPRESS,
+        DECOMPRESS
+    } CompControl;
 
-		LZWPipe(CompControl, int blocksize = 1024*8);
-		virtual ~LZWPipe();
+    LZWPipe(CompControl, int blocksize = 1024 * 8);
+    virtual ~LZWPipe();
 
-		virtual int Flush() override;
-		virtual int Put(void const * source, int slen) override;
+    virtual int Flush() override;
+    virtual int Put(void const* source, int slen) override;
 
-	private:
-		CompControl Control;
-		int Counter;
-		char * Buffer;
-		char * Buffer2;
-		int BlockSize;
-		int SafetyMargin;
-		struct {
-			unsigned short CompCount;
-			unsigned short UncompCount;
-		} BlockHeader;
+private:
+    CompControl Control;
+    int Counter;
+    char* Buffer;
+    char* Buffer2;
+    int BlockSize;
+    int SafetyMargin;
+    struct {
+        unsigned short CompCount;
+        unsigned short UncompCount;
+    } BlockHeader;
 
-	private:
-		LZWPipe(LZWPipe &) = delete;
-		LZWPipe & operator = (const LZWPipe &) = delete;
+private:
+    LZWPipe(LZWPipe&) = delete;
+    LZWPipe& operator=(const LZWPipe&) = delete;
 };

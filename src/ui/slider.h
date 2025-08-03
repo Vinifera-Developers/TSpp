@@ -35,29 +35,29 @@ class ShapeButtonClass;
 
 class SliderClass : public GaugeClass
 {
-    public:
-        SliderClass(unsigned id, int x, int y, int w, int h, bool belong_to_list = false);
-        virtual ~SliderClass();
+public:
+    SliderClass(unsigned id, int x, int y, int w, int h, bool belong_to_list = false);
+    virtual ~SliderClass();
 
-        virtual void Peer_To_Peer(unsigned flags, KeyNumType &key, ControlClass &whom) override;
-        virtual bool Draw_Me(bool forced = false) override;
-        virtual bool Action(unsigned flags, KeyNumType &key) override;
+    virtual void Peer_To_Peer(unsigned flags, KeyNumType& key, ControlClass& whom) override;
+    virtual bool Draw_Me(bool forced = false) override;
+    virtual bool Action(unsigned flags, KeyNumType& key) override;
 
-        virtual int Set_Maximum(int value);
-        virtual int Set_Value(int value);
-        virtual int Thumb_Pixels();
-        virtual void Draw_Thumb();
-        virtual void Set_Thumb_Size(int value);
-        virtual int Bump(bool up);
-        virtual int Step(bool up);
+    virtual int Set_Maximum(int value);
+    virtual int Set_Value(int value);
+    virtual int Thumb_Pixels();
+    virtual void Draw_Thumb();
+    virtual void Set_Thumb_Size(int value);
+    virtual int Bump(bool up);
+    virtual int Step(bool up);
 
-        void Recalc_Thumb();
+    void Recalc_Thumb();
 
-    protected:
-        ShapeButtonClass *PlusGadget;
-        ShapeButtonClass *MinusGadget;
-        bool BelongToList;
-        int Thumb;
-        int ThumbSize;
-        int ThumbStart;
+protected:
+    ShapeButtonClass* PlusGadget;
+    ShapeButtonClass* MinusGadget;
+    bool BelongToList;
+    int Thumb;
+    int ThumbSize;
+    int ThumbStart;
 };

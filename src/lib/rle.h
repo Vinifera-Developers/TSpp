@@ -33,22 +33,22 @@
 
 class RLEClass
 {
-	public:
-		RLEClass() {}
+public:
+    RLEClass() {}
 
-		int Compress(void *source, void *dest, int length);
-		int Uncompress(void *source, void *dest);
+    int Compress(void* source, void* dest, int length);
+    int Uncompress(void* source, void* dest);
 };
 
 
-inline int RLE_Compress(const Buffer &inbuff, const Buffer &outbuff)
+inline int RLE_Compress(const Buffer& inbuff, const Buffer& outbuff)
 {
     RLEClass rle;
     return rle.Compress(inbuff, outbuff, inbuff.Get_Size());
 }
 
 
-inline int RLE_Uncompress(const Buffer &inbuff, const Buffer &outbuff)
+inline int RLE_Uncompress(const Buffer& inbuff, const Buffer& outbuff)
 {
     RLEClass rle;
     return rle.Uncompress(inbuff, outbuff);

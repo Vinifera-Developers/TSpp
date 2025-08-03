@@ -34,8 +34,8 @@
 #include "rleblitter.h"
 
 
-typedef enum BlitterType
-{
+typedef enum BlitterType {
+
     /**
      *  Standard blitters.
      */
@@ -147,1140 +147,1140 @@ DEFINE_ENUMERATION_OPERATORS(BlitterType);
 template<typename T>
 class BlitPlain : public Blitter
 {
-    public:
-        BlitPlain();
-        virtual ~BlitPlain();
+public:
+    BlitPlain();
+    virtual ~BlitPlain();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTrans : public Blitter
 {
-    public:
-        BlitTrans();
-        virtual ~BlitTrans();
+public:
+    BlitTrans();
+    virtual ~BlitTrans();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitPlainXlat : public Blitter
 {
-    public:
-        BlitPlainXlat();
-        virtual ~BlitPlainXlat();
+public:
+    BlitPlainXlat();
+    virtual ~BlitPlainXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitPlainXlatAlpha : public Blitter
 {
-    public:
-        BlitPlainXlatAlpha();
-        virtual ~BlitPlainXlatAlpha();
+public:
+    BlitPlainXlatAlpha();
+    virtual ~BlitPlainXlatAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitPlainXlatZRead : public Blitter
 {
-    public:
-        BlitPlainXlatZRead();
-        virtual ~BlitPlainXlatZRead();
+public:
+    BlitPlainXlatZRead();
+    virtual ~BlitPlainXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitPlainXlatZReadWrite : public Blitter
 {
-    public:
-        BlitPlainXlatZReadWrite();
-        virtual ~BlitPlainXlatZReadWrite();
+public:
+    BlitPlainXlatZReadWrite();
+    virtual ~BlitPlainXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransDarken : public Blitter
 {
-    public:
-        BlitTransDarken();
-        virtual ~BlitTransDarken();
+public:
+    BlitTransDarken();
+    virtual ~BlitTransDarken();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransDarkenZRead : public Blitter
 {
-    public:
-        BlitTransDarkenZRead();
-        virtual ~BlitTransDarkenZRead();
+public:
+    BlitTransDarkenZRead();
+    virtual ~BlitTransDarkenZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransDarkenZReadWrite : public Blitter
 {
-    public:
-        BlitTransDarkenZReadWrite();
-        virtual ~BlitTransDarkenZReadWrite();
+public:
+    BlitTransDarkenZReadWrite();
+    virtual ~BlitTransDarkenZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25 : public Blitter
 {
-    public:
-        BlitTransLucent25();
-        virtual ~BlitTransLucent25();
+public:
+    BlitTransLucent25();
+    virtual ~BlitTransLucent25();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25Alpha : public Blitter
 {
-    public:
-        BlitTransLucent25Alpha();
-        virtual ~BlitTransLucent25Alpha();
+public:
+    BlitTransLucent25Alpha();
+    virtual ~BlitTransLucent25Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25AlphaZRead : public Blitter
 {
-    public:
-        BlitTransLucent25AlphaZRead();
-        virtual ~BlitTransLucent25AlphaZRead();
+public:
+    BlitTransLucent25AlphaZRead();
+    virtual ~BlitTransLucent25AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25AlphaZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent25AlphaZReadWarp();
-        virtual ~BlitTransLucent25AlphaZReadWarp();
+public:
+    BlitTransLucent25AlphaZReadWarp();
+    virtual ~BlitTransLucent25AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25AlphaZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent25AlphaZReadWrite();
-        virtual ~BlitTransLucent25AlphaZReadWrite();
+public:
+    BlitTransLucent25AlphaZReadWrite();
+    virtual ~BlitTransLucent25AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25ZRead : public Blitter
 {
-    public:
-        BlitTransLucent25ZRead();
-        virtual ~BlitTransLucent25ZRead();
+public:
+    BlitTransLucent25ZRead();
+    virtual ~BlitTransLucent25ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25ZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent25ZReadWarp();
-        virtual ~BlitTransLucent25ZReadWarp();
+public:
+    BlitTransLucent25ZReadWarp();
+    virtual ~BlitTransLucent25ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent25ZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent25ZReadWrite();
-        virtual ~BlitTransLucent25ZReadWrite();
+public:
+    BlitTransLucent25ZReadWrite();
+    virtual ~BlitTransLucent25ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50 : public Blitter
 {
-    public:
-        BlitTransLucent50();
-        virtual ~BlitTransLucent50();
+public:
+    BlitTransLucent50();
+    virtual ~BlitTransLucent50();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50Alpha : public Blitter
 {
-    public:
-        BlitTransLucent50Alpha();
-        virtual ~BlitTransLucent50Alpha();
+public:
+    BlitTransLucent50Alpha();
+    virtual ~BlitTransLucent50Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50AlphaZRead : public Blitter
 {
-    public:
-        BlitTransLucent50AlphaZRead();
-        virtual ~BlitTransLucent50AlphaZRead();
+public:
+    BlitTransLucent50AlphaZRead();
+    virtual ~BlitTransLucent50AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50AlphaZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent50AlphaZReadWarp();
-        virtual ~BlitTransLucent50AlphaZReadWarp();
+public:
+    BlitTransLucent50AlphaZReadWarp();
+    virtual ~BlitTransLucent50AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50AlphaZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent50AlphaZReadWrite();
-        virtual ~BlitTransLucent50AlphaZReadWrite();
+public:
+    BlitTransLucent50AlphaZReadWrite();
+    virtual ~BlitTransLucent50AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50ZRead : public Blitter
 {
-    public:
-        BlitTransLucent50ZRead();
-        virtual ~BlitTransLucent50ZRead();
+public:
+    BlitTransLucent50ZRead();
+    virtual ~BlitTransLucent50ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50ZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent50ZReadWarp();
-        virtual ~BlitTransLucent50ZReadWarp();
+public:
+    BlitTransLucent50ZReadWarp();
+    virtual ~BlitTransLucent50ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent50ZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent50ZReadWrite();
-        virtual ~BlitTransLucent50ZReadWrite();
+public:
+    BlitTransLucent50ZReadWrite();
+    virtual ~BlitTransLucent50ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75 : public Blitter
 {
-    public:
-        BlitTransLucent75();
-        virtual ~BlitTransLucent75();
+public:
+    BlitTransLucent75();
+    virtual ~BlitTransLucent75();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75Alpha : public Blitter
 {
-    public:
-        BlitTransLucent75Alpha();
-        virtual ~BlitTransLucent75Alpha();
+public:
+    BlitTransLucent75Alpha();
+    virtual ~BlitTransLucent75Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75AlphaZRead : public Blitter
 {
-    public:
-        BlitTransLucent75AlphaZRead();
-        virtual ~BlitTransLucent75AlphaZRead();
+public:
+    BlitTransLucent75AlphaZRead();
+    virtual ~BlitTransLucent75AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75AlphaZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent75AlphaZReadWarp();
-        virtual ~BlitTransLucent75AlphaZReadWarp();
+public:
+    BlitTransLucent75AlphaZReadWarp();
+    virtual ~BlitTransLucent75AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75AlphaZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent75AlphaZReadWrite();
-        virtual ~BlitTransLucent75AlphaZReadWrite();
+public:
+    BlitTransLucent75AlphaZReadWrite();
+    virtual ~BlitTransLucent75AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75ZRead : public Blitter
 {
-    public:
-        BlitTransLucent75ZRead();
-        virtual ~BlitTransLucent75ZRead();
+public:
+    BlitTransLucent75ZRead();
+    virtual ~BlitTransLucent75ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75ZReadWarp : public Blitter
 {
-    public:
-        BlitTransLucent75ZReadWarp();
-        virtual ~BlitTransLucent75ZReadWarp();
+public:
+    BlitTransLucent75ZReadWarp();
+    virtual ~BlitTransLucent75ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransLucent75ZReadWrite : public Blitter
 {
-    public:
-        BlitTransLucent75ZReadWrite();
-        virtual ~BlitTransLucent75ZReadWrite();
+public:
+    BlitTransLucent75ZReadWrite();
+    virtual ~BlitTransLucent75ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransRemapDest : public Blitter
 {
-    public:
-        BlitTransRemapDest();
-        virtual ~BlitTransRemapDest();
+public:
+    BlitTransRemapDest();
+    virtual ~BlitTransRemapDest();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransRemapXlat : public Blitter
 {
-    public:
-        BlitTransRemapXlat();
-        virtual ~BlitTransRemapXlat();
+public:
+    BlitTransRemapXlat();
+    virtual ~BlitTransRemapXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlat : public Blitter
 {
-    public:
-        BlitTransXlat();
-        virtual ~BlitTransXlat();
+public:
+    BlitTransXlat();
+    virtual ~BlitTransXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatAlpha : public Blitter
 {
-    public:
-        BlitTransXlatAlpha();
-        virtual ~BlitTransXlatAlpha();
+public:
+    BlitTransXlatAlpha();
+    virtual ~BlitTransXlatAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatAlphaZRead : public Blitter
 {
-    public:
-        BlitTransXlatAlphaZRead();
-        virtual ~BlitTransXlatAlphaZRead();
+public:
+    BlitTransXlatAlphaZRead();
+    virtual ~BlitTransXlatAlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatAlphaZReadWrite : public Blitter
 {
-    public:
-        BlitTransXlatAlphaZReadWrite();
-        virtual ~BlitTransXlatAlphaZReadWrite();
+public:
+    BlitTransXlatAlphaZReadWrite();
+    virtual ~BlitTransXlatAlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatMultWriteAlpha : public Blitter
 {
-    public:
-        BlitTransXlatMultWriteAlpha();
-        virtual ~BlitTransXlatMultWriteAlpha();
+public:
+    BlitTransXlatMultWriteAlpha();
+    virtual ~BlitTransXlatMultWriteAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatWriteAlpha : public Blitter
 {
-    public:
-        BlitTransXlatWriteAlpha();
-        virtual ~BlitTransXlatWriteAlpha();
+public:
+    BlitTransXlatWriteAlpha();
+    virtual ~BlitTransXlatWriteAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatZRead : public Blitter
 {
-    public:
-        BlitTransXlatZRead();
-        virtual ~BlitTransXlatZRead();
+public:
+    BlitTransXlatZRead();
+    virtual ~BlitTransXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransXlatZReadWrite : public Blitter
 {
-    public:
-        BlitTransXlatZReadWrite();
-        virtual ~BlitTransXlatZReadWrite();
+public:
+    BlitTransXlatZReadWrite();
+    virtual ~BlitTransXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlat : public Blitter
 {
-    public:
-        BlitTransZRemapXlat();
-        virtual ~BlitTransZRemapXlat();
+public:
+    BlitTransZRemapXlat();
+    virtual ~BlitTransZRemapXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlatAlpha : public Blitter
 {
-    public:
-        BlitTransZRemapXlatAlpha();
-        virtual ~BlitTransZRemapXlatAlpha();
+public:
+    BlitTransZRemapXlatAlpha();
+    virtual ~BlitTransZRemapXlatAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlatAlphaZRead : public Blitter
 {
-    public:
-        BlitTransZRemapXlatAlphaZRead();
-        virtual ~BlitTransZRemapXlatAlphaZRead();
+public:
+    BlitTransZRemapXlatAlphaZRead();
+    virtual ~BlitTransZRemapXlatAlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlatAlphaZReadWrite : public Blitter
 {
-    public:
-        BlitTransZRemapXlatAlphaZReadWrite();
-        virtual ~BlitTransZRemapXlatAlphaZReadWrite();
+public:
+    BlitTransZRemapXlatAlphaZReadWrite();
+    virtual ~BlitTransZRemapXlatAlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlatZRead : public Blitter
 {
-    public:
-        BlitTransZRemapXlatZRead();
-        virtual ~BlitTransZRemapXlatZRead();
+public:
+    BlitTransZRemapXlatZRead();
+    virtual ~BlitTransZRemapXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTransZRemapXlatZReadWrite : public Blitter
 {
-    public:
-        BlitTransZRemapXlatZReadWrite();
-        virtual ~BlitTransZRemapXlatZReadWrite();
+public:
+    BlitTransZRemapXlatZReadWrite();
+    virtual ~BlitTransZRemapXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTranslucent50NonzeroAlpha : public Blitter
 {
-    public:
-        BlitTranslucent50NonzeroAlpha();
-        virtual ~BlitTranslucent50NonzeroAlpha();
+public:
+    BlitTranslucent50NonzeroAlpha();
+    virtual ~BlitTranslucent50NonzeroAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTranslucent50ZeroAlpha : public Blitter
 {
-    public:
-        BlitTranslucent50ZeroAlpha();
-        virtual ~BlitTranslucent50ZeroAlpha();
+public:
+    BlitTranslucent50ZeroAlpha();
+    virtual ~BlitTranslucent50ZeroAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTranslucent75NonzeroAlpha : public Blitter
 {
-    public:
-        BlitTranslucent75NonzeroAlpha();
-        virtual ~BlitTranslucent75NonzeroAlpha();
+public:
+    BlitTranslucent75NonzeroAlpha();
+    virtual ~BlitTranslucent75NonzeroAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTranslucent75ZeroAlpha : public Blitter
 {
-    public:
-        BlitTranslucent75ZeroAlpha();
-        virtual ~BlitTranslucent75ZeroAlpha();
+public:
+    BlitTranslucent75ZeroAlpha();
+    virtual ~BlitTranslucent75ZeroAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 
 template<typename T>
 class BlitTranslucentWriteAlpha : public Blitter
 {
-    public:
-        BlitTranslucentWriteAlpha();
-        virtual ~BlitTranslucentWriteAlpha();
+public:
+    BlitTranslucentWriteAlpha();
+    virtual ~BlitTranslucentWriteAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) override;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) override;
 };
 
 template<typename T>
 class RLEBlitTransDarken : public RLEBlitter
 {
-    public:
-        RLEBlitTransDarken();
-        virtual ~RLEBlitTransDarken();
+public:
+    RLEBlitTransDarken();
+    virtual ~RLEBlitTransDarken();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransDarkenZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransDarkenZRead();
-        virtual ~RLEBlitTransDarkenZRead();
+public:
+    RLEBlitTransDarkenZRead();
+    virtual ~RLEBlitTransDarkenZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransDarkenZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransDarkenZReadWrite();
-        virtual ~RLEBlitTransDarkenZReadWrite();
+public:
+    RLEBlitTransDarkenZReadWrite();
+    virtual ~RLEBlitTransDarkenZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25 : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25();
-        virtual ~RLEBlitTransLucent25();
+public:
+    RLEBlitTransLucent25();
+    virtual ~RLEBlitTransLucent25();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25Alpha : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25Alpha();
-        virtual ~RLEBlitTransLucent25Alpha();
+public:
+    RLEBlitTransLucent25Alpha();
+    virtual ~RLEBlitTransLucent25Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25AlphaZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25AlphaZRead();
-        virtual ~RLEBlitTransLucent25AlphaZRead();
+public:
+    RLEBlitTransLucent25AlphaZRead();
+    virtual ~RLEBlitTransLucent25AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25AlphaZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25AlphaZReadWarp();
-        virtual ~RLEBlitTransLucent25AlphaZReadWarp();
+public:
+    RLEBlitTransLucent25AlphaZReadWarp();
+    virtual ~RLEBlitTransLucent25AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25AlphaZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25AlphaZReadWrite();
-        virtual ~RLEBlitTransLucent25AlphaZReadWrite();
+public:
+    RLEBlitTransLucent25AlphaZReadWrite();
+    virtual ~RLEBlitTransLucent25AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25ZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25ZRead();
-        virtual ~RLEBlitTransLucent25ZRead();
+public:
+    RLEBlitTransLucent25ZRead();
+    virtual ~RLEBlitTransLucent25ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25ZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25ZReadWarp();
-        virtual ~RLEBlitTransLucent25ZReadWarp();
+public:
+    RLEBlitTransLucent25ZReadWarp();
+    virtual ~RLEBlitTransLucent25ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent25ZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent25ZReadWrite();
-        virtual ~RLEBlitTransLucent25ZReadWrite();
+public:
+    RLEBlitTransLucent25ZReadWrite();
+    virtual ~RLEBlitTransLucent25ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50 : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50();
-        virtual ~RLEBlitTransLucent50();
+public:
+    RLEBlitTransLucent50();
+    virtual ~RLEBlitTransLucent50();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50Alpha : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50Alpha();
-        virtual ~RLEBlitTransLucent50Alpha();
+public:
+    RLEBlitTransLucent50Alpha();
+    virtual ~RLEBlitTransLucent50Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50AlphaZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50AlphaZRead();
-        virtual ~RLEBlitTransLucent50AlphaZRead();
+public:
+    RLEBlitTransLucent50AlphaZRead();
+    virtual ~RLEBlitTransLucent50AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50AlphaZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50AlphaZReadWarp();
-        virtual ~RLEBlitTransLucent50AlphaZReadWarp();
+public:
+    RLEBlitTransLucent50AlphaZReadWarp();
+    virtual ~RLEBlitTransLucent50AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50AlphaZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50AlphaZReadWrite();
-        virtual ~RLEBlitTransLucent50AlphaZReadWrite();
+public:
+    RLEBlitTransLucent50AlphaZReadWrite();
+    virtual ~RLEBlitTransLucent50AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50ZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50ZRead();
-        virtual ~RLEBlitTransLucent50ZRead();
+public:
+    RLEBlitTransLucent50ZRead();
+    virtual ~RLEBlitTransLucent50ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50ZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50ZReadWarp();
-        virtual ~RLEBlitTransLucent50ZReadWarp();
+public:
+    RLEBlitTransLucent50ZReadWarp();
+    virtual ~RLEBlitTransLucent50ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent50ZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent50ZReadWrite();
-        virtual ~RLEBlitTransLucent50ZReadWrite();
+public:
+    RLEBlitTransLucent50ZReadWrite();
+    virtual ~RLEBlitTransLucent50ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75 : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75();
-        virtual ~RLEBlitTransLucent75();
+public:
+    RLEBlitTransLucent75();
+    virtual ~RLEBlitTransLucent75();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75Alpha : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75Alpha();
-        virtual ~RLEBlitTransLucent75Alpha();
+public:
+    RLEBlitTransLucent75Alpha();
+    virtual ~RLEBlitTransLucent75Alpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75AlphaZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75AlphaZRead();
-        virtual ~RLEBlitTransLucent75AlphaZRead();
+public:
+    RLEBlitTransLucent75AlphaZRead();
+    virtual ~RLEBlitTransLucent75AlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75AlphaZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75AlphaZReadWarp();
-        virtual ~RLEBlitTransLucent75AlphaZReadWarp();
+public:
+    RLEBlitTransLucent75AlphaZReadWarp();
+    virtual ~RLEBlitTransLucent75AlphaZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75AlphaZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75AlphaZReadWrite();
-        virtual ~RLEBlitTransLucent75AlphaZReadWrite();
+public:
+    RLEBlitTransLucent75AlphaZReadWrite();
+    virtual ~RLEBlitTransLucent75AlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75ZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75ZRead();
-        virtual ~RLEBlitTransLucent75ZRead();
+public:
+    RLEBlitTransLucent75ZRead();
+    virtual ~RLEBlitTransLucent75ZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75ZReadWarp : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75ZReadWarp();
-        virtual ~RLEBlitTransLucent75ZReadWarp();
+public:
+    RLEBlitTransLucent75ZReadWarp();
+    virtual ~RLEBlitTransLucent75ZReadWarp();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransLucent75ZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransLucent75ZReadWrite();
-        virtual ~RLEBlitTransLucent75ZReadWrite();
+public:
+    RLEBlitTransLucent75ZReadWrite();
+    virtual ~RLEBlitTransLucent75ZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapDest : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapDest();
-        virtual ~RLEBlitTransRemapDest();
+public:
+    RLEBlitTransRemapDest();
+    virtual ~RLEBlitTransRemapDest();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapDestZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapDestZRead();
-        virtual ~RLEBlitTransRemapDestZRead();
+public:
+    RLEBlitTransRemapDestZRead();
+    virtual ~RLEBlitTransRemapDestZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapDestZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapDestZReadWrite();
-        virtual ~RLEBlitTransRemapDestZReadWrite();
+public:
+    RLEBlitTransRemapDestZReadWrite();
+    virtual ~RLEBlitTransRemapDestZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapXlat : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapXlat();
-        virtual ~RLEBlitTransRemapXlat();
+public:
+    RLEBlitTransRemapXlat();
+    virtual ~RLEBlitTransRemapXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapXlatZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapXlatZRead();
-        virtual ~RLEBlitTransRemapXlatZRead();
+public:
+    RLEBlitTransRemapXlatZRead();
+    virtual ~RLEBlitTransRemapXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransRemapXlatZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransRemapXlatZReadWrite();
-        virtual ~RLEBlitTransRemapXlatZReadWrite();
+public:
+    RLEBlitTransRemapXlatZReadWrite();
+    virtual ~RLEBlitTransRemapXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlat : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlat();
-        virtual ~RLEBlitTransXlat();
+public:
+    RLEBlitTransXlat();
+    virtual ~RLEBlitTransXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlatAlpha : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlatAlpha();
-        virtual ~RLEBlitTransXlatAlpha();
+public:
+    RLEBlitTransXlatAlpha();
+    virtual ~RLEBlitTransXlatAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlatAlphaZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlatAlphaZRead();
-        virtual ~RLEBlitTransXlatAlphaZRead();
+public:
+    RLEBlitTransXlatAlphaZRead();
+    virtual ~RLEBlitTransXlatAlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlatAlphaZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlatAlphaZReadWrite();
-        virtual ~RLEBlitTransXlatAlphaZReadWrite();
+public:
+    RLEBlitTransXlatAlphaZReadWrite();
+    virtual ~RLEBlitTransXlatAlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlatZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlatZRead();
-        virtual ~RLEBlitTransXlatZRead();
+public:
+    RLEBlitTransXlatZRead();
+    virtual ~RLEBlitTransXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransXlatZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransXlatZReadWrite();
-        virtual ~RLEBlitTransXlatZReadWrite();
+public:
+    RLEBlitTransXlatZReadWrite();
+    virtual ~RLEBlitTransXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlat : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlat();
-        virtual ~RLEBlitTransZRemapXlat();
+public:
+    RLEBlitTransZRemapXlat();
+    virtual ~RLEBlitTransZRemapXlat();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlatAlpha : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlatAlpha();
-        virtual ~RLEBlitTransZRemapXlatAlpha();
+public:
+    RLEBlitTransZRemapXlatAlpha();
+    virtual ~RLEBlitTransZRemapXlatAlpha();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlatAlphaZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlatAlphaZRead();
-        virtual ~RLEBlitTransZRemapXlatAlphaZRead();
+public:
+    RLEBlitTransZRemapXlatAlphaZRead();
+    virtual ~RLEBlitTransZRemapXlatAlphaZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlatAlphaZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlatAlphaZReadWrite();
-        virtual ~RLEBlitTransZRemapXlatAlphaZReadWrite();
+public:
+    RLEBlitTransZRemapXlatAlphaZReadWrite();
+    virtual ~RLEBlitTransZRemapXlatAlphaZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlatZRead : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlatZRead();
-        virtual ~RLEBlitTransZRemapXlatZRead();
+public:
+    RLEBlitTransZRemapXlatZRead();
+    virtual ~RLEBlitTransZRemapXlatZRead();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };
 
 
 template<typename T>
 class RLEBlitTransZRemapXlatZReadWrite : public RLEBlitter
 {
-    public:
-        RLEBlitTransZRemapXlatZReadWrite();
-        virtual ~RLEBlitTransZRemapXlatZReadWrite();
+public:
+    RLEBlitTransZRemapXlatZReadWrite();
+    virtual ~RLEBlitTransZRemapXlatZReadWrite();
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) override;
 };

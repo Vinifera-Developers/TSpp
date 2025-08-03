@@ -29,7 +29,7 @@
 #include <cstring>
 
 
-uint32_t CRC32Table[256] = { 0 };
+uint32_t CRC32Table[256] = {0};
 
 static const uint32_t CRC32_POLY = 0xEDB88320;
 static bool CRC32TableGenerated = false;
@@ -73,7 +73,7 @@ static void Generate_CRC32_Table()
 }
 
 
-uint32_t CRC32_Memory(const void *data, uint32_t bytes, uint32_t prev_crc)
+uint32_t CRC32_Memory(const void* data, uint32_t bytes, uint32_t prev_crc)
 {
     if (!CRC32TableGenerated) {
         Generate_CRC32_Table();
@@ -82,7 +82,7 @@ uint32_t CRC32_Memory(const void *data, uint32_t bytes, uint32_t prev_crc)
     uint32_t crc = ~prev_crc;
 
     if (bytes > 0) {
-        const uint8_t *buf = static_cast<const uint8_t *>(data);
+        const uint8_t* buf = static_cast<const uint8_t*>(data);
         uint32_t i = bytes;
         while (i > 0) {
             crc = CRC32Table[uint8_t(*buf) ^ uint8_t(crc)] ^ (crc >> 8);
@@ -94,7 +94,7 @@ uint32_t CRC32_Memory(const void *data, uint32_t bytes, uint32_t prev_crc)
 }
 
 
-uint32_t CRC32_String(const char *string, uint32_t prev_crc)
+uint32_t CRC32_String(const char* string, uint32_t prev_crc)
 {
     if (!CRC32TableGenerated) {
         Generate_CRC32_Table();
@@ -102,7 +102,7 @@ uint32_t CRC32_String(const char *string, uint32_t prev_crc)
 
     uint32_t crc = ~prev_crc;
 
-    for (const uint8_t *buf = reinterpret_cast<const uint8_t *>(string); buf[0] != 0; ++buf) {
+    for (const uint8_t* buf = reinterpret_cast<const uint8_t*>(string); buf[0] != 0; ++buf) {
         crc = CRC32Table[uint8_t(*buf) ^ uint8_t(crc)] ^ (crc >> 8);
     }
 

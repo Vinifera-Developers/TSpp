@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "tiberium.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-TiberiumType TiberiumClass::From_Name(const char *name)
+TiberiumType TiberiumClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,7 +51,7 @@ TiberiumType TiberiumClass::From_Name(const char *name)
 }
 
 
-const char *TiberiumClass::Name_From(TiberiumType type)
+const char* TiberiumClass::Name_From(TiberiumType type)
 {
     return (type != TIBERIUM_NONE && type < Tiberiums.Count() ? Tiberiums[type]->Name() : "<none>");
 }

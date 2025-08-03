@@ -37,12 +37,12 @@
 #include "tibsun_globals.h"
 
 
- /*
- **  This is the header that appears at the beginning of the ShapeSet file. The header
- **  is a multiple of 8 bytes long to facilitate data alignment. The shape header is
- **  immediately followed by an N length array of ShapeRecord objects. The actual
- **  shape data follows this array.
- */
+/*
+**  This is the header that appears at the beginning of the ShapeSet file. The header
+**  is a multiple of 8 bytes long to facilitate data alignment. The shape header is
+**  immediately followed by an N length array of ShapeRecord objects. The actual
+**  shape data follows this array.
+*/
 #pragma pack(push, 4)
 class ShapeSet
 {
@@ -123,15 +123,15 @@ protected:
         */
         short Flags;
         enum {
-            SFLAG_TRANSPARENT = 0x01,   // Are there are any transparent pixels present?
-            SFLAG_RLE = 0x02            // Is it RLE compressed?
+            SFLAG_TRANSPARENT = 0x01, // Are there are any transparent pixels present?
+            SFLAG_RLE = 0x02          // Is it RLE compressed?
         };
 
         unsigned char Color[3];
         unsigned char Unused[5];
 
-        bool Is_Transparent() const { return(Flags & SFLAG_TRANSPARENT) != 0; }
-        bool Is_RLE_Compressed() const { return(Flags & SFLAG_RLE) != 0; }
+        bool Is_Transparent() const { return (Flags & SFLAG_TRANSPARENT) != 0; }
+        bool Is_RLE_Compressed() const { return (Flags & SFLAG_RLE) != 0; }
 
         void Flag_Transparent() { Flags |= SFLAG_TRANSPARENT; }
         void Flag_RLE_Compressed() { Flags |= SFLAG_RLE; }
@@ -150,13 +150,12 @@ protected:
     }
 
 public:
-
     /*
     **  Prevents a shape object from being constructed illegally.
     */
     ShapeSet() = delete;
     ShapeSet(ShapeSet const& rvalue) = delete;
-    ShapeSet &operator = (ShapeSet const& rvalue) = delete;
+    ShapeSet& operator=(ShapeSet const& rvalue) = delete;
 };
 #pragma pack(pop)
 

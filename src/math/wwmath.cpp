@@ -48,7 +48,7 @@ inline Array<T, N> Calculate_Fast_Table(T (*func)(T), bool arc)
 /**
  *  Calculate all tables at compile time.
  */
-const Array<float, ARC_TABLE_SIZE> _FastAcosTable = Calculate_Fast_Table<float,ARC_TABLE_SIZE>(WWMath::Acosf, true);
+const Array<float, ARC_TABLE_SIZE> _FastAcosTable = Calculate_Fast_Table<float, ARC_TABLE_SIZE>(WWMath::Acosf, true);
 const Array<float, ARC_TABLE_SIZE> _FastAsinTable = Calculate_Fast_Table<float, ARC_TABLE_SIZE>(WWMath::Asinf, true);
 const Array<float, SIN_TABLE_SIZE> _FastSinTable = Calculate_Fast_Table<float, SIN_TABLE_SIZE>(WWMath::Sinf, false);
 const Array<float, SIN_TABLE_SIZE> _FastInvSinTable = Calculate_Fast_Table<float, SIN_TABLE_SIZE>(WWMath::Inv_Sin, false);

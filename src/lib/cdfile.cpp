@@ -30,16 +30,16 @@
 
 /**
  *  Fetch the path for the requested search drive entry index.
- * 
+ *
  *  @author: CCHyper
  */
-const char *CDFileClass::Get_Search_Path(int index)
+const char* CDFileClass::Get_Search_Path(int index)
 {
     if (First == nullptr) {
         return nullptr;
     }
 
-    SearchDriveType *sd = First;
+    SearchDriveType* sd = First;
 
     /**
      *  We want to loop once, even if index == 0.
@@ -50,7 +50,7 @@ const char *CDFileClass::Get_Search_Path(int index)
             return sd->Path;
         }
 
-        sd = (SearchDriveType *)sd->Next;
+        sd = (SearchDriveType*)sd->Next;
         if (sd == nullptr) {
             return nullptr;
         }
@@ -62,17 +62,17 @@ const char *CDFileClass::Get_Search_Path(int index)
 
 /**
  *  Fetch the number of search paths defined.
- * 
+ *
  *  @author: CCHyper
  */
 int CDFileClass::Search_Drive_Count()
 {
     int count = 0;
 
-    SearchDriveType * srch = First;
+    SearchDriveType* srch = First;
     while (srch) {
         ++count;
-        srch = (SearchDriveType *)srch->Next;
+        srch = (SearchDriveType*)srch->Next;
     }
 
     return count;

@@ -32,10 +32,10 @@
 
 class Blitter
 {
-    public:
-        Blitter() {}
-        virtual ~Blitter() {}
+public:
+    Blitter() {}
+    virtual ~Blitter() {}
 
-        virtual void entry_4(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) = 0;
-        virtual void entry_8(void *dest, void *source, unsigned length, unsigned short z_min = 0x8000, int *z_buff = nullptr, int *alpha_buff = nullptr, int alpha_level = 1000) = 0;
+    virtual void entry_4(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000, int warp_offset = 0) = 0;
+    virtual void entry_8(void* dest, void* source, unsigned length, unsigned short z_min = 0x8000, int* z_buff = nullptr, int* alpha_buff = nullptr, int alpha_level = 1000) = 0;
 };

@@ -39,22 +39,22 @@ class NoInitClass;
 template<class T>
 class BasicTimerClass
 {
-    public:
-        BasicTimerClass(long set = 0);
-        BasicTimerClass(const NoInitClass &x) {}
-        ~BasicTimerClass() {}
+public:
+    BasicTimerClass(long set = 0);
+    BasicTimerClass(const NoInitClass& x) {}
+    ~BasicTimerClass() {}
 
-        BasicTimerClass & operator=(const BasicTimerClass &that);
-        BasicTimerClass & operator=(long set);
+    BasicTimerClass& operator=(const BasicTimerClass& that);
+    BasicTimerClass& operator=(long set);
 
-        long Value() const;
+    long Value() const;
 
-        operator long() const;
-        long operator () () const;
+    operator long() const;
+    long operator()() const;
 
-    protected:
-        long Started;
-        T Timer;
+protected:
+    long Started;
+    T Timer;
 };
 
 
@@ -66,7 +66,7 @@ inline BasicTimerClass<T>::BasicTimerClass(long set) :
 
 
 template<typename T>
-BasicTimerClass<T> &BasicTimerClass<T>::operator=(const BasicTimerClass<T> &that)
+BasicTimerClass<T>& BasicTimerClass<T>::operator=(const BasicTimerClass<T>& that)
 {
     Started = that.Started;
     return *this;
@@ -74,7 +74,7 @@ BasicTimerClass<T> &BasicTimerClass<T>::operator=(const BasicTimerClass<T> &that
 
 
 template<typename T>
-BasicTimerClass<T> &BasicTimerClass<T>::operator=(long set)
+BasicTimerClass<T>& BasicTimerClass<T>::operator=(long set)
 {
     Started = Timer();
     return *this;
@@ -96,7 +96,7 @@ inline BasicTimerClass<T>::operator long() const
 
 
 template<class T>
-inline long BasicTimerClass<T>::operator () () const
+inline long BasicTimerClass<T>::operator()() const
 {
     return Timer() - Started;
 }
@@ -111,27 +111,27 @@ class TTimerClass : public BasicTimerClass<T>
     using BasicTimerClass<T>::Started;
     using BasicTimerClass<T>::Timer;
 
-    public:
-        TTimerClass(long set = 0);
-        TTimerClass(const NoInitClass & x);
-        ~TTimerClass() {}
+public:
+    TTimerClass(long set = 0);
+    TTimerClass(const NoInitClass& x);
+    ~TTimerClass() {}
 
-        long Value() const;
+    long Value() const;
 
-        operator long() const;
-        long operator () () const;
+    operator long() const;
+    long operator()() const;
 
-        void Stop();
-        void Start();
-        bool Is_Active() const;
+    void Stop();
+    void Start();
+    bool Is_Active() const;
 
-    protected:
-        long Accumulated;
+protected:
+    long Accumulated;
 };
 
 
 template<class T>
-inline TTimerClass<T>::TTimerClass(const NoInitClass & x) :
+inline TTimerClass<T>::TTimerClass(const NoInitClass& x) :
     BasicTimerClass<T>(x)
 {
 }
@@ -139,8 +139,7 @@ inline TTimerClass<T>::TTimerClass(const NoInitClass & x) :
 
 template<class T>
 inline TTimerClass<T>::TTimerClass(long set) :
-    BasicTimerClass<T>(set),
-    Accumulated(0)
+    BasicTimerClass<T>(set), Accumulated(0)
 {
 }
 
@@ -168,7 +167,7 @@ inline TTimerClass<T>::operator long() const
 
 
 template<class T>
-inline long TTimerClass<T>::operator () () const
+inline long TTimerClass<T>::operator()() const
 {
     long value = Accumulated;
     if (Started != 0xFFFFFFFFU) {
@@ -213,31 +212,31 @@ class CDTimerClass : public BasicTimerClass<T>
     using BasicTimerClass<T>::Started;
     using BasicTimerClass<T>::Timer;
 
-    public:
-        CDTimerClass(long set=0);
-        CDTimerClass(const NoInitClass & x);
-        ~CDTimerClass() {}
+public:
+    CDTimerClass(long set = 0);
+    CDTimerClass(const NoInitClass& x);
+    ~CDTimerClass() {}
 
-        CDTimerClass & operator=(const CDTimerClass &that);
-        CDTimerClass & operator=(long set);
+    CDTimerClass& operator=(const CDTimerClass& that);
+    CDTimerClass& operator=(long set);
 
-        long Value() const;
+    long Value() const;
 
-        operator long() const;
-        long operator () () const;
+    operator long() const;
+    long operator()() const;
 
-        void Stop();
-        void Start();
-        bool Is_Active() const;
-        bool Expired() const { return Value() == 0; }
+    void Stop();
+    void Start();
+    bool Is_Active() const;
+    bool Expired() const { return Value() == 0; }
 
-    protected:
-        long DelayTime;
+protected:
+    long DelayTime;
 };
 
 
 template<class T>
-inline CDTimerClass<T>::CDTimerClass(const NoInitClass & x) :
+inline CDTimerClass<T>::CDTimerClass(const NoInitClass& x) :
     BasicTimerClass<T>(x)
 {
 }
@@ -245,14 +244,13 @@ inline CDTimerClass<T>::CDTimerClass(const NoInitClass & x) :
 
 template<class T>
 inline CDTimerClass<T>::CDTimerClass(long set) :
-    BasicTimerClass<T>(0),
-    DelayTime(set)
+    BasicTimerClass<T>(0), DelayTime(set)
 {
 }
 
 
 template<typename T>
-CDTimerClass<T> &CDTimerClass<T>::operator=(const CDTimerClass<T> &that)
+CDTimerClass<T>& CDTimerClass<T>::operator=(const CDTimerClass<T>& that)
 {
     BasicTimerClass<T>::operator=(that);
     DelayTime = that.DelayTime;
@@ -261,7 +259,7 @@ CDTimerClass<T> &CDTimerClass<T>::operator=(const CDTimerClass<T> &that)
 
 
 template<typename T>
-CDTimerClass<T> &CDTimerClass<T>::operator=(long set)
+CDTimerClass<T>& CDTimerClass<T>::operator=(long set)
 {
     BasicTimerClass<T>::operator=(set);
     DelayTime = set;
@@ -302,7 +300,7 @@ inline CDTimerClass<T>::operator long() const
 
 
 template<class T>
-inline long CDTimerClass<T>::operator () () const
+inline long CDTimerClass<T>::operator()() const
 {
     long remain = DelayTime;
     if (Started != 0xFFFFFFFFU) {
@@ -353,28 +351,28 @@ class CDRateTimerClass : public CDTimerClass<T>
     using BasicTimerClass<T>::Started;
     using BasicTimerClass<T>::Timer;
 
-    public:
-        CDRateTimerClass(long set = 0, long rate = 0);
-        CDRateTimerClass(const NoInitClass & x);
-        ~CDRateTimerClass() {}
+public:
+    CDRateTimerClass(long set = 0, long rate = 0);
+    CDRateTimerClass(const NoInitClass& x);
+    ~CDRateTimerClass() {}
 
-        CDRateTimerClass & operator=(const CDRateTimerClass &that);
-        CDRateTimerClass & operator=(long set);
+    CDRateTimerClass& operator=(const CDRateTimerClass& that);
+    CDRateTimerClass& operator=(long set);
 
-        long Value() const;
+    long Value() const;
 
-        float Percent_Expired() const;
-        bool Expired() const { return Percent_Expired() == 1.0f; }
+    float Percent_Expired() const;
+    bool Expired() const { return Percent_Expired() == 1.0f; }
 
-        long Get_Rate() const { return Rate; }
+    long Get_Rate() const { return Rate; }
 
-    protected:
-        long Rate;
+protected:
+    long Rate;
 };
 
 
 template<class T>
-inline CDRateTimerClass<T>::CDRateTimerClass(const NoInitClass &x) :
+inline CDRateTimerClass<T>::CDRateTimerClass(const NoInitClass& x) :
     CDTimerClass<T>(x)
 {
 }
@@ -382,14 +380,13 @@ inline CDRateTimerClass<T>::CDRateTimerClass(const NoInitClass &x) :
 
 template<class T>
 inline CDRateTimerClass<T>::CDRateTimerClass(long set, long rate) :
-    CDTimerClass<T>(set),
-    Rate(rate)
+    CDTimerClass<T>(set), Rate(rate)
 {
 }
 
 
 template<typename T>
-CDRateTimerClass<T> &CDRateTimerClass<T>::operator=(const CDRateTimerClass<T> &that)
+CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(const CDRateTimerClass<T>& that)
 {
     CDTimerClass<T>::operator=(that);
     Rate = that.Rate;
@@ -398,7 +395,7 @@ CDRateTimerClass<T> &CDRateTimerClass<T>::operator=(const CDRateTimerClass<T> &t
 
 
 template<typename T>
-CDRateTimerClass<T> &CDRateTimerClass<T>::operator=(long set)
+CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(long set)
 {
     CDTimerClass<T>::operator=(set);
     Rate = set;

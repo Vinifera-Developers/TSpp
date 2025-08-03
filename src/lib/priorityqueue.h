@@ -35,147 +35,147 @@
 template<typename TElement, typename TPriority>
 class PriorityQueueClassNode
 {
-    public:
-        PriorityQueueClassNode();
-        PriorityQueueClassNode(const TElement &element, const TPriority &priority);
-        PriorityQueueClassNode(TElement &&element, const TPriority &priority);
-        PriorityQueueClassNode(const TElement &element, TPriority &&priority);
-        PriorityQueueClassNode(TElement &&element, TPriority &&priority);
-        PriorityQueueClassNode(const PriorityQueueClassNode<TElement, TPriority> &that) = default;
-        PriorityQueueClassNode(PriorityQueueClassNode<TElement, TPriority> &&that) noexcept = default;
+public:
+    PriorityQueueClassNode();
+    PriorityQueueClassNode(const TElement& element, const TPriority& priority);
+    PriorityQueueClassNode(TElement&& element, const TPriority& priority);
+    PriorityQueueClassNode(const TElement& element, TPriority&& priority);
+    PriorityQueueClassNode(TElement&& element, TPriority&& priority);
+    PriorityQueueClassNode(const PriorityQueueClassNode<TElement, TPriority>& that) = default;
+    PriorityQueueClassNode(PriorityQueueClassNode<TElement, TPriority>&& that) noexcept = default;
 
-        ~PriorityQueueClassNode() = default;
+    ~PriorityQueueClassNode() = default;
 
-        PriorityQueueClassNode<TElement, TPriority> &operator=(const PriorityQueueClassNode<TElement, TPriority> &that) = default;
-        PriorityQueueClassNode<TElement, TPriority> &operator=(PriorityQueueClassNode<TElement, TPriority> &&that) noexcept = default;
+    PriorityQueueClassNode<TElement, TPriority>& operator=(const PriorityQueueClassNode<TElement, TPriority>& that) = default;
+    PriorityQueueClassNode<TElement, TPriority>& operator=(PriorityQueueClassNode<TElement, TPriority>&& that) noexcept = default;
 
-        const TElement &Get_Element() const { return Element; }
-        TElement &Get_Element() { return Element; }
+    const TElement& Get_Element() const { return Element; }
+    TElement& Get_Element() { return Element; }
 
-        const TPriority &Get_Priority() const { return Priority; }
-        TPriority &Get_Priority() { return Priority; }
+    const TPriority& Get_Priority() const { return Priority; }
+    TPriority& Get_Priority() { return Priority; }
 
-        void Set_Element(const TElement &element) { Element = element; }
-        void Set_Element(TElement &&element) { Element = std::move(element); }
+    void Set_Element(const TElement& element) { Element = element; }
+    void Set_Element(TElement&& element) { Element = std::move(element); }
 
-        void Set_Priority(const TPriority &priority) { Priority = priority; }
-        void Set_Priority(TPriority &&priority) { Priority = std::move(priority); }
+    void Set_Priority(const TPriority& priority) { Priority = priority; }
+    void Set_Priority(TPriority&& priority) { Priority = std::move(priority); }
 
-        static bool Compare_Priority(const TPriority &lhs, const TPriority &rhs) { return std::greater<TPriority>()(lhs, rhs); }
+    static bool Compare_Priority(const TPriority& lhs, const TPriority& rhs) { return std::greater<TPriority>()(lhs, rhs); }
 
-    private:
-        TElement Element;
-        TPriority Priority;
+private:
+    TElement Element;
+    TPriority Priority;
 };
 
 
 template<typename TElement, typename TPriority>
 class PriorityQueueClass
 {
-    public:
-        PriorityQueueClass(int size);
-        PriorityQueueClass(const PriorityQueueClass<TElement, TPriority> &that);
-        PriorityQueueClass(PriorityQueueClass<TElement, TPriority> &&that) noexcept;
+public:
+    PriorityQueueClass(int size);
+    PriorityQueueClass(const PriorityQueueClass<TElement, TPriority>& that);
+    PriorityQueueClass(PriorityQueueClass<TElement, TPriority>&& that) noexcept;
 
-        ~PriorityQueueClass();
+    ~PriorityQueueClass();
 
-        PriorityQueueClass<TElement, TPriority> &operator=(const PriorityQueueClass<TElement, TPriority> &that);
-        PriorityQueueClass<TElement, TPriority> &operator=(PriorityQueueClass<TElement, TPriority> &&that) noexcept;
+    PriorityQueueClass<TElement, TPriority>& operator=(const PriorityQueueClass<TElement, TPriority>& that);
+    PriorityQueueClass<TElement, TPriority>& operator=(PriorityQueueClass<TElement, TPriority>&& that) noexcept;
 
-        PriorityQueueClassNode<TElement, TPriority> const *operator[](int index) const { TSPP_ASSERT(index < Get_Count()); return Heap[index]; }
-        PriorityQueueClassNode<TElement, TPriority> *operator[](int index) { TSPP_ASSERT(index < Get_Count()); return Heap[index]; }
+    PriorityQueueClassNode<TElement, TPriority> const* operator[](int index) const
+    {
+        TSPP_ASSERT(index < Get_Count());
+        return Heap[index];
+    }
+    PriorityQueueClassNode<TElement, TPriority>* operator[](int index)
+    {
+        TSPP_ASSERT(index < Get_Count());
+        return Heap[index];
+    }
 
-        int Get_Count() const;
-        int Get_Size() const;
-        void Clear();
-        bool Is_Empty() const;
+    int Get_Count() const;
+    int Get_Size() const;
+    void Clear();
+    bool Is_Empty() const;
 
-        bool Insert(PriorityQueueClassNode<TElement, TPriority> *node);
-        PriorityQueueClassNode<TElement, TPriority> *Extract();
-        void Resize(int new_size);
-        PriorityQueueClassNode<TElement, TPriority> *Find(const TElement &element) const;
-        bool Remove_Matching(const TElement &element);
-        bool Update_Priority(const TElement &element, const TPriority &priority);
-        bool Update_Priority(const TElement &element, TPriority &&priority);
+    bool Insert(PriorityQueueClassNode<TElement, TPriority>* node);
+    PriorityQueueClassNode<TElement, TPriority>* Extract();
+    void Resize(int new_size);
+    PriorityQueueClassNode<TElement, TPriority>* Find(const TElement& element) const;
+    bool Remove_Matching(const TElement& element);
+    bool Update_Priority(const TElement& element, const TPriority& priority);
+    bool Update_Priority(const TElement& element, TPriority&& priority);
 
-    private:
-        void Release_Heap();
-        void Heapify_Up(int index);
-        void Heapify_Down(int index);
-        void Internal_Copy_Heap(const PriorityQueueClass<TElement, TPriority> &that);
-        int Internal_Find(const TElement &element) const;
+private:
+    void Release_Heap();
+    void Heapify_Up(int index);
+    void Heapify_Down(int index);
+    void Internal_Copy_Heap(const PriorityQueueClass<TElement, TPriority>& that);
+    int Internal_Find(const TElement& element) const;
 
-        static int Get_Parent_Index(int index);
-        static int Get_Left_Index(int index);
-        static int Get_Right_Index(int index);
+    static int Get_Parent_Index(int index);
+    static int Get_Left_Index(int index);
+    static int Get_Right_Index(int index);
 
-    private:
-        int Count;
-        int Size;
-        PriorityQueueClassNode<TElement, TPriority> **Heap;
-        std::uintptr_t MaxNodePointer;
-        std::uintptr_t MinNodePointer;
+private:
+    int Count;
+    int Size;
+    PriorityQueueClassNode<TElement, TPriority>** Heap;
+    std::uintptr_t MaxNodePointer;
+    std::uintptr_t MinNodePointer;
 };
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode()
-    : Element(), Priority()
+PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode() : Element(), Priority()
 {
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(const TElement &element, const TPriority &priority)
-    : Element(element), Priority(priority)
+PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(const TElement& element, const TPriority& priority) : Element(element), Priority(priority)
 {
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(TElement &&element, const TPriority &priority)
-    : Element(std::move(element)), Priority(priority)
+PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(TElement&& element, const TPriority& priority) : Element(std::move(element)), Priority(priority)
 {
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(const TElement &element, TPriority &&priority)
-    : Element(element), Priority(std::move(priority))
+PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(const TElement& element, TPriority&& priority) : Element(element), Priority(std::move(priority))
 {
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(TElement &&element, TPriority &&priority)
-    : Element(std::move(element)), Priority(std::move(priority))
+PriorityQueueClassNode<TElement, TPriority>::PriorityQueueClassNode(TElement&& element, TPriority&& priority) : Element(std::move(element)), Priority(std::move(priority))
 {
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(int size)
-    : Count(0), Size(size), MaxNodePointer(std::numeric_limits<decltype(MaxNodePointer)>::min()), MinNodePointer(std::numeric_limits<decltype(MinNodePointer)>::max())
+PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(int size) : Count(0), Size(size), MaxNodePointer(std::numeric_limits<decltype(MaxNodePointer)>::min()), MinNodePointer(std::numeric_limits<decltype(MinNodePointer)>::max())
 {
     TSPP_ASSERT(size >= 0);
 
-    Heap = new PriorityQueueClassNode<TElement, TPriority> *[size + 1];
+    Heap = new PriorityQueueClassNode<TElement, TPriority>*[size + 1];
     TSPP_ASSERT(Heap != nullptr);
-    std::memset(Heap, 0, (size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memset(Heap, 0, (size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(const PriorityQueueClass<TElement, TPriority> &that)
-    : Count(that.Count), Size(that.Size), Heap(nullptr), MaxNodePointer(that.MaxNodePointer), MinNodePointer(that.MinNodePointer)
+PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(const PriorityQueueClass<TElement, TPriority>& that) : Count(that.Count), Size(that.Size), Heap(nullptr), MaxNodePointer(that.MaxNodePointer), MinNodePointer(that.MinNodePointer)
 {
     Internal_Copy_Heap(that);
 }
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(PriorityQueueClass<TElement, TPriority> &&that) noexcept
-    : Count(that.Count), Size(that.Size), Heap(that.Heap), MaxNodePointer(that.MaxNodePointer), MinNodePointer(that.MinNodePointer)
+PriorityQueueClass<TElement, TPriority>::PriorityQueueClass(PriorityQueueClass<TElement, TPriority>&& that) noexcept : Count(that.Count), Size(that.Size), Heap(that.Heap), MaxNodePointer(that.MaxNodePointer), MinNodePointer(that.MinNodePointer)
 {
     that.Heap = nullptr;
 }
@@ -194,7 +194,7 @@ PriorityQueueClass<TElement, TPriority>::~PriorityQueueClass()
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClass<TElement, TPriority> &PriorityQueueClass<TElement, TPriority>::operator=(const PriorityQueueClass<TElement, TPriority> &that)
+PriorityQueueClass<TElement, TPriority>& PriorityQueueClass<TElement, TPriority>::operator=(const PriorityQueueClass<TElement, TPriority>& that)
 {
     if (this != &that) {
         Release_Heap();
@@ -212,7 +212,7 @@ PriorityQueueClass<TElement, TPriority> &PriorityQueueClass<TElement, TPriority>
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClass<TElement, TPriority> &PriorityQueueClass<TElement, TPriority>::operator=(PriorityQueueClass<TElement, TPriority> &&that) noexcept
+PriorityQueueClass<TElement, TPriority>& PriorityQueueClass<TElement, TPriority>::operator=(PriorityQueueClass<TElement, TPriority>&& that) noexcept
 {
     if (this != &that) {
         Release_Heap();
@@ -247,7 +247,7 @@ int PriorityQueueClass<TElement, TPriority>::Get_Size() const
 template<typename TElement, typename TPriority>
 void PriorityQueueClass<TElement, TPriority>::Clear()
 {
-    std::memset(Heap, 0, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memset(Heap, 0, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
     Count = 0;
 }
 
@@ -260,7 +260,7 @@ bool PriorityQueueClass<TElement, TPriority>::Is_Empty() const
 
 
 template<typename TElement, typename TPriority>
-bool PriorityQueueClass<TElement, TPriority>::Insert(PriorityQueueClassNode<TElement, TPriority> *node)
+bool PriorityQueueClass<TElement, TPriority>::Insert(PriorityQueueClassNode<TElement, TPriority>* node)
 {
     TSPP_ASSERT(node != nullptr);
 
@@ -282,13 +282,13 @@ bool PriorityQueueClass<TElement, TPriority>::Insert(PriorityQueueClassNode<TEle
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority> *PriorityQueueClass<TElement, TPriority>::Extract()
+PriorityQueueClassNode<TElement, TPriority>* PriorityQueueClass<TElement, TPriority>::Extract()
 {
     if (Is_Empty()) {
         return nullptr;
     }
 
-    PriorityQueueClassNode<TElement, TPriority> *root_node = Heap[1];
+    PriorityQueueClassNode<TElement, TPriority>* root_node = Heap[1];
     Heap[1] = Heap[Count];
     Heap[Count] = nullptr;
     --Count;
@@ -308,11 +308,11 @@ void PriorityQueueClass<TElement, TPriority>::Resize(int new_size)
         return;
     }
 
-    PriorityQueueClassNode<TElement, TPriority> **new_heap = new PriorityQueueClassNode<TElement, TPriority> *[new_size + 1];
+    PriorityQueueClassNode<TElement, TPriority>** new_heap = new PriorityQueueClassNode<TElement, TPriority>*[new_size + 1];
     TSPP_ASSERT(new_heap != nullptr);
-    std::memset(new_heap, 0, (new_size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memset(new_heap, 0, (new_size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
 
-    std::memcpy(new_heap, Heap, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memcpy(new_heap, Heap, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
     Release_Heap();
     Heap = new_heap;
     Size = new_size;
@@ -324,7 +324,7 @@ void PriorityQueueClass<TElement, TPriority>::Resize(int new_size)
         MinNodePointer = std::numeric_limits<decltype(MinNodePointer)>::max();
 
         for (int i = 1; i <= Count; ++i) {
-            PriorityQueueClassNode<TElement, TPriority> *current_node = Heap[i];
+            PriorityQueueClassNode<TElement, TPriority>* current_node = Heap[i];
             TSPP_ASSERT(current_node != nullptr);
 
             MaxNodePointer = std::max(MaxNodePointer, reinterpret_cast<std::uintptr_t>(current_node));
@@ -335,7 +335,7 @@ void PriorityQueueClass<TElement, TPriority>::Resize(int new_size)
 
 
 template<typename TElement, typename TPriority>
-PriorityQueueClassNode<TElement, TPriority> *PriorityQueueClass<TElement, TPriority>::Find(const TElement &element) const
+PriorityQueueClassNode<TElement, TPriority>* PriorityQueueClass<TElement, TPriority>::Find(const TElement& element) const
 {
     int i = Internal_Find(element);
     return (i == -1 ? nullptr : Heap[i]);
@@ -343,7 +343,7 @@ PriorityQueueClassNode<TElement, TPriority> *PriorityQueueClass<TElement, TPrior
 
 
 template<typename TElement, typename TPriority>
-bool PriorityQueueClass<TElement, TPriority>::Remove_Matching(const TElement &element)
+bool PriorityQueueClass<TElement, TPriority>::Remove_Matching(const TElement& element)
 {
     bool result = false;
 
@@ -378,7 +378,7 @@ bool PriorityQueueClass<TElement, TPriority>::Remove_Matching(const TElement &el
 
 
 template<typename TElement, typename TPriority>
-bool PriorityQueueClass<TElement, TPriority>::Update_Priority(const TElement &element, const TPriority &priority)
+bool PriorityQueueClass<TElement, TPriority>::Update_Priority(const TElement& element, const TPriority& priority)
 {
     int i = Internal_Find(element);
     if (i == -1) {
@@ -398,7 +398,7 @@ bool PriorityQueueClass<TElement, TPriority>::Update_Priority(const TElement &el
 
 
 template<typename TElement, typename TPriority>
-bool PriorityQueueClass<TElement, TPriority>::Update_Priority(const TElement &element, TPriority &&priority)
+bool PriorityQueueClass<TElement, TPriority>::Update_Priority(const TElement& element, TPriority&& priority)
 {
     int i = Internal_Find(element);
     if (i == -1) {
@@ -436,9 +436,9 @@ void PriorityQueueClass<TElement, TPriority>::Heapify_Up(int index)
         TSPP_ASSERT(parent_index >= 0);
         TSPP_ASSERT(parent_index <= Size);
 
-        PriorityQueueClassNode<TElement, TPriority> *current_node = Heap[index];
+        PriorityQueueClassNode<TElement, TPriority>* current_node = Heap[index];
         TSPP_ASSERT(current_node != nullptr);
-        PriorityQueueClassNode<TElement, TPriority> *parent_node = Heap[parent_index];
+        PriorityQueueClassNode<TElement, TPriority>* parent_node = Heap[parent_index];
         TSPP_ASSERT(parent_node != nullptr);
 
         if (PriorityQueueClassNode<TElement, TPriority>::Compare_Priority(current_node->Get_Priority(), parent_node->Get_Priority())) {
@@ -489,23 +489,23 @@ void PriorityQueueClass<TElement, TPriority>::Heapify_Down(int index)
 
 
 template<typename TElement, typename TPriority>
-void PriorityQueueClass<TElement, TPriority>::Internal_Copy_Heap(const PriorityQueueClass<TElement, TPriority> &that)
+void PriorityQueueClass<TElement, TPriority>::Internal_Copy_Heap(const PriorityQueueClass<TElement, TPriority>& that)
 {
     TSPP_ASSERT(Heap == nullptr);
     TSPP_ASSERT(that.Heap != nullptr);
     TSPP_ASSERT(that.Size >= 0);
     TSPP_ASSERT(that.Count >= 0);
 
-    Heap = new PriorityQueueClassNode<TElement, TPriority> *[Size + 1];
+    Heap = new PriorityQueueClassNode<TElement, TPriority>*[Size + 1];
     TSPP_ASSERT(Heap != nullptr);
-    std::memset(Heap, 0, (Size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memset(Heap, 0, (Size + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
 
-    std::memcpy(Heap, that.Heap, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority> *));
+    std::memcpy(Heap, that.Heap, (Count + 1) * sizeof(PriorityQueueClassNode<TElement, TPriority>*));
 }
 
 
 template<typename TElement, typename TPriority>
-int PriorityQueueClass<TElement, TPriority>::Internal_Find(const TElement &element) const
+int PriorityQueueClass<TElement, TPriority>::Internal_Find(const TElement& element) const
 {
     int i = 1;
     for (; i <= Count; ++i) {

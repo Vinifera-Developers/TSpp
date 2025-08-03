@@ -52,30 +52,30 @@ DECLARE_INTERFACE_IID_(ISwizzle, IUnknown, "5FF0CA70-8B12-11D1-B708-00A024DDAFD1
     /**
      *  Swizzle a pointer after load.
      */
-    STDMETHOD_(LONG, Swizzle)(void **pointer) PURE;
+    STDMETHOD_(LONG, Swizzle)(void** pointer) PURE;
 
     /**
      *  Convert pointer to ID number.
      */
-    STDMETHOD_(LONG, Fetch_Swizzle_ID)(void *pointer, LONG *id) PURE;
+    STDMETHOD_(LONG, Fetch_Swizzle_ID)(void* pointer, LONG* id) PURE;
 
     /**
      *  Inform swizzler of new object location.
      */
-    STDMETHOD_(LONG, Here_I_Am)(LONG id, void *pointer) PURE;
+    STDMETHOD_(LONG, Here_I_Am)(LONG id, void* pointer) PURE;
 
     /**
      *  Save interface pointer to stream.
      */
-    STDMETHOD(Save_Interface)(IStream *stream, IUnknown *pointer) PURE;
+    STDMETHOD(Save_Interface)(IStream* stream, IUnknown* pointer) PURE;
 
     /**
      *  Loads interface pointer from stream.
      */
-    STDMETHOD(Load_Interface)(IStream *stream, CLSID *riid, void **pointer) PURE;
+    STDMETHOD(Load_Interface)(IStream* stream, CLSID* riid, void** pointer) PURE;
 
     /**
      *  Fetch bytes required to save interface pointer.
      */
-    STDMETHOD_(LONG, Get_Save_Size)(LONG *size) PURE;
+    STDMETHOD_(LONG, Get_Save_Size)(LONG* size) PURE;
 };

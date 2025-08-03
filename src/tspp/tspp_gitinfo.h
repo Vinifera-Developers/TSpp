@@ -28,10 +28,10 @@
 #pragma once
 
 
-const char *TSPP_Git_Hash();
-const char *TSPP_Git_Hash_Short();
-const char *TSPP_Git_Author();
-const char *TSPP_Git_Branch();
-const char *TSPP_Git_DateTime();
+const char* TSPP_Git_Hash();
+const char* TSPP_Git_Hash_Short();
+const char* TSPP_Git_Author();
+const char* TSPP_Git_Branch();
+const char* TSPP_Git_DateTime();
 bool TSPP_Git_Uncommitted_Changes();
-const char *TSPP_Git_Version_String();
+const char* TSPP_Git_Version_String();

@@ -12,7 +12,7 @@
  *                 "Lempel–Castle–Welch", a variation on the LZW compression
  *                 called "Lempel–Ziv–Welch", with "Castle" referring to its
  *                 programmer Louis "Castle".
- * 
+ *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
  *                 as published by the Free Software Foundation, either version
@@ -33,10 +33,10 @@
 #include "always.h"
 
 
-int LCW_Compress(void const * source, void * dest, int length);
+int LCW_Compress(void const* source, void* dest, int length);
 
 /**
  *  #NOTE:
  *  The 3rd argument is dummy and it exists to provide backward compatibility.
  */
-int LCW_Uncompress(void const * source, void * dest, unsigned long length = 0);
+int LCW_Uncompress(void const* source, void* dest, unsigned long length = 0);

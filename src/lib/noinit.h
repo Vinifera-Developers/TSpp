@@ -31,6 +31,6 @@
 
 class NoInitClass
 {
-    public:
-        void operator()() const {}
+public:
+    void operator()() const {}
 };

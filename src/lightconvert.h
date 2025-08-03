@@ -36,23 +36,23 @@ class PaletteClass;
 
 class LightConvertClass : public ConvertClass
 {
-    public:
-        LightConvertClass(PaletteClass *pal1, PaletteClass *pal2, Surface *surface, int r = -1, int g = -1, int b = -1, bool a8 = false, bool *a9 = nullptr, int a10 = 63);
-        LightConvertClass(const NoInitClass &noinit);
-        virtual ~LightConvertClass();
+public:
+    LightConvertClass(PaletteClass* pal1, PaletteClass* pal2, Surface* surface, int r = -1, int g = -1, int b = -1, bool a8 = false, bool* a9 = nullptr, int a10 = 63);
+    LightConvertClass(const NoInitClass& noinit);
+    virtual ~LightConvertClass();
 
-        virtual void Adjust(int r, int g, int b, bool a4);
+    virtual void Adjust(int r, int g, int b, bool a4);
 
-    private:
-        PaletteClass *field_190;
-        PaletteClass *field_194;
-        bool * field_198;           // mask?
-        int field_19C;              // ref count?
-        int field_1A0;
-        int field_1A4;
-        int field_1A8;
-        int field_1AC;
-        int field_1B0;
-        int field_1B4;
-        bool field_1B8;
+private:
+    PaletteClass* field_190;
+    PaletteClass* field_194;
+    bool* field_198; // mask?
+    int field_19C;   // ref count?
+    int field_1A0;
+    int field_1A4;
+    int field_1A8;
+    int field_1AC;
+    int field_1B0;
+    int field_1B4;
+    bool field_1B8;
 };

@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "taskforce.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-TaskForceType TaskForceClass::From_Name(const char *name)
+TaskForceType TaskForceClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,7 +51,7 @@ TaskForceType TaskForceClass::From_Name(const char *name)
 }
 
 
-TaskForceType TaskForceClass::From_Full_Name(const char *name)
+TaskForceType TaskForceClass::From_Full_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -71,13 +71,13 @@ TaskForceType TaskForceClass::From_Full_Name(const char *name)
 }
 
 
-const char *TaskForceClass::Name_From(TaskForceType type)
+const char* TaskForceClass::Name_From(TaskForceType type)
 {
     return (type != TASKFORCE_NONE && type < TaskForces.Count() ? TaskForces[type]->Name() : "<none>");
 }
 
 
-const TaskForceClass *TaskForceClass::Find_Or_Make(const char *name)
+const TaskForceClass* TaskForceClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

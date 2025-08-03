@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-CampaignType CampaignClass::From_Name(const char *name)
+CampaignType CampaignClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ CampaignType CampaignClass::From_Name(const char *name)
 }
 
 
-const char *CampaignClass::Name_From(CampaignType type)
+const char* CampaignClass::Name_From(CampaignType type)
 {
     return (type != CAMPAIGN_NONE && type < Campaigns.Count() ? Campaigns[type]->Name() : "<none>");
 }
 
 
-const CampaignClass *CampaignClass::Find_Or_Make(const char *name)
+const CampaignClass* CampaignClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const CampaignClass *CampaignClass::Find_Or_Make(const char *name)
         }
     }
 
-    CampaignClass *ptr = new CampaignClass(name);
+    CampaignClass* ptr = new CampaignClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

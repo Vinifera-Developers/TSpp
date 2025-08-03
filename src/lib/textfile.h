@@ -33,18 +33,18 @@
 
 class TextFileClass : public RawFileClass
 {
-    public:
-        enum {
-            MAX_LINE_LENGTH = 128
-        };
+public:
+    enum {
+        MAX_LINE_LENGTH = 128
+    };
 
-    public:
-        TextFileClass() : RawFileClass() {}
-        TextFileClass(char const *filename) : RawFileClass(filename) {}
-        TextFileClass(Wstring const &filename);
-        virtual ~TextFileClass() {}
+public:
+    TextFileClass() : RawFileClass() {}
+    TextFileClass(char const* filename) : RawFileClass(filename) {}
+    TextFileClass(Wstring const& filename);
+    virtual ~TextFileClass() {}
 
-        int Read_Line(char *string, bool &last_line);
-        int Write_Line(char *string);
-        int Write_Line_Format(char *string, ...);
+    int Read_Line(char* string, bool& last_line);
+    int Write_Line(char* string);
+    int Write_Line_Format(char* string, ...);
 };

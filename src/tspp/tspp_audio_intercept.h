@@ -31,9 +31,9 @@
 #include "dsaudio.h"
 
 
-extern int (*TSPP_Play_Sample_Function_Ptr)(const void *sample, int priority, int volume);
-extern bool (*TSPP_Is_Sample_Playing_Function_Ptr)(const void *sample);
+extern int (*TSPP_Play_Sample_Function_Ptr)(const void* sample, int priority, int volume);
+extern bool (*TSPP_Is_Sample_Playing_Function_Ptr)(const void* sample);
 
 
-int TSPP_Play_Sample(const void *sample, int priority = PRIORITY_MAX, int volume = VOLUME_MAX);
-bool TSPP_Is_Sample_Playing(const void *sample);
+int TSPP_Play_Sample(const void* sample, int priority = PRIORITY_MAX, int volume = VOLUME_MAX);
+bool TSPP_Is_Sample_Playing(const void* sample);

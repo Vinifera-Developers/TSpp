@@ -33,27 +33,27 @@
 /**
  *  Icons
  */
-#define IDI_TIBSUN              93
-#define IDI_CHECKBOX_ON         160
-#define IDI_CHECKBOX_OFF        161
-#define IDI_CHECKBOX_DISABLED   162
+#define IDI_TIBSUN            93
+#define IDI_CHECKBOX_ON       160
+#define IDI_CHECKBOX_OFF      161
+#define IDI_CHECKBOX_DISABLED 162
 
 
 /**
  *  Cursors
  */
-#define IDC_TIBSUN_ARROW        104
-#define IDC_TIBSUN_GREEN_ARROW  248
+#define IDC_TIBSUN_ARROW       104
+#define IDC_TIBSUN_GREEN_ARROW 248
 
 
 /**
  *  Strings
  */
-//#define IDS
-// See language.h
+// #define IDS
+//  See language.h
 
 
 /**
  *  Menus
  */
-#define IDM_RESOLUTION          160
+#define IDM_RESOLUTION 160

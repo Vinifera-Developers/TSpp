@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-AnimType AnimTypeClass::From_Name(const char *name)
+AnimType AnimTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ AnimType AnimTypeClass::From_Name(const char *name)
 }
 
 
-const char *AnimTypeClass::Name_From(AnimType type)
+const char* AnimTypeClass::Name_From(AnimType type)
 {
     return (type != ANIM_NONE && type < AnimTypes.Count() ? AnimTypes[type]->Name() : "<none>");
 }
 
 
-const AnimTypeClass *AnimTypeClass::Find_Or_Make(const char *name)
+const AnimTypeClass* AnimTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const AnimTypeClass *AnimTypeClass::Find_Or_Make(const char *name)
         }
     }
 
-    AnimTypeClass *ptr = new AnimTypeClass(name);
+    AnimTypeClass* ptr = new AnimTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

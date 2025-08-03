@@ -38,7 +38,7 @@ class VeterancyClass
 {
 public:
     VeterancyClass();
-    VeterancyClass(const NoInitClass &noinit);
+    VeterancyClass(const NoInitClass& noinit);
     ~VeterancyClass();
 
     void Gain_Experience(int cost, int value);
@@ -55,7 +55,7 @@ public:
     void Set_Veteran(bool force);
     void Set_Elite(bool force);
 
-    // Used for Read/Write INI. 
+    // Used for Read/Write INI.
     int To_Integer();
     void From_Integer(int value);
 

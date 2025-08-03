@@ -26,15 +26,15 @@
  *
  ******************************************************************************/
 #include "rules.h"
-#include "tibsun_globals.h"
 #include "addon.h"
 #include "ccfile.h"
 #include "ccini.h"
+#include "tibsun_globals.h"
 
 
 /**
  *  Loads the contents of ARTFS.INI into the art ini database.
- * 
+ *
  *  @author: CCHyper
  */
 void RulesClass::Load_ArtFS_INI()
@@ -52,7 +52,7 @@ void RulesClass::Load_ArtFS_INI()
 
 /**
  *  Loads the contents of FIRESTRM.INI into its ini database.
- * 
+ *
  *  @author: CCHyper
  */
 void RulesClass::Load_FSRule_INI()

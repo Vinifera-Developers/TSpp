@@ -27,27 +27,27 @@
  ******************************************************************************/
 #pragma once
 
-#include "wsproto.h"
 #include "vector.h"
+#include "wsproto.h"
 
 
 class UDPInterfaceClass : public WinsockInterfaceClass
 {
-	public:
-		UDPInterfaceClass();
-		virtual ~UDPInterfaceClass();
+public:
+    UDPInterfaceClass();
+    virtual ~UDPInterfaceClass();
 
-		virtual void Broadcast(void *buffer, int buffer_len) override;
-		virtual void Set_Broadcast_Address(void *address) override;
-		virtual void Clear_Broadcast_Addresses() override;
-		virtual ProtocolEnum Get_Protocol() override;
-		virtual int Protocol_Event_Message() override;
-		virtual bool Open_Socket(SOCKET socketnum) override;
-	 	virtual LRESULT Message_Handler(HWND hWnd, UINT uMsg, UINT wParam, LONG lParam) override;
-		virtual int Local_Addresses_Count() const override;
-		virtual unsigned char * Get_Local_Address(int index) const override;
+    virtual void Broadcast(void* buffer, int buffer_len) override;
+    virtual void Set_Broadcast_Address(void* address) override;
+    virtual void Clear_Broadcast_Addresses() override;
+    virtual ProtocolEnum Get_Protocol() override;
+    virtual int Protocol_Event_Message() override;
+    virtual bool Open_Socket(SOCKET socketnum) override;
+    virtual LRESULT Message_Handler(HWND hWnd, UINT uMsg, UINT wParam, LONG lParam) override;
+    virtual int Local_Addresses_Count() const override;
+    virtual unsigned char* Get_Local_Address(int index) const override;
 
-	private:
-		DynamicVectorClass<unsigned char *> BroadcastAddresses;
-		DynamicVectorClass<unsigned char *> LocalAddresses;
+private:
+    DynamicVectorClass<unsigned char*> BroadcastAddresses;
+    DynamicVectorClass<unsigned char*> LocalAddresses;
 };

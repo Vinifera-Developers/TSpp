@@ -33,10 +33,11 @@
 
 /**
  *  Perform a runtime C&C engine cast.
- *  
+ *
  *  @author: CCHyper
  */
-template<typename TDerived> TDerived * CC_Dynamic_Cast(AbstractClass * abstract)
+template<typename TDerived>
+TDerived* CC_Dynamic_Cast(AbstractClass* abstract)
 {
     /**
      *  Check if the desired class is really derived from AbstractClass
@@ -62,5 +63,5 @@ template<typename TDerived> TDerived * CC_Dynamic_Cast(AbstractClass * abstract)
     /**
      *  Passed validity checks, cast to the derived class.
      */
-    return reinterpret_cast<TDerived *>(abstract);
+    return reinterpret_cast<TDerived*>(abstract);
 }

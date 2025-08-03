@@ -35,20 +35,20 @@ class NoInitClass;
 
 class CreditClass
 {
-	public:
-		CreditClass();
-		CreditClass(const NoInitClass &x);
-		~CreditClass();
+public:
+    CreditClass();
+    CreditClass(const NoInitClass& x);
+    ~CreditClass();
 
-		void Update(bool forced = false, bool redraw = false);
-		void Graphic_Logic(bool forced = false);
-		void AI(bool forced = false);
+    void Update(bool forced = false, bool redraw = false);
+    void Graphic_Logic(bool forced = false);
+    void AI(bool forced = false);
 
-	public:
-		long Credits;
-		long Current;
-		bool IsToRedraw;
-		bool IsUp;
-		bool IsAudible;
-		int	Countdown;
+public:
+    long Credits;
+    long Current;
+    bool IsToRedraw;
+    bool IsUp;
+    bool IsAudible;
+    int Countdown;
 };

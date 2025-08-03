@@ -37,25 +37,25 @@ class INIClass;
 
 class MultiMission
 {
-	public:
-		MultiMission(INIClass &ini, const char * filename);
-		MultiMission(const char *filename = nullptr, const char *description = nullptr, const char *digest = nullptr, bool official = true);
-		~MultiMission();
+public:
+    MultiMission(INIClass& ini, const char* filename);
+    MultiMission(const char* filename = nullptr, const char* description = nullptr, const char* digest = nullptr, bool official = true);
+    ~MultiMission();
 
-		bool Is_Available(DiskID disk);
-		DiskID Get_Disk() const;
+    bool Is_Available(DiskID disk);
+    DiskID Get_Disk() const;
 
-		void Set_Description(const char *description);
-		void Set_Filename(const char *filename);
-		void Set_Digest(const char *digest);
-		void Set_Official(bool official);
+    void Set_Description(const char* description);
+    void Set_Filename(const char* filename);
+    void Set_Digest(const char* digest);
+    void Set_Official(bool official);
 
-	public:
-		char ScenarioDescription[DESCRIP_MAX];
-		char Filename[NAME_MAX];
-		char Digest[32];
-		bool IsOfficial;
-		int MinPlayers;
-		int MaxPlayers;
-		TypeList<DiskID> Disks;
+public:
+    char ScenarioDescription[DESCRIP_MAX];
+    char Filename[NAME_MAX];
+    char Digest[32];
+    bool IsOfficial;
+    int MinPlayers;
+    int MaxPlayers;
+    TypeList<DiskID> Disks;
 };

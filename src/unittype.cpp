@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "unittype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-UnitType UnitTypeClass::From_Name(const char *name)
+UnitType UnitTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ UnitType UnitTypeClass::From_Name(const char *name)
 }
 
 
-const char *UnitTypeClass::Name_From(UnitType type)
+const char* UnitTypeClass::Name_From(UnitType type)
 {
     return (type != UNIT_NONE && type < UnitTypes.Count() ? UnitTypes[type]->Name() : "<none>");
 }
 
 
-const UnitTypeClass *UnitTypeClass::Find_Or_Make(const char *name)
+const UnitTypeClass* UnitTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

@@ -40,18 +40,18 @@
 
 class SHAPipe : public Pipe
 {
-    public:
-        SHAPipe();
-        ~SHAPipe();
+public:
+    SHAPipe();
+    ~SHAPipe();
 
-        virtual int Put(const void *source, int slen) override;
+    virtual int Put(const void* source, int slen) override;
 
-        int Result(void * result) const;
+    int Result(void* result) const;
 
-    protected:
-        SHAEngine SHA;
+protected:
+    SHAEngine SHA;
 
-    private:
-        SHAPipe(const SHAPipe &) = delete;
-        SHAPipe & operator = (const SHAPipe &) = delete;
+private:
+    SHAPipe(const SHAPipe&) = delete;
+    SHAPipe& operator=(const SHAPipe&) = delete;
 };

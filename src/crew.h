@@ -35,17 +35,17 @@ class NoInitClass;
 
 class CrewClass
 {
-    public:
-        CrewClass() {}
-        CrewClass(const NoInitClass &noinit) {}
-        ~CrewClass() {}
+public:
+    CrewClass() {}
+    CrewClass(const NoInitClass& noinit) {}
+    ~CrewClass() {}
 
-		int Made_A_Kill()
-		{
-			Kills++;
-			return Kills;
-		};
+    int Made_A_Kill()
+    {
+        Kills++;
+        return Kills;
+    };
 
-    public:
-		unsigned short Kills;
+public:
+    unsigned short Kills;
 };

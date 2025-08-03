@@ -28,14 +28,14 @@
 #pragma once
 
 #include "always.h"
-#include "rect.h"
 #include "fixed.h"
 #include "matrix3d.h"
-#include "search.h"
-#include "vector.h"
 #include "point.h"
-#include "wwmath.h"
+#include "rect.h"
+#include "search.h"
 #include "staticbuffer.h"
+#include "vector.h"
+#include "wwmath.h"
 
 
 class FileClass;
@@ -143,8 +143,7 @@ typedef IndexClass<int, DataStruct> VoxelIndexClass;
 
 
 
-typedef enum WaypointEnum
-{
+typedef enum WaypointEnum {
     WAYPT_HOME = 98,    // Home-cell for this scenario
     WAYPT_REINF,        // cell where reinforcements arrive
     WAYPT_SPECIAL,      // Used by special airdrop reinforcements.
@@ -152,8 +151,7 @@ typedef enum WaypointEnum
 } WaypointEnum;
 
 
-typedef enum DiffType : int
-{
+typedef enum DiffType : int {
     DIFF_EASY,
     DIFF_NORMAL,
     DIFF_HARD,
@@ -163,8 +161,7 @@ typedef enum DiffType : int
 };
 
 
-typedef enum FacingType
-{
+typedef enum FacingType {
     FACING_N,
     FACING_NE,
     FACING_E,
@@ -181,8 +178,7 @@ typedef enum FacingType
 } FacingType;
 DEFINE_ENUMERATION_OPERATORS(FacingType);
 
-typedef enum Dir256
-{
+typedef enum Dir256 {
     DIR_N = 0,          // 0
     DIR_NE = 1 << 5,    // 32
     DIR_E = 2 << 5,     // 64
@@ -202,8 +198,7 @@ DEFINE_ENUMERATION_OPERATORS(Dir256);
 
 typedef enum MPHType {} MPHType;
 
-typedef enum CrateType
-{
+typedef enum CrateType {
     CRATE_MONEY,
     CRATE_UNIT,
     CRATE_HEAL_BASE,
@@ -231,31 +226,27 @@ typedef enum CrateType
 } CrateType;
 DEFINE_ENUMERATION_OPERATORS(CrateType);
 
-typedef enum VocType
-{
+typedef enum VocType {
     VOC_NONE = -1,
 
     VOC_FIRST = 0
 } VocType;
 DEFINE_ENUMERATION_OPERATORS(VocType);
 
-typedef enum VQType
-{
+typedef enum VQType {
     VQ_NONE = -1,
 
     VQ_FIRST = 0
 } VQType;
 
-typedef enum ScriptType
-{
+typedef enum ScriptType {
     SCRIPT_NONE = -1,
 
     SCRIPT_FIRST = 0
 } ScriptType;
 DEFINE_ENUMERATION_OPERATORS(ScriptType);
 
-typedef enum DiskID
-{
+typedef enum DiskID {
     DISK_GDI,
     DISK_NOD,
     DISK_FIRESTORM,
@@ -264,24 +255,21 @@ typedef enum DiskID
     DISK_ANY = -1,
 } DiskID;
 
-typedef enum AddonType
-{
+typedef enum AddonType {
     ADDON_NONE,
     ADDON_FIRESTORM,
 
     ADDON_ANY = -1,
 } AddonType;
 
-typedef enum CampaignType
-{
+typedef enum CampaignType {
     CAMPAIGN_NONE = -1,
 
     CAMPAIGN_FIRST = 0
 } CampaignType;
 DEFINE_ENUMERATION_OPERATORS(CampaignType);
 
-typedef enum ThemeType
-{
+typedef enum ThemeType {
     THEME_QUIET = -3,
     THEME_PICK_ANOTHER = -2,
     THEME_NONE = -1,
@@ -290,56 +278,49 @@ typedef enum ThemeType
 } ThemeType;
 DEFINE_ENUMERATION_OPERATORS(ThemeType);
 
-typedef enum BulletType
-{
+typedef enum BulletType {
     BULLET_NONE = -1,
 
     BULLET_FIRST = 0
 } BulletType;
 DEFINE_ENUMERATION_OPERATORS(BulletType);
 
-typedef enum WeaponType
-{
+typedef enum WeaponType {
     WEAPON_NONE = -1,
 
     WEAPON_FIRST = 0
 } WeaponType;
 DEFINE_ENUMERATION_OPERATORS(WeaponType);
 
-typedef enum VoxelAnimType
-{
+typedef enum VoxelAnimType {
     VOXELANIM_NONE = -1,
 
     VOXELANIM_FIRST = 0
 } VoxelAnimType;
 DEFINE_ENUMERATION_OPERATORS(VoxelAnimType);
 
-typedef enum AircraftType
-{
+typedef enum AircraftType {
     AIRCRAFT_NONE = -1,
 
     AIRCRAFT_FIRST = 0
 } AircraftType;
 DEFINE_ENUMERATION_OPERATORS(AircraftType);
 
-typedef enum UnitType
-{
+typedef enum UnitType {
     UNIT_NONE = -1,
 
     UNIT_FIRST = 0
 } UnitType;
 DEFINE_ENUMERATION_OPERATORS(UnitType);
 
-typedef enum InfantryType
-{
+typedef enum InfantryType {
     INFANTRY_NONE = -1,
 
     INFANTRY_FIRST = 0
 } InfantryType;
 DEFINE_ENUMERATION_OPERATORS(InfantryType);
 
-typedef enum HousesType
-{
+typedef enum HousesType {
     HOUSE_GDI,
     HOUSE_NOD,
     HOUSE_NEUTRAL,
@@ -352,8 +333,7 @@ DEFINE_ENUMERATION_OPERATORS(HousesType);
 
 typedef enum PipType {} PipType;
 
-typedef enum PipScaleType
-{
+typedef enum PipScaleType {
     PIP_NONE,
     PIP_AMMO,
     PIP_TIBERIUM,
@@ -363,8 +343,7 @@ typedef enum PipScaleType
 } PipScaleType;
 DEFINE_ENUMERATION_OPERATORS(PipScaleType);
 
-typedef enum CategoryType
-{
+typedef enum CategoryType {
     CATEGORY_SOLDIER,           // Soldier
     CATEGORY_CIVILIAN,          // Civilian
     CATEGORY_VIP,               // VIP/Agent
@@ -383,8 +362,7 @@ typedef enum CategoryType
     CATEGORY_FIRST = 0
 } CategoryType;
 
-typedef enum TeamType
-{
+typedef enum TeamType {
     TEAM_NONE = -1,
     TEAM_FIRST = 0,
 } TeamType;
@@ -392,8 +370,7 @@ DEFINE_ENUMERATION_OPERATORS(TeamType);
 
 
 typedef long WAYPOINT;
-typedef enum WaypointType
-{
+typedef enum WaypointType {
     WAYPOINT_HOME = 98,       // Home-cell for this scenario.
     WAYPOINT_REINF = 99,      // cell where reinforcements arrive.
     WAYPOINT_SPECIAL = 100,   // Used by special airdrop reinforcements.
@@ -405,15 +382,13 @@ typedef enum WaypointType
 } WaypointType;
 DEFINE_ENUMERATION_OPERATORS(WaypointType);
 
-typedef enum TubeType : char
-{
+typedef enum TubeType : char {
     TUBE_NONE = -1,
     TUBE_FIRST = 0,
 } TubeType;
 DEFINE_ENUMERATION_OPERATORS(TubeType);
 
-typedef enum TubeDirType : char
-{
+typedef enum TubeDirType : char {
     TUBE_FACING_N, // North
     TUBE_FACING_NE, // North-East
     TUBE_FACING_E, // East
@@ -430,8 +405,7 @@ typedef enum TubeDirType : char
 } TubeDirType;
 DEFINE_ENUMERATION_OPERATORS(TubeDirType);
 
-typedef enum IsometricTileType
-{
+typedef enum IsometricTileType {
     ISOTILE_CLEAR = 0,
 
     ISOTILE_NONE = 0xFFFF, // -1
@@ -440,8 +414,7 @@ typedef enum IsometricTileType
 } IsometricTileType;
 DEFINE_ENUMERATION_OPERATORS(IsometricTileType);
 
-typedef enum BAnimType
-{
+typedef enum BAnimType {
     BANIM_UPGRADE_ONE,
     BANIM_UPGRADE_TWO,
     BANIM_UPGRADE_THREE,
@@ -466,8 +439,7 @@ typedef enum BAnimType
 DEFINE_ENUMERATION_OPERATORS(BAnimType);
 
 
-typedef enum BStateType
-{
+typedef enum BStateType {
     BSTATE_CONSTRUCTION,
     BSTATE_IDLE,
     BSTATE_ACTIVE,
@@ -480,8 +452,7 @@ typedef enum BStateType
     BSTATE_NONE = -1
 } BStateType;
 
-typedef enum BSizeType
-{
+typedef enum BSizeType {
     BSIZE_11,
     BSIZE_21,
     BSIZE_12,
@@ -512,8 +483,7 @@ typedef enum BSizeType
 } BSizeType;
 DEFINE_ENUMERATION_OPERATORS(BSizeType);
 
-typedef enum MZoneType
-{
+typedef enum MZoneType {
     MZONE_NORMAL,               // Normal terrestrial objects (can't crush walls).
     MZONE_CRUSHER,              // Can crush crushable wall types.
     MZONE_DESTROYER,            // Can destroy walls.
@@ -543,8 +513,7 @@ DEFINE_ENUMERATION_OPERATORS(MZoneType);
 #define	MZONEF_FLYER		            (1<<MZONE_FLYER)
 #define	MZONEF_ALL			            (MZONEF_NORMAL|MZONEF_CRUSHER|MZONEF_DESTROYER|MZONEF_AMPHIBIOUS_DESTROYER|MZONEF_AMPHIBIOUS_CRUSHER|MZONEF_AMPHIBIOUS|MZONEF_SUBTERANNEAN|MZONEF_INFANTRY|MZONEF_INFANTRY_DESTROYER|MZONEF_FLYER)
 
-typedef enum ZoneType
-{
+typedef enum ZoneType {
     ZONE_CORE,      // Center of base.
     ZONE_NORTH,     // North section.
     ZONE_EAST,      // East section.
@@ -557,8 +526,7 @@ typedef enum ZoneType
 } ZoneType;
 DEFINE_ENUMERATION_OPERATORS(ZoneType);
 
-typedef enum SideType
-{
+typedef enum SideType {
     SIDE_GDI,
     SIDE_NOD,
     SIDE_CIVILIAN,
@@ -569,24 +537,21 @@ typedef enum SideType
 } SideType;
 DEFINE_ENUMERATION_OPERATORS(SideType);
 
-typedef enum TagType
-{
+typedef enum TagType {
     TAG_NONE = -1,
 
     TAG_FIRST = 0
 } TagType;
 DEFINE_ENUMERATION_OPERATORS(TagType);
 
-typedef enum AITriggerType
-{
+typedef enum AITriggerType {
     AITRIGGER_NONE = -1,
 
     AITRIGGER_FIRST = 0
 } AITriggerType;
 DEFINE_ENUMERATION_OPERATORS(AITriggerType);
 
-typedef enum AITriggerEventType
-{
+typedef enum AITriggerEventType {
     AITRIGGEREVENT_ENEMY_OWNS,
     AITRIGGEREVENT_HOUSE_OWNS,
     AITRIGGEREVENT_ENEMY_YELLOW_POWER,
@@ -598,8 +563,7 @@ typedef enum AITriggerEventType
     AITRIGGEREVENT_NONE = -1,
 } AITriggerEventType;
 
-typedef enum AITriggerComparatorType
-{
+typedef enum AITriggerComparatorType {
     COMPARATOR_LESS,
     COMPARATOR_LESS_OR_EQUAL,
     COMPARATOR_EQUAL,
@@ -608,23 +572,20 @@ typedef enum AITriggerComparatorType
     COMPARATOR_NOT_EQUAL
 } AITriggerComparatorType;
 
-typedef enum AITriggerHouseType
-{
+typedef enum AITriggerHouseType {
     AITRIG_HOUSE_NONE,     // <none>
     AITRIG_HOUSE_INDEX,    // Index from the rules list.
     AITRIG_HOUSE_ALL,      // <any>
 } AITriggerHouseType;
 
-typedef enum SpotlightBehaviorType
-{
+typedef enum SpotlightBehaviorType {
     BEHAVIOR_NONE,
     BEHAVIOR_SWEEP,
     BEHAVIOR_CIRCLE,
     BEHAVIOR_FOLLOW
 } SpotlightBehaviorType;
 
-typedef enum SourceType
-{
+typedef enum SourceType {
     SOURCE_NORTH,   // From north edge.
     SOURCE_EAST,    // From east edge.
     SOURCE_SOUTH,   // From south edge.
@@ -638,16 +599,14 @@ typedef enum SourceType
 } SourceType;
 DEFINE_ENUMERATION_OPERATORS(SourceType);
 
-typedef enum SmudgeType
-{
+typedef enum SmudgeType {
     SMUDGE_NONE = -1,
 
     SMUDGE_FIRST = 0
 } SmudgeType;
 DEFINE_ENUMERATION_OPERATORS(SmudgeType);
 
-typedef enum AttachedParticleType
-{
+typedef enum AttachedParticleType {
     ATTACHED_PARTICLE_FIRE,
     ATTACHED_PARTICLE_SPARK,
     ATTACHED_PARTICLE_NATURAL,
@@ -660,8 +619,7 @@ typedef enum AttachedParticleType
 } AttachedParticleType;
 DEFINE_ENUMERATION_OPERATORS(AttachedParticleType);
 
-typedef enum ParticleBehaviourType
-{
+typedef enum ParticleBehaviourType {
     BEHAVIOUR_GAS,
     BEHAVIOUR_SMOKE,
     BEHAVIOUR_FIRE,
@@ -676,32 +634,28 @@ typedef enum ParticleBehaviourType
 } ParticleBehaviourType;
 DEFINE_ENUMERATION_OPERATORS(ParticleBehaviourType);
 
-typedef enum ParticleType
-{
+typedef enum ParticleType {
     PARTICLE_NONE = -1,
 
     PARTICLE_FIRST = 0
 } ParticleType;
 DEFINE_ENUMERATION_OPERATORS(ParticleType);
 
-typedef enum ParticleSystemType
-{
+typedef enum ParticleSystemType {
     PARTICLESYS_NONE = -1,
 
     PARTICLESYS_FIRST = 0
 } ParticleSystemType;
 DEFINE_ENUMERATION_OPERATORS(ParticleSystemType);
 
-typedef enum TerrainType
-{
+typedef enum TerrainType {
     TERRAIN_NONE = -1,
 
     TERRAIN_FIRST = 0
 } TerrainType;
 DEFINE_ENUMERATION_OPERATORS(TerrainType);
 
-typedef enum OverlayType
-{
+typedef enum OverlayType {
     OVERLAY_NONE = -1,
 
     OVERLAY_BRIDGE1 = 24,
@@ -724,32 +678,28 @@ typedef enum OverlayType
 } OverlayType;
 DEFINE_ENUMERATION_OPERATORS(OverlayType);
 
-typedef enum AnimType
-{
+typedef enum AnimType {
     ANIM_NONE = -1,
 
     ANIM_FIRST = 0
 } AnimType;
 DEFINE_ENUMERATION_OPERATORS(AnimType);
 
-typedef enum TriggerType
-{
+typedef enum TriggerType {
     TRIGGER_NONE = -1,
 
     TRIGGER_FIRST = 0
 } TriggerType;
 DEFINE_ENUMERATION_OPERATORS(TriggerType);
 
-typedef enum WarheadType
-{
+typedef enum WarheadType {
     WARHEAD_NONE = -1,
 
     WARHEAD_FIRST = 0
 } WarheadType;
 DEFINE_ENUMERATION_OPERATORS(WarheadType);
 
-typedef enum WaveType
-{
+typedef enum WaveType {
     WAVE_SONIC,
     WAVE_BIG_LASER,
     WAVE_LASER,
@@ -761,8 +711,7 @@ typedef enum WaveType
 } WaveType;
 DEFINE_ENUMERATION_OPERATORS(WaveType);
 
-typedef enum PersistantType
-{
+typedef enum PersistantType {
     VOLATILE = 0,			// trigger destroys itself immediately after going off, and removes itself from
                             // all objects it's attached to.
     SEMIPERSISTANT = 1,		// trigger is "Semi-Persistent"; it maintains a count of all objects it's attached
@@ -771,8 +720,7 @@ typedef enum PersistantType
     PERSISTANT = 2			// trigger is Fully Persistent; it just won't go away.
 } PersistantType;
 
-typedef enum AbilityType
-{
+typedef enum AbilityType {
     ABILITY_FASTER,
     ABILITY_STRONGER,
     ABILITY_FIREPOWER,
@@ -799,8 +747,7 @@ typedef enum AbilityType
 } AbilityType;
 DEFINE_ENUMERATION_OPERATORS(AbilityType);
 
-typedef enum ScriptMissionType
-{
+typedef enum ScriptMissionType {
     SMISSION_ATTACK,                // Attack specified quarry type.
     SMISSION_ATT_WAYPT,             // Attack specified waypoint
     SMISSION_BEZERK,
@@ -861,8 +808,7 @@ typedef enum ScriptMissionType
     SMISSION_FIRST = 0
 } ScriptMissionType;
 
-typedef enum TaskForceType
-{
+typedef enum TaskForceType {
     TASKFORCE_COUNT,
 
     TASKFORCE_NONE = -1,
@@ -871,8 +817,7 @@ typedef enum TaskForceType
 } TaskForceType;
 DEFINE_ENUMERATION_OPERATORS(TaskForceType);
 
-typedef enum VeterancyRankType
-{
+typedef enum VeterancyRankType {
     RANK_DUMBASS,
     RANK_ROOKIE, // Little experience
     RANK_VETERAN,
@@ -882,8 +827,7 @@ typedef enum VeterancyRankType
 } VeterancyRankType;
 DEFINE_ENUMERATION_OPERATORS(VeterancyRankType);
 
-typedef enum DoType
-{
+typedef enum DoType {
     DO_STAND_READY = 0,
     DO_STAND_GUARD,
     DO_PRONE,
@@ -913,8 +857,7 @@ typedef enum DoType
 } DoType;
 DEFINE_ENUMERATION_OPERATORS(DoType);
 
-typedef enum FearType
-{
+typedef enum FearType {
     FEAR_NONE = 0,			// No fear at all (default state).
     FEAR_ANXIOUS = 10,		// Something makes them scared.
     FEAR_SCARED = 100,		// Scared enough to take cover.
@@ -922,23 +865,20 @@ typedef enum FearType
     FEAR_MAXIMUM = 255		// Scared to death.
 } FearType;
 
-typedef enum CloakType
-{
+typedef enum CloakType {
     UNCLOAKED,      // Completely visible (normal state).
     CLOAKING,       // In process of cloaking.
     CLOAKED,        // Completely cloaked (invisible).
     UNCLOAKING      // In process of uncloaking.
 } CloakType;
 
-typedef enum StructType
-{
+typedef enum StructType {
     STRUCT_FIRST = 0,
     STRUCT_NONE = -1
 } StructType;
 DEFINE_ENUMERATION_OPERATORS(StructType);
 
-typedef enum SpeedType
-{
+typedef enum SpeedType {
     SPEED_FOOT,
     SPEED_TRACK,
     SPEED_WHEEL,
@@ -955,8 +895,7 @@ typedef enum SpeedType
 } SpeedType;
 DEFINE_ENUMERATION_OPERATORS(SpeedType);
 
-typedef enum ImpactType : unsigned char
-{
+typedef enum ImpactType : unsigned char {
     IMPACT_NONE,          // No movement (of significance) occurred.
     IMPACT_NORMAL,        // Some (non eventful) movement occurred.
     IMPACT_EDGE           // The edge of the world was reached.
@@ -965,8 +904,7 @@ DEFINE_ENUMERATION_OPERATORS(ImpactType);
 
 typedef enum PrerequisiteType {} PrerequisiteType;
 
-typedef enum SpecialWeaponType
-{
+typedef enum SpecialWeaponType {
     SUPER_MULTI_MISSILE,        // Tactical nuclear weapon.
     SUPER_EM_PULSE,
     SUPER_FIRESTORM,
@@ -983,8 +921,7 @@ typedef enum SpecialWeaponType
 } SuperWeaponType;
 DEFINE_ENUMERATION_OPERATORS(SuperWeaponType);
 
-typedef enum LayerType
-{
+typedef enum LayerType {
     LAYER_UNDERGROUND,
     LAYER_SURFACE,      // Flat on the ground (no sorting or apparent vertical height).
     LAYER_GROUND,       // Touching the ground type object (units & buildings).
@@ -998,8 +935,7 @@ typedef enum LayerType
 } LayerType;
 DEFINE_ENUMERATION_OPERATORS(LayerType);
 
-typedef enum RadioMessageType
-{
+typedef enum RadioMessageType {
     RADIO_STATIC,           // "hisssss" -- non-message
     RADIO_ROGER,            // "Roger."
     RADIO_HELLO,            // "Come in. I wish to talk."
@@ -1040,31 +976,27 @@ typedef enum RadioMessageType
 } RadioMessageType;
 DEFINE_ENUMERATION_OPERATORS(RadioMessageType);
 
-typedef enum PCPType
-{
+typedef enum PCPType {
     PCP_ROTATION,   // When sitting in place and performing rotations.
     PCP_DURING,     // While moving between two cells.
     PCP_END,        // When the 'center' of a cell is reached during movement.
 } PCPType;
 DEFINE_ENUMERATION_OPERATORS(PCPType);
 
-typedef enum ExitType
-{
+typedef enum ExitType {
     EXIT_FAILED,
     EXIT_TRY_AGAIN,
     EXIT_NORMAL,
 } ExitType;
 
-typedef enum MarkType
-{
+typedef enum MarkType {
     MARK_UP,              // Removed from the map.
     MARK_DOWN,            // Placed on the map.
     MARK_CHANGE,
     MARK_DOWN_FORCED,
 } MarkType;
 
-typedef enum ResultType
-{
+typedef enum ResultType {
     RESULT_NONE,             // No damage was taken by the target.
     RESULT_LIGHT,            // Some damage was taken, but no state change occurred.
     RESULT_HALF,             // Damaged to below half strength (only returned on transition).
@@ -1073,8 +1005,7 @@ typedef enum ResultType
     RESULT_ALREADY_DESTROYED
 } ResultType;
 
-typedef enum ActionType
-{
+typedef enum ActionType {
     ACTION_NONE,            // Either undefined action or "do nothing".
     ACTION_MOVE,            // Can move there or at least try to.
     ACTION_NOMOVE,          // Special case for movable object, but illegal mouse position.
@@ -1138,8 +1069,7 @@ typedef enum ActionType
 } ActionType;
 DEFINE_ENUMERATION_OPERATORS(ActionType);
 
-typedef enum VoxType
-{
+typedef enum VoxType {
     VOX_ACCOMPLISHED,           // mission accomplished
     VOX_FAIL,                   // your mission has failed
     VOX_NO_FACTORY,             // unable to comply, building in progress
@@ -1732,8 +1662,7 @@ typedef enum VoxType
 } VoxType;
 DEFINE_ENUMERATION_OPERATORS(VoxType);
 
-typedef enum LandType
-{
+typedef enum LandType {
     LAND_CLEAR,         // "Clear" terrain.
     LAND_ROAD,          // Road terrain.
     LAND_WATER,         // Water.
@@ -1754,15 +1683,13 @@ typedef enum LandType
 } LandType;
 DEFINE_ENUMERATION_OPERATORS(LandType);
 
-typedef enum CheckPointType
-{
+typedef enum CheckPointType {
     CHECK_STACK,            // Holding area far away from airfield.
     CHECK_DOWNWIND,         // Downwind leg of approach.
     CHECK_CROSSWIND         // Crosswind leg of approach.
 } CheckPointType;
 
-typedef enum StateType
-{
+typedef enum StateType {
     STATE_BUILDUP,          // Base is building up (defensive buildup stage).
     STATE_BROKE,            // Low on money, need cash or income source.
     STATE_THREATENED,       // Enemy units are designated to move close by.
@@ -1771,8 +1698,7 @@ typedef enum StateType
 } StateType;
 DEFINE_ENUMERATION_OPERATORS(StateType);
 
-typedef enum UrgencyType
-{
+typedef enum UrgencyType {
     URGENCY_NONE,           // No action on this matter is needed or desired.
     URGENCY_LOW,            // Minimal attention requested.
     URGENCY_MEDIUM,         // Normal attention requested.
@@ -1784,8 +1710,7 @@ typedef enum UrgencyType
 } UrgencyType;
 DEFINE_ENUMERATION_OPERATORS(UrgencyType);
 
-typedef enum StrategyType
-{
+typedef enum StrategyType {
     STRATEGY_FIRE_SALE,         // Situation hopeless, sell and attack.
     STRATEGY_RAISE_MONEY,       // Money is low, emergency raise cash.
 
@@ -1794,8 +1719,7 @@ typedef enum StrategyType
 } StrategyType;
 DEFINE_ENUMERATION_OPERATORS(StrategyType);
 
-typedef enum QuarryType
-{
+typedef enum QuarryType {
     QUARRY_NONE,
 
     QUARRY_ANYTHING,    // Attack any enemy (same as "hunt").
@@ -1813,8 +1737,7 @@ typedef enum QuarryType
 } QuarryType;
 DEFINE_ENUMERATION_OPERATORS(QuarryType);
 
-typedef enum FireErrorType
-{
+typedef enum FireErrorType {
     FIRE_OK,            // Weapon is allowed to fire.
     FIRE_AMMO,          // No ammo available to fire?
     FIRE_FACING,        // Not correctly facing target?
@@ -1835,8 +1758,7 @@ typedef enum FireErrorType
 } FireErrorType;
 DEFINE_ENUMERATION_OPERATORS(FireErrorType);
 
-typedef enum ZGradientType
-{
+typedef enum ZGradientType {
     ZGRAD_GROUND,
     ZGRAD_45DEG,
     ZGRAD_90DEG,
@@ -1849,8 +1771,7 @@ typedef enum ZGradientType
 } ZGradientType;
 DEFINE_ENUMERATION_OPERATORS(ZGradientType);
 
-typedef enum VisualType
-{
+typedef enum VisualType {
     VISUAL_NORMAL,         // Completely visible -- normal.
     VISUAL_INDISTINCT,     // The edges shimmer and become indistinct.
     VISUAL_DARKEN,         // Color and texture is muted along with shimmering.
@@ -1865,8 +1786,7 @@ typedef enum VisualType
 } VisualType;
 DEFINE_ENUMERATION_OPERATORS(VisualType);
 
-typedef enum MoveType
-{
+typedef enum MoveType {
     MOVE_OK,                    // No blockage.
     MOVE_CLOAK,                 // A cloaked blocking enemy object.
     MOVE_MOVING_BLOCK,          // Blocked, but only temporarily.
@@ -1880,8 +1800,7 @@ typedef enum MoveType
 } MoveType;
 DEFINE_ENUMERATION_OPERATORS(MoveType);
 
-typedef enum ArmorType
-{
+typedef enum ArmorType {
     ARMOR_NONE,
     ARMOR_WOOD,
     ARMOR_ALUMINUM,
@@ -1895,8 +1814,7 @@ typedef enum ArmorType
 } ArmorType;
 DEFINE_ENUMERATION_OPERATORS(ArmorType);
 
-typedef enum RadarEventType
-{
+typedef enum RadarEventType {
     RADAREVENT_COMBAT,
     RADAREVENT_NONCOMBAT,
     RADAREVENT_DROPZONE,
@@ -1910,8 +1828,7 @@ typedef enum RadarEventType
 } RadarEventType;
 DEFINE_ENUMERATION_OPERATORS(RadarEventType);
 
-typedef enum MissionType
-{
+typedef enum MissionType {
     MISSION_SLEEP,          // Do nothing whatsoever.
     MISSION_ATTACK,         // Attack nearest enemy.
     MISSION_MOVE,           // Guard location or unit.
@@ -1945,8 +1862,7 @@ typedef enum MissionType
 } MissionType;
 DEFINE_ENUMERATION_OPERATORS(MissionType);
 
-typedef enum WeaponSlotType
-{
+typedef enum WeaponSlotType {
     WEAPON_SLOT_PRIMARY,
     WEAPON_SLOT_SECONDARY,
     WEAPON_SLOT_ELITE,
@@ -1958,8 +1874,7 @@ typedef enum WeaponSlotType
 } WeaponSlotType;
 DEFINE_ENUMERATION_OPERATORS(WeaponSlotType);
 
-typedef enum TiberiumType
-{
+typedef enum TiberiumType {
     TIBERIUM_RIPARIUS,
     TIBERIUM_CRUENTUS,
     TIBERIUM_VINIFERA,
@@ -1972,8 +1887,7 @@ typedef enum TiberiumType
 } TiberiumType;
 DEFINE_ENUMERATION_OPERATORS(TiberiumType);
 
-typedef enum TiberiumImageType
-{
+typedef enum TiberiumImageType {
     TIBIMAGE_1,
     TIBIMAGE_2,
     TIBIMAGE_3,
@@ -1986,15 +1900,13 @@ typedef enum TiberiumImageType
 } TiberiumImageType;
 DEFINE_ENUMERATION_OPERATORS(TiberiumImageType);
 
-typedef enum ColorSchemeType
-{
+typedef enum ColorSchemeType {
     COLORSCHEME_NONE = -1,
     COLORSCHEME_FIRST = 0
 } ColorSchemeType;
 DEFINE_ENUMERATION_OPERATORS(ColorSchemeType);
 
-typedef enum PlayerColorType
-{
+typedef enum PlayerColorType {
     PCOLOR_NONE = -1,
     PCOLOR_GOLD,
     PCOLOR_RED,
@@ -2011,8 +1923,7 @@ typedef enum PlayerColorType
 } PlayerColorType;
 DEFINE_ENUMERATION_OPERATORS(PlayerColorType);
 
-typedef enum RTTIType
-{
+typedef enum RTTIType {
     RTTI_NONE = 0,
 
     RTTI_UNIT,
@@ -2086,8 +1997,7 @@ typedef enum RTTIType
 DEFINE_ENUMERATION_OPERATORS(RTTIType);
 
 
-typedef enum ThreatType
-{
+typedef enum ThreatType {
     THREAT_NORMAL = 0x0000,         // Any distance threat scan?
     THREAT_RANGE = 0x0001,          // Limit scan to weapon range?
     THREAT_AREA = 0x0002,           // Limit scan to general area (twice weapon range)?
@@ -2109,8 +2019,7 @@ typedef enum ThreatType
 DEFINE_ENUMERATION_OPERATORS(ThreatType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(ThreatType);
 
-typedef enum TheaterType
-{
+typedef enum TheaterType {
     THEATER_TEMPERATE,
     THEATER_SNOW,
 
@@ -2132,8 +2041,7 @@ typedef struct {
 } TheaterDataType;
 
 
-typedef enum EventType : unsigned char // We need this so the enum only takes up one byte.
-{
+typedef enum EventType : unsigned char { // We need this so the enum only takes up one byte. 
     EVENT_EMPTY,
 
     // Public events.
@@ -2179,8 +2087,7 @@ typedef enum EventType : unsigned char // We need this so the enum only takes up
 } EventType;
 DEFINE_ENUMERATION_OPERATORS(EventType);
 
-typedef enum MouseType
-{
+typedef enum MouseType {
     MOUSE_NORMAL,
     MOUSE_N,
     MOUSE_NE,
@@ -2252,24 +2159,21 @@ typedef enum MouseType
 } MouseType;
 DEFINE_ENUMERATION_OPERATORS(MouseType);
 
-typedef enum SplitGroupType
-{
+typedef enum SplitGroupType {
     SPLIT_KEEP_BOTH,            // Keep transports, keep units.
     SPLIT_LOSE_UNITS,           // Keep transports, lose units.
     SPLIT_LOSE_TRANSPORTS,      // Lose transports, keep units.
     SPLIT_LOSE_BOTH,            // Lose transports, lose units.
 };
 
-typedef enum FindTargetType
-{
+typedef enum FindTargetType {
     ATTACK_LEAST_THREAT,
     ATTACK_GREATEST_THREAT,
     ATTACK_NEAREST,
     ATTACK_FARTHEST,
 };
 
-typedef enum NeedType
-{
+typedef enum NeedType {
     NEED_NONE,              // No additional data is required.
     NEED_THEME,             // Need a musical theme.
     NEED_MOVIE,             // Need a movie to play.
@@ -2315,8 +2219,7 @@ typedef enum NeedType
 } NeedType;
 DEFINE_ENUMERATION_OPERATORS(NeedType);
 
-typedef enum AttachType
-{
+typedef enum AttachType {
     ATTACH_NONE,                // Trigger doesn't attach to anything (orphan trigger types).
     ATTACH_CELL = 1 << 0,       // Trigger can only attach to a cell.
     ATTACH_OBJECT = 1 << 1,     // Trigger can attach only to object (usually building or vehicle).
@@ -2328,8 +2231,7 @@ typedef enum AttachType
 DEFINE_ENUMERATION_OPERATORS(AttachType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(AttachType);
 
-typedef enum TEventType
-{
+typedef enum TEventType {
     TEVENT_NONE,
 
     TEVENT_PLAYER_ENTERED,                  // player enters this square
@@ -2394,8 +2296,7 @@ typedef enum TEventType
 } TEventType;
 DEFINE_ENUMERATION_OPERATORS(TEventType);
 
-typedef enum TActionType
-{
+typedef enum TActionType {
     TACTION_NONE,
 
     TACTION_WIN,                   // player wins!
@@ -2510,8 +2411,7 @@ typedef enum TActionType
 } TActionType;
 DEFINE_ENUMERATION_OPERATORS(TActionType);
 
-typedef enum TActionFormatType
-{
+typedef enum TActionFormatType {
     TACTION_FORMAT_WP,              // Waypoint (Uses TActionClass::Data)
     TACTION_FORMAT_TEAM_WP,         // Team and Waypoint
     TACTION_FORMAT_TRIGGER_WP,      // Trigger and Waypoint
@@ -2526,8 +2426,7 @@ typedef enum ProdFailType {
     PROD_CANT       // Failed because unable to comply (busy or occupied).
 } ProdFailType;
 
-typedef enum TileRampType
-{
+typedef enum TileRampType {
     /**
      *  A flat tile (i.e. no ramp).
      */
@@ -2579,8 +2478,7 @@ DEFINE_ENUMERATION_OPERATORS(TileRampType);
 /**
  *  Terrain occupation bits.
  */
-typedef enum TerrainOccupyType
-{
+typedef enum TerrainOccupyType {
     TERRAIN_OCCUPY_NONE = 0,        // Nothing is occupied.
     TERRAIN_OCCUPY_NE = 1 << 0,     // North East
     TERRAIN_OCCUPY_SW = 1 << 1,     // South West
@@ -2593,8 +2491,7 @@ DEFINE_ENUMERATION_OPERATORS(TerrainOccupyType);
 /**
  *  Cell passability type.
  */
-typedef enum PassabilityType
-{
+typedef enum PassabilityType {
     PASSABLE_OK,
     PASSABLE_CRUSH,
     PASSABLE_WALL,
@@ -2609,8 +2506,7 @@ DEFINE_ENUMERATION_OPERATORS(PassabilityType);
 /**
  *  Shape drawing flags.
  */
-typedef enum ShapeFlags_Type
-{
+typedef enum ShapeFlags_Type {
     SHAPE_NORMAL,                   // Standard shape
 
     SHAPE_DARKEN = 1 << 0,
@@ -2638,8 +2534,7 @@ DEFINE_ENUMERATION_OPERATORS(ShapeFlags_Type);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(ShapeFlags_Type);
 
 
-typedef enum SpecialDialogType
-{
+typedef enum SpecialDialogType {
     SDLG_NONE,
     SDLG_OPTIONS,
     SDLG_SURRENDER,
@@ -2652,8 +2547,7 @@ typedef enum SpecialDialogType
 } SpecialDialogType;
 
 
-typedef enum DMonoType
-{
+typedef enum DMonoType {
     DMONO_OBJECT,
     DMONO_HOUSE,
     DMONO_STRESS,
@@ -2665,8 +2559,7 @@ typedef enum DMonoType
 } DMonoType;
 
 
-typedef enum GScreenRedrawFlags
-{
+typedef enum GScreenRedrawFlags {
     GS_REDRAW_NONE,
     GS_REDRAW_TACTICAL,
     GS_REDRAW_ALL,
@@ -2688,8 +2581,7 @@ typedef struct VariableFlagStruct {
 } VariableFlagStruct;
 
 
-typedef struct WeaponInfoStruct
-{
+typedef struct WeaponInfoStruct {
     WeaponInfoStruct() : Weapon(nullptr), FireFLH(), BarrelLength(0), BarrelThickness(0) {}
     WeaponInfoStruct(const WeaponInfoStruct &that) :
         Weapon(that.Weapon),
@@ -2707,8 +2599,7 @@ typedef struct WeaponInfoStruct
 
 
 #pragma pack(1)
-struct RGBStruct
-{
+struct RGBStruct {
     bool operator==(const RGBStruct &that) const { return R == that.R && G == that.G && B == that.B; }
     bool operator!=(const RGBStruct &that) const { return R != that.R && G != that.G && B != that.B; }
 
@@ -2720,8 +2611,7 @@ struct RGBStruct
 
 
 #pragma pack(1)
-struct wRGBStruct
-{
+struct wRGBStruct {
     bool operator==(const RGBStruct &that) const { return R == that.R && G == that.G && B == that.B; }
     bool operator!=(const RGBStruct &that) const { return R != that.R && G != that.G && B != that.B; }
 
@@ -2733,8 +2623,7 @@ struct wRGBStruct
 
 
 #pragma pack(1)
-struct HSVStruct
-{
+struct HSVStruct {
     bool operator==(const HSVStruct &that) const { return H == that.H && S == that.S && V == that.V; }
     bool operator!=(const HSVStruct &that) const { return H != that.H && S != that.S && V != that.V; }
 
@@ -2746,8 +2635,7 @@ struct HSVStruct
 
 
 #pragma pack(4)
-struct IsoTileHeaderStruct
-{
+struct IsoTileHeaderStruct {
     int32_t Width;
     int32_t Height;
     int32_t ImageWidth;
@@ -2757,8 +2645,7 @@ struct IsoTileHeaderStruct
 
 
 #pragma pack(4)
-struct IsoTileImageStruct
-{
+struct IsoTileImageStruct {
     int32_t XPos;
     int32_t YPos;
     int32_t ExtraOffset;
@@ -2781,8 +2668,7 @@ struct IsoTileImageStruct
 
 
 #pragma pack(4)
-struct IsoTileFileStruct
-{
+struct IsoTileFileStruct {
     public:
         operator void *() const { return (*this); } // This allows the struct to be passed implicitly as a raw pointer.
 
@@ -2955,8 +2841,7 @@ inline Cell Coord::As_Cell() const
 }
 
 
-struct AbilitiesStruct
-{
+struct AbilitiesStruct {
     public:
         AbilitiesStruct()
         {
@@ -2973,8 +2858,7 @@ struct AbilitiesStruct
 };
 
 
-typedef struct DoStruct
-{
+typedef struct DoStruct {
     DoStruct() : Interrupt(false), IsMobile(false), RandomStart(false), Rate(0) {}
 
     bool Interrupt;         // Can it be interrupted?
@@ -2984,8 +2868,7 @@ typedef struct DoStruct
 } DoStruct;
 
 
-typedef struct DoInfoStruct
-{
+typedef struct DoInfoStruct {
     DoInfoStruct() : Frame(0), Count(0), Jump(0), Finish(FACING_NONE) {}
 
     int Frame;              // Starting frame of the animation.
@@ -3009,8 +2892,7 @@ class ZoneConnectionClass
 };
 
 
-struct SubzoneConnectionStruct
-{
+struct SubzoneConnectionStruct {
     bool operator==(const SubzoneConnectionStruct &src) const { return false; }
     bool operator!=(const SubzoneConnectionStruct &src) const { return true; }
 
@@ -3019,8 +2901,7 @@ struct SubzoneConnectionStruct
 };
 
 
-struct SubzoneTrackingStruct
-{
+struct SubzoneTrackingStruct {
     bool operator==(const SubzoneTrackingStruct &src) const { return false; }
     bool operator!=(const SubzoneTrackingStruct &src) const { return true; }
 
@@ -3031,8 +2912,7 @@ struct SubzoneTrackingStruct
 };
 
 
-struct CrackedIceStruct
-{
+struct CrackedIceStruct {
     bool operator==(const CrackedIceStruct &src) const { return false; }
     bool operator!=(const CrackedIceStruct &src) const { return true; }
 
@@ -3041,8 +2921,7 @@ struct CrackedIceStruct
 };
 
 
-struct AngerStruct
-{
+struct AngerStruct {
     bool operator==(const AngerStruct &that) const
     {
         return (Whom == that.Whom && Level == that.Level);
@@ -3057,8 +2936,7 @@ struct AngerStruct
 };
 
 
-struct ScoutStruct
-{
+struct ScoutStruct {
     bool operator==(const ScoutStruct &that) const
     {
         return (Whom == that.Whom && HasScouted == that.HasScouted);

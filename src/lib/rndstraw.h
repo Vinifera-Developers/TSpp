@@ -34,50 +34,47 @@
  ******************************************************************************/
 #pragma once
 
-#include "straw.h"
 #include "random.h"
 #include "sha.h"
+#include "straw.h"
 #include "tspp_assert.h"
-#include <cstring>
 #include <algorithm>
+#include <cstring>
 
 
 template<class RNG>
 class RandomStraw : public Straw
 {
-    public:
-        RandomStraw();
-        virtual ~RandomStraw();
+public:
+    RandomStraw();
+    virtual ~RandomStraw();
 
-        virtual int Get(void *buffer, int length) override;
+    virtual int Get(void* buffer, int length) override;
 
-        void Reset();
-        void Seed_Bit(int seed);
-        void Seed_Byte(char seed);
-        void Seed_Short(short seed);
-        void Seed_Long(long seed);
+    void Reset();
+    void Seed_Bit(int seed);
+    void Seed_Byte(char seed);
+    void Seed_Short(short seed);
+    void Seed_Long(long seed);
 
-        int Seed_Bits_Needed() const;
+    int Seed_Bits_Needed() const;
 
-    private:
-        void Scramble_Seed();
+private:
+    void Scramble_Seed();
 
-    private:
-        int SeedBits;
-        int Current;
-        RNG Random[32];
+private:
+    int SeedBits;
+    int Current;
+    RNG Random[32];
 
-    private:
-        RandomStraw(RandomStraw &) = delete;
-        RandomStraw & operator = (const RandomStraw &) = delete;
+private:
+    RandomStraw(RandomStraw&) = delete;
+    RandomStraw& operator=(const RandomStraw&) = delete;
 };
 
 
 template<class RNG>
-RandomStraw<RNG>::RandomStraw() :
-    SeedBits(0),
-    Current(0),
-    Random()
+RandomStraw<RNG>::RandomStraw() : SeedBits(0), Current(0), Random()
 {
     Reset();
 }
@@ -101,7 +98,7 @@ void RandomStraw<RNG>::Reset()
 
 
 template<class RNG>
-int RandomStraw<RNG>::Get(void *buffer, int length)
+int RandomStraw<RNG>::Get(void* buffer, int length)
 {
     TSPP_ASSERT(buffer != nullptr);
     TSPP_ASSERT(length > 0);
@@ -112,7 +109,7 @@ int RandomStraw<RNG>::Get(void *buffer, int length)
 
     int total = 0;
     while (length > 0) {
-        *(char *)buffer = (char)Random[Current++];
+        *(char*)buffer = (char)Random[Current++];
         Current = Current % (sizeof(Random) / sizeof(Random[0]));
         buffer = (char*)buffer + sizeof(char);
         length--;
@@ -142,8 +139,8 @@ void RandomStraw<RNG>::Scramble_Seed()
         char digest[20];
         sha.Hash(&Random[0], sizeof(Random));
         sha.Result(digest);
-        int tocopy = sizeof(digest) < (sizeof(Random)-index) ? sizeof(digest) : (sizeof(Random)-index);
-        std::memmove(((char *)&Random[0]) + index, digest, tocopy);
+        int tocopy = sizeof(digest) < (sizeof(Random) - index) ? sizeof(digest) : (sizeof(Random) - index);
+        std::memmove(((char*)&Random[0]) + index, digest, tocopy);
     }
 }
 
@@ -151,8 +148,8 @@ void RandomStraw<RNG>::Scramble_Seed()
 template<class RNG>
 void RandomStraw<RNG>::Seed_Bit(int seed)
 {
-    char * ptr = ((char *)&Random[0]) + ((SeedBits / CHAR_BIT) % sizeof(Random));
-    char frac = (char)(1 << (SeedBits & (CHAR_BIT-1)));
+    char* ptr = ((char*)&Random[0]) + ((SeedBits / CHAR_BIT) % sizeof(Random));
+    char frac = (char)(1 << (SeedBits & (CHAR_BIT - 1)));
 
     if (seed & 0x01) {
         *ptr ^= frac;
@@ -179,7 +176,7 @@ void RandomStraw<RNG>::Seed_Byte(char seed)
 template<class RNG>
 void RandomStraw<RNG>::Seed_Short(short seed)
 {
-    for (int index = 0; index < (sizeof(seed)*CHAR_BIT); index++) {
+    for (int index = 0; index < (sizeof(seed) * CHAR_BIT); index++) {
         Seed_Bit(seed);
         seed >>= 1;
     }
@@ -189,7 +186,7 @@ void RandomStraw<RNG>::Seed_Short(short seed)
 template<class RNG>
 void RandomStraw<RNG>::Seed_Long(long seed)
 {
-    for (int index = 0; index < (sizeof(seed)*CHAR_BIT); index++) {
+    for (int index = 0; index < (sizeof(seed) * CHAR_BIT); index++) {
         Seed_Bit(seed);
         seed >>= 1;
     }

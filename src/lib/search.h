@@ -35,85 +35,85 @@
 template<typename I, class T>
 class IndexClass
 {
-    private:
-        struct NodeElement
+private:
+    struct NodeElement {
+        void operator=(const NodeElement& node)
         {
-            void operator=(const NodeElement &node) { ID = node.ID; Data = node.Data; }
-            bool operator==(const NodeElement &node) const { return ID == node.ID; }
-            bool operator<(const NodeElement &node) const { return ID < node.ID; }
-            bool operator>(const NodeElement &node) const { return ID > node.ID; }
-
-            I ID;
-            T Data;
-        };
-
-    public:
-        IndexClass();
-        ~IndexClass();
-
-        const T &operator[](const I &id) const
-        {
-            static T _x = (T());
-
-            if (Is_Present(id)) {
-                return Archive->Data;
-            }
-            return _x;
+            ID = node.ID;
+            Data = node.Data;
         }
+        bool operator==(const NodeElement& node) const { return ID == node.ID; }
+        bool operator<(const NodeElement& node) const { return ID < node.ID; }
+        bool operator>(const NodeElement& node) const { return ID > node.ID; }
 
-        bool Add_Index(const I &id, const T &data);
-        bool Remove_Index(const I &id);
-        bool Is_Present(const I &id) const;
-        int Count() const;
-        T &Fetch_By_Position(int index);
-        I Fetch_ID_By_Position(int index);
-        void Clear();
+        I ID;
+        T Data;
+    };
 
-        /**
-         *  #NOTE:
-         *  This function is for fetching an element based on the data, rather
-         *  than the id and is not for general/consistent use!
-         */
-        I Fetch_ID_By_Data(const T &data)
-        {
-            if (Archive) {
-                if (Archive->Data == data) {
-                    return Archive->ID;
-                }
-            }
-            for (int i = 0; i < IndexCount; ++i) {
-                const NodeElement *node = &IndexTable[i];
-                if (node->Data == data) {
-                    return node->ID;
-                }
-            }
-            return I(-1);
+public:
+    IndexClass();
+    ~IndexClass();
+
+    const T& operator[](const I& id) const
+    {
+        static T _x = (T());
+
+        if (Is_Present(id)) {
+            return Archive->Data;
         }
+        return _x;
+    }
 
-        const NodeElement *Get_Archive() const
-        {
-            return Archive;
+    bool Add_Index(const I& id, const T& data);
+    bool Remove_Index(const I& id);
+    bool Is_Present(const I& id) const;
+    int Count() const;
+    T& Fetch_By_Position(int index);
+    I Fetch_ID_By_Position(int index);
+    void Clear();
+
+    /**
+     *  #NOTE:
+     *  This function is for fetching an element based on the data, rather
+     *  than the id and is not for general/consistent use!
+     */
+    I Fetch_ID_By_Data(const T& data)
+    {
+        if (Archive) {
+            if (Archive->Data == data) {
+                return Archive->ID;
+            }
         }
+        for (int i = 0; i < IndexCount; ++i) {
+            const NodeElement* node = &IndexTable[i];
+            if (node->Data == data) {
+                return node->ID;
+            }
+        }
+        return I(-1);
+    }
 
-    public:
-        bool Increase_Table_Size(int amount);
-        bool Is_Archive_Same(const I &id) const;
-        void Invalidate_Archive();
-        void Set_Archive(const NodeElement * node);
-        bool Sort_Table();
-        const NodeElement * Search_For_Node(const I &id) const;
-        static int __cdecl search_compfunc(void const * ptr, void const * ptr2);
+    const NodeElement* Get_Archive() const { return Archive; }
 
-    private:
-        NodeElement * IndexTable;
-        int IndexCount;
-        int IndexSize;
-        bool IsSorted;
-        const NodeElement * Archive;
+public:
+    bool Increase_Table_Size(int amount);
+    bool Is_Archive_Same(const I& id) const;
+    void Invalidate_Archive();
+    void Set_Archive(const NodeElement* node);
+    bool Sort_Table();
+    const NodeElement* Search_For_Node(const I& id) const;
+    static int __cdecl search_compfunc(void const* ptr, void const* ptr2);
 
-    private:
-        IndexClass(const IndexClass &) = delete;
-        IndexClass * operator = (const IndexClass &) = delete;
+private:
+    NodeElement* IndexTable;
+    int IndexCount;
+    int IndexSize;
+    bool IsSorted;
+    const NodeElement* Archive;
+
+private:
+    IndexClass(const IndexClass&) = delete;
+    IndexClass* operator=(const IndexClass&) = delete;
 };
 
 
@@ -139,7 +139,7 @@ IndexClass<I, T>::~IndexClass()
 template<typename I, class T>
 void IndexClass<I, T>::Clear()
 {
-    delete [] IndexTable;
+    delete[] IndexTable;
     IndexTable = nullptr;
 
     IndexCount = 0;
@@ -158,13 +158,13 @@ bool IndexClass<I, T>::Increase_Table_Size(int amount)
 
     TSPP_ASSERT(IndexCount < IndexSize + amount);
 
-    NodeElement * table = new NodeElement[IndexSize + amount];
+    NodeElement* table = new NodeElement[IndexSize + amount];
     if (table != nullptr) {
         for (int index = 0; index < IndexCount; index++) {
             table[index] = IndexTable[index];
         }
 
-        delete [] IndexTable;
+        delete[] IndexTable;
         IndexTable = table;
         IndexSize += amount;
         Invalidate_Archive();
@@ -184,7 +184,7 @@ int IndexClass<I, T>::Count() const
 
 
 template<typename I, class T>
-bool IndexClass<I, T>::Is_Present(const I &id) const
+bool IndexClass<I, T>::Is_Present(const I& id) const
 {
     if (IndexCount == 0) {
         return false;
@@ -194,10 +194,10 @@ bool IndexClass<I, T>::Is_Present(const I &id) const
         return true;
     }
 
-    const NodeElement * nodeptr = Search_For_Node(id);
+    const NodeElement* nodeptr = Search_For_Node(id);
 
     if (nodeptr != nullptr) {
-        const_cast<IndexClass<I, T> *>(this)->Set_Archive(nodeptr);
+        const_cast<IndexClass<I, T>*>(this)->Set_Archive(nodeptr);
         return true;
     }
 
@@ -206,7 +206,7 @@ bool IndexClass<I, T>::Is_Present(const I &id) const
 
 
 template<typename I, class T>
-T & IndexClass<I, T>::Fetch_By_Position(int index)
+T& IndexClass<I, T>::Fetch_By_Position(int index)
 {
     TSPP_ASSERT(index < IndexCount);
     return IndexTable[index].Data;
@@ -222,7 +222,7 @@ I IndexClass<I, T>::Fetch_ID_By_Position(int index)
 
 
 template<typename I, class T>
-bool IndexClass<I, T>::Is_Archive_Same(const I &id) const
+bool IndexClass<I, T>::Is_Archive_Same(const I& id) const
 {
     if (Archive != nullptr && Archive->ID == id) {
         return true;
@@ -239,14 +239,14 @@ void IndexClass<I, T>::Invalidate_Archive()
 
 
 template<typename I, class T>
-void IndexClass<I, T>::Set_Archive(const NodeElement * node)
+void IndexClass<I, T>::Set_Archive(const NodeElement* node)
 {
     Archive = node;
 }
 
 
 template<typename I, class T>
-bool IndexClass<I, T>::Add_Index(const I &id, const T &data)
+bool IndexClass<I, T>::Add_Index(const I& id, const T& data)
 {
     for (int index = 0; index < IndexCount; ++index) {
         TSPP_ASSERT(IndexTable[index].ID != id);
@@ -268,9 +268,9 @@ bool IndexClass<I, T>::Add_Index(const I &id, const T &data)
 
 
 template<typename I, class T>
-bool IndexClass<I, T>::Remove_Index(const I &id)
+bool IndexClass<I, T>::Remove_Index(const I& id)
 {
-    const NodeElement *found = Search_For_Node(id);
+    const NodeElement* found = Search_For_Node(id);
     if (!found) {
         return false;
     }
@@ -280,8 +280,8 @@ bool IndexClass<I, T>::Remove_Index(const I &id)
 
     if (found_index != -1) {
 
-        for (int index = found_index+1; index < IndexCount; index++) {
-            IndexTable[index-1] = IndexTable[index];
+        for (int index = found_index + 1; index < IndexCount; index++) {
+            IndexTable[index - 1] = IndexTable[index];
         }
         IndexCount--;
 
@@ -299,10 +299,10 @@ bool IndexClass<I, T>::Remove_Index(const I &id)
 
 
 template<typename I, class T>
-int __cdecl IndexClass<I, T>::search_compfunc(void const * ptr1, void const * ptr2)
+int __cdecl IndexClass<I, T>::search_compfunc(void const* ptr1, void const* ptr2)
 {
-    const NodeElement *n1 = static_cast<const NodeElement *>(ptr1);
-    const NodeElement *n2 = static_cast<const NodeElement *>(ptr2);
+    const NodeElement* n1 = static_cast<const NodeElement*>(ptr1);
+    const NodeElement* n2 = static_cast<const NodeElement*>(ptr2);
 
     if (n1->ID == n2->ID) {
         return 0;
@@ -328,16 +328,16 @@ bool IndexClass<I, T>::Sort_Table()
 }
 
 
-template<typename I, class T> 
-const typename IndexClass<I, T>::NodeElement * IndexClass<I, T>::Search_For_Node(const I &id) const
+template<typename I, class T>
+const typename IndexClass<I, T>::NodeElement* IndexClass<I, T>::Search_For_Node(const I& id) const
 {
     if (IndexCount == 0) {
         return nullptr;
     }
 
-    const_cast<IndexClass<I, T> *>(this)->Sort_Table();
+    const_cast<IndexClass<I, T>*>(this)->Sort_Table();
 
     NodeElement node;
     node.ID = id;
-    return static_cast<const NodeElement *>(std::bsearch(&node, &IndexTable[0], IndexCount, sizeof(IndexTable[0]), search_compfunc));
+    return static_cast<const NodeElement*>(std::bsearch(&node, &IndexTable[0], IndexCount, sizeof(IndexTable[0]), search_compfunc));
 }

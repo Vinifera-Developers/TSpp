@@ -26,30 +26,30 @@
  *
  ******************************************************************************/
 #include "ini.h"
-#include "wstring.h"
-#include "wwmath.h"
 #include "rawfile.h"
 #include "tspp_assert.h"
-#include <sstream>
+#include "wstring.h"
+#include "wwmath.h"
 #include <algorithm>
+#include <sstream>
 
 
 /**
  *  These defines control precision format of floating and double point values.
  *  This only effects output from the ini database, not input.
- *  
+ *
  *  Currently: #.###, leading zeros are trimmed.
  */
-#define FLOAT_FORMAT "%.3g" // "%.3f"
+#define FLOAT_FORMAT  "%.3g"  // "%.3f"
 #define DOUBLE_FORMAT "%.3lg" // "%.3lf"
 
 
 /**
  *  Checks whether or not a section or entry is present.
- * 
+ *
  *  @author: CCHyper
  */
-bool INIClass::Is_Present(const char *section, const char *entry) const
+bool INIClass::Is_Present(const char* section, const char* entry) const
 {
     if (!entry) {
         return Find_Section(section) != nullptr;
@@ -64,7 +64,7 @@ bool INIClass::Is_Present(const char *section, const char *entry) const
  *
  *  @author: CCHyper
  */
-bool INIClass::Is_Present(const Wstring &section, Wstring &entry) const
+bool INIClass::Is_Present(const Wstring& section, Wstring& entry) const
 {
     return Is_Present(section.Peek_Buffer(), entry.Get_Length() > 0 ? entry.Peek_Buffer() : nullptr);
 }
@@ -72,22 +72,22 @@ bool INIClass::Is_Present(const Wstring &section, Wstring &entry) const
 
 /**
  *  Fetch the value of a particular entry in a specified section.
- * 
+ *
  *  @author: CCHyper
  */
-int INIClass::Get_String(const char *section, const char *entry, char *buffer, int length) const
+int INIClass::Get_String(const char* section, const char* entry, char* buffer, int length) const
 {
-    static const char *_null_char = "";
+    static const char* _null_char = "";
     return Get_String(section, entry, "", buffer, length);
 }
 
 
 /**
  *  Fetch a integer entry from the specified section and then clamps it.
- * 
+ *
  *  @author: CCHyper
  */
-int INIClass::Get_Int_Clamp(const char *section, const char *entry, int lo, int hi, int defvalue) const
+int INIClass::Get_Int_Clamp(const char* section, const char* entry, int lo, int hi, int defvalue) const
 {
     return std::clamp(Get_Int(section, entry, defvalue), lo, hi);
 }
@@ -95,10 +95,10 @@ int INIClass::Get_Int_Clamp(const char *section, const char *entry, int lo, int 
 
 /**
  *  Fetch a float entry from the specified section.
- * 
+ *
  *  @author: CCHyper
  */
-float INIClass::Get_Float(const char *section, const char *entry, float defvalue) const
+float INIClass::Get_Float(const char* section, const char* entry, float defvalue) const
 {
     return Get_Double(section, entry, defvalue);
 }
@@ -106,10 +106,10 @@ float INIClass::Get_Float(const char *section, const char *entry, float defvalue
 
 /**
  *  Fetch a float entry from the specified section and then clamps it.
- * 
+ *
  *  @author: CCHyper
  */
-float INIClass::Get_Float_Clamp(const char *section, const char *entry, float lo, float hi, float defvalue) const
+float INIClass::Get_Float_Clamp(const char* section, const char* entry, float lo, float hi, float defvalue) const
 {
     return std::clamp(Get_Float(section, entry, defvalue), lo, hi);
 }
@@ -117,10 +117,10 @@ float INIClass::Get_Float_Clamp(const char *section, const char *entry, float lo
 
 /**
  *  Stores a float into the INI database.
- * 
+ *
  *  @author: CCHyper
  */
-bool INIClass::Put_Float(const char *section, const char *entry, float value)
+bool INIClass::Put_Float(const char* section, const char* entry, float value)
 {
     return Put_Double(section, entry, value);
 }
@@ -128,10 +128,10 @@ bool INIClass::Put_Float(const char *section, const char *entry, float value)
 
 /**
  *  Fetch a double entry from the specified section and then clamps it.
- * 
+ *
  *  @author: CCHyper
  */
-double INIClass::Get_Double_Clamp(const char *section, const char *entry, double lo, double hi, double defvalue) const
+double INIClass::Get_Double_Clamp(const char* section, const char* entry, double lo, double hi, double defvalue) const
 {
     return std::clamp(Get_Double(section, entry, defvalue), lo, hi);
 }
@@ -139,24 +139,24 @@ double INIClass::Get_Double_Clamp(const char *section, const char *entry, double
 
 /**
  *  The following are implementations of the Wstring variations.
- * 
+ *
  *  @author: CCHyper, Neijwiert
  */
 
 
-int INIClass::Entry_Count(const Wstring &section) const
+int INIClass::Entry_Count(const Wstring& section) const
 {
     return Entry_Count(section.Peek_Buffer());
 }
 
 
-Wstring INIClass::Get_Entry(const Wstring &section, int index) const
+Wstring INIClass::Get_Entry(const Wstring& section, int index) const
 {
     return Wstring(Get_Entry(section.Peek_Buffer(), index));
 }
 
 
-int INIClass::Get_String(const Wstring &section, const Wstring &entry, const Wstring &defvalue, Wstring &buffer) const
+int INIClass::Get_String(const Wstring& section, const Wstring& entry, const Wstring& defvalue, Wstring& buffer) const
 {
     char buff[INI_MAX_LINE_LENGTH];
 
@@ -171,7 +171,7 @@ int INIClass::Get_String(const Wstring &section, const Wstring &entry, const Wst
 }
 
 
-int INIClass::Get_String(const Wstring &section, const Wstring &entry, Wstring &buffer) const
+int INIClass::Get_String(const Wstring& section, const Wstring& entry, Wstring& buffer) const
 {
     char buff[INI_MAX_LINE_LENGTH];
 
@@ -186,85 +186,85 @@ int INIClass::Get_String(const Wstring &section, const Wstring &entry, Wstring &
 }
 
 
-bool INIClass::Put_String(const Wstring &section, const Wstring &entry, const Wstring &string)
+bool INIClass::Put_String(const Wstring& section, const Wstring& entry, const Wstring& string)
 {
     return Put_String(section.Peek_Buffer(), entry.Peek_Buffer(), string.Peek_Buffer());
 }
 
 
-int INIClass::Get_Int(const Wstring &section, const Wstring &entry, int defvalue) const
+int INIClass::Get_Int(const Wstring& section, const Wstring& entry, int defvalue) const
 {
     return Get_Int(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Int(const Wstring &section, const Wstring &entry, int number, IntegerFormatMode format)
+bool INIClass::Put_Int(const Wstring& section, const Wstring& entry, int number, IntegerFormatMode format)
 {
     return Put_Int(section.Peek_Buffer(), entry.Peek_Buffer(), number, format);
 }
 
 
-int INIClass::Get_Hex(const Wstring &section, const Wstring &entry, int defvalue) const
+int INIClass::Get_Hex(const Wstring& section, const Wstring& entry, int defvalue) const
 {
     return Get_Hex(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Hex(const Wstring &section, const Wstring &entry, int number)
+bool INIClass::Put_Hex(const Wstring& section, const Wstring& entry, int number)
 {
     return Put_Hex(section.Peek_Buffer(), entry.Peek_Buffer(), number);
 }
 
 
-bool INIClass::Get_Bool(const Wstring &section, const Wstring &entry, bool defvalue) const
+bool INIClass::Get_Bool(const Wstring& section, const Wstring& entry, bool defvalue) const
 {
     return Get_Bool(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Bool(const Wstring &section, const Wstring &entry, bool value)
+bool INIClass::Put_Bool(const Wstring& section, const Wstring& entry, bool value)
 {
     return Put_Bool(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-float INIClass::Get_Float(const Wstring &section, const Wstring &entry, float defvalue) const
+float INIClass::Get_Float(const Wstring& section, const Wstring& entry, float defvalue) const
 {
     return Get_Float(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-float INIClass::Get_Float_Clamp(const Wstring &section, const Wstring &entry, float lo, float hi, float defvalue) const
+float INIClass::Get_Float_Clamp(const Wstring& section, const Wstring& entry, float lo, float hi, float defvalue) const
 {
     return Get_Float_Clamp(section.Peek_Buffer(), entry.Peek_Buffer(), lo, hi, defvalue);
 }
 
 
-bool INIClass::Put_Float(const Wstring &section, const Wstring &entry, float value)
+bool INIClass::Put_Float(const Wstring& section, const Wstring& entry, float value)
 {
     return Put_Float(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-double INIClass::Get_Double(const Wstring &section, const Wstring &entry, double defvalue) const
+double INIClass::Get_Double(const Wstring& section, const Wstring& entry, double defvalue) const
 {
     return Get_Double(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-double INIClass::Get_Double_Clamp(const Wstring &section, const Wstring &entry, double lo, double hi, double defvalue) const
+double INIClass::Get_Double_Clamp(const Wstring& section, const Wstring& entry, double lo, double hi, double defvalue) const
 {
     return Get_Double_Clamp(section.Peek_Buffer(), entry.Peek_Buffer(), lo, hi, defvalue);
 }
 
 
-bool INIClass::Put_Double(const Wstring &section, const Wstring &entry, double value)
+bool INIClass::Put_Double(const Wstring& section, const Wstring& entry, double value)
 {
     return Put_Double(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-int INIClass::Get_TextBlock(const Wstring &section, Wstring &buffer) const
+int INIClass::Get_TextBlock(const Wstring& section, Wstring& buffer) const
 {
     std::ostringstream oss;
 
@@ -291,61 +291,61 @@ int INIClass::Get_TextBlock(const Wstring &section, Wstring &buffer) const
 }
 
 
-bool INIClass::Put_TextBlock(const Wstring &section, const Wstring &text)
+bool INIClass::Put_TextBlock(const Wstring& section, const Wstring& text)
 {
     return Put_TextBlock(section.Peek_Buffer(), text.Peek_Buffer());
 }
 
 
-int INIClass::Get_UUBlock(const Wstring &section, void *buffer, int length) const
+int INIClass::Get_UUBlock(const Wstring& section, void* buffer, int length) const
 {
     return Get_UUBlock(section.Peek_Buffer(), buffer, length);
 }
 
 
-bool INIClass::Put_UUBlock(const Wstring &section, const void *block, int length)
+bool INIClass::Put_UUBlock(const Wstring& section, const void* block, int length)
 {
     return Put_UUBlock(section.Peek_Buffer(), block, length);
 }
 
 
-TRect<int> INIClass::Get_Rect(const Wstring &section, const Wstring &entry, const TRect<int> &defvalue) const
+TRect<int> INIClass::Get_Rect(const Wstring& section, const Wstring& entry, const TRect<int>& defvalue) const
 {
     return Get_Rect(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Rect(const Wstring &section, const Wstring &entry, const TRect<int> &value)
+bool INIClass::Put_Rect(const Wstring& section, const Wstring& entry, const TRect<int>& value)
 {
     return Put_Rect(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-const TPoint2D<int> INIClass::Get_Point(const Wstring &section, const Wstring &entry, const TPoint2D<int> &defvalue) const
+const TPoint2D<int> INIClass::Get_Point(const Wstring& section, const Wstring& entry, const TPoint2D<int>& defvalue) const
 {
     return Get_Point(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Point(const Wstring &section, const Wstring &entry, const TPoint2D<int> &value)
+bool INIClass::Put_Point(const Wstring& section, const Wstring& entry, const TPoint2D<int>& value)
 {
     return Put_Point(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-const TPoint3D<int> INIClass::Get_Point(const Wstring &section, const Wstring &entry, const TPoint3D<int> &defvalue) const
+const TPoint3D<int> INIClass::Get_Point(const Wstring& section, const Wstring& entry, const TPoint3D<int>& defvalue) const
 {
     return Get_Point(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_Point(const Wstring &section, const Wstring &entry, const TPoint3D<int> &value)
+bool INIClass::Put_Point(const Wstring& section, const Wstring& entry, const TPoint3D<int>& value)
 {
     return Put_Point(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
 
 
-unsigned INIClass::Get_Time(const char *section, const char *entry, unsigned defvalue) const
+unsigned INIClass::Get_Time(const char* section, const char* entry, unsigned defvalue) const
 {
     TSPP_ASSERT(section != nullptr);
     TSPP_ASSERT(entry != nullptr);
@@ -354,7 +354,7 @@ unsigned INIClass::Get_Time(const char *section, const char *entry, unsigned def
         return defvalue;
     }
 
-    const INIEntry *entryptr = Find_Entry(section, entry);
+    const INIEntry* entryptr = Find_Entry(section, entry);
     if (entryptr == nullptr || entryptr->Value == nullptr) {
         return defvalue;
     }
@@ -371,7 +371,7 @@ unsigned INIClass::Get_Time(const char *section, const char *entry, unsigned def
 }
 
 
-bool INIClass::Put_Time(const char *section, const char *entry, unsigned value)
+bool INIClass::Put_Time(const char* section, const char* entry, unsigned value)
 {
     char buffer[INI_MAX_LINE_LENGTH];
 
@@ -385,7 +385,7 @@ bool INIClass::Put_Time(const char *section, const char *entry, unsigned value)
 }
 
 
-unsigned INIClass::Get_Degree(const char *section, const char *entry, unsigned defvalue) const
+unsigned INIClass::Get_Degree(const char* section, const char* entry, unsigned defvalue) const
 {
     char buffer[INI_MAX_LINE_LENGTH];
 
@@ -397,7 +397,7 @@ unsigned INIClass::Get_Degree(const char *section, const char *entry, unsigned d
 }
 
 
-bool INIClass::Put_Degree(const char *section, const char *entry, unsigned value)
+bool INIClass::Put_Degree(const char* section, const char* entry, unsigned value)
 {
     char buffer[INI_MAX_LINE_LENGTH];
 
@@ -407,7 +407,7 @@ bool INIClass::Put_Degree(const char *section, const char *entry, unsigned value
 }
 
 
-float INIClass::Get_Angle(const char *section, const char *entry, float defvalue) const
+float INIClass::Get_Angle(const char* section, const char* entry, float defvalue) const
 {
     float value = Get_Float(section, entry, defvalue);
     if (value != -1.0f) {
@@ -418,7 +418,7 @@ float INIClass::Get_Angle(const char *section, const char *entry, float defvalue
 }
 
 
-bool INIClass::Put_Angle(const char *section, const char *entry, float value)
+bool INIClass::Put_Angle(const char* section, const char* entry, float value)
 {
     char buffer[INI_MAX_LINE_LENGTH];
 
@@ -428,13 +428,13 @@ bool INIClass::Put_Angle(const char *section, const char *entry, float value)
 }
 
 
-const CLSID INIClass::Get_UUID(const Wstring &section, const Wstring &entry, const CLSID defvalue) const
+const CLSID INIClass::Get_UUID(const Wstring& section, const Wstring& entry, const CLSID defvalue) const
 {
     return Get_UUID(section.Peek_Buffer(), entry.Peek_Buffer(), defvalue);
 }
 
 
-bool INIClass::Put_UUID(const Wstring &section, const Wstring &entry, const CLSID value)
+bool INIClass::Put_UUID(const Wstring& section, const Wstring& entry, const CLSID value)
 {
     return Put_UUID(section.Peek_Buffer(), entry.Peek_Buffer(), value);
 }
@@ -443,12 +443,12 @@ bool INIClass::Put_UUID(const Wstring &section, const Wstring &entry, const CLSI
 /**
  *  Allows you to explicitly open a ini file.
  */
-INIClass *Get_INI(const char *filename)
+INIClass* Get_INI(const char* filename)
 {
     RawFileClass file(filename);
 
     if (file.Is_Available() && file.Open(FILE_ACCESS_READ)) {
-        INIClass *ini = new INIClass(file);
+        INIClass* ini = new INIClass(file);
         TSPP_ASSERT(ini != nullptr);
         return ini;
     }
@@ -456,10 +456,10 @@ INIClass *Get_INI(const char *filename)
     return nullptr;
 }
 
-INIClass *Get_INI(FileClass &file)
+INIClass* Get_INI(FileClass& file)
 {
     if (file.Is_Available() && file.Open(FILE_ACCESS_READ)) {
-        INIClass *ini = new INIClass(file);
+        INIClass* ini = new INIClass(file);
         TSPP_ASSERT(ini != nullptr);
         return ini;
     }
@@ -471,7 +471,7 @@ INIClass *Get_INI(FileClass &file)
 /**
  *  Save the content of a INI database.
  */
-bool Save_INI(INIClass *ini, const char *filename)
+bool Save_INI(INIClass* ini, const char* filename)
 {
     if (filename != nullptr) {
         return false;
@@ -489,7 +489,7 @@ bool Save_INI(INIClass *ini, const char *filename)
     return false;
 }
 
-bool Save_INI(INIClass *ini, FileClass &file)
+bool Save_INI(INIClass* ini, FileClass& file)
 {
     // Open the file with ini file with read access and check availability.
     // If successful, write the ini data to disk.
@@ -504,7 +504,7 @@ bool Save_INI(INIClass *ini, FileClass &file)
 /**
  *  Close the ini file and flush all knowledge of it.
  */
-void Release_INI(INIClass *ini)
+void Release_INI(INIClass* ini)
 {
     if (ini != nullptr) {
         delete ini;

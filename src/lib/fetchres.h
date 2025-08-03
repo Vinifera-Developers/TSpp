@@ -30,5 +30,5 @@
 #include "always.h"
 
 
-const char *Fetch_String(ULONG id);
-HGLOBAL Fetch_Resource(const char *id, const char *type);
+const char* Fetch_String(ULONG id);
+HGLOBAL Fetch_Resource(const char* id, const char* type);

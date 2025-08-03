@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-AircraftType AircraftTypeClass::From_Name(const char *name)
+AircraftType AircraftTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ AircraftType AircraftTypeClass::From_Name(const char *name)
 }
 
 
-const char *AircraftTypeClass::Name_From(AircraftType type)
+const char* AircraftTypeClass::Name_From(AircraftType type)
 {
     return (type != AIRCRAFT_NONE && type < AircraftTypes.Count() ? AircraftTypes[type]->Name() : "<none>");
 }
 
 
-const AircraftTypeClass *AircraftTypeClass::Find_Or_Make(const char *name)
+const AircraftTypeClass* AircraftTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const AircraftTypeClass *AircraftTypeClass::Find_Or_Make(const char *name)
         }
     }
 
-    AircraftTypeClass *ptr = new AircraftTypeClass(name);
+    AircraftTypeClass* ptr = new AircraftTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

@@ -32,10 +32,10 @@
 
 namespace OwnerDraw
 {
-    void Init_Glow_Colors();
-    void Load_Graphics();
-    void Init_UI_Color_Stuff_58F060();
+void Init_Glow_Colors();
+void Load_Graphics();
+void Init_UI_Color_Stuff_58F060();
 
-    extern bool& UIInitialized;
+extern bool& UIInitialized;
 
-}; // OwnerDraw namespace
+}; // namespace OwnerDraw

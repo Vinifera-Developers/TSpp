@@ -40,22 +40,22 @@
 
 class FilePipe : public Pipe
 {
-    public:
-        FilePipe(FileClass *file);
-        FilePipe(FileClass &file);
-        virtual ~FilePipe();
+public:
+    FilePipe(FileClass* file);
+    FilePipe(FileClass& file);
+    virtual ~FilePipe();
 
-        virtual int Put(const void *source, int slen) override;
-        virtual int End() override;
+    virtual int Put(const void* source, int slen) override;
+    virtual int End() override;
 
-    private:
-        bool Valid_File() { return File != nullptr; }
+private:
+    bool Valid_File() { return File != nullptr; }
 
-    private:
-        FileClass *File;
-        bool HasOpened;
+private:
+    FileClass* File;
+    bool HasOpened;
 
-    private:
-        FilePipe(FilePipe & rvalue);
-        FilePipe & operator = (const FilePipe & pipe);
+private:
+    FilePipe(FilePipe& rvalue);
+    FilePipe& operator=(const FilePipe& pipe);
 };

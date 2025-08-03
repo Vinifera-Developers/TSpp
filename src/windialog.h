@@ -40,6 +40,6 @@ bool Dialog_Move(HWND hWnd, WPARAM wParam, LPARAM lParam, UINT uMsg);
 bool Center_Window(HWND dialog);
 bool Center_Window_Within(HWND dialog, HWND window);
 
-extern HWND &CurrentWindowHandle;
+extern HWND& CurrentWindowHandle;
 
-};
+}; // namespace WinDialogClass

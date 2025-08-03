@@ -8,7 +8,7 @@
  *
  *  @authors       tomsons26, CCHyper
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -38,21 +38,21 @@ class MotionLibraryClass
 {
 public:
     MotionLibraryClass();
-    MotionLibraryClass(FileClass *file);
+    MotionLibraryClass(FileClass* file);
     ~MotionLibraryClass();
 
     void Clear();
-    bool Read_File(FileClass *file);
+    bool Read_File(FileClass* file);
     void Scale(float scale);
 
     bool Load_Failed() const { return LoadFailed; }
     int Get_Section_Count() const { return LayerCount; }
     int Get_Layer_Count() const { return FrameCount; }
-    const Matrix3D &Get_Layer_Matrices() const { return *LayerMatrices; }
+    const Matrix3D& Get_Layer_Matrices() const { return *LayerMatrices; }
 
 private:
     bool LoadFailed;
     int LayerCount;
     int FrameCount;
-    Matrix3D *LayerMatrices;
+    Matrix3D* LayerMatrices;
 };

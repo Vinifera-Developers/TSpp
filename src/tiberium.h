@@ -28,10 +28,10 @@
 #pragma once
 
 #include "abstracttype.h"
-#include "priorityqueue.h"
-#include "typelist.h"
-#include "ttimer.h"
 #include "ftimer.h"
+#include "priorityqueue.h"
+#include "ttimer.h"
+#include "typelist.h"
 
 
 class OverlayTypeClass;
@@ -41,89 +41,89 @@ class AnimTypeClass;
 class DECLSPEC_UUID("C53DD373-151E-11D2-8175-006008055BB5")
 TiberiumClass : public AbstractTypeClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream *pStm);
-        IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
-        IFACEMETHOD(GetSizeMax)(ULARGE_INTEGER *pcbSize);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
+    IFACEMETHOD(GetSizeMax)(ULARGE_INTEGER* pcbSize);
 
-    public:
-        TiberiumClass(const char *ini_name = nullptr);
-        TiberiumClass(const NoInitClass &noinit);
-        virtual ~TiberiumClass();
+public:
+    TiberiumClass(const char* ini_name = nullptr);
+    TiberiumClass(const NoInitClass& noinit);
+    virtual ~TiberiumClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual void Detach(AbstractClass * target, bool all = true) override;
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine &crc) const override;
-        virtual int Fetch_Heap_ID() const override;
+    /**
+     *  AbstractClass
+     */
+    virtual void Detach(AbstractClass* target, bool all = true) override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
+    virtual int Fetch_Heap_ID() const override;
 
-        /**
-         *  AbstractTypeClass
-         */
-        virtual bool Read_INI(CCINIClass &ini) override;
+    /**
+     *  AbstractTypeClass
+     */
+    virtual bool Read_INI(CCINIClass& ini) override;
 
-        void Spread();
-        // 006458F0
-        // 00645A30
-        // 00645BA0
-        // 00645C30
-        void Add_Spread_Cell(Cell &cell);
+    void Spread();
+    // 006458F0
+    // 00645A30
+    // 00645BA0
+    // 00645C30
+    void Add_Spread_Cell(Cell& cell);
 
-        // 00646080
-        // 006463D0
-        // 00646510
-        // 00646680
-        void Add_Growth_Cell(Cell &cell);
+    // 00646080
+    // 006463D0
+    // 00646510
+    // 00646680
+    void Add_Growth_Cell(Cell& cell);
 
-        static void Process(CCINIClass &ini);
+    static void Process(CCINIClass& ini);
 
-        static void Spread_AI();
-        static void Spread_Init_Clear();
+    static void Spread_AI();
+    static void Spread_Init_Clear();
 
-        static void Growth_Init_Clear();
-        static void Growth_AI();
-        static void Grow();
+    static void Growth_Init_Clear();
+    static void Growth_AI();
+    static void Grow();
 
-        static void Init_Cells();
-        static void Init();
+    static void Init_Cells();
+    static void Init();
 
-        static TiberiumType From_Name(const char *name);
-        static const char *Name_From(TiberiumType type);
-        static const TiberiumClass* Find_Or_Make(const char* name);
+    static TiberiumType From_Name(const char* name);
+    static const char* Name_From(TiberiumType type);
+    static const TiberiumClass* Find_Or_Make(const char* name);
 
-    public:
-        TiberiumType HeapID;
-        int SpreadDelay;
-        double SpreadPercentage;
-        int GrowthDelay;
-        double GrowthPercentage;
-        int CreditValue;
-        int Power;
-        int Color;
-        TypeList<AnimTypeClass *> Debris;
-        const OverlayTypeClass *Overlay;
-        int FrameCount;
-        int Variety;
-        int RampVariety;
-        int SpreadCount;
-        PriorityQueueClass<Cell, float> *SpreadQueue;
-        bool *SpreadState;
-        PriorityQueueClassNode<Cell, float> *SpreadNodes;
-        CDTimerClass<FrameTimerClass> SpreadTimer;
-        int GrowthCount;
-        PriorityQueueClass<Cell, float> *GrowthQueue;
-        bool *GrowthState;
-        PriorityQueueClassNode<Cell, float> *GrowthNodes;
-        CDTimerClass<FrameTimerClass> GrowthTimer;
+public:
+    TiberiumType HeapID;
+    int SpreadDelay;
+    double SpreadPercentage;
+    int GrowthDelay;
+    double GrowthPercentage;
+    int CreditValue;
+    int Power;
+    int Color;
+    TypeList<AnimTypeClass*> Debris;
+    const OverlayTypeClass* Overlay;
+    int FrameCount;
+    int Variety;
+    int RampVariety;
+    int SpreadCount;
+    PriorityQueueClass<Cell, float>* SpreadQueue;
+    bool* SpreadState;
+    PriorityQueueClassNode<Cell, float>* SpreadNodes;
+    CDTimerClass<FrameTimerClass> SpreadTimer;
+    int GrowthCount;
+    PriorityQueueClass<Cell, float>* GrowthQueue;
+    bool* GrowthState;
+    PriorityQueueClassNode<Cell, float>* GrowthNodes;
+    CDTimerClass<FrameTimerClass> GrowthTimer;
 };

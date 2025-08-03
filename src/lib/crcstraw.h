@@ -40,18 +40,18 @@
 
 class CRCStraw : public Straw
 {
-    public:
-        CRCStraw() {}
-        ~CRCStraw() {}
+public:
+    CRCStraw() {}
+    ~CRCStraw() {}
 
-        virtual int Get(void *source, int slen);
+    virtual int Get(void* source, int slen);
 
-        long Result() const;
+    long Result() const;
 
-    protected:
-        CRCEngine CRC;
+protected:
+    CRCEngine CRC;
 
-    private:
-        CRCStraw(CRCStraw &) = delete;
-        CRCStraw & operator = (const CRCStraw &) = delete;
+private:
+    CRCStraw(CRCStraw&) = delete;
+    CRCStraw& operator=(const CRCStraw&) = delete;
 };

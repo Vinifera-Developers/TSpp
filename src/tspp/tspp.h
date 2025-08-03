@@ -28,14 +28,14 @@
 #pragma once
 
 #include "always.h"
-#include <cstdio>
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <cstdio>
 #include <dbghelp.h>
+#include <string>
+#include <vector>
 
 
-//#define OUTPUT_MANGLED_NAMES 1
+// #define OUTPUT_MANGLED_NAMES 1
 
 
 /**
@@ -44,7 +44,7 @@
 #ifdef OUTPUT_MANGLED_NAMES
 #define OUTPUT_MANGLED_NAME(address, name) __pragma(message("    MakeName(" #address ", " "\"" name "\"" ");"))
 #else
-#define OUTPUT_MANGLED_NAME(address, name) 
+#define OUTPUT_MANGLED_NAME(address, name)
 #endif
 
 
@@ -52,17 +52,15 @@ extern DWORD64 TSPP_GAME_EXE_START;
 extern DWORD64 TSPP_GAME_EXE_END;
 
 
-struct TSPP_SymbolEntry
-{
-    DWORD64 address;      // Absolute address of the symbol
-    std::string name;     // Symbol name
+struct TSPP_SymbolEntry {
+    DWORD64 address;  // Absolute address of the symbol
+    std::string name; // Symbol name
 };
 
-struct TSPP_ModuleEntry
-{
-    DWORD64 start;        // Start address of the module
-    DWORD64 end;          // End address of the module
-    std::string name;     // Module name
+struct TSPP_ModuleEntry {
+    DWORD64 start;    // Start address of the module
+    DWORD64 end;      // End address of the module
+    std::string name; // Module name
 };
 
 
@@ -74,9 +72,8 @@ extern std::vector<TSPP_ModuleEntry> TSPP_Modules;
 /**
  *  Handy little struct that allows us to populate a vector of known symbols while also declaring them!
  */
-struct TSPP_AutoSymbolRegister
-{
-    TSPP_AutoSymbolRegister(DWORD64 addr, /*const*/ char * name, bool undecorate = false)
+struct TSPP_AutoSymbolRegister {
+    TSPP_AutoSymbolRegister(DWORD64 addr, /*const*/ char* name, bool undecorate = false)
     {
         if (undecorate) {
             static char unmangled[512];
@@ -87,46 +84,32 @@ struct TSPP_AutoSymbolRegister
         Register(addr, name);
     }
 
-    inline void Register(DWORD64 addr, const char * name)
-    {
-        TSPP_Symbols.push_back({ addr, name });
-    }
+    inline void Register(DWORD64 addr, const char* name) { TSPP_Symbols.push_back({addr, name}); }
 
     // Sort by address for binary search
     static void Sort()
     {
-        std::sort(TSPP_Symbols.begin(), TSPP_Symbols.end(),
-              [](const TSPP_SymbolEntry& a, const TSPP_SymbolEntry& b) { return a.address < b.address; });
+        std::sort(TSPP_Symbols.begin(), TSPP_Symbols.end(), [](const TSPP_SymbolEntry& a, const TSPP_SymbolEntry& b) { return a.address < b.address; });
     }
 };
 
-struct TSPP_ModuleRegister
-{
-    TSPP_ModuleRegister(DWORD64 start, DWORD64 end, const char * name)
-    {
-        Register(start, end, name);
-    }
+struct TSPP_ModuleRegister {
+    TSPP_ModuleRegister(DWORD64 start, DWORD64 end, const char* name) { Register(start, end, name); }
 
-    inline void Register(DWORD64 start, DWORD64 end, const char * name)
-    {
-        TSPP_Modules.push_back({ start, end, name });
-    }
+    inline void Register(DWORD64 start, DWORD64 end, const char* name) { TSPP_Modules.push_back({start, end, name}); }
 
     // Sort by address for binary search
     static void Sort()
     {
-        std::sort(TSPP_Modules.begin(), TSPP_Modules.end(),
-              [](const TSPP_ModuleEntry& a, const TSPP_ModuleEntry& b) { return a.start < b.start; });
+        std::sort(TSPP_Modules.begin(), TSPP_Modules.end(), [](const TSPP_ModuleEntry& a, const TSPP_ModuleEntry& b) { return a.start < b.start; });
     }
 };
 
 
 // Macro used to register the declerations from tspp_defs.asm manually.
-#define REGISTER_ASM_SYMBOL(prototype, addr) \
-    static TSPP_AutoSymbolRegister _tspp_asm_reg_##addr(addr, prototype, true);
+#define REGISTER_ASM_SYMBOL(prototype, addr) static TSPP_AutoSymbolRegister _tspp_asm_reg_##addr(addr, prototype, true);
 
-#define REGISTER_MODULE(start, end, name) \
-    static TSPP_ModuleRegister _tspp_module_reg_##start##_##end(start, end, name);
+#define REGISTER_MODULE(start, end, name) static TSPP_ModuleRegister _tspp_module_reg_##start##_##end(start, end, name);
 
 
 /**
@@ -150,55 +133,69 @@ struct TSPP_ModuleRegister
  *  Example:
  *      class Pipe { public: int Flush(); };
  *      DEFINE_IMPLEMENTATION(int Pipe::Flush(), 0x005A94E0);
- * 
+ *
  *  WARNING: If you use this, the definition(s) must be after everything else in the module
  *           otherwise you will get 'unreachable code' warnings!
  *
  */
-#define DEFINE_IMPLEMENTATION(prototype, address) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ __declspec(noinline) __declspec(naked) prototype \
-    { \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION(prototype, address)                                                                                                                                                                                                                                                                              \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/ __declspec(noinline) __declspec(naked) prototype                                                                                                                                                                                                                                                        \
+    {                                                                                                                                                                                                                                                                                                                          \
+        _asm { mov eax, address }                                                                                                                                                                                                                                                                                                 \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            jmp eax                                                                                                                                                                                                                                                                                                            \
+        }                                                                                                                                                                                                                                                                                                                      \
     }
 
-#define DEFINE_IMPLEMENTATION_INLINE(prototype, address, ...) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ inline __declspec(naked) \
-    prototype \
-    { \
-        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION_INLINE(prototype, address, ...)                                                                                                                                                                                                                                                                  \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/ inline __declspec(naked) prototype                                                                                                                                                                                                                                                                      \
+    {                                                                                                                                                                                                                                                                                                                          \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__)                                                                                                                                                                                                                                                                            \
+        _asm { mov eax, address }                                                                                                                                                                                                                                                                                                 \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            jmp eax                                                                                                                                                                                                                                                                                                            \
+        }                                                                                                                                                                                                                                                                                                                      \
     }
 
-#define DEFINE_IMPLEMENTATION_UNWIND(prototype, address, ...) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ \
-    prototype \
-    { \
-        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION_UNWIND(prototype, address, ...)                                                                                                                                                                                                                                                                  \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/                                                                                                                                                                                                                                                                                                         \
+    prototype                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__)                                                                                                                                                                                                                                                                            \
+        _asm { mov eax, address }                                                                                                                                                                                                                                                                                                 \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            jmp eax                                                                                                                                                                                                                                                                                                            \
+        }                                                                                                                                                                                                                                                                                                                      \
     }
 
 
@@ -207,66 +204,93 @@ struct TSPP_ModuleRegister
  *  make the jump to the address, otherwise the stack will be smashed.
  */
 #ifndef NDEBUG
-#define CONSTRUCTOR_EPILOG \
-	_asm { pop edi } \
-	_asm { pop esi } \
-	_asm { pop ebx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+#define CONSTRUCTOR_EPILOG                                                                                                                                                                                                                                                                                                     \
+    _asm { pop edi }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        pop esi                                                                                                                                                                                                                                                                                                                \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebx }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        mov esp, ebp                                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebp }
 #else
 // RelWithDebInfo produces the same epilog as Debug.
-#define CONSTRUCTOR_EPILOG \
-	_asm { pop edi } \
-	_asm { pop esi } \
-	_asm { pop ebx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+#define CONSTRUCTOR_EPILOG                                                                                                                                                                                                                                                                                                     \
+    _asm { pop edi }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        pop esi                                                                                                                                                                                                                                                                                                                \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebx }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        mov esp, ebp                                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebp }
 
 /*
 #define CONSTRUCTOR_EPILOG \
-	_asm { pop ecx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+    _asm { pop ecx } \
+    _asm { mov esp, ebp } \
+    _asm { pop ebp }
 */
 #endif
 
-#define DEFINE_IMPLEMENTATION_CONSTRUCTOR(prototype, address, ...) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ __declspec(noinline) \
-    prototype \
-    { \
-        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
-        _asm { mov ecx, this } \
-	    _asm { mov esp, ebp } \
-	    _asm { pop ebp } \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION_CONSTRUCTOR(prototype, address, ...)                                                                                                                                                                                                                                                             \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/ __declspec(noinline) prototype                                                                                                                                                                                                                                                                          \
+    {                                                                                                                                                                                                                                                                                                                          \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__)                                                                                                                                                                                                                                                                            \
+        _asm { mov ecx, this }                                                                                                                                                                                                                                                                                                    \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            mov esp, ebp                                                                                                                                                                                                                                                                                                       \
+        }                                                                                                                                                                                                                                                                                                                      \
+        _asm { pop ebp }                                                                                                                                                                                                                                                                                                         \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            mov eax, address                                                                                                                                                                                                                                                                                                   \
+        }                                                                                                                                                                                                                                                                                                                      \
+        _asm { jmp eax }                                                                                                                                                                                                                                                                                                         \
     }
 
 // For classes with a base class that has no default constructor available.
-#define DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(prototype, base, address, ...) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ __declspec(noinline) \
-    prototype : base(NoInitClass()) \
-    { \
-        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
-        _asm { mov ecx, this } \
-	    _asm { mov esp, ebp } \
-	    _asm { pop ebp } \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(prototype, base, address, ...)                                                                                                                                                                                                                                                  \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/ __declspec(noinline) prototype:                                                                                                                                                                                                                                                                         \
+    base(NoInitClass())                                                                                                                                                                                                                                                                                                        \
+    {                                                                                                                                                                                                                                                                                                                          \
+        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__)                                                                                                                                                                                                                                                                            \
+        _asm { mov ecx, this }                                                                                                                                                                                                                                                                                                    \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            mov esp, ebp                                                                                                                                                                                                                                                                                                       \
+        }                                                                                                                                                                                                                                                                                                                      \
+        _asm { pop ebp }                                                                                                                                                                                                                                                                                                         \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            mov eax, address                                                                                                                                                                                                                                                                                                   \
+        }                                                                                                                                                                                                                                                                                                                      \
+        _asm { jmp eax }                                                                                                                                                                                                                                                                                                         \
     }
 
 
@@ -275,45 +299,59 @@ struct TSPP_ModuleRegister
  *  make the jump to the address, otherwise the stack will be smashed.
  */
 #ifndef NDEBUG
-#define DESTRUCTOR_EPILOG \
-	_asm { pop edi } \
-	_asm { pop esi } \
-	_asm { pop ebx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+#define DESTRUCTOR_EPILOG                                                                                                                                                                                                                                                                                                      \
+    _asm { pop edi }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        pop esi                                                                                                                                                                                                                                                                                                                \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebx }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        mov esp, ebp                                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebp }
 #else
 // RelWithDebInfo produces the same epilog as Debug.
-#define DESTRUCTOR_EPILOG \
-	_asm { pop edi } \
-	_asm { pop esi } \
-	_asm { pop ebx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+#define DESTRUCTOR_EPILOG                                                                                                                                                                                                                                                                                                      \
+    _asm { pop edi }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        pop esi                                                                                                                                                                                                                                                                                                                \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebx }                                                                                                                                                                                                                                                                                                             \
+    _asm                                                                                                                                                                                                                                                                                                                       \
+    {                                                                                                                                                                                                                                                                                                                          \
+        mov esp, ebp                                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    _asm { pop ebp }
 
 /*
 #define DESTRUCTOR_EPILOG \
-	_asm { pop ecx } \
-	_asm { mov esp, ebp } \
-	_asm { pop ebp }
+    _asm { pop ecx } \
+    _asm { mov esp, ebp } \
+    _asm { pop ebp }
 */
 #endif
 
-#define DEFINE_IMPLEMENTATION_DESTRUCTOR(prototype, address, ...) \
-    namespace { \
-        static struct TSPP_AutoRegister_##address { \
-            TSPP_AutoRegister_##address() { \
-                TSPP_AutoSymbolRegister(address, #prototype); \
-            } \
-        } _tspp_auto_register_##address; \
-    } \
-    /*[[ noreturn ]]*/ __declspec(noinline) \
-    prototype \
-    { \
-        __pragma(message(__FUNCDNAME__)) \
-        OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) \
-        DESTRUCTOR_EPILOG; \
-        _asm { mov eax, address } \
-        _asm { jmp eax } \
+#define DEFINE_IMPLEMENTATION_DESTRUCTOR(prototype, address, ...)                                                                                                                                                                                                                                                              \
+    namespace                                                                                                                                                                                                                                                                                                                  \
+    {                                                                                                                                                                                                                                                                                                                          \
+    static struct TSPP_AutoRegister_##address {                                                                                                                                                                                                                                                                                \
+        TSPP_AutoRegister_##address()                                                                                                                                                                                                                                                                                          \
+        {                                                                                                                                                                                                                                                                                                                      \
+            TSPP_AutoSymbolRegister(address, #prototype);                                                                                                                                                                                                                                                                      \
+        }                                                                                                                                                                                                                                                                                                                      \
+    } _tspp_auto_register_##address;                                                                                                                                                                                                                                                                                           \
+    }                                                                                                                                                                                                                                                                                                                          \
+    /*[[ noreturn ]]*/ __declspec(noinline) prototype                                                                                                                                                                                                                                                                          \
+    {                                                                                                                                                                                                                                                                                                                          \
+        __pragma(message(__FUNCDNAME__)) OUTPUT_MANGLED_NAME(address, __FUNCDNAME__) DESTRUCTOR_EPILOG;                                                                                                                                                                                                                        \
+        _asm { mov eax, address }                                                                                                                                                                                                                                                                                                 \
+        _asm                                                                                                                                                                                                                                                                                                                   \
+        {                                                                                                                                                                                                                                                                                                                      \
+            jmp eax                                                                                                                                                                                                                                                                                                            \
+        }                                                                                                                                                                                                                                                                                                                      \
     }
 
 
@@ -321,7 +359,7 @@ struct TSPP_ModuleRegister
  *  Use Make_Global to access global variables in the original exe once you know
  *  the correct type and address. This should not change from run to run if the
  *  exe loads at a standard base address.
- *  
+ *
  *  Typical use will be to use define to create a friendly name, e.g:
  *    #define SomeGlobalVar (Make_Global<bool>(0x00FF00FF))
  *
@@ -329,25 +367,25 @@ struct TSPP_ModuleRegister
  *  it will reflect the value the original exe sees at address 0x00FF00FF.
  */
 template<typename T>
-__forceinline T &Make_Global(const uintptr_t address)
+__forceinline T& Make_Global(const uintptr_t address)
 {
-    return *reinterpret_cast<T *>(address);
+    return *reinterpret_cast<T*>(address);
 }
 
 template<typename T>
-__forceinline T *Make_Pointer(const uintptr_t address)
+__forceinline T* Make_Pointer(const uintptr_t address)
 {
-    return reinterpret_cast<T *>(address);
+    return reinterpret_cast<T*>(address);
 }
 
 
 /**
  *  Helper macros for defining hooks to various arrays.
- * 
+ *
  *  @author: OmniBlade, duncanspumpkin
  */
-#define ARRAY_MEMBER_DEC(type, var, size) type(&var)[size];
-#define ARRAY_DEC(type, var, size) extern type(&var)[size];
-#define ARRAY_DEF(address, type, var, size) type(&var)[size] = Make_Global<type[size]>(address);
-#define ARRAY2D_DEC(type, var, x, y) extern type(&var)[x][y];
+#define ARRAY_MEMBER_DEC(type, var, size)     type(&var)[size];
+#define ARRAY_DEC(type, var, size)            extern type(&var)[size];
+#define ARRAY_DEF(address, type, var, size)   type(&var)[size] = Make_Global<type[size]>(address);
+#define ARRAY2D_DEC(type, var, x, y)          extern type(&var)[x][y];
 #define ARRAY2D_DEF(address, type, var, x, y) type(&var)[x][y] = Make_Global<type[x][y]>(address);

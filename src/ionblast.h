@@ -32,19 +32,19 @@
 
 class IonBlastClass
 {
-    public:
-        IonBlastClass(Coord coord);
-        ~IonBlastClass();
+public:
+    IonBlastClass(Coord coord);
+    ~IonBlastClass();
 
-        void AI();
-        void Draw_It();
+    void AI();
+    void Draw_It();
 
-        static void Update_All();
-        static void Draw_All();
-        static void One_Time();
-        static void Clear_All();
+    static void Update_All();
+    static void Draw_All();
+    static void One_Time();
+    static void Clear_All();
 
-    public:
-        Coord Position;
-        int Lifetime;
+public:
+    Coord Position;
+    int Lifetime;
 };

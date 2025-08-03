@@ -8,7 +8,7 @@
  *
  *  @authors       CCHyper, tomsons26
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -33,40 +33,40 @@
 
 class EditClass : public ControlClass
 {
-    public:
-        typedef enum EditStyle {
-            ALPHA = 0x0001,         // Edit accepts alphabetic characters.
-            NUMERIC = 0x0002,       // Edit accepts numbers.
-            MISC = 0x0004,          // Edit accepts misc graphic characters.
-            UPPERCASE = 0x0008,     // Force to upper case.
-            ALPHANUMERIC = (int)ALPHA|(int)NUMERIC|(int)MISC
-        } EditStyle;
+public:
+    typedef enum EditStyle {
+        ALPHA = 0x0001,     // Edit accepts alphabetic characters.
+        NUMERIC = 0x0002,   // Edit accepts numbers.
+        MISC = 0x0004,      // Edit accepts misc graphic characters.
+        UPPERCASE = 0x0008, // Force to upper case.
+        ALPHANUMERIC = (int)ALPHA | (int)NUMERIC | (int)MISC
+    } EditStyle;
 
-    public:
-        EditClass(int id, char *text, int max_len, TextPrintType flags, int x, int y, int w = -1, int h = -1, EditStyle style = ALPHANUMERIC);
-        virtual ~EditClass();
+public:
+    EditClass(int id, char* text, int max_len, TextPrintType flags, int x, int y, int w = -1, int h = -1, EditStyle style = ALPHANUMERIC);
+    virtual ~EditClass();
 
-        virtual void Set_Focus() override;
-        virtual bool Draw_Me(bool forced = false) override;
-        virtual bool Action(unsigned flags, KeyNumType &key) override;
+    virtual void Set_Focus() override;
+    virtual bool Draw_Me(bool forced = false) override;
+    virtual bool Action(unsigned flags, KeyNumType& key) override;
 
-        virtual void Set_Text(const char *text, int max_len);
-        virtual const char *Get_Text();
-        virtual void Draw_Background();
-        virtual void Draw_Text(const char *text);
-        virtual bool Handle_Key(KeyASCIIType ascii);
+    virtual void Set_Text(const char* text, int max_len);
+    virtual const char* Get_Text();
+    virtual void Draw_Background();
+    virtual void Draw_Text(const char* text);
+    virtual bool Handle_Key(KeyASCIIType ascii);
 
-        void Set_Color(ColorScheme *color) { Color = color; }
-        void Set_Read_Only(bool rdonly) {IsReadOnly = rdonly;}
+    void Set_Color(ColorScheme* color) { Color = color; }
+    void Set_Read_Only(bool rdonly) { IsReadOnly = rdonly; }
 
-    public:
-        TextPrintType TextFlags;
-        EditStyle EditFlags;
-        char *String;
-        int MaxLength;
-        int Length;
-        ColorScheme *Color;
-        int IsReadOnly;
+public:
+    TextPrintType TextFlags;
+    EditStyle EditFlags;
+    char* String;
+    int MaxLength;
+    int Length;
+    ColorScheme* Color;
+    int IsReadOnly;
 };
 
 

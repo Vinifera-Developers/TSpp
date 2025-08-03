@@ -32,19 +32,19 @@
 
 class SysTimeClass
 {
-    public:
-        SysTimeClass();
-        ~SysTimeClass();
+public:
+    SysTimeClass();
+    ~SysTimeClass();
 
-        int Get();
-        bool Is_Getting_Late();
+    int Get();
+    bool Is_Getting_Late();
 
-    private:
-        void Reset();
+private:
+    void Reset();
 
-    private:
-        int StartTime;
-        int NegTime;
+private:
+    int StartTime;
+    int NegTime;
 };
 
 extern SysTimeClass SystemTime;

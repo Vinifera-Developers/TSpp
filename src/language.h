@@ -1083,26 +1083,26 @@
 
 /**
  *  Convert a text number into a text pointer.
- * 
+ *
  *  string      The text number to extract a pointer to.
- * 
+ *
  *  @returns    Returns with a pointer to the text that represents the text number specified.
- * 
+ *
  *  @author: CCHyper
  */
 #ifndef NDEBUG
-__forceinline const char *Text_String(int string, const char *_file = __FILE__, int _line = __LINE__)
+__forceinline const char* Text_String(int string, const char* _file = __FILE__, int _line = __LINE__)
 {
-    const char *str = Fetch_String(string);
+    const char* str = Fetch_String(string);
     if (!str) {
-        //DEBUG_WARNING("Missing text string '%s'!");
-        //DEBUG_WARNING("  File: %s.\n", _file);
-        //DEBUG_WARNING("  Line: %d.\n", _line);
+        // DEBUG_WARNING("Missing text string '%s'!");
+        // DEBUG_WARNING("  File: %s.\n", _file);
+        // DEBUG_WARNING("  Line: %d.\n", _line);
     }
     return str;
 }
 #else
-__forceinline const char *Text_String(int string)
+__forceinline const char* Text_String(int string)
 {
     return Fetch_String(string);
 }

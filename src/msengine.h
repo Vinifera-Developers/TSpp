@@ -38,13 +38,13 @@ class MSSfx;
 
 class MSEngine
 {
-    public:
-        MSEngine();
-        virtual ~MSEngine();
+public:
+    MSEngine();
+    virtual ~MSEngine();
 
-    public:
-        int field_4;
-        VectorClass<TRect<int>> Rects;
-        DynamicVectorClass<MSAnim *> Anims;
-        DynamicVectorClass<MSSfx *> Sounds;
+public:
+    int field_4;
+    VectorClass<TRect<int>> Rects;
+    DynamicVectorClass<MSAnim*> Anims;
+    DynamicVectorClass<MSSfx*> Sounds;
 };

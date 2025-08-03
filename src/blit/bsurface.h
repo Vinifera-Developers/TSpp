@@ -27,24 +27,24 @@
  ******************************************************************************/
 #pragma once
 
-#include "xsurface.h"
 #include "buff.h"
+#include "xsurface.h"
 
 
 class BSurface : public XSurface
 {
-    public:
-        BSurface();
-        BSurface(int width, int height, int bpp, void *buffer = nullptr);
-        virtual ~BSurface();
+public:
+    BSurface();
+    BSurface(int width, int height, int bpp, void* buffer = nullptr);
+    virtual ~BSurface();
 
-        virtual void *Lock(int x = 0, int y = 0) override;
-        virtual int Get_Bytes_Per_Pixel() const override;
-        virtual int Get_Pitch() const override;
+    virtual void* Lock(int x = 0, int y = 0) override;
+    virtual int Get_Bytes_Per_Pixel() const override;
+    virtual int Get_Pitch() const override;
 
-        void *Get_Buffer_Ptr() const { return BufferPtr.Get_Buffer(); }
-        void *Get_Buffer_Ptr(int x, int y) { return (unsigned char *)BufferPtr.Get_Buffer() + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }
+    void* Get_Buffer_Ptr() const { return BufferPtr.Get_Buffer(); }
+    void* Get_Buffer_Ptr(int x, int y) { return (unsigned char*)BufferPtr.Get_Buffer() + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }
 
-    public:
-        Buffer BufferPtr;
+public:
+    Buffer BufferPtr;
 };

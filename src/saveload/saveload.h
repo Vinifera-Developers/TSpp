@@ -32,11 +32,11 @@
 #include <ole2.h>
 
 
-bool Save_Game(const char *file_name, const char *descr, bool bargraph = false);
-bool Load_Game(const char *file_name);
+bool Save_Game(const char* file_name, const char* descr, bool bargraph = false);
+bool Load_Game(const char* file_name);
 
-HRESULT Save_Misc_Values(IStream *pStm);
-HRESULT Load_Misc_Values(IStream *pStm);
+HRESULT Save_Misc_Values(IStream* pStm);
+HRESULT Load_Misc_Values(IStream* pStm);
 
 bool Put_All(IStream* pStm, bool save_net);
 bool Get_All(IStream* pStm, bool load_net);
@@ -45,7 +45,7 @@ void Post_Load_Game();
 
 
 template<class T>
-HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
+HRESULT Save_Vector(LPSTREAM& pStm, DynamicVectorClass<T>& list)
 {
     int count = list.Count();
     HRESULT hr = pStm->Write(&count, sizeof(count), nullptr);
@@ -60,7 +60,7 @@ HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
     for (int index = 0; index < count; ++index) {
 
         LPPERSISTSTREAM lpPS = nullptr;
-        hr = list[index]->QueryInterface(__uuidof(IPersistStream), (LPVOID *)&lpPS);
+        hr = list[index]->QueryInterface(__uuidof(IPersistStream), (LPVOID*)&lpPS);
         if (FAILED(hr)) {
             return hr;
         }
@@ -74,7 +74,6 @@ HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
         if (FAILED(hr)) {
             return hr;
         }
-
     }
 
     return hr;
@@ -82,7 +81,7 @@ HRESULT Save_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
 
 
 template<class T>
-HRESULT Load_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
+HRESULT Load_Vector(LPSTREAM& pStm, DynamicVectorClass<T>& list)
 {
     int count = 0;
     HRESULT hr = pStm->Read(&count, sizeof(count), nullptr);
@@ -101,7 +100,6 @@ HRESULT Load_Vector(LPSTREAM &pStm, DynamicVectorClass<T> &list)
         if (FAILED(hr)) {
             return hr;
         }
-
     }
 
     return hr;

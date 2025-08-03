@@ -32,19 +32,19 @@
 
 class Straw
 {
-        Straw(const Straw &) = delete;
-        Straw & operator = (const Straw &) = delete;
+    Straw(const Straw&) = delete;
+    Straw& operator=(const Straw&) = delete;
 
-    public:
-        Straw();
-        virtual ~Straw();
+public:
+    Straw();
+    virtual ~Straw();
 
-        virtual void Get_From(Straw *pipe);
-        virtual int Get(void *buffer, int slen);
+    virtual void Get_From(Straw* pipe);
+    virtual int Get(void* buffer, int slen);
 
-        inline void Get_From(Straw &pipe) { Get_From(&pipe); }
+    inline void Get_From(Straw& pipe) { Get_From(&pipe); }
 
-    public:
-        Straw *ChainTo;
-        Straw *ChainFrom;
+public:
+    Straw* ChainTo;
+    Straw* ChainFrom;
 };

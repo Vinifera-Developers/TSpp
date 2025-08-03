@@ -28,8 +28,8 @@
 #pragma once
 
 #include "abstracttype.h"
-#include "typelist.h"
 #include "tibsun_defines.h"
+#include "typelist.h"
 
 
 class TeamClass;
@@ -46,49 +46,49 @@ public:
     /**
      *  IPersist
      */
-    IFACEMETHOD(GetClassID)(CLSID *pClassID);
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
     /**
      *  IPersistStream
      */
-    IFACEMETHOD(Load)(IStream *pStm);
-    IFACEMETHOD(Save)(IStream *pStm, BOOL fClearDirty);
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
 public:
-    TeamTypeClass(const char *ini_name = nullptr);
-    TeamTypeClass(const NoInitClass &noinit);
+    TeamTypeClass(const char* ini_name = nullptr);
+    TeamTypeClass(const NoInitClass& noinit);
     virtual ~TeamTypeClass();
 
     /**
      *  AbstractClass
      */
-    virtual void Detach(AbstractClass * target, bool all = true) override;
+    virtual void Detach(AbstractClass* target, bool all = true) override;
     virtual RTTIType Fetch_RTTI() const override;
     virtual int Get_Object_Size(bool firestorm = false) const override;
-    virtual void Object_CRC(CRCEngine &crc) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
     virtual int Fetch_Heap_ID() const override;
 
     /**
      *  AbstractTypeClass
      */
-    virtual bool Read_INI(CCINIClass &ini) override;
-    virtual bool Write_INI(CCINIClass &ini) const override;
+    virtual bool Read_INI(CCINIClass& ini) override;
+    virtual bool Write_INI(CCINIClass& ini) const override;
 
-    TeamClass *Create_One_Of(HouseClass *house) const;
+    TeamClass* Create_One_Of(HouseClass* house) const;
     void Destroy_All_Of() const;
-    static TypeList<const TeamTypeClass *> Suggested_New_Team(HouseClass *house, bool alerted);
+    static TypeList<const TeamTypeClass*> Suggested_New_Team(HouseClass* house, bool alerted);
     // 00628BE0
     Cell Get_Origin() const;
     // 006290F0
     // 006291E0
     // 00629220
 
-    static void Read_Scenario_INI(CCINIClass &ini, int a2);
-    static void Write_Scenario_INI(CCINIClass &ini, int a2);
+    static void Read_Scenario_INI(CCINIClass& ini, int a2);
+    static void Write_Scenario_INI(CCINIClass& ini, int a2);
 
-    static TeamType From_Name(const char *name);
-    static const char *Name_From(TeamType type);
-    static const TeamTypeClass *Find_Or_Make(const char *name);
+    static TeamType From_Name(const char* name);
+    static const char* Name_From(TeamType type);
+    static const TeamTypeClass* Find_Or_Make(const char* name);
 
 public:
     TeamType HeapID;
@@ -112,13 +112,13 @@ public:
     int RecruitPriority;
     int MaxAllowed;
     int Fear;
-    HouseClass *House;
+    HouseClass* House;
     int TechLevel;
-    TagTypeClass *Tag;
+    TagTypeClass* Tag;
     int Origin;
     int Number;
-    ScriptTypeClass *Script;
-    TaskForceClass *TaskForce;
+    ScriptTypeClass* Script;
+    TaskForceClass* TaskForce;
     int field_A4;
     bool AvoidThreats;
     bool IsIonImmune;

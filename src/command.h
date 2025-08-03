@@ -36,8 +36,7 @@ class TechnoClass;
 enum TeamControlType;
 
 
-typedef enum CommandType
-{
+typedef enum CommandType {
     COMMAND_FOLLOW,
     COMMAND_VIEW1,
     COMMAND_VIEW2,
@@ -130,20 +129,20 @@ typedef enum CommandType
 
 class CommandClass
 {
-    public:
-        CommandClass();
-        virtual ~CommandClass();
+public:
+    CommandClass();
+    virtual ~CommandClass();
 
-        virtual const char *Get_Name() const = 0;
-        virtual const char *Get_UI_Name() const = 0;
-        virtual const char *Get_Category() const = 0;
-        virtual const char *Get_Description() const = 0;
-        virtual bool Process() = 0;
+    virtual const char* Get_Name() const = 0;
+    virtual const char* Get_UI_Name() const = 0;
+    virtual const char* Get_Category() const = 0;
+    virtual const char* Get_Description() const = 0;
+    virtual bool Process() = 0;
 
-    public:
-        static bool Activate_From_Name(const char *name);
-        static CommandClass *From_Name(const char *name);
-        static CommandClass *From_KeyNum(KeyNumType key);
-        static bool Activate_From_Type(CommandType type);
-        static CommandClass *From_Type(CommandType type);
+public:
+    static bool Activate_From_Name(const char* name);
+    static CommandClass* From_Name(const char* name);
+    static CommandClass* From_KeyNum(KeyNumType key);
+    static bool Activate_From_Type(CommandType type);
+    static CommandClass* From_Type(CommandType type);
 };

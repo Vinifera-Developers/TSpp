@@ -28,16 +28,15 @@
 #pragma once
 
 #include "always.h"
-#include "rect.h"
 #include "point.h"
-#include "vector.h"
+#include "rect.h"
 #include "search.h"
 #include "textprint.h"
+#include "vector.h"
 #include <Windows.h>
 
 
-struct ToolTip
-{
+struct ToolTip {
     ToolTip() : ID(0), Region(), Text(0) {}
 
     int ID;
@@ -46,8 +45,7 @@ struct ToolTip
 };
 
 
-struct ToolTipText
-{
+struct ToolTipText {
     ToolTipText() : Pos(), TextWidth(0), TextHeight(0), ToolTip() {}
 
     Point2D Pos;
@@ -59,49 +57,49 @@ struct ToolTipText
 
 class ToolTipManager
 {
-    public:
-        enum {
-            TIMER_ID = 'TTIP', // Timer identifier.
-        };
+public:
+    enum {
+        TIMER_ID = 'TTIP', // Timer identifier.
+    };
 
-    public:
-        ToolTipManager(HWND hWnd);
-        virtual ~ToolTipManager();
+public:
+    ToolTipManager(HWND hWnd);
+    virtual ~ToolTipManager();
 
-        virtual bool Update(const ToolTipText *text);
-        virtual void Reset(const ToolTipText *text);
-        virtual void Force_Redraw(bool update = false);
-        virtual void Draw(const ToolTipText *text);
-        virtual const char *ToolTip_Text(int id);
+    virtual bool Update(const ToolTipText* text);
+    virtual void Reset(const ToolTipText* text);
+    virtual void Force_Redraw(bool update = false);
+    virtual void Draw(const ToolTipText* text);
+    virtual const char* ToolTip_Text(int id);
 
-        void Set_Active(bool state);
-        void Message_Handler(MSG *msg);
+    void Set_Active(bool state);
+    void Message_Handler(MSG* msg);
 
-        int Get_Timer_Delay() const;
-        void Set_Timer_Delay(int delay);
+    int Get_Timer_Delay() const;
+    void Set_Timer_Delay(int delay);
 
-        int Get_Lifetime() const;
-        void Set_Lifetime(int life);
+    int Get_Lifetime() const;
+    void Set_Lifetime(int life);
 
-        bool Find(int id, ToolTip *tooltip);
-        bool Add(const ToolTip *tooltip);
-        void Remove(int id);
+    bool Find(int id, ToolTip* tooltip);
+    bool Add(const ToolTip* tooltip);
+    void Remove(int id);
 
-        int Get_Count() const;
+    int Get_Count() const;
 
-        bool Is_ToolTip_Showing() { return CurrentToolTip != nullptr; }
+    bool Is_ToolTip_Showing() { return CurrentToolTip != nullptr; }
 
-        ToolTip * Find_From_Pos(Point2D &point);
-        bool Process();
+    ToolTip* Find_From_Pos(Point2D& point);
+    bool Process();
 
-    public:
-        HWND Window;
-        bool IsActive;
-        Point2D LastMousePos;
-        ToolTip *CurrentToolTip;
-        ToolTipText CurrentToolTipInfo;
-        int ToolTipDelay;
-        int ToolTipLifetime;
-        DynamicVectorClass<ToolTip *> ToolTips;
-        IndexClass<int, ToolTip *> ToolTipIndex;
+public:
+    HWND Window;
+    bool IsActive;
+    Point2D LastMousePos;
+    ToolTip* CurrentToolTip;
+    ToolTipText CurrentToolTipInfo;
+    int ToolTipDelay;
+    int ToolTipLifetime;
+    DynamicVectorClass<ToolTip*> ToolTips;
+    IndexClass<int, ToolTip*> ToolTipIndex;
 };

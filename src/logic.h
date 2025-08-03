@@ -36,25 +36,25 @@ class AbstractClass;
 
 class LogicClass : public LayerClass
 {
-	public:
-		LogicClass();
-		virtual ~LogicClass();
+public:
+    LogicClass();
+    virtual ~LogicClass();
 
-		/**
-		 *  LogicClass
-		 */
-		virtual bool Submit(ObjectClass const *object, bool sort = false);
-		virtual void Init();
-		virtual void One_Time();
+    /**
+     *  LogicClass
+     */
+    virtual bool Submit(ObjectClass const* object, bool sort = false);
+    virtual void Init();
+    virtual void One_Time();
 
-		virtual void Detach(AbstractClass * target, bool all = true);
+    virtual void Detach(AbstractClass* target, bool all = true);
 
-		void AI();
-		void func_507210(); // looks like an older version of AI()?
-		void Remove(ObjectClass *const object);
+    void AI();
+    void func_507210(); // looks like an older version of AI()?
+    void Remove(ObjectClass* const object);
 
-		static void func_507470();
+    static void func_507470();
 
-	public:
-		static unsigned &FramesPerSecond;
+public:
+    static unsigned& FramesPerSecond;
 };

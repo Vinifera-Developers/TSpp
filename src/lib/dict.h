@@ -33,22 +33,22 @@
 
 class Dictionary
 {
-    public:
-        Dictionary();
-        ~Dictionary();
+public:
+    Dictionary();
+    ~Dictionary();
 
-        static unsigned CRC(Wstring &string);
+    static unsigned CRC(Wstring& string);
 
-    public:
-        void *Entries; // 0x00
-        int EntryCount; // 0x04
-        int field_8;
-        int field_0C;
-        int field_10;
-        bool field_14;
-        void *CRC_Function; // 0x18
-        int field_1C;
-        double field_20;
-        double field_28;
-        double field_30;
+public:
+    void* Entries;  // 0x00
+    int EntryCount; // 0x04
+    int field_8;
+    int field_0C;
+    int field_10;
+    bool field_14;
+    void* CRC_Function; // 0x18
+    int field_1C;
+    double field_20;
+    double field_28;
+    double field_30;
 };

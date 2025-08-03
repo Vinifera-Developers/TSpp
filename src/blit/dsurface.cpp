@@ -26,13 +26,13 @@
  *
  ******************************************************************************/
 #include "dsurface.h"
-#include "wwmath.h"
 #include "rgb.h"
+#include "wwmath.h"
 
 
-static void Sort_Vertices(Point2D *p1, Point2D *p2, Point2D *p3)
+static void Sort_Vertices(Point2D* p1, Point2D* p2, Point2D* p3)
 {
-    Point2D *temp;
+    Point2D* temp;
     if (p1->Y > p2->Y) {
         temp = p1;
         p1 = p2;
@@ -51,7 +51,7 @@ static void Sort_Vertices(Point2D *p1, Point2D *p2, Point2D *p3)
 }
 
 
-static void Fill_Triangle_Top(Surface &surface, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color)
+static void Fill_Triangle_Top(Surface& surface, Point2D& point1, Point2D& point2, Point2D& point3, unsigned color)
 {
     if (point2.X > point3.X) {
         Point2D temp = point2;
@@ -72,7 +72,7 @@ static void Fill_Triangle_Top(Surface &surface, Point2D &point1, Point2D &point2
 }
 
 
-static void Fill_Triangle_Bottom(Surface &surface, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color)
+static void Fill_Triangle_Bottom(Surface& surface, Point2D& point1, Point2D& point2, Point2D& point3, unsigned color)
 {
     if (point1.X > point2.X) {
         Point2D temp = point2;
@@ -93,7 +93,7 @@ static void Fill_Triangle_Bottom(Surface &surface, Point2D &point1, Point2D &poi
 }
 
 
-bool DSurface::Draw_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color)
+bool DSurface::Draw_Triangle(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, unsigned color)
 {
     Draw_Line(rect, point1, point2, color);
     Draw_Line(rect, point2, point3, color);
@@ -104,11 +104,11 @@ bool DSurface::Draw_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point
 
 
 /**
- *  
- * 
+ *
+ *
  *  @author: Darth Jane
  */
-bool DSurface::Fill_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, unsigned color)
+bool DSurface::Fill_Triangle(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, unsigned color)
 {
     if (!rect.Is_Valid()) {
         return false;
@@ -121,7 +121,7 @@ bool DSurface::Fill_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point
     }
 
     Point2D r1_tl = r1.Top_Left();
-    unsigned short *buffptr = (unsigned short *)Lock(r1_tl.X, r1_tl.Y);
+    unsigned short* buffptr = (unsigned short*)Lock(r1_tl.X, r1_tl.Y);
     if (buffptr == nullptr) {
         return false;
     }
@@ -138,15 +138,15 @@ bool DSurface::Fill_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point
     if (point2.Y == point3.Y) {
         Fill_Triangle_Top(*this, point1, point2, point3, color);
 
-    /**
-     *  Check for trivial case of top-flat triangle.
-     */
+        /**
+         *  Check for trivial case of top-flat triangle.
+         */
     } else if (point1.Y == point2.Y) {
         Fill_Triangle_Bottom(*this, point1, point2, point3, color);
 
-    /**
-     *  General case - split the triangle in a topflat and bottom-flat one.
-     */
+        /**
+         *  General case - split the triangle in a topflat and bottom-flat one.
+         */
     } else {
         Point2D point4((int)(point1.X + ((float)(point2.Y - point1.Y) / (float)(point3.Y - point1.Y)) * (point3.X - point1.X)), point2.Y);
         Fill_Triangle_Top(*this, point1, point2, point4, color);
@@ -157,14 +157,14 @@ bool DSurface::Fill_Triangle(Rect &rect, Point2D &point1, Point2D &point2, Point
 }
 
 
-bool DSurface::Fill_Triangle_Trans(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, RGBClass &rgb, unsigned opacity)
+bool DSurface::Fill_Triangle_Trans(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, RGBClass& rgb, unsigned opacity)
 {
     // TODO
     return false;
 }
 
 
-bool DSurface::Draw_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, unsigned color)
+bool DSurface::Draw_Quad(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, Point2D& point4, unsigned color)
 {
     Draw_Line(rect, point1, point2, color);
     Draw_Line(rect, point2, point3, color);
@@ -175,7 +175,7 @@ bool DSurface::Draw_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &
 }
 
 
-bool DSurface::Fill_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, unsigned color)
+bool DSurface::Fill_Quad(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, Point2D& point4, unsigned color)
 {
     Fill_Triangle(rect, point1, point2, point3, color);
     Fill_Triangle(rect, point2, point3, point4, color);
@@ -184,7 +184,7 @@ bool DSurface::Fill_Quad(Rect &rect, Point2D &point1, Point2D &point2, Point2D &
 }
 
 
-bool DSurface::Fill_Quad_Trans(Rect &rect, Point2D &point1, Point2D &point2, Point2D &point3, Point2D &point4, RGBClass &rgb, unsigned opacity)
+bool DSurface::Fill_Quad_Trans(Rect& rect, Point2D& point1, Point2D& point2, Point2D& point3, Point2D& point4, RGBClass& rgb, unsigned opacity)
 {
     // TODO
     return true;
@@ -193,7 +193,7 @@ bool DSurface::Fill_Quad_Trans(Rect &rect, Point2D &point1, Point2D &point2, Poi
 
 /**
  *  Draw a circle.
- *  
+ *
  *  Uses a modified Bresenham's Circle Drawing algorithm.
  */
 void DSurface::Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color)
@@ -257,7 +257,7 @@ void DSurface::Fill_Circle(const Point2D center, unsigned radius, Rect rect, uns
 }
 
 
-void DSurface::Fill_Circle_Trans(const Point2D center, unsigned radius, Rect rect, RGBClass &rgb, unsigned opacity)
+void DSurface::Fill_Circle_Trans(const Point2D center, unsigned radius, Rect rect, RGBClass& rgb, unsigned opacity)
 {
     Fill_Ellipse_Trans(center, radius, radius, rect, rgb, opacity);
 }
@@ -283,7 +283,7 @@ bool DSurface::Fill_Ellipse_Trans(Point2D point, int radius_x, int radius_y, Rec
 }
 
 
-bool DSurface::Put_Pixel_Trans(Point2D &point, RGBClass &rgb, unsigned opacity)
+bool DSurface::Put_Pixel_Trans(Point2D& point, RGBClass& rgb, unsigned opacity)
 {
     int bpp = Get_Bytes_Per_Pixel();
     if (bpp != 2) {
@@ -309,11 +309,8 @@ bool DSurface::Put_Pixel_Trans(Point2D &point, RGBClass &rgb, unsigned opacity)
     unsigned short gmax = green_max & 0xFFFF;
     unsigned short bmax = blue_max & 0xFFFF;
 
-    unsigned short *current_pixel = (unsigned short *)Lock(point.X, point.Y);
-    *current_pixel = (unsigned short)
-                    (((*current_pixel & rmax) * (delta + rscaled) >> 8) & rmax)
-                  | (((*current_pixel & gmax) * (delta + gscaled) >> 8) & gmax)
-                  | (((*current_pixel & bmax) * (delta + bscaled) >> 8) & bmax);
+    unsigned short* current_pixel = (unsigned short*)Lock(point.X, point.Y);
+    *current_pixel = (unsigned short)(((*current_pixel & rmax) * (delta + rscaled) >> 8) & rmax) | (((*current_pixel & gmax) * (delta + gscaled) >> 8) & gmax) | (((*current_pixel & bmax) * (delta + bscaled) >> 8) & bmax);
 
     Unlock();
 

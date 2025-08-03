@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "overlaytype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-OverlayType OverlayTypeClass::From_Name(const char *name)
+OverlayType OverlayTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ OverlayType OverlayTypeClass::From_Name(const char *name)
 }
 
 
-const char *OverlayTypeClass::Name_From(OverlayType type)
+const char* OverlayTypeClass::Name_From(OverlayType type)
 {
     return (type != OVERLAY_NONE && type < OverlayTypes.Count() ? OverlayTypes[type]->Name() : "<none>");
 }
 
 
-const OverlayTypeClass *OverlayTypeClass::Find_Or_Make(const char *name)
+const OverlayTypeClass* OverlayTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

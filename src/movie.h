@@ -38,27 +38,26 @@ class XSurface;
 class MovieClass;
 
 
-struct VQHandle
-{
-	MovieClass *Movie;
-	int field_4;
-	int field_8;
+struct VQHandle {
+    MovieClass* Movie;
+    int field_4;
+    int field_8;
 };
 
 class MovieClass
 {
-	public:
-		VQAClass *VQMovie;
-		int field_4;
-		XSurface *MovieSurface;
-		int field_C;
-		int field_10;
-		int field_14;
-		int field_18;
-		int field_1C;
-		int field_20;
-		Rect VideoRect;
-		Rect StretchRect;
-		bool field_44;
-		bool field_45;
+public:
+    VQAClass* VQMovie;
+    int field_4;
+    XSurface* MovieSurface;
+    int field_C;
+    int field_10;
+    int field_14;
+    int field_18;
+    int field_1C;
+    int field_20;
+    Rect VideoRect;
+    Rect StretchRect;
+    bool field_44;
+    bool field_45;
 };

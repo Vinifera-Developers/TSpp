@@ -32,17 +32,17 @@
 
 class ToggleClass : public ControlClass
 {
-    public:
-        ToggleClass(unsigned id, int x, int y, int w, int h);
-        ~ToggleClass();
+public:
+    ToggleClass(unsigned id, int x, int y, int w, int h);
+    ~ToggleClass();
 
-        virtual bool Action(unsigned flags, KeyNumType &key) override;
+    virtual bool Action(unsigned flags, KeyNumType& key) override;
 
-        void Turn_On();
-        void Turn_Off();
+    void Turn_On();
+    void Turn_Off();
 
-    public:
-        bool IsPressed;
-        bool IsOn;
-        bool IsToggleType;
+public:
+    bool IsPressed;
+    bool IsOn;
+    bool IsToggleType;
 };

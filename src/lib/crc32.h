@@ -30,5 +30,5 @@
 #include "always.h"
 
 
-uint32_t CRC32_Memory(const void *data, uint32_t bytes, uint32_t prev_crc = 0);
-uint32_t CRC32_String(const char *string, uint32_t prev_crc = 0);
+uint32_t CRC32_Memory(const void* data, uint32_t bytes, uint32_t prev_crc = 0);
+uint32_t CRC32_String(const char* string, uint32_t prev_crc = 0);

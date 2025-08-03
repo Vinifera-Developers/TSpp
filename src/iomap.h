@@ -27,8 +27,8 @@
  ******************************************************************************/
 #pragma once
 
-#include "tibsun_globals.h"
 #include "mouse.h"
+#include "tibsun_globals.h"
 
 
 /**

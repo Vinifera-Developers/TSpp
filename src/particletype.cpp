@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "particletype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-ParticleType ParticleTypeClass::From_Name(const char *name)
+ParticleType ParticleTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ ParticleType ParticleTypeClass::From_Name(const char *name)
 }
 
 
-const char *ParticleTypeClass::Name_From(ParticleType type)
+const char* ParticleTypeClass::Name_From(ParticleType type)
 {
     return (type != PARTICLE_NONE && type < ParticleTypes.Count() ? ParticleTypes[type]->Name() : "<none>");
 }
 
 
-const ParticleTypeClass *ParticleTypeClass::Find_Or_Make(const char *name)
+const ParticleTypeClass* ParticleTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

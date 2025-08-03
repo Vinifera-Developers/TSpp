@@ -35,9 +35,9 @@ long CRCEngine::Value() const
         /**
          *  Pad the buffer.
          */
-        ((char &)StagingBuffer.Buffer[Index]) = Index;
+        ((char&)StagingBuffer.Buffer[Index]) = Index;
         for (int i = Index + 1; i < sizeof(long); ++i) {
-            ((char &)StagingBuffer.Buffer[i]) = StagingBuffer.Buffer[0];
+            ((char&)StagingBuffer.Buffer[i]) = StagingBuffer.Buffer[0];
         }
 
         return CRC_Memory(&StagingBuffer, sizeof(long), CRC);

@@ -8,7 +8,7 @@
  *
  *  @authors       tomsons26, CCHyper
  *
- *  @brief         
+ *  @brief
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -36,7 +36,7 @@ class FileClass;
 
 void Set_Voxel_Light_Angle(float theta);
 void Init_Voxel_Matrices();
-bool Init_Voxel_Palette(FileClass *file);
+bool Init_Voxel_Palette(FileClass* file);
 
 extern float& VoxelLightAngle;
 extern Vector3& VoxelLightSource;

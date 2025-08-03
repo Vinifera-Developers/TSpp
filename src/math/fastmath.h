@@ -51,7 +51,7 @@ float __stdcall Acosf(float val);
 float __stdcall Atanf(float val);
 float __stdcall Atan2f(float y, float x);
 
-//int __cdecl ftol(double f);
+// int __cdecl ftol(double f);
 //__int64 __cdecl ftol64(double f);
 
-};
+}; // namespace FastMath

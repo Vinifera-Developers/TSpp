@@ -36,22 +36,22 @@ class FootClass;
 
 class CargoClass
 {
-    public:
-        CargoClass();
-        CargoClass(const NoInitClass &noinit);
-        ~CargoClass();
+public:
+    CargoClass();
+    CargoClass(const NoInitClass& noinit);
+    ~CargoClass();
 
-        void AI();
+    void AI();
 
-        void Attach(FootClass *object);
-        FootClass *Attached_Object() const;
-        FootClass *Detach_Object();
-        void Detach(FootClass *object);
+    void Attach(FootClass* object);
+    FootClass* Attached_Object() const;
+    FootClass* Detach_Object();
+    void Detach(FootClass* object);
 
-        unsigned How_Many() const { return Quantity; }
-        bool Is_Something_Attached() const { return CargoHold != nullptr; }
+    unsigned How_Many() const { return Quantity; }
+    bool Is_Something_Attached() const { return CargoHold != nullptr; }
 
-    public:
-        unsigned Quantity;
-        FootClass *CargoHold;
+public:
+    unsigned Quantity;
+    FootClass* CargoHold;
 };

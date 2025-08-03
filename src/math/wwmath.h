@@ -29,50 +29,50 @@
 
 #include "always.h"
 #include "array.h"
-#include <cmath>
 #include "tspp_assert.h"
+#include <cmath>
 
 
 /**
  *  Math constants.
  */
-#define WWMATH_EPSILON 0.0001f // percentage epsilon
-#define WWMATH_SHORT_EPSILON 0.1f // round integer epsilon
-#define WWMATH_LONG_EPSILON 0.00000001f // arbitrary 8 digit epsilon
-#define WWMATH_EPSILON2 WWMATH_EPSILON * WWMATH_EPSILON
+#define WWMATH_EPSILON       0.0001f     // percentage epsilon
+#define WWMATH_SHORT_EPSILON 0.1f        // round integer epsilon
+#define WWMATH_LONG_EPSILON  0.00000001f // arbitrary 8 digit epsilon
+#define WWMATH_EPSILON2      WWMATH_EPSILON* WWMATH_EPSILON
 
-#define WWMATH_FLOAT_MAX (FLT_MAX)
-#define WWMATH_FLOAT_MIN (FLT_MIN)
+#define WWMATH_FLOAT_MAX  (FLT_MAX)
+#define WWMATH_FLOAT_MIN  (FLT_MIN)
 #define WWMATH_FLOAT_TINY (1.0e-37f)
 
-#define WWMATH_SQRT2 1.41421356237309504880f
-#define WWMATH_SQRT3 1.73205080756887719318f // sqrt(3)
+#define WWMATH_SQRT2   1.41421356237309504880f
+#define WWMATH_SQRT3   1.73205080756887719318f // sqrt(3)
 #define WWMATH_OOSQRT2 0.7071067811865475244008442f
 #define WWMATH_OOSQRT3 0.5773502691896257645091489f
 #define WWMATH_OOSQRT6 0.4082482904638630163662140f
 
-#define WWMATH_E 2.71828182845904523536f // Holds the value for "e": Euler's number or Napier's constant, to 15 significant figures. This is a mathematically useful number.
-#define WWMATH_LOG2E 1.44269504088896340736f
+#define WWMATH_E      2.71828182845904523536f // Holds the value for "e": Euler's number or Napier's constant, to 15 significant figures. This is a mathematically useful number.
+#define WWMATH_LOG2E  1.44269504088896340736f
 #define WWMATH_LOG10E 0.434294481903251827651f
-#define WWMATH_LN2 0.693147180559945309417f
-#define WWMATH_LN10 2.30258509299404568402f
-#define WWMATH_PI 3.14159265358979323846f // Holds the value for PI. Only up to 16 significant figures.
-#define WWMATH_P2 1.57079632679489661923f // Holds the value for PI / 2 OR 90 degrees. Only up to 17 significant figures.
-#define WWMATH_P4 0.785398163397448309616f // Holds the value for PI / 4 OR 45 degrees. Only up to 16 significant figures.
-#define WWMATH_P8 0.39269908169872413f // Holds the value for PI / 8 OR 22.5 degrees. Only up to 17 significant figures.
-#define WWMATH_P16 0.19634954084936206f // Holds the value for PI / 16 OR 11.25 degrees. Only up to 17 significant figures.
+#define WWMATH_LN2    0.693147180559945309417f
+#define WWMATH_LN10   2.30258509299404568402f
+#define WWMATH_PI     3.14159265358979323846f  // Holds the value for PI. Only up to 16 significant figures.
+#define WWMATH_P2     1.57079632679489661923f  // Holds the value for PI / 2 OR 90 degrees. Only up to 17 significant figures.
+#define WWMATH_P4     0.785398163397448309616f // Holds the value for PI / 4 OR 45 degrees. Only up to 16 significant figures.
+#define WWMATH_P8     0.39269908169872413f     // Holds the value for PI / 8 OR 22.5 degrees. Only up to 17 significant figures.
+#define WWMATH_P16    0.19634954084936206f     // Holds the value for PI / 16 OR 11.25 degrees. Only up to 17 significant figures.
 
-#define WWMATH_1_PI 0.318309886183790671538f
-#define WWMATH_2_PI 0.636619772367581343076f
+#define WWMATH_1_PI     0.318309886183790671538f
+#define WWMATH_2_PI     0.636619772367581343076f
 #define WWMATH_1_SQRTPI 0.564189583547756286948f
 #define WWMATH_2_SQRTPI 1.12837916709551257390f
 
-#define WWMATH_TWO_PI 6.283185307179586f // Holds the value for 3 * PI_2 OR 270 degrees. Only up to 17 significant figures.
+#define WWMATH_TWO_PI     6.283185307179586f  // Holds the value for 3 * PI_2 OR 270 degrees. Only up to 17 significant figures.
 #define WWMATH_THREE_PI_2 4.7123889803846895f // Holds the value for 3 * PI_2 OR 270 degrees. Only up to 17 significant figures.
 
 #define WWMATH_TIGHT_CORNER_RADIUS 0.5f
 
-#define WWMATH_RAD_TO_DEG 57.295779513082325225835265587527f // Holds the value for 180 / PI which is used to convert radians to degrees.
+#define WWMATH_RAD_TO_DEG 57.295779513082325225835265587527f   // Holds the value for 180 / PI which is used to convert radians to degrees.
 #define WWMATH_DEG_TO_RAD 0.017453292519943294444444444444444f // Holds the value for PI / 180 which is used to convert degrees to radians.
 
 /**
@@ -210,7 +210,7 @@ inline long Float_To_Long(double f)
 
 inline bool Is_Valid_Double(double x)
 {
-    uint32_t *plong = reinterpret_cast<uint32_t *>(&x) + 1;
+    uint32_t* plong = reinterpret_cast<uint32_t*>(&x) + 1;
     uint32_t exponent = ((*plong) & 0x7FF00000) >> (32 - 12);
 
     if (exponent == 0x7FF) {
@@ -227,14 +227,14 @@ inline float Square(float val)
 inline float Fabs(float val)
 {
     float tmp = val;
-    uint32_t value = *reinterpret_cast<uint32_t *>(&tmp);
+    uint32_t value = *reinterpret_cast<uint32_t*>(&tmp);
     value &= 0x7fffffff;
-    return float(*reinterpret_cast<float *>(&value));
+    return float(*reinterpret_cast<float*>(&value));
 }
 
-inline int Float_To_Int_Chop(const float &f)
+inline int Float_To_Int_Chop(const float& f)
 {
-    int32_t a = *reinterpret_cast<const int32_t *>(&f);
+    int32_t a = *reinterpret_cast<const int32_t*>(&f);
     int32_t sign = (a >> 31);
     int32_t mantissa = (a & ((1 << 23) - 1)) | (1 << 23);
     int32_t exponent = ((a & 0x7fffffff) >> 23) - 127;
@@ -242,9 +242,9 @@ inline int Float_To_Int_Chop(const float &f)
     return ((r ^ (sign)) - sign) & ~(exponent >> 31);
 }
 
-inline int Float_To_Int_Floor(const float &f)
+inline int Float_To_Int_Floor(const float& f)
 {
-    int32_t a = *reinterpret_cast<const int32_t *>(&f);
+    int32_t a = *reinterpret_cast<const int32_t*>(&f);
     int32_t sign = (a >> 31);
     a &= 0x7fffffff;
     int32_t exponent = (a >> 23) - 127;
@@ -355,8 +355,8 @@ inline float Fast_Acos(float val)
     idx0 += ARC_TABLE_SIZE / 2;
     idx1 += ARC_TABLE_SIZE / 2;
 
-    //TSPP_ASSERT((idx0 >= 0) && (idx0 < ARC_TABLE_SIZE), "Index out of table range");
-    //TSPP_ASSERT((idx1 >= 0) && (idx1 < ARC_TABLE_SIZE), "Index out of table range");
+    // TSPP_ASSERT((idx0 >= 0) && (idx0 < ARC_TABLE_SIZE), "Index out of table range");
+    // TSPP_ASSERT((idx1 >= 0) && (idx1 < ARC_TABLE_SIZE), "Index out of table range");
 
     return (1.0f - frac) * _FastAcosTable[idx0] + frac * _FastAcosTable[idx1];
 }
@@ -375,8 +375,8 @@ inline float Fast_Asin(float val)
     idx0 += ARC_TABLE_SIZE / 2;
     idx1 += ARC_TABLE_SIZE / 2;
 
-    //TSPP_ASSERT((idx0 >= 0) && (idx0 < ARC_TABLE_SIZE), "Index out of table range");
-    //TSPP_ASSERT((idx1 >= 0) && (idx1 < ARC_TABLE_SIZE), "Index out of table range");
+    // TSPP_ASSERT((idx0 >= 0) && (idx0 < ARC_TABLE_SIZE), "Index out of table range");
+    // TSPP_ASSERT((idx1 >= 0) && (idx1 < ARC_TABLE_SIZE), "Index out of table range");
 
     return (1.0f - frac) * _FastAsinTable[idx0] + frac * _FastAsinTable[idx1];
 }
@@ -425,7 +425,7 @@ T Round_Ceil_Multiple(T value, T multiple)
     if (multiple == 0) {
         return value;
     }
-    return static_cast<T>(WWMath::Ceil(double(value)/double(multiple))*double(multiple));
+    return static_cast<T>(WWMath::Ceil(double(value) / double(multiple)) * double(multiple));
 }
 
 template<typename T>
@@ -434,12 +434,12 @@ T Round_Floor_Multiple(T value, T multiple)
     if (multiple == 0) {
         return value;
     }
-    return static_cast<T>(WWMath::Floor(double(value)/double(multiple))*double(multiple));
+    return static_cast<T>(WWMath::Floor(double(value) / double(multiple)) * double(multiple));
 }
 
-inline bool Fast_Is_Float_Positive(const float &val)
+inline bool Fast_Is_Float_Positive(const float& val)
 {
-    return ((*reinterpret_cast<uint32_t const *>(&val)) & 0x80000000) == 0;
+    return ((*reinterpret_cast<uint32_t const*>(&val)) & 0x80000000) == 0;
 }
 
 inline int Fast_To_Int_Floor(float val)
@@ -511,7 +511,7 @@ inline float Byte_To_Unit_Float(unsigned char byte)
 
 inline bool Is_Valid_Float(float x)
 {
-    uint32_t *plong = reinterpret_cast<uint32_t *>(&x);
+    uint32_t* plong = reinterpret_cast<uint32_t*>(&x);
     uint32_t exponent = ((*plong) & 0x7F800000) >> (32 - 9);
 
     if (exponent == 0xFF) {
@@ -575,4 +575,4 @@ inline bool DefinitelyLessThan(double a, double b, float epsilon = WWMATH_EPSILO
     return (b - a) > ((std::fabs(a) < std::fabs(b) ? std::fabs(b) : std::fabs(a)) * epsilon);
 }
 
-}; // WWMath namespace
+}; // namespace WWMath

@@ -39,37 +39,37 @@ class NoInitClass;
 template<typename T>
 class VectorClass
 {
-    public:
-        VectorClass(unsigned size = 0, const T *array = nullptr);
-        VectorClass(const NoInitClass &noinit) {}
-        VectorClass(const VectorClass<T> &that);
-        virtual ~VectorClass();
+public:
+    VectorClass(unsigned size = 0, const T* array = nullptr);
+    VectorClass(const NoInitClass& noinit) {}
+    VectorClass(const VectorClass<T>& that);
+    virtual ~VectorClass();
 
-        T &operator[](int index);
-        const T &operator[](int index) const;
+    T& operator[](int index);
+    const T& operator[](int index) const;
 
-        VectorClass<T> &operator=(const VectorClass<T> &that);
+    VectorClass<T>& operator=(const VectorClass<T>& that);
 
-        virtual bool operator==(const VectorClass<T> &that) const;
+    virtual bool operator==(const VectorClass<T>& that) const;
 
-        virtual bool Resize(int newsize, const T *array = nullptr);
-        virtual void Clear();
-        virtual int ID(const T *ptr);
-        virtual int ID(const T &ptr);
+    virtual bool Resize(int newsize, const T* array = nullptr);
+    virtual void Clear();
+    virtual int ID(const T* ptr);
+    virtual int ID(const T& ptr);
 
-        int Length() const { return VectorMax; }
+    int Length() const { return VectorMax; }
 
-    protected:
-        T * Vector;
-        int VectorMax;
-        bool IsValid;
-        bool IsAllocated;
-        bool VectorClassPad[2];
+protected:
+    T* Vector;
+    int VectorMax;
+    bool IsValid;
+    bool IsAllocated;
+    bool VectorClassPad[2];
 };
 
 
 template<typename T>
-T &VectorClass<T>::operator[](int index)
+T& VectorClass<T>::operator[](int index)
 {
     TSPP_ASSERT(unsigned(index) < unsigned(VectorMax));
     return Vector[index];
@@ -77,7 +77,7 @@ T &VectorClass<T>::operator[](int index)
 
 
 template<typename T>
-const T &VectorClass<T>::operator[](int index) const
+const T& VectorClass<T>::operator[](int index) const
 {
     TSPP_ASSERT(unsigned(index) < unsigned(VectorMax));
     return Vector[index];
@@ -93,7 +93,7 @@ VectorClass<T>::VectorClass(unsigned size, const T *array) :
 {
     if (size > 0) {
         if (array != nullptr) {
-            Vector = new ((void *)array) T[size];
+            Vector = new ((void*)array) T[size];
         } else {
             Vector = new T[size];
             IsAllocated = true;
@@ -110,7 +110,7 @@ VectorClass<T>::~VectorClass()
 
 
 template<typename T>
-VectorClass<T>::VectorClass(const VectorClass<T> &that) :
+VectorClass<T>::VectorClass(const VectorClass<T>& that) :
     Vector(nullptr),
     VectorMax(0),
     IsAllocated(false)
@@ -120,7 +120,7 @@ VectorClass<T>::VectorClass(const VectorClass<T> &that) :
 
 
 template<typename T>
-VectorClass<T> &VectorClass<T>::operator=(const VectorClass<T> &that)
+VectorClass<T>& VectorClass<T>::operator=(const VectorClass<T>& that)
 {
     if (this != &that) {
         Clear();
@@ -147,7 +147,7 @@ VectorClass<T> &VectorClass<T>::operator=(const VectorClass<T> &that)
 
 
 template<typename T>
-bool VectorClass<T>::operator==(const VectorClass<T> &that) const
+bool VectorClass<T>::operator==(const VectorClass<T>& that) const
 {
     if (VectorMax != that.Length()) {
         return false;
@@ -164,7 +164,7 @@ bool VectorClass<T>::operator==(const VectorClass<T> &that) const
 
 
 template<typename T>
-inline int VectorClass<T>::ID(const T *ptr)
+inline int VectorClass<T>::ID(const T* ptr)
 {
     if (!IsValid) {
         return 0;
@@ -175,7 +175,7 @@ inline int VectorClass<T>::ID(const T *ptr)
 
 
 template<typename T>
-int VectorClass<T>::ID(const T &object)
+int VectorClass<T>::ID(const T& object)
 {
     if (!IsValid) {
         return 0;
@@ -205,16 +205,16 @@ void VectorClass<T>::Clear()
 
 
 template<typename T>
-bool VectorClass<T>::Resize(int newsize, const T *array)
+bool VectorClass<T>::Resize(int newsize, const T* array)
 {
     if (newsize > 0) {
-        T *newptr = nullptr;
+        T* newptr = nullptr;
         IsValid = false;
 
         if (array == nullptr) {
             newptr = new T[newsize];
         } else {
-            newptr = new ((void *)array) T[newsize];
+            newptr = new ((void*)array) T[newsize];
         }
 
         IsValid = true;
@@ -255,64 +255,64 @@ class DynamicVectorClass : public VectorClass<T>
     using VectorClass<T>::VectorMax;
     using VectorClass<T>::IsAllocated;
 
-    public:
-        DynamicVectorClass(unsigned size = 0, const T *array = nullptr);
-        DynamicVectorClass(const NoInitClass &noinit) : VectorClass(noinit) {}
-        DynamicVectorClass(const DynamicVectorClass &that);
-        virtual ~DynamicVectorClass() {}
+public:
+    DynamicVectorClass(unsigned size = 0, const T* array = nullptr);
+    DynamicVectorClass(const NoInitClass& noinit) : VectorClass(noinit) {}
+    DynamicVectorClass(const DynamicVectorClass& that);
+    virtual ~DynamicVectorClass() {}
 
-        T &operator[](int index);
-        const T &operator[](int index) const;
+    T& operator[](int index);
+    const T& operator[](int index) const;
 
-        bool operator==(const DynamicVectorClass &src) { return false; }
-        bool operator!=(const DynamicVectorClass &src) { return true; }
+    bool operator==(const DynamicVectorClass& src) { return false; }
+    bool operator!=(const DynamicVectorClass& src) { return true; }
 
-        DynamicVectorClass &operator=(const DynamicVectorClass &that);
+    DynamicVectorClass& operator=(const DynamicVectorClass& that);
 
-        virtual bool Resize(int newsize, const T *array = nullptr) override;
-        virtual void Clear() override;
-        virtual int ID(const T *ptr) override { return VectorClass::ID(ptr); }
-        virtual int ID(const T &ptr) override;
+    virtual bool Resize(int newsize, const T* array = nullptr) override;
+    virtual void Clear() override;
+    virtual int ID(const T* ptr) override { return VectorClass::ID(ptr); }
+    virtual int ID(const T& ptr) override;
 
-        bool Add(const T &object);
-        bool Add_Head(const T &object);
+    bool Add(const T& object);
+    bool Add_Head(const T& object);
 
-        T * Uninitialized_Add();
-        bool Delete(const T &object);
-        bool Delete(int index);
-        void Delete_All();
+    T* Uninitialized_Add();
+    bool Delete(const T& object);
+    bool Delete(int index);
+    void Delete_All();
 
-        bool Insert(int index, const T &object);
+    bool Insert(int index, const T& object);
 
-        bool Is_Present(const T *ptr) const { return const_cast<DynamicVectorClass *>(this)->ID(ptr) != -1; }
-        bool Is_Present(const T &ptr) const { return const_cast<DynamicVectorClass *>(this)->ID(ptr) != -1; }
+    bool Is_Present(const T* ptr) const { return const_cast<DynamicVectorClass*>(this)->ID(ptr) != -1; }
+    bool Is_Present(const T& ptr) const { return const_cast<DynamicVectorClass*>(this)->ID(ptr) != -1; }
 
-        const T &Fetch_Head() const { return (*this)[0]; }
-        const T &Fetch_Tail() const { return (*this)[ActiveCount-1]; }
+    const T& Fetch_Head() const { return (*this)[0]; }
+    const T& Fetch_Tail() const { return (*this)[ActiveCount - 1]; }
 
-        void Reset_Active() { ActiveCount = 0; }
-        void Set_Active(int count) { ActiveCount = count; }
+    void Reset_Active() { ActiveCount = 0; }
+    void Set_Active(int count) { ActiveCount = count; }
 
-        int Count() const { return ActiveCount; }
-        bool Empty() const { return ActiveCount <= 0; }
+    int Count() const { return ActiveCount; }
+    bool Empty() const { return ActiveCount <= 0; }
 
-        int Set_Growth_Step(int step) { return GrowthStep = step; }
-        int Growth_Step() { return GrowthStep; }
+    int Set_Growth_Step(int step) { return GrowthStep = step; }
+    int Growth_Step() { return GrowthStep; }
 
-        T* begin() { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
-        T* end() { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+    T* begin() { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+    T* end() { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
 
-        const T* begin() const { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
-        const T* end() const { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+    const T* begin() const { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+    const T* end() const { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
 
-    protected:
-        int ActiveCount;
-        int GrowthStep;
+protected:
+    int ActiveCount;
+    int GrowthStep;
 };
 
 
 template<typename T>
-DynamicVectorClass<T>::DynamicVectorClass(unsigned size, const T *array) :
+DynamicVectorClass<T>::DynamicVectorClass(unsigned size, const T* array) :
     VectorClass<T>(size, array),
     GrowthStep(10),
     ActiveCount(0)
@@ -321,7 +321,7 @@ DynamicVectorClass<T>::DynamicVectorClass(unsigned size, const T *array) :
 
 
 template<typename T>
-DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T> &that) :
+DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& that) :
     VectorClass<T>(that),
     GrowthStep(10),
     ActiveCount(0)
@@ -331,17 +331,17 @@ DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T> &that) :
 
 
 template<typename T>
-T &DynamicVectorClass<T>::operator[](int index)
+T& DynamicVectorClass<T>::operator[](int index)
 {
-    //TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    // TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
     return Vector[index];
 }
 
 
 template<typename T>
-const T &DynamicVectorClass<T>::operator[](int index) const
+const T& DynamicVectorClass<T>::operator[](int index) const
 {
-    //TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
+    // TSPP_ASSERT(unsigned(index) < unsigned(ActiveCount));
     return Vector[index];
 }
 
@@ -355,7 +355,7 @@ void DynamicVectorClass<T>::Clear()
 
 
 template<typename T>
-DynamicVectorClass<T> &DynamicVectorClass<T>::operator=(const DynamicVectorClass<T> &that)
+DynamicVectorClass<T>& DynamicVectorClass<T>::operator=(const DynamicVectorClass<T>& that)
 {
     VectorClass<T>::operator=(that);
     ActiveCount = that.ActiveCount;
@@ -366,7 +366,7 @@ DynamicVectorClass<T> &DynamicVectorClass<T>::operator=(const DynamicVectorClass
 
 
 template<typename T>
-bool DynamicVectorClass<T>::Resize(int newsize, const T *array)
+bool DynamicVectorClass<T>::Resize(int newsize, const T* array)
 {
     if (!VectorClass<T>::Resize(newsize, array)) {
         return false;
@@ -381,7 +381,7 @@ bool DynamicVectorClass<T>::Resize(int newsize, const T *array)
 
 
 template<typename T>
-int DynamicVectorClass<T>::ID(const T &object)
+int DynamicVectorClass<T>::ID(const T& object)
 {
     for (int i = 0; i < Count(); ++i) {
         if ((*this)[i] == object) {
@@ -394,7 +394,7 @@ int DynamicVectorClass<T>::ID(const T &object)
 
 
 template<typename T>
-bool DynamicVectorClass<T>::Add(const T &object)
+bool DynamicVectorClass<T>::Add(const T& object)
 {
     if (ActiveCount >= VectorMax) {
         if ((IsAllocated || !VectorMax) && GrowthStep > 0) {
@@ -413,7 +413,7 @@ bool DynamicVectorClass<T>::Add(const T &object)
 
 
 template<typename T>
-bool DynamicVectorClass<T>::Add_Head(const T &object)
+bool DynamicVectorClass<T>::Add_Head(const T& object)
 {
     if (ActiveCount >= VectorMax) {
         if ((IsAllocated || !VectorMax) && GrowthStep > 0) {
@@ -432,14 +432,14 @@ bool DynamicVectorClass<T>::Add_Head(const T &object)
 
     (*this)[0] = object;
     ++ActiveCount;
-//	(*this)[ActiveCount++] = object;
+    //	(*this)[ActiveCount++] = object;
 
     return true;
 }
 
 
 template<typename T>
-bool DynamicVectorClass<T>::Insert(int index, const T &object)
+bool DynamicVectorClass<T>::Insert(int index, const T& object)
 {
     if (index < 0 || index > ActiveCount) {
         return false;
@@ -467,7 +467,7 @@ bool DynamicVectorClass<T>::Insert(int index, const T &object)
 
 
 template<typename T>
-bool DynamicVectorClass<T>::Delete(const T &object)
+bool DynamicVectorClass<T>::Delete(const T& object)
 {
     int id = ID(object);
 
@@ -505,7 +505,7 @@ void DynamicVectorClass<T>::Delete_All()
 
 
 template<typename T>
-T *DynamicVectorClass<T>::Uninitialized_Add()
+T* DynamicVectorClass<T>::Uninitialized_Add()
 {
     if (ActiveCount >= VectorMax) {
         if (GrowthStep > 0) {
@@ -522,7 +522,7 @@ T *DynamicVectorClass<T>::Uninitialized_Add()
 
 
 template<class T>
-int Pointer_Vector_Add(T *ptr, VectorClass<T *> &vec)
+int Pointer_Vector_Add(T* ptr, VectorClass<T*>& vec)
 {
     int id = 0;
     bool foundspot = false;
@@ -546,9 +546,9 @@ int Pointer_Vector_Add(T *ptr, VectorClass<T *> &vec)
 
 
 template<class T>
-bool Pointer_Vector_Remove(const T *ptr, VectorClass<T *> &vec)
+bool Pointer_Vector_Remove(const T* ptr, VectorClass<T*>& vec)
 {
-    int id = vec.ID((T *)ptr);
+    int id = vec.ID((T*)ptr);
     if (id != -1) {
         vec[id] = nullptr;
         return true;

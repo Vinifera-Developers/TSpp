@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-int TextFileClass::Read_Line(char *string, bool &eof)
+int TextFileClass::Read_Line(char* string, bool& eof)
 {
     TSPP_ASSERT(string != nullptr);
 
@@ -44,7 +44,7 @@ int TextFileClass::Read_Line(char *string, bool &eof)
 }
 
 
-int TextFileClass::Write_Line(char *string)
+int TextFileClass::Write_Line(char* string)
 {
     TSPP_ASSERT(string != nullptr);
 
@@ -59,17 +59,17 @@ int TextFileClass::Write_Line(char *string)
 }
 
 
-int TextFileClass::Write_Line_Format(char *format, ...)
+int TextFileClass::Write_Line_Format(char* format, ...)
 {
     TSPP_ASSERT(format != nullptr);
-    
+
     char buffer[MAX_LINE_LENGTH];
 
     va_list args;
     va_start(args, format);
 
     std::vsnprintf(buffer, sizeof(buffer), format, args);
-    
+
     va_end(args);
 
     int len = std::strlen(buffer);

@@ -27,26 +27,26 @@
  ******************************************************************************/
 #pragma once
 
-#include "gadget.h"
 #include "colorscheme.h"
+#include "gadget.h"
 #include "textprint.h"
 
 
 class TextLabelClass : public GadgetClass
 {
-    public:
-        TextLabelClass(const char *txt, int x, int y, ColorSchemeType color, TextPrintType style);
-        ~TextLabelClass();
+public:
+    TextLabelClass(const char* txt, int x, int y, ColorSchemeType color, TextPrintType style);
+    ~TextLabelClass();
 
-        virtual bool Draw_Me(bool forced = false) override;
+    virtual bool Draw_Me(bool forced = false) override;
 
-        virtual void Set_Text(const char *txt);
+    virtual void Set_Text(const char* txt);
 
-    public:
-        unsigned long UserData1;
-        unsigned long UserData2;
-        TextPrintType Style;
-        const char *Text;
-        ColorSchemeType Color;
-        int PixWidth;
+public:
+    unsigned long UserData1;
+    unsigned long UserData2;
+    TextPrintType Style;
+    const char* Text;
+    ColorSchemeType Color;
+    int PixWidth;
 };

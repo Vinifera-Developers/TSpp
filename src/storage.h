@@ -36,23 +36,23 @@ class NoInitClass;
 
 class StorageClass
 {
-    public:
-        StorageClass();
-        StorageClass(const NoInitClass &noinit);
-        ~StorageClass();
+public:
+    StorageClass();
+    StorageClass(const NoInitClass& noinit);
+    ~StorageClass();
 
-        int Get_Total_Value() const;
-        int Get_Total_Amount() const;
-        int Get_Amount(TiberiumType tib) const;
-        int Increase_Amount(int by, TiberiumType tib);
-        int Decrease_Amount(int by, TiberiumType tib);
-        int First_Used_Slot() const;
+    int Get_Total_Value() const;
+    int Get_Total_Amount() const;
+    int Get_Amount(TiberiumType tib) const;
+    int Increase_Amount(int by, TiberiumType tib);
+    int Decrease_Amount(int by, TiberiumType tib);
+    int First_Used_Slot() const;
 
-        StorageClass operator+(StorageClass &that) const;
-        StorageClass operator+=(StorageClass &that);
-        StorageClass operator-(StorageClass &that) const;
-        StorageClass operator-=(StorageClass &that);
+    StorageClass operator+(StorageClass& that) const;
+    StorageClass operator+=(StorageClass& that);
+    StorageClass operator-(StorageClass& that) const;
+    StorageClass operator-=(StorageClass& that);
 
-    private:
-        int Types[TIBERIUM_COUNT];
+private:
+    int Types[TIBERIUM_COUNT];
 };

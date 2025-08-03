@@ -32,8 +32,8 @@
 
 class MultiScore
 {
-    public:
-        static void Presentation();
+public:
+    static void Presentation();
 
-    public:
+public:
 };

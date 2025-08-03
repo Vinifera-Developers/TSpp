@@ -14,7 +14,7 @@
  *                 It can talk to more than one system at a time.
  *                 It can Broadcast packets to all systems, or send a
  *                 packet to one individual system.
- * 
+ *
  *
  *  @license       TS++ is free software: you can redistribute it and/or
  *                 modify it under the terms of the GNU General Public License
@@ -58,88 +58,84 @@ typedef struct {
 
 class IPXGlobalConnClass : public IPXConnClass
 {
-    public:
-        enum GlobalConnectionEnum {
-            /**
-             *  This is the magic number for all Global Connections.  Having the
-             *  same magic number across products lets us ID different products
-             *  on the net.  If you change the fundamental connection protocol,
-             *  you must use a different magic number.
-             */
-            GLOBAL_MAGICNUM = 0x1235,
-            /**
-             *  These are the values used for the ProductID field in the Global
-             *  Message structure.  It also should be the Magic Number used for
-             *  the private connections within that product.
-             *  This list should be continually updated & kept current. Never
-             *  ever ever use an old product ID for your product!
-             */
-            COMMAND_AND_CONQUER = 0xaa01,
-            COMMAND_AND_CONQUER0 = 0xaa00
-        };
-
+public:
+    enum GlobalConnectionEnum {
         /**
-         *  Constructor/destructor.
+         *  This is the magic number for all Global Connections.  Having the
+         *  same magic number across products lets us ID different products
+         *  on the net.  If you change the fundamental connection protocol,
+         *  you must use a different magic number.
          */
-        IPXGlobalConnClass(int numsend, int numrecieve, int maxlen,
-            unsigned short product_id);
-        virtual ~IPXGlobalConnClass () {};
-
+        GLOBAL_MAGICNUM = 0x1235,
         /**
-         *  Send/Receive routines.
+         *  These are the values used for the ProductID field in the Global
+         *  Message structure.  It also should be the Magic Number used for
+         *  the private connections within that product.
+         *  This list should be continually updated & kept current. Never
+         *  ever ever use an old product ID for your product!
          */
-        virtual int Send_Packet(void * buf, int buflen,
-            IPXAddressClass *address, int ack_req);
-        virtual int Receive_Packet(void * buf, int buflen,
-            IPXAddressClass *address);
-        virtual int Get_Packet(void * buf, int *buflen,
-            IPXAddressClass *address, unsigned short *product_id);
+        COMMAND_AND_CONQUER = 0xaa01,
+        COMMAND_AND_CONQUER0 = 0xaa00
+    };
 
-        /**
-         *  This is for telling the connection it can cross a bridge.
-         */
-        void Set_Bridge (NetNumType bridge);
+    /**
+     *  Constructor/destructor.
+     */
+    IPXGlobalConnClass(int numsend, int numrecieve, int maxlen, unsigned short product_id);
+    virtual ~IPXGlobalConnClass() {};
 
-        /**
-         *  The Product ID for this product.
-         */
-        unsigned short ProductID;
+    /**
+     *  Send/Receive routines.
+     */
+    virtual int Send_Packet(void* buf, int buflen, IPXAddressClass* address, int ack_req);
+    virtual int Receive_Packet(void* buf, int buflen, IPXAddressClass* address);
+    virtual int Get_Packet(void* buf, int* buflen, IPXAddressClass* address, unsigned short* product_id);
 
-        /**
-         *  This describes the address of a bridge we have to cross.  This class
-         *  supports crossing only one bridge.  Storing the bridge's network
-         *  number allows us to obtain its local target address only once, then
-         *  re-use it.
-         */
-        NetNumType BridgeNet;
-        NetNodeType BridgeNode;
-        int IsBridge;
+    /**
+     *  This is for telling the connection it can cross a bridge.
+     */
+    void Set_Bridge(NetNumType bridge);
 
-    protected:
-        /**
-         *  This is the overloaded Send routine declared in ConnectionClass, and
-         *  used in SequencedConnClass.  This special version sends to the address
-         *  stored in the extra buffer within the Queue.
-         */
-        virtual int Send(char *buf, int buflen, void *extrabuf, int extralen);
+    /**
+     *  The Product ID for this product.
+     */
+    unsigned short ProductID;
 
-        /**
-         *  This routine is overloaded from SequencedConnClass, because the
-         *  Global Connection needs to ACK its packets differently from the
-         *  other connections.
-         */
-        virtual int Service_Receive_Queue();
+    /**
+     *  This describes the address of a bridge we have to cross.  This class
+     *  supports crossing only one bridge.  Storing the bridge's network
+     *  number allows us to obtain its local target address only once, then
+     *  re-use it.
+     */
+    NetNumType BridgeNet;
+    NetNodeType BridgeNode;
+    int IsBridge;
 
-    private:
-        /**
-         *  Since we can't detect resends by using the PacketID (since we're
-         *  receiving packets from a variety of sources, all using different
-         *  ID's), we'll have to remember the last 'n' packet addresses & id's
-         *  for comparison purposes.
-         *  Note that, if network traffic is heavy, it's still possible for an
-         *  app to receive the same packet twice!
-         */
-        IPXAddressClass LastAddress[4];	        // array of last 4 addresses
-        unsigned long LastPacketID[4];	        // array of last 4 packet ID's
-        int LastRXIndex;						// index of next avail pos
+protected:
+    /**
+     *  This is the overloaded Send routine declared in ConnectionClass, and
+     *  used in SequencedConnClass.  This special version sends to the address
+     *  stored in the extra buffer within the Queue.
+     */
+    virtual int Send(char* buf, int buflen, void* extrabuf, int extralen);
+
+    /**
+     *  This routine is overloaded from SequencedConnClass, because the
+     *  Global Connection needs to ACK its packets differently from the
+     *  other connections.
+     */
+    virtual int Service_Receive_Queue();
+
+private:
+    /**
+     *  Since we can't detect resends by using the PacketID (since we're
+     *  receiving packets from a variety of sources, all using different
+     *  ID's), we'll have to remember the last 'n' packet addresses & id's
+     *  for comparison purposes.
+     *  Note that, if network traffic is heavy, it's still possible for an
+     *  app to receive the same packet twice!
+     */
+    IPXAddressClass LastAddress[4]; // array of last 4 addresses
+    unsigned long LastPacketID[4];  // array of last 4 packet ID's
+    int LastRXIndex;                // index of next avail pos
 };

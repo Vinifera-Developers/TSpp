@@ -42,7 +42,7 @@ enum CategoryType;
  *  @brief   House Interface visible to enemies.
  */
 DECLARE_INTERFACE_IID_(IPublicHouse, IUnknown, "CAACF210-86E3-11D1-B706-00A024DDAFD1")
-{   
+{
     /**
      *  Unique House ID.
      */

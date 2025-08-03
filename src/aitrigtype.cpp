@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-AITriggerType AITriggerTypeClass::From_Name(const char *name)
+AITriggerType AITriggerTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ AITriggerType AITriggerTypeClass::From_Name(const char *name)
 }
 
 
-const char *AITriggerTypeClass::Name_From(AITriggerType type)
+const char* AITriggerTypeClass::Name_From(AITriggerType type)
 {
     return (type != AITRIGGER_NONE && type < AITriggerTypes.Count() ? AITriggerTypes[type]->Name() : "<none>");
 }
 
 
-const AITriggerTypeClass *AITriggerTypeClass::Find_Or_Make(const char *name)
+const AITriggerTypeClass* AITriggerTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const AITriggerTypeClass *AITriggerTypeClass::Find_Or_Make(const char *name)
         }
     }
 
-    AITriggerTypeClass *ptr = new AITriggerTypeClass(name);
+    AITriggerTypeClass* ptr = new AITriggerTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

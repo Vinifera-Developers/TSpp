@@ -37,20 +37,19 @@ class Vector3;
 /**
  *  The available normal shading table types.
  */
-typedef enum VoxelNormalType
-{
-	NORMAL_NONE,
+typedef enum VoxelNormalType {
+    NORMAL_NONE,
 
-	NORMAL_1, // Low
-	NORMAL_2,
-	NORMAL_3,
-	NORMAL_4, // High
+    NORMAL_1, // Low
+    NORMAL_2,
+    NORMAL_3,
+    NORMAL_4, // High
 
-	NORMAL_COUNT
+    NORMAL_COUNT
 };
 
 
-void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3 &voxel, int normal_type);
-void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3 &light, const Vector3 &voxel, float value, int normal_type);
-int Voxel_Find_Best_Normal_Index(const Vector3 &voxel, int normal_type);
+void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3& voxel, int normal_type);
+void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3& light, const Vector3& voxel, float value, int normal_type);
+int Voxel_Find_Best_Normal_Index(const Vector3& voxel, int normal_type);
 void Init_Normal_Lookup();

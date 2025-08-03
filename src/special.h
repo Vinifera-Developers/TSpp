@@ -35,31 +35,31 @@ class CCINIClass;
 
 class SpecialClass
 {
-    public:
-        void Init();
+public:
+    void Init();
 
-        void Read_INI(CCINIClass &ini);
-        void Write_INI(CCINIClass &ini) const;
+    void Read_INI(CCINIClass& ini);
+    void Write_INI(CCINIClass& ini) const;
 
-    public:
-        unsigned IsShadowGrow:1;            // 1
-        unsigned IsSpeedBuild:1;            // 2
-        unsigned IsFromInstall:1;           // 4
-        unsigned IsCaptureTheFlag:1;        // 8
-        unsigned IsInert:1;                 // 16
-        unsigned IsTGrowth:1;               // 32
-        unsigned IsTSpread:1;               // 64
-        unsigned IsMCVDeploy:1;             // 128
+public:
+    unsigned IsShadowGrow : 1;     // 1
+    unsigned IsSpeedBuild : 1;     // 2
+    unsigned IsFromInstall : 1;    // 4
+    unsigned IsCaptureTheFlag : 1; // 8
+    unsigned IsInert : 1;          // 16
+    unsigned IsTGrowth : 1;        // 32
+    unsigned IsTSpread : 1;        // 64
+    unsigned IsMCVDeploy : 1;      // 128
 
-        unsigned IsInitialVeteran:1;        // 1
-        unsigned IsFixedAlliance:1;         // 2
-        unsigned IsHarvesterImmune:1;       // 4
-        unsigned IsFogOfWar:1;              // 8
-        unsigned Bit2_16:1;                 // 16   // could be ShroudRegrows?
-        unsigned IsTExplosive:1;            // 32
-        unsigned IsDestroyableBridges:1;    // 64
-        unsigned IsMeteorites:1;            // 128
+    unsigned IsInitialVeteran : 1;     // 1
+    unsigned IsFixedAlliance : 1;      // 2
+    unsigned IsHarvesterImmune : 1;    // 4
+    unsigned IsFogOfWar : 1;           // 8
+    unsigned Bit2_16 : 1;              // 16   // could be ShroudRegrows?
+    unsigned IsTExplosive : 1;         // 32
+    unsigned IsDestroyableBridges : 1; // 64
+    unsigned IsMeteorites : 1;         // 128
 
-        unsigned IsIonStorms:1;             // 1
-        unsigned IsVisceroids:1;            // 2
+    unsigned IsIonStorms : 1;  // 1
+    unsigned IsVisceroids : 1; // 2
 };

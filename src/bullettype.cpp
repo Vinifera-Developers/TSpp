@@ -30,7 +30,7 @@
 #include "tspp_assert.h"
 
 
-BulletType BulletTypeClass::From_Name(const char *name)
+BulletType BulletTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -50,13 +50,13 @@ BulletType BulletTypeClass::From_Name(const char *name)
 }
 
 
-const char *BulletTypeClass::Name_From(BulletType type)
+const char* BulletTypeClass::Name_From(BulletType type)
 {
     return (type != BULLET_NONE && type < BulletTypes.Count() ? BulletTypes[type]->Name() : "<none>");
 }
 
 
-const BulletTypeClass *BulletTypeClass::Find_Or_Make(const char *name)
+const BulletTypeClass* BulletTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -70,7 +70,7 @@ const BulletTypeClass *BulletTypeClass::Find_Or_Make(const char *name)
         }
     }
 
-    BulletTypeClass *ptr = new BulletTypeClass(name);
+    BulletTypeClass* ptr = new BulletTypeClass(name);
     TSPP_ASSERT(ptr != nullptr);
     return ptr;
 }

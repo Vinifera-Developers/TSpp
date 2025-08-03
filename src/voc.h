@@ -27,10 +27,10 @@
  ******************************************************************************/
 #pragma once
 
+#include "dsaudio.h"
 #include "tibsun_defines.h"
 #include "tibsun_globals.h"
 #include "tspp_audio_intercept.h"
-#include "dsaudio.h"
 
 
 class CCINIClass;
@@ -38,34 +38,31 @@ class CCINIClass;
 
 class VocClass
 {
-    public:
-        VocClass(const char *filename);
-        ~VocClass();
+public:
+    VocClass(const char* filename);
+    ~VocClass();
 
-        void Read_INI(CCINIClass &ini);
+    void Read_INI(CCINIClass& ini);
 
-        bool Can_Play() const;
+    bool Can_Play() const;
 
-        bool Is_Playing() const
-        {
-            return TSPP_Is_Sample_Playing(FilePtr);
-        }
+    bool Is_Playing() const { return TSPP_Is_Sample_Playing(FilePtr); }
 
-        int Play(float volume, int a2);
-        int Play(float volume);
+    int Play(float volume, int a2);
+    int Play(float volume);
 
-        static void Process(CCINIClass &ini);
-        static void Clear();
-        static VocType VocType_From_Voc(VocClass *voc);
-        static VocType From_Name(const char *name);
-        static VocClass *Voc_From_Name(const char *name);
-        static const char *INI_Name_From(VocType type);
+    static void Process(CCINIClass& ini);
+    static void Clear();
+    static VocType VocType_From_Voc(VocClass* voc);
+    static VocType From_Name(const char* name);
+    static VocClass* Voc_From_Name(const char* name);
+    static const char* INI_Name_From(VocType type);
 
-    public:
-        char Filename[256];
-        int Priority;
-        float Volume;
-        void *FilePtr;
+public:
+    char Filename[256];
+    int Priority;
+    float Volume;
+    void* FilePtr;
 };
 
 

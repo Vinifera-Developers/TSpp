@@ -28,10 +28,10 @@
 #pragma once
 
 #include "abstract.h"
-#include "ttimer.h"
 #include "ftimer.h"
 #include "textprint.h"
 #include "tibsun_globals.h"
+#include "ttimer.h"
 
 
 class ObjectClass;
@@ -42,73 +42,79 @@ class TriggerTypeClass;
 class DECLSPEC_UUID("C02D1590-0A2A-11D2-ACA7-006008055BB5")
 TriggerClass : public AbstractClass
 {
-    public:
-        /**
-         *  IPersist
-         */
-        IFACEMETHOD(GetClassID)(CLSID *pClassID);
+public:
+    /**
+     *  IPersist
+     */
+    IFACEMETHOD(GetClassID)(CLSID* pClassID);
 
-        /**
-         *  IPersistStream
-         */
-        IFACEMETHOD(Load)(IStream* pStm);
-        IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
+    /**
+     *  IPersistStream
+     */
+    IFACEMETHOD(Load)(IStream* pStm);
+    IFACEMETHOD(Save)(IStream* pStm, BOOL fClearDirty);
 
-    public:
-        TriggerClass();
-        TriggerClass(TriggerTypeClass* classof);
-        TriggerClass(const NoInitClass& noinit);
-        virtual ~TriggerClass();
+public:
+    TriggerClass();
+    TriggerClass(TriggerTypeClass* classof);
+    TriggerClass(const NoInitClass& noinit);
+    virtual ~TriggerClass();
 
-        /**
-         *  AbstractClass
-         */
-        virtual void Detach(AbstractClass* target, bool all = true) override;
-        virtual RTTIType Fetch_RTTI() const override;
-        virtual int Get_Object_Size(bool firestorm = false) const override;
-        virtual void Object_CRC(CRCEngine& crc) const override;
+    /**
+     *  AbstractClass
+     */
+    virtual void Detach(AbstractClass* target, bool all = true) override;
+    virtual RTTIType Fetch_RTTI() const override;
+    virtual int Get_Object_Size(bool firestorm = false) const override;
+    virtual void Object_CRC(CRCEngine& crc) const override;
 
-        bool Fire(ObjectClass* object = nullptr, Cell cell = CELL_NONE);
-        bool Is_Triggered(TEventType event = TEVENT_ANY, ObjectClass* object = nullptr, bool forced = false, bool isperm = false, TechnoClass* source = nullptr);
+    bool Fire(ObjectClass* object = nullptr, Cell cell = CELL_NONE);
+    bool Is_Triggered(TEventType event = TEVENT_ANY, ObjectClass* object = nullptr, bool forced = false, bool isperm = false, TechnoClass* source = nullptr);
 
-        void Enable();
-        void Disable();
-        void Enable_Control(bool val) { if (val) Enable(); else Disable(); }
-        bool Is_Enabled() const { return IsActive; }
-        __declspec(property(get = Is_Enabled, put = Enable_Control)) bool IsEnabled;
+    void Enable();
+    void Disable();
+    void Enable_Control(bool val)
+    {
+        if (val)
+            Enable();
+        else
+            Disable();
+    }
+    bool Is_Enabled() const { return IsActive; }
+    __declspec(property(get = Is_Enabled, put = Enable_Control)) bool IsEnabled;
 
-        void Draw_It(int, int x, int y, int width, int height, bool selected, TextPrintType flags) const;
-        void Timer_Global_Reset(int global);
-        void Timer_Local_Reset(int local);
-        void Reset_Timer_Events();
+    void Draw_It(int, int x, int y, int width, int height, bool selected, TextPrintType flags) const;
+    void Timer_Global_Reset(int global);
+    void Timer_Local_Reset(int local);
+    void Reset_Timer_Events();
 
-        bool Is_Horizontal_Cross() const;
-        __declspec(property(get = Is_Horizontal_Cross)) bool IsHorizontalCross;
+    bool Is_Horizontal_Cross() const;
+    __declspec(property(get = Is_Horizontal_Cross)) bool IsHorizontalCross;
 
-        bool Is_Vertical_Cross() const;
-        __declspec(property(get = Is_Vertical_Cross)) bool IsVerticalCross;
+    bool Is_Vertical_Cross() const;
+    __declspec(property(get = Is_Vertical_Cross)) bool IsVerticalCross;
 
-        bool Is_Enters_Zone() const;
-        __declspec(property(get = Is_Enters_Zone)) bool IsEntersZone;
+    bool Is_Enters_Zone() const;
+    __declspec(property(get = Is_Enters_Zone)) bool IsEntersZone;
 
-        bool Is_Allow_Win() const;
-        __declspec(property(get = Is_Allow_Win)) bool IsAllowWin;
+    bool Is_Allow_Win() const;
+    __declspec(property(get = Is_Allow_Win)) bool IsAllowWin;
 
-        bool Is_Tied_To_Global(int global) const;
-        __declspec(property(get = Is_Tied_To_Global)) bool IsTiedToGlobal[];
+    bool Is_Tied_To_Global(int global) const;
+    __declspec(property(get = Is_Tied_To_Global)) bool IsTiedToGlobal[];
 
-        void Mark_Event_Sprung(int event);
-        void Mark_Event_Unsprung(int event);
-        bool Is_Event_Sprung(int event);
+    void Mark_Event_Sprung(int event);
+    void Mark_Event_Unsprung(int event);
+    bool Is_Event_Sprung(int event);
 
-        void Mark_To_Die();
-        bool Is_Marked_To_Die() const;
+    void Mark_To_Die();
+    bool Is_Marked_To_Die() const;
 
-    public:
-        TriggerTypeClass* Class;
-        TriggerClass* LinkedTo;
-        bool IsToDie;
-        CDTimerClass<FrameTimerClass> Timer;
-        int TrippedFlags;
-        bool IsActive;
+public:
+    TriggerTypeClass* Class;
+    TriggerClass* LinkedTo;
+    bool IsToDie;
+    CDTimerClass<FrameTimerClass> Timer;
+    int TrippedFlags;
+    bool IsActive;
 };

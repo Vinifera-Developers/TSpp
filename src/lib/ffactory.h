@@ -37,47 +37,47 @@ class RawFileClass;
 
 class FileFactoryClass
 {
-    public:
-        FileFactoryClass() {}
-        virtual ~FileFactoryClass() {}
+public:
+    FileFactoryClass() {}
+    virtual ~FileFactoryClass() {}
 
-        virtual FileClass *Get_File(const char *filename) = 0;
-        virtual void Return_File(FileClass *file) = 0;
-    };
+    virtual FileClass* Get_File(const char* filename) = 0;
+    virtual void Return_File(FileClass* file) = 0;
+};
 
-    class RawFileFactoryClass : public FileFactoryClass
-    {
-    public:
-        RawFileFactoryClass() {}
-        virtual ~RawFileFactoryClass() {}
+class RawFileFactoryClass : public FileFactoryClass
+{
+public:
+    RawFileFactoryClass() {}
+    virtual ~RawFileFactoryClass() {}
 
-        virtual FileClass *Get_File(const char *filename) override;
-        virtual void Return_File(FileClass *file) override;
-    };
+    virtual FileClass* Get_File(const char* filename) override;
+    virtual void Return_File(FileClass* file) override;
+};
 
-    class SimpleFileFactoryClass : public FileFactoryClass
-    {
-    public:
-        SimpleFileFactoryClass();
-        virtual ~SimpleFileFactoryClass() {}
+class SimpleFileFactoryClass : public FileFactoryClass
+{
+public:
+    SimpleFileFactoryClass();
+    virtual ~SimpleFileFactoryClass() {}
 
-        virtual FileClass *Get_File(const char *filename) override;
-        virtual void Return_File(FileClass *file) override;
+    virtual FileClass* Get_File(const char* filename) override;
+    virtual void Return_File(FileClass* file) override;
 
-        void Get_Sub_Directory(char *new_dir);
-        void Set_Sub_Directory(const char *sub_directory);
-        void Prepend_Sub_Directory(const char *sub_directory);
-        void Append_Sub_Directory(const char *sub_directory);
-        bool Get_Strip_Path() { return IsStripPath; }
-        void Set_Strip_Path(bool strip) { IsStripPath = strip; }
+    void Get_Sub_Directory(char* new_dir);
+    void Set_Sub_Directory(const char* sub_directory);
+    void Prepend_Sub_Directory(const char* sub_directory);
+    void Append_Sub_Directory(const char* sub_directory);
+    bool Get_Strip_Path() { return IsStripPath; }
+    void Set_Strip_Path(bool strip) { IsStripPath = strip; }
 
-    private:
-        bool Is_Full_Path(const char *path);
+private:
+    bool Is_Full_Path(const char* path);
 
-    private:
-        char SubDirectory[PATH_MAX];
-        CriticalSectionClass Mutex;
-        bool IsStripPath;
+private:
+    char SubDirectory[PATH_MAX];
+    CriticalSectionClass Mutex;
+    bool IsStripPath;
 };
 
 /**
@@ -85,32 +85,32 @@ class FileFactoryClass
  */
 class FileAutoPtr
 {
-    public:
-        FileAutoPtr();
-        FileAutoPtr(FileFactoryClass *fac, const char *filename);
-        ~FileAutoPtr();
+public:
+    FileAutoPtr();
+    FileAutoPtr(FileFactoryClass* fac, const char* filename);
+    ~FileAutoPtr();
 
-        FileAutoPtr &operator=(const FileAutoPtr &that)
-        {
-            if (this != &that) {
-                Ptr = that.Ptr;
-                Fac = that.Fac;
-            }
-            return *this;
+    FileAutoPtr& operator=(const FileAutoPtr& that)
+    {
+        if (this != &that) {
+            Ptr = that.Ptr;
+            Fac = that.Fac;
         }
-        
-        operator FileClass*() const { return Ptr; }
-        operator bool() const { return Ptr != nullptr; }
+        return *this;
+    }
 
-        FileClass &operator*() { return *Ptr; }
-        FileClass *operator->() { return Ptr; }
+    operator FileClass*() const { return Ptr; }
+    operator bool() const { return Ptr != nullptr; }
 
-        FileClass *Get() { return Ptr; }
+    FileClass& operator*() { return *Ptr; }
+    FileClass* operator->() { return Ptr; }
 
-    private:
-        FileClass *Ptr;
-        FileFactoryClass *Fac;
+    FileClass* Get() { return Ptr; }
+
+private:
+    FileClass* Ptr;
+    FileFactoryClass* Fac;
 };
 
-extern FileFactoryClass *TheFileFactory;
-extern RawFileFactoryClass *TheWritingFileFactory;
+extern FileFactoryClass* TheFileFactory;
+extern RawFileFactoryClass* TheWritingFileFactory;

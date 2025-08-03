@@ -33,18 +33,18 @@
 
 class NewMenuClass
 {
-    public:
-        NewMenuClass();
-        //~NewMenuClass();
+public:
+    NewMenuClass();
+    //~NewMenuClass();
 
-        static void Blit();
-        static NewMenuClass *Get();
+    static void Blit();
+    static NewMenuClass* Get();
 
-        bool Is_Loaded() const { return Mix != nullptr; }
-        const char *Background_Image() const { return BackgroundImage; }
+    bool Is_Loaded() const { return Mix != nullptr; }
+    const char* Background_Image() const { return BackgroundImage; }
 
-    public:
-        MFCD *Mix;
-        int GameMode;
-        const char * BackgroundImage;
+public:
+    MFCD* Mix;
+    int GameMode;
+    const char* BackgroundImage;
 };

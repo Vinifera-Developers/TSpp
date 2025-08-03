@@ -30,12 +30,12 @@
 #include "ttimer.h"
 
 
-extern long &Frame;
+extern long& Frame;
 
 
 class FrameTimerClass
 {
-    public:
-        long operator () (void) const { return Frame; }
-        operator long (void) const { return Frame; }
+public:
+    long operator()(void) const { return Frame; }
+    operator long(void) const { return Frame; }
 };

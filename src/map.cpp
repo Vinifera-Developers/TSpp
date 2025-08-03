@@ -31,7 +31,7 @@
 
 /**
  *  Places a crate at cell location on map.
- * 
+ *
  *  @author: CCHyper
  */
 bool MapClass::Place_Crate(Cell where)
@@ -39,7 +39,7 @@ bool MapClass::Place_Crate(Cell where)
     /**
      *  Check the location is valid.
      */
-    CellClass *cell = &(*this)[where];
+    CellClass* cell = &(*this)[where];
     if (!cell) {
         return false;
     }

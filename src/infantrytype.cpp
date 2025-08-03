@@ -26,12 +26,12 @@
  *
  ******************************************************************************/
 #include "infantrytype.h"
+#include "findmake.h"
 #include "tibsun_globals.h"
 #include "tspp_assert.h"
-#include "findmake.h"
 
 
-InfantryType InfantryTypeClass::From_Name(const char *name)
+InfantryType InfantryTypeClass::From_Name(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
@@ -51,13 +51,13 @@ InfantryType InfantryTypeClass::From_Name(const char *name)
 }
 
 
-const char *InfantryTypeClass::Name_From(InfantryType type)
+const char* InfantryTypeClass::Name_From(InfantryType type)
 {
     return (type != INFANTRY_NONE && type < InfantryTypes.Count() ? InfantryTypes[type]->Name() : "<none>");
 }
 
 
-const InfantryTypeClass *InfantryTypeClass::Find_Or_Make(const char *name)
+const InfantryTypeClass* InfantryTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 
