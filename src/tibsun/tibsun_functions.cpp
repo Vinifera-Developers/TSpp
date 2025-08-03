@@ -378,7 +378,7 @@ void *Load_Alloc_Data(char const *name, int flags)
  */
 void *Load_Alloc_Data(FileClass &file)
 {
-    void *ptr = 0;
+    void *ptr = nullptr;
     long size = file.Size();
 
     ptr = new char [size];
@@ -532,4 +532,34 @@ void List_Copy(Cell const* source, int len, Cell* dest)
 
     // Terminate the list.
     *(dest - 1) = REFRESH_EOL;
+}
+
+
+TechnoClass* As_TechnoClass(AbstractClass* target)
+{
+    if (target != nullptr) {
+        switch (target->RTTI) {
+        case RTTI_INFANTRY:
+        case RTTI_UNIT:
+        case RTTI_BUILDING:
+        case RTTI_AIRCRAFT:
+            return static_cast<TechnoClass*>(target);
+        }
+    }
+    return nullptr;
+}
+
+
+TechnoClass* As_Techno(AbstractClass* target)
+{
+    if (target != nullptr) {
+        switch (target->RTTI) {
+        case RTTI_INFANTRY:
+        case RTTI_UNIT:
+        case RTTI_BUILDING:
+        case RTTI_AIRCRAFT:
+            return static_cast<TechnoClass*>(target);
+        }
+    }
+    return nullptr;
 }

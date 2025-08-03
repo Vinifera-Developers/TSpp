@@ -346,18 +346,18 @@ inline bool CDTimerClass<T>::Is_Active() const
  *  towards zero at the rate specified.
  */
 template<class T>
-class CDRateTimerClass : public CDTimerClass<T>
+class ProgressTimerClass : public CDTimerClass<T>
 {
     using BasicTimerClass<T>::Started;
     using BasicTimerClass<T>::Timer;
 
 public:
-    CDRateTimerClass(long set = 0, long rate = 0);
-    CDRateTimerClass(const NoInitClass& x);
-    ~CDRateTimerClass() {}
+    ProgressTimerClass(long set = 0, long rate = 0);
+    ProgressTimerClass(const NoInitClass& x);
+    ~ProgressTimerClass() {}
 
-    CDRateTimerClass& operator=(const CDRateTimerClass& that);
-    CDRateTimerClass& operator=(long set);
+    ProgressTimerClass& operator=(const ProgressTimerClass& that);
+    ProgressTimerClass& operator=(long set);
 
     long Value() const;
 
@@ -372,21 +372,21 @@ protected:
 
 
 template<class T>
-inline CDRateTimerClass<T>::CDRateTimerClass(const NoInitClass& x) :
+inline ProgressTimerClass<T>::ProgressTimerClass(const NoInitClass& x) :
     CDTimerClass<T>(x)
 {
 }
 
 
 template<class T>
-inline CDRateTimerClass<T>::CDRateTimerClass(long set, long rate) :
+inline ProgressTimerClass<T>::ProgressTimerClass(long set, long rate) :
     CDTimerClass<T>(set), Rate(rate)
 {
 }
 
 
 template<typename T>
-CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(const CDRateTimerClass<T>& that)
+ProgressTimerClass<T>& ProgressTimerClass<T>::operator=(const ProgressTimerClass<T>& that)
 {
     CDTimerClass<T>::operator=(that);
     Rate = that.Rate;
@@ -395,7 +395,7 @@ CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(const CDRateTimerClass<T>& t
 
 
 template<typename T>
-CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(long set)
+ProgressTimerClass<T>& ProgressTimerClass<T>::operator=(long set)
 {
     CDTimerClass<T>::operator=(set);
     Rate = set;
@@ -404,14 +404,14 @@ CDRateTimerClass<T>& CDRateTimerClass<T>::operator=(long set)
 
 
 template<class T>
-inline long CDRateTimerClass<T>::Value() const
+inline long ProgressTimerClass<T>::Value() const
 {
     return Rate - CDTimerClass<T>::Value();
 }
 
 
 template<class T>
-inline float CDRateTimerClass<T>::Percent_Expired() const
+inline float ProgressTimerClass<T>::Percent_Expired() const
 {
     long rate = Rate;
     if (!rate) {

@@ -37,22 +37,25 @@ class PaletteClass;
 class LightConvertClass : public ConvertClass
 {
 public:
-    LightConvertClass(PaletteClass* pal1, PaletteClass* pal2, Surface* surface, int r = -1, int g = -1, int b = -1, bool a8 = false, bool* a9 = nullptr, int a10 = 63);
+    LightConvertClass(PaletteClass* artpalette, PaletteClass* screenpalette, Surface* typicalsurface, int red_tint = -1, int green_tint = -1, int blue_tint = -1, bool blitters_created = false, bool* tint_mask = nullptr, int intensity_levels = 63);
     LightConvertClass(const NoInitClass& noinit);
     virtual ~LightConvertClass();
 
-    virtual void Adjust(int r, int g, int b, bool a4);
+    virtual void Apply_Tint(int red_tint, int green_tint, int blue_tint, bool ion_light);
+
+    void Add_Reference() { ReferenceCount++; }
+    void Remove_Reference() { ReferenceCount--; }
 
 private:
-    PaletteClass* field_190;
-    PaletteClass* field_194;
-    bool* field_198; // mask?
-    int field_19C;   // ref count?
-    int field_1A0;
-    int field_1A4;
-    int field_1A8;
-    int field_1AC;
-    int field_1B0;
-    int field_1B4;
-    bool field_1B8;
+    PaletteClass* ArtPalette;
+    PaletteClass* ScreenPalette;
+    bool* TintMask; // colors with "true" are tinted, colors with "false" are just shaded
+    int ReferenceCount;
+    int NormalRedTint;
+    int NormalGreenTint;
+    int NormalBlueTint;
+    int IonRedTint;
+    int IonGreenTint;
+    int IonBlueTint;
+    bool UseIonLighting;
 };

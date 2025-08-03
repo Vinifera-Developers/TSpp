@@ -41,52 +41,36 @@ class ConvertClass
 {
 public:
     ConvertClass();
-    ConvertClass(PaletteClass* a1, PaletteClass* a2, XSurface* surface, int a4, bool a5 = false);
+    ConvertClass(PaletteClass* artpalette, PaletteClass* screenpalette, XSurface* typicalsurface, int intensity_levels = 1, bool quick_init = false);
     ConvertClass(const NoInitClass& noinit);
     virtual ~ConvertClass();
 
-    void Alloc_Blitters();
-    void Dealloc_Blitters();
+    void Create_Blitters();
+    void Destroy_Blitters();
 
-    Blitter* Select_Blitter(int flags);
-    RLEBlitter* Select_RLE_Blitter(int flags);
+    Blitter* Blitter_From_Flags(int flags);
+    RLEBlitter* RLEBlitter_From_Flags(int flags);
 
     static void Recalc_Color_Remap_Tables(int a1, int a2, int a3, int a4);
 
-    inline unsigned inline_01(unsigned index)
+    unsigned Convert_Pixel(unsigned index) const
     {
-        switch (BytesPerPixel) {
-        default:
-        case 1:
-            return reinterpret_cast<uint8_t*>(field_178)[index];
-        case 2:
-            return reinterpret_cast<uint16_t*>(field_178)[index];
-        };
-    }
-
-    inline unsigned inline_02(unsigned index)
-    {
-        switch (BytesPerPixel) {
-        default:
-        case 1:
-            return reinterpret_cast<uint8_t*>(Palette)[index];
-        case 2:
-            return reinterpret_cast<uint16_t*>(Palette)[index];
-        };
+        if (BBP == 1) return static_cast<unsigned char const*>(Translator)[index];
+        return static_cast<unsigned short const*>(Translator)[index];
     }
 
     static ConvertClass* Create_Drawer(const char* pal_filename, PaletteClass* pal, XSurface* surface);
     static ConvertClass* Create_Drawer(const char* pal_filename);
 
 protected:
-    int BytesPerPixel;
-    Blitter* BlitPlainXlatPtr;
-    Blitter* BlitTransXlatPtr;
-    Blitter* BlitTransDarkenPtr;
-    Blitter* BlitTransZRemapXlatPtr;
-    Blitter* BlitTransLucent75Ptr;
-    Blitter* BlitTransLucent50Ptr;
-    Blitter* BlitTransLucent25Ptr;
+    int BBP;
+    Blitter* PlainBlitter;          // No transparency (rarely used).
+    Blitter* TransBlitter;          // Skips transparent pixels.
+    Blitter* ShadowBlitter;         // Shadowizes the destination pixels.
+    Blitter* RemapBlitter;          // Remaps source pixels then draws with transparency.
+    Blitter* Translucent1Blitter;   // 25% translucent.
+    Blitter* Translucent2Blitter;   // 50% translucent.
+    Blitter* Translucent3Blitter;   // 75% translucent.
     Blitter* BlitPlainXlatZReadPtr;
     Blitter* BlitTransXlatZReadPtr;
     Blitter* BlitTransDarkenZReadPtr;
@@ -173,11 +157,11 @@ protected:
     RLEBlitter* RLEBlitTransLucent25AlphaZReadWritePtr;
 
 public:
-    int field_174;
-    void* field_178;
-    void* Palette;
-    int field_180;
-    int field_184;
-    int field_188;
-    int field_18C;
+    int IntensityLevels;
+    void* IntensityTranslator;
+    void* Translator;
+    int ShadowTable;
+    int RemapTable;
+    int HalfbrightMask;
+    int QuarterbrightMask;
 };

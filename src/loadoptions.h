@@ -81,11 +81,15 @@ public:
     bool Read_Save_Files();
 
 private:
-    OperationModeEnum Mode;
-    char* FileExt;
+    OperationModeEnum Style;
+    char* Extension;
     char* Description;
-    int field_10; // min drive space requirement.
-    int field_14;
-    int field_18;
+    int MinSpaceRequired; // min drive space requirement.
+    void (*Callback)();
+    enum LoadDialogState {
+        STATE_PENDING = -1,    // Awaiting input
+        STATE_OK = IDOK,       // OK pressed (confirmed action)
+        STATE_CLOSE = IDCANCEL // Closed via ESC / system event
+    } State;
     DynamicVectorClass<FileEntryClass*> Files;
 };

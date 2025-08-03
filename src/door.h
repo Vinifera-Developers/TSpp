@@ -57,7 +57,7 @@ public:
 
 public:
     double Rate;
-    CDRateTimerClass<FrameTimerClass> Timer;
+    ProgressTimerClass<FrameTimerClass> Timer;
     bool IsActive;    // in transition?
     bool IsToCountUp; // 0 == closed, 1 == open.
 };

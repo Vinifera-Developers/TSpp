@@ -1014,16 +1014,16 @@ ConvertClass::ConvertClass() {}
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConvertClass::ConvertClass(PaletteClass *, PaletteClass *, XSurface *, int, bool), 0x00463C40);
 ConvertClass::ConvertClass(const NoInitClass& noinit) { *((unsigned long*)this) = (unsigned long)0x006CD268; }
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(ConvertClass::~ConvertClass(), 0x00465970);
-DEFINE_IMPLEMENTATION(void ConvertClass::Alloc_Blitters(), 0x00464100);
-DEFINE_IMPLEMENTATION(void ConvertClass::Dealloc_Blitters(), 0x00465A00);
-DEFINE_IMPLEMENTATION(Blitter* ConvertClass::Select_Blitter(int), 0x00466130);
-DEFINE_IMPLEMENTATION(RLEBlitter* ConvertClass::Select_RLE_Blitter(int), 0x00466410);
+DEFINE_IMPLEMENTATION(void ConvertClass::Create_Blitters(), 0x00464100);
+DEFINE_IMPLEMENTATION(void ConvertClass::Destroy_Blitters(), 0x00465A00);
+DEFINE_IMPLEMENTATION(Blitter* ConvertClass::Blitter_From_Flags(int), 0x00466130);
+DEFINE_IMPLEMENTATION(RLEBlitter* ConvertClass::RLEBlitter_From_Flags(int), 0x00466410);
 DEFINE_IMPLEMENTATION(void ConvertClass::Recalc_Color_Remap_Tables(int, int, int, int), 0x004666C0);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(LightConvertClass::LightConvertClass(PaletteClass *, PaletteClass *, Surface *, int, int, int, bool, bool *, int), ConvertClass, 0x00502A00);
 LightConvertClass::LightConvertClass(const NoInitClass& noinit) { *((unsigned long*)this) = (unsigned long)0x006D3954; }
 LightConvertClass::~LightConvertClass() {}
-DEFINE_IMPLEMENTATION(void LightConvertClass::Adjust(int, int, int, bool), 0x00502B90);
+DEFINE_IMPLEMENTATION(void LightConvertClass::Apply_Tint(int, int, int, bool), 0x00502B90);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE IsometricTileTypeClass::GetClassID(CLSID*), 0x004F86B0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE IsometricTileTypeClass::Load(IStream*), 0x004F85B0);

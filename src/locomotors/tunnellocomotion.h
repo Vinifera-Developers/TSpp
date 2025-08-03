@@ -90,7 +90,7 @@ public:
 
     ProcessStateType CurrentState;
     Coord DestinationCoord;
-    CDRateTimerClass<FrameTimerClass> DigTimer;
+    ProgressTimerClass<FrameTimerClass> DigTimer;
     bool IsMoving;
 
 private:

@@ -119,7 +119,7 @@ public:
 public:
     TileRampType CurrentRamp;
     TileRampType PreviousRamp;
-    CDRateTimerClass<FrameTimerClass> RampTransitionTimer;
+    ProgressTimerClass<FrameTimerClass> RampTransitionTimer;
     Coord DestinationCoord;
     Coord HeadToCoord;
     int SpeedAccum;
