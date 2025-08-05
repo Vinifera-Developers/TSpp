@@ -165,6 +165,7 @@ public:
     virtual int Fetch_Heap_ID() const override;
     virtual void AI() override;
 
+    void Begin_Production() { IsStarted = true; };
     bool Can_Make_Money() const;
     float Tiberium_Fraction() const;
     DiffType Assign_Handicap(DiffType handicap);
