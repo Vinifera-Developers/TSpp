@@ -284,7 +284,7 @@ public:
     // 004C8900
     void AI_Build_Wall(); // 004C8920
     // 004C93F0
-    void Update_Radars();
+    void Recalc_Radar_Availability();
     // 004C96A0
     // 004C96F0
     // 004C9730
@@ -295,7 +295,7 @@ public:
     // 004C9B80
     // 004C9BC0
     // 004C9CB0
-    void AI_Super_Weapon_Handler();
+    void AI_Super_Weapons();
     void Super_Weapon_Ion_Cannon(SuperClass* super);
     void Super_Weapon_Hunter_Seeker(SuperClass* super);
     void Super_Weapon_Multi_Missile(SuperClass* super);
@@ -308,7 +308,7 @@ public:
     bool Is_Player_Control() const;
     bool Is_Human_Player() const;
     // 004CB9C0
-    void Init_Remap_Color();
+    void Initialize_Radar_Color();
     void Super_Weapon_Drop_Pods(SuperClass* super);
 
     bool Is_Player() const { return this == PlayerPtr; }
@@ -529,13 +529,13 @@ public:
     int RatioTeamUnits;
     int BaseDefenseTeamCount;
     DropshipLoadoutClass DropshipLoadouts[DROPSHIP_LOADOUT_MAX];
-    int DropshipLoadoutIndex;
+    int CurrentDropship;
     bool HasCloakGenerator;
     RGBClass RemapColorRGB;
     BaseClass Base;
-    bool field_56C;
-    bool field_56D;
-    Cell field_56E;
+    bool RecalcPower;
+    bool RecalcRadar;
+    Cell EMPDest;
     Cell NukeDest;
     unsigned Allies;
     CDTimerClass<FrameTimerClass> DamageTime;
@@ -548,7 +548,7 @@ public:
     IAIHousePtr AIGeneral;
     RegionClass Regions[MAP_TOTAL_REGIONS];
     char IniName[HOUSE_NAME_MAX + 1];
-    ColorSchemeType RemapColor;
+    ColorSchemeType Scheme;
     int field_10E00;
     DynamicVectorClass<IConnectionPoint*> field_10E04;
     IConnectionPoint* PowerEvents;

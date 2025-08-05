@@ -36,4 +36,4 @@
  */
 void Detach_This_From_All(AbstractClass* target, bool all = true);
 
-void Remove_All_Inactive();
+void Delete_Marked();

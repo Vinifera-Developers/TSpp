@@ -99,7 +99,7 @@ public:
     bool IsEnabled;
 
 public:
-    static bool& UpdateAllowed;
+    static bool& Recalc;
 };
 
 

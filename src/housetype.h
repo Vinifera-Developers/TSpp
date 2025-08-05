@@ -81,7 +81,7 @@ public:
     HousesType HeapID;
     HousesType House;
     SideType Side;
-    ColorSchemeType RemapColor;
+    ColorSchemeType Scheme;
     double FirepowerBias;
     double GroundspeedBias;
     double AirspeedBias;

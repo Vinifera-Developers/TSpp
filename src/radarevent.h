@@ -65,7 +65,7 @@ public:
 
     static void Plot_Point(Point2D* point);
 
-    static void Clear_All();
+    static void Clear();
 
     static bool Save_All(IStream* pStm);
     static bool Load_All(IStream* pStm);

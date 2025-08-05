@@ -184,8 +184,8 @@ public:
     virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass& index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const;
     virtual void entry_32C(Point2D& point, Rect& rect) const;
     virtual void entry_330(Point2D& point, Rect& rect, bool a2) const;
-    virtual void Draw_Pips(Point2D& point1, Point2D& point2, Rect& rect) const;
-    virtual void Draw_Text_Overlay(Point2D& point1, Point2D& point2, Rect& rect) const;
+    virtual void Draw_Pips(const Point2D& point1, const Point2D& point2, const Rect& rect) const;
+    virtual void Draw_Text_Overlay(const Point2D& point1, const Point2D& point2, const Rect& rect) const;
     virtual void Do_Uncloak(bool silent = false);
     virtual void Do_Cloak(bool silent = false);
     virtual int entry_344(int a1) const;
@@ -263,7 +263,7 @@ public:
 public:
     HousesType ActLike;
     CargoClass Cargo;
-    VeterancyClass Veterancy;
+    VeterancyClass Crew;
     double ArmorBias;
     double FirepowerBias;
     CDTimerClass<FrameTimerClass> IdleTimer;

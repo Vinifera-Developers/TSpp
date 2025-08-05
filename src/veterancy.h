@@ -41,14 +41,19 @@ public:
     VeterancyClass(const NoInitClass& noinit);
     ~VeterancyClass();
 
-    void Gain_Experience(int cost, int value);
+    void Made_A_Kill(int cost, int value);
 
     bool Is_Veteran() const;
     bool Is_Rookie() const;
     bool Is_Dumbass() const;
     bool Is_Elite() const;
 
-    double sub_664440(double a1);
+    __declspec(property(get = Is_Dumbass, put = Set_Dumbass)) bool IsDumbass;
+    __declspec(property(get = Is_Rookie, put = Set_Rookie)) bool IsRookie;
+    __declspec(property(get = Is_Veteran, put = Set_Veteran)) bool IsVeteran;
+    __declspec(property(get = Is_Elite, put = Set_Elite)) bool IsElite;
+
+    double Modify(double value);
 
     void Set_Dumbass(bool dumbass);
     void Set_Rookie(bool a1);
@@ -71,5 +76,5 @@ public:
     }
 
 private:
-    double Level;
+    double Experience;
 };

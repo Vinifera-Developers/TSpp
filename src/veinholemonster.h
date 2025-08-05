@@ -73,7 +73,7 @@ public:
     // 00661C10
     // 00661D60
     // 00662170
-    static void Place_Veinhole_Monsters(bool clear);
+    static void Place_Monsters(bool clear);
     // 00662650
     // 006626F0
     // 00662BA0

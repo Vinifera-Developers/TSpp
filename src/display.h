@@ -111,8 +111,9 @@ public:
     // 0047B210
     // 0047BF50
     // 0047BFC0
-    ObjectClass* Following_What() const;
-    void Follow_This(ObjectClass* object);
+    ObjectClass* Object_To_Follow() const;
+    void Set_To_Follow(ObjectClass* object);
+    void Break_Follow_Mode() { Set_To_Follow(nullptr); }
 
     static void Bandbox_Select(ObjectClass* obj);
 

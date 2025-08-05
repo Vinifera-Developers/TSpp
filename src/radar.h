@@ -39,6 +39,22 @@ class DSurface;
 class BSurface;
 
 
+struct RadarTrackingStruct {
+
+    RadarTrackingStruct(TechnoClass* object, int x, int y) : Object(object), X(x), Y(y) {}
+    RadarTrackingStruct() {}
+
+    TechnoClass* Object;
+    int X;
+    int Y;
+
+    bool operator==(const RadarTrackingStruct& that) const { return (X == that.X && Y == that.Y); }
+    bool operator!=(const RadarTrackingStruct& that) const { return (X != that.X && Y != that.Y); }
+
+    int Hash() const { return ((X - 5 * Y) & 0xFF); }
+};
+
+
 class RadarClass : public DisplayClass
 {
 public:
@@ -102,7 +118,7 @@ public:
     // 005BBED0
     bool Radar_Activate(int control);
     // 005BC050
-    // 005BC070
+    bool Is_Radar_Existing();
     void Toggle_Radar(bool tactical_availability);
     bool Is_Player_Names();
     // 005BC170
@@ -111,46 +127,112 @@ public:
     // 005BCC40
     void Total_Radar_Refresh();
 
+    void Clear_Background_Update_Stack() { PixelStack.Clear(); }
+
 public:
-    int RadarX; // Offset of the radar image.
-    int RadarY;
-    int RadarWidth;
-    int RadarHeight;
-    int RadarOffX; // offset for the interactive area relative from the radar image.
-    int RadarOffY;
-    int RadarIWidth;
-    int RadarIHeight;
-    int RadarPWidth;
-    int RadarPHeight;
+
+    /**
+     *  The dimensions and coordinates of the radar map.
+     */
+    int RadX;
+    int RadY;
+    int RadWidth;
+    int RadHeight;
+    int RadOffX;
+    int RadOffY;
+    int RadIWidth;
+    int RadIHeight;
+    int RadPWidth;
+    int RadPHeight;
+
     Rect field_1214;
     DSurface* field_1224;
     BSurface* field_1228;
-    DynamicVectorClass<Cell> field_122C;
-    int field_1244;
-    int field_1248;
-    int field_124C;
-    int field_1250;
-    int field_1254;
-    int field_1258;
-    int field_125C;
-    int field_1260;
+
+    /**
+     *  This is the list of radar pixels that need to be updated. Only a partial
+     *  list is maintained for maximum speed.
+     */
+    DynamicVectorClass<Cell> PixelStack;
+    RGBClass* PixelColors;
+
+    /**
+     *  The width and height is controlled by the actual dimensions
+     *  of the radar map display box (in pixels).
+     */
+    unsigned RadarCellWidth;
+    unsigned RadarCellHeight;
+
+    Rect field_1250;
+    void* field_1260; // hash table
     DynamicVectorClass<Point2D> field_1264;
     int field_127C;
-    DynamicVectorClass<Point2D> field_1280[22];
-    int field_1490;
+
+    DynamicVectorClass<Point2D> Foundation[BSIZE_COUNT];
+
+    /**
+     * This is the zoom factor to use. This value is the number of pixels wide
+     * each cell will occupy on the radar map. Completely zoomed out would be a
+     * value of 1.
+     */
+    float ZoomFactor;
+
+    /**
+     *  The current radar position as the upper left corner cell for the
+     *  radar map display.
+     */
     int field_1494;
-    int field_1498;
+    int RadarX;
     int field_149C;
-    int field_14A0;
-    Rect field_14A4;
-    int field_14B4;
-    int field_14B8;
-    int field_14BC;
-    bool IsRadarAvailable;
+    int RadarY;
+
+    /**
+     *  This is the origin (pixel offsets) for the upper left corner
+     *  of the radar map within the full radar map area of the screen.
+     *  This is biased so that the radar map, when smaller than full
+     *  size will appear centered.
+     */
+    Rect RadarRect;
+
+    typedef enum RadarStateType {
+        RSTATE_INACTIVE,
+        RSTATE_ACTIVE,
+        RSTATE_DEACTIVATING,
+        RSTATE_ACTIVATING,
+        RSTATE_NEXT_MOVIE,
+        RSTATE_MOVIE_DONE,
+    } RadarStateType;
+
+    int RadarState;
+
+    typedef enum RadarModeType {
+        RMODE_UNAVAILABLE,
+        RMODE_TACTICAL,
+        RMODE_PLAYER_NAMES,
+        RMODE_MOVIE,
+        RMODE_4,
+        RMODE_5,
+    } RadarModeType;
+
+    int RadarMode;
+    int SuspendedRadarMode;
+
+    /**
+     *  If the radar map is visible then this flag is true.
+     */
+    bool DoesRadarExist;
+
+    /**
+     *  If the radar map must be completely redrawn, then this flag will be true.
+     *  Typical causes of this would be when the radar first appears, or when the
+     *  screen has been damaged.
+     */
     bool IsToRedraw;
-    bool field_14C2;
+    bool FullRedraw;
+
     Rect field_14C4;
     Rect field_14D4;
+
     int RadarAnimFrame;
     CDTimerClass<SystemTimerClass> RadarAnimTimer;
 

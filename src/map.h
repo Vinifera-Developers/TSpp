@@ -241,10 +241,10 @@ public:
     // 0052B220
     // 0052B460
     // 0052B7E0
-    bool Is_Shrouded(Coord& coord);
-    bool Is_Fogged(Coord& coord);
+    bool Is_Shrouded(const Coord& coord);
+    bool Is_Fogged(const Coord& coord);
     // 0052BB10
-    void Fog_Map();
+    void Initialize_Fog_System();
     // 0052BC40
     // 0052BCA0
     // 0052BD50
@@ -268,36 +268,31 @@ public:
     bool Place_Crate(Cell where);
 
 public:
-    void* field_10;
-    void* field_14;
-    int field_18[MZONE_COUNT];
+    void* field_10; // hash table
+    unsigned short* Zones[MZONE_COUNT];
+    int field_3C;
     DynamicVectorClass<ZoneConnectionClass> ZoneConnections;
     void* field_58;
     int field_5C;
     void* field_60;
-    int field_64;
-    int field_68;
-    int field_6C;
-    int field_70[3];
+    int field_64[3];
+    void* field_70[3]; // hash tables
     DynamicVectorClass<SubzoneTrackingStruct> SubzoneTracking[3];
     DynamicVectorClass<Cell> field_C4;
-    DynamicVectorClass<Cell> field_DC;
-    Rect MapSize;
-    Rect MapLocalSize;
-    int NextX;           // Iterator next x
-    int NextY;           // Iterator next y
-    int NextColumn;      // Iterator remaining row cells
-    CellClass* NextCell; // Iterator next cell
+    DynamicVectorClass<Cell> PendingIceCells;
+    Rect PlayRect;
+    Rect LocalRect;
+    int IterX;           // Iterator next x
+    int IterY;           // Iterator next y
+    int IterColumn;      // Iterator remaining row cells
+    CellClass* IterCell; // Iterator next cell
     int HorizonalLeft;   // Horizontal iterator left boundry
     int HorizonalRight;  // Horizontal iterator right boundry
-    int MapCellX;
-    int MapCellY;
-    int MapCellWidth;
-    int MapCellHeight;
+    Rect MapRect;
     long TotalValue;
-    int field_140;
-    Cell field_144;
-    int field_148;
+    int DeformMask;
+    Cell DeformCell;
+    int DeformFrame;
     DynamicVectorClass<CrackedIceStruct> field_14C;
     VectorClass<CellClass*> Array;
     int XSize;
@@ -305,7 +300,7 @@ public:
     int Size;
     CrateClass Crates[256];
     char Redraws;
-    DynamicVectorClass<Cell> CellTags;
+    DynamicVectorClass<Cell> TaggedCells;
 
 private:
     // copy and assignment not implemented; prevent their use by declaring as private.

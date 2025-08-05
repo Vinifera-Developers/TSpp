@@ -34,8 +34,8 @@ extern int& InstalledMode;
 extern int& EnabledMode;
 
 bool Detect_Addons();
-bool Is_Addon_Available(AddonType addon);
-bool Is_Addon_Enabled(AddonType addon);
+bool Addon_Installed(AddonType addon);
+bool Addon_Enabled(AddonType addon);
 void Enable_Addon(AddonType addon);
 void Disable_Addon(AddonType addon);
 bool Is_Required_Addon(AddonType addon);

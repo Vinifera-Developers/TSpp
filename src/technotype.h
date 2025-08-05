@@ -148,7 +148,7 @@ public:
     int SightRange;
     int Cost;
     int FlightLevel;
-    unsigned TechLevel;
+    unsigned Level;
     TypeList<int> Prerequisite;
     int Risk;
     int Reward;

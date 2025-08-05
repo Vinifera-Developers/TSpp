@@ -31,26 +31,40 @@
 #include "tibsun_defines.h"
 
 
-class CD
+class DiskSwap
 {
 public:
-    CD();
+    virtual bool ForceAvailable(DiskID disk);
+    virtual bool RequestDisk(DiskID disk);
+    virtual bool Swap(DiskID disk);
 
-    virtual bool Is_Available(DiskID disk);
-    virtual bool Insert_Disk(DiskID disk);
-    virtual bool Init_Swap(DiskID disk);
-
-    bool Force_Available(DiskID disk);
-
-    static DiskID Get_Volume_Index();
-    static void Set_Required_CD(DiskID disk);
-
-    static DiskID Get_CD_Index(int cd_drive, int timeout);
+    static DiskID GetDiskID(int cd_drive, int timeout);
 
 public:
-    static bool& IsFilesLocal;
-    static DiskID& RequiredCD;
+    //static DiskID& DesiredDisk;
+};
+
+
+class CD : public DiskSwap
+{
+public:
+    virtual bool ForceAvailable(DiskID disk) override;
+    virtual bool RequestDisk(DiskID disk) override;
+    virtual bool Swap(DiskID disk) override;
+
+    static DiskID GetCurrentDisk();
+
+    static bool ForceAvailable() { return CD().ForceAvailable(RequiredCD); }
+
+    static void SetRequiredDisk(DiskID disk);
+    static DiskID GetRequiredDisk() { return RequiredCD; }
+
+    static void OverrideSwap(bool state) { _OverrideSwap = state; }
+    static bool IsOverrideSwap() { return _OverrideSwap; }
 
 public:
     ThemeType ThemePlaying;
+
+    static DiskID& RequiredCD;
+    static bool& _OverrideSwap;
 };

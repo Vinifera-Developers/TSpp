@@ -71,7 +71,7 @@ public:
 
     // 0058C850
     static TiberiumType To_TiberiumType(OverlayType overlay);
-    static void Place_All_Veins();
+    static void Scenario_Load_Fixup_Veins();
 
     static void Read_INI(CCINIClass& ini);
     static void Write_INI(CCINIClass& ini);

@@ -39,7 +39,7 @@
  */
 void RulesClass::Load_ArtFS_INI()
 {
-    if (!Is_Addon_Available(ADDON_FIRESTORM)) {
+    if (!Addon_Installed(ADDON_FIRESTORM)) {
         return;
     }
 
@@ -57,7 +57,7 @@ void RulesClass::Load_ArtFS_INI()
  */
 void RulesClass::Load_FSRule_INI()
 {
-    if (!Is_Addon_Available(ADDON_FIRESTORM)) {
+    if (!Addon_Installed(ADDON_FIRESTORM)) {
         return;
     }
 

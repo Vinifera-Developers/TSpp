@@ -256,7 +256,7 @@ typedef enum DiskID {
 } DiskID;
 
 typedef enum AddonType {
-    ADDON_NONE,
+    ADDON_BASE_GAME,
     ADDON_FIRESTORM,
 
     ADDON_ANY = -1,

@@ -1173,7 +1173,7 @@ DEFINE_IMPLEMENTATION(int HouseTypeClass::Fetch_Heap_ID() const, 0x004CE5C0);
 DEFINE_IMPLEMENTATION(bool HouseTypeClass::Read_INI(CCINIClass&), 0x004CDF50);
 
 DEFINE_IMPLEMENTATION(void Detach_This_From_All(AbstractClass*, bool), 0x006489B0);
-DEFINE_IMPLEMENTATION(void Remove_All_Inactive(), 0x00648CD0);
+DEFINE_IMPLEMENTATION(void Delete_Marked(), 0x00648CD0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE UnitTypeClass::GetClassID(CLSID*), 0x0065C430);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE UnitTypeClass::Load(IStream*), 0x0065C510);
@@ -1701,7 +1701,7 @@ DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface& surface, bool full_redraw,
 DEFINE_IMPLEMENTATION(void Tactical::Set_Caption_Text(int), 0x00611C00);
 DEFINE_IMPLEMENTATION(void Tactical::Clear_Caption_Text(), 0x00611C50);
 DEFINE_IMPLEMENTATION(void Tactical::Draw_Screen_Text(const char*), 0x00611C60);
-DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Dimensions(const Rect&), 0x00612B40);
+DEFINE_IMPLEMENTATION(void Tactical::Set_View_Dimensions(const Rect&), 0x00612B40);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Center_Position(const Point2D&), 0x00612BE0);
 DEFINE_IMPLEMENTATION(void Tactical::Set_Tactical_Position(const Coord&), 0x00612C50);
 DEFINE_IMPLEMENTATION(Point2D Tactical::Get_Tactical_Center_Position() const, 0x00612D50);
@@ -1896,9 +1896,9 @@ DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Low_Bridge_At(const Cell&), 0x00524
 DEFINE_IMPLEMENTATION(void MapClass::Collapse_Cliff(CellClass&), 0x00526C50);
 DEFINE_IMPLEMENTATION(void MapClass::Clear_SubZones(), 0x00527AC0);
 DEFINE_IMPLEMENTATION(void MapClass::Update_Cell_Subzones(const Cell&), 0x00529AC0);
-DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(Coord&), 0x0052B870);
-DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(Coord&), 0x0052B9B0);
-DEFINE_IMPLEMENTATION(void MapClass::Fog_Map(), 0x0052BBE0);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Shrouded(const Coord&), 0x0052B870);
+DEFINE_IMPLEMENTATION(bool MapClass::Is_Fogged(const Coord&), 0x0052B9B0);
+DEFINE_IMPLEMENTATION(void MapClass::Initialize_Fog_System(), 0x0052BBE0);
 DEFINE_IMPLEMENTATION(void MapClass::Recalc_Ice(), 0x0052C610);
 DEFINE_IMPLEMENTATION(bool MapClass::Destroy_Bridge_At(const Cell&), 0x0052C690);
 DEFINE_IMPLEMENTATION(void MapClass::Place_Firestorm_Wall(const Cell&, HouseClass*, BuildingTypeClass*), 0x0052D7B0);
@@ -2054,8 +2054,8 @@ DEFINE_IMPLEMENTATION(void DisplayClass::All_To_Look(bool, bool), 0x0047AA30);
 DEFINE_IMPLEMENTATION(void DisplayClass::Constrained_Look(Coord&, LEPTON), 0x0047AAF0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Center_On_Selection(), 0x0047ACD0);
 DEFINE_IMPLEMENTATION(void DisplayClass::Update_Cell_Colors(), 0x0047AEF0);
-DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Following_What() const, 0x0047C0C0);
-DEFINE_IMPLEMENTATION(void DisplayClass::Follow_This(ObjectClass*), 0x0047C0E0);
+DEFINE_IMPLEMENTATION(ObjectClass* DisplayClass::Object_To_Follow() const, 0x0047C0C0);
+DEFINE_IMPLEMENTATION(void DisplayClass::Set_To_Follow(ObjectClass*), 0x0047C0E0);
 DisplayClass::TacticalClass::TacticalClass() : GadgetClass(0, 0, 0, 0, LEFTPRESS | LEFTRELEASE | LEFTHELD | LEFTUP | RIGHTPRESS | RIGHTRELEASE | RIGHTHELD, true) { *((unsigned long*)this) = (unsigned long)0x006CDB08; }
 DEFINE_IMPLEMENTATION(bool DisplayClass::TacticalClass::Action(unsigned, KeyNumType&), 0x00477C10);
 
@@ -2113,6 +2113,7 @@ DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell&) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
 DEFINE_IMPLEMENTATION(void RadarClass::Compute_Radar_Image(), 0x005B9B90);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
+DEFINE_IMPLEMENTATION(bool RadarClass::Is_Radar_Existing(), 0x005BC070);
 DEFINE_IMPLEMENTATION(void RadarClass::Toggle_Radar(bool), 0x005BC080);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Player_Names(), 0x005BC150);
 DEFINE_IMPLEMENTATION(void RadarClass::Redraw_Radar(bool), 0x005BC190);
@@ -2320,12 +2321,12 @@ DEFINE_IMPLEMENTATION(void PreviewClass::Create_Preview_Surface(PreviewDataStruc
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(VeterancyClass::VeterancyClass(), 0x00664340);
 VeterancyClass::VeterancyClass(const NoInitClass& noinit) {}
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(VeterancyClass::~VeterancyClass(), 0x00664350);
-DEFINE_IMPLEMENTATION(void VeterancyClass::Gain_Experience(int, int), 0x00664360);
+DEFINE_IMPLEMENTATION(void VeterancyClass::Made_A_Kill(int, int), 0x00664360);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Veteran() const, 0x006643A0);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Rookie() const, 0x006643D0);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Dumbass() const, 0x00664400);
 DEFINE_IMPLEMENTATION(bool VeterancyClass::Is_Elite() const, 0x00664420);
-DEFINE_IMPLEMENTATION(double VeterancyClass::sub_664440(double), 0x00664440);
+DEFINE_IMPLEMENTATION(double VeterancyClass::Modify(double), 0x00664440);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Dumbass(bool), 0x006644B0);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Rookie(bool), 0x006644E0);
 DEFINE_IMPLEMENTATION(void VeterancyClass::Set_Veteran(bool), 0x006644F0);
@@ -2577,7 +2578,7 @@ DEFINE_IMPLEMENTATION(bool HouseClass::AI_Build_Defense(int, DynamicVectorClass<
 // 004C8900
 DEFINE_IMPLEMENTATION(void HouseClass::AI_Build_Wall(), 0x004C8920);
 // 004C93F0
-DEFINE_IMPLEMENTATION(void HouseClass::Update_Radars(), 0x004C9560);
+DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Radar_Availability(), 0x004C9560);
 // 004C96A0
 // 004C96F0
 // 004C9730
@@ -2588,7 +2589,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Threat_Regions(), 0x004C99D0);
 // 004C9B80
 // 004C9BC0
 // 004C9CB0
-DEFINE_IMPLEMENTATION(void HouseClass::AI_Super_Weapon_Handler(), 0x004C9EA0);
+DEFINE_IMPLEMENTATION(void HouseClass::AI_Super_Weapons(), 0x004C9EA0);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Ion_Cannon(SuperClass*), 0x004C9FB0);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Hunter_Seeker(SuperClass*), 0x004CA450);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Multi_Missile(SuperClass*), 0x004CA4A0);
@@ -2602,7 +2603,7 @@ DEFINE_IMPLEMENTATION(void HouseClass::AI_Takeover(), 0x004CA880);
 DEFINE_IMPLEMENTATION(bool HouseClass::Is_Player_Control() const, 0x004CB950);
 DEFINE_IMPLEMENTATION(bool HouseClass::Is_Human_Player() const, 0x004CB990);
 // 004CB9C0
-DEFINE_IMPLEMENTATION(void HouseClass::Init_Remap_Color(), 0x004CBAA0);
+DEFINE_IMPLEMENTATION(void HouseClass::Initialize_Radar_Color(), 0x004CBAA0);
 DEFINE_IMPLEMENTATION(void HouseClass::Super_Weapon_Drop_Pods(SuperClass*), 0x004CBB30);
 // 004CBC30
 // 004CBC40
@@ -2873,7 +2874,7 @@ DEFINE_IMPLEMENTATION(void MissionClass::Set_Mission(MissionType), 0x00558FE0);
 DEFINE_IMPLEMENTATION(void MissionClass::Override_Mission(MissionType, AbstractClass*, AbstractClass*), 0x005594D0);
 DEFINE_IMPLEMENTATION(bool MissionClass::Restore_Mission(), 0x00559510);
 DEFINE_IMPLEMENTATION(bool MissionClass::Has_Suspended_Mission() const, 0x00559840);
-DEFINE_IMPLEMENTATION(const MissionControlClass& MissionClass::Get_Current_Mission_Control() const, 0x00559830);
+DEFINE_IMPLEMENTATION(const MissionControlClass& MissionClass::Current_Mission_Control() const, 0x00559830);
 DEFINE_IMPLEMENTATION(bool MissionClass::Is_Recruitable_Mission(MissionType), 0x00559530);
 DEFINE_IMPLEMENTATION(const char* MissionClass::Mission_Name(MissionType), 0x005597A0);
 DEFINE_IMPLEMENTATION(MissionType MissionClass::Mission_From_Name(const char*), 0x00559760);
@@ -3044,8 +3045,8 @@ DEFINE_IMPLEMENTATION(void TechnoClass::entry_324() const, 0x0043B920);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject&, unsigned int, int, VoxelIndexClass&, Rect&, Point2D&, Matrix3D&, int, int) const, 0x006354E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D&, Rect&) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D&, Rect&, bool) const, 0x0062C450);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(Point2D&, Point2D&, Rect&) const, 0x00637540);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Text_Overlay(Point2D&, Point2D&, Rect&) const, 0x00637D60);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(const Point2D&, const Point2D&, const Rect&) const, 0x00637540);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Text_Overlay(const Point2D&, const Point2D&, const Rect&) const, 0x00637D60);
 DEFINE_IMPLEMENTATION(void TechnoClass::Do_Uncloak(bool), 0x00633B20);
 DEFINE_IMPLEMENTATION(void TechnoClass::Do_Cloak(bool), 0x00633BF0);
 DEFINE_IMPLEMENTATION(int TechnoClass::entry_344(int) const, 0x00639C70);
@@ -4180,7 +4181,7 @@ DEFINE_IMPLEMENTATION(void OverlayClass::Placement_Draw_It(Point2D&, Rect&) cons
 DEFINE_IMPLEMENTATION(bool OverlayClass::Mark(MarkType), 0x0058B5E0);
 // 0058C850
 DEFINE_IMPLEMENTATION(TiberiumType OverlayClass::To_TiberiumType(OverlayType), 0x0058C8B0);
-DEFINE_IMPLEMENTATION(void OverlayClass::Place_All_Veins(), 0x0058C980);
+DEFINE_IMPLEMENTATION(void OverlayClass::Scenario_Load_Fixup_Veins(), 0x0058C980);
 DEFINE_IMPLEMENTATION(void OverlayClass::Read_INI(CCINIClass&), 0x0058BE30);
 DEFINE_IMPLEMENTATION(void OverlayClass::Write_INI(CCINIClass&), 0x0058C280);
 
@@ -4754,7 +4755,7 @@ DEFINE_IMPLEMENTATION(void RadarEventClass::Remove_Finished(), 0x005C2400);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, int, Cell), 0x005C24B0);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Any_Active(), 0x005C2590);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D*), 0x005C1CB0);
-DEFINE_IMPLEMENTATION(void RadarEventClass::Clear_All(), 0x005C2B30);
+DEFINE_IMPLEMENTATION(void RadarEventClass::Clear(), 0x005C2B30);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Save_All(IStream*), 0x005C2830);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Load_All(IStream*), 0x005C28A0);
 
@@ -4924,14 +4925,15 @@ HoverLocomotionClass::HoverLocomotionClass(const NoInitClass& noinit) : Locomoti
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(HoverLocomotionClass::~HoverLocomotionClass(), 0x004CE9D0);
 DEFINE_IMPLEMENTATION(int HoverLocomotionClass::Get_Object_Size(bool) const, 0x004D1AD0);
 
-CD::CD() {}
-DEFINE_IMPLEMENTATION(bool CD::Is_Available(DiskID), 0x0044E7A0);
-DEFINE_IMPLEMENTATION(bool CD::Insert_Disk(DiskID), 0x0044E7C0);
-DEFINE_IMPLEMENTATION(bool CD::Init_Swap(DiskID), 0x0044E970);
-DEFINE_IMPLEMENTATION(bool CD::Force_Available(DiskID), 0x004756B0);
-DEFINE_IMPLEMENTATION(DiskID CD::Get_Volume_Index(), 0x0044E770);
-DEFINE_IMPLEMENTATION(void CD::Set_Required_CD(DiskID), 0x0044E780);
-DEFINE_IMPLEMENTATION(DiskID CD::Get_CD_Index(int, int), 0x004754A0);
+DEFINE_IMPLEMENTATION(bool DiskSwap::ForceAvailable(DiskID), 0x004756B0);
+DEFINE_IMPLEMENTATION(bool DiskSwap::RequestDisk(DiskID), 0x00475840);
+DEFINE_IMPLEMENTATION(bool DiskSwap::Swap(DiskID), 0x00475800);
+DEFINE_IMPLEMENTATION(DiskID DiskSwap::GetDiskID(int, int), 0x004754A0);
+DEFINE_IMPLEMENTATION(bool CD::ForceAvailable(DiskID), 0x0044E7A0);
+DEFINE_IMPLEMENTATION(bool CD::RequestDisk(DiskID), 0x0044E7C0);
+DEFINE_IMPLEMENTATION(bool CD::Swap(DiskID), 0x0044E970);
+DEFINE_IMPLEMENTATION(DiskID CD::GetCurrentDisk(), 0x0044E770);
+DEFINE_IMPLEMENTATION(void CD::SetRequiredDisk(DiskID), 0x0044E780);
 
 DEFINE_IMPLEMENTATION(void VQA_Init_Option(), 0x0066C720);
 DEFINE_IMPLEMENTATION(void VQA_Set_Option(VQAOptionType), 0x0066C760);
@@ -5005,8 +5007,8 @@ DEFINE_IMPLEMENTATION(void TubeClass::Write_Scenario_INI(CCINIClass&), 0x0064B16
 DEFINE_IMPLEMENTATION(void Restate_Mission(ScenarioClass*), 0x005C0230);
 
 DEFINE_IMPLEMENTATION(bool Detect_Addons(), 0x00407050);
-DEFINE_IMPLEMENTATION(bool Is_Addon_Available(AddonType), 0x00407120);
-DEFINE_IMPLEMENTATION(bool Is_Addon_Enabled(AddonType), 0x00407150);
+DEFINE_IMPLEMENTATION(bool Addon_Installed(AddonType), 0x00407120);
+DEFINE_IMPLEMENTATION(bool Addon_Enabled(AddonType), 0x00407150);
 DEFINE_IMPLEMENTATION(void Enable_Addon(AddonType), 0x00407190);
 DEFINE_IMPLEMENTATION(void Disable_Addon(AddonType), 0x004071C0);
 DEFINE_IMPLEMENTATION(bool Is_Required_Addon(AddonType), 0x004071F0);
@@ -5386,7 +5388,7 @@ DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Init_Clear(), 0x00661D00);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Draw_All(), 0x006619D0);
 DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Update_All(), 0x006613C0);
 DEFINE_IMPLEMENTATION(VeinholeMonsterClass* VeinholeMonsterClass::Fetch_At(const Cell&), 0x0000661330);
-DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Place_Veinhole_Monsters(bool), 0x006623F0);
+DEFINE_IMPLEMENTATION(void VeinholeMonsterClass::Place_Monsters(bool), 0x006623F0);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE FoggedObjectClass::GetClassID(CLSID*), 0x0049F6D0);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE FoggedObjectClass::Load(IStream*), 0x0049F420);
@@ -5810,7 +5812,8 @@ int& IonStorm_StartFrame = Make_Global<int>(0x006FF280);
 int& IonStorm_Duration = Make_Global<int>(0x006FF284);
 ThemeType& IonStorm_RestoreTheme = Make_Global<ThemeType>(0x006FF288);
 Cell& RadarEventClass::LastEventCell = Make_Global<Cell>(0x0080A0E8);
-bool& CD::IsFilesLocal = Make_Global<bool>(0x007608B0);
+//bool& DiskSwap::DesiredDisk = Make_Global<bool>(0x00);
+bool& CD::_OverrideSwap = Make_Global<bool>(0x007608B0);
 DiskID& CD::RequiredCD = Make_Global<DiskID>(0x006F5558);
 double& Levitation_Drag = Make_Global<double>(0x007001E8);
 double& Levitation_MaxVelocityWhenHappy = Make_Global<double>(0x007001F0);
@@ -5930,7 +5933,7 @@ const ShapeSet*& ObjectTypeClass::SelectShapes = Make_Global<const ShapeSet*>(0x
 const ShapeSet*& ObjectTypeClass::PipShapes = Make_Global<const ShapeSet*>(0x00808750);
 const ShapeSet*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeSet*>(0x00808754);
 const ShapeSet*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeSet*>(0x00808758);
-bool& LightSourceClass::UpdateAllowed = Make_Global<bool>(0x00700398);
+bool& LightSourceClass::Recalc = Make_Global<bool>(0x00700398);
 const ShapeSet*& BuildingTypeClass::BuildingZShape = Make_Global<const ShapeSet*>(0x0076053C);
 
 

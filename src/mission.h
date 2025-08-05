@@ -89,7 +89,7 @@ public:
 
     void Shorten_Mission_Timer() { Timer = 0; }
 
-    const MissionControlClass& Get_Current_Mission_Control() const;
+    const MissionControlClass& Current_Mission_Control() const;
 
     static bool Is_Recruitable_Mission(MissionType mission);
 
