@@ -102,15 +102,11 @@ public:
     int Value() const { return ID; }
     RTTIType Kind() const { return RTTIType(RTTI); }
 
-    void Invalidate()
-    {
-        RTTI = RTTI_NONE;
-        ID = 0;
-    }
+    void Invalidate() { RTTI = RTTI_NONE; }
     bool Is_Valid() const { return RTTI != RTTI_NONE; }
 
-    int Pack() const;
-    TargetClass Unpack(int target);
+    int Encode() const;
+    xTargetClass Decode(int target);
 
     bool Is_Legal(bool check_active = false);
 

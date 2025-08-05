@@ -109,7 +109,7 @@ public:
         struct {
             AnimType What;
             HousesType Owner;
-            xCoordinate Where;
+            xCoord Where;
         } Anim;
         struct {
             int Value;

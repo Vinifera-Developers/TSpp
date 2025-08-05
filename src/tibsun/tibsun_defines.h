@@ -2717,10 +2717,9 @@ struct xCell {
     short Y; // Y component of location.
 };
 
-struct xCoordinate {
+struct xCoord {
     int X; // X coordinate of the location.
     int Y; // Y coordinate of the location.
-    int Z; // Z coordinate of the location.
 };
 
 class Coord;
@@ -2780,7 +2779,7 @@ public:
 
     Coord() = default;
     Coord(int x, int y, int z = 0) : Point3D(x, y, z) {}
-    Coord(const xCoordinate& x) : Coord(x.X, x.Y, x.Z) {}
+    Coord(const xCoord& x) : Coord(x.X, x.Y, 0) {}
     explicit Coord(const Cell& cell, int z = 0);
 
     bool operator==(const Coord& that) const { return X == that.X && Y == that.Y && Z == that.Z; }

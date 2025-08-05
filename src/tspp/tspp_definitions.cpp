@@ -3538,8 +3538,8 @@ DEFINE_IMPLEMENTATION(UnitClass* xTargetClass::As_Unit() const, 0x00620EE0);
 DEFINE_IMPLEMENTATION(BuildingClass* xTargetClass::As_Building() const, 0x00620FC0);
 DEFINE_IMPLEMENTATION(AircraftClass* xTargetClass::As_Aircraft() const, 0x006210A0);
 DEFINE_IMPLEMENTATION(CellClass* xTargetClass::As_Cell() const, 0x00621180);
-DEFINE_IMPLEMENTATION(int xTargetClass::Pack() const, 0x0050A060);
-DEFINE_IMPLEMENTATION(TargetClass xTargetClass::Unpack(int), 0x0050A080);
+DEFINE_IMPLEMENTATION(int xTargetClass::Encode() const, 0x0050A060);
+DEFINE_IMPLEMENTATION(xTargetClass xTargetClass::Decode(int), 0x0050A080);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE TEventClass::GetClassID(CLSID*), 0x00642D60);
 DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE TEventClass::Load(IStream*), 0x00642DA0);
