@@ -59,6 +59,17 @@ public:
     int To_Integer();
     void From_Integer(int value);
 
+    VeterancyRankType Get_Rank() const
+    {
+        if (Is_Elite()) {
+            return RANK_ELITE;
+        }
+        if (Is_Veteran()) {
+            return RANK_VETERAN;
+        }
+        return RANK_ROOKIE;
+    }
+
 private:
     double Level;
 };
