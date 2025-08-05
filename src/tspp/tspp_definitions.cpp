@@ -5495,9 +5495,27 @@ GameTimeClass& Game_Time = Make_Global<GameTimeClass>(0x007B340C);
 /**
  *  Owner draw
  */
-DEFINE_IMPLEMENTATION(void OwnerDraw::Init_Glow_Colors(), 0x0059CBC0);
-DEFINE_IMPLEMENTATION(void OwnerDraw::Load_Graphics(), 0x0059CC40);
-DEFINE_IMPLEMENTATION(void OwnerDraw::Init_UI_Color_Stuff_58F060(), 0x0058F060);
+DEFINE_IMPLEMENTATION(void OwnerDraw::Init_Masks(), 0x0059CBC0);
+DEFINE_IMPLEMENTATION(void OwnerDraw::Cache_Images(), 0x0059CC40);
+DEFINE_IMPLEMENTATION(void OwnerDraw::Initialize(), 0x0058F060);
+
+int& BorderThickness = Make_Global<int>(0x00809218);
+int& ColorSteps = Make_Global<int>(0x00809250);
+int& ScrollBarAdj = Make_Global<int>(0x00808B6C);
+COLORREF& TextColor1 = Make_Global<COLORREF>(0x00808B7C);
+COLORREF& TextColor2 = Make_Global<COLORREF>(0x00808B68);
+COLORREF& CommonColor1 = Make_Global<COLORREF>(0x00809248);
+COLORREF& CommonColor2 = Make_Global<COLORREF>(0x00809244);
+COLORREF& ListBoxColor = Make_Global<COLORREF>(0x00809230);
+COLORREF& TooltipBoxColor = Make_Global<COLORREF>(0x008093A4);
+COLORREF& ColorUnused1 = Make_Global<COLORREF>(0x00808E30);
+
+HFONT& FontPtr1 = Make_Global<HFONT>(0x00808D20);
+HFONT& FontPtr2 = Make_Global<HFONT>(0x00809240);
+char const*& FontName1 = Make_Global<char const*>(0x007071D0);
+char const*& FontName2 = Make_Global<char const*>(0x007071D4);
+int& FontSize1 = Make_Global<int>(0x007071D8);
+int& FontSize2 = Make_Global<int>(0x007071DC);
 
 
 /**
@@ -5739,7 +5757,6 @@ SpecialDialogType& SpecialDialog = Make_Global<SpecialDialogType>(0x007E4940);
 int& BuildLevel = Make_Global<int>(0x006FB628);
 SpriteCollectionClass& SpriteCollection = Make_Global<SpriteCollectionClass>(0x00809360);
 StaticBufferClass& StaticBuffer = Make_Global<StaticBufferClass>(0x0074C728);
-bool& OwnerDraw::UIInitialized = Make_Global<bool>(0x008093C4);
 bool& PlayerWins = Make_Global<bool>(0x007E2281);
 bool& PlayerLoses = Make_Global<bool>(0x007E4870);
 bool& PlayerRestarts = Make_Global<bool>(0x007B3510);
