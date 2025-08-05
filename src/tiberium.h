@@ -73,30 +73,31 @@ public:
      */
     virtual bool Read_INI(CCINIClass& ini) override;
 
-    void Spread();
-    // 006458F0
-    // 00645A30
-    // 00645BA0
-    // 00645C30
-    void Add_Spread_Cell(Cell& cell);
+    static bool Process(CCINIClass& ini);
 
-    // 00646080
-    // 006463D0
-    // 00646510
-    // 00646680
-    void Add_Growth_Cell(Cell& cell);
+    static void Tiberium_Spread();
+    static void Initialize_Tiberium_Spread_System();
+    static void Deinitialize_Tiberium_Spread_System();
 
-    static void Process(CCINIClass& ini);
+    void Spread_AI();
+    void Initialize_Spread();
+    void Recalc_Spread();
+    void Deinitialize_Spread();
+    void Queue_Spread_To(const Cell& cell);
 
-    static void Spread_AI();
-    static void Spread_Init_Clear();
+    static void Clear_Tiberium_Spread_State(const Cell& cell);
 
-    static void Growth_Init_Clear();
-    static void Growth_AI();
-    static void Grow();
+    static void Tiberium_Growth();
+    static void Initialize_Tiberium_Growth_System();
+    static void Deinitialize_Tiberium_Growth_System();
 
-    static void Init_Cells();
-    static void Init();
+    void Growth_AI();
+    void Initialize_Growth();
+    void Recalc_Growth();
+    void Deinitialize_Growth();
+    void Queue_Growth_To(const Cell& cell);
+
+    static void Post_Load_Game();
 
     static TiberiumType From_Name(const char* name);
     static const char* Name_From(TiberiumType type);

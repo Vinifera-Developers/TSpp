@@ -4198,25 +4198,25 @@ DEFINE_IMPLEMENTATION(int TiberiumClass::Get_Object_Size(bool) const, 0x00646850
 DEFINE_IMPLEMENTATION(void TiberiumClass::Object_CRC(CRCEngine&) const, 0x00644F60);
 DEFINE_IMPLEMENTATION(int TiberiumClass::Fetch_Heap_ID() const, 0x00646870);
 DEFINE_IMPLEMENTATION(bool TiberiumClass::Read_INI(CCINIClass&), 0x00644BF0);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Process(CCINIClass&), 0x00644EB0);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_AI(), 0x00645330);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_Init_Clear(), 0x00645510);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Spread(), 0x006455C0);
-// 006458F0
-// 00645A30
-// 00645BA0
-// 00645C30
-DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Spread_Cell(Cell&), 0x00645C70);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_AI(), 0x00645DC0);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_Init_Clear(), 0x00645E80);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Grow(), 0x00645FD0);
-// 00646080
-// 006463D0
-// 00646510
-// 00646680
-DEFINE_IMPLEMENTATION(void TiberiumClass::Add_Growth_Cell(Cell&), 0x00646710);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Init_Cells(), 0x006453C0);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Init(), 0x00646840);
+DEFINE_IMPLEMENTATION(bool TiberiumClass::Process(CCINIClass& ini), 0x00644EB0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Tiberium_Spread(), 0x00645330);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Tiberium_Spread_System(), 0x006453C0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Tiberium_Spread_System(), 0x00645510);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_AI(), 0x006455C0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Spread(), 0x006458F0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Recalc_Spread(), 0x00645A30);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Spread(), 0x00645BA0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Spread_To(const Cell& cell), 0x00645C70);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Clear_Tiberium_Spread_State(const Cell& cell), 0x00645C30);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Tiberium_Growth(), 0x00645DC0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Tiberium_Growth_System(), 0x00645E80);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Tiberium_Growth_System(), 0x00645FD0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_AI(), 0x00646080);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Growth(), 0x006463D0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Recalc_Growth(), 0x00646510);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Growth(), 0x00646680);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Growth_To(const Cell& cell), 0x00646710);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Post_Load_Game(), 0x00646840);
 
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE BulletClass::AddRef(), 0x004471B0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE BulletClass::Release(), 0x004471D0);
