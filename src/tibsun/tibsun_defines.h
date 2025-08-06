@@ -3076,41 +3076,6 @@ private:
  *  Wrappers for the swizzle manager for providing debug information.
  */
 #define SWIZZLE_RESET(func) SwizzleManager.SwizzleManagerClass::Reset();
-#ifndef NDEBUG
-#define SWIZZLE_REQUEST_POINTER_REMAP(pointer) \
-            { \
-                SwizzleManagerClass::DebugFile = __FILE__; \
-                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
-                SwizzleManagerClass::DebugLine = __LINE__; \
-                SwizzleManager.SwizzleManagerClass::Swizzle((void **)&pointer); \
-            }
-
-#define SWIZZLE_REQUEST_POINTER_REMAP_LIST(var, vector) \
-            { \
-                SwizzleManagerClass::DebugFile = __FILE__; \
-                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
-                SwizzleManagerClass::DebugLine = __LINE__; \
-                for (int i = 0; i < vector.Count(); ++i) { \
-                    SwizzleManager.SwizzleManagerClass::Swizzle((void **)&vector[i]); \
-                } \
-            }
-
-#define SWIZZLE_FETCH_POINTER_ID(pointer, id) \
-            { \
-                SwizzleManagerClass::DebugFile = __FILE__; \
-                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
-                SwizzleManagerClass::DebugLine = __LINE__; \
-                SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id); \
-            }
-
-#define SWIZZLE_REGISTER_POINTER(id, pointer) \
-            { \
-                SwizzleManagerClass::DebugFile = __FILE__; \
-                SwizzleManagerClass::DebugFunction = __FUNCTION__; \
-                SwizzleManagerClass::DebugLine = __LINE__; \
-                SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer); \
-            }
-#else
 #define SWIZZLE_REQUEST_POINTER_REMAP(pointer) SwizzleManager.SwizzleManagerClass::Swizzle((void **)&pointer);
 #define SWIZZLE_REQUEST_POINTER_REMAP_LIST(var, vector) \
             { \
@@ -3120,4 +3085,3 @@ private:
             }
 #define SWIZZLE_FETCH_POINTER_ID(pointer, id) SwizzleManager.SwizzleManagerClass::Fetch_Swizzle_ID((void *)pointer, id);
 #define SWIZZLE_REGISTER_POINTER(id, pointer) SwizzleManager.SwizzleManagerClass::Here_I_Am(id, (void *)pointer);
-#endif

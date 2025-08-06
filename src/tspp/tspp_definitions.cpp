@@ -6167,15 +6167,6 @@ int& GameFSSKU = Make_Global<int>(0x00866E6C);
 FrameSyncStruct (&FrameSyncSettings)[6] = Make_Global<FrameSyncStruct[6]>(0x00707F88);
 
 
-#ifndef NDEBUG
-/**
- *  Swizzle Manager debug globals.
- */
-char* SwizzleManagerClass::DebugFile;
-char* SwizzleManagerClass::DebugFunction;
-int SwizzleManagerClass::DebugLine;
-#endif
-
 
 /**
  *
