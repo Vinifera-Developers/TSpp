@@ -5839,6 +5839,7 @@ HousesType& Whom = Make_Global<HousesType>(0x007E4838);
 const ShapeSet*& Cell_ShroudShape = Make_Global<const ShapeSet*>(0x00760CB4);
 const ShapeSet*& Cell_FogShape = Make_Global<const ShapeSet*>(0x00760CB0);
 const ShapeSet*& Cell_FixupFogShape = Make_Global<const ShapeSet*>(0x00760C88);
+CellClass& BlubCell = Make_Global<CellClass>(0x00805B48);
 MouseClass::MouseStruct* MouseClass::MouseControl = Make_Pointer<MouseStruct>(0x00703070);
 ShapeSet const*& MouseClass::MouseShapes = Make_Global<const ShapeSet*>(0x00806CB4);
 CDTimerClass<SystemTimerClass>& MouseClass::Timer = Make_Global<CDTimerClass<SystemTimerClass>>(0x00806CC8);

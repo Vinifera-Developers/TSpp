@@ -340,6 +340,7 @@ extern HousesType& Whom;
 extern const ShapeSet*& Cell_ShroudShape;
 extern const ShapeSet*& Cell_FogShape;
 extern const ShapeSet*& Cell_FixupFogShape;
+extern CellClass& BlubCell;
 
 extern bool& _Select_Game_fade;
 
