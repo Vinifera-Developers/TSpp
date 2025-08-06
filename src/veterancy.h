@@ -48,17 +48,17 @@ public:
     bool Is_Dumbass() const;
     bool Is_Elite() const;
 
-    __declspec(property(get = Is_Dumbass, put = Set_Dumbass)) bool IsDumbass;
-    __declspec(property(get = Is_Rookie, put = Set_Rookie)) bool IsRookie;
-    __declspec(property(get = Is_Veteran, put = Set_Veteran)) bool IsVeteran;
-    __declspec(property(get = Is_Elite, put = Set_Elite)) bool IsElite;
+    __declspec(property(get = Is_Dumbass)) bool IsDumbass;
+    __declspec(property(get = Is_Rookie)) bool IsRookie;
+    __declspec(property(get = Is_Veteran)) bool IsVeteran;
+    __declspec(property(get = Is_Elite)) bool IsElite;
 
     double Modify(double value);
 
-    void Set_Dumbass(bool dumbass);
-    void Set_Rookie(bool a1);
-    void Set_Veteran(bool force);
-    void Set_Elite(bool force);
+    void Set_Dumbass(bool force = true);
+    void Set_Rookie(bool force = true);
+    void Set_Veteran(bool force = true);
+    void Set_Elite(bool force = true);
 
     // Used for Read/Write INI.
     int To_Integer();
@@ -66,10 +66,10 @@ public:
 
     VeterancyRankType Get_Rank() const
     {
-        if (Is_Elite()) {
+        if (IsElite) {
             return RANK_ELITE;
         }
-        if (Is_Veteran()) {
+        if (IsVeteran) {
             return RANK_VETERAN;
         }
         return RANK_ROOKIE;
