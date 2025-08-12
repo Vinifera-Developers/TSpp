@@ -232,7 +232,7 @@ public:
     void Assign_Archive_Target(AbstractClass* target);
     // 006391B0
     float Target_Threat(TechnoClass* target, Coord& firing_coord) const;
-    // 00639BB0
+    bool Has_Ability(AbilityType ability) const;
     // 00639C60
     static void Update_Mission_Targets(AbstractClass* target);
     // 00639F80

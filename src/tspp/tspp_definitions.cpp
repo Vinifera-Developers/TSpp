@@ -3092,7 +3092,7 @@ DEFINE_IMPLEMENTATION(Coord TechnoClass::func_638AF0() const, 0x00638AF0);
 DEFINE_IMPLEMENTATION(void TechnoClass::Assign_Archive_Target(AbstractClass*), 0x00639130);
 // 006391B0);
 DEFINE_IMPLEMENTATION(float TechnoClass::Target_Threat(TechnoClass*, Coord&) const, 0x00639810);
-// 00639BB0);
+DEFINE_IMPLEMENTATION(bool TechnoClass::Has_Ability(AbilityType) const, 0x00639BB0);
 // 00639C30);
 // 00639C60);
 DEFINE_IMPLEMENTATION(void TechnoClass::Update_Mission_Targets(AbstractClass*), 0x00639EF0);
