@@ -31,6 +31,7 @@
 #include "array.h"
 #include "tspp_assert.h"
 #include <cmath>
+#include <cfloat>
 
 
 /**
