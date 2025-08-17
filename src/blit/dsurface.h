@@ -100,8 +100,6 @@ public:
         *blue = (unsigned char)(pixel >> BlueLeft << BlueRight);
     }
 
-    static int Get_RGB_Pixel_Format() { return RGBPixelFormat; }
-
     static unsigned Get_Red_Left() { return RedLeft; }
     static unsigned Get_Red_Right() { return RedRight; }
 
@@ -126,12 +124,10 @@ public:
     static unsigned& BlueLeft;
     static unsigned& BlueRight;
 
-    static int& RGBPixelFormat;
-
     static bool& AllowStretchBlits;
-    static bool& AllowHardwareBlitFills;
+    static bool& AllowHWBlitFills;
 
-    static unsigned short& ColorGrey;
-    static unsigned short& ColorMidGrey;
-    static unsigned short& ColorDarkGrey;
+    static unsigned short& HalfbrightMask;
+    static unsigned short& QuarterbrightMask;
+    static unsigned short& EighthbrightMask;
 };

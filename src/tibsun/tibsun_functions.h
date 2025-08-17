@@ -56,8 +56,9 @@ bool Allocate_Surfaces(Rect* common_rect, Rect* composite_rect, Rect* tile_rect,
 void Free_Heaps();
 void Wait_Blit();
 void Set_DD_Palette(void* rpalette);
-LRESULT CALLBACK Main_Window_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
-bool func_6A83E0(Rect& torect, const Rect& toarea, Rect& fromrect, const Rect& fromarea);
+int Get_Video_Hardware_Capabilities();
+LRESULT CALLBACK Windows_Procedure(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+bool Blit_Clip(Rect& torect, const Rect& toarea, Rect& fromrect, const Rect& fromarea);
 void Unselect_All();
 const TechnoTypeClass* Fetch_Techno_Type(RTTIType type, int id);
 void Unselect_All_Except(ObjectClass* object);

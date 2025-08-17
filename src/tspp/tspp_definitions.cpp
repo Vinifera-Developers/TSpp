@@ -5542,8 +5542,8 @@ DEFINE_IMPLEMENTATION(bool Allocate_Surfaces(Rect*, Rect*, Rect*, Rect*, bool), 
 DEFINE_IMPLEMENTATION(void Free_Heaps(), 0x004E7730);
 DEFINE_IMPLEMENTATION(void Wait_Blit(), 0x00473330);
 DEFINE_IMPLEMENTATION(void Set_DD_Palette(void*), 0x00473280);
-DEFINE_IMPLEMENTATION(LRESULT CALLBACK Main_Window_Procedure(HWND, UINT, WPARAM, LPARAM), 0x00685BC0);
-DEFINE_IMPLEMENTATION(bool func_6A83E0(Rect&, const Rect&, Rect&, const Rect&), 0x006A83E0);
+DEFINE_IMPLEMENTATION(LRESULT CALLBACK Windows_Procedure(HWND, UINT, WPARAM, LPARAM), 0x00685BC0);
+DEFINE_IMPLEMENTATION(bool Blit_Clip(Rect&, const Rect&, Rect&, const Rect&), 0x006A83E0);
 DEFINE_IMPLEMENTATION(void Unselect_All(), 0x00463180);
 DEFINE_IMPLEMENTATION(const TechnoTypeClass* Fetch_Techno_Type(RTTIType, int), 0x004631B0);
 DEFINE_IMPLEMENTATION(bool Prep_For_Side(SideType), 0x004E7EB0);
@@ -5775,6 +5775,11 @@ unsigned& GameVersion = Make_Global<unsigned>(0x0070BC58);
 float& VoxelLightAngle = Make_Global<float>(0x0074C734);
 Vector3& VoxelLightSource = Make_Global<Vector3>(0x0074C738);
 Vector3& VoxelShadowLightSource = Make_Global<Vector3>(0x0074C6E8);
+int& PrimaryColorMode = Make_Global<int>(0x006F9808);
+bool& OverlappedVideoBlits = Make_Global<bool>(0x006F980D);
+int& VideoWidth = Make_Global<int>(0x007A1EC0);
+int& VideoHeight = Make_Global<int>(0x007A1EC4);
+int& BitsPerPixel = Make_Global<int>(0x007A1EC8);
 
 
 /**
@@ -5786,12 +5791,11 @@ unsigned& DSurface::GreenLeft = Make_Global<unsigned>(0x007A2C98);
 unsigned& DSurface::GreenRight = Make_Global<unsigned>(0x007A2C9C);
 unsigned& DSurface::BlueLeft = Make_Global<unsigned>(0x007A2C90);
 unsigned& DSurface::BlueRight = Make_Global<unsigned>(0x007A2C94);
-unsigned short& DSurface::ColorGrey = Make_Global<unsigned short>(0x007A2CA0);
-unsigned short& DSurface::ColorMidGrey = Make_Global<unsigned short>(0x007A2CA2);
-unsigned short& DSurface::ColorDarkGrey = Make_Global<unsigned short>(0x007A2CA4);
-int& DSurface::RGBPixelFormat = Make_Global<int>(0x006F9808);
+unsigned short& DSurface::HalfbrightMask = Make_Global<unsigned short>(0x007A2CA0);
+unsigned short& DSurface::QuarterbrightMask = Make_Global<unsigned short>(0x007A2CA2);
+unsigned short& DSurface::EighthbrightMask = Make_Global<unsigned short>(0x007A2CA4);
 bool& DSurface::AllowStretchBlits = Make_Global<bool>(0x007A2CA6);
-bool& DSurface::AllowHardwareBlitFills = Make_Global<bool>(0x006F980C);
+bool& DSurface::AllowHWBlitFills = Make_Global<bool>(0x006F980C);
 GadgetClass*& GScreenClass::Buttons = Make_Global<GadgetClass*>(0x007E4ABC);
 GadgetClass*& GadgetClass::StuckOn = Make_Global<GadgetClass*>(0x007B3388);
 GadgetClass*& GadgetClass::LastList = Make_Global<GadgetClass*>(0x007B338C);

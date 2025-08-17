@@ -341,6 +341,11 @@ extern const ShapeSet*& Cell_ShroudShape;
 extern const ShapeSet*& Cell_FogShape;
 extern const ShapeSet*& Cell_FixupFogShape;
 extern CellClass& BlubCell;
+extern int& PrimaryColorMode;
+extern bool& OverlappedVideoBlits;
+extern int& VideoWidth;
+extern int& VideoHeight;
+extern int& BitsPerPixel;
 
 extern bool& _Select_Game_fade;
 
