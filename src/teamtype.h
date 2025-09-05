@@ -28,6 +28,7 @@
 #pragma once
 
 #include "abstracttype.h"
+#include "ccini.h"
 #include "tibsun_defines.h"
 #include "typelist.h"
 
@@ -88,7 +89,7 @@ public:
 
     static TeamType From_Name(const char* name);
     static const char* Name_From(TeamType type);
-    static const TeamTypeClass* Find_Or_Make(const char* name);
+    static TeamTypeClass* Find_Or_Make(const char* name);
 
 public:
     TeamType HeapID;
@@ -119,7 +120,7 @@ public:
     int Number;
     ScriptTypeClass* Script;
     TaskForceClass* TaskForce;
-    int field_A4;
+    INIScopeType Scope;
     bool AvoidThreats;
     bool IsIonImmune;
     bool TransportsReturnOnUnload;

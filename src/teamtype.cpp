@@ -57,7 +57,7 @@ const char* TeamTypeClass::Name_From(TeamType type)
 }
 
 
-const TeamTypeClass* TeamTypeClass::Find_Or_Make(const char* name)
+TeamTypeClass* TeamTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

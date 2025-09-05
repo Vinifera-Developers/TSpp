@@ -52,6 +52,11 @@ class InfantryTypeClass;
 class OverlayTypeClass;
 
 
+typedef enum INIScopeType {
+    SCOPE_LOCAL,
+    SCOPE_GLOBAL
+};
+
 class CCINIClass : public INIClass
 {
 public:
