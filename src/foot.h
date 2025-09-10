@@ -196,7 +196,7 @@ public:
     ILocomotion* Locomotor_Ptr() { return Locomotion; }
 
 public:
-    int field_220;
+    int CurrentPath;
     Cell field_224;
     Cell field_228;
     double ThreatAvoidanceCoefficient;
@@ -222,7 +222,7 @@ public:
     Coord HeadToCoord;
     TubeType CurrentTube;
     TubeDirType CurrentTubeDir;
-    char field_33E; // Waypoint planning index?
+    char NextWaypoint; // Waypoint planning index?
     bool IsToScatter;
     bool IsScanLimited;
     bool IsInitiated;
