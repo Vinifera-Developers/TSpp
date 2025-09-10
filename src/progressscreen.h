@@ -41,32 +41,32 @@ public:
     ProgressScreenClass();
     ~ProgressScreenClass();
 
-    void Init(double start_progress, int player_count, bool do_dialog = false);
-    void Reset();
-    void Draw_Graphics(const char* progress_bar_shape, const char* background_image, const char* string, int text_xpos, int text_ypos);
-    double Get_Total_Progress();
-    void Draw_Bars_And_Text(int xpos = -1, int ypos = -1);
-    Rect Get_Bar_Dimensions();
-    void Update_Progress(int player_index, double value, int xpos, int ypos);
-    void Add_Progress(int player_index, double value, int xpos, int ypos);
+    void Initialize(double start_progress, int player_count, bool do_dialog = false);
+    void End();
+    void Set_Graphic_Data(const char* progress_bar_shape, const char* background_image, const char* string, Point2D text_pos = Point2D(-1, -1));
+    double Get_Current_Progress();
+    void Display_Progress(Point2D pt = Point2D(-1, -1));
+    int Get_Bar_Width();
+    void Set_Progress_Percent(int player_index, double value, int xpos, int ypos);
+    void Add_Progress_Percent(int player_index, double value, int xpos, int ypos);
 
-    void Init_Dialog();
-    void Destroy_Dialog();
+    void Begin_Dialog();
+    void End_Dialog();
 
-    static LRESULT CALLBACK Dialog_Proc(HWND hWnd, UINT Message, WPARAM wParam, LPARAM lParam);
+    static LRESULT CALLBACK Dialog_Proc(HWND window, UINT message, WPARAM wparam, LPARAM lparam);
 
 public:
     double PlayerProgress[MAX_PLAYERS];
     double MainProgress;
     const char* String;
-    ShapeSet* ProgressShape;
-    const char* BackgroundImage;
-    bool field_54;
-    char field_55;
-    HWND Handle;
+    ShapeSet* Shape;
+    const char* Background;
+    bool Initialized;
+    char PlayerCount;
+    HWND Dialog;
     int XPos;
     int YPos;
-    int field_64;
+    int Percentage;
 };
 
 

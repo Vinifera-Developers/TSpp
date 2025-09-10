@@ -316,7 +316,7 @@ extern bool& Cheat_TheTeam;
 extern int& NewINIFormat;
 extern bool& GameInFocus;
 extern ParticleSystemClass*& MasterParticle;
-extern ProgressScreenClass& ProgressScreen;
+extern ProgressScreenClass& Progress;
 extern EnvironmentClass& Environment;
 extern bool& TacticalViewActive;
 extern bool& ScenarioStarted;
