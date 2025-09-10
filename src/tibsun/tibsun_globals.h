@@ -264,7 +264,7 @@ extern HouseClass*& PlayerPtr;
 extern Rect& SidebarRect;
 extern bool& RedrawSidebar;
 extern Rect& TacticalRect;
-extern Rect& ScreenRect;
+extern Rect& VisibleRect;
 extern unsigned& Seed;
 extern unsigned& CustomSeed;
 extern bool& UserInputLocked;

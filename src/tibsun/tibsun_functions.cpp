@@ -484,8 +484,8 @@ Rect Get_Tactical_Rect(bool use_options_size)
 {
     Rect rect;
 
-    int width = use_options_size ? Options.ScreenWidth : ScreenRect.Width;
-    int height = use_options_size ? Options.ScreenHeight : ScreenRect.Height;
+    int width = use_options_size ? Options.ScreenWidth : VisibleRect.Width;
+    int height = use_options_size ? Options.ScreenHeight : VisibleRect.Height;
 
     rect.X = (Options.SidebarOn == SIDEBAR_SIDE_LEFT && !Debug_Map) ? SidebarClass::SIDE_WIDTH : 0;
     rect.Y = TabClass::TAB_HEIGHT;
