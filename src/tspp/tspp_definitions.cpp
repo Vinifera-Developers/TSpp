@@ -3695,9 +3695,9 @@ DEFINE_IMPLEMENTATION(int TaskForceClass::Get_Object_Size(bool) const, 0x00621E2
 DEFINE_IMPLEMENTATION(void TaskForceClass::Object_CRC(CRCEngine&) const, 0x00621DB0);
 DEFINE_IMPLEMENTATION(bool TaskForceClass::Read_INI(CCINIClass&), 0x00621A20);
 DEFINE_IMPLEMENTATION(bool TaskForceClass::Write_INI(CCINIClass&) const, 0x00621AE0);
-// 006216C0
-DEFINE_IMPLEMENTATION(bool TaskForceClass::Consists_Only_Of_Infantry() const, 0x00621B80);
-// 00621DE0
+DEFINE_IMPLEMENTATION(int TaskForceClass::Required_Object_Count() const, 0x006216C0);
+DEFINE_IMPLEMENTATION(int TaskForceClass::Needed_Tech_Level() const, 0x00621DE0);
+DEFINE_IMPLEMENTATION(bool TaskForceClass::Has_Only_Infantry() const, 0x00621B80);
 DEFINE_IMPLEMENTATION(void TaskForceClass::Read_Scenario_INI(CCINIClass&, int), 0x00621780);
 DEFINE_IMPLEMENTATION(void TaskForceClass::Write_Scenario_INI(CCINIClass&, int), 0x00621940);
 

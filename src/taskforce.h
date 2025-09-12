@@ -80,9 +80,9 @@ public:
     virtual bool Read_INI(CCINIClass& ini) override;
     virtual bool Write_INI(CCINIClass& ini) const override;
 
-    // 006216C0
-    bool Consists_Only_Of_Infantry() const;
-    // 00621DE0
+    int Required_Object_Count(void) const;
+    int Needed_Tech_Level(void) const;
+    bool Has_Only_Infantry(void) const;
 
     static void Read_Scenario_INI(CCINIClass& ini, int a2);
     static void Write_Scenario_INI(CCINIClass& ini, int a2);
