@@ -412,6 +412,7 @@ extern DynamicVectorClass<TerrainClass*>& Terrains;
 extern DynamicVectorClass<TriggerTypeClass*>& TriggerTypes;
 extern DynamicVectorClass<TriggerClass*>& Triggers;
 extern DynamicVectorClass<TagClass*>& Tags;
+extern DynamicVectorClass<TagClass*>& LogicTriggers;
 extern DynamicVectorClass<WaypointPathClass*>& WaypointPaths;
 extern DynamicVectorClass<CampaignClass*>& Campaigns;
 extern DynamicVectorClass<WaveClass*>& Waves;

@@ -6004,6 +6004,7 @@ DynamicVectorClass<TerrainClass*>& Terrains = Make_Global<DynamicVectorClass<Ter
 DynamicVectorClass<TriggerTypeClass*>& TriggerTypes = Make_Global<DynamicVectorClass<TriggerTypeClass*>>(0x007B34C8);
 DynamicVectorClass<TriggerClass*>& Triggers = Make_Global<DynamicVectorClass<TriggerClass*>>(0x007E46A8);
 DynamicVectorClass<TagClass*>& Tags = Make_Global<DynamicVectorClass<TagClass*>>(0x0080E7B8);
+DynamicVectorClass<TagClass*>& LogicTriggers = Make_Global<DynamicVectorClass<TagClass*>>(0x007B3420);
 DynamicVectorClass<WaypointPathClass*>& WaypointPaths = Make_Global<DynamicVectorClass<WaypointPathClass*>>(0x008645F0);
 DynamicVectorClass<CampaignClass*>& Campaigns = Make_Global<DynamicVectorClass<CampaignClass*>>(0x007E2230);
 DynamicVectorClass<WaveClass*>& Waves = Make_Global<DynamicVectorClass<WaveClass*>>(0x007E47E8);
