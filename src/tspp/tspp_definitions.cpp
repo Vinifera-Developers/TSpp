@@ -1620,8 +1620,9 @@ DEFINE_IMPLEMENTATION(bool CellClass::Is_Clear_To_Build(SpeedType, const Buildin
 DEFINE_IMPLEMENTATION(void CellClass::Recalc_Attributes(int), 0x00453240);
 DEFINE_IMPLEMENTATION(void CellClass::Occupy_Down(ObjectClass*, bool), 0x00454810);
 DEFINE_IMPLEMENTATION(void CellClass::Occupy_Up(ObjectClass*, bool), 0x004549D0);
-DEFINE_IMPLEMENTATION(Rect CellClass::Get_Overlay_Rect() const, 0x00455B30);
-DEFINE_IMPLEMENTATION(Rect CellClass::Get_Rect() const, 0x004560B0);
+DEFINE_IMPLEMENTATION(Rect CellClass::Overlay_Render_Rect() const, 0x00455B30);
+DEFINE_IMPLEMENTATION(Rect CellClass::Overlay_Shadow_Render_Rect() const, 0x00455E40);
+DEFINE_IMPLEMENTATION(Rect CellClass::Cell_Render_Rect() const, 0x004560B0);
 DEFINE_IMPLEMENTATION(void CellClass::Wall_Update(bool), 0x004567A0);
 DEFINE_IMPLEMENTATION(Coord CellClass::Cell_Coord() const, 0x00456BA0);
 DEFINE_IMPLEMENTATION(int CellClass::Reduce_Tiberium(int), 0x00456BF0);

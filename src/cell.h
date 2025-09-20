@@ -111,9 +111,9 @@ public:
     // 00455130
     // 00455450
     // 004555E0
-    Rect Get_Overlay_Rect() const;
-    // 00455E40
-    Rect Get_Rect() const;
+    Rect Overlay_Render_Rect() const;
+    Rect Overlay_Shadow_Render_Rect() const;
+    Rect Cell_Render_Rect() const;
     // 00456270
     // 00456300
     // 00456370
