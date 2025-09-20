@@ -86,7 +86,7 @@ public:
     BSizeType Size;
     RGBStruct RadarColor;
     int AnimationRate;
-    int AnimationProbability;
+    float AnimationProbability;
     int YDrawFudge;
     TiberiumType TiberiumToSpawn;
     unsigned TemperateOccupationBits;
