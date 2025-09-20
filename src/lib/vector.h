@@ -59,6 +59,12 @@ public:
 
     int Length() const { return VectorMax; }
 
+    T* begin() { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
+    T* end() { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
+
+    const T* begin() const { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
+    const T* end() const { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
+
 protected:
     T* Vector;
     int VectorMax;
