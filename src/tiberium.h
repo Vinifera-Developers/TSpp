@@ -82,8 +82,8 @@ public:
     void Spread_AI();
     void Initialize_Spread();
     void Recalc_Spread();
-    void Deinitialize_Spread();
-    void Queue_Spread_To(const Cell& cell);
+    void Clear_Spread();
+    void Queue_Spread(const Cell& cell);
 
     static void Clear_Tiberium_Spread_State(const Cell& cell);
 
@@ -94,8 +94,8 @@ public:
     void Growth_AI();
     void Initialize_Growth();
     void Recalc_Growth();
-    void Deinitialize_Growth();
-    void Queue_Growth_To(const Cell& cell);
+    void Clear_Growth();
+    void Queue_Growth(const Cell& cell);
 
     static void Post_Load_Game();
 

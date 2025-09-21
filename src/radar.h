@@ -98,7 +98,7 @@ public:
     // 005BA590
     // 005BA600
     // 005BA690
-    // 005BA700
+    void Radar_Background(const Cell& cell);
     // 005BA790
     // 005BAAA0
     // 005BAC80
@@ -127,7 +127,8 @@ public:
     // 005BCC40
     void Total_Radar_Refresh();
 
-    void Clear_Background_Update_Stack() { PixelStack.Clear(); }
+    void Clear_Background_Update_Stack() { BackgroundUpdateStack.Clear(); }
+    void Flag_Background_Update(Cell const& cell) { Radar_Background(cell); }
 
 public:
 
@@ -153,7 +154,7 @@ public:
      *  This is the list of radar pixels that need to be updated. Only a partial
      *  list is maintained for maximum speed.
      */
-    DynamicVectorClass<Cell> PixelStack;
+    DynamicVectorClass<Cell> BackgroundUpdateStack;
     RGBClass* PixelColors;
 
     /**

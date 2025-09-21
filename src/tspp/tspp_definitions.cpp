@@ -2112,6 +2112,7 @@ DEFINE_IMPLEMENTATION(void RadarClass::Set_Tactical_Position(Coord&), 0x005B95A0
 DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
 DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell&) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
+DEFINE_IMPLEMENTATION(void RadarClass::Radar_Background(const Cell&), 0x005BA700);
 DEFINE_IMPLEMENTATION(void RadarClass::Compute_Radar_Image(), 0x005B9B90);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Radar_Existing(), 0x005BC070);
@@ -4206,8 +4207,8 @@ DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Tiberium_Spread_System(),
 DEFINE_IMPLEMENTATION(void TiberiumClass::Spread_AI(), 0x006455C0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Spread(), 0x006458F0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Recalc_Spread(), 0x00645A30);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Spread(), 0x00645BA0);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Spread_To(const Cell& cell), 0x00645C70);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Clear_Spread(), 0x00645BA0);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Spread(const Cell& cell), 0x00645C70);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Clear_Tiberium_Spread_State(const Cell& cell), 0x00645C30);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Tiberium_Growth(), 0x00645DC0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Tiberium_Growth_System(), 0x00645E80);
@@ -4215,8 +4216,8 @@ DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Tiberium_Growth_System(),
 DEFINE_IMPLEMENTATION(void TiberiumClass::Growth_AI(), 0x00646080);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Initialize_Growth(), 0x006463D0);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Recalc_Growth(), 0x00646510);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Deinitialize_Growth(), 0x00646680);
-DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Growth_To(const Cell& cell), 0x00646710);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Clear_Growth(), 0x00646680);
+DEFINE_IMPLEMENTATION(void TiberiumClass::Queue_Growth(const Cell& cell), 0x00646710);
 DEFINE_IMPLEMENTATION(void TiberiumClass::Post_Load_Game(), 0x00646840);
 
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE BulletClass::AddRef(), 0x004471B0);
