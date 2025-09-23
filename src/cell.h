@@ -263,7 +263,7 @@ public:
 
     CellClass* Get_Bridge_Owner() const;
 
-    Cell Cell_Number() { return CellID; }
+    Cell Fetch_CellID() const { return CellID; }
 
 public:
     Cell CellID;
