@@ -32,6 +32,7 @@
 
 
 class FootClass;
+enum RTTIType;
 
 
 class CargoClass
@@ -43,13 +44,20 @@ public:
 
     void AI();
 
-    void Attach(FootClass* object);
+    int How_Many() const { return Quantity; }
+    bool Is_Something_Attached() const { return CargoHold != nullptr; }
     FootClass* Attached_Object() const;
     FootClass* Detach_Object();
+    void Attach(FootClass* object);
     void Detach(FootClass* object);
 
-    unsigned How_Many() const { return Quantity; }
-    bool Is_Something_Attached() const { return CargoHold != nullptr; }
+    /**
+     *  New methods to allow for more precise manipulations.
+     */
+    int How_Many(RTTIType rtti) const;
+    bool Is_Something_Attached(RTTIType rtti) const;
+    FootClass* Attached_Object(RTTIType rtti) const;
+    FootClass* Detach_Object(RTTIType rtti);
 
 public:
     unsigned Quantity;
