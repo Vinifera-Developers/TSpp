@@ -80,19 +80,19 @@ public:
     static void Deinitialize_Tiberium_Spread_System();
 
     void Spread_AI();
-    void Initialize_Spread();
+    void Init_Spread();
     void Recalc_Spread();
     void Clear_Spread();
     void Queue_Spread(const Cell& cell);
 
-    static void Clear_Tiberium_Spread_State(const Cell& cell);
+    static void Clear_Spread_State(const Cell& cell);
 
     static void Tiberium_Growth();
     static void Initialize_Tiberium_Growth_System();
     static void Deinitialize_Tiberium_Growth_System();
 
     void Growth_AI();
-    void Initialize_Growth();
+    void Init_Growth();
     void Recalc_Growth();
     void Clear_Growth();
     void Queue_Growth(const Cell& cell);
