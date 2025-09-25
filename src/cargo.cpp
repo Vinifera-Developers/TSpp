@@ -88,24 +88,12 @@ FootClass* CargoClass::Attached_Object(RTTIType rtti) const
  */
 FootClass* CargoClass::Detach_Object(RTTIType rtti)
 {
-    if (CargoHold != nullptr) {
-        FootClass* current = CargoHold;
-        FootClass* previous = nullptr;
+    FootClass* unit = Attached_Object(rtti);
 
-        while (current != nullptr) {
-            if (current->RTTI == rtti) {
-                if (previous != nullptr) {
-                    previous->Next = current->Next;
-                } else {
-                    CargoHold = static_cast<FootClass*>(current->Next);
-                }
-                current->Next = nullptr;
-                return current;
-            }
-            previous = current;
-            current = static_cast<FootClass*>(current->Next);
-        }
+    if (unit != nullptr) {
+        Detach(unit);
+        Quantity--;
     }
 
-    return nullptr;
+    return unit;
 }
