@@ -133,4 +133,4 @@ public:
     bool IsDisabled;
 };
 
-void Shorten_Attached_Anims();
+void Shorten_Attached_Anims(ObjectClass* obj);
