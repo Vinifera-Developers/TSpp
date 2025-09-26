@@ -352,13 +352,13 @@ public:
     unsigned IsToFog : 1;
     unsigned IsBridgeOwner : 1;  // is the starting point of a bridge connection? (from start to end?)
     unsigned IsUnderBridge : 1;  // is covered by bridge overlay?
-    unsigned WasUnderBridge : 1; // is covered by bridge overlay? also
-    unsigned Bit2_64 : 1;        // unrepaired/repairable bridge connection.
-    unsigned Bit2_128 : 1;       // draws on cells that are the length of the bridge body. (low down?)
+    unsigned Bit2_32 : 1; // is covered by bridge overlay? also
+    unsigned WasUnderBridge : 1; // unrepaired/repairable bridge connection.
+    unsigned IsBridgeEasyWest : 1; // draws on cells that are the length of the bridge body. (low down?)
 
     unsigned Bit3_1 : 1; // draws on cells that are the length of the bridge body. (high up?)
-    unsigned Bit3_2 : 1;
-    unsigned Bit3_4 : 1; // Is ice edge? Flagged when smoothing required.
+    unsigned IsBridgeEndDamaged : 1;
+    unsigned IsToGrowIce : 1; // Is ice edge? Flagged when smoothing required.
     unsigned Bit3_8 : 1;
     unsigned IsOvershadowed : 1; // Casts shadow? or Overcasted with shadow?
     unsigned IsAnimAttached : 1;
@@ -367,7 +367,7 @@ public:
 
     unsigned IsHorizontalLine : 1;
     unsigned IsVerticalLine : 1;
-    unsigned Bit4_4 : 1; // Completely shrouded? Visually unclear?
+    unsigned IsFogged : 1; // Completely shrouded? Visually unclear?
 
 private:
     // Copy and assignment not implemented; prevent their use by declaring as private.
