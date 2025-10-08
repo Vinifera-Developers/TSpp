@@ -52,6 +52,8 @@ class PhoneEntryClass;
 #define MAX_IPX_PACKET_SIZE 508
 
 #define MPLAYER_NAME_MAX 20
+#define SERIAL_MAX               23
+#define ENCRYPTION_STRING_LENGTH 128
 
 #define MAX_MULTI_NAMES 8
 #define MAX_MULTI_GAMES 4
@@ -100,12 +102,224 @@ typedef struct NodeNameTag {
 #pragma pack()
 
 
+typedef enum NetCommandType {
+    NET_QUERY_GAME,      // Hey, what games are out there?
+    NET_ANSWER_GAME,     // Yo, Here's my game's name!
+    NET_QUERY_PLAYER,    // Hey, what players are in this game?
+    NET_ANSWER_PLAYER,   // Yo, I'm in that game!
+    NET_CHAT_ANNOUNCE,   // I'm at the chat screen
+    NET_CHAT_REQUEST,    // Respond with a CHAT_ANNOUNCE, please.
+    NET_QUERY_JOIN,      // Hey guys, can I play too?
+    NET_CONFIRM_JOIN,    // Well, OK, if you really want to.
+    NET_REJECT_JOIN,     // No, you can't join; sorry, dude.
+    NET_GAME_OPTIONS,    // Hey, dudes, here's some new game options
+    NET_SIGN_OFF,        // Bogus, dudes, my boss is coming; I'm outta here!
+    NET_GO,              // OK, jump into the game loop!
+    NET_MESSAGE,         // Here's a message
+    NET_PING,            // I'm pinging you to take a time measurement
+    NET_LOADGAME,        // start a game by loading a saved game
+    NET_PROGRESS_REPORT, //
+    NET_REQ_SCENARIO,    // Reqest that host sends the scenario file to the other players.
+    NET_FILE_INFO,       // Info about the file that is going to be transferred
+    NET_FILE_CHUNK,      // A chunk of scenario
+    NET_READY_TO_GO,     // Sent in response to a 'GO' command
+    NET_NO_SCENARIO,     // Scenario isnt available on remote machine so we cant play
+    NET_FILE_INFO_ACK,   //
+    NET_PUB_GAMEOPT,     //
+    NET_PRIV_GAMEOPT,    //
+    NET_PREVIEW_MODE,    //
+    NET_PREVIEW_ACK,     //
+    NET_REQ_PREVIEW,     //
+    NET_PROPOSE_KICK,    //
+} NetCommandType;
+
+
 #pragma pack(1)
 typedef struct GlobalPacketType {
-    char padding[455];
+    NetCommandType Command;
+    char Name[MPLAYER_NAME_MAX];
+    char Serial[SERIAL_MAX];
+    union {
+        struct {
+            unsigned int IsOpen : 1;
+            unsigned int IsFirestorm : 1;
+        } GameInfo;
+        struct {
+            int House;
+            int Color;
+            unsigned long NameCRC;
+            unsigned long MinVersion;
+            unsigned long MaxVersion;
+            int CheatCheck;
+            int AICheatCheck;
+            int ArtCheatCheck;
+            int BuildNumber;
+        } PlayerInfo;
+        struct {
+            char pad[0x83 - 0x2F];
+            unsigned int FileLength;
+            char ShortFileName[12];
+            unsigned char FileDigest[32];
+
+        } ScenarioInfo;
+        struct {
+            char Buf[400];
+            PlayerColorType Color;
+            unsigned long NameCRC;
+        } Message;
+        struct {
+            int OneWay;
+        } ResponseTime;
+        struct {
+            int Why;
+        } Reject;
+        struct {
+            unsigned long ID;
+            int Color;
+        } Chat;
+        struct {
+            int Percent;
+        } Progress;
+        struct {
+            unsigned long ID1;
+            unsigned long ID2;
+        } Kick;
+
+        char padding[455 - sizeof(Command) - sizeof(Name) - sizeof(Serial)];
+    };
 } GlobalPacketType;
 #pragma pack()
 
+static_assert(sizeof(GlobalPacketType) == 455, "GlobalPacketType has wrong size!");
+
+typedef enum SerialCommandType {
+    SERIAL_CONNECT = 100,   // Are you there?  Hello?  McFly?
+    SERIAL_GAME_OPTIONS,    // Hey, dudes, here's some new game options
+    SERIAL_SIGN_OFF,        // Bogus, dudes, my boss is coming; I'm outta here!
+    SERIAL_GO,              // OK, dudes, jump into the game loop!
+    SERIAL_MESSAGE,         // Here's a message
+    SERIAL_TIMING,          // timimg packet
+    SERIAL_SCORE_SCREEN,    // player at score screen
+    SERIAL_LOADGAME,        // Start the game, loading a saved game first
+    SERIAL_PROGRESS_REPORT, //
+    SERIAL_LAST_COMMAND,    // last command
+    SERIAL_REQ_SCENARIO,    // Reqest that host sends the scenario file to the other players.
+    SERIAL_FILE_INFO,       // Info about the file that is going to be transferred
+    SERIAL_FILE_CHUNK,      // A chunk of scenario
+    SERIAL_FILE_INFO_ACK,   //
+    SERIAL_READY_TO_GO,     // Sent in response to a 'GO' command
+    SERIAL_NO_SCENARIO,     // Scenario isnt available on remote machine so we cant play
+    SERIAL_ACCEPT_OPTIONS,  //
+    SERIAL_PREVIEW_MODE,    //
+    SERIAL_PREVIEW_ACK,     //
+    SERIAL_REQ_PREVIEW,     //
+} SerialCommandType;
+
+typedef struct {
+    SerialCommandType Command;
+    char Name[MPLAYER_NAME_MAX];
+    unsigned char ID;
+    union {
+        struct {
+            HousesType House;
+            char Color;
+            unsigned long MinVersion;
+            unsigned long MaxVersion;
+            char Scenario[DESCRIP_MAX];
+            unsigned int Credits;
+            unsigned int IsBases : 1;
+            unsigned int IsBridgeDestruction : 1;
+            unsigned int IsGoodies : 1;
+            unsigned int IsGhosties : 1;
+            unsigned int OfficialScenario : 1;
+            int CheatCheck;
+            unsigned char BuildLevel;
+            unsigned char UnitCount;
+            unsigned char AIPlayers;
+            unsigned char AIDifficulty;
+            unsigned int IsUnknownFlag1 : 1;
+            unsigned int IsHarvTruce : 1;
+            unsigned int IsMCVRedeploy : 1;
+            unsigned int IsFogOfWar : 1;
+            unsigned int IsShortGame : 1;
+            unsigned int IsCrapEngineers : 1;
+            unsigned int IsFirestorm : 1;
+            int Seed;
+            SpecialClass Special;
+            unsigned long ResponseTime;
+            unsigned int FileLength;
+            unsigned char GameSpeed;
+            char ShortFileName[13];
+            unsigned char FileDigest[32];
+
+            int AICheatCheck;
+            int ArtCheatCheck;
+            int BuildNumber;
+        } ScenarioInfo;
+        struct {
+            char Message[MAX_MESSAGE_LENGTH + 10];
+            PlayerColorType Color;
+        } Message;
+        struct {
+            PlayerColorType Color;
+        } Chat;
+        struct {
+            int Percent;
+        } Progress;
+
+        char padding[0xB0 - 4 - MPLAYER_NAME_MAX - 1];
+    };
+} SerialPacketType;
+
+typedef enum DetectPortType {
+    PORT_VALID = 0,
+    PORT_INVALID,
+    PORT_IRQ_INUSE
+} DetectPortType;
+
+typedef enum DialStatusType {
+    DIAL_CONNECTED = 0,
+    DIAL_NO_CARRIER,
+    DIAL_BUSY,
+    DIAL_ERROR,
+    DIAL_NO_DIAL_TONE,
+    DIAL_TIMEOUT,
+    DIAL_CANCELED
+} DialStatusType;
+
+typedef enum DialMethodType {
+    DIAL_TOUCH_TONE = 0,
+    DIAL_PULSE,
+    DIAL_METHODS
+} DialMethodType;
+
+typedef enum CallWaitStringType {
+    CALL_WAIT_TONE_1 = 0,
+    CALL_WAIT_TONE_2,
+    CALL_WAIT_PULSE,
+    CALL_WAIT_CUSTOM,
+    CALL_WAIT_STRINGS_NUM
+} CallWaitStringType;
+
+typedef enum ModemGameType {
+    MODEM_NULL_HOST = 0,
+    MODEM_NULL_JOIN,
+    MODEM_DIALER,
+    MODEM_ANSWERER
+} ModemGameType;
+
+typedef struct {
+    int Port;
+    int IRQ;
+    int Baud;
+    DialMethodType DialMethod;
+    int InitStringIndex;
+    int CallWaitStringIndex;
+    int Compression;
+    int ErrorCorrection;
+    char CallWaitString[16];
+    char ModemName[63];
+} SerialSettingsType;
 
 typedef struct MPlayerScoreType {
     char Name[MPLAYER_NAME_MAX];
@@ -185,7 +399,7 @@ public:
     void Read_Scenario_Descriptions();
     void Free_Scenario_Descriptions();
     void Trap_Object();
-    ColorSchemeType Player_Color_To_Scheme_Color(PlayerColorType playercolor) const;
+    ColorSchemeType Scheme_From_Color_ID(PlayerColorType playercolor) const;
     void Setup_Squads();
     void Loading_Callback(int progress); // 005EF930
 

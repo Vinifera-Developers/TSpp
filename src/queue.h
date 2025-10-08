@@ -193,3 +193,6 @@ void Add_CRC(unsigned long* crc, unsigned long val);
 void Print_CRCs(EventClass* ev);
 void Dump_Packet_Too_Late_Stuff(EventClass* event);
 void Check_Mirror();
+class IPXAddressClass;
+struct GlobalPacketType;
+void Store_Global_Packet_In_Vector(GlobalPacketType& packet, IPXAddressClass& address);

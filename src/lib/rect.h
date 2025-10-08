@@ -67,8 +67,8 @@ public:
         Y -= point.Y;
         return *this;
     }
-    TRect<T> operator+(TPoint2D<T> const& point) { return TRect<T>(Top_Left() + point, Width, Height); }
-    TRect<T> operator-(TPoint2D<T> const& point) { return TRect<T>(Top_Left() - point, Width, Height); }
+    TRect<T> operator+(TPoint2D<T> const& point) const { return TRect<T>(Top_Left() + point, Width, Height); }
+    TRect<T> operator-(TPoint2D<T> const& point) const { return TRect<T>(Top_Left() - point, Width, Height); }
 
     /*
     **  Bias this rectangle within another.

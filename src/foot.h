@@ -38,7 +38,7 @@
 class TeamClass;
 
 
-typedef struct PathType {
+typedef struct PathStruct {
     Cell Start;             // Starting cell number.
     int Cost;               // Accumulated terrain cost.
     int Length;             // Command string length.
@@ -47,7 +47,7 @@ typedef struct PathType {
     unsigned long* Overlap; // Pointer to overlap list
     Cell LastOverlap;       // stores position of last overlap
     Cell LastFixup;         // stores position of last overlap
-} PathType;
+} PathStruct;
 
 
 class FootClass : public TechnoClass

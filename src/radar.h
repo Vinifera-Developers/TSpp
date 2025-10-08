@@ -102,14 +102,14 @@ public:
     // 005BA790
     // 005BAAA0
     // 005BAC80
-    // 005BAD30
+    Point2D Coord_To_Radar_Pixel(Coord const& coord, bool clip);
     // 005BAE10
     // 005BAED0
     // 005BAFD0
     // 005BB060
     // 005BB180
     // 005BB4D0
-    // 005BB620
+    void Radar_Pixel(Point2D const& point);
     // 005BB6F0
     // 005BB8C0
     // 005BB8E0
@@ -146,16 +146,11 @@ public:
     int RadPWidth;
     int RadPHeight;
 
-    Rect field_1214;
-    DSurface* field_1224;
-    BSurface* field_1228;
-
-    /**
-     *  This is the list of radar pixels that need to be updated. Only a partial
-     *  list is maintained for maximum speed.
-     */
+    Rect LastDrawRect;
+    DSurface* RadarSurface;
+    BSurface* BackgroundSurface;
     DynamicVectorClass<Cell> BackgroundUpdateStack;
-    RGBClass* PixelColors;
+    RGBClass* BackgroundColors;
 
     /**
      *  The width and height is controlled by the actual dimensions
@@ -164,10 +159,15 @@ public:
     unsigned RadarCellWidth;
     unsigned RadarCellHeight;
 
-    Rect field_1250;
+    Rect CellRedrawRect;
     void* field_1260; // hash table
-    DynamicVectorClass<Point2D> field_1264;
-    int field_127C;
+
+    /**
+     *  This is the list of radar pixels that need to be updated. Only a partial
+     *  list is maintained for maximum speed.
+     */
+    DynamicVectorClass<Point2D> PixelStack;
+    int PixelFlags;
 
     DynamicVectorClass<Point2D> Foundation[BSIZE_COUNT];
 
@@ -231,8 +231,8 @@ public:
     bool IsToRedraw;
     bool FullRedraw;
 
-    Rect field_14C4;
-    Rect field_14D4;
+    Rect RadarViewRect;
+    Rect OldRadarViewRect;
 
     int RadarAnimFrame;
     CDTimerClass<SystemTimerClass> RadarAnimTimer;

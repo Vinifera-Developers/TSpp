@@ -160,6 +160,7 @@
 #include "multiscore.h"
 #include "newdel.h"
 #include "newmenu.h"
+#include "nullmgr.h"
 #include "object.h"
 #include "objecttype.h"
 #include "options.h"
@@ -737,6 +738,31 @@ DEFINE_IMPLEMENTATION(void MessageListClass::Set_Width(int), 0x00573EF0);
 DEFINE_IMPLEMENTATION(void MessageListClass::Set_Edit_Focus(), 0x005737A0);
 DEFINE_IMPLEMENTATION(bool MessageListClass::Has_Edit_Focus(), 0x005737B0);
 
+DEFINE_IMPLEMENTATION(void Windows_Message_Handler(), 0x00574150);
+DEFINE_IMPLEMENTATION(void Remove_Modeless_Dialog(HWND), 0x005742C0);
+DEFINE_IMPLEMENTATION(void Add_Modeless_Dialog(HWND), 0x00574260);
+DEFINE_IMPLEMENTATION(HWND Get_Modeless_Dialog_From_Name(const char*), 0x00574310);
+DEFINE_IMPLEMENTATION(void Add_Accelerator(HWND, HACCEL), 0x00574390);
+DEFINE_IMPLEMENTATION(void Remove_Accelerator(HACCEL), 0x00574400);
+
+DEFINE_IMPLEMENTATION(bool Init_Network(), 0x00574F90);
+DEFINE_IMPLEMENTATION(void Shutdown_Network(), 0x00574FF0);
+DEFINE_IMPLEMENTATION(void Destroy_Connection(int, int), 0x00575020);
+DEFINE_IMPLEMENTATION(unsigned long Compute_Name_CRC(char*), 0x005752F0);
+
+DEFINE_IMPLEMENTATION(int NAKFirstFreeColor(int, int), 0x00575610);
+DEFINE_IMPLEMENTATION(bool NAKCallback(), 0x00575670);
+DEFINE_IMPLEMENTATION(void NAKDisplayUsers(), 0x00575680);
+DEFINE_IMPLEMENTATION(bool NAKInit_Network(), 0x00575B90);
+DEFINE_IMPLEMENTATION(void NAKShutdown_Network(), 0x00575BF0);
+DEFINE_IMPLEMENTATION(void NAKEncodeGameopt(char*), 0x00576030);
+DEFINE_IMPLEMENTATION(void NAKSetAccept(char*, int), 0x00576180);
+DEFINE_IMPLEMENTATION(int NAKGetAccept(char*), 0x00576220);
+DEFINE_IMPLEMENTATION(int NAKSetHouseAndColor(char*, int, int), 0x005762C0);
+DEFINE_IMPLEMENTATION(bool Decrypt_Serial(char*), 0x00576410);
+DEFINE_IMPLEMENTATION(bool NAKRemote_Connect(), 0x005765F0);
+DEFINE_IMPLEMENTATION(bool Process_Global_Packet(GlobalPacketType*, IPXAddressClass*), 0x00579690);
+
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(SessionClass::SessionClass(), 0x005ECD00);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(SessionClass::~SessionClass(), 0x005ED1C0);
 DEFINE_IMPLEMENTATION(void SessionClass::One_Time(), 0x005ED470);
@@ -749,7 +775,7 @@ DEFINE_IMPLEMENTATION(void SessionClass::Write_MultiPlayer_Settings(), 0x005EE47
 DEFINE_IMPLEMENTATION(void SessionClass::Read_Scenario_Descriptions(), 0x005EE7D0);
 DEFINE_IMPLEMENTATION(void SessionClass::Free_Scenario_Descriptions(), 0x005EEE60);
 DEFINE_IMPLEMENTATION(void SessionClass::Trap_Object(), 0x005EEF60);
-DEFINE_IMPLEMENTATION(ColorSchemeType SessionClass::Player_Color_To_Scheme_Color(PlayerColorType) const, 0x005EEF70);
+DEFINE_IMPLEMENTATION(ColorSchemeType SessionClass::Scheme_From_Color_ID(PlayerColorType) const, 0x005EEF70);
 DEFINE_IMPLEMENTATION(void SessionClass::Setup_Squads(), 0x005EFBF0);
 DEFINE_IMPLEMENTATION(void SessionClass::Loading_Callback(int), 0x005EF930);
 DEFINE_IMPLEMENTATION(unsigned SessionClass::Compute_Unique_ID(), 0x005EEF90);
@@ -1412,6 +1438,48 @@ DEFINE_IMPLEMENTATION(void* IPXManagerClass::Oldest_Send(), 0x004F18A0);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Configure_Debug(int, int, int, char**, int, int), 0x004F1950);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Mono_Debug_Print(int, int), 0x004F19B0);
 DEFINE_IMPLEMENTATION(void IPXManagerClass::Multiplayer_Debug_Print(), 0x004F10B0);
+
+//DEFINE_IMPLEMENTATION(NullModemClass::NullModemClass(int, int, int, unsigned short), 0x5826B0);
+//DEFINE_IMPLEMENTATION(NullModemClass::~NullModemClass(), 0x582740);
+DEFINE_IMPLEMENTATION(int NullModemClass::Init(int, int, char*, int, char, int, int), 0x5827D0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Delete_Connection(), 0x582A50);
+DEFINE_IMPLEMENTATION(int NullModemClass::Num_Connections(), 0x582A40);
+DEFINE_IMPLEMENTATION(int NullModemClass::Init_Send_Queue(), 0x582AB0);
+DEFINE_IMPLEMENTATION(void NullModemClass::Shutdown(), 0x582C60);
+DEFINE_IMPLEMENTATION(void NullModemClass::Set_Timing(unsigned long, unsigned long, unsigned long, bool), 0x582CB0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Send_Message(void*, int, int), 0x582CE0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Get_Message(void*, int*), 0x582D20);
+DEFINE_IMPLEMENTATION(int NullModemClass::Service(), 0x582D50)
+DEFINE_IMPLEMENTATION(int NullModemClass::Num_Send(), 0x582F90);
+DEFINE_IMPLEMENTATION(int NullModemClass::Num_Receive(), 0x582FB0);
+DEFINE_IMPLEMENTATION(unsigned long NullModemClass::Response_Time(), 0x582FD0);
+DEFINE_IMPLEMENTATION(void NullModemClass::Reset_Response_Time(bool), 0x582FF0);
+DEFINE_IMPLEMENTATION(void* NullModemClass::Oldest_Send(), 0x583010);
+DEFINE_IMPLEMENTATION(void NullModemClass::Configure_Debug(int, int, int, char**, int, int), 0x583060);
+DEFINE_IMPLEMENTATION(DetectPortType NullModemClass::Detect_Port(SerialSettingsType*), 0x582AD0);
+DEFINE_IMPLEMENTATION(bool NullModemClass::Detect_Modem(SerialSettingsType*, bool), 0x583090);
+DEFINE_IMPLEMENTATION(DialStatusType NullModemClass::Dial_Modem(char*, DialMethodType, bool), 0x583880);
+DEFINE_IMPLEMENTATION(DialStatusType NullModemClass::Answer_Modem(bool), 0x583BF0);
+DEFINE_IMPLEMENTATION(bool NullModemClass::Hangup_Modem(), 0x584000);
+DEFINE_IMPLEMENTATION(void NullModemClass::Setup_Modem_Echo(void (*)(char)), 0x5841B0);
+DEFINE_IMPLEMENTATION(void NullModemClass::Remove_Modem_Echo(), 0x5841D0);
+DEFINE_IMPLEMENTATION(void NullModemClass::Print_EchoBuf(), 0x5841E0);
+DEFINE_IMPLEMENTATION(void NullModemClass::Reset_EchoBuf(), 0x584230);
+DEFINE_IMPLEMENTATION(int NullModemClass::Abort_Modem(void*), 0x584240);
+DEFINE_IMPLEMENTATION(void NullModemClass::Setup_Abort_Modem(), 0x584290);
+DEFINE_IMPLEMENTATION(void NullModemClass::Remove_Abort_Modem(), 0x5842B0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Change_IRQ_Priority(int), 0x5842D0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Get_Modem_Status(), 0x5842E0);
+DEFINE_IMPLEMENTATION(int NullModemClass::Send_Modem_Command(char*, char, char*, int, int, int), 0x584330);
+DEFINE_IMPLEMENTATION(int NullModemClass::Verify_And_Convert_To_Int(char*), 0x584360);
+
+//DEFINE_IMPLEMENTATION(NullModemConnClass::NullModemConnClass(int, int, int, unsigned short), 0x580630);
+//DEFINE_IMPLEMENTATION(NullModemConnClass::~NullModemConnClass(), 0x580680);
+DEFINE_IMPLEMENTATION(void NullModemConnClass::Init(HANDLE), 0x5806A0);
+DEFINE_IMPLEMENTATION(int NullModemConnClass::Send(char*, int, void*, int), 0x5806C0);
+DEFINE_IMPLEMENTATION(int NullModemConnClass::Compute_CRC(char*, int), 0x580770);
+DEFINE_IMPLEMENTATION(int NullModemConnClass::Packet_Overhead_Size(), 0x5807A0);
+DEFINE_IMPLEMENTATION(void NullModemConnClass::Init(void), 0x5807B0);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(ConnectionClass::ConnectionClass(int, int, int, unsigned short, unsigned long, unsigned long, unsigned long, int), 0x00461D00);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(ConnectionClass::~ConnectionClass(), 0x00461D80);
@@ -2093,6 +2161,8 @@ DEFINE_IMPLEMENTATION(void Add_CRC(unsigned long*, unsigned long), 0x005B58D0);
 DEFINE_IMPLEMENTATION(void Print_CRCs(EventClass*), 0x005B58F0);
 DEFINE_IMPLEMENTATION(void Dump_Packet_Too_Late_Stuff(EventClass*), 0x005B8470);
 DEFINE_IMPLEMENTATION(void Check_Mirror(), 0x005B84F0);
+DEFINE_IMPLEMENTATION(void Store_Global_Packet_In_Vector(GlobalPacketType&, IPXAddressClass&), 0x005B3D90);
+
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(RadarClass::RadarClass(), 0x005B8830);
 RadarClass::RadarClass(const NoInitClass&) {}
@@ -2113,6 +2183,8 @@ DEFINE_IMPLEMENTATION(void RadarClass::Init_For_House(), 0x005B8CB0);
 DEFINE_IMPLEMENTATION(int RadarClass::Cell_On_Radar(Cell&) const, 0x005B95C0);
 DEFINE_IMPLEMENTATION(void RadarClass::Draw_Names(), 0x005B95D0);
 DEFINE_IMPLEMENTATION(void RadarClass::Radar_Background(const Cell&), 0x005BA700);
+DEFINE_IMPLEMENTATION(Point2D RadarClass::Coord_To_Radar_Pixel(Coord const&, bool), 0x005BAD30);
+DEFINE_IMPLEMENTATION(void RadarClass::Radar_Pixel(const Point2D&), 0x005BB620);
 DEFINE_IMPLEMENTATION(void RadarClass::Compute_Radar_Image(), 0x005B9B90);
 DEFINE_IMPLEMENTATION(bool RadarClass::Radar_Activate(int), 0x005BBEE0);
 DEFINE_IMPLEMENTATION(bool RadarClass::Is_Radar_Existing(), 0x005BC070);
@@ -2546,16 +2618,16 @@ DEFINE_IMPLEMENTATION(Cell HouseClass::Find_Cell_In_Zone(const TechnoClass*, Zon
 DEFINE_IMPLEMENTATION(Cell HouseClass::Random_Cell_In_Zone(ZoneType) const, 0x004C3A80);
 DEFINE_IMPLEMENTATION(void HouseClass::Make_Ally(TechnoClass*), 0x004C3F80);
 DEFINE_IMPLEMENTATION(void HouseClass::Make_Enemy(TechnoClass*), 0x004C3FA0);
-// 004C3FC0
-// 004C40F0
-// 004C4150
-DEFINE_IMPLEMENTATION(Coord* HouseClass::Waypoint_Coord(Cell&), 0x004C4210);
-DEFINE_IMPLEMENTATION(bool HouseClass::Place_Waypoint_At(Coord&, int&, bool&), 0x004C42C0);
+DEFINE_IMPLEMENTATION(void HouseClass::Place_Waypoint(Coord const&), 0x004C3FC0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Select_Waypoint(Coord const&), 0x004C40F0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Can_Place_Waypoint(Cell const&), 0x004C4150);
+DEFINE_IMPLEMENTATION(WaypointClass* HouseClass::Waypoint_At(Cell const&), 0x004C4210);
+DEFINE_IMPLEMENTATION(bool HouseClass::Fetch_Waypoint_Data(WaypointClass*, PathType&, char&), 0x004C42C0);
 // 004C4450
 // 004C45D0
 // 004C5320
 // 004C5360
-// 004C5370
+DEFINE_IMPLEMENTATION(WaypointPathClass* HouseClass::Ensure_Path(PathType), 0x004C5370);
 // 004C53C0
 // 004C5510
 // 004C56A0
@@ -2581,8 +2653,8 @@ DEFINE_IMPLEMENTATION(bool HouseClass::AI_Build_Defense(int, DynamicVectorClass<
 DEFINE_IMPLEMENTATION(void HouseClass::AI_Build_Wall(), 0x004C8920);
 // 004C93F0
 DEFINE_IMPLEMENTATION(void HouseClass::Recalc_Radar_Availability(), 0x004C9560);
-// 004C96A0
-// 004C96F0
+DEFINE_IMPLEMENTATION(PathType HouseClass::New_Waypoint_Path() const, 0x004C96A0);
+DEFINE_IMPLEMENTATION(bool HouseClass::Can_Add_Waypoint_To_Path() const, 0x004C96F0);
 // 004C9730
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Factories(RTTIType), 0x004C9740);
 DEFINE_IMPLEMENTATION(void HouseClass::Update_Radar_Spied(HouseClass*), 0x004C98E0);
@@ -4538,14 +4610,13 @@ DEFINE_IMPLEMENTATION(HRESULT STDMETHODCALLTYPE WaypointPathClass::Save(IStream*
 DEFINE_IMPLEMENTATION(RTTIType WaypointPathClass::Fetch_RTTI() const, 0x00673A80);
 DEFINE_IMPLEMENTATION(int WaypointPathClass::Get_Object_Size(bool) const, 0x00673A70);
 DEFINE_IMPLEMENTATION(void WaypointPathClass::Object_CRC(CRCEngine&) const, 0x00673880);
-DEFINE_IMPLEMENTATION(Coord* WaypointPathClass::Get_Waypoint_Coord(int) const, 0x00673600);
-// 00673620
-// 006736D0
-// 00673770
-// 006737B0
-// 00673820
-// 00673860
-// 006733A0
+DEFINE_IMPLEMENTATION(WaypointClass* WaypointPathClass::Get_Waypoint(int) const, 0x00673600);
+DEFINE_IMPLEMENTATION(bool WaypointPathClass::Add_Waypoint(Coord const&), 0x00673620);
+DEFINE_IMPLEMENTATION(bool WaypointPathClass::Select_Waypoint(Coord const&), 0x006736D0);
+DEFINE_IMPLEMENTATION(void WaypointPathClass::Replace_Waypoint(int, Coord const&), 0x00673770);
+DEFINE_IMPLEMENTATION(void WaypointPathClass::Delete_Waypoint(int), 0x006737B0);
+DEFINE_IMPLEMENTATION(WaypointClass* WaypointPathClass::Get_Next_Waypoint(WaypointClass*), 0x00673820);
+DEFINE_IMPLEMENTATION(void WaypointPathClass::Clear(), 0x00673860);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(WaypointClass::WaypointClass(), 0x00673390);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(WaypointClass::~WaypointClass(), 0x006733C0);
@@ -4749,14 +4820,14 @@ DEFINE_IMPLEMENTATION(int RadarEventClass::Get_Supression_Distance(), 0x005C2B10
 DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Max_Color(), 0x005C29B0);
 DEFINE_IMPLEMENTATION(RGBClass RadarEventClass::Get_Min_Color(), 0x005C2A40);
 DEFINE_IMPLEMENTATION(RadarDrawStruct RadarEventClass::Get_Draw_Data() const, 0x005C2790);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Create_Event(RadarEventType, Cell), 0x005C1BC0);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Is_Combat_Event(RadarEventType), 0x005C1CC0);
-DEFINE_IMPLEMENTATION(void RadarEventClass::Process_Events(), 0x005C1E90);
+DEFINE_IMPLEMENTATION(bool Submit_Radar_Event(RadarEventType, Cell), 0x005C1BC0);
+DEFINE_IMPLEMENTATION(bool Can_Suppress_Radar_Event(RadarEventType), 0x005C1CC0);
+DEFINE_IMPLEMENTATION(void Process_Radar_Event(), 0x005C1E90);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Draw_Events(), 0x005C20D0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Remove_Finished(), 0x005C2400);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Suppression_Check(RadarEventType, int, Cell), 0x005C24B0);
-DEFINE_IMPLEMENTATION(bool RadarEventClass::Any_Active(), 0x005C2590);
-DEFINE_IMPLEMENTATION(void RadarEventClass::Plot_Point(Point2D*), 0x005C1CB0);
+DEFINE_IMPLEMENTATION(bool Try_Suppress_Radar_Event(RadarEventType, int, Cell), 0x005C24B0);
+DEFINE_IMPLEMENTATION(bool No_Radar_Events_Submitted(), 0x005C2590);
+DEFINE_IMPLEMENTATION(void Plot_Radar_Event_Point(Point2D const&), 0x005C1CB0);
 DEFINE_IMPLEMENTATION(void RadarEventClass::Clear(), 0x005C2B30);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Save_All(IStream*), 0x005C2830);
 DEFINE_IMPLEMENTATION(bool RadarEventClass::Load_All(IStream*), 0x005C28A0);
@@ -4978,8 +5049,8 @@ DEFINE_IMPLEMENTATION(void ProgressScreenClass::Set_Graphic_Data(const char*, co
 DEFINE_IMPLEMENTATION(double ProgressScreenClass::Get_Current_Progress(), 0x005ADCB0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Display_Progress(Point2D), 0x005ADCE0);
 DEFINE_IMPLEMENTATION(int ProgressScreenClass::Get_Bar_Width(), 0x005ADFF0);
-DEFINE_IMPLEMENTATION(void ProgressScreenClass::Set_Progress_Percent(int, double, int, int), 0x005AE050);
-DEFINE_IMPLEMENTATION(void ProgressScreenClass::Add_Progress_Percent(int, double, int, int), 0x005AE0A0);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Set_Progress_Percent(int, double, Point2D), 0x005AE050);
+DEFINE_IMPLEMENTATION(void ProgressScreenClass::Add_Progress_Percent(int, double, Point2D), 0x005AE0A0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::Begin_Dialog(), 0x005AE0F0);
 DEFINE_IMPLEMENTATION(void ProgressScreenClass::End_Dialog(), 0x005AE130);
 DEFINE_IMPLEMENTATION(LRESULT CALLBACK ProgressScreenClass::Dialog_Proc(HWND, UINT, WPARAM, LPARAM), 0x005AE150);
@@ -5561,7 +5632,6 @@ DEFINE_IMPLEMENTATION(ThemeType Get_Maps_Theme(), 0x004E8730);
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
 DEFINE_IMPLEMENTATION(void Init_Campaigns(), 0x004E0C20);
 DEFINE_IMPLEMENTATION(bool Init_Game(int, char*[]), 0x004DFB70);
-DEFINE_IMPLEMENTATION(bool Init_Network(), 0x00574F90);
 DEFINE_IMPLEMENTATION(void Focus_Loss(), 0x00685980);
 DEFINE_IMPLEMENTATION(void Focus_Restore(), 0x00685A00);
 DEFINE_IMPLEMENTATION(bool Select_Game(bool), 0x004E1DE0);
@@ -5653,6 +5723,7 @@ WWFontClass*& Font8Ptr = Make_Global<WWFontClass*>(0x00748224);
 WWFontClass*& GradFont6Ptr = Make_Global<WWFontClass*>(0x00748218);
 WinsockInterfaceClass*& PacketTransport = Make_Global<WinsockInterfaceClass*>(0x0074C8D8);
 IPXManagerClass& Ipx = Make_Global<IPXManagerClass>(0x007E45A0);
+NullModemClass& NullModem = Make_Global<NullModemClass>(0x007E45A0);
 Tactical*& TacticalMap = Make_Global<Tactical*>(0x0074C5F4);
 LogicClass& Logic = Make_Global<LogicClass>(0x007482C8);
 MouseClass& Map = Make_Global<MouseClass>(0x00748348);
@@ -5942,6 +6013,7 @@ const ShapeSet*& ObjectTypeClass::Pip2Shapes = Make_Global<const ShapeSet*>(0x00
 const ShapeSet*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeSet*>(0x00808758);
 bool& LightSourceClass::Recalc = Make_Global<bool>(0x00700398);
 const ShapeSet*& BuildingTypeClass::BuildingZShape = Make_Global<const ShapeSet*>(0x0076053C);
+bool (*&Message_Intercept_Handler)(MSG& msg) = Make_Global<bool (*)(MSG& msg)>(0x0080741C);
 
 
 /**

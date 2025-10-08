@@ -162,6 +162,7 @@ class MovieClass;
 class ShapeSet;
 class MissionControlClass;
 class StaticBufferClass;
+class NullModemClass;
 
 enum KeyNumType;
 
@@ -226,6 +227,7 @@ extern WWFontClass*& Font8Ptr;
 extern WWFontClass*& GradFont6Ptr;
 extern WinsockInterfaceClass*& PacketTransport;
 extern IPXManagerClass& Ipx;
+extern NullModemClass& NullModem;
 extern Tactical*& TacticalMap;
 extern LogicClass& Logic;
 extern MouseClass& Map;

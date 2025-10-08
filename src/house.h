@@ -57,6 +57,7 @@
 #define MAX_WAYPOINT_PATHS   12
 
 
+class WaypointClass;
 class CCINIClass;
 class HouseTypeClass;
 class WaypointPathClass;
@@ -250,16 +251,16 @@ public:
     Cell Random_Cell_In_Zone(ZoneType zone) const;
     void Make_Ally(TechnoClass* techno);
     void Make_Enemy(TechnoClass* techno);
-    // 004C3FC0
-    // 004C40F0
-    // 004C4150
-    Coord* Waypoint_Coord(Cell& coord);                         // 004C4210
-    bool Place_Waypoint_At(Coord& coord, int& index, bool& a3); // 004C42C0
+    void Place_Waypoint(Coord const& coord);                      // 004C3FC0
+    bool Select_Waypoint(Coord const& coord);                     // 004C40F0
+    bool Can_Place_Waypoint(Cell const& cell);                    // 004C4150
+    WaypointClass* Waypoint_At(Cell const& coord);                // 004C4210
+    bool Fetch_Waypoint_Data(WaypointClass* waypt, PathType& path, char& waypt_id); // 004C42C0
     // 004C4450
     // 004C45D0
     // 004C5320
     // 004C5360
-    // 004C5370
+    WaypointPathClass* Ensure_Path(PathType path); // 004C5370
     // 004C53C0
     // 004C5510
     // 004C56A0
@@ -285,8 +286,8 @@ public:
     void AI_Build_Wall(); // 004C8920
     // 004C93F0
     void Recalc_Radar_Availability();
-    // 004C96A0
-    // 004C96F0
+    PathType New_Waypoint_Path() const;    // 004C96A0
+    bool Can_Add_Waypoint_To_Path() const; // 004C96F0
     // 004C9730
     void Update_Factories(RTTIType rtti);       // 004C9740
     void Update_Radar_Spied(HouseClass* house); // 004C98E0
@@ -422,8 +423,8 @@ public:
     int field_D4;
     int Clan;
     bool field_DC;
-    int field_E0; // selected waypoint path index?
-    WaypointPathClass* WaypointPaths[MAX_WAYPOINT_PATHS];
+    PathType SelectedPath; // selected waypoint path index?
+    WaypointPathClass* Paths[MAX_WAYPOINT_PATHS];
     bool IsVisionary;
     bool IsTiberiumShort;
     bool IsSpied;

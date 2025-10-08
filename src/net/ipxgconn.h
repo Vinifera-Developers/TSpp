@@ -74,8 +74,11 @@ public:
          *  This list should be continually updated & kept current. Never
          *  ever ever use an old product ID for your product!
          */
-        COMMAND_AND_CONQUER = 0xaa01,
-        COMMAND_AND_CONQUER0 = 0xaa00
+        COMMAND_AND_CONQUER4 = 0xaa04, // YR
+        COMMAND_AND_CONQUER3 = 0xaa03, // RA2
+        COMMAND_AND_CONQUER2 = 0xaa02, // TS
+        COMMAND_AND_CONQUER1 = 0xaa01, // TD
+        COMMAND_AND_CONQUER0 = 0xaa00, // RA
     };
 
     /**

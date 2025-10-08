@@ -65,17 +65,19 @@ public:
     virtual int Get_Object_Size(bool firestorm = false) const override;
     virtual void Object_CRC(CRCEngine& crc) const override;
 
-    Coord* Get_Waypoint_Coord(int index) const; // 00673600
-    // 00673620
-    // 006736D0
-    // 00673770
-    // 006737B0
-    // 00673820
-    // 00673860
+    int Current_Waypoint() const { return CurrentWaypoint; }
+    int Waypoint_Count() const { return Waypoints.Count(); }
+    WaypointClass* Get_Waypoint(int index) const;
+    bool Add_Waypoint(Coord const& coord);
+    bool Select_Waypoint(Coord const& coord);
+    void Replace_Waypoint(int index, Coord const& coord);
+    void Delete_Waypoint(int index);
+    WaypointClass* Get_Next_Waypoint(WaypointClass* wp);
+    void Clear();
 
     const char* Name() const;
 
 public:
-    int field_14; // 0x14
+    int CurrentWaypoint;
     DynamicVectorClass<WaypointClass> Waypoints;
 };

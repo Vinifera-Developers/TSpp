@@ -47,8 +47,8 @@ public:
     double Get_Current_Progress();
     void Display_Progress(Point2D pt = Point2D(-1, -1));
     int Get_Bar_Width();
-    void Set_Progress_Percent(int player_index, double value, int xpos, int ypos);
-    void Add_Progress_Percent(int player_index, double value, int xpos, int ypos);
+    void Set_Progress_Percent(int player_index, double value, Point2D pt = Point2D(-1, -1));
+    void Add_Progress_Percent(int player_index, double value, Point2D pt = Point2D(-1, -1));
 
     void Begin_Dialog();
     void End_Dialog();

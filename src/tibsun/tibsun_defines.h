@@ -2566,6 +2566,14 @@ typedef enum GScreenRedrawFlags {
 } GScreenRedrawFlags;
 
 
+typedef enum PathType {
+    PATH_NONE = -1,
+
+    PATH_COUNT = 12,
+    PATH_FIRST = 0,
+} PathType;
+
+
 typedef int LEPTON;
 
 
@@ -2722,6 +2730,17 @@ struct xCoord {
     int Y; // Y coordinate of the location.
 };
 
+struct CellStruct {
+    short X;
+    short Y;
+};
+
+struct CoordStruct {
+    int X;
+    int Y;
+    int Z;
+};
+
 class Coord;
 class Cell : public TPoint2D<short>
 {
@@ -2732,6 +2751,7 @@ public:
     Cell() = default;
     Cell(short x, short y) : TPoint2D(x, y) {}
     Cell(const xCell& x) : Cell(x.X, x.Y) {}
+    Cell(const CellStruct& x) : Cell(x.X, x.Y) {}
     explicit Cell(const Coord& coord);
 
     bool operator==(const Cell& that) const { return X == that.X && Y == that.Y; }
@@ -2767,6 +2787,14 @@ public:
         std::snprintf(_buffer, sizeof(_buffer), "%d,%d", X, Y);
         return _buffer;
     }
+
+    operator CellStruct(void) const
+    {
+        CellStruct cs;
+        cs.X = X;
+        cs.Y = Y;
+        return cs;
+    }
 };
 
 
@@ -2780,6 +2808,7 @@ public:
     Coord() = default;
     Coord(int x, int y, int z = 0) : Point3D(x, y, z) {}
     Coord(const xCoord& x) : Coord(x.X, x.Y, 0) {}
+    Coord(const CoordStruct& x) : Coord(x.X, x.Y, x.Z) {}
     explicit Coord(const Cell& cell, int z = 0);
 
     bool operator==(const Coord& that) const { return X == that.X && Y == that.Y && Z == that.Z; }
@@ -2812,6 +2841,15 @@ public:
         static char _buffer[12 + 12 + 12];
         std::snprintf(_buffer, sizeof(_buffer), "%d,%d,%d", X, Y, Z);
         return _buffer;
+    }
+
+    operator CoordStruct(void) const
+    {
+        CoordStruct cs;
+        cs.X = X;
+        cs.Y = Y;
+        cs.Z = Z;
+        return cs;
     }
 };
 

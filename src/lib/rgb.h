@@ -51,14 +51,16 @@ public:
 
     void Adjust(int adjust, const RGBClass& that);
     int Difference(const RGBClass& that) const;
+    int Get_Red() const { return Red; }
+    int Get_Green() const { return Green; }
+    int Get_Blue() const { return Blue; }
+    void Set_Red(unsigned char value) { Red = value; }
+    void Set_Green(unsigned char value) { Green = value; }
+    void Set_Blue(unsigned char value) { Blue = value; }
 
     RGBClass Adjust_Brightness(RGBClass& color, float adjust);
     RGBClass Lerp(RGBClass& left, RGBClass& right, float adjust);
     static RGBClass Interpolate(RGBClass& from, RGBClass& towards, float adjust);
-
-    enum {
-        MAX_VALUE = 255
-    };
 
 public:
     unsigned char Red;

@@ -33,6 +33,7 @@
 #include "tspp.h"
 
 
+class WaypointClass;
 class ObjectClass;
 class ObjectTypeClass;
 class LayerClass;
@@ -89,7 +90,7 @@ public:
     bool Good_Reinforcement_Cell(Cell& outcell, Cell& incell, SpeedType loco, int zone, MZoneType mzone) const;
     void Compute_Start_Pos();
     void Sell_Mode_Control(int control);
-    void Waypoint_Mode_Control(int control, bool a2);
+    void Waypoint_Mode_Control(int control, bool a2 = false);
     void Power_Mode_Control(int control);
     void Repair_Mode_Control(int control);
     Coord Closest_Free_Spot(const Coord& coord, bool any = false) const;
@@ -133,7 +134,7 @@ public:
     bool IsPowerMode;
     bool IsWaypointMode;
     SuperWeaponType TargettingType;
-    Coord* field_11C4;    // waypoint related
+    WaypointClass* DraggedWaypoint;
     Coord field_11C8;     // current waypoint coord (as user is moving mouse around).
     RGBStruct field_11D4; // waypoint related, waypoint scrolling color?
     bool IsRubberBand;

@@ -378,14 +378,15 @@ void *Load_Alloc_Data(char const *name, int flags)
  */
 void *Load_Alloc_Data(FileClass &file)
 {
-    void *ptr = nullptr;
-    long size = file.Size();
+    void* ptr = nullptr;
+    if (file.Is_Available()) {
+        long size = file.Size();
 
-    ptr = new char [size];
-    if (ptr) {
-        file.Read(ptr, size);
+        ptr = new char[size];
+        if (ptr != nullptr) {
+            file.Read(ptr, size);
+        }
     }
-
     return ptr;
 }
 

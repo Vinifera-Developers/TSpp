@@ -187,7 +187,7 @@ Point2D Simple_Text_Print(const char* text, XSurface* surface, Rect* rect, Point
      *  Draw a solid black background behind the text.
      */
     case TPF_SOLIDBLACK_BG:
-        surface->Fill_Rect(fillrect, DSurface::RGB_To_Pixel(0, 0, 0)); // Black
+        surface->Fill_Rect(fillrect, DSurface::Build_Hicolor_Pixel(0, 0, 0)); // Black
         break;
 
     /**

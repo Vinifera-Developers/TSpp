@@ -55,15 +55,8 @@ public:
     RGBClass Get_Min_Color();
     RadarDrawStruct Get_Draw_Data() const;
 
-    static bool Create_Event(RadarEventType event, Cell cell);
-    static bool Is_Combat_Event(RadarEventType event);
-    static void Process_Events();
     static void Draw_Events();
     static void Remove_Finished();
-    static bool Suppression_Check(RadarEventType type, int a2, Cell cell);
-    static bool Any_Active();
-
-    static void Plot_Point(Point2D* point);
 
     static void Clear();
 
@@ -88,3 +81,10 @@ public:
 public:
     static Cell& LastEventCell;
 };
+
+void Process_Radar_Events();
+bool Submit_Radar_Event(RadarEventType event, Cell cell);
+bool Can_Suppress_Radar_Event(RadarEventType event);
+bool Try_Suppress_Radar_Event(RadarEventType event, int, Cell cell);
+bool No_Radar_Events_Submitted();
+void Plot_Radar_Event_Point(Point2D const& point);

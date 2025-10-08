@@ -89,11 +89,10 @@ public:
 
     static DSurface* Create_Primary(DSurface** backbuffer_surface = nullptr);
 
-    static unsigned RGB_To_Pixel(unsigned r, unsigned g, unsigned b) { return (unsigned((b >> BlueRight) << BlueLeft) | unsigned((r >> RedRight) << RedLeft) | unsigned((g >> GreenRight) << GreenLeft)); }
+    static unsigned Build_Hicolor_Pixel(unsigned r, unsigned g, unsigned b) { return (unsigned((b >> BlueRight) << BlueLeft) | unsigned((r >> RedRight) << RedLeft) | unsigned((g >> GreenRight) << GreenLeft)); }
+    static unsigned Build_Hicolor_Pixel(RGBClass& rgb) { return (unsigned((rgb.Blue >> BlueRight) << BlueLeft) | unsigned((rgb.Red >> RedRight) << RedLeft) | unsigned((rgb.Green >> GreenRight) << GreenLeft)); }
 
-    static unsigned RGB_To_Pixel(RGBClass& rgb) { return (unsigned((rgb.Blue >> BlueRight) << BlueLeft) | unsigned((rgb.Red >> RedRight) << RedLeft) | unsigned((rgb.Green >> GreenRight) << GreenLeft)); }
-
-    static void Pixel_To_RGB(unsigned pixel, unsigned* red, unsigned* green, unsigned* blue)
+    static void Build_Locolor_Pixel(unsigned pixel, unsigned* red, unsigned* green, unsigned* blue)
     {
         *red = (unsigned char)(pixel >> RedLeft << RedRight);
         *green = (unsigned char)(pixel >> GreenLeft << GreenRight);
