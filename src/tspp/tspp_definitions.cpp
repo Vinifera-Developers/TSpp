@@ -782,13 +782,13 @@ DEFINE_IMPLEMENTATION(unsigned SessionClass::Compute_Unique_ID(), 0x005EEF90);
 DEFINE_IMPLEMENTATION(bool GameOptionsType::Save(IStream*), 0x005EFFA0);
 DEFINE_IMPLEMENTATION(bool GameOptionsType::Load(IStream*), 0x005EFFF0);
 
-DEFINE_IMPLEMENTATION(int Format_Window_String(char*, WWFontClass*, int, int&, int&), 0x00474960);
-DEFINE_IMPLEMENTATION(Point2D Simple_Text_Print(const char*, XSurface*, Rect*, Point2D*, ColorScheme*, unsigned, TextPrintType, int), 0x00474A50);
-DEFINE_IMPLEMENTATION(Point2D Plain_Text_Print(int, XSurface*, Rect*, Point2D*, unsigned, unsigned, TextPrintType, ColorSchemeType, int), 0x00475170);
-DEFINE_IMPLEMENTATION(Point2D Plain_Text_Print(char const*, XSurface*, Rect*, Point2D*, unsigned, unsigned, TextPrintType, ColorSchemeType, int), 0x004751D0);
-DEFINE_IMPLEMENTATION(Point2D Fancy_Text_Print(int, XSurface*, Rect*, Point2D*, ColorScheme*, unsigned, TextPrintType, ...), 0x00474D90);
-DEFINE_IMPLEMENTATION(Point2D Fancy_Text_Print(const char*, XSurface*, Rect*, Point2D*, ColorScheme*, unsigned, TextPrintType, ...), 0x00474E70);
-DEFINE_IMPLEMENTATION(Point2D Conquer_Clip_Text_Print(const char*, XSurface*, Rect*, Point2D*, ColorScheme*, unsigned, TextPrintType, int, const int*), 0x00474F50);
+DEFINE_IMPLEMENTATION(int Format_Window_String(char*, FontClass*, int, int&, int&), 0x00474960);
+DEFINE_IMPLEMENTATION(Point2D Simple_Text_Print(char const*, Surface&, Rect const&, Point2D const&, ColorScheme*, int, TextPrintType, int), 0x00474A50);
+DEFINE_IMPLEMENTATION(Point2D Plain_Text_Print(int, Surface&, Rect const&, Point2D const&, int, int, TextPrintType, int, int), 0x00475170);
+DEFINE_IMPLEMENTATION(Point2D Plain_Text_Print(char const*, Surface&, Rect const&, Point2D const&, int, int, TextPrintType, int, int), 0x004751D0);
+DEFINE_IMPLEMENTATION(Point2D Fancy_Text_Print(int, Surface&, Rect const&, Point2D const&, ColorScheme*, int, TextPrintType, ...), 0x00474D90);
+DEFINE_IMPLEMENTATION(Point2D Fancy_Text_Print(char const*, Surface&, Rect const&, Point2D const&, ColorScheme*, int, TextPrintType, ...), 0x00474E70);
+DEFINE_IMPLEMENTATION(Point2D Conquer_Clip_Text_Print(char const*, Surface&, Rect const&, Point2D const&, ColorScheme*, int, TextPrintType, int, int const*), 0x00474F50);
 
 INIClass::INIClass() : SectionList(), SectionIndex(), LineComments(nullptr) { *((unsigned long*)this) = (unsigned long)0x006D193C; }
 INIClass::INIClass(FileClass& file, bool load_comments) : SectionList(), SectionIndex(), LineComments(nullptr) { Load(file, load_comments); *((unsigned long*)this) = (unsigned long)0x006D193C; }
@@ -1131,13 +1131,15 @@ DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Drive(UINT), 0x0044F150);
 WWFontClass::~WWFontClass() {}
 DEFINE_IMPLEMENTATION(int WWFontClass::Char_Pixel_Width(char) const, 0x006A4480);
 DEFINE_IMPLEMENTATION(int WWFontClass::String_Pixel_Width(const char*) const, 0x006A44C0);
-DEFINE_IMPLEMENTATION(void WWFontClass::String_Pixel_Rect(const char*, Rect*) const, 0x006A4520);
-DEFINE_IMPLEMENTATION(int WWFontClass::Get_Char_Width() const, 0x006A45F0);
-DEFINE_IMPLEMENTATION(int WWFontClass::Get_Char_Height() const, 0x006A4620);
-DEFINE_IMPLEMENTATION(Point2D WWFontClass::Print(const char*, Surface*, Rect*, Point2D*, ConvertClass*, unsigned char[]), 0x006A46F0);
-DEFINE_IMPLEMENTATION(int WWFontClass::Set_X_Spacing(int), 0x006A4650);
-DEFINE_IMPLEMENTATION(int WWFontClass::Set_Y_Spacing(int), 0x006A46A0);
-DEFINE_IMPLEMENTATION(WWFontClass* Font_Ptr(TextPrintType), 0x00474D30);
+DEFINE_IMPLEMENTATION(void WWFontClass::String_Pixel_Bounds(char const*, Rect&) const, 0x006A4520);
+DEFINE_IMPLEMENTATION(int WWFontClass::Get_Width() const, 0x006A45F0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Get_Height() const, 0x006A4620);
+DEFINE_IMPLEMENTATION(Point2D WWFontClass::Print(char const*, Surface&, Rect const&, Point2D const&, ConvertClass const&, unsigned char const*) const, 0x006A46F0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Set_XSpacing(int), 0x006A4650);
+DEFINE_IMPLEMENTATION(int WWFontClass::Set_YSpacing(int), 0x006A46A0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Raw_Width() const, 0x006A45B0);
+DEFINE_IMPLEMENTATION(int WWFontClass::Raw_Height() const, 0x006A45D0);
+DEFINE_IMPLEMENTATION(FontClass* Font_Ptr(TextPrintType), 0x00474D30);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(UnitTrackerClass::UnitTrackerClass(int), 0x0065D5B0);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(UnitTrackerClass::~UnitTrackerClass(), 0x0065D600);
@@ -5715,12 +5717,12 @@ ConvertClass*& SidebarDrawer = Make_Global<ConvertClass*>(0x0074820C);
 ToolTipManager*& ToolTipHandler = Make_Global<ToolTipManager*>(0x0074C638);
 VersionClass& VerNum = Make_Global<VersionClass>(0x007E4880);
 CDControlClass& CDControl = Make_Global<CDControlClass>(0x007608B8);
-WWFontClass*& Metal12FontPtr = Make_Global<WWFontClass*>(0x0074821C);
-WWFontClass*& MapFontPtr = Make_Global<WWFontClass*>(0x00748228);
-WWFontClass*& Font6Ptr = Make_Global<WWFontClass*>(0x00748220);
-WWFontClass*& EditorFont = Make_Global<WWFontClass*>(0x00748214);
-WWFontClass*& Font8Ptr = Make_Global<WWFontClass*>(0x00748224);
-WWFontClass*& GradFont6Ptr = Make_Global<WWFontClass*>(0x00748218);
+FontClass*& Metal12FontPtr = Make_Global<FontClass*>(0x0074821C);
+FontClass*& MapFontPtr = Make_Global<FontClass*>(0x00748228);
+FontClass*& Font6Ptr = Make_Global<FontClass*>(0x00748220);
+FontClass*& EditorFont = Make_Global<FontClass*>(0x00748214);
+FontClass*& Font8Ptr = Make_Global<FontClass*>(0x00748224);
+FontClass*& GradFont6Ptr = Make_Global<FontClass*>(0x00748218);
 WinsockInterfaceClass*& PacketTransport = Make_Global<WinsockInterfaceClass*>(0x0074C8D8);
 IPXManagerClass& Ipx = Make_Global<IPXManagerClass>(0x007E45A0);
 NullModemClass& NullModem = Make_Global<NullModemClass>(0x007E45A0);

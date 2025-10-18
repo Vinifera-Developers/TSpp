@@ -31,8 +31,8 @@
 #include "tibsun_defines.h"
 
 
-class WWFontClass;
-class XSurface;
+class FontClass;
+class Surface;
 class HSVClass;
 class ColorScheme;
 class ConvertClass;
@@ -130,17 +130,16 @@ DEFINE_ENUMERATION_OPERATORS(TextPrintType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(TextPrintType);
 
 
-int Format_Window_String(char* string, WWFontClass* font, int maxlinelen, int& width, int& height);
+int Format_Window_String(char* string, FontClass* font, int maxlinelen, int& width, int& height);
 
-Point2D Simple_Text_Print(const char* text, XSurface* surface, Rect* rect, Point2D* xy, ColorScheme* fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, int a8 = 1);
+Point2D Conquer_Clip_Text_Print(char const*, Surface& surface, Rect const& rect, Point2D const& pt, ColorScheme* fore, int back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, int width = -1, int const* tabs = nullptr);
 
-Point2D Plain_Text_Print(int text, XSurface* surface, Rect* rect, Point2D* xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_FIRST, int a9 = 1);
-Point2D Plain_Text_Print(char const* text, XSurface* surface, Rect* rect, Point2D* xy, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, ColorSchemeType a8 = COLORSCHEME_FIRST, int a9 = 1);
+Point2D __cdecl Fancy_Text_Print(char const* text, Surface& surface, Rect const& rect, Point2D const& pt, ColorScheme* fore, int back, TextPrintType flag, ...);
+Point2D __cdecl Fancy_Text_Print(int text, Surface& surface, Rect const& rect, Point2D const& pt, ColorScheme* fore, int back, TextPrintType flag, ...);
+Point2D Simple_Text_Print(char const* text, Surface& surface, Rect const& rect, Point2D const& pt, ColorScheme* scheme, int back, TextPrintType flag, int fore);
+Point2D Plain_Text_Print(int text, Surface& surface, Rect const& rect, Point2D const& xy, int /*fore*/, int back, TextPrintType flag, int scheme, int fore);
+Point2D Plain_Text_Print(char const* text, Surface& surface, Rect const& rect, Point2D const& pt, int /*fore*/, int back, TextPrintType flag, int scheme, int fore);
 
-Point2D Fancy_Text_Print(int text, XSurface* surface, Rect* rect, Point2D* xy, ColorScheme* fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, ...);
-Point2D Fancy_Text_Print(const char* text, XSurface* surface, Rect* rect, Point2D* xy, ColorScheme* fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, ...);
+Point2D Simple_Text_Print(const char* text, Surface& surface, Rect const& rect, Point2D const& pt, ConvertClass& drawer, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, int a8 = 1);
 
-Point2D Conquer_Clip_Text_Print(const char* text, XSurface* surface, Rect* rect, Point2D* xy, ColorScheme* fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, int width = -1, const int* tabs = nullptr);
-
-
-Point2D Simple_Text_Print(const char* text, XSurface* surface, Rect* rect, Point2D* xy, ConvertClass* drawer, unsigned fore, unsigned back = COLOR_TBLACK, TextPrintType flag = TPF_8POINT | TPF_DROPSHADOW, int a8 = 1);
+FontClass* Font_Ptr(TextPrintType flags);
