@@ -68,12 +68,12 @@ public:
     virtual bool Scroll_Map(FacingType facing, int& distance, bool really = true);
     virtual void Set_View_Dimensions(Rect& rect);
     virtual void Put_Place_Back(TechnoClass* techno);
-    virtual void Mouse_Right_Press(Point2D& xy = Point2D());
+    virtual void Mouse_Right_Press(Point2D& xy = Point2D(0, 0));
     virtual void Mouse_Left_Press(Point2D& xy);
     virtual void Mouse_Left_Up(Cell& cell, bool shadow, ObjectClass* object, ActionType action, bool wsmall = false);
     virtual void Mouse_Left_Held(Point2D& xy);
     virtual void Mouse_Left_Release(Point2D& xy, Cell& cell, ObjectClass* object, ActionType action, bool wsmall = false);
-    virtual void Mouse_Right_Up(Point2D& xy = Point2D());
+    virtual void Mouse_Right_Up(Point2D& xy = Point2D(0, 0));
 
     void Set_Cursor_Shape(Cell const* list);
     bool Passes_Proximity_Check(const ObjectTypeClass* object, HousesType house, const Cell* list, Cell& trycell);
@@ -83,7 +83,7 @@ public:
     void Cursor_Mark(Cell& pos, bool on);
     void Submit(ObjectClass const* object);
     void Remove(ObjectClass const* object);
-    ObjectClass* Cell_Object(Cell& cell, Point2D& xy = Point2D());
+    ObjectClass* Cell_Object(Cell& cell, Point2D& xy = Point2D(0, 0));
     ObjectClass* Next_Object(ObjectClass* object) const;
     ObjectClass* Prev_Object(ObjectClass* object) const;
     Cell Calculated_Cell(SourceType dir, Cell& waypoint = CELL_NONE, Cell& cell = CELL_NONE, SpeedType loco = SPEED_FOOT, bool zonecheck = true, MZoneType mzone = MZONE_NORMAL) const;

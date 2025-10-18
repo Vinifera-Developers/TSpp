@@ -81,7 +81,7 @@ public:
     bool Recharge(bool player = false);
     void Impatient_Click() const;
     int Anim_Stage() const;
-    bool Discharged(bool player, Cell& cell = Cell());
+    bool Discharged(bool player, Cell& cell = Cell(0, 0));
     const char* Ready_String() const;
     bool Can_Place() const;
     void Set_Readiness(bool ready) { IsReady = ready; }

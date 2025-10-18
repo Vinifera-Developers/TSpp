@@ -90,8 +90,8 @@ public:
     int Preview_Cell_Color(void* a1, bool a2 = false);
     void Cell_Color(RGBClass& a1, RGBClass& a2);
     ObjectClass* Cell_Find_Object(RTTIType rtti, bool a2 = false) const;
-    ObjectClass* const Cell_Object(const Point2D& xy = Point2D(), bool a2 = false) const;
-    TechnoClass* const Cell_Techno(const Point2D& xy = Point2D(), bool a2 = false, TechnoClass* a3 = nullptr) const;
+    ObjectClass* const Cell_Object(const Point2D& xy = Point2D(0, 0), bool a2 = false) const;
+    TechnoClass* const Cell_Techno(const Point2D& xy = Point2D(0, 0), bool a2 = false, TechnoClass* a3 = nullptr) const;
     UnitClass* const Cell_Unit(bool a2 = false) const;
     AircraftClass* const Cell_Aircraft(bool a2 = false) const;
     InfantryClass* const Cell_Infantry(bool a2 = false) const;
@@ -128,7 +128,7 @@ public:
     Coord Closest_Free_Spot(Coord& coord, bool a2 = false, bool a3 = false) const;
     // 00457600
     int Clear_Icon(IsometricTileType tile, int tile_sequence_count);
-    void Incoming(Coord& threat = Coord(), bool forced = false, bool no_kidding = false, bool a4 = false);
+    void Incoming(Coord& threat = Coord(0, 0, 0), bool forced = false, bool no_kidding = false, bool a4 = false);
     CellClass& Adjacent_Cell(FacingType facing) const;
     void Adjust_Threat(HousesType house, int threat_value);
     long Tiberium_Adjust(bool pre_game = false);

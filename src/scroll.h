@@ -53,8 +53,8 @@ public:
      *  DisplayClass
      */
     virtual void Abort_Drag_Select() override;
-    virtual void Mouse_Right_Press(Point2D& xy = Point2D()) override;
-    virtual void Mouse_Right_Up(Point2D& xy = Point2D()) override;
+    virtual void Mouse_Right_Press(Point2D& xy = Point2D(0, 0)) override;
+    virtual void Mouse_Right_Up(Point2D& xy = Point2D(0, 0)) override;
 
     // 005E8600
     // 005E8910

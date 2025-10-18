@@ -158,7 +158,7 @@ public:
 
         struct {
             int ID;
-            Cell Cell;
+            xCell Cell;
         } Special;
 
         struct {

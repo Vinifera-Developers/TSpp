@@ -41,7 +41,7 @@ public:
     class PendingCellClass
     {
     public:
-        PendingCellClass() : Drawer(nullptr), Intensity(65536), Ambient(0), RedTint(1000), GreenTint(1000), BlueTint(1000), Cell() {}
+        PendingCellClass() : Drawer(nullptr), Intensity(65536), Ambient(0), RedTint(1000), GreenTint(1000), BlueTint(1000), Cell(0, 0) {}
 
         ~PendingCellClass() {}
 
