@@ -28,6 +28,7 @@
 #pragma once
 
 #include "abstract.h"
+#include "stringid.h"
 
 
 class CCINIClass;
@@ -40,8 +41,8 @@ public:
     AbstractTypeClass(const NoInitClass& noinit);
     virtual ~AbstractTypeClass();
 
-    bool operator==(const char* their_name) const { return strcasecmp(IniName, their_name) == 0; }
-    bool operator!=(const char* their_name) const { return strcasecmp(IniName, their_name) != 0; }
+    bool operator==(const char* their_name) const { return IniName == their_name; }
+    bool operator!=(const char* their_name) const { return IniName == their_name; }
 
     /**
      *  AbstractClass
@@ -55,18 +56,12 @@ public:
     virtual bool Read_INI(CCINIClass& ini);
     virtual bool Write_INI(CCINIClass& ini) const;
 
-    char const* Name() const { return IniName; }
-    void Set_Name(const char* buf) const
-    {
-        std::strncpy((char*)IniName, buf, sizeof(IniName));
-        ((char&)IniName[sizeof(IniName) - 1]) = '\0';
-    };
-
-    char const* Full_Name() const { return FullName; }
+    char const* Name() const { return IniName.c_str(); }
+    char const* Full_Name() const { return GivenName.c_str(); }
 
 public:
-    char IniName[24 + 1];
-    char FullName[48 + 1];
+    TStringID<24> IniName;
+    TStringID<48> GivenName;
 
 private:
     // Copy and assignment not implemented; prevent their use by declaring as private.

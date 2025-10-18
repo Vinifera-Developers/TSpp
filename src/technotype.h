@@ -157,7 +157,7 @@ public:
     int MaxAmmo;
     long Ownable;
     bool IsAllowedToStartInMultiplayer;
-    char CameoFilename[21 + 4];
+    TStringID<24> CameoFilename;
     const ShapeSet* CameoData;
     int Rotation;
     int ROT;

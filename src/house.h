@@ -548,7 +548,7 @@ public:
     CDTimerClass<FrameTimerClass> SpeakMaxedDelay;
     IAIHousePtr AIGeneral;
     RegionClass Regions[MAP_TOTAL_REGIONS];
-    char IniName[HOUSE_NAME_MAX + 1];
+    TStringID<HOUSE_NAME_MAX> IniName;
     ColorSchemeType Scheme;
     int field_10E00;
     DynamicVectorClass<IConnectionPoint*> field_10E04;

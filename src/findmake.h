@@ -42,7 +42,7 @@ T* TFind_Or_Make(const char* name, const DynamicVectorClass<T*>& vector)
 {
     if (stricmp("<none>", name) && stricmp("none", name)) {
         for (int index = 0; index < vector.Count(); index++) {
-            if (stricmp(vector[index]->IniName, name) == 0) {
+            if (stricmp(vector[index]->IniName.c_str(), name) == 0) {
                 return vector[index];
             }
         }

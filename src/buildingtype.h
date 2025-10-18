@@ -133,8 +133,8 @@ public:
     TPoint2D<int> SecondaryFirePixelOffset;
     OverlayTypeClass* ToOverlay;
     IsometricTileTypeClass* ToTile;
-    char BuildupFilename[12 + 4];
-    char PowersUpBuilding[20 + 4];
+    TStringID<15> BuildupFilename;
+    TStringID<23> PowersUpBuilding;
     UnitTypeClass* FreeUnit;
     FacingType FoundationFace;
     int Adjacent;

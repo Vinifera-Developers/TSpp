@@ -131,5 +131,5 @@ public:
     int Facings;
     char WalkFrames;
     char FiringFrames;
-    char AltImageFile[21 + 4];
+    TStringID<24> AltImageFile;
 };

@@ -91,7 +91,7 @@ public:
     ShapeSet* SidebarIcon;
     ActionType Action;
     BuildingTypeClass* AuxBuilding;
-    char SidebarImage[25];
+    TStringID<24> SidebarImage;
     bool IsUseChargeDrain;
     bool IsPowered;
     bool IsManualControl;

@@ -78,16 +78,16 @@ public:
 
     const char* Graphic_Name() const
     {
-        if (GraphicName[0] != '\0') {
-            return GraphicName;
+        if (!GraphicName.empty()) {
+            return GraphicName.c_str();
         }
         return Name();
     }
 
     const char* Alpha_Graphic_Name() const
     {
-        if (AlphaGraphicName[0] != '\0') {
-            return AlphaGraphicName;
+        if (!AlphaGraphicName.empty()) {
+            return AlphaGraphicName.c_str();
         }
         return Name();
     }
@@ -111,8 +111,8 @@ public:
     VoxelObject AuxVoxel2;
     unsigned int MaxDimension;
     VocType CrushSound;
-    char GraphicName[25];
-    char AlphaGraphicName[25];
+    TStringID<24> GraphicName;
+    TStringID<24> AlphaGraphicName;
     bool IsTheater;
     bool IsCrushable;
     bool IsStealthy;
