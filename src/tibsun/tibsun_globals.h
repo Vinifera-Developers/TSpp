@@ -505,6 +505,8 @@ ARRAY2D_DEC(Cell, BuildingExitLists, BSIZE_COUNT, 24);
 
 ARRAY2D_DEC(Cell, TerrainOccupyLists, BSIZE_COUNT, 10);
 
+ARRAY2D_DEC(int, MovementZonePassability, MZONE_COUNT, PASSABLE_COUNT);
+
 ARRAY_DEC(const char*, CrateNames, CRATE_COUNT);
 ARRAY_DEC(int, CrateShares, CRATE_COUNT);
 ARRAY_DEC(AnimType, CrateAnims, CRATE_COUNT);
