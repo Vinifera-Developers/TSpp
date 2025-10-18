@@ -44,18 +44,6 @@
 #include "unit.h"
 
 
-bool Target_Legal(AbstractClass* target, bool check_active)
-{
-    if (target == nullptr) {
-        return false;
-    }
-    if (check_active) {
-        return dynamic_cast<ObjectClass*>(target)->IsActive;
-    }
-    return true;
-}
-
-
 AbstractClass* As_Target(AbstractClass* a)
 {
     return reinterpret_cast<AbstractClass*>(a);

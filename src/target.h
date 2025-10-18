@@ -55,8 +55,6 @@ class AircraftClass;
 class CellClass;
 
 
-bool Target_Legal(AbstractClass* target, bool check_active = false);
-
 AbstractClass* As_Target(AbstractClass* a);
 
 bool Is_Target_Team(AbstractClass* a);
