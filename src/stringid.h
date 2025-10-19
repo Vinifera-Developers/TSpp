@@ -57,11 +57,17 @@ public:
     constexpr TStringID() noexcept { Data[0] = '\0'; }
     constexpr TStringID(const NoInitClass& x) noexcept {}
 
-    constexpr TStringID(const char* str) noexcept { assign(str); }
-    constexpr TStringID(nonstd::string_view sv) noexcept { assign(sv); }
+    TStringID(const char* str) noexcept { assign(str); }
+    TStringID& operator=(const char* str) noexcept { assign(str); return *this; }
+
+    TStringID(nonstd::string_view sv) noexcept { assign(sv); }
+    TStringID& operator=(nonstd::string_view sv) noexcept { assign(sv); return *this; }
 
     constexpr TStringID(const TStringID&) noexcept = default;
     constexpr TStringID& operator=(const TStringID&) noexcept = default;
+
+    constexpr TStringID(TStringID&&) noexcept = default;
+    constexpr TStringID& operator=(TStringID&&) noexcept = default;
 
     /**
      *  Conversions
@@ -73,7 +79,7 @@ public:
      *  Capacity
      */
     static constexpr size_type capacity() noexcept { return N; }
-    constexpr size_type size() const noexcept { return _strlen(Data); }
+    constexpr size_type size() const noexcept { return cstring_length(Data); }
     constexpr bool empty() const noexcept { return Data[0] == '\0'; }
 
     /**
@@ -100,8 +106,8 @@ public:
     constexpr char& front() noexcept { return Data[0]; }
     constexpr const char& front() const noexcept { return Data[0]; }
 
-    constexpr char& back() noexcept { return Data[size() - 1]; }
-    constexpr const char& back() const noexcept { return Data[size() - 1]; }
+    constexpr char& back() noexcept { TSPP_ASSERT(!empty()); return Data[size() - 1]; }
+    constexpr const char& back() const noexcept { TSPP_ASSERT(!empty()); return Data[size() - 1]; }
 
     /**
      *  Iterators
@@ -119,7 +125,7 @@ public:
      */
     constexpr void clear() noexcept { Data[0] = '\0'; }
 
-    constexpr void assign(nonstd::string_view sv) noexcept
+    void assign(nonstd::string_view sv) noexcept
     {
         const auto len = std::min(sv.size(), capacity());
         if (sv.data() != Data) {
@@ -128,9 +134,9 @@ public:
         }
     }
 
-    constexpr void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
+    void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
 
-    constexpr void push_back(char c) noexcept
+    void push_back(char c) noexcept
     {
         const auto len = size();
         if (len < capacity()) {
@@ -139,7 +145,7 @@ public:
         }
     }
 
-    constexpr void pop_back() noexcept
+    void pop_back() noexcept
     {
         const auto len = size();
         if (len > 0) {
@@ -147,7 +153,7 @@ public:
         }
     }
 
-    constexpr TStringID& operator+=(nonstd::string_view sv) noexcept
+    TStringID& operator+=(nonstd::string_view sv) noexcept
     {
         const auto len = size();
         const auto to_copy = std::min(sv.size(), capacity() - len);
@@ -156,23 +162,9 @@ public:
         return *this;
     }
 
-    constexpr TStringID& operator+=(char c) noexcept
+    TStringID& operator+=(char c) noexcept
     {
         push_back(c);
-        return *this;
-    }
-
-    template<std::size_t M>
-    constexpr TStringID& operator=(const TStringID<M>& other) noexcept
-    {
-        assign(nonstd::string_view(other));
-        return *this;
-    }
-
-    template<std::size_t M>
-    constexpr TStringID& operator=(const class FixedString<M>& other) noexcept
-    {
-        assign(nonstd::string_view(other));
         return *this;
     }
 
@@ -202,7 +194,7 @@ protected:
     /**
      *  Custom constexpr strlen
      */
-    static constexpr size_type _strlen(const char* s) noexcept
+    static constexpr size_type cstring_length(const char* s) noexcept
     {
         const char* p = s;
         while (*p) ++p;
@@ -238,12 +230,18 @@ public:
 
     constexpr FixedString() noexcept : Base(), Length(0) { }
     constexpr FixedString(const NoInitClass& x) noexcept : Base(x) {}
+    
+    FixedString(const char* str) noexcept { assign(str); }
+    FixedString& operator=(const char* str) noexcept { assign(str); return *this; }
 
-    constexpr FixedString(const char* str) noexcept { assign(str); }
-    constexpr FixedString(nonstd::string_view sv) noexcept { assign(sv); }
+    FixedString(nonstd::string_view sv) noexcept { assign(sv); }
+    FixedString& operator=(nonstd::string_view sv) noexcept { assign(sv); return *this; }
 
     constexpr FixedString(const FixedString&) noexcept = default;
     constexpr FixedString& operator=(const FixedString&) noexcept = default;
+
+    constexpr FixedString(FixedString&&) noexcept = default;
+    constexpr FixedString& operator=(FixedString&&) noexcept = default;
 
     /**
      *  Capacity
@@ -259,7 +257,7 @@ public:
         Length = 0;
     }
 
-    constexpr void assign(nonstd::string_view sv) noexcept
+    void assign(nonstd::string_view sv) noexcept
     {
         const auto len = std::min(sv.size(), Base::capacity());
         if (sv.data() != Data) {
@@ -269,7 +267,7 @@ public:
         }
     }
 
-    constexpr void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
+    void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
 
     constexpr void push_back(char c) noexcept
     {
@@ -286,7 +284,7 @@ public:
         }
     }
 
-    constexpr FixedString& operator+=(nonstd::string_view sv) noexcept
+    FixedString& operator+=(nonstd::string_view sv) noexcept
     {
         const auto to_copy = std::min(sv.size(), Base::capacity() - Length);
         std::memcpy(Data + Length, sv.data(), to_copy);
@@ -301,26 +299,10 @@ public:
         return *this;
     }
 
-    template<std::size_t M>
-    constexpr FixedString& operator=(const TStringID<M>& other) noexcept
-    {
-        assign(nonstd::string_view(other));
-        Recalculate_Length();
-        return *this;
-    }
-
-    template<std::size_t M>
-    constexpr FixedString& operator=(const FixedString<M>& other) noexcept
-    {
-        assign(nonstd::string_view(other));
-        Length = std::min(other.size(), Base::capacity());
-        return *this;
-    }
-
     /**
      *  Length maintenance helper (useful if Data is manipulated directly)
      */
-    constexpr void Recalculate_Length() noexcept { Length = _strlen(Data); }
+    constexpr void Recalculate_Length() noexcept { Length = Base::cstring_length(Data); }
 
 private:
     size_type Length;
