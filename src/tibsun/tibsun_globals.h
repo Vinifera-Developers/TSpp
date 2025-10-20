@@ -195,7 +195,7 @@ extern WWKeyboardClass*& WWKeyboard;
 extern OptionsClass& Options;
 extern SpecialClass& Special;
 extern RulesClass*& Rule;
-extern WWMouseClass*& WWMouse;
+extern WWMouseClass*& MouseCursor;
 extern Surface*& TileSurface;
 extern Surface*& SidebarSurface;
 extern Surface*& VisibleSurface;

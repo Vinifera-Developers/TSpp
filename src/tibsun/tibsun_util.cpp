@@ -46,7 +46,7 @@ Cell Get_Cell_Under_Mouse()
     /**
      *  Fetch the mouse position.
      */
-    Point2D mouse = WWMouse->Get_Mouse_XY();
+    Point2D mouse = MouseCursor->Get_Mouse_Point();
 
     /**
      *  If mouse position is valid, convert to world coordinates and return.
@@ -71,7 +71,7 @@ Coord Get_Coord_Under_Mouse()
     /**
      *  Fetch the mouse position.
      */
-    Point2D mouse = WWMouse->Get_Mouse_XY();
+    Point2D mouse = MouseCursor->Get_Mouse_Point();
 
     /**
      *  If mouse position is valid, convert to world coordinates and return.
