@@ -42,25 +42,25 @@ public:
     DSurface();
     DSurface(int width, int height, bool system_memory = false);
     DSurface(LPDIRECTDRAWSURFACE surface);
-    virtual ~DSurface();
+    ~DSurface() override;
 
-    virtual bool Blit_From(Rect const& dcliprect, Rect const& destrect, Surface const& source, Rect const& scliprect, Rect const& sourcerect, bool trans = false, bool a7 = true) override;
-    virtual bool Blit_From(Rect const& destrect, Surface const& source, Rect const& sourcerect, bool trans = false, bool a5 = true) override;
-    virtual bool Blit_From(Surface const& source, bool trans = false, bool a3 = true) override;
-    virtual bool Fill_Rect(Rect const& rect, unsigned color) override;
-    virtual bool Fill_Rect(Rect const& cliprect, Rect const& fillrect, unsigned color) override;
-    virtual bool Fill_Rect_Trans(Rect const& rect, RGBClass const& color, unsigned opacity) override;
-    virtual bool Draw_Line_entry_34(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int color, int a5, int a6, bool a7 = false) override;
-    virtual bool Draw_Line_entry_38(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int a4, int a5, int a6, bool a7 = false) override;
-    virtual bool Draw_Line_entry_3C(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, RGBClass const& color, int a5, int a6, bool a7, bool a8, bool a9, bool a10, float a11) override;
-    virtual int entry_48(Point2D const& startpoint, Point2D const& endpoint, int color, bool pattern[], int offset, bool a6) override;
-    virtual bool entry_4C(Point2D const& startpoint, Point2D const& endpoint, int color, bool a4 = false) override;
-    virtual void* Lock(Point2D point = Point2D(0, 0)) override;
-    virtual bool Unlock() override;
-    virtual bool Can_Lock(int x = 0, int y = 0) const override;
-    virtual int Bytes_Per_Pixel() const override;
-    virtual int Stride() const override;
-    virtual bool Is_Direct_Draw() const override;
+    bool Blit_From(Rect const& dcliprect, Rect const& destrect, Surface const& source, Rect const& scliprect, Rect const& sourcerect, bool trans = false, bool a7 = true) override;
+    bool Blit_From(Rect const& destrect, Surface const& source, Rect const& sourcerect, bool trans = false, bool a5 = true) override;
+    bool Blit_From(Surface const& source, bool trans = false, bool a3 = true) override;
+    bool Fill_Rect(Rect const& rect, int color) override;
+    bool Fill_Rect(Rect const& cliprect, Rect const& fillrect, int color) override;
+    bool Fill_Rect_Trans(Rect const& rect, RGBClass const& color, int opacity) override;
+    bool Draw_Line_entry_34(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int color, int a5, int a6, bool a7 = false) override;
+    bool Draw_Line_entry_38(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int a4, int a5, int a6, bool a7 = false) override;
+    bool Draw_Line_entry_3C(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, RGBClass const& color, int a5, int a6, bool a7, bool a8, bool a9, bool a10, float a11) override;
+    int entry_48(Point2D const& startpoint, Point2D const& endpoint, int color, bool pattern[], int offset, bool a6) override;
+    bool entry_4C(Point2D const& startpoint, Point2D const& endpoint, int color, bool a4 = false) override;
+    void* Lock(Point2D point = Point2D(0, 0)) const override;
+    bool Unlock() const override;
+    bool Can_Lock(int x = 0, int y = 0) const override;
+    int Bytes_Per_Pixel() const override;
+    int Stride() const override;
+    bool Is_Direct_Draw() const override;
 
     virtual bool entry_90(Rect& area, Point2D& start, Point2D& end, RGBClass& a4, RGBClass& a5, float& a6, float& a7);
     virtual bool Can_Blit() const;
@@ -71,14 +71,14 @@ public:
 
     static DSurface* Create_Primary(DSurface** backsurface1 = nullptr);
 
-    static unsigned Build_Hicolor_Pixel(unsigned r, unsigned g, unsigned b) { return (unsigned((b >> BlueRight) << BlueLeft) | unsigned((r >> RedRight) << RedLeft) | unsigned((g >> GreenRight) << GreenLeft)); }
-    static unsigned Build_Hicolor_Pixel(RGBClass& rgb) { return (unsigned((rgb.Blue >> BlueRight) << BlueLeft) | unsigned((rgb.Red >> RedRight) << RedLeft) | unsigned((rgb.Green >> GreenRight) << GreenLeft)); }
+    static unsigned Build_Hicolor_Pixel(unsigned r, unsigned g, unsigned b) { return b >> BlueLeft << BlueRight | r >> RedLeft << RedRight | g >> GreenLeft << GreenRight; }
+    static unsigned Build_Hicolor_Pixel(RGBClass& rgb) { return Build_Hicolor_Pixel(rgb.Get_Red(), rgb.Get_Green(), rgb.Get_Blue()); }
 
     static void Build_Locolor_Pixel(unsigned pixel, unsigned* red, unsigned* green, unsigned* blue)
     {
-        *red = (unsigned char)(pixel >> RedLeft << RedRight);
-        *green = (unsigned char)(pixel >> GreenLeft << GreenRight);
-        *blue = (unsigned char)(pixel >> BlueLeft << BlueRight);
+        *red = static_cast<unsigned char>(pixel >> RedRight << RedLeft);
+        *green = static_cast<unsigned char>(pixel >> GreenRight << GreenLeft);
+        *blue = static_cast<unsigned char>(pixel >> BlueRight << BlueLeft);
     }
 
     static unsigned Get_Red_Left() { return RedLeft; }

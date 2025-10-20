@@ -76,8 +76,6 @@ public:
         ScreenY = y;
     }
 
-    static void Blit(bool a1, Surface* surface, int a3 = 0);
-
 public:
     static GadgetClass*& Buttons;
 
@@ -91,3 +89,5 @@ private:
     GScreenClass(const GScreenClass&);
     GScreenClass& operator=(const GScreenClass&);
 };
+
+void Update_Visible_Surface(bool flip_mouse = true, Surface* surface = HiddenSurface, Rect* rect = nullptr);

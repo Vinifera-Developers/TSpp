@@ -51,7 +51,7 @@ public:
     Blitter* Blitter_From_Flags(int flags);
     RLEBlitter* RLEBlitter_From_Flags(int flags);
 
-    static void Recalc_Color_Remap_Tables(int a1, int a2, int a3, int a4);
+    static void Reinitialize_Hicolor_Tables(int redleft, int redright, int greenleft, int greenright, int blueleft, int blueright);
 
     unsigned Convert_Pixel(unsigned index) const
     {

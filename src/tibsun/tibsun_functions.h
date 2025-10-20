@@ -33,7 +33,7 @@
 
 
 class FileClass;
-class XSurface;
+class Surface;
 class PaletteClass;
 class ObjectClass;
 class AbstractClass;
@@ -52,7 +52,7 @@ int Create_Main_Window(HINSTANCE hInstance, int command_show, int width, int hei
 void Prep_Direct_Draw();
 bool Set_Video_Mode(HWND hWnd, int w, int h, int bits_per_pixel);
 void Reset_Video_Mode();
-bool Allocate_Surfaces(Rect* common_rect, Rect* composite_rect, Rect* tile_rect, Rect* sidebar_rect, bool alloc_hidden_surf = false);
+bool Allocate_Surfaces(const Rect& hidden_rect, const Rect& composite_rect, const Rect& tile_rect, const Rect& sidebar_rect, bool hidden_first = false);
 void Free_Heaps();
 void Wait_Blit();
 void Set_DD_Palette(void* rpalette);
@@ -69,7 +69,7 @@ void Shake_The_Screen(int shakes);
 long Owner_From_Name(const char* name);
 bool Main_Loop();
 void Keyboard_Process(KeyNumType& input);
-void Load_Title_Screen(const char* name, XSurface* video_page, PaletteClass* palette);
+void Load_Title_Screen(const char* name, Surface* video_page, PaletteClass* palette);
 ThemeType Get_Intro_Theme();
 ThemeType Get_Maps_Theme();
 void Init_Random();
@@ -109,3 +109,5 @@ void List_Copy(Cell const* source, int len, Cell* dest);
 
 TechnoClass* As_TechnoClass(AbstractClass* target);
 TechnoClass* As_Techno(AbstractClass* target);
+
+bool On_WM_MOVING(HWND window, WPARAM wparam, LPARAM lparam);

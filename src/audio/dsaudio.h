@@ -214,7 +214,7 @@ public:
     LPDIRECTSOUNDBUFFER Get_Primary_Buffer() const { return PrimaryBufferPtr; }
 
 public:
-    void (*AudioFocusLossFunction)();
+    void (*Audio_Focus_Loss_Function)();
     bool StreamLowImpact;
     unsigned int MagicNumber;
     void* UncompBuffer;

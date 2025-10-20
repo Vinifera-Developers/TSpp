@@ -37,3 +37,5 @@ void Play_Fullscreen_Movie(char const* name, ThemeType theme);
 void Play_Ingame_Movie(char const* name);
 void Play_Ingame_Movie(VQType name);
 void End_Ingame_Movie();
+bool Movie_Is_Playing();
+void Movie_Update_Visible_Surface();

@@ -60,10 +60,10 @@ public:
     // 005E8910
     // 005E8DD0
     // 005E91A0
-    // 005E9300
+    void Message_Handler(HWND hwnd, UINT& message, UINT& wParam, LONG& lParam);
     // 005E9660
 
-private:
+public:
     int Inertia;
     bool field_1D0C;    // is scrolling allowed?
     Point2D field_1D10; // the point of the right-click location when scrolling started.

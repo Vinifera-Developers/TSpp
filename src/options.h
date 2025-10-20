@@ -68,7 +68,7 @@ public:
     int ScrollRate;
     bool IsAutoScroll;
     int DetailLevel;
-    SidebarSide SidebarOn;
+    SidebarSide SidebarSide;
     bool SidebarCameoText;
     bool ActionLines;
     bool ToolTips;

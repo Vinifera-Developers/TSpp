@@ -47,10 +47,10 @@ public:
     virtual bool Blit_From(Rect const& dcliprect, Rect const& destrect, Surface const& source, Rect const& scliprect, Rect const& sourcerect, bool trans = false, bool a7 = true) = 0;
     virtual bool Blit_From(Rect const& destrect, Surface const& source, Rect const& sourcerect, bool trans = false, bool a5 = true) = 0;
     virtual bool Blit_From(Surface const& source, bool trans = false, bool a3 = true) = 0;
-    virtual bool Fill_Rect(Rect const& rect, unsigned color) = 0;
-    virtual bool Fill_Rect(Rect const& cliprect, Rect const& fillrect, unsigned color) = 0;
+    virtual bool Fill_Rect(Rect const& rect, int color) = 0;
+    virtual bool Fill_Rect(Rect const& cliprect, Rect const& fillrect, int color) = 0;
     virtual bool Fill(int color) = 0;
-    virtual bool Fill_Rect_Trans(Rect const& rect, RGBClass const& color, unsigned opacity) = 0;
+    virtual bool Fill_Rect_Trans(Rect const& rect, RGBClass const& color, int opacity) = 0;
     virtual bool Draw_Ellipse(Point2D center, int radius_x, int radius_y, Rect clip, int color) = 0;
     virtual bool Put_Pixel(Point2D const& point, int color) = 0;
     virtual int Get_Pixel(Point2D const& point) = 0;
@@ -65,8 +65,8 @@ public:
     virtual bool entry_4C(Point2D const& startpoint, Point2D const& endpoint, int color, bool a4 = false) = 0;
     virtual bool Draw_Rect(Rect const& rect, int color) = 0;
     virtual bool Draw_Rect(Rect const& cliprect, Rect const& rect, int color) = 0;
-    virtual void* Lock(Point2D point = Point2D(0, 0)) = 0;
-    virtual bool Unlock() = 0;
+    virtual void* Lock(Point2D point = Point2D(0, 0)) const = 0;
+    virtual bool Unlock() const = 0;
     virtual bool Can_Lock(int x = 0, int y = 0) const;
     virtual bool entry_64(int x = 0, int y = 0) const;
     virtual bool Is_Locked() const = 0;

@@ -146,3 +146,8 @@ public:
     static bool Activate_From_Type(CommandType type);
     static CommandClass* From_Type(CommandType type);
 };
+
+inline void Do_Command(const char* name)
+{
+    CommandClass::Activate_From_Name(name);
+}

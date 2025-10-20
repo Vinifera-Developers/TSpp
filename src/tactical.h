@@ -196,7 +196,8 @@ public:
     bool IsToRedraw;
     bool field_D32;
     Rect field_D34;
-    Rect Band;
+    Point2D RubberBandStart;
+    Point2D RubberBandEnd;
     int field_D54;
     CDTimerClass<FrameTimerClass> WaypointAnimTimer;
     Matrix3D field_D64;

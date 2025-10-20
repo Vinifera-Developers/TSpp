@@ -37,26 +37,18 @@ public:
     CDControlClass();
     ~CDControlClass();
 
-    bool Eject_CD_Drive(UINT drive_num);
-    bool Load_CD_Drive(UINT drive_num);
-    bool Lock_CD_Drive(UINT drive_num);
-    bool Unlock_CD_Drive(UINT drive_num);
+    bool Force_CD_Eject(UINT drive_num);
+    bool Lock_CD_Tray(UINT drive_num);
+    bool Unlock_CD_Tray(UINT drive_num);
 
-    bool Unlock_All_CD_Drives()
+    bool Unlock_All_CD_Trays()
     {
-        for (UINT drive_num = 0; drive_num <= std::size(LockCount); ++drive_num) {
-
+        for (int drive_num = 0; drive_num <= std::size(LockCount); ++drive_num) {
             if (LockCount[drive_num] <= 0) {
                 continue;
             }
-
-            if (LockCount[drive_num] == 0) {
-                continue;
-            }
-
-            Unlock_CD_Drive(drive_num);
+            Unlock_CD_Tray(drive_num);
         }
-
         return true;
     }
 

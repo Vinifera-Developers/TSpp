@@ -57,7 +57,7 @@ class WWKeyboardClass;
 class OptionsClass;
 class SpecialClass;
 class RulesClass;
-class WWMouseClass;
+class Mouse;
 class DSurface;
 class Random2Class;
 class ScenarioClass;
@@ -191,17 +191,17 @@ extern int& BRIDGE_LEPTON_HEIGHT;
 /**
  *  Global externs (should be defined in tspp_defintions.cpp).
  */
-extern WWKeyboardClass*& WWKeyboard;
+extern WWKeyboardClass*& Keyboard;
 extern OptionsClass& Options;
 extern SpecialClass& Special;
 extern RulesClass*& Rule;
-extern WWMouseClass*& MouseCursor;
+extern Mouse*& MouseCursor;
 extern Surface*& TileSurface;
 extern Surface*& SidebarSurface;
 extern Surface*& VisibleSurface;
 extern Surface*& HiddenSurface;
 extern Surface*& AlternateSurface;
-extern Surface*& LogicSurface;
+extern Surface*& LogicalSurface;
 extern Surface*& CompositeSurface;
 extern Random2Class& NonCriticalRandomNumber;
 extern long& Frame;
@@ -216,7 +216,7 @@ extern ConvertClass*& AnimDrawer;
 extern ConvertClass*& NormalDrawer;
 extern ConvertClass*& MouseDrawer;
 extern ConvertClass*& SidebarDrawer;
-extern ToolTipManager*& ToolTipHandler;
+extern ToolTipManager*& ToolTips;
 extern VersionClass& VerNum;
 extern CDControlClass& CDControl;
 extern FontClass*& Metal12FontPtr;
@@ -240,7 +240,7 @@ extern unsigned& ExceptionReturnBase;
 extern unsigned& ExceptionReturnStack;
 extern unsigned& ExceptionReturnAddress;
 extern bool& CatchExceptions;
-extern bool& Debug_Windowed;
+extern bool& WindowedMode;
 extern bool& Debug_ScenarioFilenameSet;
 extern char* Debug_ScenarioFilename; // [128]
 extern bool& Debug_MotionCapture;
@@ -347,7 +347,11 @@ extern int& PrimaryColorMode;
 extern bool& OverlappedVideoBlits;
 extern int& VideoWidth;
 extern int& VideoHeight;
-extern int& BitsPerPixel;
+extern int& VideoBitsPerPixel;
+extern int& ReadyToQuit;
+extern bool& SurfacesRestored;
+extern bool& _MouseCaptured;
+extern bool& _MouseWheel;
 
 extern bool& _Select_Game_fade;
 

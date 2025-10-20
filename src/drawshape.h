@@ -34,6 +34,7 @@
 class Surface;
 class ConvertClass;
 class ShapeSet;
+class Blitter;
 enum ShapeFlags_Type;
 
 /**
@@ -54,3 +55,5 @@ void Draw_Shape(Surface& surface,                       // Destination surface t
                 const ShapeSet* z_shapefile = nullptr,
                 int z_shapenum = 0,                     // The shape number within the z shape that will be drawn.
                 Point2D z_off = Point2D(0, 0));
+
+void Blit_Block(Surface& surface, ConvertClass& convert, Surface const& source, Rect const& sourcerect, Point2D const& point, Rect const& clipwindow, unsigned char const* remap = NULL, Blitter const* blitter = NULL, int = 0, ZGradientType zgrad = ZGRAD_GROUND, int = 1000, int = 0);

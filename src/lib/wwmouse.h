@@ -111,7 +111,7 @@ public:
     */
     void Calc_Confining_Rect();
 
-private:
+protected:
     /*
     **  This specifies the mouse shape data. It records the shape set
     **  data as well as the particular image contained within.
@@ -229,7 +229,7 @@ private:
     // bool Is_Blocked() const {return(Blocked != 0);}
 };
 
-extern WWMouseClass*& MouseCursor;
+extern Mouse*& MouseCursor;
 inline void Hide_Mouse() {MouseCursor->Hide_Mouse();}
 inline void Show_Mouse() {MouseCursor->Show_Mouse();}
 inline void Conditional_Hide_Mouse(Rect rect) {MouseCursor->Conditional_Hide_Mouse(rect);}

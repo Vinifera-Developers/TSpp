@@ -596,10 +596,10 @@ DEFINE_IMPLEMENTATION(long CRCPipe::Result() const, 0x00471110);
 DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, bool, bool), 0x006A82B0);
 DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Rect const&, Surface const&, Rect const&, bool, bool), 0x006A8150);
 DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Surface const&, bool, bool), 0x006A80B0);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, unsigned), 0x006A75E0);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, Rect const&, unsigned), 0x006A7610);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, int), 0x006A75E0);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, Rect const&, int), 0x006A7610);
 DEFINE_IMPLEMENTATION(bool XSurface::Fill(int), 0x006A8070);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect_Trans(Rect const&, const RGBClass&, unsigned), 0x006A7900);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect_Trans(Rect const&, const RGBClass&, int), 0x006A7900);
 DEFINE_IMPLEMENTATION(bool XSurface::Draw_Ellipse(Point2D, int, int, Rect, int), 0x006A7910);
 DEFINE_IMPLEMENTATION(bool XSurface::Put_Pixel(Point2D const&, int), 0x006A7470);
 DEFINE_IMPLEMENTATION(int XSurface::Get_Pixel(Point2D const&), 0x006A7420);
@@ -614,8 +614,8 @@ DEFINE_IMPLEMENTATION(int XSurface::entry_48(Point2D const&, Point2D const&, int
 DEFINE_IMPLEMENTATION(bool XSurface::entry_4C(Point2D const&, Point2D const&, int, bool), 0x006A7110);
 DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect const&, int), 0x006A7350);
 DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect const&, Rect const&, int), 0x006A7380);
-DEFINE_IMPLEMENTATION(void* XSurface::Lock(Point2D), 0x00406DC0);
-DEFINE_IMPLEMENTATION(bool XSurface::Unlock(), 0x00406DD0);
+DEFINE_IMPLEMENTATION(void* XSurface::Lock(Point2D) const, 0x00406DC0);
+DEFINE_IMPLEMENTATION(bool XSurface::Unlock() const, 0x00406DD0);
 DEFINE_IMPLEMENTATION(bool XSurface::Is_Locked() const, 0x00406DE0);
 DEFINE_IMPLEMENTATION(bool XSurface::Is_Direct_Draw() const, 0x00406DF0);
 DEFINE_IMPLEMENTATION(bool XSurface::entry_84(Point2D const&, int, Rect const&), 0x006A7550);
@@ -623,7 +623,7 @@ DEFINE_IMPLEMENTATION(int XSurface::entry_88(Point2D const&, Rect const&) const,
 DEFINE_IMPLEMENTATION(void XSurface::Fill_Circle(Point2D, unsigned, Rect, int), 0x006A7EE0);
 
 BSurface::BSurface(int width, int height, int bbp, void* buffer) : XSurface(width, height), BBP(bbp), Buff(buffer, height * width * bbp) { *((unsigned long*)this) = (unsigned long)0x006CAB74; }
-DEFINE_IMPLEMENTATION(void* BSurface::Lock(Point2D), 0x00406E50);
+DEFINE_IMPLEMENTATION(void* BSurface::Lock(Point2D) const, 0x00406E50);
 DEFINE_IMPLEMENTATION(int BSurface::Bytes_Per_Pixel() const, 0x00406E90);
 DEFINE_IMPLEMENTATION(int BSurface::Stride() const, 0x00406EA0);
 
@@ -634,16 +634,16 @@ DEFINE_IMPLEMENTATION(int BSurface::Stride() const, 0x00406EA0);
 DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, bool, bool), 0x0048B5E0);
 DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Rect const&, Surface const&, Rect const&, bool, bool), 0x0048B590);
 DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Surface const&, bool, bool), 0x004901A0);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, unsigned), 0x0048BB00);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, Rect const&, unsigned), 0x0048BB30);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect_Trans(Rect const&, RGBClass const&, unsigned), 0x0048BCE0);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, int), 0x0048BB00);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, Rect const&, int), 0x0048BB30);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect_Trans(Rect const&, RGBClass const&, int), 0x0048BCE0);
 DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_34(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x0048EA90);
 DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_38(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x0048C150);
 DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_3C(Rect const&, Point2D const&, Point2D const&, RGBClass const&, int, int, bool, bool, bool, bool, float), 0x0048CC00);
 DEFINE_IMPLEMENTATION(int DSurface::entry_48(Point2D const&, Point2D const&, int, bool[], int, bool), 0x0048F4B0);
 DEFINE_IMPLEMENTATION(bool DSurface::entry_4C(Point2D const&, Point2D const&, int, bool), 0x0048FB90);
-DEFINE_IMPLEMENTATION(void* DSurface::Lock(Point2D), 0x0048B370);
-DEFINE_IMPLEMENTATION(bool DSurface::Unlock(), 0x0048B4D0);
+DEFINE_IMPLEMENTATION(void* DSurface::Lock(Point2D) const, 0x0048B370);
+DEFINE_IMPLEMENTATION(bool DSurface::Unlock() const, 0x0048B4D0);
 DEFINE_IMPLEMENTATION(bool DSurface::Can_Lock(int, int) const, 0x0048B450);
 DEFINE_IMPLEMENTATION(int DSurface::Bytes_Per_Pixel() const, 0x0048B350);
 DEFINE_IMPLEMENTATION(int DSurface::Stride() const, 0x0048B360);
@@ -1055,7 +1055,7 @@ DEFINE_IMPLEMENTATION(void ConvertClass::Create_Blitters(), 0x00464100);
 DEFINE_IMPLEMENTATION(void ConvertClass::Destroy_Blitters(), 0x00465A00);
 DEFINE_IMPLEMENTATION(Blitter* ConvertClass::Blitter_From_Flags(int), 0x00466130);
 DEFINE_IMPLEMENTATION(RLEBlitter* ConvertClass::RLEBlitter_From_Flags(int), 0x00466410);
-DEFINE_IMPLEMENTATION(void ConvertClass::Recalc_Color_Remap_Tables(int, int, int, int), 0x004666C0);
+DEFINE_IMPLEMENTATION(void ConvertClass::Reinitialize_Hicolor_Tables(int, int, int, int, int, int), 0x004666C0);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR_BASE(LightConvertClass::LightConvertClass(PaletteClass *, PaletteClass *, Surface *, int, int, int, bool, bool *, int), ConvertClass, 0x00502A00);
 LightConvertClass::LightConvertClass(const NoInitClass& noinit) { *((unsigned long*)this) = (unsigned long)0x006D3954; }
@@ -1134,9 +1134,9 @@ DEFINE_IMPLEMENTATION(int RLEClass::Uncompress(void*, void*), 0x005C3540);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(CDControlClass::CDControlClass(), 0x0044ED90);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(CDControlClass::~CDControlClass(), 0x0044EDB0);
-DEFINE_IMPLEMENTATION(bool CDControlClass::Eject_CD_Drive(UINT), 0x0044EDC0);
-DEFINE_IMPLEMENTATION(bool CDControlClass::Lock_CD_Drive(UINT), 0x0044EF80);
-DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Drive(UINT), 0x0044F150);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Force_CD_Eject(UINT), 0x0044EDC0);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Lock_CD_Tray(UINT), 0x0044EF80);
+DEFINE_IMPLEMENTATION(bool CDControlClass::Unlock_CD_Tray(UINT), 0x0044F150);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(WWFontClass::WWFontClass(const void *, bool, int), 0x006A43D0);
 WWFontClass::~WWFontClass() {}
@@ -1890,7 +1890,7 @@ DEFINE_IMPLEMENTATION(void GScreenClass::Flag_To_Redraw(int), 0x004B9440);
 DEFINE_IMPLEMENTATION(void GScreenClass::Render(), 0x004B95A0);
 DEFINE_IMPLEMENTATION(void GScreenClass::Draw_It(bool), 0x0047C180);
 DEFINE_IMPLEMENTATION(void GScreenClass::Blit_Display(), 0x004B96B0);
-DEFINE_IMPLEMENTATION(void GScreenClass::Blit(bool, Surface*, int), 0x004B96C0);
+DEFINE_IMPLEMENTATION(void Update_Visible_Surface(bool, Surface*, Rect*), 0x004B96C0);
 
 CrateClass::CrateClass() : Timer(), Location(-1, -1) {}
 CrateClass::~CrateClass() {}
@@ -2298,6 +2298,7 @@ DEFINE_IMPLEMENTATION(bool ScrollClass::entry_64() const, 0x005E92C0);
 DEFINE_IMPLEMENTATION(void ScrollClass::Abort_Drag_Select(), 0x005E9A30);
 DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Press(Point2D&), 0x005E99F0);
 DEFINE_IMPLEMENTATION(void ScrollClass::Mouse_Right_Up(Point2D&), 0x005E99B0);
+DEFINE_IMPLEMENTATION(void ScrollClass::Message_Handler(HWND, UINT&, UINT&, LONG&), 0x005E9300);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(MouseClass::MouseClass(), 0x005621A0);
 MouseClass::MouseClass(const NoInitClass& x) : ScrollClass(x) { *((unsigned long*)this) = (unsigned long)0x006CA754; }
@@ -2345,8 +2346,11 @@ DEFINE_IMPLEMENTATION(void Play_Fullscreen_Movie(const char*, ThemeType), 0x0056
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(const char*), 0x00563A30);
 DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 DEFINE_IMPLEMENTATION(void End_Ingame_Movie(), 0x00563C40);
+DEFINE_IMPLEMENTATION(bool Movie_Is_Playing(), 0x00564600);
+DEFINE_IMPLEMENTATION(void Movie_Update_Visible_Surface(), 0x005646E0);
 
 DEFINE_IMPLEMENTATION(void Draw_Shape(Surface&, ConvertClass&, const ShapeSet*, int, const Point2D&, const Rect&, ShapeFlags_Type, const char*, int, ZGradientType, int, const ShapeSet*, int, Point2D), 0x0047C780);
+DEFINE_IMPLEMENTATION(void Blit_Block(Surface&, ConvertClass&, Surface const&, Rect const&, Point2D const&, Rect const&, unsigned char const*, Blitter const*, int, ZGradientType, int, int), 0x0047CC10);
 
 DEFINE_IMPLEMENTATION(int Base64_Encode(const void*, int, void*, int), 0x004208B0);
 DEFINE_IMPLEMENTATION(int Base64_Decode(const void*, int, void*, int), 0x004209D0);
@@ -3197,7 +3201,6 @@ DEFINE_IMPLEMENTATION(char* strtrim(char*), 0x0064AC10);
 DEFINE_IMPLEMENTATION(void WinDialogClass::Display_Dialog(HWND), 0x005A0820);
 DEFINE_IMPLEMENTATION(void WinDialogClass::End_Dialog(HWND), 0x005A0700);
 DEFINE_IMPLEMENTATION(HWND WinDialogClass::Do_Message_Box(const char*, const char*, bool*), 0x005A0C60);
-DEFINE_IMPLEMENTATION(bool WinDialogClass::Dialog_Move(HWND, WPARAM, LPARAM, UINT), 0x00685300);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window_Within(HWND, HWND), 0x00685600);
 DEFINE_IMPLEMENTATION(bool WinDialogClass::Center_Window(HWND), 0x006855E0);
 
@@ -5625,7 +5628,7 @@ DEFINE_IMPLEMENTATION(int Create_Main_Window(HINSTANCE, int, int, int), 0x006861
 DEFINE_IMPLEMENTATION(void Prep_Direct_Draw(), 0x00472AD0);
 DEFINE_IMPLEMENTATION(bool Set_Video_Mode(HWND, int, int, int), 0x00472DF0);
 DEFINE_IMPLEMENTATION(void Reset_Video_Mode(), 0x00472FF0);
-DEFINE_IMPLEMENTATION(bool Allocate_Surfaces(Rect*, Rect*, Rect*, Rect*, bool), 0x004E7310);
+DEFINE_IMPLEMENTATION(bool Allocate_Surfaces(const Rect&, const Rect&, const Rect&, const Rect&, bool), 0x004E7310);
 DEFINE_IMPLEMENTATION(void Free_Heaps(), 0x004E7730);
 DEFINE_IMPLEMENTATION(void Wait_Blit(), 0x00473330);
 DEFINE_IMPLEMENTATION(void Set_DD_Palette(void*), 0x00473280);
@@ -5640,7 +5643,7 @@ DEFINE_IMPLEMENTATION(void Shake_The_Screen(int), 0x004633B0);
 DEFINE_IMPLEMENTATION(long Owner_From_Name(const char*), 0x00463390);
 DEFINE_IMPLEMENTATION(bool Main_Loop(), 0x00508A40);
 DEFINE_IMPLEMENTATION(void Keyboard_Process(KeyNumType&), 0x005093B0);
-DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char*, XSurface*, PaletteClass*), 0x00686340);
+DEFINE_IMPLEMENTATION(void Load_Title_Screen(const char*, Surface*, PaletteClass*), 0x00686340);
 DEFINE_IMPLEMENTATION(ThemeType Get_Intro_Theme(), 0x004E86F0);
 DEFINE_IMPLEMENTATION(ThemeType Get_Maps_Theme(), 0x004E8730);
 DEFINE_IMPLEMENTATION(void Init_Random(), 0x004E38A0);
@@ -5656,9 +5659,10 @@ DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, int)
 DEFINE_IMPLEMENTATION(void Voxel_Calc_Normal_To_Pal_Indexes(const Vector3&, const Vector3&, float, int), 0x0066A6E0);
 DEFINE_IMPLEMENTATION(int Voxel_Find_Best_Normal_Index(const Vector3&, int), 0x0066A870);
 DEFINE_IMPLEMENTATION(void Init_Normal_Lookup(), 0x0066A920);
-DEFINE_IMPLEMENTATION(void Set_Voxel_Light_Angle(float theta), 0x004E8AE0);
+DEFINE_IMPLEMENTATION(void Set_Voxel_Light_Angle(float), 0x004E8AE0);
 DEFINE_IMPLEMENTATION(void Init_Voxel_Matrices(), 0x00666E50);
-DEFINE_IMPLEMENTATION(void Init_Voxel_Palette(FileClass* file), 0x00665DA0);
+DEFINE_IMPLEMENTATION(void Init_Voxel_Palette(FileClass*), 0x00665DA0);
+DEFINE_IMPLEMENTATION(bool On_WM_MOVING(HWND, WPARAM, LPARAM), 0x00685300);
 
 
 DEFINE_IMPLEMENTATION(const char* Name_From_RTTI(RTTIType), 0x00403500);
@@ -5701,17 +5705,17 @@ int& BRIDGE_LEPTON_HEIGHT = Make_Global<int>(0x0074819C);
 /**
  *  Global definitions
  */
-WWKeyboardClass*& WWKeyboard = Make_Global<WWKeyboardClass*>(0x007482C0);
+WWKeyboardClass*& Keyboard = Make_Global<WWKeyboardClass*>(0x007482C0);
 OptionsClass& Options = Make_Global<OptionsClass>(0x007E4720);
 SpecialClass& Special = Make_Global<SpecialClass>(0x007E4548);
 RulesClass*& Rule = Make_Global<RulesClass*>(0x0074C488);
-WWMouseClass*& MouseCursor = Make_Global<WWMouseClass*>(0x0074C8F0);
+Mouse*& MouseCursor = Make_Global<Mouse*>(0x0074C8F0);
 Surface*& TileSurface = Make_Global<Surface*>(0x0074C5CC);
 Surface*& SidebarSurface = Make_Global<Surface*>(0x0074C5D0);
 Surface*& VisibleSurface = Make_Global<Surface*>(0x0074C5D8);
 Surface*& HiddenSurface = Make_Global<Surface*>(0x0074C5DC);
 Surface*& AlternateSurface = Make_Global<Surface*>(0x0074C5E0);
-Surface*& LogicSurface = Make_Global<Surface*>(0x0074C5E4);
+Surface*& LogicalSurface = Make_Global<Surface*>(0x0074C5E4);
 Surface*& CompositeSurface = Make_Global<Surface*>(0x0074C5EC);
 Random2Class& NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long& Frame = Make_Global<long>(0x007E4924);
@@ -5726,7 +5730,7 @@ ConvertClass*& AnimDrawer = Make_Global<ConvertClass*>(0x00748200);
 ConvertClass*& NormalDrawer = Make_Global<ConvertClass*>(0x00748204);
 ConvertClass*& MouseDrawer = Make_Global<ConvertClass*>(0x00748208);
 ConvertClass*& SidebarDrawer = Make_Global<ConvertClass*>(0x0074820C);
-ToolTipManager*& ToolTipHandler = Make_Global<ToolTipManager*>(0x0074C638);
+ToolTipManager*& ToolTips = Make_Global<ToolTipManager*>(0x0074C638);
 VersionClass& VerNum = Make_Global<VersionClass>(0x007E4880);
 CDControlClass& CDControl = Make_Global<CDControlClass>(0x007608B8);
 FontClass*& Metal12FontPtr = Make_Global<FontClass*>(0x0074821C);
@@ -5750,7 +5754,7 @@ unsigned& ExceptionReturnBase = Make_Global<unsigned>(0x007B304C);
 unsigned& ExceptionReturnStack = Make_Global<unsigned>(0x007B3044);
 unsigned& ExceptionReturnAddress = Make_Global<unsigned>(0x007B3048);
 bool& CatchExceptions = Make_Global<bool>(0x007E4E94);
-bool& Debug_Windowed = Make_Global<bool>(0x007A1790);
+bool& WindowedMode = Make_Global<bool>(0x007A1790);
 bool& Debug_ScenarioFilenameSet = Make_Global<bool>(0x007E48FD);
 char* Debug_ScenarioFilename = Make_Pointer<char>(0x007E2360);
 bool& Debug_MotionCapture = Make_Global<bool>(0x007E4901);
@@ -5866,18 +5870,22 @@ int& PrimaryColorMode = Make_Global<int>(0x006F9808);
 bool& OverlappedVideoBlits = Make_Global<bool>(0x006F980D);
 int& VideoWidth = Make_Global<int>(0x007A1EC0);
 int& VideoHeight = Make_Global<int>(0x007A1EC4);
-int& BitsPerPixel = Make_Global<int>(0x007A1EC8);
+int& VideoBitsPerPixel = Make_Global<int>(0x007A1EC8);
+int& ReadyToQuit = Make_Global<int>(0x007E4978);
+bool& SurfacesRestored = Make_Global<bool>(0x007A1EBC);
+bool& _MouseCaptured = Make_Global<bool>(0x00685EE4);
+bool& _MouseWheel = Make_Global<bool>(0x0086504C);
 
 
 /**
  *  Class/namespaced static definitions.
  */
-unsigned& DSurface::RedLeft = Make_Global<unsigned>(0x007A2C88);
-unsigned& DSurface::RedRight = Make_Global<unsigned>(0x007A2C8C);
-unsigned& DSurface::GreenLeft = Make_Global<unsigned>(0x007A2C98);
-unsigned& DSurface::GreenRight = Make_Global<unsigned>(0x007A2C9C);
-unsigned& DSurface::BlueLeft = Make_Global<unsigned>(0x007A2C90);
-unsigned& DSurface::BlueRight = Make_Global<unsigned>(0x007A2C94);
+unsigned& DSurface::RedRight = Make_Global<unsigned>(0x007A2C88);
+unsigned& DSurface::RedLeft = Make_Global<unsigned>(0x007A2C8C);
+unsigned& DSurface::GreenRight = Make_Global<unsigned>(0x007A2C98);
+unsigned& DSurface::GreenLeft = Make_Global<unsigned>(0x007A2C9C);
+unsigned& DSurface::BlueRight = Make_Global<unsigned>(0x007A2C90);
+unsigned& DSurface::BlueLeft = Make_Global<unsigned>(0x007A2C94);
 unsigned short& DSurface::HalfbrightMask = Make_Global<unsigned short>(0x007A2CA0);
 unsigned short& DSurface::QuarterbrightMask = Make_Global<unsigned short>(0x007A2CA2);
 unsigned short& DSurface::EighthbrightMask = Make_Global<unsigned short>(0x007A2CA4);
@@ -5896,6 +5904,7 @@ DisplayClass::TacticalClass& DisplayClass::TacButton = Make_Global<TacticalClass
 ARRAY_DEF(0x007A1FA0, LayerClass, DisplayClass::Layer, LAYER_COUNT);
 RadarClass::RTacticalClass& RadarClass::RadarButton = Make_Global<RadarClass::RTacticalClass>(0x00809EB0);
 HWND& WinDialogClass::CurrentWindowHandle = Make_Global<HWND>(0x00864E54);
+int& WSDialogCount = Make_Global<int>(0x00864E60);
 char* CDFileClass::RawPath = Make_Pointer<char>(0x0076092C);
 CDFileClass::SearchDriveType*& CDFileClass::First = Make_Global<CDFileClass::SearchDriveType*>(0x00760920);
 int& CDFileClass::CurrentCDDrive = Make_Global<int>(0x00760924);
@@ -6162,6 +6171,8 @@ bool& _Select_Game_fade = Make_Global<bool>(0x006F688C);
 MonoClass*& ScrollingScreen = Make_Global<MonoClass*>(0x0074A130);
 
 CDTimerClass<FrameTimerClass>& ActionLineTimer = Make_Global<CDTimerClass<FrameTimerClass>>(0x0080EAE8);
+
+VQHandle*& CurrentVQ = Make_Global<VQHandle*>(0x00806E1C);
 
 
 /**

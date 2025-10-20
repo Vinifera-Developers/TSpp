@@ -36,9 +36,9 @@ class BSurface : public XSurface
 public:
     BSurface(int width, int height, int bbp, void* buffer = nullptr);
 
-    virtual void* Lock(Point2D point = Point2D(0, 0)) override;
-    virtual int Bytes_Per_Pixel() const override;
-    virtual int Stride() const override;
+    void* Lock(Point2D point = Point2D(0, 0)) const override;
+    int Bytes_Per_Pixel() const override;
+    int Stride() const override;
 
 public:
     int BBP;
