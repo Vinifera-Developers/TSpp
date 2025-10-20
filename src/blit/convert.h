@@ -41,7 +41,7 @@ class ConvertClass
 {
 public:
     ConvertClass();
-    ConvertClass(PaletteClass* artpalette, PaletteClass* screenpalette, XSurface* typicalsurface, int intensity_levels = 1, bool quick_init = false);
+    ConvertClass(PaletteClass* artpalette, PaletteClass* screenpalette, Surface* typicalsurface, int intensity_levels = 1, bool quick_init = false);
     ConvertClass(const NoInitClass& noinit);
     virtual ~ConvertClass();
 

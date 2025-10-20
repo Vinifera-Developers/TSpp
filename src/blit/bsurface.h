@@ -34,17 +34,13 @@
 class BSurface : public XSurface
 {
 public:
-    BSurface();
-    BSurface(int width, int height, int bpp, void* buffer = nullptr);
-    virtual ~BSurface();
+    BSurface(int width, int height, int bbp, void* buffer = nullptr);
 
-    virtual void* Lock(int x = 0, int y = 0) override;
-    virtual int Get_Bytes_Per_Pixel() const override;
-    virtual int Get_Pitch() const override;
-
-    void* Get_Buffer_Ptr() const { return BufferPtr.Get_Buffer(); }
-    void* Get_Buffer_Ptr(int x, int y) { return (unsigned char*)BufferPtr.Get_Buffer() + (x * Get_Bytes_Per_Pixel()) + (y * Get_Pitch()); }
+    virtual void* Lock(Point2D point = Point2D(0, 0)) override;
+    virtual int Bytes_Per_Pixel() const override;
+    virtual int Stride() const override;
 
 public:
-    Buffer BufferPtr;
+    int BBP;
+    Buffer Buff;
 };

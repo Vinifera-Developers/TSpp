@@ -86,7 +86,7 @@
 #include "dict.h"
 #include "display.h"
 #include "door.h"
-#include "drawbuff.h"
+#include "blit.h"
 #include "drawshape.h"
 #include "drivelocomotion.h"
 #include "drop.h"
@@ -527,7 +527,7 @@ DEFINE_IMPLEMENTATION(bool Surface::entry_64(int, int) const, 0x00406D60);
 DEFINE_IMPLEMENTATION(Rect Surface::Get_Rect() const, 0x00406D70);
 DEFINE_IMPLEMENTATION(int Surface::Get_Width() const, 0x00406DA0);
 DEFINE_IMPLEMENTATION(int Surface::Get_Height() const, 0x00406DB0);
-DEFINE_IMPLEMENTATION(bool Surface::entry_80() const, 0x00406E20);
+DEFINE_IMPLEMENTATION(bool Surface::Is_Direct_Draw() const, 0x00406E20);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(), 0x004497F0);
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(CCFileClass::CCFileClass(const char *), 0x004497B0);
@@ -578,76 +578,73 @@ DEFINE_IMPLEMENTATION(long CRCStraw::Result() const, 0x004711A0);
 DEFINE_IMPLEMENTATION(int CRCPipe::Put(const void*, int), 0x004710E0);
 DEFINE_IMPLEMENTATION(long CRCPipe::Result() const, 0x00471110);
 
-XSurface::XSurface() : Surface(), LockLevel(0), BytesPerPixel(0) { *((unsigned long*)this) = (unsigned long)0x006CAC04; }
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(XSurface::XSurface(int, int), 0x0047CCA0);
-XSurface::XSurface(int width, int height, int bpp) : Surface(width, height), LockLevel(0), BytesPerPixel(bpp) { *((unsigned long*)this) = (unsigned long)0x006CAC04; }
-DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Rect&, Rect&, Surface&, Rect&, Rect&, bool, bool), 0x006A82B0);
-DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Rect&, Surface&, Rect&, bool, bool), 0x006A8150);
-DEFINE_IMPLEMENTATION(bool XSurface::Copy_From(Surface&, bool, bool), 0x006A80B0);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect&, unsigned), 0x006A75E0);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect&, Rect&, unsigned), 0x006A7610);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill(unsigned), 0x006A8070);
-DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect_Trans(Rect&, const RGBClass&, unsigned), 0x006A7900);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Ellipse(Point2D, int, int, Rect, unsigned), 0x006A7910);
-DEFINE_IMPLEMENTATION(bool XSurface::Put_Pixel(Point2D&, unsigned), 0x006A7470);
-DEFINE_IMPLEMENTATION(unsigned XSurface::Get_Pixel(Point2D&), 0x006A7420);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line(Point2D&, Point2D&, unsigned), 0x006A6BB0);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line(Rect&, Point2D&, Point2D&, unsigned), 0x006A6BE0);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_34(Rect&, Point2D&, Point2D&, unsigned, int, int, bool), 0x006A7120);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_38(Rect&, Point2D&, Point2D&, int, int, int, bool), 0x006A7130);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_3C(Rect&, Point2D&, Point2D&, RGBClass&, int, int, bool, bool, bool, bool, float), 0x006A7140);
-DEFINE_IMPLEMENTATION(bool XSurface::entry_40(Rect&, Point2D&, Point2D&, void (*)(Point2D&)), 0x006A7150);
-DEFINE_IMPLEMENTATION(int XSurface::Draw_Dashed_Line(Point2D&, Point2D&, unsigned, bool[], int), 0x006A6E90);
-DEFINE_IMPLEMENTATION(int XSurface::entry_48(Point2D&, Point2D&, unsigned, bool[], int, bool), 0x006A7100);
-DEFINE_IMPLEMENTATION(bool XSurface::entry_4C(Point2D&, Point2D&, unsigned, bool), 0x006A7110);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect&, unsigned), 0x006A7350);
-DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect&, Rect&, unsigned), 0x006A7380);
-DEFINE_IMPLEMENTATION(void* XSurface::Lock(int, int), 0x00406DC0);
+DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, bool, bool), 0x006A82B0);
+DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Rect const&, Surface const&, Rect const&, bool, bool), 0x006A8150);
+DEFINE_IMPLEMENTATION(bool XSurface::Blit_From(Surface const&, bool, bool), 0x006A80B0);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, unsigned), 0x006A75E0);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect(Rect const&, Rect const&, unsigned), 0x006A7610);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill(int), 0x006A8070);
+DEFINE_IMPLEMENTATION(bool XSurface::Fill_Rect_Trans(Rect const&, const RGBClass&, unsigned), 0x006A7900);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Ellipse(Point2D, int, int, Rect, int), 0x006A7910);
+DEFINE_IMPLEMENTATION(bool XSurface::Put_Pixel(Point2D const&, int), 0x006A7470);
+DEFINE_IMPLEMENTATION(int XSurface::Get_Pixel(Point2D const&), 0x006A7420);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line(Point2D const&, Point2D const&, int), 0x006A6BB0);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line(Rect const&, Point2D const&, Point2D const&, int), 0x006A6BE0);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_34(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x006A7120);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_38(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x006A7130);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Line_entry_3C(Rect const&, Point2D const&, Point2D const&, RGBClass const&, int, int, bool, bool, bool, bool, float), 0x006A7140);
+DEFINE_IMPLEMENTATION(bool XSurface::Plot_Line(Rect const&, Point2D const&, Point2D const&, void (*)(Point2D&)), 0x006A7150);
+DEFINE_IMPLEMENTATION(int XSurface::Draw_Dashed_Line(Point2D const&, Point2D const&, int, bool[], int), 0x006A6E90);
+DEFINE_IMPLEMENTATION(int XSurface::entry_48(Point2D const&, Point2D const&, int, bool[], int, bool), 0x006A7100);
+DEFINE_IMPLEMENTATION(bool XSurface::entry_4C(Point2D const&, Point2D const&, int, bool), 0x006A7110);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect const&, int), 0x006A7350);
+DEFINE_IMPLEMENTATION(bool XSurface::Draw_Rect(Rect const&, Rect const&, int), 0x006A7380);
+DEFINE_IMPLEMENTATION(void* XSurface::Lock(Point2D), 0x00406DC0);
 DEFINE_IMPLEMENTATION(bool XSurface::Unlock(), 0x00406DD0);
 DEFINE_IMPLEMENTATION(bool XSurface::Is_Locked() const, 0x00406DE0);
-DEFINE_IMPLEMENTATION(bool XSurface::entry_80() const, 0x00406DF0);
-DEFINE_IMPLEMENTATION(bool XSurface::entry_84(Point2D&, unsigned, Rect&), 0x006A7550);
-DEFINE_IMPLEMENTATION(unsigned XSurface::entry_88(Point2D&, Rect&), 0x006A74D0);
-DEFINE_IMPLEMENTATION(void XSurface::Fill_Circle(const Point2D, unsigned, Rect, unsigned), 0x006A7EE0);
+DEFINE_IMPLEMENTATION(bool XSurface::Is_Direct_Draw() const, 0x00406DF0);
+DEFINE_IMPLEMENTATION(bool XSurface::entry_84(Point2D const&, int, Rect const&), 0x006A7550);
+DEFINE_IMPLEMENTATION(int XSurface::entry_88(Point2D const&, Rect const&) const, 0x006A74D0);
+DEFINE_IMPLEMENTATION(void XSurface::Fill_Circle(Point2D, unsigned, Rect, int), 0x006A7EE0);
 
-BSurface::BSurface() : XSurface(), BufferPtr() { *((unsigned long*)this) = (unsigned long)0x006CAB74; }
-BSurface::BSurface(int width, int height, int bpp, void* buffer) : XSurface(width, height, bpp), BufferPtr((void*)buffer, int((height * width) * bpp)) { *((unsigned long*)this) = (unsigned long)0x006CAB74; }
-BSurface::~BSurface() {}
-DEFINE_IMPLEMENTATION(void* BSurface::Lock(int, int), 0x00406E50);
-DEFINE_IMPLEMENTATION(int BSurface::Get_Bytes_Per_Pixel() const, 0x00406E90);
-DEFINE_IMPLEMENTATION(int BSurface::Get_Pitch() const, 0x00406EA0);
+BSurface::BSurface(int width, int height, int bbp, void* buffer) : XSurface(width, height), BBP(bbp), Buff(buffer, height * width * bbp) { *((unsigned long*)this) = (unsigned long)0x006CAB74; }
+DEFINE_IMPLEMENTATION(void* BSurface::Lock(Point2D), 0x00406E50);
+DEFINE_IMPLEMENTATION(int BSurface::Bytes_Per_Pixel() const, 0x00406E90);
+DEFINE_IMPLEMENTATION(int BSurface::Stride() const, 0x00406EA0);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(), 0x0048AD10);
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(int, int, bool), 0x0048ABB0);
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(DSurface::DSurface(LPDIRECTDRAWSURFACE), 0x0048B250);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(DSurface::~DSurface(), 0x0048ACA0);
-DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect&, Rect&, Surface&, Rect&, Rect&, bool, bool), 0x0048B5E0);
-DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Rect&, Surface&, Rect&, bool, bool), 0x0048B590);
-DEFINE_IMPLEMENTATION(bool DSurface::Copy_From(Surface&, bool, bool), 0x004901A0);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect&, unsigned), 0x0048BB00);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect&, Rect&, unsigned), 0x0048BB30);
-DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect_Trans(Rect&, const RGBClass&, unsigned), 0x0048BCE0);
-DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_34(Rect&, Point2D&, Point2D&, unsigned, int, int, bool), 0x0048EA90);
-DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_38(Rect&, Point2D&, Point2D&, int, int, int, bool), 0x0048C150);
-DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_3C(Rect&, Point2D&, Point2D&, RGBClass&, int, int, bool, bool, bool, bool, float), 0x0048CC00);
-DEFINE_IMPLEMENTATION(int DSurface::entry_48(Point2D&, Point2D&, unsigned, bool[], int, bool), 0x0048F4B0);
-DEFINE_IMPLEMENTATION(bool DSurface::entry_4C(Point2D&, Point2D&, unsigned, bool), 0x0048FB90);
-DEFINE_IMPLEMENTATION(void* DSurface::Lock(int, int), 0x0048B370);
+DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, bool, bool), 0x0048B5E0);
+DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Rect const&, Surface const&, Rect const&, bool, bool), 0x0048B590);
+DEFINE_IMPLEMENTATION(bool DSurface::Blit_From(Surface const&, bool, bool), 0x004901A0);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, unsigned), 0x0048BB00);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect(Rect const&, Rect const&, unsigned), 0x0048BB30);
+DEFINE_IMPLEMENTATION(bool DSurface::Fill_Rect_Trans(Rect const&, RGBClass const&, unsigned), 0x0048BCE0);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_34(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x0048EA90);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_38(Rect const&, Point2D const&, Point2D const&, int, int, int, bool), 0x0048C150);
+DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_3C(Rect const&, Point2D const&, Point2D const&, RGBClass const&, int, int, bool, bool, bool, bool, float), 0x0048CC00);
+DEFINE_IMPLEMENTATION(int DSurface::entry_48(Point2D const&, Point2D const&, int, bool[], int, bool), 0x0048F4B0);
+DEFINE_IMPLEMENTATION(bool DSurface::entry_4C(Point2D const&, Point2D const&, int, bool), 0x0048FB90);
+DEFINE_IMPLEMENTATION(void* DSurface::Lock(Point2D), 0x0048B370);
 DEFINE_IMPLEMENTATION(bool DSurface::Unlock(), 0x0048B4D0);
 DEFINE_IMPLEMENTATION(bool DSurface::Can_Lock(int, int) const, 0x0048B450);
-DEFINE_IMPLEMENTATION(int DSurface::Get_Bytes_Per_Pixel() const, 0x0048B350);
-DEFINE_IMPLEMENTATION(int DSurface::Get_Pitch() const, 0x0048B360);
-DEFINE_IMPLEMENTATION(bool DSurface::Draw_Line_entry_90(Rect&, Point2D&, Point2D&, RGBClass&, RGBClass&, float&, float&), 0x0048E4B0);
+DEFINE_IMPLEMENTATION(int DSurface::Bytes_Per_Pixel() const, 0x0048B350);
+DEFINE_IMPLEMENTATION(int DSurface::Stride() const, 0x0048B360);
+DEFINE_IMPLEMENTATION(bool DSurface::entry_90(Rect&, Point2D&, Point2D&, RGBClass&, RGBClass&, float&, float&), 0x0048E4B0);
 DEFINE_IMPLEMENTATION(bool DSurface::Can_Blit() const, 0x0048B4B0);
+DEFINE_IMPLEMENTATION(bool DSurface::Is_Direct_Draw() const, 0x004901C0);
 DEFINE_IMPLEMENTATION(DSurface* DSurface::Create_Primary(DSurface**), 0x0048AD60);
 
-DEFINE_IMPLEMENTATION(long Surface_Size_Of_Region(XSurface&, int, int), 0x00423330);
-DEFINE_IMPLEMENTATION(bool Surface_To_Buffer(XSurface&, Rect&, Buffer&), 0x00423350);
-DEFINE_IMPLEMENTATION(bool Buffer_To_Surface(XSurface&, Rect&, Buffer&), 0x00423410);
-DEFINE_IMPLEMENTATION(bool Copy_To_Surface(XSurface&, Rect&, XSurface&, Rect&, Blitter&, int, ZGradientType, int, int), 0x004234D0);
-DEFINE_IMPLEMENTATION(bool Copy_To_Surface(XSurface&, Rect&, Rect&, XSurface&, Rect&, Rect&, Blitter&, int, ZGradientType, int, int), 0x00423530);
-DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface&, Rect&, XSurface&, Rect&, RLEBlitter&, int, ZGradientType, int, int), 0x00423A50);
-DEFINE_IMPLEMENTATION(bool Copy_To_Surface_RLE(XSurface&, Rect&, Rect&, XSurface&, Rect&, Rect&, RLEBlitter&, int, ZGradientType, int, int, XSurface*, int, int), 0x00423AB0);
+DEFINE_IMPLEMENTATION(int Buffer_Size(Surface&, int, int), 0x00423330);
+DEFINE_IMPLEMENTATION(bool To_Buffer(Surface&, Rect const&, Buffer const&), 0x00423350);
+DEFINE_IMPLEMENTATION(bool From_Buffer(Surface&, Rect const&, Buffer const&), 0x00423410);
+DEFINE_IMPLEMENTATION(bool Bit_Blit(Surface&, Rect const&, Surface const&, Rect const&, Blitter const&, int, ZGradientType, int, int), 0x004234D0);
+DEFINE_IMPLEMENTATION(bool Bit_Blit(Surface&, Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, Blitter&, int, ZGradientType, int, int), 0x00423530);
+DEFINE_IMPLEMENTATION(bool RLE_Blit(Surface&, Rect const&, Surface const&, Rect const&, RLEBlitter const&, int, ZGradientType, int, int), 0x00423A50);
+DEFINE_IMPLEMENTATION(bool RLE_Blit(Surface&, Rect const&, Rect const&, Surface const&, Rect const&, Rect const&, RLEBlitter const&, int, ZGradientType, int, int, Surface*, Point2D), 0x00423AB0);
 
 DEFINE_IMPLEMENTATION(void __cdecl Brighten_555(unsigned char*, unsigned short*, int, int, int, int), 0x006C857A);
 DEFINE_IMPLEMENTATION(void __cdecl Brighten_556(unsigned char*, unsigned short*, int, int, int, int), 0x006C8657);
@@ -5694,13 +5691,13 @@ OptionsClass& Options = Make_Global<OptionsClass>(0x007E4720);
 SpecialClass& Special = Make_Global<SpecialClass>(0x007E4548);
 RulesClass*& Rule = Make_Global<RulesClass*>(0x0074C488);
 WWMouseClass*& WWMouse = Make_Global<WWMouseClass*>(0x0074C8F0);
-DSurface*& TileSurface = Make_Global<DSurface*>(0x0074C5CC);
-DSurface*& SidebarSurface = Make_Global<DSurface*>(0x0074C5D0);
-DSurface*& PrimarySurface = Make_Global<DSurface*>(0x0074C5D8);
-DSurface*& HiddenSurface = Make_Global<DSurface*>(0x0074C5DC);
-DSurface*& AlternateSurface = Make_Global<DSurface*>(0x0074C5E0);
-DSurface*& LogicSurface = Make_Global<DSurface*>(0x0074C5E4);
-DSurface*& CompositeSurface = Make_Global<DSurface*>(0x0074C5EC);
+Surface*& TileSurface = Make_Global<Surface*>(0x0074C5CC);
+Surface*& SidebarSurface = Make_Global<Surface*>(0x0074C5D0);
+Surface*& VisibleSurface = Make_Global<Surface*>(0x0074C5D8);
+Surface*& HiddenSurface = Make_Global<Surface*>(0x0074C5DC);
+Surface*& AlternateSurface = Make_Global<Surface*>(0x0074C5E0);
+Surface*& LogicSurface = Make_Global<Surface*>(0x0074C5E4);
+Surface*& CompositeSurface = Make_Global<Surface*>(0x0074C5EC);
 Random2Class& NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long& Frame = Make_Global<long>(0x007E4924);
 ScenarioClass*& Scen = Make_Global<ScenarioClass*>(0x007E2438);
@@ -5870,7 +5867,11 @@ unsigned short& DSurface::HalfbrightMask = Make_Global<unsigned short>(0x007A2CA
 unsigned short& DSurface::QuarterbrightMask = Make_Global<unsigned short>(0x007A2CA2);
 unsigned short& DSurface::EighthbrightMask = Make_Global<unsigned short>(0x007A2CA4);
 bool& DSurface::AllowStretchBlits = Make_Global<bool>(0x007A2CA6);
-bool& DSurface::AllowHWBlitFills = Make_Global<bool>(0x006F980C);
+bool& DSurface::AllowHWFill = Make_Global<bool>(0x006F980C);
+bool& DSurface::OverlappedVideoBlits = Make_Global<bool>(0x006F980D);
+int& DSurface::PrimaryColorMode = Make_Global<int>(0x006F9808);
+LPDIRECTDRAWCLIPPER& DSurface::Clipper = Make_Global<LPDIRECTDRAWCLIPPER>(0x007A2C84);
+DDPIXELFORMAT& DSurface::PixelFormat = Make_Global<DDPIXELFORMAT>(0x007A2818);
 GadgetClass*& GScreenClass::Buttons = Make_Global<GadgetClass*>(0x007E4ABC);
 GadgetClass*& GadgetClass::StuckOn = Make_Global<GadgetClass*>(0x007B3388);
 GadgetClass*& GadgetClass::LastList = Make_Global<GadgetClass*>(0x007B338C);

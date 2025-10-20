@@ -80,7 +80,7 @@ ConvertClass* ConvertClass::Create_Drawer(const char* pal_filename)
     PaletteClass loaded_pal;
     std::memcpy(&loaded_pal, data, sizeof(PaletteClass));
 
-    ConvertClass* drawer = new ConvertClass(&loaded_pal, &OriginalPalette, PrimarySurface, 1);
+    ConvertClass* drawer = new ConvertClass(&loaded_pal, &OriginalPalette, VisibleSurface, 1);
     TSPP_ASSERT(drawer != nullptr);
     return drawer;
 }

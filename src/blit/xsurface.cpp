@@ -65,11 +65,11 @@ bool XSurface::Copy_From_Alpha(Surface& fromsurface, Surface& alphasurface, int 
  */
 bool XSurface::Copy_From_Spritesheet(Surface& fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
 {
-    BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Get_Bytes_Per_Pixel());
+    BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Bytes_Per_Pixel());
 
     Rect sprite_rect(x_offset, y_offset, sprite_width, sprite_height);
 
-    return Copy_From(Get_Rect(), fromsurface, sprite_rect);
+    return Blit_From(Get_Rect(), fromsurface, sprite_rect);
 }
 
 
@@ -83,11 +83,11 @@ bool XSurface::Copy_From_Spritesheet(Surface& fromsurface, int sprite_width, int
  */
 bool XSurface::Copy_From_Spritesheet_Alpha(Surface& fromsurface, Surface& alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset)
 {
-    BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Get_Bytes_Per_Pixel());
+    BSurface sprite_surface(sprite_width, sprite_height, fromsurface.Bytes_Per_Pixel());
 
     Rect sprite_rect(x_offset, y_offset, sprite_width, sprite_height);
 
-    sprite_surface.Copy_From(Get_Rect(), fromsurface, sprite_rect);
+    sprite_surface.Blit_From(Get_Rect(), fromsurface, sprite_rect);
 
     return SpriteCollection.Draw_Alpha(Get_Rect(), *this, sprite_surface, alphasurface, nullptr, false, x_offset, y_offset);
 }

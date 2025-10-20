@@ -27,69 +27,48 @@
  ******************************************************************************/
 #pragma once
 
-#include "clipline.h"
 #include "surface.h"
 
 
 class XSurface : public Surface
 {
 public:
-    XSurface();
-    XSurface(int width, int height);
-    XSurface(int width, int height, int bpp);
-    virtual ~XSurface() {}
+    XSurface(int width = 0, int height = 0);
 
-    virtual bool Copy_From(Rect& toarea, Rect& torect, Surface& fromsurface, Rect& fromarea, Rect& fromrect, bool trans_blit = false, bool a7 = true) override;
-    virtual bool Copy_From(Rect& torect, Surface& fromsurface, Rect& fromrect, bool trans_blit = false, bool a5 = true) override;
-    virtual bool Copy_From(Surface& fromsurface, bool trans_blit = false, bool a3 = true) override;
-    virtual bool Fill_Rect(Rect& rect, unsigned color) override;
-    virtual bool Fill_Rect(Rect& area, Rect& rect, unsigned color) override;
-    virtual bool Fill(unsigned color) override;
-    virtual bool Fill_Rect_Trans(Rect& rect, const RGBClass& color, unsigned opacity) override;
-    virtual bool Draw_Ellipse(Point2D point, int radius_x, int radius_y, Rect clip, unsigned color) override;
-    virtual bool Put_Pixel(Point2D& point, unsigned color) override;
-    virtual unsigned Get_Pixel(Point2D& point) override;
-    virtual bool Draw_Line(Point2D& start, Point2D& end, unsigned color) override;
-    virtual bool Draw_Line(Rect& area, Point2D& start, Point2D& end, unsigned color) override;
-    virtual bool Draw_Line_entry_34(Rect& area, Point2D& start, Point2D& end, unsigned color, int a5, int a6, bool z_only = false) override;
-    virtual bool Draw_Line_entry_38(Rect& area, Point2D& start, Point2D& end, int a4, int a5, int a6, bool a7 = false) override;
-    virtual bool Draw_Line_entry_3C(Rect& area, Point2D& start, Point2D& end, RGBClass& color, int a5, int a6, bool a7, bool a8, bool a9, bool a10, float a11) override;
-    virtual bool entry_40(Rect& area, Point2D& start, Point2D& end, void (*drawer_callback)(Point2D&)) override;
-    virtual int Draw_Dashed_Line(Point2D& start, Point2D& end, unsigned color, bool pattern[], int offset) override;
-    virtual int entry_48(Point2D& start, Point2D& end, unsigned color, bool pattern[], int offset, bool a6) override;
-    virtual bool entry_4C(Point2D& start, Point2D& end, unsigned color, bool a4 = false) override;
-    virtual bool Draw_Rect(Rect& rect, unsigned color) override;
-    virtual bool Draw_Rect(Rect& area, Rect& rect, unsigned color) override;
-    virtual void* Lock(int x = 0, int y = 0) override;
+    virtual bool Blit_From(Rect const& dcliprect, Rect const& destrect, Surface const& source, Rect const& scliprect, Rect const& sourcerect, bool trans = false, bool a7 = true) override;
+    virtual bool Blit_From(Rect const& destrect, Surface const& source, Rect const& sourcerect, bool trans = false, bool a5 = true) override;
+    virtual bool Blit_From(Surface const& source, bool trans = false, bool a3 = true) override;
+    virtual bool Fill_Rect(Rect const& rect, unsigned color) override;
+    virtual bool Fill_Rect(Rect const& cliprect, Rect const& fillrect, unsigned color) override;
+    virtual bool Fill(int color) override;
+    virtual bool Fill_Rect_Trans(Rect const& rect, RGBClass const& color, unsigned opacity) override;
+    virtual bool Draw_Ellipse(Point2D point, int radius_x, int radius_y, Rect clip, int color) override;
+    virtual bool Put_Pixel(Point2D const& point, int color) override;
+    virtual int Get_Pixel(Point2D const& point) override;
+    virtual bool Draw_Line(Point2D const& startpoint, Point2D const& endpoint, int color) override;
+    virtual bool Draw_Line(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int color) override;
+    virtual bool Draw_Line_entry_34(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int color, int a5, int a6, bool a7 = false) override;
+    virtual bool Draw_Line_entry_38(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, int a4, int a5, int a6, bool a7 = false) override;
+    virtual bool Draw_Line_entry_3C(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, RGBClass const& color, int a5, int a6, bool a7, bool a8, bool a9, bool a10, float a11) override;
+    virtual bool Plot_Line(Rect const& cliprect, Point2D const& startpoint, Point2D const& endpoint, void (*drawer_callback)(Point2D&)) override;
+    virtual int Draw_Dashed_Line(Point2D const& startpoint, Point2D const& endpoint, int color, bool pattern[], int offset) override;
+    virtual int entry_48(Point2D const& startpoint, Point2D const& endpoint, int color, bool pattern[], int offset, bool a6) override;
+    virtual bool entry_4C(Point2D const& startpoint, Point2D const& endpoint, int color, bool a4 = false) override;
+    virtual bool Draw_Rect(Rect const& rect, int color) override;
+    virtual bool Draw_Rect(Rect const& cliprect, Rect const& rect, int color) override;
+    virtual void* Lock(Point2D point = Point2D(0, 0)) override;
     virtual bool Unlock() override;
     virtual bool Is_Locked() const override;
-    virtual bool entry_80() const override;
-    virtual bool entry_84(Point2D& point, unsigned color, Rect& rect);
+    virtual bool Is_Direct_Draw() const override;
+    virtual bool entry_84(Point2D const& point, int color, Rect const& rect) override;
+    virtual int entry_88(Point2D const& point, Rect const& rect) const override;
 
-    virtual unsigned entry_88(Point2D& point, Rect& rect);
-
-    void Fill_Circle(const Point2D center, unsigned radius, Rect rect, unsigned color);
+    void Fill_Circle(Point2D center, unsigned radius, Rect rect, int color);
 
     bool Copy_From_Alpha(Surface& fromsurface, Surface& alphasurface, int x_offset = 0, int y_offset = 0);
     bool Copy_From_Spritesheet(Surface& fromsurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
     bool Copy_From_Spritesheet_Alpha(Surface& fromsurface, Surface& alphasurface, int sprite_width, int sprite_height, int x_offset, int y_offset);
 
-    int Draw_Dashed_Line(const Rect& xcliprect, Point2D& startpoint, Point2D& endpoint, unsigned color, bool pattern[], int offset)
-    {
-        /**
-         *  Ensure that the clipping rectangle is legal.
-         */
-        Rect cliprect = Intersect(xcliprect, Get_Rect());
-
-        /**
-         *  Ensure that the line lies within the rectangle.
-         */
-        if (!Clip_Line(startpoint, endpoint, cliprect)) return offset;
-
-        return Draw_Dashed_Line(startpoint, endpoint, color, pattern, offset);
-    }
-
 public:
-    int LockLevel;
-    int BytesPerPixel;
+    mutable int LockLevel;
 };
