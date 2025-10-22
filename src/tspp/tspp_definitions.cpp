@@ -3518,6 +3518,7 @@ TeamClass::TeamClass(const NoInitClass& noinit) : AbstractClass(noinit) { *((uns
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(TeamClass::~TeamClass(), 0x00622420);
 DEFINE_IMPLEMENTATION(void TeamClass::Detach(AbstractClass*, bool), 0x00623FA0);
 DEFINE_IMPLEMENTATION(RTTIType TeamClass::Fetch_RTTI() const, 0x00627A70);
+DEFINE_IMPLEMENTATION(bool TeamClass::Ammo_Check(), 0x00627A20);
 DEFINE_IMPLEMENTATION(int TeamClass::Get_Object_Size(bool) const, 0x00627A60);
 DEFINE_IMPLEMENTATION(void TeamClass::Object_CRC(CRCEngine&) const, 0x006253A0);
 DEFINE_IMPLEMENTATION(void TeamClass::AI(), 0x00622750);

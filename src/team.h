@@ -160,7 +160,7 @@ public:
     void Flash_For(int count);
     bool Has_Air_Transport();
     void Team_Members(DynamicVectorClass<const TechnoTypeClass*>& vec);
-    bool func_627A20();
+    bool Ammo_Check();
 
     const char* Name() const;
 
