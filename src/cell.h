@@ -354,7 +354,7 @@ public:
     unsigned IsUnderBridge : 1;  // is covered by bridge overlay?
     unsigned Bit2_32 : 1; // is covered by bridge overlay? also
     unsigned WasUnderBridge : 1; // unrepaired/repairable bridge connection.
-    unsigned IsBridgeEasyWest : 1; // draws on cells that are the length of the bridge body. (low down?)
+    unsigned IsBridgeEastWest : 1; // draws on cells that are the length of the bridge body. (low down?)
 
     unsigned Bit3_1 : 1; // draws on cells that are the length of the bridge body. (high up?)
     unsigned IsBridgeEndDamaged : 1;
