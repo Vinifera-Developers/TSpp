@@ -34,17 +34,18 @@
 
 struct VoxelObject {
 public:
+    VoxelObject() :
+        VoxelLibrary(nullptr),
+        MotionLibrary(nullptr)
+    {
+        
+    }
+
     ~VoxelObject()
     {
         delete VoxelLibrary;
         VoxelLibrary = nullptr;
         delete MotionLibrary;
-        MotionLibrary = nullptr;
-    }
-
-    void Clear()
-    {
-        VoxelLibrary = nullptr;
         MotionLibrary = nullptr;
     }
 
@@ -87,7 +88,10 @@ public:
         if (success) {
             index.Clear();
         } else {
-            this->~VoxelObject();
+            delete VoxelLibrary;
+            VoxelLibrary = nullptr;
+            delete MotionLibrary;
+            MotionLibrary = nullptr;
         }
 
         return success;
