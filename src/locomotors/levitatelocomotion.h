@@ -57,6 +57,8 @@ public:
     IFACEMETHOD_(bool, Is_Moving_Now)();
     IFACEMETHOD_(void, Mark_All_Occupation_Bits)(MarkType mark);
 
+    void func_4FDF80();
+
 public:
     LevitateLocomotionClass();
     LevitateLocomotionClass(const NoInitClass& noinit);

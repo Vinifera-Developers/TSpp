@@ -5119,6 +5119,7 @@ DEFINE_IMPLEMENTATION(void LevitateLocomotionClass::Mark_All_Occupation_Bits(Mar
 LevitateLocomotionClass::LevitateLocomotionClass(const NoInitClass &noinit) : LocomotionClass(noinit) { *((unsigned long *)this) = (unsigned long)0x006D3804; *((unsigned long *)this+1) = (unsigned long)0x006D373C; }
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(LevitateLocomotionClass::~LevitateLocomotionClass(), 0x004FDF60);
 DEFINE_IMPLEMENTATION(int LevitateLocomotionClass::Get_Object_Size(bool) const, 0x005010B0);
+DEFINE_IMPLEMENTATION(void LevitateLocomotionClass::func_4FDF80(), 0x004FDF80);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(NewMenuClass::NewMenuClass(), 0x0057FBE0);
 DEFINE_IMPLEMENTATION(void NewMenuClass::Blit(), 0x0057FBA0);
