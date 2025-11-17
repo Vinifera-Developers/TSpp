@@ -200,7 +200,7 @@ public:
     bool IsLeaveMap;
     bool Suspended;
     bool Succeeded;
-    unsigned char Quantity[MAX_TEAM_CLASSCOUNT];
+    int Quantity[MAX_TEAM_CLASSCOUNT];
 };
 
 
