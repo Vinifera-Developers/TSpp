@@ -32,7 +32,7 @@
 #include "rect.h"
 
 
-class BSurface;
+class Surface;
 
 
 class ABuffer
@@ -41,24 +41,30 @@ public:
     ABuffer(Rect rect);
     ~ABuffer();
 
-    int Unoffset(int pos) const { return BufferOffset - pos; }
-    void Copy_To(BSurface* surface, int x, int y, int w, int h);
+    unsigned Get_Scroll() const { return ScrollOffset; }
+    void Set_Scroll(int position) { ScrollOffset = position; }
+    int Get_Scroll_Delta(int position) const { return ScrollOffset - position; }
+
+    void Copy_To(Surface* surface, int x, int y, int w, int h);
     void Set(unsigned int dst, int size, unsigned value);
     void Pan(int x_speed, int y_speed, unsigned value);
     bool Fill(unsigned value);
     bool Fill(unsigned value, Rect a2);
     void Update(int x, int y, int w, int h);
     unsigned int Get_Buffer_Offset(Point2D pos);
-    BSurface* Get_Surface() const { return SurfacePtr; }
-    const Rect& Get_Area() const { return Area; }
+
+    Surface* Get_Surface() const { return SurfacePtr; }
+
+    Rect const& Get_Bounds() const { return Bounds; }
     unsigned int Get_Buffer_Width() const { return BufferWidth; }
+    unsigned int Get_Buffer_End() const { return BufferEnd; }
 
     unsigned int ABuffer::Wrap_Overflow(unsigned int position) const
     {
         if (position >= BufferEnd) {
             position -= BufferSize;
         }
-        return (position);
+        return position;
     }
 
 
@@ -67,17 +73,17 @@ public:
         if (position < BufferStart) {
             position += BufferSize;
         }
-        return (position);
+        return position;
     }
 
 public:
-    Rect Area;
-    unsigned int SurfaceOffset;
-    BSurface* SurfacePtr;
+    Rect Bounds;
+    int SurfaceOffset;
+    Surface* SurfacePtr;
     unsigned int BufferStart;
     unsigned int BufferEnd;
     unsigned int BufferSize;
-    unsigned int BufferOffset;
-    unsigned int BufferWidth;
-    unsigned int BufferHeight;
+    unsigned int ScrollOffset;
+    int BufferWidth;
+    int BufferHeight;
 };

@@ -5177,7 +5177,7 @@ DEFINE_IMPLEMENTATION(void TextButtonClass::Draw_Text(const char*), 0x006436A0);
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(ABuffer::ABuffer(Rect), 0x00406540);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(ABuffer::~ABuffer(), 0x004066B0);
-DEFINE_IMPLEMENTATION(void ABuffer::Copy_To(BSurface*, int, int, int, int), 0x00406620);
+DEFINE_IMPLEMENTATION(void ABuffer::Copy_To(Surface*, int, int, int, int), 0x00406620);
 DEFINE_IMPLEMENTATION(void ABuffer::Set(unsigned int, int, unsigned), 0x004066D0);
 DEFINE_IMPLEMENTATION(void ABuffer::Pan(int, int, unsigned), 0x00406730);
 DEFINE_IMPLEMENTATION(bool ABuffer::Fill(unsigned), 0x00406B30);
@@ -5187,7 +5187,7 @@ DEFINE_IMPLEMENTATION(unsigned int ABuffer::Get_Buffer_Offset(Point2D), 0x00406D
 
 // DEFINE_IMPLEMENTATION_CONSTRUCTOR(ZBuffer::ZBuffer(Rect), 0x006A8DD0);
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(ZBuffer::~ZBuffer(), 0x006A8F40);
-DEFINE_IMPLEMENTATION(void ZBuffer::Copy_To(BSurface*, int, int, int, int), 0x006A8EB0);
+DEFINE_IMPLEMENTATION(void ZBuffer::Copy_To(Surface*, int, int, int, int), 0x006A8EB0);
 DEFINE_IMPLEMENTATION(void ZBuffer::Set(unsigned int, int, unsigned), 0x006A8F50);
 DEFINE_IMPLEMENTATION(void ZBuffer::Pan(int, int, unsigned), 0x006A8FB0);
 DEFINE_IMPLEMENTATION(bool ZBuffer::Fill(unsigned), 0x006A93B0);

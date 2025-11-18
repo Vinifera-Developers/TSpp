@@ -36,5 +36,5 @@ public:
     RLEBlitter() {}
     virtual ~RLEBlitter() {}
 
-    virtual void entry_4(void* dest, void* source, unsigned length, unsigned rle_length, int a5, int a6, int a7, int a8, int a9, int a10) = 0;
+    virtual void Blit(void* dest, void const* source, int length, int leadskip = 0, int z_min = 0, int z_buff = NULL, int a_buff = NULL, int alpha_level = 0, int warp_offset = 0, int zshape = NULL) const = 0;
 };
