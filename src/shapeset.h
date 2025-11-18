@@ -127,6 +127,7 @@ protected:
             SFLAG_RLE = 0x02          // Is it RLE compressed?
         };
 
+        unsigned char pad[2];
         unsigned char Color[3];
         unsigned char Unused[5];
 
