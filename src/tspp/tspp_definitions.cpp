@@ -35,6 +35,7 @@
 #include "aircraft.h"
 #include "aircrafttype.h"
 #include "aitrigtype.h"
+#include "alphalighting.h"
 #include "alphashape.h"
 #include "anim.h"
 #include "animtype.h"
@@ -681,6 +682,9 @@ template<> BlitTrans<unsigned short>::BlitTrans() : Blitter() {}
 template<> BlitTrans<unsigned short>::~BlitTrans() {}
 DEFINE_IMPLEMENTATION(void BlitTrans<unsigned short>::entry_4(void*, void*, unsigned, unsigned short, int*, int*, int, int), 0x006A8D50);
 DEFINE_IMPLEMENTATION(void BlitTrans<unsigned short>::entry_8(void*, void*, unsigned, unsigned short, int*, int*, int), 0x006A8D80);
+
+DEFINE_IMPLEMENTATION(AlphaLightingRemapClass* AlphaLightingRemapInitClass::Init(int), 0x00411D50);
+DEFINE_IMPLEMENTATION(void AlphaLightingRemapInitClass::Deinit(AlphaLightingRemapClass*), 0x00411E80);
 
 DEFINE_IMPLEMENTATION(LONG STDMETHODCALLTYPE AbstractClass::QueryInterface(REFIID, LPVOID*), 0x00405BF0);
 DEFINE_IMPLEMENTATION(ULONG STDMETHODCALLTYPE AbstractClass::AddRef(), 0x00405C90);
@@ -6042,6 +6046,7 @@ const ShapeSet*& ObjectTypeClass::TalkBubbleShapes = Make_Global<const ShapeSet*
 bool& LightSourceClass::Recalc = Make_Global<bool>(0x00700398);
 const ShapeSet*& BuildingTypeClass::BuildingZShape = Make_Global<const ShapeSet*>(0x0076053C);
 bool (*&Message_Intercept_Handler)(MSG& msg) = Make_Global<bool (*)(MSG& msg)>(0x0080741C);
+AlphaLightingRemapInitClass& AlphaLightingRemapInit = Make_Global<AlphaLightingRemapInitClass>(0x007474AC);
 
 
 /**
@@ -6122,6 +6127,7 @@ DynamicVectorClass<EMPulseClass*>& Empulses = Make_Global<DynamicVectorClass<EMP
 DynamicVectorClass<AlphaShapeClass*>& AlphaShapes = Make_Global<DynamicVectorClass<AlphaShapeClass*>>(0x0074CCE0);
 DynamicVectorClass<FoggedObjectClass*>& FoggedObjects = Make_Global<DynamicVectorClass<FoggedObjectClass*>>(0x007B3238);
 DynamicVectorClass<VeinholeMonsterClass*>& VeinholeMonsters = Make_Global<DynamicVectorClass<VeinholeMonsterClass*>>(0x0080FBA8);
+DynamicVectorClass<AlphaLightingRemapClass*>& AlphaLightingRemapClass::AlphaLightingRemaps = Make_Global<DynamicVectorClass<AlphaLightingRemapClass*>>(0x0074CC60);
 
 MissionControlClass (&MissionControl)[MISSION_COUNT] = Make_Global<MissionControlClass[MISSION_COUNT]>(0x007E4070);
 
