@@ -53,6 +53,23 @@ public:
     const Rect& Get_Area() const { return Area; }
     unsigned int Get_Buffer_Width() const { return BufferWidth; }
 
+    unsigned int ABuffer::Wrap_Overflow(unsigned int position) const
+    {
+        if (position >= BufferEnd) {
+            position -= BufferSize;
+        }
+        return (position);
+    }
+
+
+    unsigned int ABuffer::Wrap_Underflow(unsigned int position) const
+    {
+        if (position < BufferStart) {
+            position += BufferSize;
+        }
+        return (position);
+    }
+
 public:
     Rect Area;
     unsigned int SurfaceOffset;
