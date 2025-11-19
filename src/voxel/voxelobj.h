@@ -41,6 +41,8 @@ public:
         
     }
 
+    VoxelObject(NoInitClass const& x) {}
+
     ~VoxelObject()
     {
         delete VoxelLibrary;
