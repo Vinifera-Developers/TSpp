@@ -1716,7 +1716,7 @@ DEFINE_IMPLEMENTATION(int CellClass::Spot_Index(Coord&), 0x00457280);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Spot_Free(int, bool) const, 0x00457310);
 DEFINE_IMPLEMENTATION(Coord CellClass::Closest_Free_Spot(Coord&, bool, bool) const, 0x00457360);
 DEFINE_IMPLEMENTATION(int CellClass::Clear_Icon(IsometricTileType, int), 0x00457650);
-DEFINE_IMPLEMENTATION(void CellClass::Incoming(Coord&, bool, bool, bool), 0x004577D0);
+DEFINE_IMPLEMENTATION(void CellClass::Incoming(Coord const&, bool, bool, bool), 0x004577D0);
 DEFINE_IMPLEMENTATION(CellClass& CellClass::Adjacent_Cell(FacingType) const, 0x00457970);
 DEFINE_IMPLEMENTATION(void CellClass::Adjust_Threat(HousesType, int), 0x004579D0);
 DEFINE_IMPLEMENTATION(long CellClass::Tiberium_Adjust(bool), 0x00457A50);

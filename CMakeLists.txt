@@ -197,10 +197,14 @@ endif()
 # Disable warnings.
 ################################################################################
 # Set warning level 4
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/W4>
+)
 
 # Set /permissive (default is /permissive- starting with C++20/VS2019)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /permissive")
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/permissive>
+)
 
 # For catching unreferenced local variables, we do not need to worry about this when compiling debug builds.
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /wd4189")

@@ -200,8 +200,8 @@ T Generate_Prime(Straw& rng, int pbits, T const* dummy)
         q.Randomize(rng, minQ, maxQ);
         p = q * 2 + (unsigned short)1;
 
-        T::RemainderTable rtQ(q);
-        T::RemainderTable rtP(p);
+        typename T::RemainderTable rtQ(q);
+        typename T::RemainderTable rtP(p);
 
         while (rtQ.HasZero() || rtP.HasZero() || !q.IsPrime() || !p.IsPrime()) {
             q += 2;

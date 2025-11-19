@@ -37,6 +37,7 @@ template<class T>
 class TypeList : public DynamicVectorClass<T>
 {
 public: // Needs to be public otherwise calls to Count() using a TypeList instance is not allowed.
+    using DynamicVectorClass<T>::ActiveCount;
     using DynamicVectorClass<T>::Count;
     using DynamicVectorClass<T>::Add;
 

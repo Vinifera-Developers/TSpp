@@ -263,7 +263,7 @@ class DynamicVectorClass : public VectorClass<T>
 
 public:
     DynamicVectorClass(unsigned size = 0, const T* array = nullptr);
-    DynamicVectorClass(const NoInitClass& noinit) : VectorClass(noinit) {}
+    DynamicVectorClass(const NoInitClass& noinit) : VectorClass<T>(noinit) {}
     DynamicVectorClass(const DynamicVectorClass& that);
     virtual ~DynamicVectorClass() {}
 
@@ -277,7 +277,7 @@ public:
 
     virtual bool Resize(int newsize, const T* array = nullptr) override;
     virtual void Clear() override;
-    virtual int ID(const T* ptr) override { return VectorClass::ID(ptr); }
+    virtual int ID(const T* ptr) override { return VectorClass<T>::ID(ptr); }
     virtual int ID(const T& ptr) override;
 
     bool Add(const T& object);

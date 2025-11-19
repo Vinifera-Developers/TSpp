@@ -128,7 +128,7 @@ public:
     Coord Closest_Free_Spot(Coord& coord, bool a2 = false, bool a3 = false) const;
     // 00457600
     int Clear_Icon(IsometricTileType tile, int tile_sequence_count);
-    void Incoming(Coord& threat = Coord(0, 0, 0), bool forced = false, bool no_kidding = false, bool a4 = false);
+    void Incoming(Coord const& threat = Coord(0, 0, 0), bool forced = false, bool no_kidding = false, bool a4 = false);
     CellClass& Adjacent_Cell(FacingType facing) const;
     void Adjust_Threat(HousesType house, int threat_value);
     long Tiberium_Adjust(bool pre_game = false);
@@ -151,9 +151,9 @@ public:
     // 0045A4A0
     // 0045A670
     // 0045A680
-    bool CellClass::Has_Tunnel(void) const;
-    bool CellClass::Is_Near_Tunnel_NW(void) const;
-    bool CellClass::Is_Near_Tunnel_ES(void) const;
+    bool Has_Tunnel() const;
+    bool Is_Near_Tunnel_NW() const;
+    bool Is_Near_Tunnel_ES() const;
     // 0045AAD0
     // 0045AAE0
     // 0045AB10
