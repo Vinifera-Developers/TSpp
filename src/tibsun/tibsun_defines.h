@@ -36,6 +36,7 @@
 #include "staticbuffer.h"
 #include "vector.h"
 #include "wwmath.h"
+#include <bit>
 
 
 class FileClass;

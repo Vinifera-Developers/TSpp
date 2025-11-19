@@ -28,7 +28,6 @@
 #pragma once
 #include <algorithm>
 #include <string>
-#include "string_view.h"
 #include "noinit.h"
 #include "tspp_assert.h"
 
@@ -60,8 +59,8 @@ public:
     TStringID(const char* str) noexcept { assign(str); }
     TStringID& operator=(const char* str) noexcept { assign(str); return *this; }
 
-    TStringID(nonstd::string_view sv) noexcept { assign(sv); }
-    TStringID& operator=(nonstd::string_view sv) noexcept { assign(sv); return *this; }
+    TStringID(std::string_view sv) noexcept { assign(sv); }
+    TStringID& operator=(std::string_view sv) noexcept { assign(sv); return *this; }
 
     constexpr TStringID(const TStringID&) noexcept = default;
     constexpr TStringID& operator=(const TStringID&) noexcept = default;
@@ -72,7 +71,7 @@ public:
     /**
      *  Conversions
      */
-    constexpr operator nonstd::string_view() const noexcept { return nonstd::string_view(Data, size()); }
+    constexpr operator std::string_view() const noexcept { return std::string_view(Data, size()); }
     explicit operator std::string() const { return std::string(Data, size()); }
 
     /**
@@ -125,7 +124,7 @@ public:
      */
     constexpr void clear() noexcept { Data[0] = '\0'; }
 
-    void assign(nonstd::string_view sv) noexcept
+    void assign(std::string_view sv) noexcept
     {
         const auto len = std::min(sv.size(), capacity());
         if (sv.data() != Data) {
@@ -134,7 +133,7 @@ public:
         }
     }
 
-    void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
+    void assign(const char* str) noexcept { assign(std::string_view(str)); }
 
     void push_back(char c) noexcept
     {
@@ -153,7 +152,7 @@ public:
         }
     }
 
-    TStringID& operator+=(nonstd::string_view sv) noexcept
+    TStringID& operator+=(std::string_view sv) noexcept
     {
         const auto len = size();
         const auto to_copy = std::min(sv.size(), capacity() - len);
@@ -171,24 +170,24 @@ public:
     /**
      *  Comparison
      */
-    constexpr int compare(nonstd::string_view rhs) const noexcept { return nonstd::string_view(*this).compare(rhs); }
+    constexpr int compare(std::string_view rhs) const noexcept { return std::string_view(*this).compare(rhs); }
 
-    constexpr bool operator==(nonstd::string_view rhs) const noexcept { return nonstd::string_view(*this) == rhs; }
-    constexpr bool operator!=(nonstd::string_view rhs) const noexcept { return !(*this == rhs); }
-    constexpr bool operator<(nonstd::string_view rhs) const noexcept { return nonstd::string_view(*this) < rhs; }
-    constexpr bool operator>(nonstd::string_view rhs) const noexcept { return rhs < *this; }
-    constexpr bool operator<=(nonstd::string_view rhs) const noexcept { return !(*this > rhs); }
-    constexpr bool operator>=(nonstd::string_view rhs) const noexcept { return !(*this < rhs); }
+    constexpr bool operator==(std::string_view rhs) const noexcept { return std::string_view(*this) == rhs; }
+    constexpr bool operator!=(std::string_view rhs) const noexcept { return !(*this == rhs); }
+    constexpr bool operator<(std::string_view rhs) const noexcept { return std::string_view(*this) < rhs; }
+    constexpr bool operator>(std::string_view rhs) const noexcept { return rhs < *this; }
+    constexpr bool operator<=(std::string_view rhs) const noexcept { return !(*this > rhs); }
+    constexpr bool operator>=(std::string_view rhs) const noexcept { return !(*this < rhs); }
 
     /**
      *  Read-only helpers
      */
-    constexpr bool starts_with(nonstd::string_view prefix) const noexcept { return nonstd::string_view(*this).starts_with(prefix); }
-    constexpr bool ends_with(nonstd::string_view suffix) const noexcept { return nonstd::string_view(*this).ends_with(suffix); }
-    constexpr bool contains(nonstd::string_view needle) const noexcept { return nonstd::string_view(*this).find(needle) != nonstd::string_view::npos; }
-    constexpr size_type find(nonstd::string_view sv, size_type pos = 0) const noexcept { return nonstd::string_view(*this).find(sv, pos); }
-    constexpr size_type rfind(nonstd::string_view sv, size_type pos = nonstd::string_view::npos) const noexcept { return nonstd::string_view(*this).rfind(sv, pos); }
-    constexpr nonstd::string_view substr(size_type pos, size_type count = nonstd::string_view::npos) const noexcept { return nonstd::string_view(*this).substr(pos, count); }
+    constexpr bool starts_with(std::string_view prefix) const noexcept { return std::string_view(*this).starts_with(prefix); }
+    constexpr bool ends_with(std::string_view suffix) const noexcept { return std::string_view(*this).ends_with(suffix); }
+    constexpr bool contains(std::string_view needle) const noexcept { return std::string_view(*this).find(needle) != std::string_view::npos; }
+    constexpr size_type find(std::string_view sv, size_type pos = 0) const noexcept { return std::string_view(*this).find(sv, pos); }
+    constexpr size_type rfind(std::string_view sv, size_type pos = std::string_view::npos) const noexcept { return std::string_view(*this).rfind(sv, pos); }
+    constexpr std::string_view substr(size_type pos, size_type count = std::string_view::npos) const noexcept { return std::string_view(*this).substr(pos, count); }
 
 protected:
     /**
@@ -209,7 +208,7 @@ protected:
  *  Free operator+
  */
 template<std::size_t N>
-constexpr TStringID<N> operator+(TStringID<N> lhs, nonstd::string_view rhs) noexcept
+constexpr TStringID<N> operator+(TStringID<N> lhs, std::string_view rhs) noexcept
 {
     lhs += rhs;
     return lhs;
@@ -234,8 +233,8 @@ public:
     FixedString(const char* str) noexcept { assign(str); }
     FixedString& operator=(const char* str) noexcept { assign(str); return *this; }
 
-    FixedString(nonstd::string_view sv) noexcept { assign(sv); }
-    FixedString& operator=(nonstd::string_view sv) noexcept { assign(sv); return *this; }
+    FixedString(std::string_view sv) noexcept { assign(sv); }
+    FixedString& operator=(std::string_view sv) noexcept { assign(sv); return *this; }
 
     constexpr FixedString(const FixedString&) noexcept = default;
     constexpr FixedString& operator=(const FixedString&) noexcept = default;
@@ -257,7 +256,7 @@ public:
         Length = 0;
     }
 
-    void assign(nonstd::string_view sv) noexcept
+    void assign(std::string_view sv) noexcept
     {
         const auto len = std::min(sv.size(), Base::capacity());
         if (sv.data() != Data) {
@@ -267,7 +266,7 @@ public:
         }
     }
 
-    void assign(const char* str) noexcept { assign(nonstd::string_view(str)); }
+    void assign(const char* str) noexcept { assign(std::string_view(str)); }
 
     constexpr void push_back(char c) noexcept
     {
@@ -284,7 +283,7 @@ public:
         }
     }
 
-    FixedString& operator+=(nonstd::string_view sv) noexcept
+    FixedString& operator+=(std::string_view sv) noexcept
     {
         const auto to_copy = std::min(sv.size(), Base::capacity() - Length);
         std::memcpy(Data + Length, sv.data(), to_copy);

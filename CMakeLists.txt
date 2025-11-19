@@ -42,7 +42,7 @@ endif()
 SET(CMAKE_CONFIGURATION_TYPES "Debug;RelWithDebInfo" CACHE STRING "Configs" FORCE)
 
 # Declare the project.
-project(TSpp VERSION 1.00 LANGUAGES CXX)
+project(TSpp VERSION 1.00 LANGUAGES CXX ASM_MASM)
 
 if(POLICY CMP0074)
     cmake_policy(SET CMP0074 NEW) #policy for <PackageName>_ROOT variables.
@@ -74,16 +74,15 @@ endif()
 # Configure C++ standard
 ################################################################################
 
-# Require that we have at least C++14.
-# We can not use C++ 17 due to a issue with MSVC and COM
-# See: https://developercommunity.visualstudio.com/content/problem/297914/c-intellisense-not-working-for-com-ptr-t-with-c17.html
-set(CMAKE_CXX_STANDARD 14)
+# Require that we have at least C++20.
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-#enable_language(C)
-enable_language(CXX)
-enable_language(ASM_MASM)
+# /Zc:__cplusplus is required to make __cplusplus accurate
+if (MSVC AND MSVC_VERSION GREATER_EQUAL 1914)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:__cplusplus")
+endif()
 
 
 ################################################################################
@@ -198,7 +197,10 @@ endif()
 # Disable warnings.
 ################################################################################
 # Set warning level 4
-add_compile_options(/W4)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+
+# Set /permissive (default is /permissive- starting with C++20/VS2019)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /permissive")
 
 # For catching unreferenced local variables, we do not need to worry about this when compiling debug builds.
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /wd4189")
@@ -262,29 +264,35 @@ foreach(flag_var CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE CMAKE_C
 	endif()
 endforeach(flag_var)
 
-# Specifies no enhanced instructions and also specifies x87 for floating-point calculations.
-target_compile_options(${PROJECT_NAME} PUBLIC /arch:IA32)
+# Specifies no enhanced instructions and forces x87 FP
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/arch:IA32>
+)
 
-# Specify floating-point behaviour.
-target_compile_options(${PROJECT_NAME} PUBLIC /fp:fast)
+# Specify floating-point behaviour
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/fp:fast>
+)
 
-# Suppresses _ftol when a conversion from a floating-point type to an integer type is required (x86 only).
-#target_compile_options(${PROJECT_NAME} PUBLIC /QIfist) # This is no longer supported by the MSVC version that GitHub uses.
+# Fast transcendentals
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/Qfast_transcendentals>
+)
 
-# Force generates fast transcendentals.
-target_compile_options(${PROJECT_NAME} PUBLIC /Qfast_transcendentals)
+# Disable thread-safe static initialization
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/Zc:threadSafeInit->
+)
 
-# Disable thread-safe local static initialization.
-target_compile_options(${PROJECT_NAME} PUBLIC /Zc:threadSafeInit-)
+# __fastcall as default calling convention
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/Gr>
+)
 
-# forces __fastcall as default calling convention.
-target_compile_options(${PROJECT_NAME} PUBLIC /Gr)
-
-# Disables buffer security overrun checks.
-target_compile_options(${PROJECT_NAME} PUBLIC /GS-)
-
-# Disables buffer security overrun checks.
-target_compile_options(${PROJECT_NAME} PUBLIC /GS-)
+# Disable buffer security checks
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/GS->
+)
 
 # Disable C++ exceptions.
 string(REGEX REPLACE "/EH[a-z]+" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
@@ -293,12 +301,6 @@ add_definitions(-D_HAS_EXCEPTIONS=0)
 
 # Set assembly flags.
 set(CMAKE_ASM_MASM_FLAGS "/Zm /Cp /safeseh" CACHE INTERNAL "MASM flags")
-
-# Align structures to 4-byte boundaries.
-#		target_compile_options(${PROJECT_NAME} PUBLIC /Zp4)
-
-# Replaces some function calls with intrinsic or otherwise special forms of the function.
-#		target_compile_options(${PROJECT_NAME} PUBLIC /Oi)
 
 # (Optimisation. (1) Minimize Size, (2) Maximize Speed.
 string(REPLACE "/O2" "/O1" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
@@ -322,13 +324,16 @@ set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /Oy")
 
 # Inline function expansion.
 target_compile_options(${PROJECT_NAME} PUBLIC
-		$<$<CONFIG:Debug>:/Ob0>
-		$<$<CONFIG:Release>:/Ob0>
-		$<$<CONFIG:RelWithDbgInfo>:/Ob0>
-		$<$<CONFIG:MinSizeRel>:/Ob0>)
+    $<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>>:/Ob0>
+    $<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CXX>>:/Ob1>
+    $<$<AND:$<CONFIG:RelWithDebInfo>,$<COMPILE_LANGUAGE:CXX>>:/Ob1>
+    $<$<AND:$<CONFIG:MinSizeRel>,$<COMPILE_LANGUAGE:CXX>>:/Ob1>
+)
 
 # Build with multiple processes.
-target_compile_options(${PROJECT_NAME} PUBLIC /MP2)
+target_compile_options(${PROJECT_NAME} PUBLIC
+    $<$<COMPILE_LANGUAGE:CXX>:/MP2>
+)
 
 # Add the .natvis file for Visual Studio debugging
 set(NATVIS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/src/tspp.natvis")
