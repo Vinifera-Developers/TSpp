@@ -78,7 +78,7 @@ public:
     bool Set(const TechnoTypeClass& type, HouseClass& house, bool a3 = false);
     bool Set(TechnoClass& object);
     bool Start(bool suspend = false);
-    bool Suspend(bool a1 = false);
+    bool Suspend(bool onhold = true);
     int Completion();
     TechnoClass* Get_Object() const;
     int Get_Special_Item() const;
