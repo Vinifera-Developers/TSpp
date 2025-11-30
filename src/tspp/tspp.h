@@ -73,7 +73,7 @@ extern std::vector<TSPP_ModuleEntry> TSPP_Modules;
  *  Handy little struct that allows us to populate a vector of known symbols while also declaring them!
  */
 struct TSPP_AutoSymbolRegister {
-    TSPP_AutoSymbolRegister(DWORD64 addr, /*const*/ char* name, bool undecorate = false)
+    TSPP_AutoSymbolRegister(DWORD64 addr, const char* name, bool undecorate = false)
     {
         if (undecorate) {
             static char unmangled[512];
