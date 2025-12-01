@@ -60,7 +60,7 @@ const char* TriggerTypeClass::Name_From(TriggerType type)
 }
 
 
-const TriggerTypeClass* TriggerTypeClass::Find_Or_Make(const char* name)
+TriggerTypeClass* TriggerTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

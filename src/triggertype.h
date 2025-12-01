@@ -86,7 +86,7 @@ public:
 
     static TriggerType From_Name(const char* name);
     static const char* Name_From(TriggerType type);
-    static const TriggerTypeClass* Find_Or_Make(const char* name);
+    static TriggerTypeClass* Find_Or_Make(const char* name);
 
 public:
     TriggerType HeapID;

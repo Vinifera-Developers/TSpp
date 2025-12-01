@@ -57,7 +57,7 @@ const char* TagTypeClass::Name_From(TagType type)
 }
 
 
-const TagTypeClass* TagTypeClass::Find_Or_Make(const char* name)
+TagTypeClass* TagTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

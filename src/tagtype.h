@@ -82,7 +82,7 @@ public:
 
     static TagType From_Name(const char* name);
     static const char* Name_From(TagType type);
-    static const TagTypeClass* Find_Or_Make(const char* name);
+    static TagTypeClass* Find_Or_Make(const char* name);
 
 public:
     TagType HeapID;
