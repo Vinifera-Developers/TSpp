@@ -57,7 +57,7 @@ const char* WarheadTypeClass::Name_From(WarheadType type)
 }
 
 
-const WarheadTypeClass* WarheadTypeClass::Find_Or_Make(const char* name)
+WarheadTypeClass* WarheadTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

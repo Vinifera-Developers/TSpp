@@ -57,7 +57,7 @@ const char* SideClass::Name_From(SideType type)
 }
 
 
-const SideClass* SideClass::Find_Or_Make(const char* name)
+SideClass* SideClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

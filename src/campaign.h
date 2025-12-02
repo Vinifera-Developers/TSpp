@@ -70,7 +70,7 @@ public:
 
     static CampaignType From_Name(const char* name);
     static const char* Name_From(CampaignType type);
-    static const CampaignClass* Find_Or_Make(const char* name);
+    static CampaignClass* Find_Or_Make(const char* name);
 
 public:
     DiskID WhichCD;

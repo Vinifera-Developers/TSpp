@@ -57,7 +57,7 @@ const char* ParticleTypeClass::Name_From(ParticleType type)
 }
 
 
-const ParticleTypeClass* ParticleTypeClass::Find_Or_Make(const char* name)
+ParticleTypeClass* ParticleTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

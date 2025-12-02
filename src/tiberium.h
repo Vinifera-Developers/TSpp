@@ -101,7 +101,7 @@ public:
 
     static TiberiumType From_Name(const char* name);
     static const char* Name_From(TiberiumType type);
-    static const TiberiumClass* Find_Or_Make(const char* name);
+    static TiberiumClass* Find_Or_Make(const char* name);
 
 public:
     TiberiumType HeapID;

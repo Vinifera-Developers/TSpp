@@ -57,7 +57,7 @@ const char* InfantryTypeClass::Name_From(InfantryType type)
 }
 
 
-const InfantryTypeClass* InfantryTypeClass::Find_Or_Make(const char* name)
+InfantryTypeClass* InfantryTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

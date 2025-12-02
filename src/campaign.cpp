@@ -56,7 +56,7 @@ const char* CampaignClass::Name_From(CampaignType type)
 }
 
 
-const CampaignClass* CampaignClass::Find_Or_Make(const char* name)
+CampaignClass* CampaignClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

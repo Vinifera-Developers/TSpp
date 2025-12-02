@@ -90,7 +90,7 @@ public:
     static TaskForceType From_Name(const char* name);
     static TaskForceType From_Full_Name(const char* name);
     static const char* Name_From(TaskForceType type);
-    static const TaskForceClass* Find_Or_Make(const char* name);
+    static TaskForceClass* Find_Or_Make(const char* name);
 
 public:
     int Group;

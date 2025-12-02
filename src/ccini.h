@@ -32,7 +32,7 @@
 #include "ini.h"
 #include "tibsun_defines.h"
 #include "typelist.h"
-#include "vector3.h"
+#include "voc.h"
 #include "wstring.h"
 
 
@@ -57,158 +57,98 @@ typedef enum INIScopeType {
     SCOPE_GLOBAL
 };
 
+struct TargetStruct {
+    long Value;
+};
+
 class CCINIClass : public INIClass
 {
 public:
     CCINIClass();
-    CCINIClass(FileClass& file, bool withdigest = false, bool load_comments = false);
-    virtual ~CCINIClass();
 
-    bool Load(FileClass& file, bool withdigest, bool load_comments = false);
-    int Load(Straw& file, bool withdigest, bool load_comments = false);
+    int Load(FileClass& file, bool withdigest, bool loadcomments = false);
+    int Load(Straw& file, bool withdigest, bool loadcomments = false);
     int Save(FileClass& file, bool withdigest) const;
     int Save(Pipe& pipe, bool withdigest) const;
 
-    LEPTON Get_Lepton(const char* section, const char* entry, const LEPTON defvalue);
-    bool Put_Lepton(const char* section, const char* entry, LEPTON value);
+    LEPTON Get_Lepton(char const* section, char const* entry, LEPTON defvalue) const;
+    int Get_Angle(char const* section, char const* entry, int defvalue) const;
+    Cell Get_Cell(char const* section, char const* entry, Cell const& defvalue) const;
+    MPHType Get_MPHType(char const* section, char const* entry, MPHType defvalue) const;
+    PipEnum Get_PipEnum(char const* section, char const* entry, PipEnum defvalue) const;
+    PipScaleType Get_PipScaleType(char const* section, char const* entry, PipScaleType defvalue) const;
+    CategoryType Get_CategoryType(char const* section, char const* entry, CategoryType defvalue) const;
+    TargetStruct Get_xTarget(char const* section, char const* entry, TargetStruct defvalue) const;
+    ColorSchemeType Get_Scheme_Index(char const* section, char const* entry, ColorSchemeType defvalue) const;
+    RGBClass Get_RGBColor(char const* section, char const* entry, RGBClass const& defvalue) const;
+    HSVClass Get_HSVColor(char const* section, char const* entry, HSVClass const& defvalue) const;
+    BSizeType Get_BSizeType(char const* section, char const* entry, BSizeType defvalue) const;
+    MZoneType Get_MZoneType(char const* section, char const* entry, MZoneType defvalue) const;
+    ActionType Get_ActionType(char const* section, char const* entry, ActionType defvalue) const;
+    SuperWeaponType Get_SuperWeaponType(char const* section, char const* entry, SuperWeaponType defvalue) const;
+    VoxType Get_VoxType(char const* section, char const* entry, VoxType defvalue) const;
+    RTTIType Get_RTTIType(char const* section, char const* entry, RTTIType defvalue) const;
+    long Get_Owners(char const* section, char const* entry, long defvalue) const;
+    ArmorType Get_ArmorType(char const* section, char const* entry, ArmorType defvalue) const;
+    VocType Get_VocType(char const* section, char const* entry, VocType defvalue) const;
+    LandType Get_LandType(char const* section, char const* entry, LandType defvalue) const;
+    HousesType Get_HousesType(char const* section, char const* entry, HousesType defvalue) const;
+    SideType Get_SideType(char const* section, char const* entry, SideType defvalue) const;
+    VQType Get_VQType(char const* section, char const* entry, VQType defvalue) const;
+    TheaterType Get_TheaterType(char const* section, char const* entry, TheaterType defvalue) const;
+    ThemeType Get_ThemeType(char const* section, char const* entry, ThemeType defvalue) const;
+    SourceType Get_SourceType(char const* section, char const* entry, SourceType defvalue) const;
+    CrateType Get_CrateType(char const* section, char const* entry, CrateType defvalue) const;
+    long Get_Buildings(char const* section, char const* entry, long defvalue) const;
+    TypeList<int> Get_IntList(const char* section, const char* entry, TypeList<int> defvalue) const;
+    TypeList<int> Get_GroundForces(const char* section, const char* entry, TypeList<int> defvalue) const; // This is TargetClass encoded value
+    TPoint3D<float> Get_Vector(char const* section, char const* entry, TPoint3D<float> const& defvalue) const;
+    TPoint3D<int> Get_Offset(char const* section, char const* entry, TPoint3D<int> const& defvalue) const;
+    TypeList<TechnoTypeClass*> Get_TechnoType_List(const char* section, const char* entry, TypeList<TechnoTypeClass*> defvalue) const;
+    TypeList<int> Get_Houses(const char* section, const char* entry, TypeList<int> defvalue) const;
+    TypeList<RGBClass> Get_RGBColors(const char* section, const char* entry, TypeList<RGBClass> defvalue) const;
+    TargetClass Get_Target(char const* section, char const* entry, TargetClass const& defvalue) const;
+    SpeedType Get_SpeedType(char const* section, char const* entry, SpeedType defvalue) const;
+    static TypeList<int> Get_Prerequisites(CCINIClass const& ini, char const* section, char const* entry, TypeList<int> defvalue);
+    AbilityFlagsType Get_Abilities(char const* section, char const* entry, AbilityFlagsType const& defvalue) const;
+    LayerType Get_LayerType(char const* section, char const* entry, LayerType defvalue) const;
 
-    unsigned Get_Degree(const char* section, const char* entry, unsigned defvalue = 0) const;
-    bool Put_Degree(const char* section, const char* entry, unsigned value);
-
-    Cell Get_Cell(const char* section, const char* entry, const Cell& defvalue);
-    bool Put_Cell(const char* section, const char* entry, Cell& value);
-
-    Coord Get_Coord(const char* section, const char* entry, const Coord& defvalue);
-
-    MPHType Get_MPHType(const char* section, const char* entry, const MPHType defvalue);
-    bool Put_MPHType(const char* section, const char* entry, MPHType value);
-
-    PipScaleType Get_PipType(const char* section, const char* entry, const PipType defvalue);
-    bool Put_PipType(const char* section, const char* entry, PipType value);
-
-    PipScaleType Get_PipScaleType(const char* section, const char* entry, const PipScaleType defvalue);
-    bool Put_PipScaleType(const char* section, const char* entry, PipScaleType value);
-
-    CategoryType Get_CategoryType(const char* section, const char* entry, const CategoryType defvalue);
-    bool Put_CategoryType(const char* section, const char* entry, CategoryType value);
-
-    ColorSchemeType Get_ColorSchemeType(const char* section, const char* entry, const ColorSchemeType defvalue);
-    bool Put_ColorSchemeType(const char* section, const char* entry, ColorSchemeType value);
-
-    RGBStruct Get_RGB(const char* section, const char* entry, const RGBStruct& defvalue);
-    bool Put_RGB(const char* section, const char* entry, RGBStruct& value);
-
-    HSVStruct Get_HSV(const char* section, const char* entry, const HSVStruct& defvalue);
-    bool Put_HSV(const char* section, const char* entry, RGBStruct& value);
-
-    BSizeType Get_BSizeType(const char* section, const char* entry, const BSizeType defvalue);
-    bool Put_BSizeType(const char* section, const char* entry, BSizeType value);
-
-    MZoneType Get_MZoneType(const char* section, const char* entry, const MZoneType defvalue);
-    bool Put_MZoneType(const char* section, const char* entry, MZoneType value);
-
-    ActionType Get_ActionType(const char* section, const char* entry, const ActionType defvalue);
-
-    SuperWeaponType Get_SpecialWeaponType(const char* section, const char* entry, const SuperWeaponType defvalue);
-
-    VoxType Get_VoxType(const char* section, const char* entry, const VoxType defvalue);
-
-    RTTIType Get_RTTIType(const char* section, const char* entry, const RTTIType defvalue);
-    bool Put_RTTIType(const char* section, const char* entry, RTTIType value);
-
-    long Get_Owners(const char* section, const char* entry, const long defvalue);
-    bool Put_Owners(const char* section, const char* entry, long value);
-
-    ArmorType Get_ArmorType(const char* section, const char* entry, const ArmorType defvalue);
-    bool Put_ArmorType(const char* section, const char* entry, ArmorType value);
-
-    bool Put_VocType(const char* section, const char* entry, VocType value);
-
-    LandType Get_LandType(const char* section, const char* entry, const LandType defvalue);
-    bool Put_LandType(const char* section, const char* entry, LandType value);
-
-    HousesType Get_HousesType(const char* section, const char* entry, const HousesType defvalue);
-    bool Put_HousesType(const char* section, const char* entry, HousesType value);
-
-    SideType Get_SideType(const char* section, const char* entry, const SideType defvalue);
-    bool Put_SideType(const char* section, const char* entry, SideType value);
-
-    VQType Get_VQType(const char* section, const char* entry, const VQType defvalue);
-    bool Put_VQType(const char* section, const char* entry, VQType value);
-
-    TheaterType Get_TheaterType(const char* section, const char* entry, const TheaterType defvalue);
-    bool Put_TheaterType(const char* section, const char* entry, TheaterType value);
-
-    ThemeType Get_ThemeType(const char* section, const char* entry, const ThemeType defvalue);
-    bool Put_ThemeType(const char* section, const char* entry, ThemeType value);
-
-    SourceType Get_SourceType(const char* section, const char* entry, const SourceType defvalue);
-    bool Put_SourceType(const char* section, const char* entry, SourceType value);
-
-    CrateType Get_CrateType(const char* section, const char* entry, const CrateType defvalue);
-    bool Put_CrateType(const char* section, const char* entry, CrateType value);
-
-    SpeedType Get_SpeedType(const char* section, const char* entry, const SpeedType defvalue);
-    bool Put_SpeedType(const char* section, const char* entry, SpeedType value);
-
-    AbilitiesStruct Get_Ability(const char* section, const char* entry, const AbilitiesStruct& defvalue);
-
-    TypeList<RGBStruct> Get_RGBs(const char* section, const char* entry, const TypeList<RGBStruct> defvalue);
-
-    TypeList<int> Get_Integers(const char* section, const char* entry, const TypeList<int> defvalue);
-    bool Put_Integers(const char* section, const char* entry, const TypeList<int> value);
-
-    TypeList<TechnoTypeClass*> Get_TechnoTypes(const char* section, const char* entry, const TypeList<TechnoTypeClass*> defvalue);
-    bool Put_TechnoTypes(const char* section, const char* entry, const TypeList<TechnoTypeClass*> value);
-
-    TypeList<SideType> Get_SideTypes(const char* section, const char* entry, const TypeList<SideType> defvalue);
-    bool Put_HousesTypes(const char* section, const char* entry, const TypeList<SideType> value);
-
-    xTargetClass Get_Target(const char* section, const char* entry, const xTargetClass& defvalue);
-    bool Put_Target(const char* section, const char* entry, xTargetClass& value);
+    bool Put_Lepton(char const* section, char const* entry, LEPTON value);
+    bool Put_Angle(char const* section, char const* entry, int value);
+    bool Put_Cell(char const* section, char const* entry, Cell const& value);
+    bool Put_MPHType(char const* section, char const* entry, MPHType value);
+    bool Put_PipEnum(char const* section, char const* entry, PipEnum value);
+    bool Put_PipScaleType(char const* section, char const* entry, PipScaleType value);
+    bool Put_CategoryType(char const* section, char const* entry, CategoryType value);
+    bool Put_xTarget(char const* section, char const* entry, TargetStruct value);
+    bool Put_Scheme_Index(char const* section, char const* entry, ColorSchemeType value);
+    bool Put_RGBColor(char const* section, char const* entry, RGBClass const& value);
+    bool Put_HSVColor(char const* section, char const* entry, HSVClass const& value);
+    bool Put_BSizeType(char const* section, char const* entry, BSizeType value);
+    bool Put_MZoneType(char const* section, char const* entry, MZoneType value);
+    bool Put_RTTIType(char const* section, char const* entry, RTTIType value);
+    bool Put_Owners(char const* section, char const* entry, long value);
+    bool Put_ArmorType(char const* section, char const* entry, ArmorType value);
+    bool Put_VocType(char const* section, char const* entry, VocType value);
+    bool Put_LandType(char const* section, char const* entry, LandType value);
+    bool Put_HousesType(char const* section, char const* entry, HousesType value);
+    bool Put_SideType(char const* section, char const* entry, SideType value);
+    bool Put_VQType(char const* section, char const* entry, VQType value);
+    bool Put_TheaterType(char const* section, char const* entry, TheaterType value);
+    bool Put_ThemeType(char const* section, char const* entry, ThemeType value);
+    bool Put_SourceType(char const* section, char const* entry, SourceType value);
+    bool Put_CrateType(char const* section, char const* entry, CrateType value);
+    bool Put_Buildings(char const* section, char const* entry, long value);
+    bool Put_VocTypes(char const* section, char const* entry, TypeList<int> value);
+    bool Put_IntList(char const* section, char const* entry, TypeList<int> const& value);
+    bool Put_GroundForces(const char* section, const char* entry, TypeList<long> const& value);
+    bool Put_TechnoType_List(char const* section, char const* entry, TypeList<TechnoTypeClass*> const& value);
+    bool Put_Houses(char const* section, char const* entry, TypeList<HousesType> value);
+    bool Put_Target(char const* section, char const* entry, TargetClass const& value);
+    bool Put_SpeedType(char const* section, char const* entry, SpeedType value);
+    bool Put_LayerType(char const* section, char const* entry, LayerType value);
 
     int Get_Unique_ID() const;
-
-    const Vector3 Get_Vector3(char const* section, char const* entry, const Vector3 defvalue) const;
-    bool Put_Vector3(char const* section, char const* entry, const Vector3 value);
-
-    VocType Get_VocType(const char* section, const char* entry, const VocType defvalue);
-
-    LayerType Get_LayerType(const char* section, const char* entry, const LayerType defvalue);
-    bool Put_LayerType(const char* section, const char* entry, LayerType value);
-
-    ParticleType Get_ParticleType(const char* section, const char* entry, const ParticleType defvalue);
-    bool Put_ParticleType(const char* section, const char* entry, ParticleType value);
-
-    TiberiumType Get_TiberiumType(const char* section, const char* entry, const TiberiumType defvalue);
-    bool Put_TiberiumType(const char* section, const char* entry, TiberiumType value);
-
-    TypeList<VocType> Get_VocTypes(const char* section, const char* entry, const TypeList<VocType> defvalue);
-    bool Put_VocTypes(const char* section, const char* entry, const TypeList<VocType> value);
-
-    const TechnoTypeClass* Get_Techno(const char* section, const char* entry, const TechnoTypeClass* defvalue);
-    bool Put_Techno(const char* section, const char* entry, const TechnoTypeClass* value);
-
-    FacingType Get_FacingType(const char* section, const char* entry, const FacingType defvalue);
-    bool Put_FacingType(const char* section, const char* entry, FacingType value);
-
-    MissionType Get_MissionType(const char* section, const char* entry, const MissionType defvalue);
-    bool Put_MissionType(const char* section, const char* entry, MissionType value);
-
-    TypeList<const char*> Get_Strings(const char* section, const char* entry, const TypeList<const char*> defvalue);
-    bool Put_Strings(const char* section, const char* entry, const TypeList<const char*> value);
-
-    DynamicVectorClass<const char*> Get_Strings(const char* section, const char* entry, const DynamicVectorClass<const char*> defvalue);
-    bool Put_Strings(const char* section, const char* entry, const DynamicVectorClass<const char*> value);
-
-    TypeList<Wstring> Get_Strings(const char* section, const char* entry, const TypeList<Wstring> defvalue);
-    bool Put_Strings(const char* section, const char* entry, const TypeList<Wstring> value);
-
-    DynamicVectorClass<Wstring> Get_Strings(const char* section, const char* entry, const DynamicVectorClass<Wstring> defvalue);
-    bool Put_Strings(const char* section, const char* entry, const DynamicVectorClass<Wstring> value);
-
-    template<class T>
-    bool Put_TypeList(const char* section, const char* entry, const TypeList<T*> value);
 
 private:
     void Calculate_Message_Digest();
@@ -216,5 +156,27 @@ private:
 
 private:
     bool IsDigestPresent;
+
+    /**
+     *  This is the message digest (SHA) of the INI database that was embedded as part of
+     *  the INI file.
+     */
     unsigned char Digest[20];
 };
+
+
+inline VocType CCINIClass::Get_VocType(char const* section, char const* entry, VocType defvalue) const
+{
+    char buffer[128];
+
+    if (Get_String(section, entry, "", buffer, sizeof(buffer)) == 0) {
+        return defvalue;
+    }
+    VocType voc = VocClass::From_Name(buffer);
+    if (voc == VOC_NONE) {
+        return defvalue;
+    }
+    return voc;
+}
+
+TypeList<VocType> Get_VocTypes(CCINIClass const& ini, const char* section, const char* entry, TypeList<VocType> defvalue);

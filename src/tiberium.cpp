@@ -57,7 +57,7 @@ const char* TiberiumClass::Name_From(TiberiumType type)
 }
 
 
-const TiberiumClass* TiberiumClass::Find_Or_Make(const char* name)
+TiberiumClass* TiberiumClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

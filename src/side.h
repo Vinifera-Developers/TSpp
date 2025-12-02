@@ -61,7 +61,7 @@ public:
 
     static SideType From_Name(const char* name);
     static const char* Name_From(SideType type);
-    static const SideClass* Find_Or_Make(const char* name);
+    static SideClass* Find_Or_Make(const char* name);
 
 public:
     TypeList<HousesType> Houses;

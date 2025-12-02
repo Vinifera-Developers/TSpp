@@ -74,7 +74,7 @@ public:
 
     static AircraftType From_Name(const char* name);
     static const char* Name_From(AircraftType type);
-    static const AircraftTypeClass* Find_Or_Make(const char* name);
+    static AircraftTypeClass* Find_Or_Make(const char* name);
 
 public:
     static const void*& LRotorData;

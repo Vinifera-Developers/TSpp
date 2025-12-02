@@ -85,7 +85,7 @@ public:
 
     static AITriggerType From_Name(const char* name);
     static const char* Name_From(AITriggerType type);
-    static const AITriggerTypeClass* Find_Or_Make(const char* name);
+    static AITriggerTypeClass* Find_Or_Make(const char* name);
 
 public:
     AITriggerEventType Type;

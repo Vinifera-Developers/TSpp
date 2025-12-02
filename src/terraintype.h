@@ -79,7 +79,7 @@ public:
 
     static TerrainType From_Name(const char* name);
     static const char* Name_From(TerrainType type);
-    static const TerrainTypeClass* Find_Or_Make(const char* name);
+    static TerrainTypeClass* Find_Or_Make(const char* name);
 
 public:
     TerrainType HeapID;

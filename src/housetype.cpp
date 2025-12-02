@@ -57,7 +57,7 @@ const char* HouseTypeClass::Name_From(HousesType type)
 }
 
 
-const HouseTypeClass* HouseTypeClass::Find_Or_Make(const char* name)
+HouseTypeClass* HouseTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

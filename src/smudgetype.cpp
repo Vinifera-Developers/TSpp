@@ -57,7 +57,7 @@ const char* SmudgeTypeClass::Name_From(SmudgeType type)
 }
 
 
-const SmudgeTypeClass* SmudgeTypeClass::Find_Or_Make(const char* name)
+SmudgeTypeClass* SmudgeTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

@@ -56,7 +56,7 @@ const char* BulletTypeClass::Name_From(BulletType type)
 }
 
 
-const BulletTypeClass* BulletTypeClass::Find_Or_Make(const char* name)
+BulletTypeClass* BulletTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

@@ -77,7 +77,7 @@ public:
 
     static SuperWeaponType From_Name(const char* name);
     static const char* Name_From(SuperWeaponType type);
-    static const SuperWeaponTypeClass* Find_Or_Make(const char* name);
+    static SuperWeaponTypeClass* Find_Or_Make(const char* name);
 
 public:
     SuperWeaponType HeapID;

@@ -83,7 +83,6 @@ public:
     bool Is_Enabled() const { return IsActive; }
     __declspec(property(get = Is_Enabled, put = Enable_Control)) bool IsEnabled;
 
-    void Draw_It(int, int x, int y, int width, int height, bool selected, TextPrintType flags) const;
     void Timer_Global_Reset(int global);
     void Timer_Local_Reset(int local);
     void Reset_Timer_Events();

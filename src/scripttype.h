@@ -103,7 +103,7 @@ public:
 
     static ScriptType From_Name(const char* name);
     static const char* Name_From(ScriptType type);
-    static const ScriptTypeClass* Find_Or_Make(const char* name);
+    static ScriptTypeClass* Find_Or_Make(const char* name);
 
 public:
     ScriptType HeapID;

@@ -77,7 +77,7 @@ public:
 
     static VoxelAnimType From_Name(const char* name);
     static const char* Name_From(VoxelAnimType type);
-    static const VoxelAnimTypeClass* Find_Or_Make(const char* name);
+    static VoxelAnimTypeClass *Find_Or_Make(const char* name);
 
 public:
     bool IsNormalized;

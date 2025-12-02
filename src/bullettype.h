@@ -77,7 +77,7 @@ public:
 
     static BulletType From_Name(const char* name);
     static const char* Name_From(BulletType type);
-    static const BulletTypeClass* Find_Or_Make(const char* name);
+    static BulletTypeClass* Find_Or_Make(const char* name);
 
 public:
     bool IsAirburst;

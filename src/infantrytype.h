@@ -84,11 +84,11 @@ public:
 
     static InfantryType From_Name(const char* name);
     static const char* Name_From(InfantryType type);
-    static const InfantryTypeClass* Find_Or_Make(const char* name);
+    static InfantryTypeClass* Find_Or_Make(const char* name);
 
 public:
     InfantryType HeapID;
-    PipType Pip;
+    PipEnum Pip;
     DoInfoStruct* DoControls;
     int FireLaunch;
     int ProneLaunch;

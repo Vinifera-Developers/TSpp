@@ -57,7 +57,7 @@ const char* UnitTypeClass::Name_From(UnitType type)
 }
 
 
-const UnitTypeClass* UnitTypeClass::Find_Or_Make(const char* name)
+UnitTypeClass* UnitTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

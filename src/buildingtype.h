@@ -112,7 +112,7 @@ public:
 
     static StructType From_Name(const char* name);
     static const char* Name_From(StructType type);
-    static const BuildingTypeClass* Find_Or_Make(const char* name);
+    static BuildingTypeClass* Find_Or_Make(const char* name);
     static void Fetch_ToTile_Types();
 
     static const ShapeSet*& BuildingZShape;

@@ -57,7 +57,7 @@ const char* SuperWeaponTypeClass::Name_From(SuperWeaponType type)
 }
 
 
-const SuperWeaponTypeClass* SuperWeaponTypeClass::Find_Or_Make(const char* name)
+SuperWeaponTypeClass* SuperWeaponTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

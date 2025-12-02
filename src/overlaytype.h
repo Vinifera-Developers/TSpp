@@ -87,7 +87,7 @@ public:
 
     static OverlayType From_Name(const char* name);
     static const char* Name_From(OverlayType type);
-    static const OverlayTypeClass* Find_Or_Make(const char* name);
+    static OverlayTypeClass* Find_Or_Make(const char* name);
 
 public:
     OverlayType HeapID;

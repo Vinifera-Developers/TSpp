@@ -332,15 +332,51 @@ typedef enum HousesType {
 } HousesType;
 DEFINE_ENUMERATION_OPERATORS(HousesType);
 
-typedef enum PipType {} PipType;
+typedef enum PipEnum {
+    PIP_NONE = -1,
+
+    PIP_EMPTY,         // Empty pip spot.
+    PIP_GREEN,         // Full pip with green coloring.
+    PIP_YELLOW,        // Full pip with yellow coloring.
+    PIP_WHITE,         // Full pip with white coloring.
+    PIP_RED,           // Full pip with red coloring.
+    PIP_BLUE,          // Full pip with blue coloring.
+    PIP_MEDIC,         // Little medic red cross.
+    PIP_VETERAN,       // Veteran unit pip.
+    PIP_ELITE,         // Elite unit pip.
+    PIP_HEALTH_GREEN,  // Green health pip.
+    PIP_HEALTH_YELLOW, // Yellow health pip.
+    PIP_HEALTH_RED,    // Red health pip.
+
+    PIP_COUNT,
+} PipEnum;
+DEFINE_ENUMERATION_OPERATORS(PipEnum);
+
+typedef enum Pip2Enum {
+    PIP2_NONE = -1,
+
+    PIP2_EMPTY,  // Empty pip spot.
+    PIP2_GREEN,  // Full pip with green coloring.
+    PIP2_YELLOW, // Full pip with yellow coloring.
+    PIP2_WHITE,  // Full pip with white coloring.
+    PIP2_RED,    // Full pip with red coloring.
+    PIP2_BLUE,   // Full pip with blue coloring.
+    PIP2_AMMO,   // Ammo pip.
+
+    PIP2_COUNT,
+} Pip2Enum;
+DEFINE_ENUMERATION_OPERATORS(Pip2Enum);
 
 typedef enum PipScaleType {
-    PIP_NONE,
-    PIP_AMMO,
-    PIP_TIBERIUM,
-    PIP_PASSENGERS,
-    PIP_POWER,
-    PIP_CHARGE,
+    PIPSCALE_NONE,
+
+    PIPSCALE_AMMO,
+    PIPSCALE_TIBERIUM,
+    PIPSCALE_PASSENGERS,
+    PIPSCALE_POWER,
+    PIPSCALE_CHARGE,
+
+    PIPSCALE_COUNT,
 } PipScaleType;
 DEFINE_ENUMERATION_OPERATORS(PipScaleType);
 
@@ -2880,9 +2916,9 @@ inline Cell Coord::As_Cell() const
 }
 
 
-struct AbilitiesStruct {
+struct AbilityFlagsType {
     public:
-        AbilitiesStruct()
+        AbilityFlagsType()
         {
             // Init all flags to false.
             for (AbilityType type = ABILITY_FIRST; type < ABILITY_COUNT; ++type) {

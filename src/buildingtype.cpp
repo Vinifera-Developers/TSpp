@@ -56,7 +56,7 @@ const char* BuildingTypeClass::Name_From(StructType type)
 }
 
 
-const BuildingTypeClass* BuildingTypeClass::Find_Or_Make(const char* name)
+BuildingTypeClass* BuildingTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

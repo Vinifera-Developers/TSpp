@@ -77,7 +77,7 @@ const char* TaskForceClass::Name_From(TaskForceType type)
 }
 
 
-const TaskForceClass* TaskForceClass::Find_Or_Make(const char* name)
+TaskForceClass* TaskForceClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

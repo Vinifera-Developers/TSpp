@@ -73,7 +73,7 @@ public:
 
     static ParticleSystemType From_Name(const char* name);
     static const char* Name_From(ParticleSystemType type);
-    static const ParticleSystemTypeClass* Find_Or_Make(const char* name);
+    static ParticleSystemTypeClass* Find_Or_Make(const char* name);
 
 public:
     ParticleType HoldsWhat;

@@ -56,7 +56,7 @@ const char* AircraftTypeClass::Name_From(AircraftType type)
 }
 
 
-const AircraftTypeClass* AircraftTypeClass::Find_Or_Make(const char* name)
+AircraftTypeClass* AircraftTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

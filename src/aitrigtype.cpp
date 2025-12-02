@@ -56,7 +56,7 @@ const char* AITriggerTypeClass::Name_From(AITriggerType type)
 }
 
 
-const AITriggerTypeClass* AITriggerTypeClass::Find_Or_Make(const char* name)
+AITriggerTypeClass* AITriggerTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

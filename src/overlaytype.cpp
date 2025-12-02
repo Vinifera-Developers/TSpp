@@ -57,7 +57,7 @@ const char* OverlayTypeClass::Name_From(OverlayType type)
 }
 
 
-const OverlayTypeClass* OverlayTypeClass::Find_Or_Make(const char* name)
+OverlayTypeClass* OverlayTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

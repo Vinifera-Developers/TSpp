@@ -57,7 +57,7 @@ const char* WeaponTypeClass::Name_From(WeaponType type)
 }
 
 
-const WeaponTypeClass* WeaponTypeClass::Find_Or_Make(const char* name)
+WeaponTypeClass* WeaponTypeClass::Find_Or_Make(const char* name)
 {
     TSPP_ASSERT(name != nullptr);
 

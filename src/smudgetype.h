@@ -84,7 +84,7 @@ public:
 
     static SmudgeType From_Name(const char* name);
     static const char* Name_From(SmudgeType type);
-    static const SmudgeTypeClass* Find_Or_Make(const char* name);
+    static SmudgeTypeClass* Find_Or_Make(const char* name);
 
 public:
     SmudgeType HeapID;

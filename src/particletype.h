@@ -78,7 +78,7 @@ public:
 
     static ParticleType From_Name(const char* name);
     static const char* Name_From(ParticleType type);
-    static const ParticleTypeClass* Find_Or_Make(const char* name);
+    static ParticleTypeClass* Find_Or_Make(const char* name);
 
 public:
     Point3D NextParticleOffset;

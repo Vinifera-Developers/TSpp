@@ -75,7 +75,7 @@ public:
 
     static WeaponType From_Name(const char* name);
     static const char* Name_From(WeaponType type);
-    static const WeaponTypeClass* Find_Or_Make(const char* name);
+    static WeaponTypeClass* Find_Or_Make(const char* name);
 
 public:
     int AmbientDamage;

@@ -88,7 +88,7 @@ public:
 
     static AnimType From_Name(const char* name);
     static const char* Name_From(AnimType type);
-    static const AnimTypeClass* Find_Or_Make(const char* name);
+    static AnimTypeClass* Find_Or_Make(const char* name);
 
 public:
     AnimType HeapID;

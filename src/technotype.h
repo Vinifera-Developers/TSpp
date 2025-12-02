@@ -101,8 +101,8 @@ public:
     float CollateralDamageCoefficient;
     float field_128;
     int WalkRate;
-    AbilitiesStruct VeteranAbilities;
-    AbilitiesStruct EliteAbilities;
+    AbilityFlagsType VeteranAbilities;
+    AbilityFlagsType EliteAbilities;
     double SpecialThreatValue;
     double MyEffectivenessCoefficient;
     double TargetEffectivenessCoefficient;

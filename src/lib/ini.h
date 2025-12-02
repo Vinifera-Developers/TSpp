@@ -33,17 +33,13 @@
 #include "point.h"
 #include "rect.h"
 #include "search.h"
-#include "wstring.h"
+#include "wwcrc.h"
 #include <objbase.h>
 
 
 class FileClass;
 class Straw;
 class Pipe;
-class Wstring;
-
-
-#define INI_MAX_LINE_LENGTH 512
 
 
 class INIClass
@@ -55,13 +51,104 @@ public:
         MOTOROLA_HEX_NOTATION = 2, // Use Motorola's HEX notation (i.e. $10)
     } IntegerFormatMode;
 
+public:
+    INIClass();
+    virtual ~INIClass();
+
+    /**
+     *  Fetch and store INI data.
+     */
+    bool Load(FileClass& file, bool keepcomments = false);
+    bool Load(Straw& straw, bool keepcomments = false);
+    int Save(FileClass& file) const;
+    int Save(Pipe& straw) const;
+
+    /**
+     *  Erase all data within this INI file manager.
+     */
+    bool Clear(const char* section = nullptr, const char* entry = nullptr);
+
+    bool Is_Loaded() const { return !SectionList.Is_Empty(); }
+    bool Is_Present(const char* section, const char* entry = nullptr) const;
+
+    /**
+     *  Fetch the number of sections in the INI file or verify if a specific
+     *  section is present.
+     */
+    int Section_Count() const;
+    bool Section_Present(char const* section) const { return Find_Section(section) != nullptr; }
+
+    /**
+     *  Fetch the number of entries in a section or get a particular entry in a section.
+     */
+    int Entry_Count(const char* section) const;
+    const char* Get_Entry(const char* section, int index) const;
+
+    /**
+     *  Get the various data types from the section and entry specified.
+     */
+    int Get_String(char const* section, char const* entry, char const* defvalue, char* buffer, int size) const;
+    int Get_Int(char const* section, char const* entry, int defvalue = 0) const;
+    int Get_Hex(char const* section, char const* entry, int defvalue = 0) const;
+    bool Get_Bool(char const* section, char const* entry, bool defvalue = false) const;
+    int Get_TextBlock(char const* section, char* buffer, int len) const;
+    int Get_UUBlock(char const* section, void* buffer, int len) const;
+    PKey Get_PKey(bool fast) const;
+    double Get_Float(char const* section, char const* entry, double defvalue = 0.0) const;
+    TPoint2D<int> const Get_Point(char const* section, char const* entry, TPoint2D<int> const& defvalue) const;
+    TPoint3D<int> const Get_Point(char const* section, char const* entry, TPoint3D<int> const& defvalue) const;
+    TPoint3D<float> const Get_Point(char const* section, char const* entry, TPoint3D<float> const& defvalue) const;
+    Rect const Get_Rect(char const* section, char const* entry, Rect const& defvalue) const;
+    CLSID const Get_UUID(char const* section, char const* entry, CLSID defvalue) const;
+
+    /**
+     *  Put a data type to the section and entry specified.
+     */
+    bool Put_String(char const* section, char const* entry, char const* string);
+    bool Put_Hex(char const* section, char const* entry, int number);
+    bool Put_Int(char const* section, char const* entry, int number, IntegerFormatMode format = DECIMAL_NOTATION);
+    bool Put_Bool(char const* section, char const* entry, bool value);
+    bool Put_TextBlock(char const* section, char const* text);
+    bool Put_UUBlock(char const* section, void const* block, int len);
+    bool Put_PKey(PKey const& key);
+    bool Put_Float(char const* section, char const* entry, double value);
+    bool Put_Point(char const* section, char const* entry, TPoint2D<int> const& value);
+    bool Put_Point(char const* section, char const* entry, TPoint3D<int> const& value);
+    bool Put_Point(char const* section, char const* entry, TPoint3D<float> const& value);
+    bool Put_Rect(char const* section, char const* entry, Rect const& value);
+    bool Put_UUID(char const* section, char const* entry, CLSID const& value);
+
 protected:
+    enum {
+        MAX_LINE_LENGTH = 512
+    };
+
     struct INIComment {
-        char* Value;
+        INIComment() : Comment(nullptr), Next(nullptr) {}
+
+        char* Comment;
         INIComment* Next;
     };
 
-    struct INIEntry : Node<const INIEntry*> {
+    /**
+     *  The value entries for the INI file are stored as objects of this type.
+     *  The entry identifier and value string are combined into this object.
+     */
+    struct INIEntry : public Node<INIEntry*> {
+        INIEntry(char* entry = nullptr, char* value = nullptr, INIComment* comments = nullptr, char* commentstring = nullptr, int commentcursor = 0, int preindentcursor = 0, int postindentcursor = 0) :
+            Entry(entry),
+            Value(value),
+            Comments(comments),
+            CommentString(commentstring),
+            PreIndentCursor(preindentcursor),
+            PostIndentCursor(postindentcursor),
+            CommentCursor(commentcursor)
+        {
+        }
+
+        ~INIEntry();
+        int Index_ID() const { return CRCEngine()(Entry, strlen(Entry)); }
+
         char* Entry;
         char* Value;
         INIComment* Comments;
@@ -69,135 +156,60 @@ protected:
         int PreIndentCursor;
         int PostIndentCursor;
         int CommentCursor;
+
+    private:
+        /**
+         *  Explicitly disable the copy constructor and the assignment operator.
+         */
+        INIEntry(INIEntry const& rvalue) = delete;
+        INIEntry operator=(INIEntry const& that) = delete;
     };
 
-    struct INISection : Node<const INISection*> {
+    /**
+     *  Each section (bracketed) is represented by an object of this type. All entries
+     *  subordinate to this section are attached.
+     */
+    struct INISection : public Node<INISection*> {
+        INISection(char* section, INIComment* comments = nullptr) : Section(section), Comments(comments) {}
+
+        ~INISection();
+        INIEntry* Find_Entry(char const* entry) const;
+        int Index_ID() const { return CRCEngine()(Section, strlen(Section)); };
+
         char* Section;
         List<INIEntry*> EntryList;
-        IndexClass<int, const INIEntry*> EntryIndex;
+        IndexClass<int, INIEntry*> EntryIndex;
         INIComment* Comments;
+
+    private:
+        /**
+         *  Explicitly disable the copy constructor and the assignment operator.
+         */
+        INISection(INISection const& rvalue);
+        INISection operator=(INISection const& that);
     };
 
-public:
-    INIClass();
-    INIClass(FileClass& file, bool load_comments = false);
-    virtual ~INIClass();
-
-    bool Load(FileClass& file, bool load_comments = false);
-    bool Load(Straw& straw, bool load_comments = false);
-    int Save(FileClass& file, bool save_comments = false) const;
-    int Save(Pipe& straw, bool save_comments = false) const;
-
-    bool Clear(const char* section = nullptr, const char* entry = nullptr);
-
-    bool Is_Loaded() const { return !SectionList.Is_Empty(); }
-    bool Is_Present(const char* section, const char* entry = nullptr) const;
-    bool Is_Present(const Wstring& section, Wstring& entry = Wstring()) const;
-
-    int Entry_Count(const char* section) const;
-    int Entry_Count(const Wstring& section) const;
-    const char* Get_Entry(const char* section, int index) const;
-    Wstring Get_Entry(const Wstring& section, int index) const;
-
-    int Get_String(const char* section, const char* entry, const char* defvalue, char* buffer, int length) const;
-    int Get_String(const char* section, const char* entry, char* buffer, int length) const;
-    int Get_String(const Wstring& section, const Wstring& entry, const Wstring& defvalue, Wstring& buffer) const;
-    int Get_String(const Wstring& section, const Wstring& entry, Wstring& buffer) const;
-    bool Put_String(const char* section, const char* entry, const char* string);
-    bool Put_String(const Wstring& section, const Wstring& entry, const Wstring& string);
-
-    int Get_Int(const char* section, const char* entry, int defvalue = 0) const;
-    int Get_Int(const Wstring& section, const Wstring& entry, int defvalue = 0) const;
-    int Get_Int_Clamp(const char* section, const char* entry, int lo, int hi, int defvalue = 0) const;
-    bool Put_Int(const char* section, const char* entry, int number, IntegerFormatMode format = DECIMAL_NOTATION);
-    bool Put_Int(const Wstring& section, const Wstring& entry, int number, IntegerFormatMode format = DECIMAL_NOTATION);
-
-    int Get_Hex(const char* section, const char* entry, int defvalue = 0) const;
-    int Get_Hex(const Wstring& section, const Wstring& entry, int defvalue = 0) const;
-    bool Put_Hex(const char* section, const char* entry, int number);
-    bool Put_Hex(const Wstring& section, const Wstring& entry, int number);
-
-    bool Get_Bool(const char* section, const char* entry, bool defvalue = false) const;
-    bool Get_Bool(const Wstring& section, const Wstring& entry, bool defvalue = false) const;
-    bool Put_Bool(const char* section, const char* entry, bool value);
-    bool Put_Bool(const Wstring& section, const Wstring& entry, bool value);
-
-    float Get_Float(const char* section, const char* entry, float defvalue = 0.0) const;
-    float Get_Float(const Wstring& section, const Wstring& entry, float defvalue = 0.0f) const;
-    float Get_Float_Clamp(const char* section, const char* entry, float lo, float hi, float defvalue = 0.0f) const;
-    float Get_Float_Clamp(const Wstring& section, const Wstring& entry, float lo, float hi, float defvalue = 0.0f) const;
-    bool Put_Float(const char* section, const char* entry, float value);
-    bool Put_Float(const Wstring& section, const Wstring& entry, float value);
-
-    double Get_Double(const char* section, const char* entry, double defvalue = 0.0) const;
-    double Get_Double(const Wstring& section, const Wstring& entry, double defvalue = 0.0) const;
-    double Get_Double_Clamp(const char* section, const char* entry, double lo, double hi, double defvalue = 0.0) const;
-    double Get_Double_Clamp(const Wstring& section, const Wstring& entry, double lo, double hi, double defvalue = 0.0f) const;
-    bool Put_Double(const char* section, const char* entry, double value);
-    bool Put_Double(const Wstring& section, const Wstring& entry, double value);
-
-    int Get_TextBlock(const char* section, char* buffer, int length) const;
-    int Get_TextBlock(const Wstring& section, Wstring& buffer) const;
-    bool Put_TextBlock(const char* section, const char* text);
-    bool Put_TextBlock(const Wstring& section, const Wstring& text);
-
-    int Get_UUBlock(const char* section, void* buffer, int length) const;
-    int Get_UUBlock(const Wstring& section, void* buffer, int length) const;
-    bool Put_UUBlock(const char* section, const void* block, int length);
-    bool Put_UUBlock(const Wstring& section, const void* block, int length);
-
-    const TRect<int> Get_Rect(const char* section, const char* entry, const TRect<int>& defvalue) const;
-    TRect<int> Get_Rect(const Wstring& section, const Wstring& entry, const TRect<int>& defvalue) const;
-    bool Put_Rect(const char* section, const char* entry, const TRect<int>& value);
-    bool Put_Rect(const Wstring& section, const Wstring& entry, const TRect<int>& value);
-
-    const TPoint2D<int> Get_Point(const char* section, const char* entry, const TPoint2D<int>& defvalue) const;
-    const TPoint2D<int> Get_Point(const Wstring& section, const Wstring& entry, const TPoint2D<int>& defvalue) const;
-    bool Put_Point(const char* section, const char* entry, const TPoint2D<int>& value);
-    bool Put_Point(const Wstring& section, const Wstring& entry, const TPoint2D<int>& value);
-
-    const TPoint3D<int> Get_Point(const char* section, const char* entry, const TPoint3D<int>& defvalue) const;
-    const TPoint3D<int> Get_Point(const Wstring& section, const Wstring& entry, const TPoint3D<int>& defvalue) const;
-    bool Put_Point(const char* section, const char* entry, const TPoint3D<int>& value);
-    bool Put_Point(const Wstring& section, const Wstring& entry, const TPoint3D<int>& value);
-
-    const TPoint3D<double> Get_Point(const char* section, const char* entry, const TPoint3D<double>& defvalue) const;
-    const TPoint3D<double> Get_Point(const Wstring& section, const Wstring& entry, const TPoint3D<double>& defvalue) const;
-    bool Put_Point(const char* section, const char* entry, const TPoint3D<double>& value);
-    bool Put_Point(const Wstring& section, const Wstring& entry, const TPoint3D<double>& value);
-
-    unsigned Get_Time(const char* section, const char* entry, unsigned defvalue = 0) const;
-    bool Put_Time(const char* section, const char* entry, unsigned value);
-
-    unsigned Get_Degree(const char* section, const char* entry, unsigned defvalue = 0) const;
-    bool Put_Degree(const char* section, const char* entry, unsigned value);
-
-    float Get_Angle(const char* section, const char* entry, float defvalue = 0.0f) const;
-    bool Put_Angle(const char* section, const char* entry, float value);
-
-    const CLSID Get_UUID(const char* section, const char* entry, const CLSID defvalue) const;
-    const CLSID Get_UUID(const Wstring& section, const Wstring& entry, const CLSID defvalue) const;
-    bool Put_UUID(const char* section, const char* entry, const CLSID value);
-    bool Put_UUID(const Wstring& section, const Wstring& entry, const CLSID value);
-
-    PKey Get_PKey(bool fast) const;
-    bool Put_PKey(const PKey& key);
-
-protected:
-    const INISection* Find_Section(const char* section) const;
-    const INIEntry* Find_Entry(const char* section, const char* entry) const;
+    /**
+     *  Utility routines to help find the appropriate section and entry objects.
+     */
+    INISection* Find_Section(char const* section) const;
+    INIEntry* Find_Entry(char const* section, char const* entry) const;
+    static void Strip_Comments(char* buffer);
+    static bool Line_Contains_Section(char* buffer);
+    static char* Extract_Line_Comment(char* buffer, int& assign, int& value, int& comment);
 
 public:
+    /**
+     *  This is the list of all sections within this INI file.
+     */
     List<const INISection*> SectionList;
     IndexClass<int, const INISection*> SectionIndex;
     INIComment* LineComments;
+
+private:
+    /**
+     *  Explicitly disable the copy constructor and the assignment operator.
+     */
+    INIClass(INIClass const& rvalue) = delete;
+    INIClass operator=(INIClass const& that) = delete;
 };
-
-
-INIClass* Get_INI(const char* filename);
-INIClass* Get_INI(FileClass& file);
-
-bool Save_INI(INIClass* ini, const char* filename);
-bool Save_INI(INIClass* ini, FileClass& file);
-
-void Release_INI(INIClass* ini);

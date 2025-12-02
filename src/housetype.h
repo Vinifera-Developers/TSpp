@@ -75,7 +75,7 @@ public:
 
     static HousesType From_Name(const char* name);
     static const char* Name_From(HousesType type);
-    static const HouseTypeClass* Find_Or_Make(const char* name);
+    static HouseTypeClass* Find_Or_Make(const char* name);
 
 public:
     HousesType HeapID;

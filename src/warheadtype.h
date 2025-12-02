@@ -70,7 +70,7 @@ public:
 
     static WarheadType From_Name(const char* name);
     static const char* Name_From(WarheadType type);
-    static const WarheadTypeClass* Find_Or_Make(const char* name);
+    static WarheadTypeClass* Find_Or_Make(const char* name);
 
 public:
     double Deform;
