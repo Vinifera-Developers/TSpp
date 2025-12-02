@@ -35,6 +35,7 @@
 #include "search.h"
 #include "wwcrc.h"
 #include <objbase.h>
+#include <string>
 
 
 class FileClass;
@@ -101,6 +102,9 @@ public:
     Rect const Get_Rect(char const* section, char const* entry, Rect const& defvalue) const;
     CLSID const Get_UUID(char const* section, char const* entry, CLSID defvalue) const;
 
+    std::string Get_String(char const* section, char const* entry, std::string const& defvalue) const;
+    std::string Get_TextBlock(char const* section) const;
+
     /**
      *  Put a data type to the section and entry specified.
      */
@@ -117,6 +121,9 @@ public:
     bool Put_Point(char const* section, char const* entry, TPoint3D<float> const& value);
     bool Put_Rect(char const* section, char const* entry, Rect const& value);
     bool Put_UUID(char const* section, char const* entry, CLSID const& value);
+
+    bool Put_String(char const* section, char const* entry, std::string const& string);
+    bool Put_TextBlock(char const* section, std::string const& text);
 
 protected:
     enum {
