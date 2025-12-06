@@ -2050,8 +2050,7 @@ typedef enum ThreatType {
     THREAT_POWER = 0x0800,          // Consider power generating facilities a greater target?
     THREAT_FACTORIES = 0x1000,      // Consider factories a greater target?
     THREAT_BASE_DEFENSE = 0x2000,   // Consider base defense buildings a greater target?
-    THREAT_4000 = 0x4000,
-    THREAT_8000 = 0x8000,
+    THREAT_ALLIES = 0x4000
 } ThreatType;
 DEFINE_ENUMERATION_OPERATORS(ThreatType);
 DEFINE_ENUMERATION_BITWISE_OPERATORS(ThreatType);
