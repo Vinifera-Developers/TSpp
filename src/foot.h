@@ -136,7 +136,7 @@ public:
     virtual void entry_2C8() const override;
     virtual void Stun() override;
     virtual void Death_Announcement(const TechnoClass* object = nullptr) const override;
-    virtual AbstractClass* Greatest_Threat(ThreatType method, Coord& coord, bool a3 = false) const override;
+    virtual AbstractClass* Greatest_Threat(ThreatType method, const Coord& coord, bool a3 = false) const override;
     virtual bool Captured(HouseClass* house = nullptr) override;
     virtual void entry_324() const override;
     virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass& index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const override;

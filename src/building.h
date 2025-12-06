@@ -152,7 +152,7 @@ public:
     virtual bool entry_2B8(int* a1) const override;
     virtual void Death_Announcement(const TechnoClass* object = nullptr) const override;
     virtual FireErrorType Can_Fire(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-    virtual AbstractClass* Greatest_Threat(ThreatType method, Coord& coord, bool a3 = false) const override;
+    virtual AbstractClass* Greatest_Threat(ThreatType method, const Coord& coord, bool a3 = false) const override;
     virtual void Assign_Target(AbstractClass* target) const;
     virtual bool Captured(HouseClass* house = nullptr) override;
     virtual WeaponInfoStruct* const Get_Weapon(WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;

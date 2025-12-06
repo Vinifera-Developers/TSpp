@@ -100,7 +100,7 @@ public:
     virtual bool Is_Immobilized() const override;
     virtual bool Is_Renovator() const override;
     virtual FireErrorType Can_Fire(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const override;
-    virtual AbstractClass* Greatest_Threat(ThreatType method, Coord& coord, bool a3 = false) const override;
+    virtual AbstractClass* Greatest_Threat(ThreatType method, const Coord& coord, bool a3 = false) const override;
     virtual void Assign_Target(AbstractClass* target) const override;
     virtual const BulletClass* Fire_At(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) override;
     virtual bool Is_Ready_To_Random_Animate() const override;

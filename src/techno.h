@@ -168,7 +168,7 @@ public:
     virtual bool In_Range_Of(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
     virtual void Death_Announcement(const TechnoClass* object = nullptr) const = 0;
     virtual FireErrorType Can_Fire(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY) const;
-    virtual AbstractClass* Greatest_Threat(ThreatType method, Coord& coord, bool a3 = false) const;
+    virtual AbstractClass* Greatest_Threat(ThreatType method, const Coord& coord, bool a3 = false) const;
     virtual void Assign_Target(AbstractClass* target) const;
     virtual const BulletClass* Fire_At(AbstractClass* target, WeaponSlotType weapon = WEAPON_SLOT_PRIMARY);
     virtual bool Captured(HouseClass* house = nullptr);
