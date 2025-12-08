@@ -83,7 +83,7 @@ public:
     virtual ActionType What_Action(const Cell& cell, bool check_fog = false, bool disallow_force = false) const;
     virtual LayerType In_Which_Layer() const;
     virtual bool entry_7C() const;
-    virtual bool entry_80() const;
+    virtual bool Considered_Vehicle() const;
     virtual const TechnoTypeClass* Techno_Type_Class() const;
     __declspec(property(get = Techno_Type_Class)) const TechnoTypeClass* TClass;
     virtual const ObjectTypeClass* Class_Of() const;

@@ -204,7 +204,7 @@ public:
     // 0062BEA0
     // 0062BFE0
     // 0062CD00
-    double Area_Modify(Cell& cell) const;
+    double Area_Modify(Cell const& cell) const;
     bool Evaluate_Object(ThreatType method, int mask, int range, const TechnoClass* object, int& value, int zone, Coord& coord) const;
     bool Evaluate_Cell(ThreatType method, int mask, Cell& cell, int range, const TechnoClass** object, int& value, int zone) const;
     int Evaluate_Just_Cell(Cell& cell) const;
@@ -231,7 +231,7 @@ public:
     // 00638C70
     void Assign_Archive_Target(AbstractClass* target);
     // 006391B0
-    float Target_Threat(TechnoClass* target, Coord& firing_coord) const;
+    float Target_Threat(TechnoClass* target, Coord const& firing_coord) const;
     bool Has_Ability(AbilityType ability) const;
     // 00639C60
     static void Update_Mission_Targets(AbstractClass* target);

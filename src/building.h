@@ -83,7 +83,7 @@ public:
     virtual ShapeSet* const Get_Image_Data() const override;
     virtual ActionType What_Action(const ObjectClass* object, bool disallow_force = false) override;
     virtual ActionType What_Action(const Cell& cell, bool check_fog = false, bool disallow_force = false) const override;
-    virtual bool entry_80() const override;
+    virtual bool Considered_Vehicle() const override;
     virtual const ObjectTypeClass* Class_Of() const override;
     virtual const char* Full_Name() const override;
     virtual bool Can_Repair() const override;
