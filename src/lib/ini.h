@@ -125,7 +125,7 @@ public:
     bool Put_String(char const* section, char const* entry, std::string const& string);
     bool Put_TextBlock(char const* section, std::string const& text);
 
-protected:
+public:
     enum {
         MAX_LINE_LENGTH = 512
     };

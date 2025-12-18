@@ -61,7 +61,7 @@ bool INIClass::Is_Present(const char* section, const char* entry) const
 
 std::string INIClass::Get_String(char const* section, char const* entry, std::string const& defvalue) const
 {
-    char buffer[MAX_LINE_LENGTH];
+    char buffer[8096];
     if (Get_String(section, entry, defvalue.c_str(), buffer, std::size(buffer)) > 0) {
         return std::string(buffer);
     }
@@ -75,7 +75,7 @@ std::string INIClass::Get_TextBlock(char const* section) const
 
     int count = Entry_Count(section);
     if (count > 0) {
-        buffer.resize(MAX_LINE_LENGTH * count + 1);
+        buffer.resize(8096 * count + 1);
 
         int len = Get_TextBlock(section, buffer.data(), buffer.size());
         if (len > 0) {
