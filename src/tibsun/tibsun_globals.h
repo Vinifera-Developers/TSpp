@@ -216,6 +216,7 @@ extern ConvertClass*& AnimDrawer;
 extern ConvertClass*& NormalDrawer;
 extern ConvertClass*& MouseDrawer;
 extern ConvertClass*& SidebarDrawer;
+extern ConvertClass*& EightBitDrawer;
 extern ToolTipManager*& ToolTips;
 extern VersionClass& VerNum;
 extern CDControlClass& CDControl;

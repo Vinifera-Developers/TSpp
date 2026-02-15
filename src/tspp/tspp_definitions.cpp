@@ -5747,6 +5747,7 @@ ConvertClass*& AnimDrawer = Make_Global<ConvertClass*>(0x00748200);
 ConvertClass*& NormalDrawer = Make_Global<ConvertClass*>(0x00748204);
 ConvertClass*& MouseDrawer = Make_Global<ConvertClass*>(0x00748208);
 ConvertClass*& SidebarDrawer = Make_Global<ConvertClass*>(0x0074820C);
+ConvertClass*& EightBitDrawer = Make_Global<ConvertClass*>(0x0080FA58);
 ToolTipManager*& ToolTips = Make_Global<ToolTipManager*>(0x0074C638);
 VersionClass& VerNum = Make_Global<VersionClass>(0x007E4880);
 CDControlClass& CDControl = Make_Global<CDControlClass>(0x007608B8);
