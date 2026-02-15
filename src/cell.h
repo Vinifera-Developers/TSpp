@@ -144,7 +144,7 @@ public:
     bool Spread_Tiberium(bool forced = false);
     bool Can_Tiberium_Germinate(TiberiumClass* tiberium = nullptr) const;
     // 00459A00
-    // 00459B80
+    void Init_Drawer(LightConvertClass* drawer = nullptr, int intensity = 0x10000, int ambient = 0, int brightness = 1000, int tile_brightness = 1000, int alt_brightness = 1000);
     // 00459D90
     // 00459EC0
     // 0045A310

@@ -1743,6 +1743,7 @@ DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Spread() const, 0x00459300);
 DEFINE_IMPLEMENTATION(bool CellClass::Grow_Tiberium(), 0x004593C0);
 DEFINE_IMPLEMENTATION(bool CellClass::Spread_Tiberium(bool), 0x004594D0);
 DEFINE_IMPLEMENTATION(bool CellClass::Can_Tiberium_Germinate(TiberiumClass*) const, 0x004596C0);
+DEFINE_IMPLEMENTATION(void CellClass::Init_Drawer(LightConvertClass* drawer, int intensity, int ambient, int brightness, int tile_brightness, int alt_brightness), 0x00459B80);
 DEFINE_IMPLEMENTATION(bool CellClass::Has_Tunnel(void) const, 0x0045A6A0);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Near_Tunnel_NW(void) const, 0x0045A6D0);
 DEFINE_IMPLEMENTATION(bool CellClass::Is_Near_Tunnel_ES(void) const, 0x0045A930);
