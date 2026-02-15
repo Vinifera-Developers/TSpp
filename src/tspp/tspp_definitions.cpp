@@ -6060,6 +6060,7 @@ bool& LightSourceClass::Recalc = Make_Global<bool>(0x00700398);
 const ShapeSet*& BuildingTypeClass::BuildingZShape = Make_Global<const ShapeSet*>(0x0076053C);
 bool (*&Message_Intercept_Handler)(MSG& msg) = Make_Global<bool (*)(MSG& msg)>(0x0080741C);
 AlphaLightingRemapInitClass& AlphaLightingRemapInit = Make_Global<AlphaLightingRemapInitClass>(0x007474AC);
+Rect& SomeUnitDrawRect = Make_Global<Rect>(0x0080F8E0);
 
 
 /**

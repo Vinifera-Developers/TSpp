@@ -176,3 +176,5 @@ public:
     int DeathCounter;
     int field_37C; // this only seems to be used for offsetting the size difference between TS and FS save games.
 };
+
+extern Rect& SomeUnitDrawRect;
