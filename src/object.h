@@ -77,7 +77,7 @@ public:
      *  ObjectClass
      */
     virtual bool Is_Players_Army() const;
-    virtual VisualType Visual_Character(bool raw = false, const HouseClass* house = nullptr);
+    virtual VisualType Visual_Character(bool raw = false, const HouseClass* house = nullptr) const;
     virtual ShapeSet* const Get_Image_Data() const;
     virtual ActionType What_Action(const ObjectClass* object, bool disallow_force = false);
     virtual ActionType What_Action(const Cell& cell, bool check_fog = false, bool disallow_force = false) const;
