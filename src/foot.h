@@ -139,7 +139,7 @@ public:
     virtual AbstractClass* Greatest_Threat(ThreatType method, const Coord& coord, bool a3 = false) const override;
     virtual bool Captured(HouseClass* house = nullptr) override;
     virtual void entry_324() const override;
-    virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass& index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const override;
+    virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass* index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const override;
     virtual void Assign_Destination(const AbstractClass* target, bool a2 = true) override;
     virtual bool Enter_Idle_Mode(bool inital = false, bool a2 = false) override;
 

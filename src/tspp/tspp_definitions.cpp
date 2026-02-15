@@ -3150,7 +3150,7 @@ DEFINE_IMPLEMENTATION(void TechnoClass::Cloaking_AI(bool) const, 0x0062F150);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_31C() const, 0x00638790);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_320() const, 0x0062AF80);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_324() const, 0x0043B920);
-DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject&, unsigned int, int, VoxelIndexClass&, Rect&, Point2D&, Matrix3D&, int, int) const, 0x006354E0);
+DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Voxel(VoxelObject&, unsigned int, int, VoxelIndexClass*, Rect&, Point2D&, Matrix3D&, int, int) const, 0x006354E0);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_32C(Point2D&, Rect&) const, 0x0062C070);
 DEFINE_IMPLEMENTATION(void TechnoClass::entry_330(Point2D&, Rect&, bool) const, 0x0062C450);
 DEFINE_IMPLEMENTATION(void TechnoClass::Draw_Pips(const Point2D&, const Point2D&, const Rect&) const, 0x00637540);
@@ -3283,7 +3283,7 @@ DEFINE_IMPLEMENTATION(void FootClass::Death_Announcement(const TechnoClass*) con
 DEFINE_IMPLEMENTATION(AbstractClass* FootClass::Greatest_Threat(ThreatType, const Coord&, bool) const, 0x004A4DC0);
 DEFINE_IMPLEMENTATION(bool FootClass::Captured(HouseClass*), 0x004A6980);
 DEFINE_IMPLEMENTATION(void FootClass::entry_324() const, 0x004A6A40);
-DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelObject&, unsigned int, int, VoxelIndexClass&, Rect&, Point2D&, Matrix3D&, int, int) const, 0x004A5B50);
+DEFINE_IMPLEMENTATION(void FootClass::Draw_Voxel(VoxelObject&, unsigned int, int, VoxelIndexClass*, Rect&, Point2D&, Matrix3D&, int, int) const, 0x004A5B50);
 DEFINE_IMPLEMENTATION(void FootClass::Assign_Destination(const AbstractClass*, bool), 0x004A49F0);
 DEFINE_IMPLEMENTATION(bool FootClass::Enter_Idle_Mode(bool, bool), 0x004A3AA0);
 DEFINE_IMPLEMENTATION(bool FootClass::entry_368(), 0x004A6E10);
@@ -4426,7 +4426,7 @@ DEFINE_IMPLEMENTATION(void UnitClass::Overrun_Square(Cell&, bool), 0x006572B0);
 DEFINE_IMPLEMENTATION(void UnitClass::Approach_Target(), 0x006571E0);
 DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Voxel(Point2D, Rect, int), 0x00652330);
 DEFINE_IMPLEMENTATION(void UnitClass::Unit_Draw_Shape(Point2D, Rect, int), 0x00653090);
-DEFINE_IMPLEMENTATION(void UnitClass::Unit_Blit_Voxel(Surface&, Point2D, Rect, int, int), 0x00651F50);
+DEFINE_IMPLEMENTATION(void UnitClass::Unit_Blit_Voxel(Surface&, Point2D, Rect, int), 0x00651F50);
 DEFINE_IMPLEMENTATION(void UnitClass::Tunnel_AI(), 0x0064D9D0);
 DEFINE_IMPLEMENTATION(void UnitClass::Rotation_AI(), 0x0064E560);
 DEFINE_IMPLEMENTATION(bool UnitClass::Edge_Of_World_AI(), 0x0064E6F0);
@@ -5734,6 +5734,7 @@ Surface*& HiddenSurface = Make_Global<Surface*>(0x0074C5DC);
 Surface*& AlternateSurface = Make_Global<Surface*>(0x0074C5E0);
 Surface*& LogicalSurface = Make_Global<Surface*>(0x0074C5E4);
 Surface*& CompositeSurface = Make_Global<Surface*>(0x0074C5EC);
+Surface*& EightBitSurface = Make_Global<Surface*>(0x0080FA54);
 Random2Class& NonCriticalRandomNumber = Make_Global<Random2Class>(0x0074BE40);
 long& Frame = Make_Global<long>(0x007E4924);
 ScenarioClass*& Scen = Make_Global<ScenarioClass*>(0x007E2438);
@@ -5893,6 +5894,7 @@ int& ReadyToQuit = Make_Global<int>(0x007E4978);
 bool& SurfacesRestored = Make_Global<bool>(0x007A1EBC);
 bool& _MouseCaptured = Make_Global<bool>(0x00685EE4);
 bool& _MouseWheel = Make_Global<bool>(0x0086504C);
+Matrix3D& IsometricViewMatrix = Make_Global<Matrix3D>(0x008367F0);
 
 
 /**

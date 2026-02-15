@@ -203,6 +203,7 @@ extern Surface*& HiddenSurface;
 extern Surface*& AlternateSurface;
 extern Surface*& LogicalSurface;
 extern Surface*& CompositeSurface;
+extern Surface*& EightBitSurface;
 extern Random2Class& NonCriticalRandomNumber;
 extern long& Frame;
 extern ScenarioClass*& Scen;
@@ -353,6 +354,7 @@ extern int& ReadyToQuit;
 extern bool& SurfacesRestored;
 extern bool& _MouseCaptured;
 extern bool& _MouseWheel;
+extern Matrix3D& IsometricViewMatrix;
 
 extern bool& _Select_Game_fade;
 

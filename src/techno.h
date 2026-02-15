@@ -181,7 +181,7 @@ public:
     virtual void entry_31C() const;
     virtual void entry_320() const;
     virtual void entry_324() const;
-    virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass& index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const;
+    virtual void Draw_Voxel(VoxelObject& voxeldata, unsigned int frame, int key, VoxelIndexClass* index, Rect& rect, Point2D& point, Matrix3D& matrix, int color, int flags) const;
     virtual void entry_32C(Point2D& point, Rect& rect) const;
     virtual void entry_330(Point2D& point, Rect& rect, bool a2) const;
     virtual void Draw_Pips(const Point2D& point1, const Point2D& point2, const Rect& rect) const;

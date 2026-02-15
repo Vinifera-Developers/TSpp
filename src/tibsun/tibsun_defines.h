@@ -3024,6 +3024,13 @@ struct ScoutStruct {
     bool HasScouted;
 };
 
+enum Dir2 {};
+enum Dir4 {};
+enum Dir8 {};
+enum Dir16 {};
+enum Dir32 {};
+enum Dir64 {};
+enum Dir128 {};
 
 /**
  *  DirType is in stages of 128 (0-32768) (128*256).
@@ -3070,6 +3077,20 @@ public:
     constexpr void Set_Raw(unsigned short raw) { Raw = raw; }
     constexpr Dir256 Get_Dir() const { return static_cast<Dir256>(Raw >> 8); }
     constexpr void Set_Dir(Dir256 dir) { Raw = static_cast<unsigned short>(static_cast<unsigned char>(dir) << 8); }
+
+    template<typename Type, int Shift, int Modulo>
+    struct DirCaster {
+        static Type Convert(unsigned int raw) {
+            unsigned int temp = (((raw >> Shift) + 1) >> 1);
+            return static_cast<Type>(Modulo ? (temp % Modulo) : temp);
+        }
+    };
+
+    Dir32 As_Dir32(void) const { return DirCaster<Dir32, 10, 32>::Convert((unsigned)Raw); }
+    Dir256 As_Dir256(void) const { return DirCaster<Dir256, 7, 256>::Convert((unsigned)Raw); }
+    int	As_Weirder(void) const { return (FacingType)((((((unsigned int)Raw >> 12) + 1) >> 1) + 1) % (8)); }
+    int	As_Weirderer(void) const { return (FacingType)((((((unsigned int)Raw >> 13) + 1) >> 1) + 0) % (4)); }
+    double As_Radian32(void) const { return (double)((As_Dir32() - 8) * -0.19634954084936207); }
 
     /**
      *  Use the number of bits the facing has as the template argument.
