@@ -302,6 +302,7 @@ struct TSPP_ModuleRegister {
 template<typename T>
 __forceinline T& Make_Global(const uintptr_t address)
 {
+    static_assert(!std::is_reference_v<T>, "Do not pass a reference type to Make_Global");
     return *reinterpret_cast<T*>(address);
 }
 
