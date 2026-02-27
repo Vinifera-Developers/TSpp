@@ -123,7 +123,7 @@ public:
     // 005156E0
     // 00515810
     // 00515970
-    // 005159A0
+    int Get_Cell_Zone_Index(Cell const& cell);
     // 005159D0
     void Update_Cell_Zone(const Cell& cell); // 00515A00
     // 00515B30
@@ -270,16 +270,16 @@ public:
 public:
     void* field_10; // hash table
     unsigned short* Zones[MZONE_COUNT];
-    int field_3C;
+    int ZoneCount;
     DynamicVectorClass<ZoneConnectionClass> ZoneConnections;
-    void* field_58;
-    int field_5C;
-    void* field_60;
-    int field_64[3];
+    CellZoneStruct* CellZones;
+    int CellZoneCount;
+    CellSubzoneStruct* CellSubzones;
+    int SubzoneTrackingEntryCount[SUBZONE_COUNT];
     void* field_70[3]; // hash tables
     DynamicVectorClass<SubzoneTrackingStruct> SubzoneTracking[3];
-    DynamicVectorClass<Cell> field_C4;
-    DynamicVectorClass<Cell> PendingIceCells;
+    DynamicVectorClass<Cell> PendingBridgeCells;
+    DynamicVectorClass<Cell> DirtyIceCells;
     Rect PlayRect;
     Rect LocalRect;
     int IterX;           // Iterator next x
@@ -293,7 +293,7 @@ public:
     int DeformMask;
     Cell DeformCell;
     int DeformFrame;
-    DynamicVectorClass<CrackedIceStruct> field_14C;
+    DynamicVectorClass<CrackedIceStruct> CrackedIce;
     VectorClass<CellClass*> Array;
     int XSize;
     int YSize;

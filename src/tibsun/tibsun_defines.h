@@ -563,6 +563,14 @@ typedef enum ZoneType {
 } ZoneType;
 DEFINE_ENUMERATION_OPERATORS(ZoneType);
 
+// Here for now
+typedef enum SubzoneLevelType {
+    SUBZONE_FINE,
+    SUBZONE_ROUGH,
+    SUBZONE_COARSE,
+    SUBZONE_COUNT
+} SubzoneLevelType;
+
 typedef enum SideType {
     SIDE_GDI,
     SIDE_NOD,
@@ -2965,6 +2973,56 @@ class ZoneConnectionClass
         int field_A;
 };
 
+/*
+**	This struct defines the zone that the cell belongs to.
+*/
+struct CellZoneStruct
+{
+    /*
+    **	The zone's passability.
+    */
+    unsigned char Passability;
+
+    /*
+    **	The cell's height at ground level.
+    */
+    unsigned char Height;
+
+    /*
+    **	The ID of the zone that the cell belongs to.
+    **	Multiple cells can belong to the same zone, and then this ID will be the same.
+    */
+    unsigned short ZoneID;
+
+    CellZoneStruct(void) : Passability(PASSABLE_OUTSIDE), Height(0) {}
+};
+
+/*
+**	This struct defines the subzone that the cell belongs to.
+*/
+struct CellSubzoneStruct
+{
+    /*
+    **	The ID of the subzone that this cell belongs to at
+    **	different levels of "coarseness" of the pathfinding.
+    */
+    signed short SubzoneID[SUBZONE_COUNT];
+
+    /*
+    **	The zone for this cell (CellZoneStruct ID).
+    */
+    unsigned short ZoneID;
+
+    /*
+    **	The cell's height at ground level.
+    */
+    unsigned char Height;
+
+    /*
+    **	???
+    */
+    char field_9;
+};
 
 struct SubzoneConnectionStruct {
     bool operator==(const SubzoneConnectionStruct &src) const { return false; }

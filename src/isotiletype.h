@@ -80,7 +80,7 @@ private:
 public:
     IsoTileFileStruct* const Get_Tile_Data() const { return (IsoTileFileStruct*)IsometricTileTypeClass::Get_Image_Data(); }
 
-    // 004F34B0
+    LandType IsometricTileTypeClass::Land_Type(int tile) const;
     // 004F34F0
     void Load_Image_Data();
     // 004F36B0
@@ -93,7 +93,7 @@ public:
     // 004F5940
     // 004F5A20
     // 004F5A60
-    // 004F5AC0
+    int Ramp_Type(int tile) const;
     // 004F5B00
     // 004F5B40
     // 004F5CB0
@@ -116,7 +116,7 @@ public:
     IsometricTileType MarbleMadness;
     IsometricTileType NonMarbleMadness;
     int field_130;
-    DynamicVectorClass<unsigned short*> field_134;
+    DynamicVectorClass<unsigned short*> PreviewTiles;
     IsometricTileTypeClass* NextTileTypeInSet;
     IsometricTileType ToSnowTheater;
     IsometricTileType ToTemperateTheater;
