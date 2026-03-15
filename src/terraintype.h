@@ -89,8 +89,8 @@ public:
     float AnimationProbability;
     int YDrawFudge;
     TiberiumType TiberiumToSpawn;
-    unsigned TemperateOccupationBits;
-    unsigned SnowOccupationBits;
+    int TemperateOccupationBits;
+    int SnowOccupationBits;
     bool IsWaterBased;
     bool IsTiberiumSpawn;
     bool IsFlammable;
