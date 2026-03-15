@@ -70,3 +70,50 @@ bool CCINIClass::Put_LayerType(const char* section, const char* entry, LayerType
 {
     return Put_String(section, entry, Name_From_Layer(value));
 }
+
+
+/**
+ *  Fetch the string list from the INI database.
+ *
+ *  @author: CCHyper
+ */
+DynamicVectorClass<std::string> CCINIClass::Get_Strings(const char* section, const char* entry, const DynamicVectorClass<std::string>& defvalue) const
+{
+    char buffer[1024];
+
+    if (Get_String(section, entry, "", buffer, sizeof(buffer)) > 0) {
+
+        DynamicVectorClass<std::string> list;
+
+        char* name = std::strtok(buffer, ",");
+        while (name) {
+            list.Add(std::string(name));
+
+            name = std::strtok(nullptr, ",");
+        }
+
+        return list;
+    }
+
+    return defvalue;
+}
+
+
+/**
+ *  Store the stirng list to the INI database.
+ *
+ *  @author: CCHyper
+ */
+bool CCINIClass::Put_Strings(const char* section, const char* entry, const DynamicVectorClass<std::string>& value)
+{
+    char buffer[1024] = {'\0'};
+
+    for (int index = 0; index < value.Count(); ++index) {
+        if (buffer[0] != '\0') {
+            std::strcat(buffer, ",");
+        }
+        std::strcat(buffer, value[index].c_str());
+    }
+
+    return Put_String(section, entry, buffer);
+}

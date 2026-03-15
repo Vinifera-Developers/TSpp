@@ -113,6 +113,8 @@ public:
     AbilityFlagsType Get_Abilities(char const* section, char const* entry, AbilityFlagsType const& defvalue) const;
     LayerType Get_LayerType(char const* section, char const* entry, LayerType defvalue) const;
 
+    DynamicVectorClass<std::string> Get_Strings(const char* section, const char* entry, const DynamicVectorClass<std::string>& defvalue) const;
+
     bool Put_Lepton(char const* section, char const* entry, LEPTON value);
     bool Put_Angle(char const* section, char const* entry, int value);
     bool Put_Cell(char const* section, char const* entry, Cell const& value);
@@ -147,6 +149,8 @@ public:
     bool Put_Target(char const* section, char const* entry, TargetClass const& value);
     bool Put_SpeedType(char const* section, char const* entry, SpeedType value);
     bool Put_LayerType(char const* section, char const* entry, LayerType value);
+    
+    bool Put_Strings(const char* section, const char* entry, const DynamicVectorClass<std::string>& value);
 
     int Get_Unique_ID() const;
 
