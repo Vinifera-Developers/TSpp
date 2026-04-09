@@ -90,4 +90,5 @@ private:
     GScreenClass& operator=(const GScreenClass&);
 };
 
+extern Surface*& HiddenSurface;
 void Update_Visible_Surface(bool flip_mouse = true, Surface* surface = HiddenSurface, Rect* rect = nullptr);
