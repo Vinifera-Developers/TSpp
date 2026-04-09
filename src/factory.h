@@ -30,9 +30,9 @@
 #include "abstract.h"
 #include "stage.h"
 #include "vector.h"
+#include "techno.h"
 
 
-class TechnoClass;
 class TechnoTypeClass;
 class HouseClass;
 
@@ -91,6 +91,21 @@ public:
     bool Is_Building() const { return StageClass::Fetch_Rate() != 0 && !IsSuspended; }
     HouseClass* Get_House() { return House; }
     int Queued_Object_Count() { return QueuedObjects.Count(); }
+
+    bool Has_Production_Target() const
+    {
+        if (Object != nullptr) return true;
+        if (QueuedObjects.Count() > 0) return true;
+        return false;
+    }
+
+    bool Is_Currently_Producing(const TechnoTypeClass* type) const
+    {
+        if (Object == nullptr) return false;
+        if (Object->TClass == nullptr) return true;
+        if (Object->TClass == type) return true;
+        return false;
+    }
 
     const char* Name() const;
 
