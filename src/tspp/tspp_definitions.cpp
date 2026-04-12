@@ -2369,6 +2369,7 @@ DEFINE_IMPLEMENTATION(void Play_Ingame_Movie(VQType), 0x00563B00);
 DEFINE_IMPLEMENTATION(void End_Ingame_Movie(), 0x00563C40);
 DEFINE_IMPLEMENTATION(bool Movie_Is_Playing(), 0x00564600);
 DEFINE_IMPLEMENTATION(void Movie_Update_Visible_Surface(), 0x005646E0);
+DEFINE_IMPLEMENTATION(void Movie_Queue_Ingame(VQHandle*), 0x00564630);
 
 DEFINE_IMPLEMENTATION(void Draw_Shape(Surface&, ConvertClass&, const ShapeSet*, int, const Point2D&, const Rect&, ShapeFlags_Type, const char*, int, ZGradientType, int, const ShapeSet*, int, Point2D), 0x0047C780);
 DEFINE_IMPLEMENTATION(void Blit_Block(Surface&, ConvertClass&, Surface const&, Rect const&, Point2D const&, Rect const&, unsigned char const*, Blitter const*, int, ZGradientType, int, int), 0x0047CC10);
