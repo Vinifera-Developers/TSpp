@@ -33,7 +33,7 @@
 
 
 class VQAClass;
-class XSurface;
+class Surface;
 
 
 struct VQHandle {
