@@ -116,6 +116,8 @@ public:
     TPoint2D<T> Bottom_Right() const { return TPoint2D<T>(T(X + Width - 1), T(Y + Height - 1)); }
     __declspec(property(get = Bottom_Right)) TPoint2D<T> BottomRight;
 
+    TPoint2D<T> Center_Point() const { return TPoint2D<T>(T(X + Width / 2), T(Y + Height / 2)); }
+    __declspec(property(get = Center_Point)) TPoint2D<T> Center;
 
     /*
     **  Determine if a point lies within the rectangle.
