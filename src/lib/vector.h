@@ -29,8 +29,13 @@
 
 #include "always.h"
 #include "tspp_assert.h"
+#include <cstddef>
+#include <cstring>
+#include <initializer_list>
 #include <memory>
 #include <new>
+#include <type_traits>
+#include <utility>
 
 
 class NoInitClass;
@@ -41,14 +46,19 @@ class VectorClass
 {
 public:
     VectorClass(unsigned size = 0, const T* array = nullptr);
+    // NoInitClass overload intentionally leaves members uninitialized; used
+    // when the object overlays existing game memory.
     VectorClass(const NoInitClass& noinit) {}
+    VectorClass(std::initializer_list<T> list);
     VectorClass(const VectorClass<T>& that);
+    VectorClass(VectorClass<T>&& that) noexcept;
     virtual ~VectorClass();
 
     T& operator[](int index);
     const T& operator[](int index) const;
 
     VectorClass<T>& operator=(const VectorClass<T>& that);
+    VectorClass<T>& operator=(VectorClass<T>&& that) noexcept;
 
     virtual bool operator==(const VectorClass<T>& that) const;
 
@@ -57,13 +67,20 @@ public:
     virtual int ID(const T* ptr);
     virtual int ID(const T& ptr);
 
-    int Length() const { return VectorMax; }
+    T& at(int index);
+    const T& at(int index) const;
 
-    T* begin() { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
-    T* end() { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
+    [[nodiscard]] int Length() const noexcept { return VectorMax; }
+    [[nodiscard]] std::size_t size() const noexcept { return VectorMax > 0 ? static_cast<std::size_t>(VectorMax) : 0u; }
+    [[nodiscard]] bool empty() const noexcept { return VectorMax <= 0; }
+    [[nodiscard]] T* data() noexcept { return Vector; }
+    [[nodiscard]] const T* data() const noexcept { return Vector; }
 
-    const T* begin() const { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
-    const T* end() const { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
+    [[nodiscard]] T* begin() noexcept { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
+    [[nodiscard]] T* end() noexcept { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
+
+    [[nodiscard]] const T* begin() const noexcept { return (VectorMax > 0) ? &(*this)[0] : nullptr; }
+    [[nodiscard]] const T* end() const noexcept { return (VectorMax > 0) ? ((&(*this)[VectorMax - 1]) + 1) : nullptr; }
 
 protected:
     T* Vector;
@@ -91,6 +108,22 @@ const T& VectorClass<T>::operator[](int index) const
 
 
 template<typename T>
+T& VectorClass<T>::at(int index)
+{
+    TSPP_ASSERT(index >= 0 && index < VectorMax);
+    return Vector[index];
+}
+
+
+template<typename T>
+const T& VectorClass<T>::at(int index) const
+{
+    TSPP_ASSERT(index >= 0 && index < VectorMax);
+    return Vector[index];
+}
+
+
+template<typename T>
 VectorClass<T>::VectorClass(unsigned size, const T *array) :
     Vector(nullptr),
     VectorMax(size),
@@ -99,7 +132,14 @@ VectorClass<T>::VectorClass(unsigned size, const T *array) :
 {
     if (size > 0) {
         if (array != nullptr) {
-            Vector = new ((void*)array) T[size];
+            // Construct into the caller-provided buffer element-wise to avoid
+            // the array-new cookie that `new ((void*)array) T[size]` may reserve.
+            Vector = const_cast<T*>(array);
+            if constexpr (!std::is_trivially_default_constructible_v<T>) {
+                for (unsigned i = 0; i < size; ++i) {
+                    ::new (static_cast<void*>(&Vector[i])) T();
+                }
+            }
         } else {
             Vector = new T[size];
             IsAllocated = true;
@@ -116,12 +156,44 @@ VectorClass<T>::~VectorClass()
 
 
 template<typename T>
+VectorClass<T>::VectorClass(std::initializer_list<T> list) :
+    Vector(nullptr),
+    VectorMax(static_cast<int>(list.size())),
+    IsValid(true),
+    IsAllocated(false)
+{
+    if (VectorMax > 0) {
+        Vector = new T[VectorMax];
+        IsAllocated = true;
+        int i = 0;
+        for (const T& item : list) {
+            Vector[i++] = item;
+        }
+    }
+}
+
+
+template<typename T>
 VectorClass<T>::VectorClass(const VectorClass<T>& that) :
     Vector(nullptr),
     VectorMax(0),
+    IsValid(true),
     IsAllocated(false)
 {
     *this = that;
+}
+
+
+template<typename T>
+VectorClass<T>::VectorClass(VectorClass<T>&& that) noexcept :
+    Vector(that.Vector),
+    VectorMax(that.VectorMax),
+    IsValid(that.IsValid),
+    IsAllocated(that.IsAllocated)
+{
+    that.Vector = nullptr;
+    that.VectorMax = 0;
+    that.IsAllocated = false;
 }
 
 
@@ -146,6 +218,27 @@ VectorClass<T>& VectorClass<T>::operator=(const VectorClass<T>& that)
             Vector = nullptr;
             IsAllocated = false;
         }
+
+        IsValid = true;
+    }
+
+    return *this;
+}
+
+
+template<typename T>
+VectorClass<T>& VectorClass<T>::operator=(VectorClass<T>&& that) noexcept
+{
+    if (this != &that) {
+        Clear();
+        Vector = that.Vector;
+        VectorMax = that.VectorMax;
+        IsValid = that.IsValid;
+        IsAllocated = that.IsAllocated;
+
+        that.Vector = nullptr;
+        that.VectorMax = 0;
+        that.IsAllocated = false;
     }
 
     return *this;
@@ -176,7 +269,7 @@ inline int VectorClass<T>::ID(const T* ptr)
         return 0;
     }
 
-    return ((uintptr_t)ptr - (uintptr_t)Vector) / sizeof(T);
+    return static_cast<int>(ptr - Vector);
 }
 
 
@@ -220,7 +313,13 @@ bool VectorClass<T>::Resize(int newsize, const T* array)
         if (array == nullptr) {
             newptr = new T[newsize];
         } else {
-            newptr = new ((void*)array) T[newsize];
+            // Construct element-wise into the caller buffer (see ctor comment).
+            newptr = const_cast<T*>(array);
+            if constexpr (!std::is_trivially_default_constructible_v<T>) {
+                for (int i = 0; i < newsize; ++i) {
+                    ::new (static_cast<void*>(&newptr[i])) T();
+                }
+            }
         }
 
         IsValid = true;
@@ -264,16 +363,16 @@ class DynamicVectorClass : public VectorClass<T>
 public:
     DynamicVectorClass(unsigned size = 0, const T* array = nullptr);
     DynamicVectorClass(const NoInitClass& noinit) : VectorClass<T>(noinit) {}
+    DynamicVectorClass(std::initializer_list<T> list);
     DynamicVectorClass(const DynamicVectorClass& that);
+    DynamicVectorClass(DynamicVectorClass&& that) noexcept;
     virtual ~DynamicVectorClass() {}
 
     T& operator[](int index);
     const T& operator[](int index) const;
 
-    bool operator==(const DynamicVectorClass& src) { return false; }
-    bool operator!=(const DynamicVectorClass& src) { return true; }
-
     DynamicVectorClass& operator=(const DynamicVectorClass& that);
+    DynamicVectorClass& operator=(DynamicVectorClass&& that) noexcept;
 
     virtual bool Resize(int newsize, const T* array = nullptr) override;
     virtual void Clear() override;
@@ -293,23 +392,25 @@ public:
     bool Is_Present(const T* ptr) const { return const_cast<DynamicVectorClass*>(this)->ID(ptr) != -1; }
     bool Is_Present(const T& ptr) const { return const_cast<DynamicVectorClass*>(this)->ID(ptr) != -1; }
 
-    const T& Fetch_Head() const { return (*this)[0]; }
-    const T& Fetch_Tail() const { return (*this)[ActiveCount - 1]; }
+    const T& Fetch_Head() const { TSPP_ASSERT(ActiveCount > 0); return (*this)[0]; }
+    const T& Fetch_Tail() const { TSPP_ASSERT(ActiveCount > 0); return (*this)[ActiveCount - 1]; }
 
-    void Reset_Active() { ActiveCount = 0; }
-    void Set_Active(int count) { ActiveCount = count; }
+    void Reset_Active() noexcept { ActiveCount = 0; }
+    void Set_Active(int count) noexcept { ActiveCount = count; }
 
-    int Count() const { return ActiveCount; }
-    bool Empty() const { return ActiveCount <= 0; }
+    [[nodiscard]] int Count() const noexcept { return ActiveCount; }
+    [[nodiscard]] std::size_t size() const noexcept { return ActiveCount > 0 ? static_cast<std::size_t>(ActiveCount) : 0u; }
+    [[nodiscard]] bool empty() const noexcept { return ActiveCount <= 0; }
+    [[nodiscard]] bool Empty() const noexcept { return ActiveCount <= 0; }
 
-    int Set_Growth_Step(int step) { return GrowthStep = step; }
-    int Growth_Step() { return GrowthStep; }
+    int Set_Growth_Step(int step) noexcept { return GrowthStep = step; }
+    [[nodiscard]] int Growth_Step() const noexcept { return GrowthStep; }
 
-    T* begin() { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
-    T* end() { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+    [[nodiscard]] T* begin() noexcept { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+    [[nodiscard]] T* end() noexcept { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
 
-    const T* begin() const { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
-    const T* end() const { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
+    [[nodiscard]] const T* begin() const noexcept { return (ActiveCount > 0) ? &(*this)[0] : nullptr; }
+    [[nodiscard]] const T* end() const noexcept { return (ActiveCount > 0) ? &(*this)[ActiveCount] : nullptr; }
 
 protected:
     int ActiveCount;
@@ -320,19 +421,41 @@ protected:
 template<typename T>
 DynamicVectorClass<T>::DynamicVectorClass(unsigned size, const T* array) :
     VectorClass<T>(size, array),
-    GrowthStep(10),
-    ActiveCount(0)
+    ActiveCount(0),
+    GrowthStep(10)
 {
+}
+
+
+template<typename T>
+DynamicVectorClass<T>::DynamicVectorClass(std::initializer_list<T> list) :
+    VectorClass<T>(static_cast<unsigned>(list.size())),
+    ActiveCount(0),
+    GrowthStep(10)
+{
+    for (const T& item : list) {
+        VectorClass<T>::Vector[ActiveCount++] = item;
+    }
 }
 
 
 template<typename T>
 DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& that) :
     VectorClass<T>(that),
-    GrowthStep(10),
-    ActiveCount(0)
+    ActiveCount(0),
+    GrowthStep(10)
 {
     *this = that;
+}
+
+
+template<typename T>
+DynamicVectorClass<T>::DynamicVectorClass(DynamicVectorClass<T>&& that) noexcept :
+    VectorClass<T>(std::move(that)),
+    ActiveCount(that.ActiveCount),
+    GrowthStep(that.GrowthStep)
+{
+    that.ActiveCount = 0;
 }
 
 
@@ -363,9 +486,25 @@ void DynamicVectorClass<T>::Clear()
 template<typename T>
 DynamicVectorClass<T>& DynamicVectorClass<T>::operator=(const DynamicVectorClass<T>& that)
 {
-    VectorClass<T>::operator=(that);
-    ActiveCount = that.ActiveCount;
-    GrowthStep = that.GrowthStep;
+    if (this != &that) {
+        VectorClass<T>::operator=(that);
+        ActiveCount = that.ActiveCount;
+        GrowthStep = that.GrowthStep;
+    }
+
+    return *this;
+}
+
+
+template<typename T>
+DynamicVectorClass<T>& DynamicVectorClass<T>::operator=(DynamicVectorClass<T>&& that) noexcept
+{
+    if (this != &that) {
+        VectorClass<T>::operator=(std::move(that));
+        ActiveCount = that.ActiveCount;
+        GrowthStep = that.GrowthStep;
+        that.ActiveCount = 0;
+    }
 
     return *this;
 }
@@ -432,13 +571,17 @@ bool DynamicVectorClass<T>::Add_Head(const T& object)
     }
 
     if (ActiveCount > 0) {
-        std::memmove(&(*this)[1], &(*this)[0], ActiveCount * sizeof(T));
+        if constexpr (std::is_trivially_copyable_v<T>) {
+            std::memmove(&(*this)[1], &(*this)[0], ActiveCount * sizeof(T));
+        } else {
+            for (int i = ActiveCount; i > 0; --i) {
+                (*this)[i] = std::move((*this)[i - 1]);
+            }
+        }
     }
-
 
     (*this)[0] = object;
     ++ActiveCount;
-    //	(*this)[ActiveCount++] = object;
 
     return true;
 }
@@ -462,7 +605,13 @@ bool DynamicVectorClass<T>::Insert(int index, const T& object)
     }
 
     if (index < ActiveCount) {
-        std::memmove(&(*this)[index + 1], &(*this)[index], (ActiveCount - index) * sizeof(T));
+        if constexpr (std::is_trivially_copyable_v<T>) {
+            std::memmove(&(*this)[index + 1], &(*this)[index], (ActiveCount - index) * sizeof(T));
+        } else {
+            for (int i = ActiveCount; i > index; --i) {
+                (*this)[i] = std::move((*this)[i - 1]);
+            }
+        }
     }
 
     (*this)[index] = object;
@@ -488,7 +637,7 @@ bool DynamicVectorClass<T>::Delete(const T& object)
 template<typename T>
 bool DynamicVectorClass<T>::Delete(int index)
 {
-    if (index < ActiveCount) {
+    if (index >= 0 && index < ActiveCount) {
         --ActiveCount;
         for (int i = index; i < ActiveCount; ++i) {
             (*this)[i] = (*this)[i + 1];
@@ -554,7 +703,7 @@ int Pointer_Vector_Add(T* ptr, VectorClass<T*>& vec)
 template<class T>
 bool Pointer_Vector_Remove(const T* ptr, VectorClass<T*>& vec)
 {
-    int id = vec.ID((T*)ptr);
+    int id = vec.ID(const_cast<T*>(ptr));
     if (id != -1) {
         vec[id] = nullptr;
         return true;
