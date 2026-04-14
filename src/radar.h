@@ -81,7 +81,7 @@ public:
      */
     virtual HRESULT Load(IStream* pStm) override;
     virtual HRESULT Save(IStream* pStm) override;
-    virtual void Set_Dimensions() override;
+    virtual void Shift_Sidebar() override;
     virtual bool Map_Cell(Cell& cell, HouseClass* house) override;
 
     virtual Cell Click_Cell_Calc(Point2D& cell);

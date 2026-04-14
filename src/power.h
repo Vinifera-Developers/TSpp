@@ -50,7 +50,7 @@ public:
      *  DisplayClass
      */
     virtual const char* Help_Text(int text) override;
-    virtual void Set_Dimensions() override;
+    virtual void Shift_Sidebar() override;
 
     /**
      *  RadarClass

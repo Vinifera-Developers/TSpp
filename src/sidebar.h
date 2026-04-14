@@ -90,7 +90,7 @@ public:
     virtual HRESULT Load(IStream* pStm) override;
     virtual HRESULT Save(IStream* pStm) override;
     virtual const char* Help_Text(int text) override;
-    virtual void Set_Dimensions() override;
+    virtual void Shift_Sidebar() override;
 
     /**
      *  RadarClass
@@ -170,7 +170,7 @@ public:
         bool Factory_Link(FactoryClass* factory, RTTIType type, int id);
         bool Abandon_Production(FactoryClass* factory);
         // 005F6030
-        void Set_Dimensions();
+        void Shift_Sidebar();
         // 005F6620
         // 005F6670
 
