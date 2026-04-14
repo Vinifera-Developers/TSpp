@@ -2289,7 +2289,7 @@ DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::Abandon_Production(FactoryC
 // 005F6080
 // 005F6620
 // 005F6670
-DEFINE_IMPLEMENTATION(void Print_Cameo_Text(const char*, Point2D&, Rect&, int), 0x005F66E0);
+DEFINE_IMPLEMENTATION(void Print_Cameo_Text(const char*, Point2D const&, Rect const&, int), 0x005F66E0);
 DEFINE_IMPLEMENTATION(bool SidebarClass::StripClass::SelectClass::Action(unsigned, KeyNumType&), 0x005F59A0);
 DEFINE_IMPLEMENTATION(void SidebarClass::StripClass::SelectClass::Set_Owner(StripClass&, int), 0x005F5980);
 SidebarClass::StripClass::StripClass() : StageClass() {}
@@ -5865,8 +5865,8 @@ bool& GameInFocus = Make_Global<bool>(0x007E4920);
 ParticleSystemClass*& MasterParticle = Make_Global<ParticleSystemClass*>(0x007E4918);
 ProgressScreenClass& Progress = Make_Global<ProgressScreenClass>(0x00809730);
 EnvironmentClass& Environment = Make_Global<EnvironmentClass>(0x007A2ED0);
-bool& TacticalViewActive = Make_Global<bool>(0x007E48FC);
-bool& ScenarioStarted = Make_Global<bool>(0x007E4040);
+bool& ScenarioActive = Make_Global<bool>(0x007E48FC);
+bool& TacticalActive = Make_Global<bool>(0x007E4040);
 unsigned& FramesPerSecond = Make_Global<unsigned>(0x00804D2C);
 int& RequiredAddon = Make_Global<int>(0x0074C9F8);
 bool& GameActive = Make_Global<bool>(0x007E4580);

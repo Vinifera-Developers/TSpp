@@ -259,11 +259,11 @@ public:
 
     } Column[COLUMNS];
 
-    bool field_1CD4; // toggles cameo text?
+    bool IsCameoText;
     bool IsSidebarActive;
     bool IsToRedraw;
     bool IsToFullRedraw; // another redraw flag?
-    bool field_1CD8;
+    bool IsToRedrawCredits;
     bool IsRepairActive;
     bool IsUpgradeActive;
     bool IsDemolishActive;
@@ -284,4 +284,4 @@ public:
     static SBGadgetClass& Background;
 };
 
-void Print_Cameo_Text(const char* string, Point2D& pos, Rect& bounds, int max_width);
+void Print_Cameo_Text(const char* string, Point2D const& pos, Rect const& bounds, int max_width);
