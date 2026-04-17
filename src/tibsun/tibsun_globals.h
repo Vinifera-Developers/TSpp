@@ -599,10 +599,10 @@ extern int& GameSKU;
 extern int& GameFSSKU;
 
 struct FrameSyncStruct {
-    int ResendDelta;
-    int DialogTime;
-    int FrameSync;
-    int Timeout;
+    long frame;         // other players' frame #
+    unsigned long sent; // # cmds other player claims to have sent
+    unsigned long recv; // # cmds actually received from others
+    unsigned long timing;
 };
 
-extern FrameSyncStruct (&FrameSyncSettings)[6];
+extern FrameSyncStruct (&FrameSyncSettings)[MAX_PLAYERS - 1];

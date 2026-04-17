@@ -6291,6 +6291,8 @@ ARRAY_DEF(0x006F6C64, int, CrateShares, CRATE_COUNT);
 ARRAY_DEF(0x006F6CB0, AnimType, CrateAnims, CRATE_COUNT);
 ARRAY_DEF(0x00761068, int, CrateData, CRATE_COUNT);
 
+ARRAY_DEF(0x00809980, FrameSyncStruct, FrameSyncSettings, MAX_PLAYERS - 1);
+
 
 /**
  *  WOLAPI globals.
@@ -6302,7 +6304,6 @@ unsigned long& PlanetWestwoodStartTime = Make_Global<unsigned long>(0x00866E68);
 bool& GameStatisticsPacketSent = Make_Global<bool>(0x007E4FD0);
 int& GameSKU = Make_Global<int>(0x00867200);
 int& GameFSSKU = Make_Global<int>(0x00866E6C);
-FrameSyncStruct (&FrameSyncSettings)[6] = Make_Global<FrameSyncStruct[6]>(0x00707F88);
 
 
 
