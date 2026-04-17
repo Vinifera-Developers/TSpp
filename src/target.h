@@ -94,8 +94,8 @@ class xTargetClass
 public:
     operator RTTIType() const { return RTTIType(RTTI); }
 
-    bool operator==(xTargetClass& tgt) { return tgt.RTTI == RTTI; }
-    bool operator!=(xTargetClass& tgt) { return tgt.RTTI != RTTI; }
+    bool operator==(xTargetClass& tgt) { return (RTTI == tgt.RTTI && ID == tgt.ID); }
+    bool operator!=(xTargetClass& tgt) { return (RTTI != tgt.RTTI || ID != tgt.ID); }
 
     int Value() const { return ID; }
     RTTIType Kind() const { return RTTIType(RTTI); }
