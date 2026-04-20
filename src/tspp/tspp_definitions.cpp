@@ -6276,15 +6276,15 @@ ARRAY_DEF(0x00809980, FrameSyncStruct, FrameSyncSettings, MAX_PLAYERS - 1);
 
 
 /**
- *  WOLAPI globals.
+ *  WOnline globals.
  */
-WOL::Tournament& PlanetWestwoodTournament = Make_Global<WOL::Tournament>(0x00867008);
-unsigned long& PlanetWestwoodGameID = Make_Global<unsigned long>(0x00867014);
-unsigned long& PlanetWestwoodPortNumber = Make_Global<unsigned long>(0x0070FCF0);
-unsigned long& PlanetWestwoodStartTime = Make_Global<unsigned long>(0x00866E68);
-bool& GameStatisticsPacketSent = Make_Global<bool>(0x007E4FD0);
-int& GameSKU = Make_Global<int>(0x00867200);
-int& GameFSSKU = Make_Global<int>(0x00866E6C);
+int& WestwoodOnline_Tournament = Make_Global<int>(0x00867008);
+unsigned long& WestwoodOnline_GameID = Make_Global<unsigned long>(0x00867014);
+unsigned long& WestwoodOnline_PortNumber = Make_Global<unsigned long>(0x0070FCF0);
+unsigned long& WestwoodOnline_StartTime = Make_Global<unsigned long>(0x00866E68);
+int& WestwoodOnline_GameSKU_TS = Make_Global<int>(0x00867200);
+int& WestwoodOnline_GameSKU_FS = Make_Global<int>(0x00866E6C);
+bool& GameStatisticsPacketSent = Make_Global<bool>(0x007E4FD0); // actually in internet.cpp
 
 
 

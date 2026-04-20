@@ -106,12 +106,6 @@ typedef enum Locale {
     LOC_TURKEY
 } Locale;
 
-typedef enum Tournament {
-    TOURNAMENT_0,
-    TOURNAMENT_1,
-    TOURNAMENT_2,
-} Tournament;
-
 typedef struct Server {
     int gametype;
     int chattype;

@@ -571,13 +571,13 @@ extern IsometricTileType& RoughTile;
 extern IsometricTileType& DestroyableCliff;
 extern IsometricTileType& BlackTile;
 
-extern WOL::Tournament& PlanetWestwoodTournament;
-extern unsigned long& PlanetWestwoodGameID;
-extern unsigned long& PlanetWestwoodPortNumber;
-extern unsigned long& PlanetWestwoodStartTime;
+extern int& WestwoodOnline_Tournament;
+extern unsigned long& WestwoodOnline_GameID;
+extern unsigned long& WestwoodOnline_PortNumber;
+extern unsigned long& WestwoodOnline_StartTime;
 extern bool& GameStatisticsPacketSent;
-extern int& GameSKU;
-extern int& GameFSSKU;
+extern int& WestwoodOnline_GameSKU_TS;
+extern int& WestwoodOnline_GameSKU_FS;
 
 struct FrameSyncStruct {
     long frame;         // other players' frame #
