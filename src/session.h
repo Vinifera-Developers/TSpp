@@ -60,23 +60,23 @@ typedef struct NodeNameTag {
     IPXAddressClass Address;
     union {
         struct {
-            unsigned char IsOpen;
+            unsigned char IsOpen; // is the game open?
             unsigned char Addon;
-            unsigned long LastTime;
+            unsigned long LastTime; // last time we heard from this guy
         } Game;
         struct {
-            char field_1E[23]; // game serial?
-            HousesType House;
-            PlayerColorType Color;
-            HousesType ID;
-            int ProcessTime;
-            int field_45; // accepted game? (treated as bool?)
-            int Clan;
+            char Serial[SERIAL_MAX]; //
+            HousesType House;        // "ActLike" House of this player
+            PlayerColorType Color;   // Color of this player
+            HousesType ID;           // Actual House of this player
+            int ProcessTime;         // Length of time to process players main loop
+            int Status;              //
+            int SquadID;             //
         } Player;
         struct {
-            unsigned long LastTime;
-            unsigned char LastChance;
-            PlayerColorType Color;
+            unsigned long LastTime;   // last time we heard from this guy
+            unsigned char LastChance; // we're about to remove him from the list
+            int Color;                // chat player's color
         } Chat;
     };
 } NodeNameType;
