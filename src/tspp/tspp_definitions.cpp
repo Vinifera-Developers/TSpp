@@ -1796,7 +1796,7 @@ DEFINE_IMPLEMENTATION(Point2D Tactical::func_60F350(const Coord&) const, 0x0060F
 DEFINE_IMPLEMENTATION(bool Tactical::Coord_To_Pixel(const Coord&, Point2D&) const, 0x0060F4B0);
 DEFINE_IMPLEMENTATION(Coord Tactical::Pixel_To_Coord(const Point2D&) const, 0x0060F660);
 DEFINE_IMPLEMENTATION(Coord Tactical::func_60F740(const Point2D&) const, 0x0060F740);
-DEFINE_IMPLEMENTATION(void Tactical::func_60F800(const Coord&, int), 0x0060F800);
+DEFINE_IMPLEMENTATION(void Tactical::Setup_Trigger_Scroll(const Coord&, int), 0x0060F800);
 DEFINE_IMPLEMENTATION(int Tactical::Z_Lepton_To_Pixel(LEPTON), 0x0060F3C0);
 DEFINE_IMPLEMENTATION(LEPTON Tactical::Pixel_To_Z_Lepton(int), 0x0060F450);
 DEFINE_IMPLEMENTATION(void Tactical::Render(XSurface& surface, bool full_redraw, RenderPassEnum render_pass), 0x006111E0);
