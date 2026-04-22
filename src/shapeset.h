@@ -1,35 +1,11 @@
 /*******************************************************************************
 /*                     O P E N  S O U R C E  --  T S + +                      **
 /*******************************************************************************
+ *  @brief  ShapeSet class.
  *
- *  @project       TS++
- *
- *  @file          SHAPESET.H
- *
- *  @author        Joe L. Bostic (see notes below)
- *
- *  @contributors  tomsons26, ZivDero
- *
- *  @brief         ShapeSet class.
- *
- *  @license       TS++ is free software: you can redistribute it and/or
- *                 modify it under the terms of the GNU General Public License
- *                 as published by the Free Software Foundation, either version
- *                 3 of the License, or (at your option) any later version.
- *
- *                 TS++ is distributed in the hope that it will be
- *                 useful, but WITHOUT ANY WARRANTY; without even the implied
- *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- *                 PURPOSE. See the GNU General Public License for more details.
- *
- *                 You should have received a copy of the GNU General Public
- *                 License along with this program.
- *                 If not, see <http://www.gnu.org/licenses/>.
- *
- *  @note          This file contains modified code from the C&C Generals source code
- *                 released by Electronic Arts under the GPL3 license. Source:
- *                 https://github.com/electronicarts/CnC_Generals_Zero_Hour
- *
+ *  SPDX-License-Identifier: GPL-3.0-or-later
+ *  Copyright (c) Electronic Arts
+ *  Copyright (c) 2020-2026 Vinifera contributors
  ******************************************************************************/
 #pragma once
 

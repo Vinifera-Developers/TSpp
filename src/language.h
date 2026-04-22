@@ -1,29 +1,10 @@
 /*******************************************************************************
 /*                     O P E N  S O U R C E  --  T S + +                      **
 /*******************************************************************************
+ *  @brief  Header with defines for the games string table.
  *
- *  @project       TS++
- *
- *  @file          LANGUAGE.H
- *
- *  @authors       CCHyper, tomsons26
- *
- *  @brief         Header with defines for the games string table.
- *
- *  @license       TS++ is free software: you can redistribute it and/or
- *                 modify it under the terms of the GNU General Public License
- *                 as published by the Free Software Foundation, either version
- *                 3 of the License, or (at your option) any later version.
- *
- *                 TS++ is distributed in the hope that it will be
- *                 useful, but WITHOUT ANY WARRANTY; without even the implied
- *                 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- *                 PURPOSE. See the GNU General Public License for more details.
- *
- *                 You should have received a copy of the GNU General Public
- *                 License along with this program.
- *                 If not, see <http://www.gnu.org/licenses/>.
- *
+ *  SPDX-License-Identifier: GPL-3.0-or-later
+ *  Copyright (c) 2020-2026 Vinifera contributors
  ******************************************************************************/
 #pragma once
 
@@ -584,28 +565,28 @@
 //
 //
 #define TXT_SHIP_01						547   // +Full Name:---------Coord:---Hgt:-Str:-Ace:-Spd:-Ammo-Arm:-Grp:-Cloak:-Price:-+
-#define TXT_SHIP_02						548   // ¦                  ¦        ¦    ¦    ¦    ¦    ¦    ¦    ¦    ¦      ¦       ¦
-#define TXT_SHIP_03						549   // +Owner:------------+Trigger:+TarCom:--STarCom:-PFace:+Path:--------Try:-Delay:¦
-#define TXT_SHIP_04						550   // ¦                  ¦        ¦        ¦        ¦      ¦            ¦    ¦      ¦
-#define TXT_SHIP_05						551   // +Cargo:----Target:-+Next:---+NavCom:-+SNavCom:+SFace:+PBrk:-HeadTo:--Archive:-¦
-#define TXT_SHIP_06						552   // ¦         ¦        ¦        ¦        ¦        ¦      ¦     ¦        ¦         ¦
-#define TXT_SHIP_07						553   // +Tmr:-St:-Rt:-Stage+Radio:--+Radio Message History:---------------------------¦
-#define TXT_SHIP_08						554   // ¦    ¦   ¦   ¦     ¦        ¦                                                 ¦
-#define TXT_SHIP_09						555   // +Mission:-------Queue:------¦                                                 ¦
-#define TXT_SHIP_10						556   // ¦              ¦            ¦                                                 ¦
-#define TXT_SHIP_11						557   // +-----------------------------------------------------------------------------¦
-#define TXT_SHIP_12						558   // ¦                                                                             ¦
-#define TXT_SHIP_13						559   // +-----------------------------------------------------------------------------¦
-#define TXT_SHIP_14						560   // ¦Is Down     ¦AnimAttached¦Primary     ¦Player Owned¦Initiated   ¦Repairing   ¦
-#define TXT_SHIP_15						561   // ¦To Damage   ¦Falling [  ]¦Loaner      ¦Player Aware¦Deploying   ¦ToSelfRepair¦
-#define TXT_SHIP_16						562   // ¦To Display  ¦Useless     ¦Locked      ¦AI Aware    ¦Firing      ¦            ¦
-#define TXT_SHIP_17						563   // ¦In Limbo    ¦Ticked Off  ¦Recoil      ¦Lemon       ¦Rotating    ¦            ¦
-#define TXT_SHIP_18						564   // ¦Selected    ¦Cloakable   ¦Tethered    ¦Invul [    ]¦Driving     ¦            ¦
-#define TXT_SHIP_19						565   // ¦To Look     ¦Unloading   ¦Formation   ¦            ¦            ¦            ¦
-#define TXT_SHIP_20						566   // ¦Team:----Mmbrs:-Qnt:-Center:--Target:-+Formation:--+------------+------------¦
-#define TXT_SHIP_21						567   // ¦        ¦      ¦    ¦        ¦        ¦            ¦Understrngth¦Moving      ¦
-#define TXT_SHIP_22						568   // +Mission:---------------------+---------------------¦FullStrength¦ForcedActive¦
-#define TXT_SHIP_23						569   // ¦                             ¦                     ¦HasBeen     ¦Reforming   ¦
+#define TXT_SHIP_02						548   // ï¿½                  ï¿½        ï¿½    ï¿½    ï¿½    ï¿½    ï¿½    ï¿½    ï¿½    ï¿½      ï¿½       ï¿½
+#define TXT_SHIP_03						549   // +Owner:------------+Trigger:+TarCom:--STarCom:-PFace:+Path:--------Try:-Delay:ï¿½
+#define TXT_SHIP_04						550   // ï¿½                  ï¿½        ï¿½        ï¿½        ï¿½      ï¿½            ï¿½    ï¿½      ï¿½
+#define TXT_SHIP_05						551   // +Cargo:----Target:-+Next:---+NavCom:-+SNavCom:+SFace:+PBrk:-HeadTo:--Archive:-ï¿½
+#define TXT_SHIP_06						552   // ï¿½         ï¿½        ï¿½        ï¿½        ï¿½        ï¿½      ï¿½     ï¿½        ï¿½         ï¿½
+#define TXT_SHIP_07						553   // +Tmr:-St:-Rt:-Stage+Radio:--+Radio Message History:---------------------------ï¿½
+#define TXT_SHIP_08						554   // ï¿½    ï¿½   ï¿½   ï¿½     ï¿½        ï¿½                                                 ï¿½
+#define TXT_SHIP_09						555   // +Mission:-------Queue:------ï¿½                                                 ï¿½
+#define TXT_SHIP_10						556   // ï¿½              ï¿½            ï¿½                                                 ï¿½
+#define TXT_SHIP_11						557   // +-----------------------------------------------------------------------------ï¿½
+#define TXT_SHIP_12						558   // ï¿½                                                                             ï¿½
+#define TXT_SHIP_13						559   // +-----------------------------------------------------------------------------ï¿½
+#define TXT_SHIP_14						560   // ï¿½Is Down     ï¿½AnimAttachedï¿½Primary     ï¿½Player Ownedï¿½Initiated   ï¿½Repairing   ï¿½
+#define TXT_SHIP_15						561   // ï¿½To Damage   ï¿½Falling [  ]ï¿½Loaner      ï¿½Player Awareï¿½Deploying   ï¿½ToSelfRepairï¿½
+#define TXT_SHIP_16						562   // ï¿½To Display  ï¿½Useless     ï¿½Locked      ï¿½AI Aware    ï¿½Firing      ï¿½            ï¿½
+#define TXT_SHIP_17						563   // ï¿½In Limbo    ï¿½Ticked Off  ï¿½Recoil      ï¿½Lemon       ï¿½Rotating    ï¿½            ï¿½
+#define TXT_SHIP_18						564   // ï¿½Selected    ï¿½Cloakable   ï¿½Tethered    ï¿½Invul [    ]ï¿½Driving     ï¿½            ï¿½
+#define TXT_SHIP_19						565   // ï¿½To Look     ï¿½Unloading   ï¿½Formation   ï¿½            ï¿½            ï¿½            ï¿½
+#define TXT_SHIP_20						566   // ï¿½Team:----Mmbrs:-Qnt:-Center:--Target:-+Formation:--+------------+------------ï¿½
+#define TXT_SHIP_21						567   // ï¿½        ï¿½      ï¿½    ï¿½        ï¿½        ï¿½            ï¿½Understrngthï¿½Moving      ï¿½
+#define TXT_SHIP_22						568   // +Mission:---------------------+---------------------ï¿½FullStrengthï¿½ForcedActiveï¿½
+#define TXT_SHIP_23						569   // ï¿½                             ï¿½                     ï¿½HasBeen     ï¿½Reforming   ï¿½
 #define TXT_SHIP_24						570   // +-----------------------------------------------------------------------------+
 #define TXT_SHIP_25						571   // <- F11                        Ship                                       F12 ->
 //
