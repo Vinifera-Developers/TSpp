@@ -9,9 +9,11 @@
 #pragma once
 
 #include "always.h"
+
 #include "dict.h"
 #include "dsurface.h"
 #include "tibsun_defines.h"
+#include "wstring.h"
 
 
 class Surface;
@@ -21,10 +23,14 @@ class BSurface;
 /**
  *  The default transparency color (RGB purple).
  */
-#define DEFUALT_TRANSPARENT_COLOR (unsigned)(255 >> DSurface::RedRight << DSurface::RedLeft) | (0 >> DSurface::GreenRight << DSurface::GreenLeft) | (255 >> DSurface::BlueRight << DSurface::BlueLeft)
+#define DEFAULT_TRANSPARENT_COLOR (DSurface::Build_Hicolor_Pixel(255, 0, 255))
 
+struct SurfaceCacheEntry {
+    Surface* surface = nullptr;
+    char palette[768] = {};
+};
 
-class SpriteCollectionClass : public Dictionary
+class SpriteCollectionClass : public Dictionary<Wstring, SurfaceCacheEntry>
 {
 public:
     bool Load_PCX(const char* filename, int bpp, bool apply_palette = false);
@@ -37,7 +43,7 @@ public:
     BSurface* Get_Image_Surface(const char* filename, void* palette = nullptr);
 
     bool Draw(Rect& rect, Surface& dest_surface, Surface& image, int width = 0, int height = 0);
-    bool Draw_Trans(Rect& rect, Surface& dest_surface, Surface& image, unsigned trans = DEFUALT_TRANSPARENT_COLOR);
+    bool Draw_Trans(Rect& rect, Surface& dest_surface, Surface& image, unsigned trans = DEFAULT_TRANSPARENT_COLOR);
     bool Draw_Alpha(Rect& rect, Surface& dest_surface, Surface& image, Surface& mask, void* palette = nullptr, bool center = false, int x_offset = 0, int y_offset = 0);
 };
 

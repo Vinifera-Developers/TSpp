@@ -5144,10 +5144,6 @@ JumpjetLocomotionClass::JumpjetLocomotionClass(const NoInitClass& noinit) : Loco
 // DEFINE_IMPLEMENTATION_DESTRUCTOR(JumpjetLocomotionClass::~JumpjetLocomotionClass(), 0x004F9600);
 DEFINE_IMPLEMENTATION(int JumpjetLocomotionClass::Get_Object_Size(bool) const, 0x004FAD50);
 
-// DEFINE_IMPLEMENTATION_CONSTRUCTOR(Dictionary::Dictionary(), 0x005FD410);
-// DEFINE_IMPLEMENTATION_DESTRUCTOR(Dictionary::~Dictionary(), 0x005FD4F0);
-DEFINE_IMPLEMENTATION(unsigned Dictionary::CRC(Wstring&), 0x005FD4A0);
-
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_PCX(const char*, int, bool), 0x005FDCC0);
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_Mono_PCX(const char*), 0x005FE0E0);
 DEFINE_IMPLEMENTATION(bool SpriteCollectionClass::Load_Bitmap(const char*, void*, int, int), 0x005FD700);
