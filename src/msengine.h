@@ -24,8 +24,8 @@ public:
     virtual ~MSEngine();
 
 public:
-    int field_4;
-    VectorClass<TRect<int>> Rects;
-    DynamicVectorClass<MSAnim*> Anims;
-    DynamicVectorClass<MSSfx*> Sounds;
+    int mRectCount;
+    VectorClass<Rect> mRects;
+    DynamicVectorClass<MSAnim*> mAnims;
+    DynamicVectorClass<MSSfx*> mSounds;
 };
