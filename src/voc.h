@@ -11,7 +11,6 @@
 #include "dsaudio.h"
 #include "tibsun_defines.h"
 #include "tibsun_globals.h"
-#include "tspp_audio_intercept.h"
 
 
 class CCINIClass;
@@ -26,8 +25,6 @@ public:
     void Read_INI(CCINIClass& ini);
 
     bool Can_Play() const;
-
-    bool Is_Playing() const { return TSPP_Is_Sample_Playing(FilePtr); }
 
     int Play(float volume, int a2);
     int Play(float volume);
@@ -61,15 +58,3 @@ int Voice_Sound_Effect(VocType voc, float volume = 1.0f);
  *  Plays a sound effect in the tactical map.
  */
 void Static_Sound(VocType voc, const Coord& coord);
-
-
-/**
- *  Query if the sound effect is currently playing.
- */
-inline bool Is_Sound_Effect_Playing(VocType type)
-{
-    if (type < VOC_FIRST || type >= Vocs.Count()) {
-        return false;
-    }
-    return Vocs[type]->Is_Playing();
-}
