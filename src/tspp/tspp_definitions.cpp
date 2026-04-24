@@ -3465,14 +3465,14 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Init_Laser_Fences(), 0x00437050);
 // 004376B0
 // 00437E30
 // 00438590
-// 004388D0
-// 00438910
-// 00438950
+DEFINE_IMPLEMENTATION(void BuildingClass::Enable_Cloak_Generator(), 0x004388D0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Disable_Cloak_Generator(), 0x00438910);
+DEFINE_IMPLEMENTATION(void BuildingClass::Cloaking_AI(bool), 0x00438950);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Is_Powered_On() const, 0x00439280);
-// 004392F0
-// 00439500
-// 004396D0
-// 00439750
+DEFINE_IMPLEMENTATION(void BuildingClass::Disable_Sensor_Array(), 0x004392F0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Enable_Sensor_Array(), 0x00439500);
+DEFINE_IMPLEMENTATION(int BuildingClass::Get_Firestorm_Wall_Frame(), 0x004396D0);
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_FS_Wall_State(), 0x00439750);
 DEFINE_IMPLEMENTATION(bool BuildingClass::Crossing_Firestorm(ObjectClass*, bool) const, 0x00439A90);
 // 00439D40
 // 00439E90

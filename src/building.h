@@ -206,14 +206,14 @@ public:
     // 004376B0
     // 00437E30
     // 00438590
-    // 004388D0
-    // 00438910
-    // 00438950
+    void Enable_Cloak_Generator();
+    void Disable_Cloak_Generator();
+    void Cloaking_AI(bool fast);
     bool Is_Powered_On() const;
-    // 004392F0
-    // 00439500
-    // 004396D0
-    // 00439750
+    void Disable_Sensor_Array();
+    void Enable_Sensor_Array();
+    int Get_Firestorm_Wall_Frame();
+    void Update_FS_Wall_State();
     bool Crossing_Firestorm(ObjectClass* object, bool do_damage) const;
     // 00439D40
     // 00439E90
