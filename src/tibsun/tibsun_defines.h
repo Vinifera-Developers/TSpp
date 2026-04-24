@@ -240,9 +240,12 @@ typedef enum DiskID {
 typedef enum AddonType {
     ADDON_BASE_GAME,
     ADDON_FIRESTORM,
+    ADDON_COUNT,
 
+    ADDON_FIRST = 0,
     ADDON_ANY = -1,
 } AddonType;
+DEFINE_ENUMERATION_OPERATORS(AddonType);
 
 typedef enum CampaignType {
     CAMPAIGN_NONE = -1,
