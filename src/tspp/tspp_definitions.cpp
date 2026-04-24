@@ -3455,7 +3455,7 @@ DEFINE_IMPLEMENTATION(void BuildingClass::Turn_Off(), 0x00436890);
 // 00436B20
 // 00436B90
 // 00436CF0
-// 00436D50
+DEFINE_IMPLEMENTATION(void BuildingClass::Update_Laser_Fence_Connections(int), 0x00436D50);
 // 00436EC0
 DEFINE_IMPLEMENTATION(void BuildingClass::Init_Laser_Fences(), 0x00437050);
 // 004370D0

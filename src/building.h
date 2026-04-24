@@ -196,7 +196,7 @@ public:
     // 00436B20
     // 00436B90
     // 00436CF0
-    // 00436D50
+    void Update_Laser_Fence_Connections(int);
     // 00436EC0
     static void Init_Laser_Fences();
     // 004370D0
