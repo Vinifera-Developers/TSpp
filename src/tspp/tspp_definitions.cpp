@@ -5779,7 +5779,7 @@ bool& Debug_Modem_Dump = Make_Global<bool>(0x007E4912);
 bool& Debug_Print_Events = Make_Global<bool>(0x007E4913);
 HouseClass*& PlayerPtr = Make_Global<HouseClass*>(0x007E2284);
 int& SpeechVolume = Make_Global<int>(0x00712618);
-bool& IsSpeechAllowed = Make_Global<bool>(0x0071261C);
+bool& SpeechEnabled = Make_Global<bool>(0x0071261C);
 CDTimerClass<SystemTimerClass>& SpeakTimer = Make_Global<CDTimerClass<SystemTimerClass>>(0x0080FC90);
 ARRAY_DEF(0x0080FC9C, void*, SpeechBuffer, 2);
 ARRAY_DEF(0x0080FC88, VoxType, SpeechRecord, 2);

@@ -22,7 +22,7 @@ void Set_Speech_Volume(int vol);
 
 
 extern int& SpeechVolume;
-extern bool& IsSpeechAllowed;
+extern bool& SpeechEnabled;
 
 extern CDTimerClass<SystemTimerClass>& SpeakTimer;
 
