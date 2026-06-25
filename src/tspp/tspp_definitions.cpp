@@ -4087,7 +4087,7 @@ DEFINE_IMPLEMENTATION(void InfantryClass::Firing_AI(), 0x004D8750);
 DEFINE_IMPLEMENTATION(void InfantryClass::Doing_AI(), 0x004D8AA0);
 DEFINE_IMPLEMENTATION(void InfantryClass::Movement_AI(), 0x004D8CB0);
 DEFINE_IMPLEMENTATION(bool InfantryClass::Is_JumpJet(), 0x004D9AA0);
-// 004D9B70
+DEFINE_IMPLEMENTATION(bool InfantryClass::Should_JumpJet_Fly(Cell*, Cell*), 0x004D9B70);
 DEFINE_IMPLEMENTATION(void InfantryClass::Read_INI(CCINIClass&), 0x004D7B30);
 DEFINE_IMPLEMENTATION(void InfantryClass::Write_INI(CCINIClass&), 0x004D7F50);
 
