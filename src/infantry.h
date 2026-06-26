@@ -118,7 +118,7 @@ public:
     void Doing_AI();
     void Movement_AI();
     bool Is_JumpJet();
-    bool Should_JumpJet_Fly(Cell* start, Cell* end);
+    bool Should_JumpJet_Fly(Cell const & start, Cell const & end);
 
     static void Read_INI(CCINIClass& ini);
     static void Write_INI(CCINIClass& ini);
