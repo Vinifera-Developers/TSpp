@@ -384,6 +384,7 @@ extern DynamicVectorClass<AircraftClass*>& Aircrafts;
 extern DynamicVectorClass<VocClass*>& Vocs;
 extern DynamicVectorClass<IonBlastClass*>& IonBlasts;
 extern DynamicVectorClass<AnimClass*>& Anims;
+extern DynamicVectorClass<AnimClass*>& MoveFlashes;
 extern DynamicVectorClass<AnimTypeClass*>& AnimTypes;
 extern DynamicVectorClass<TerrainTypeClass*>& TerrainTypes;
 extern DynamicVectorClass<ParticleTypeClass*>& ParticleTypes;

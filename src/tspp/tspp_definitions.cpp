@@ -6266,6 +6266,7 @@ DynamicVectorClass<AircraftClass*>& Aircrafts = Make_Global<DynamicVectorClass<A
 DynamicVectorClass<VocClass*>& Vocs = Make_Global<DynamicVectorClass<VocClass*>>(0x0080FC68);
 DynamicVectorClass<IonBlastClass*>& IonBlasts = Make_Global<DynamicVectorClass<IonBlastClass*>>(0x007F5750);
 DynamicVectorClass<AnimClass*>& Anims = Make_Global<DynamicVectorClass<AnimClass*>>(0x007E4588);
+DynamicVectorClass<AnimClass*>& MoveFlashes = Make_Global<DynamicVectorClass<AnimClass*>>(0x007E2318);
 DynamicVectorClass<AnimTypeClass*>& AnimTypes = Make_Global<DynamicVectorClass<AnimTypeClass*>>(0x007B34A0);
 DynamicVectorClass<TerrainTypeClass*>& TerrainTypes = Make_Global<DynamicVectorClass<TerrainTypeClass*>>(0x007E3FE0);
 DynamicVectorClass<ParticleTypeClass*>& ParticleTypes = Make_Global<DynamicVectorClass<ParticleTypeClass*>>(0x007E22B8);
