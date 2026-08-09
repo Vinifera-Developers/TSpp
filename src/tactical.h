@@ -14,6 +14,7 @@
 #include "point.h"
 #include "rect.h"
 #include "ttimer.h"
+#include "object.h"
 
 
 class CellClass;
@@ -141,7 +142,7 @@ public:
     // 00616750
     // 00616760
     // 00616920
-    // 00616940
+    void Select_These(Rect& rect, void (*selection_func)(ObjectClass* obj)); // 00616940
     // 00616AA0
     // 00616C40
     // 00616C90
