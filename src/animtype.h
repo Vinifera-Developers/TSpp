@@ -61,7 +61,7 @@ public:
     /**
      *  AnimTypeClass
      */
-    virtual void Load_Image(const char* filename);
+    virtual void Load_Image(TheaterType theater);
 
     void Free_Image();
 

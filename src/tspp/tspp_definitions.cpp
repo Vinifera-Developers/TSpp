@@ -4199,7 +4199,7 @@ DEFINE_IMPLEMENTATION(bool AnimTypeClass::Read_INI(CCINIClass&), 0x00418C20);
 DEFINE_IMPLEMENTATION(bool AnimTypeClass::Create_And_Place(Cell&, HouseClass*) const, 0x00419BD0);
 DEFINE_IMPLEMENTATION(ObjectClass* const AnimTypeClass::Create_One_Of(HouseClass*) const, 0x00419BE0);
 DEFINE_IMPLEMENTATION(ShapeSet* const AnimTypeClass::Get_Image_Data() const, 0x00419A20);
-DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(const char*), 0x00418A70);
+DEFINE_IMPLEMENTATION(void AnimTypeClass::Load_Image(TheaterType), 0x00418A70);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Free_Image(), 0x00419B40);
 DEFINE_IMPLEMENTATION(void AnimTypeClass::Init(TheaterType), 0x00418890);
 
