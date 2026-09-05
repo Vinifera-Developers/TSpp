@@ -11,6 +11,8 @@
 #include "listnode.h"
 #include "wwcrc.h"
 
+#include <cstdint>
+
 
 class PKey;
 class Buffer;
@@ -29,6 +31,15 @@ public:
     static bool Cache(const char* filename, Buffer const* buffer = nullptr);
 
     static bool Offset(const char* filename, void** realptr = nullptr, MixFileClass** mixfile = nullptr, long* offset = nullptr, long* size = nullptr);
+
+    bool Contains_Cached_Pointer(const void* data) const
+    {
+        if (!data || !Data || DataSize <= 0) return false;
+
+        const auto address = reinterpret_cast<std::uintptr_t>(data);
+        const auto begin = reinterpret_cast<std::uintptr_t>(Data);
+        return address >= begin && address - begin < static_cast<std::uintptr_t>(DataSize);
+    }
 
     static const void* Retrieve(const char* filename);
 
