@@ -73,13 +73,10 @@ public:
 public:
     DynamicVectorClass<BaseNodeClass> Nodes;
     int PercentBuilt;
-    DynamicVectorClass<Cell> field_20;
-    DynamicVectorClass<Cell> field_38;
-    Cell field_50;
-    Rect field_54;
-    int field_64;
-    int field_68;
-    int field_6C;
-    int field_70;
+    DynamicVectorClass<Cell> InnerCells;
+    DynamicVectorClass<Cell> OuterCells;
+    Cell PlacementCenter;
+    Rect BaseAreaRect;
+    Rect LastBaseAreaRect;
     HousesType House;
 };
