@@ -77,6 +77,6 @@ public:
     DynamicVectorClass<Cell> OuterCells;
     Cell PlacementCenter;
     Rect BaseAreaRect;
-    Rect LastBaseAreaRect;    
+    Rect LastBaseAreaRect;
     HousesType House;
 };
