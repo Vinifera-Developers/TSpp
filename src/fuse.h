@@ -36,6 +36,7 @@ public:
     FuseResultType Fuse_Checkup(Coord& newlocation);
 
     Coord Fuse_Target() { return HeadTo; }
+    bool Is_Armed() const { return Arming.Expired(); }
 
 public:
     CDTimerClass<FrameTimerClass> Timer;
